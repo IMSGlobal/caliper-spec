@@ -3,19 +3,41 @@
 # Caliper Analytics® Specification, version 1.1
 
 ## IPR and Distribution Notices
-Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the specification set forth in this document, and to provide supporting documentation.
+Recipients of this document are requested to submit, with their comments,
+notification of any relevant patent claims or other intellectual property
+rights of which they may be aware that might be infringed by any implementation
+of the specification set forth in this document, and to provide supporting
+documentation.
 
-IMS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on IMS’s procedures with respect to rights in IMS specifications can be found at the IMS Intellectual Property Rights web page: [http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
+IMS takes no position regarding the validity or scope of any intellectual
+property or other rights that might be claimed to pertain to the implementation
+or use of the technology described in this document or the extent to which any
+license under such rights might or might not be available; neither does it
+represent that it has made any effort to identify any such rights. Information
+on IMS’s procedures with respect to rights in IMS specifications can be found
+at the IMS Intellectual Property Rights web
+page:
+[http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf](http://www.imsglobal.org/ipr/imsipr_policyFinal.pdf).
 
 Copyright © 2017 IMS Global Learning Consortium. All Rights Reserved.
 
-Use of this specification to develop products or services is governed by the license with IMS found on the IMS website: http://www.imsglobal.org/speclicense.html.
+Use of this specification to develop products or services is governed by the
+license with IMS found on the IMS website:
+http://www.imsglobal.org/speclicense.html.
 
-Permission is granted to all parties to use excerpts from this document as needed in producing requests for proposals.
+Permission is granted to all parties to use excerpts from this document as
+needed in producing requests for proposals.
 
-The limited permissions granted above are perpetual and will not be revoked by IMS or its successors or assigns.
+The limited permissions granted above are perpetual and will not be revoked by
+IMS or its successors or assigns.
 
-THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR, ANY WARRANTY OF NON INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.
+THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN
+PARTICULAR, ANY WARRANTY OF NON INFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE
+OF THIS SPECIFICATION SHALL BE MADE ENTIRELY AT THE IMPLEMENTER'S OWN RISK, AND
+NEITHER THE CONSORTIUM, NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY
+LIABILITY WHATSOEVER TO ANY IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY
+NATURE WHATSOEVER, DIRECTLY OR INDIRECTLY, ARISING FROM THE USE OF THIS
+SPECIFICATION.
 
 ## Table of Contents
 * 1.0 [Introduction](#introduction)
@@ -131,85 +153,169 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
 <a name="introduction" />
   
 ## 1.0. Introduction
+The drive to deliver education at scale coupled with a demand for measurable
+accountability has spurred interest in the application of “big data” principles
+to the business of education. Opportunities to tap new data sources, ask new
+questions and pursue new insights have grown as both the learning technology
+ecosystem has expanded and the definition of what constitutes learning has
+evolved beyond the formal classroom experience to include informal, social and
+experiential modes of acquiring knowledge and skills. The challenges inherent
+in describing, collecting and exchanging learning activity data originating
+from such diverse learning sources and context are now formidable.
 
-The drive to deliver education at scale coupled with a demand for measurable accountability has spurred interest in the application of “big data” principles to the business of education.  Opportunities to tap new data sources, ask new questions and pursue new insights have grown as both the learning technology ecosystem has expanded and the definition of what constitutes learning has evolved beyond the formal classroom experience to include informal, social and experiential modes of acquiring knowledge and skills. The challenges inherent in describing, collecting and exchanging learning activity data originating from such diverse learning sources and context are now formidable.
+<div style="design: block;margin: 0 auto"><img alt=".edu Graph"
+src="assets/caliper-edu_graph.png"></div>
 
-<div style="design: block;margin: 0 auto"><img alt=".edu Graph" src="assets/caliper-edu_graph.png"></div>
-
-The Caliper Analytics® specification attempts to address the underlying interoperability challenges posed by these shifts in the learning technology landscape.  Caliper provides an information model and domain-specific controlled vocabularies for describing learning activities, events and related entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).  Caliper also defines an application programming interface (the Sensor API™) for marshalling and transmitting Caliper events from instrumented applications to one or more target endpoints for storage, analysis and re-use.  Industry-wide adoption of Caliper offers academic institutions and Ed Tech organizations the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+The Caliper Analytics® specification attempts to address the underlying
+interoperability challenges posed by these shifts in the learning technology
+landscape. Caliper provides an information model and domain-specific
+controlled vocabularies for describing learning activities, events and related
+entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).
+Caliper also defines an application programming interface (the Sensor API™) for
+marshalling and transmitting Caliper events from instrumented applications to
+one or more target endpoints for storage, analysis and re-use. Industry-wide
+adoption of Caliper offers academic institutions and Ed Tech organizations the
+tantalizing prospect of a more unified learning data environment in which to
+build new and innovative services designed to measure, infer, predict, report
+and visualize.
 
 <a name="conventions" />
 
 ### 1.1 Conventions
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered.  MAY/OPTIONAL statements indicate that implementors are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](#rfc2119). A Sensor implementation that
+fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a
+MUST NOT/SHALL NOT prohibition is considered nonconformant. SHOULD/SHOULD
+NOT/RECOMMENDED statements constitute a best practice. Ignoring a best
+practice does not violate conformance but a decision to disregard such guidance
+should be carefully considered. MAY/OPTIONAL statements indicate that
+implementors are entirely free to choose whether or not to implement the
+option.
 
 <a name="terminology" />
 
 ### 1.2 Terminology
-
 <a name="actorDef" />
 
-__Actor__: An actor is an [Agent](#agent) capable of initiating or performing an [action](#actionDef) on a thing or as part of a process.  A Caliper [Event](#event) includes an `actor` attribute for representing the [Agent](#agent). 
+__Actor__: An actor is an [Agent](#agent) capable of initiating or performing
+an [action](#actionDef) on a thing or as part of a process. A
+Caliper [Event](#event) includes an `actor` attribute for representing
+the [Agent](#agent).
 
 <a name="blankNodeDef" />
 
-__Blank Node Identifier__: a string that begins with "_:" that is used to identify an [Entity](#entity) for which an [IRI](#iriDef) is not provided.  An [Entity](#entity) provisioned with a blank node identifier is neither dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef) document within which it resides.
+__Blank Node Identifier__: a string that begins with "_:" that is used to
+identify an [Entity](#entity) for which an [IRI](#iriDef) is not provided.
+An [Entity](#entity) provisioned with a blank node identifier is neither
+dereferenceable nor has meaning outside the scope of the [JSON-LD](#jsonldDef)
+document within which it resides.
 
 <a name="actionDef" />
 
-__Action__: something performed or done to accomplish a purpose.  Caliper [Event](#event) subtypes define a controlled vocabulary of one or more [actions](#actions) relevant to the activity domain.  A Caliper [Event](#event) includes an `action` attribute for expressing the associated action.     
+__Action__: something performed or done to accomplish a purpose.
+Caliper [Event](#event) subtypes define a controlled vocabulary of one or
+more [actions](#actions) relevant to the activity domain. A
+Caliper [Event](#event) includes an `action` attribute for expressing the
+associated action.
 
 <a name="contextDef" />
 
-__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/) keyword that maps the terms employed in a JSON document to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more published vocabularies.  Inclusion of a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an economical way of communicating document semantics to services interested in consuming Caliper event data.
+__Context__: a special [JSON-LD](http://json-ld.org/spec/latest/json-ld/)
+keyword that maps the terms employed in a JSON document
+to [IRIs](https://www.ietf.org/rfc/rfc3987.txt) that link to one or more
+published vocabularies. Inclusion of
+a [JSON-LD](http://json-ld.org/spec/latest/json-ld/) context provides an
+economical way of communicating document semantics to services interested in
+consuming Caliper event data.
 
 <a name="endpointDef" />
 
-__Endpoint__: a receiver or consumer of Caliper data that is bound to a specific network protocol.  
+__Endpoint__: a receiver or consumer of Caliper data that is bound to a
+specific network protocol.
 
 <a name="entityDef" />
 
-__Entity__: an object or a thing that participates in learning-related activity.  Caliper [Entity](#entity) types provide course-grained representations of applications, people, groups and resources that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) corresponds to a node in a directed graph.
+__Entity__: an object or a thing that participates in learning-related
+activity. Caliper [Entity](#entity) types provide course-grained
+representations of applications, people, groups and resources that constitute
+the "stuff" of a Caliper [Event](#event). Each [Entity](#entity) corresponds
+to a node in a directed graph.
 
 <a name="eventDef" />
 
-__Event__: describes a relationship established between an [Agent](#agent) (the `actor`) and an [Entity](#entity) (the `object`) formed as a result of a purposeful `action` undertaken by the `actor` in connection to the `object` at a particular moment in time.
+__Event__: describes a relationship established between an [Agent](#agent) (the
+`actor`) and an [Entity](#entity) (the `object`) formed as a result of a
+purposeful `action` undertaken by the `actor` in connection to the `object` at
+a particular moment in time.
 
 <a name="jsonldDef" />
 
-__JSON-LD__: a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with [Linked Data](#linkedData).  The messages described in this specification are intended to be used in programming environments that support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
+__JSON-LD__: a specification providing a JSON-based data serialization and
+messaging format, processing algorithms and API for working
+with [Linked Data](#linkedData). The messages described in this specification
+are intended to be used in programming environments that
+support [JSON-LD](http://json-ld.org/spec/latest/json-ld/).
 
 <a name="iriDef" />
 
-__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform Resource Identifier ([URI](#uriDef)) scheme by using characters drawn from the Universal character set rather than US-ASCII per [RFC 3987](https://www.ietf.org/rfc/rfc3987.txt).  [Linked Data](#linkedData) rely on IRIs to refer to most nodes and properties.
+__IRI__: The Internationalized Resource Identifier (IRI) extends the Uniform
+Resource Identifier ([URI](#uriDef)) scheme by using characters drawn from the
+Universal character set rather than US-ASCII
+per
+[RFC 3987](https://www.ietf.org/rfc/rfc3987.txt). [Linked Data](#linkedData)
+rely on IRIs to refer to most nodes and properties.
 
 <a name="iso8601Def" /> 
 
-__ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the addition of millisecond precision.  The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T' separates the date from the time while 'Z' indicates that the time is set to UTC.
+__ISO 8601__: Caliper data and time values are formatted per ISO 8601 with the
+addition of millisecond precision. The format is yyyy-MM-ddTHH:mm:ss.SSSZ
+where 'T' separates the date from the time while 'Z' indicates that the time is
+set to UTC.
 
 <a name="linkedDataDef" /> 
  
-__Linked Data__: A set of design principles first articulated by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web.  The principles can be summarized as follows: use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g., people, objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in order to promote discovery of new relationships between things.
+__Linked Data__: A set of design principles first articulated by Tim
+Berners-Lee for discovering, connecting, and sharing structured data over the
+Web. The principles can be summarized as follows:
+use [IRIs](#iriDef)/[URIs](#uriDef) as names for things; use
+HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g.,
+people, objects, concepts) can be retrieved using a standard format; link out
+to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in
+order to promote discovery of new relationships between things.
  
 <a name="ltiDef" />
  
-__LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS standard for integration of rich learning applications within educational environments.
+__LTI__: Learning Tools Interoperability&reg; (LTI&reg;) is an IMS standard for
+integration of rich learning applications within educational environments.
 
 <a name="metricProfileDef" />
 
-__Metric Profile__: models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.
+__Metric Profile__: models a learning activity or a supporting activity that
+helps facilitate learning. Each profile provides a domain-specific set of
+terms and concepts that application designers and developers can draw upon to
+describe common user interactions in a consistent manner using a shared
+vocabulary.
 
 <a name="objectDef" />
  
-__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that becomes the focus, target or object of an interaction.  A Caliper [Event](#event) includes an `object` attribute for representing the resource.
+__Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that
+becomes the focus, target or object of an interaction. A
+Caliper [Event](#event) includes an `object` attribute for representing the
+resource.
 
 <a name="sensorDef" />
 
-__Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint.
+__Sensor__: Software assets deployed within a learning application for
+marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="termDef" />
 
-__Term__: a word or short expression that expands to an [IRI](#iriDef) when mapped to a JSON-LD [context](#contextDef) document. Terms are employed by Caliper as `type` property string values in order to distinguish between various JSON representations of entities and events defined by the Caliper information model.
+__Term__: a word or short expression that expands to an [IRI](#iriDef) when
+mapped to a JSON-LD [context](#contextDef) document. Terms are employed by
+Caliper as `type` property string values in order to distinguish between
+various JSON representations of entities and events defined by the Caliper
+information model.
 
 <a name="typeCoercionDef" />
 
@@ -217,63 +323,135 @@ __Type Coercion__: the process of coercing values to a particular data type.
 
 <a name="uriDef" />
 
-__URI__:  the Uniform Resource Identifier ([URI](#uriDef)) utilizes the US-ASCII character set to identify a resource.  Per [RFC 2396](#rfc2396) a [URI](#uriDef) "can be further classified as a locator, a name or both."  Both the Uniform Resource Locator ([URL](#urlDef)) and the Uniform Resource Name ([URN](#urnDef)) are considered subspaces of the more general [URI](#uriDef) space. 
+__URI__: the Uniform Resource Identifier ([URI](#uriDef)) utilizes the US-ASCII
+character set to identify a resource. Per [RFC 2396](#rfc2396)
+a [URI](#uriDef) "can be further classified as a locator, a name or both."
+Both the Uniform Resource Locator ([URL](#urlDef)) and the Uniform Resource
+Name ([URN](#urnDef)) are considered subspaces of the more
+general [URI](#uriDef) space.
 
 <a name="urlDef" />
  
-__URL__: A Uniform Resource Locator ([URL](#urlDef)) is a type of [URI](#uriDef) that provides a reference to resource that specifies both its location and a means of retrieving a representation of it.  An HTTP [URI](#uriDef) is a [URL](#urlDef) and using HTTP IRIs/URIs to identify things is fundamental to Linked Data.
+__URL__: A Uniform Resource Locator ([URL](#urlDef)) is a type
+of [URI](#uriDef) that provides a reference to resource that specifies both its
+location and a means of retrieving a representation of it. An
+HTTP [URI](#uriDef) is a [URL](#urlDef) and using HTTP IRIs/URIs to identify
+things is fundamental to Linked Data.
 
 <a name="urnDef" />
 
-__URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef) that provides a persistent identifier for a resource that is bound to a defined namespace.  Unlike a [URL](#urlDef) a [URN](#urnDef) is location-independent and provides no means of accessing a representation of the named resource.  
+__URN__: A Uniform Resource Name ([URN](#urnDef)) is a type of [URI](#uriDef)
+that provides a persistent identifier for a resource that is bound to a defined
+namespace. Unlike a [URL](#urlDef) a [URN](#urnDef) is location-independent
+and provides no means of accessing a representation of the named resource.
 
 <a name="uuidDef" />
 
-__UUID__: a 128-bit identifier that does not require a registration authority to assure uniqueness.  However, absolute uniqueness is not guaranteed although the collision probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly generated version 4 UUIDs.  Each Caliper [Event](#event) MUST be assigned a UUID that is expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` as described in [RFC 4122](#rfc4122).
+__UUID__: a 128-bit identifier that does not require a registration authority
+to assure uniqueness. However, absolute uniqueness is not guaranteed although
+the collision probability is considered extremely low. Caliper recommends use
+of randomly or pseudo-randomly generated version 4 UUIDs. Each
+Caliper [Event](#event) MUST be assigned a UUID that is expressed as
+a [URN](#urnDef) using the form `urn:uuid:<UUID>` as described
+in [RFC 4122](#rfc4122).
 
 
 <a name="infoModel" />
 
 ## 2.0 The Information Model 
-
-The Caliper information model defines a set of concepts, rules, and relationships for describing learning activities.  Each activity domain modeled is described in a [Metric Profile](#infoModelProfiles) ("profile").  Each profile is composed of one or more [Event](#event) types.  Each [Event](#event) defines a controlled vocabulary of [actions](#actions) undertaken by learners, instructors, and others, that are scoped to the event.  Various [Entity](#entity) types representing people, groups, and resources are provided in order to better describe both the relationships established between participating entities and the contextual elements relevant to the interaction.
+The Caliper information model defines a set of concepts, rules, and
+relationships for describing learning activities. Each activity domain modeled
+is described in a [Metric Profile](#infoModelProfiles) ("profile"). Each
+profile is composed of one or more [Event](#event) types. Each [Event](#event)
+defines a controlled vocabulary of [actions](#actions) undertaken by learners,
+instructors, and others, that are scoped to the event.
+Various [Entity](#entity) types representing people, groups, and resources are
+provided in order to better describe both the relationships established between
+participating entities and the contextual elements relevant to the interaction.
 
 <a name="infoModelEvent" />
 
 ### 2.1 The Caliper Event
-<div style="design: block;margin: 0 auto"><img alt="Event Model" src="assets/caliper-event_model_no_title-v3.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Event Model"
+src="assets/caliper-event_model_no_title-v3.png"></div>
 
-A Caliper [Event](#event) ("event") is a generic type that describes the relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time and (optionally) within a given context.  The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.  A learner starting an assessment, annotating a reading, pausing a video, or posting a message to a forum, are examples of learning activities that Caliper models as events.
+A Caliper [Event](#event) ("event") is a generic type that describes the
+relationship established between an `actor` and an `object`, formed as a result
+of a purposeful [action](#actions) undertaken by the `actor` in connection to
+the `object` at a particular moment in time and (optionally) within a given
+context. The [Event](#event) properties `actor`, `action` and `object` form a
+compact data structure that resembles an [RDF](#rdf) triple linking a subject
+to an object via a predicate. A learner starting an assessment, annotating a
+reading, pausing a video, or posting a message to a forum, are examples of
+learning activities that Caliper models as events.
 
-Caliper defines a number of [Event](#event) subtypes, each scoped to a particular activity domain and distinguishable via a `type` property.  Each [Event](#event) instance can be referenced by its unique identifier.  The `type` value is a string that MUST match the term specified for the [Event](#event) by the Caliper information model (e.g. "MessageEvent").  The assigned `id` value MUST be a string representation of a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  
+Caliper defines a number of [Event](#event) subtypes, each scoped to a
+particular activity domain and distinguishable via a `type` property.
+Each [Event](#event) instance can be referenced by its unique identifier. The
+`type` value is a string that MUST match the term specified for
+the [Event](#event) by the Caliper information model (e.g. "MessageEvent").
+The assigned `id` value MUST be a string representation of a [UUID](#uuidDef)
+as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef)
+namespace for [UUIDs](#uuidDef).
 
-The information model also seeks to describe the learning environment or context in which a learning activity is situated.  Group affiliation, membership roles, and status, recent navigation history, supporting technology and session information can all be optionally represented.  An [Entity](#entity) generated as a result of the interaction between an `actor` and an `object` can also be described; annotating a piece of digital content and producing an [Annotation](#annotation) is one such example.  An `extensions` property is also provided so that implementors can add custom properties not described by the model.  
+The information model also seeks to describe the learning environment or
+context in which a learning activity is situated. Group affiliation,
+membership roles, and status, recent navigation history, supporting technology
+and session information can all be optionally represented.
+An [Entity](#entity) generated as a result of the interaction between an
+`actor` and an `object` can also be described; annotating a piece of digital
+content and producing an [Annotation](#annotation) is one such example. An
+`extensions` property is also provided so that implementors can add custom
+properties not described by the model.
 
-Considered as a data structure an [Event](#event) constitutes an unordered set of key:value pairs that is semi-structured by design.  Optional attributes can be ignored when describing an [Event](#event).  An [Entity](#entity) participating in an [Event](#event) can be represented as an object or as a string that corresponds to the [IRI](#iriDef) defined for the [Entity](#entity).
+Considered as a data structure an [Event](#event) constitutes an unordered set
+of key:value pairs that is semi-structured by design. Optional attributes can
+be ignored when describing an [Event](#event). An [Entity](#entity)
+participating in an [Event](#event) can be represented as an object or as a
+string that corresponds to the [IRI](#iriDef) defined for
+the [Entity](#entity).
 
 #### Properties
-The base set of [Event](#event) properties or attributes is listed below.  Each property MUST be referenced only once.  The `id`, `type`, `actor`, `action`, `object` and `eventTime` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included, but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
+The base set of [Event](#event) properties or attributes is listed below. Each
+property MUST be referenced only once. The `id`, `type`, `actor`, `action`,
+`object` and `eventTime` properties are required; all other properties are
+optional. Custom properties not described by the model MAY be included, but
+MUST be added to the `extensions` property as an array of object values.
+Properties with a value of *null* or empty SHOULD be excluded prior to
+serialization.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person](#person), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
-| referrer | [Entity](#entity)  | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified. For a generic [Event](#event) set the `type` to the string value *Event*. If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person](#person), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified. The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity)  | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent),
+[AssignableEvent](#assignableEvent),
+[AssessmentEvent](#assessmentEvent),
+[AssessmentItemEvent](#assessmentItemEvent),
+[ForumEvent](#forumEvent),
+[MediaEvent](#mediaEvent),
+[MessageEvent](#messageEvent),
+[NavigationEvent](#navigationEvent),
+[OutcomeEvent](#outcomeEvent),
+[SessionEvent](#sessionEvent),
+[ToolUseEvent](#toolUseEvent),
+[ThreadEvent](#threadEvent),
+[ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
@@ -281,89 +459,236 @@ The base set of [Event](#event) properties or attributes is listed below.  Each 
 <a name="infoModelEntity" />
 
 ### 2.2 The Caliper Entity
-<div style="design: block;margin: 0 auto"><img alt="Caliper Entities" src="assets/caliper-entities-v2.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Caliper Entities"
+src="assets/caliper-entities-v2.png"></div>
 
-A Caliper [Entity](#entity) is a generic type that represents objects that participate in learning-related activities.  A number of [Entity](#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](#event).  Each [Entity](#entity) is provisioned with a modest set of properties or attributes that support discovery and description.
+A Caliper [Entity](#entity) is a generic type that represents objects that
+participate in learning-related activities. A number of [Entity](#entity)
+subtypes have been defined in order to better describe people, groups,
+organizations, digital content, courses, software applications, and other
+objects that constitute the "stuff" of a Caliper [Event](#event).
+Each [Entity](#entity) is provisioned with a modest set of properties or
+attributes that support discovery and description.
 
-Like an [Event](#event), an [Entity](#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.  Optional attributes need not be referenced when describing an [Entity](#entity).  When referenced in a Caliper [Event](#infoModelEvent) an [Entity](#entity) can be represented as an object or as a string.
+Like an [Event](#event), an [Entity](#entity) is considered semi-structured
+data consisting of an unordered set of key:value pairs. Optional attributes
+need not be referenced when describing an [Entity](#entity). When referenced
+in a Caliper [Event](#infoModelEvent) an [Entity](#entity) can be represented
+as an object or as a string.
 
-If an object representation is provided, both the type and identifier of the [Entity](#entity) MUST be specified.  Each [Entity](#entity) is provisioned with `type` and `id` properties.  The `type` value is a string that MUST match the term specified for the [Entity](#entity) by the Caliper information model (e.g. "Person").  The `id` value is a string that MUST be expressed as an [IRI](#iriDef).  The [IRI](#iriDef) MUST be valid and unique.  The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.  A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of utilizing it to retrieve machine-readable data. 
+If an object representation is provided, both the type and identifier of
+the [Entity](#entity) MUST be specified. Each [Entity](#entity) is provisioned
+with `type` and `id` properties. The `type` value is a string that MUST match
+the term specified for the [Entity](#entity) by the Caliper information model
+(e.g. "Person"). The `id` value is a string that MUST be expressed as
+an [IRI](#iriDef). The [IRI](#iriDef) MUST be valid and unique.
+The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a
+representation of the resource assuming authorization to access the resource is
+granted. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided
+although care should be taken when employing a location-independent identifier
+since it precludes the possibility of utilizing it to retrieve machine-readable
+data.
 
-Other [Entity](#entity) properties are descriptive in nature, or link the [Entity](#entity) to other related entities.  Certain [Entity](#entity) types like [Annotation](#annotation), [DigitalResource](#digitalResource), [Message](#message) or [Organization](#organization) are provisioned with additional properties that allow for a more complete representation of the object.  An `extensions` property is also defined so that implementors can add custom properties not described by the model.  Optional attributes can be ignored when describing an [Entity](#entity).    
+Other [Entity](#entity) properties are descriptive in nature, or link
+the [Entity](#entity) to other related entities. Certain [Entity](#entity)
+types like [Annotation](#annotation), [DigitalResource](#digitalResource),
+[Message](#message) or [Organization](#organization) are provisioned with
+additional properties that allow for a more complete representation of the
+object. An `extensions` property is also defined so that implementors can add
+custom properties not described by the model. Optional attributes can be
+ignored when describing an [Entity](#entity).
 
-If a string representation is provided the value MUST correspond to the [IRI](#iriDef) defined for the [Entity](#entity).
+If a string representation is provided the value MUST correspond to
+the [IRI](#iriDef) defined for the [Entity](#entity).
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST be referenced only once.  When representing an [Entity](#entity) as an object the `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property as an array of object values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+The base set of [Entity](#entity) properties is listed below. Each property
+MUST be referenced only once. When representing an [Entity](#entity) as an
+object the `id` and `type` properties are required; all other properties are
+optional. Custom properties not described by the model MAY be included but
+MUST be added to the `extensions` property as an array of object values.
+Properties with a value of *null* or empty SHOULD be excluded prior to
+serialization.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified. For a generic [Entity](#entity) set the `type` value to the term *Entity*. If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Entity](#entity) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageObject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaObject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareApplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoObject), [WebPage](#webPage)
+[Agent](#agent),
+[Annotation](#annotation),
+[Assessment](#assessment),
+[AssessmentItem](#assessmentItem),
+[AssignableDigitalResource](#assignableDigitalResource),
+[Attempt](#attempt),
+[AudioObject](#audioObject),
+[BookmarkAnnotation](#bookmarkAnnotation),
+[Chapter](#chapter),
+[CourseOffering](#courseOffering),
+[CourseSection](#courseSection),
+[DigitalResource](#digitalResource),
+[DigitalResourceCollection](#digitalResourceCollection),
+[Document](#document),
+[FillinBlankResponse](#fillinBlankResponse),
+[Frame](#frame),
+[Forum](#forum),
+[Group](#group),
+[HighlightAnnotation](#highlightAnnotation),
+[ImageObject](#imageObject),
+[LearningObjective](#learningObjective),
+[LtiSession](#ltiSession),
+[MediaLocation](#mediaLocation),
+[MediaObject](#mediaObject),
+[Membership](#membership),
+[Message](#message),
+[MultipleChoiceResponse](#multipleChoiceResponse),
+[MultipleResponseResponse](#multipleResponseResponse),
+[Organization](#organization),
+[Page](#page),
+[Person](#person),
+[Response](#response),
+[Result](#result),
+[SelectTextResponse](#selectTextResponse),
+[Session](#session),
+[SharedAnnotation](#sharedAnnotation),
+[SoftwareApplication](#softwareApplication),
+[TagAnnotation](#tagAnnotation),
+[Thread](#thread),
+[TrueFalseResponse](#trueFalseResponse),
+[VideoObject](#videoObject),
+[WebPage](#webPage)
 
 #### Deprecated subtypes
-[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
+[EpubChapter](#epubChapter),
+[EpubPart](#epubPart),
+[EpubSubChapter](#epubSubChapter),
+[EpubVolume](#epubVolume), [Reading](#reading)
 
 <a name="infoModelProfiles" />
 
 ### 2.3 Metric Profiles
-<div style="design: block;margin: 0 auto"><img alt="Metric Profiles" src="assets/caliper-profiles-v3.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Metric Profiles"
+src="assets/caliper-profiles-v3.png"></div>
 
-The Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  A metric profile's *raison d'etre* is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data.  Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary.  Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's metric profiles attempt to describe.
+The Caliper information model defines a number of metric profiles, each of
+which models a learning activity or a supporting activity that helps facilitate
+learning. A metric profile's *raison d'etre* is to encourage vocabulary
+standardization and re-use among application providers delivering
+complementary, albeit competing capabilities that collect learning activity
+data. Each profile provides a domain-specific set of terms and concepts that
+application designers and developers can draw upon to describe common user
+interactions in a consistent manner using a shared vocabulary. Annotating a
+reading, playing a video, taking a test, or grading an assignment submission
+represent a few examples of the many activities or events that Caliper's metric
+profiles attempt to describe.
     
-Think of each metric profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of inter-related activities.  Each [Event](#event) included in a metric profile describes the expected entities or objects in play as well as provides a controlled vocabulary of required and optional [actions](#actions).  
+Think of each metric profile as a stand-alone, logical container, or collection
+of one or more Caliper events that together help describe a set of
+inter-related activities. Each [Event](#event) included in a metric profile
+describes the expected entities or objects in play as well as provides a
+controlled vocabulary of required and optional [actions](#actions).
 
-As an example, the [Forum Profile](#forumProfile) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent).  An action sequence mediated by the [Forum Profile](#forumProfile) might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
+As an example, the [Forum Profile](#forumProfile) models a set of activities
+associated with online discussions involving instructors and learners. The
+profile currently includes a [ForumEvent](#forumEvent), [MessageEvent](#messageEvent),
+[NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent)
+and [ViewEvent](#viewEvent). An action sequence mediated by
+the [Forum Profile](#forumProfile) might involve a learner navigating to a
+forum, subscribing to it, viewing a thread, posting a message in reply to an
+earlier post and then marking the message as read.
      
-Extending Caliper's information model involves designing a new metric profile or enhancing an existing one.  Implementors are free to implement only those Caliper metric profiles as are necessary to model a learning domain.  A video platform provider may decide that only the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile) and [Session Profile](#sessionProfile) are relevant to its needs, while developers instrumenting an assessment engine would most likely implement the [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile) and [Session Profile](#sessionProfile).
+Extending Caliper's information model involves designing a new metric profile
+or enhancing an existing one. Implementors are free to implement only those
+Caliper metric profiles as are necessary to model a learning domain. A video
+platform provider may decide that only
+the [Assignable Profile](#assignableProfile), [Media Profile](#mediaProfile)
+and [Session Profile](#sessionProfile) are relevant to its needs, while
+developers instrumenting an assessment engine would most likely implement
+the [Assessment Profile](#annotationProfile),
+[Assignable Profile](#assignableProfile), [Grading Profile](#gradingProfile)
+and [Session Profile](#sessionProfile).
 
-The following metric profiles are currently available and are summarized individually below:
+The following metric profiles are currently available and are summarized
+individually below:
 
-[Basic Profile](#basicProfile), [Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile)
+[Basic Profile](#basicProfile),
+[Annotation Profile](#annotationProfile),
+[Assessment Profile](#annotationProfile),
+[Assignable Profile](#assignableProfile),
+[Forum Profile](#forumProfile),
+[Media Profile](#mediaProfile),
+[Grading Profile](#gradingProfile),
+[Reading Profile](#readingProfile),
+[Session Profile](#sessionProfile),
+[Tool Use Profile](#toolUseProfile)
 
 <a name="basicProfile" />
 
 ### 2.3.1 Basic Profile
-<div style="design: block;margin: 0 auto"><img alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Basic Profile"
+src="assets/caliper-profile_basic.png"></div>
 
-The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
+The Caliper Basic Profile provides a generic [Event](#event) for describing
+learning or supporting activities that have yet to be modeled by Caliper. Any
+of the Caliper [actions](#actions) described in this specification can be used
+to describe the interaction between the `actor` and the `object`.
 
 #### Minimum Conformance
-Create and send a generic Caliper [Event](#event) to a target [Endpoint](#endpoint).  At least one Caliper [action](#actions) MUST be implemented.
+Create and send a generic Caliper [Event](#event) to a
+target [Endpoint](#endpoint). At least one Caliper [action](#actions) MUST be
+implemented.
 
 #### Supported Events
 [Event](#event)
 
 #### Supported Actions
-All actions included in the Caliper [actions](#actions) vocabulary are supported.  However, it is RECOMMENDED that implementors look first to an existing Metric Profile that models the activity domain of interest before choosing to craft a generic [Event](#event).
+All actions included in the Caliper [actions](#actions) vocabulary are
+supported. However, it is RECOMMENDED that implementors look first to an
+existing Metric Profile that models the activity domain of interest before
+choosing to craft a generic [Event](#event).
 
 #### Supported Entities
+
 | Event | Actor |	Action | Object |
 | :---- | :---- | :----- | :----- |
 | [Event](#event) | [Agent](#agent) | [action](#actions) | [Entity](#entity) |
 
 #### Requirements
-* Certain [Event](#event) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [Event](#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
-* The `action` vocabulary is limited to the supported actions described in this specification and no other.
+* Certain [Event](#event) properties are required and MUST be specified.
+  Required properties include `id`, `type`, `actor`, `action`, `object` and
+  `eventTime`. All other [Event](#event) properties are considered optional
+  and need not be referenced. Adherence to the rules associated with each
+  property referenced is mandatory.
+
+* Each [Entity](#entity) participating in the [Event](#event) MUST be expressed
+  either as an object or coerced to a string corresponding to
+  it's [IRI](#iriDef).
+
+* The `action` vocabulary is limited to the supported actions described in this
+  specification and no other.
 
 <a name="annotationProfile" />
 
 ### 2.3.2 Annotation Profile
-<div style="design: block;margin: 0 auto"><img alt="Annotation Profile" src="assets/caliper-profile_annotation.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Annotation Profile"
+src="assets/caliper-profile_annotation.png"></div>
 
-The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
+The Caliper Annotation Profile models activities related to the annotation of
+a [DigitalResource](#digitalResource). Creating a bookmark, highlighting
+selected text, sharing a resource, tagging a document, and viewing an
+annotation are modeled. The generated [Annotation](#annotation) is also
+described and is subtyped for greater type specificity.
 
 #### Minimum Conformance
-Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
+Create and send an [AnnotationEvent](#annotationEvent) to a
+target [Endpoint](#endpoint). The [Bookmarked](#bookmarked) action is required
+and MUST be implemented. All other supported actions are considered optional.
 
 #### Supported Events
 [AnnotationEvent](#annotationEvent)
@@ -385,33 +710,59 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 | [AnnotationEvent](#annotationEvent) | [Person](#person) | [Tagged](#tagged) | [DigitalResource](#digitalResource) |  [TaggedAnnotation](#taggedAnnotation) |
 
 #### Requirements
-* Certain [AnnotationEvent](#annotationEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AnnotationEvent](#annotationEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [AnnotationEvent](#annotationEvent) properties are required and MUST
+  be specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All other [AnnotationEvent](#annotationEvent)
+  properties are considered optional and need not be referenced. Adherence to
+  the rules associated with each property referenced is mandatory.
+
+* Each [Entity](#entity) participating in
+  the [AnnotationEvent](#annotationEvent) MUST be expressed either as an object
+  or coerced to a string corresponding to it's [IRI](#iriDef).
+
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
+
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* The `generated` [Annotation](#annotation) SHOULD be specified.  If expressed as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource) SHOULD be referenced.
+
+* The `generated` [Annotation](#annotation) SHOULD be specified. If expressed
+  as an object both the `annotator` and `annotated` [DigitalResource](#digitalResource)
+  SHOULD be referenced.
 
 
 <a name="assessmentProfile" />
 
 ### 2.3.3 Assessment Profile
-<div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Assessment Profile"
+src="assets/caliper-profile_assessment.png"></div>
 
-The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities, as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  _Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile._
+The Caliper Assessment Profile models assessment-related activities including
+interactions with individual assessment items. Caliper
+provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem)
+entities for describing the `object` of these activities, as well as a
+learner's [Attempt](#attempt) for recording a count of the number of times an
+assigned resource has been attempted. Five [Response](#response) types are
+also provided for capturing individual item responses. _Note that the Caliper
+1.0 AssessmentItem Profile has been merged into the Assessment Profile._
 
 #### Minimum Conformance
-Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
+Create and send an [AssessmentEvent](#assessmentEvent) to a
+target [Endpoint](#endpoint). The [Started](#started)
+and [Submitted](#submitted) actions are required and MUST be implemented. All
+other supported events and actions are considered optional.
 
 #### Supported Events
-[AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+[AssessmentEvent](#assessmentEvent),
+[AssessmentItemEvent](#assessmentItemEvent),
+[NavigationEvent](#navigationEvent),
+[ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
 | [AssessmentEvent](#assessmentEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
-| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
-| [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v). Inverse of [Resumed](#resumed). The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred. Inverse of [Paused](#paused). The [Attempt](#attempt) `count` value MUST NOT be changed. | Optional |
+| [AssessmentEvent](#assessmentEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress, but then stop and return to the beginning in order to start again. The [Attempt](#attempt) `count` value MUST be incremented by 1. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. | Optional |
 | [AssessmentEvent](#assessmentEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
 | [AssessmentItemEvent](#assessmentItemEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Optional |
@@ -436,36 +787,85 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
-* Certain [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain
+  [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent),
+  [NavigationEvent](#navigationEvent), and [ViewEvent](#viewEvent) properties
+  are required and MUST be specified. Required properties include `id`, `type`,
+  `actor`, `action`, `object` and `eventTime`. All other
+  [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent),
+  [NavigationEvent](#navigationEvent), and [ViewEvent](#viewEvent) properties
+  are considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+
+* Each [Entity](#entity) participating in the [AssessmentEvent](#assessmentEvent),
+  [AssessmentItemEvent](#assessmentItemEvent), [NavigationEvent](#navigationEvent),
+  or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced
+  to a string corresponding to its [IRI](#iriDef).
+
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
-* Parent-child relationships that exist between [AssessmentItem](#assessmentItem) and [Assessment](#assessment) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For a [Completed](#completed) action, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* When navigating to an [Assessment](#assessment) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  For an [AssessmentItemEvent](#assessmentItemEvent) the prior [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
+
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the
+  assigned [Assessment](#assessment) or [AssessmentItem](#assessmentItem).
+  
+* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt)
+  SHOULD be specified. If the [Attempt](#attempt) is included, it  MUST be
+  specified with the `count` value set to 1 for a first attempt and incremented
+  by 1 for each subsequent attempt.
+  
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if
+  the [Attempt](#attempt) is specified, the current `count` value MUST NOT be
+  changed.
+  
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is
+  specified, the `count` value MUST be incremented by 1.
+  
+* Parent-child relationships that exist between [AssessmentItem](#assessmentItem)
+  and [Assessment](#assessment) attempts MAY be represented via the
+  [Attempt](#attempt) `isPartOf` property.
+  
+* For a [Completed](#completed) action, the learner's `generated` [Response](#response)
+  MAY be specified. The [Response](#response) SHOULD reference the associated `attempt`.
+  
+* When navigating to an [Assessment](#assessment), the [DigitalResource](#digitalResource)
+  or [SoftwareApplication](#softwareApplication) that constitutes the referring
+  context MAY be specified as the `referrer`. For an
+  [AssessmentItemEvent](#assessmentItemEvent) the prior
+  [AssessmentItem](#assessmentItem), if known, MAY be specified as the `referrer`.
+  
 
 <a name="assignableProfile" />
 
 ### 2.3.4 Assignable Profile
-<div style="design: block;margin: 0 auto"><img alt="Assignable Profile" src="assets/caliper-profile_assignable.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Assignable Profile"
+src="assets/caliper-profile_assignable.png"></div>
 
-The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
+The Assignable Profile models activities associated with the assignment of
+digital content to a learner for completion according to specific criteria.
+Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource)
+for describing the `object` of these activities as well as a learner's 
+[Attempt](#attempt) for recording a count of the number of times an assigned
+resource has been attempted.
 
 #### Minimum Conformance
-Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
+Create and send an [AssignableEvent](#assignableEvent) to a
+target [Endpoint](#endpoint). The [Started](#started)
+and [Submitted](#submitted) actions are required and MUST be implemented.
+The [Completed](#completed) action SHOULD be implemented. All other supported
+events and actions are considered optional.
 
 #### Supported Events
-[AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+[AssignableEvent](#assignableEvent),
+[NavigationEvent](#navigationEvent),
+[ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). | Optional |
-| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). | Optional |
+| [AssignableEvent](#assignableEvent) | [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v). Inverse of [Deactivated](#deactivated). | Optional |
+| [AssignableEvent](#assignableEvent) | [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v). Inverse of [Activated](#activated). | Optional |
 | [AssignableEvent](#assignableEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). | Required |
 | [AssignableEvent](#assignableEvent) | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). | Recommended |
 | [AssignableEvent](#assignableEvent) | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). | Required |
@@ -486,43 +886,97 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
-* Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent)
+  and [ViewEvent](#viewEvent) properties are required and MUST be
+  specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All other [AssignableEvent](#assignableEvent),
+  [NavigationEvent](#navigationEvent), and [ViewEvent](#viewEvent) properties
+  are considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+  
+* Each [Entity](#entity) participating in
+  the [AssignableEvent](#assignableEvent), [NavigationEvent](#navigationEvent)
+  or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced
+  to a string corresponding to it's [IRI](#iriDef).
+  
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned  [AssignableDigitalResource](#assignableDigitalResource).
-* For a [Started](#started) action, the learner's `generated` [Attempt](#attempt) SHOULD be specified.  If the [Attempt](#attempt) is included, it  MUST be specified with the `count` value set to 1 for a first attempt and incremented by 1 for each subsequent attempt.
-* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if the [Attempt](#attempt) is specified, the current `count` value MUST NOT be changed.
-* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is specified, the `count` value MUST be incremented by 1.
-* Parent-child relationships that exist between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* Parent-child relationships that exist between [DigitalResource](#digitalResource) attempts MAY be represented via the [Attempt](#attempt) `isPartOf` property.
-* For [Completed](#completed) actions, the learner's `generated` [Response](#response) MAY be specified.  The [Response](#response) SHOULD reference the associated `attempt`.
-* When navigating to a [AssignableDigitalResource](#assignableDigitalResource) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* The [Attempt](#attempt) SHOULD reference both the `assignee` and the assigned
+  [AssignableDigitalResource](#assignableDigitalResource).
+  
+* For a [Started](#started) action, the learner's
+  `generated` [Attempt](#attempt) SHOULD be specified. If
+  the [Attempt](#attempt) is included, it  MUST be specified with the `count`
+  value set to 1 for a first attempt and incremented by 1 for each subsequent
+  attempt.
+  
+* For a [Paused](#paused), [Resumed](#resumed) and [Reset](#reset) actions, if
+  the [Attempt](#attempt) is specified, the current `count` value MUST NOT be
+  changed.
+  
+* For a [Restarted](#restarted) action, if the [Attempt](#attempt) is
+  specified, the `count` value MUST be incremented by 1.
+  
+* Parent-child relationships that exist
+  between [AssignableDigitalResource](#assignableDigitalResource) attempts MAY
+  be represented via the [Attempt](#attempt) `isPartOf` property.
+  
+* For [Completed](#completed) actions, the learner's
+  `generated` [Response](#response) MAY be specified. The [Response](#response)
+  SHOULD reference the associated `attempt`.
+  
+* Parent-child relationships that exist
+  between [DigitalResource](#digitalResource) attempts MAY be represented via
+  the [Attempt](#attempt) `isPartOf` property.
+  
+* For [Completed](#completed) actions, the learner's
+  `generated` [Response](#response) MAY be specified. The [Response](#response)
+  SHOULD reference the associated `attempt`.
+  
+* When navigating to a [AssignableDigitalResource](#assignableDigitalResource)
+  the [DigitalResource](#digitalResource)
+  or [SoftwareApplication](#softwareApplication) that constitutes the referring
+  context MAY be specified as the `referrer`.
+  
 
 <a name="forumProfile" />
 
 ### 2.3.5 Forum Profile
-<div style="design: block;margin: 0 auto"><img alt="Forum Profile" src="assets/caliper-profile_forum.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Forum Profile"
+src="assets/caliper-profile_forum.png"></div>
 
-The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
+The Caliper Forum Profile models learners and others participating in online
+forum communities. Forums typically encompass one or more threads or topics to
+which members can subscribe, post messages and reply to other messages if a
+threaded discussion is permitted. Caliper provides [Forum](#forum), 
+[Thread](#thread) and [Message](#message) entities for representing the
+`object` of these activities.
 
 #### Minimum Conformance
-Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
+Create and send a [MessageEvent](#messageEvent) to a target
+[Endpoint](#endpoint). The [Posted](#posted) action is required and MUST
+be implemented. All other supported events and actions are considered optional.
 
 #### Supported Events
-[ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[ForumEvent](#forumEvent),
+[MessageEvent](#messageEvent),
+[NavigationEvent](#navigationEvent),
+[ThreadEvent](#threadEvent),
+[ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). | Optional |
+| [ForumEvent](#forumEvent) | [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v). Inverse of [Unsubscribed](#unsubscribed). | Optional |
 | [ForumEvent](#forumEvent) | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). | Optional |
 | [MessageEvent](#messageEvent) | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). | Required |
-| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  | Optional |
+| [MessageEvent](#messageEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). | Optional |
 | [MessageEvent](#messageEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
-| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  | Optional |
+| [ThreadEvent](#threadEvent) | [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). | Optional |
 | [ThreadEvent](#threadEvent) | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |  Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
 
@@ -540,23 +994,60 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | &nbsp; |
 
 #### Requirements
-* Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [ForumEvent](#forumEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [ForumEvent](#forumEvent), [MessageEvent](#messageEvent),
+  [NavigationEvent](#navigationEvent), [ThreadEvent](#threadEvent)
+  and [ViewEvent](#viewEvent) properties are required and MUST be
+  specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All other [ForumEvent](#forumEvent),
+  [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent),
+  [ThreadEvent](#threadEvent) and [ViewEvent](#viewEvent) properties are
+  considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+  
+* Each [Entity](#entity) participating in the [ForumEvent](#forumEvent),
+  [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent),
+  [ThreadEvent](#threadEvent), or [ViewEvent](#viewEvent) MUST be expressed
+  either as an object or coerced to a string corresponding to
+  it's [IRI](#iriDef).
+  
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* When the [Message](#message) is in the form of a reply, the prior [Message](#message) that prompted the reply SHOULD be referenced via the [Message](#message) `replyTo` property.
-* Parent-child relationships that exist between a [Message](#message), [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the `isPartOf` property.
-* When navigating to a [Forum](#forum), [Thread](#thread) or [Message](#message) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. 
 
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* When the [Message](#message) is in the form of a reply, the prior
+  [Message](#message) that prompted the reply SHOULD be referenced via 
+  the [Message](#message) `replyTo` property.
+  
+* Parent-child relationships that exist between a [Message](#message),
+  [Thread](#thread) and a [Forum](#forum) MAY be represented by use of the
+  `isPartOf` property.
+  
+* When navigating to a [Forum](#forum), [Thread](#thread)
+  or [Message](#message) the [DigitalResource](#digitalResource)
+  or [SoftwareApplication](#softwareApplication) that constitutes the referring
+  context MAY be specified as the `referrer`.
+  
 <a name="gradingProfile" />
 
 ### 2.3.6 Grading Profile
-<div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Grading Profile"
+src="assets/caliper-profile_grading.png"></div>
 
-The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
+
+The Caliper Grading Profile models grading activities performed by
+an [Agent](#agent), typically a [Person](#person) or a
+[SoftwareApplication](#softwareApplication). Grading a learner's
+[Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource)
+and generating a [Result](#result) is modeled.
+
+_Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading
+Profile._
 
 #### Minimum Conformance
-Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
+Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a
+target [Endpoint](#endpoint). The [Graded](#graded) action is required and MUST
+be implemented.
 
 #### Supported Events
 [OutcomeEvent](#outcomeEvent)
@@ -573,47 +1064,74 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 | [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
 
 #### Requirements
-* Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
-* For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be specified.
+* Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties
+  are required and MUST be specified. Required properties include `id`, `type`,
+  `actor`, `action`, `object` and `eventTime`. All
+  other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties
+  are considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+  
+* Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent)
+  or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced
+  to a string corresponding to it's [IRI](#iriDef).
+  
+* For auto-graded scenarios the [SoftwareApplication](#softwareApplication)
+  MUST be specified as the `actor`.
+  
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be
+  specified.
+  
 
 <a name="mediaProfile" />
 
 ### 2.3.7 Media Profile
-<div style="design: block;margin: 0 auto"><img alt="Media Profile" src="assets/caliper-profile_media.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Media Profile"
+src="assets/caliper-profile_media.png"></div>
 
-The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.  Implementors can leverage a number of media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject) and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).  A [MediaLocation](#mediaLocation) entity is also provided in order to represent the current location in an audio or video stream.
+The Caliper Media Profile models interactions between learners and rich content
+such as audio, images and video. Implementors can leverage a number of
+media-related entities including [AudioObject](#audioObject), [ImageObject](#audioObject)
+and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#mediaObject).
+A [MediaLocation](#mediaLocation) entity is also provided in order to represent
+the current location in an audio or video stream.
 
 #### Minimum Conformance
-Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](#started) and [Ended](#ended) actions are required and MUST be implemented.  The [Paused](#paused), [Resumed](#resumed) and [Restarted](#restared) actions SHOULD be implemented.  All other supported events and actions are considered optional.
+Create and send a [MediaEvent](#mediaEvent) to a target
+endpoint. The [Started](#started) and [Ended](#ended) actions are required and
+MUST be implemented. The [Paused](#paused), [Resumed](#resumed)
+and [Restarted](#restared) actions SHOULD be implemented. All other supported
+events and actions are considered optional.
 
 #### Supported Events
-[MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+[MediaEvent](#mediaEvent),
+[NavigationEvent](#navigationEvent),
+[ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). | Required |
-| [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). | Required |
-| [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. | Recommended |
-| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | Recommended |
-| [MediaEvent](#mediaEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
+| [MediaEvent](#mediaEvent) | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). Inverse of [Ended](#ended). | Required |
+| [MediaEvent](#mediaEvent) | [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v). Inverse of [Started](#started). | Required |
+| [MediaEvent](#mediaEvent) | [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v). Inverse of [Resumed](#resumed). The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. | Recommended |
+| [MediaEvent](#mediaEvent) | [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred. Inverse of [Paused](#paused). The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. | Recommended |
+| [MediaEvent](#mediaEvent) | [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. | Recommended |
 | [MediaEvent](#mediaEvent) | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). | Optional |
 | [MediaEvent](#mediaEvent) | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). | Optional |
 | [MediaEvent](#mediaEvent) | [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). | Optional |
-| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). | Optional |
-| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). | Optional |
-| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). | Optional |
-| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). | Optional |
-| [MediaEvent](#mediaEvent) | [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). | Optional |
+| [MediaEvent](#mediaEvent) | [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output. Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). | Optional |
+| [MediaEvent](#mediaEvent) | [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output. Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). | Optional |
+| [MediaEvent](#mediaEvent) | [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen. Inverse of [ExitedFullScreen](#exitedFullScreen). | Optional |
+| [MediaEvent](#mediaEvent) | [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen. Inverse of [EnteredFullScreen](#enteredFullScreen). | Optional |
+| [MediaEvent](#mediaEvent) | [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v). Inverse of [Unmuted](#unmuted). | Optional |
 | [MediaEvent](#mediaEvent) | [Unmuted](#unmuted) | Inverse of [Muted](#muted). | Optional |
-| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). | Optional |
-| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). | Optional |
+| [MediaEvent](#mediaEvent) | [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout. Inverse of [ClosedPopout](#closedPopout). | Optional |
+| [MediaEvent](#mediaEvent) | [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout. Inverse of [OpenedPopout](#openedPopout). | Optional |
 | [NavigationEvent](#navigationEvent) | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). | Optional |
 | [ViewEvent](#viewEvent) | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). | Optional |
  
@@ -643,31 +1161,78 @@ Create and send a [MediaEvent](#mediaEvent) to a target endpoint. The [Started](
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed)  | [DigitalResource](#digitalResource) | &nbsp; | &nbsp; |
 
 #### Requirements
-* Certain [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent)
+  and [ViewEvent](#viewEvent) properties are required and MUST be
+  specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All
+  other [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent)
+  and [ViewEvent](#viewEvent) properties are considered optional and need not
+  be referenced. Adherence to the rules associated with each property
+  referenced is mandatory.
+  
+* Each [Entity](#entity) participating in
+  the [MediaEvent](#mediaEvent), [NavigationEvent](#navigationEvent)
+  or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced
+  to a string corresponding to it's [IRI](#iriDef).
+  
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the `object` of the interaction.
-* A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order to indicate the current location in an audio or video stream.
-* For a [Started](#started) or [Restarted](#restarted) action, the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream.
-* For a [Paused](#paused) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred.
-* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred.
-* For a [Ended](#ended) action the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the ending or closing location in the audio or video stream.
-* For other [MediaEvent](#mediaEvent) supported actions the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the action occurred.
-* When navigating to a [MediaObject](#mediaObject) the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* A [MediaObject](#mediaObject) or one of its subtypes MUST be specified as the
+  `object` of the interaction.
+  
+* A [MediaLocation](#mediaLocation) MAY be specified as the `target` in order
+  to indicate the current location in an audio or video stream.
+  
+* For a [Started](#started) or [Restarted](#restarted) action,
+  the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the
+  beginning or initial starting location in the audio or video stream.
+  
+* For a [Paused](#paused) action the [MediaLocation](#mediaLocation)
+  `currentTime` value MUST be set to the location in the audio or video stream
+  where the pause occurred.
+  
+* For a [Resumed](#resumed) action the [MediaLocation](#mediaLocation)
+  `currentTime` value MUST be set to the location in the audio or video stream
+  where the previous pause occurred.
+  
+* For a [Ended](#ended) action the [MediaLocation](#mediaLocation)
+  `currentTime` value MUST be set to the ending or closing location in the
+  audio or video stream.
+  
+* For other [MediaEvent](#mediaEvent) supported actions
+  the [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the
+  location in the audio or video stream where the action occurred.
+  
+* When navigating to a [MediaObject](#mediaObject)
+  the [DigitalResource](#digitalResource)
+  or [SoftwareApplication](#softwareApplication) that constitutes the referring
+  context MAY be specified as the `referrer`.
+  
 
 <a name="readingProfile" />
 
 ### 2.3.8 Reading Profile
-<div style="design: block;margin: 0 auto"><img alt="Reading Profile" src="assets/caliper-profile_reading.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Reading Profile"
+src="assets/caliper-profile_reading.png"></div>
 
-The Caliper Reading Profile models activities associated with navigating to and viewing textual content. Implementors can leverage a number of entities representing digital content such as [Document](#document), [Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message) and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
+The Caliper Reading Profile models activities associated with navigating to and
+viewing textual content. Implementors can leverage a number of entities
+representing digital content such as [Document](#document),
+[Chapter](#chapter), [Page](#page), [WebPage](#webPage), [Message](#message)
+and [Frame](#frame), each subtyped from [DigitalResource](#digitalResource).
 
 #### Minimum Conformance
-Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).  The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and MUST be implemented.
+Create and send a [NavigationEvent](#navigationEvent) and
+a [ViewEvent](#viewEvent) to a target [Endpoint](#endpoint).
+The [NavigatedTo](#navigatedTo) and [Viewed](#viewed) actions are required and
+MUST be implemented.
 
 #### Supported Events
-[NavigationEvent](#navigationEvent), [ViewEvent](#viewEvent)
+[NavigationEvent](#navigationEvent),
+[ViewEvent](#viewEvent)
 
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
@@ -682,23 +1247,48 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 | [ViewEvent](#viewEvent) | [Person](#person) | [Viewed](#viewed) | [DigitalResource](#digitalResource) | [Frame](#frame) | &nbsp; |
 
 #### Requirements
-* Certain [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent)
+  properties are required and MUST be specified. Required properties include
+  `id`, `type`, `actor`, `action`, `object` and `eventTime`. All
+  other [NavigationEvent](#navigationEvent) and [ViewEvent](#viewEvent)
+  properties are considered optional and need not be referenced. Adherence to
+  the rules associated with each property referenced is mandatory. 
+  
+* Each [Entity](#entity) participating in the
+  [NavigationEvent](#navigationEvent) or [ViewEvent](#viewEvent) MUST be
+  expressed either as an object or coerced to a string corresponding to
+  it's [IRI](#iriDef).
+  
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [DigitalResource](#digitalResource) or one of its subtypes MUST be specified as the `object` of the interaction.
-* A [Frame](#frame) MAY be specified as the `target` in order to indicate an indexed segment or location.
-* When navigating to digital content the [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.
+
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* A [DigitalResource](#digitalResource) or one of its subtypes MUST be
+  specified as the `object` of the interaction.
+  
+* A [Frame](#frame) MAY be specified as the `target` in order to indicate an
+  indexed segment or location.
+  
+* When navigating to digital content the [DigitalResource](#digitalResource)
+  or [SoftwareApplication](#softwareApplication) that constitutes the referring
+  context MAY be specified as the `referrer`.
 
 <a name="sessionProfile" />
 
 ### 2.3.9 Session Profile
-<div style="design: block;margin: 0 auto"><img alt="Session Profile" src="assets/caliper-profile_session.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Session Profile"
+src="assets/caliper-profile_session.png"></div>
 
-The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
+The Caliper Session Profile models the creation and subsequent termination of a
+user session established by a [Person](#person) interacting with
+a [SoftwareApplication](#softwareApplication). A [Session](#session) entity is
+described for representing the user session.
 
 #### Minimum Conformance
-Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
+Create and send a [SessionEvent](#sessionEvent) to a
+target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and
+MUST be implemented.
 
 #### Supported Events
 [SessionEvent](#sessionEvent)
@@ -706,8 +1296,8 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 #### Supported Actions
 | Event | Action | WordNet® Gloss | Conformance |
 | :---- | :----- | :------------- | :---------- |
-| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). | Required |
-| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). | Optional |
+| [SessionEvent](#sessionEvent) | [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v). Inverse of [LoggedOut](#loggedOut). | Required |
+| [SessionEvent](#sessionEvent) | [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v). Inverse of [LoggedIn](#loggedIn). | Optional |
 | [SessionEvent](#sessionEvent) | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. | Optional |
 
 #### Supported Entities
@@ -718,21 +1308,43 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 | [SessionEvent](#sessionEvent) | [SoftwareApplication](#softwareApplication) | [TimedOut](#timedOut) | [Session](#session) | &nbsp; |
 
 #### Requirements
-* Certain [SessionEvent](#sessionEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [SessionEvent](#sessionEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
-* Each [Entity](#entity) participating in the [SessionEvent](#sessionEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
-* The `action` vocabulary is limited to the supported actions described in the profile.
+* Certain [SessionEvent](#sessionEvent) properties are required and MUST be
+  specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All other [SessionEvent](#sessionEvent) properties
+  are considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+  
+* Each [Entity](#entity) participating in the [SessionEvent](#sessionEvent)
+  MUST be expressed either as an object or coerced to a string corresponding to
+  it's [IRI](#iriDef).
+  
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
 * Although optional, the relevant user `session` SHOULD be specified.
-* For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a particular [DigitalResource](#digitalResource) the resource MAY be designated as the `target` of the interaction.
+
+* For a [LoggedIn](#loggedIn) action, if the `actor` is attempting to access a
+  particular [DigitalResource](#digitalResource) the resource MAY be designated
+  as the `target` of the interaction.
+  
 
 <a name="toolUseProfile" />
 
 ### 2.3.10 Tool Use Profile
-<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Tool Use Profile"
+src="assets/caliper-profile_tool_use.png"></div>
 
-The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
+The Caliper Tool Use Profile models an intended interaction between a user and
+a tool. In other words, when a [Person](#person) utilizes
+a [SoftwareApplication](#softwareApplication) in a manner that the application
+determines to be its "intended use for learning", an application that
+implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent)
+indicating such usage.
 
 #### Minimum Conformance
-Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
+Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a
+target [Endpoint](#endpoint). The [Used](#used) action is required and MUST be
+implemented.
 
 #### Supported Events
 [ToolUseEvent](#toolUseEvent)
@@ -748,27 +1360,74 @@ Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#
 | ToolUseEvent | [Person](#person) | [Used](#used) | [SoftwareApplication](#softwareApplication) |
 
 #### Requirements
-* Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [ToolUseEvent](#toolUseEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.
-* Each [Entity](#entity) participating in the [ToolUseEvent](#toolUseEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
+* Certain [ToolUseEvent](#toolUseEvent) properties are required and MUST be
+  specified. Required properties include `id`, `type`, `actor`, `action`,
+  `object` and `eventTime`. All other [ToolUseEvent](#toolUseEvent) properties
+  are considered optional and need not be referenced. Adherence to the rules
+  associated with each property referenced is mandatory.
+  
+* Each [Entity](#entity) participating in the [ToolUseEvent](#toolUseEvent)
+  MUST be expressed either as an object or coerced to a string corresponding to
+  it's [IRI](#iriDef).
+  
 * A [Person](#person) MUST be specified as the `actor` of the interaction.
-* The `action` vocabulary is limited to the supported actions described in the profile.
-* A [SoftwareApplication](#softwareApplication) MUST be specified as the `object` of the interaction.
+
+* The `action` vocabulary is limited to the supported actions described in the
+  profile.
+  
+* A [SoftwareApplication](#softwareApplication) MUST be specified as the
+  `object` of the interaction.
+  
 
 <a name="dataSerialization" />
 
 ## 3.0 Serialization of the Model
-Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data, and so on, the sources of which are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
+Over the last decade the advent of cloud-based, networked applications have led
+to changes in the way data is structured and represented. Data once considered
+strictly hierarchical, like a curriculum, a course roster, or a transcript now
+frequently link out to other kinds of data. Modeling bundles of data pointing
+to other bundles of data now requires thinking in terms of graphs
+and [Linked Data](#linkedData). Caliper [Event](#event) data presents us with
+similar structures. A Caliper [Event](#event) can link to user data, digital
+content, courses and rosters, grades and credentials, institutional and
+organizational data, application and session data, and so on, the sources of
+which are likely diverse and the opportunities for discovering new
+relationships between the entities represented therein both numerous as well as
+enlightening.
 
-Exchanging data linked to other data distributed across a wide network requires both a simple, well-understood data-interchange format as well as means of defining unambiguously the underlying semantics or meaning intended for the data structures transmitted from one machine to another.  For Caliper, [JSON-LD](#jsonldDef) provides the necessary representational horsepower to both describe these kinds of data linkages and specify how data is to be understood when published and shared across a network.
+Exchanging data linked to other data distributed across a wide network requires
+both a simple, well-understood data-interchange format as well as means of
+defining unambiguously the underlying semantics or meaning intended for the
+data structures transmitted from one machine to another. For
+Caliper, [JSON-LD](#jsonldDef) provides the necessary representational
+horsepower to both describe these kinds of data linkages and specify how data
+is to be understood when published and shared across a network.
   
-[JSON-LD](#jsonldDef) defines an economical syntax for representing learning activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the underlying data-interchange format.  [JSON-LD](#jsonldDef) also provides an API and set of processing algorithms for working with [JSON-LD](#jsonldDef) documents that are based on different contexts.  Algorithms have also been developed to serialize [RDF](#rdf) as [JSON-LD](#jsonldDef) and deserialize a [JSON-LD](#jsonldDef) document to an [RDF](#rdf) data set.
+[JSON-LD](#jsonldDef) defines an economical syntax for representing learning
+activity data as [Linked Data](#linkedData) using [JSON](#jsonDef) as the
+underlying data-interchange format. [JSON-LD](#jsonldDef) also provides an API
+and set of processing algorithms for working with [JSON-LD](#jsonldDef)
+documents that are based on different contexts. Algorithms have also been
+developed to serialize [RDF](#rdf) as [JSON-LD](#jsonldDef) and deserialize
+a [JSON-LD](#jsonldDef) document to an [RDF](#rdf) data set.
 
 <a name="jsonldContext" />
 
 ### 3.1 Context
-Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@context` keyword, a property employed to map document [Terms](#termDef) to [IRIs](#iriDef) to one or more published vocabularies.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
+Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the
+`@context` keyword, a property employed to map document [Terms](#termDef)
+to [IRIs](#iriDef) to one or more published vocabularies. Inclusion of
+a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to
+communicate document semantics to services interested in consuming Caliper
+event data.
 
-[JSON-LD](#jsonldDef) contexts can be inserted in-line or located in a file external to the document and referenced.  In the case of Caliper an external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) is available and MUST be referenced in Caliper [JSON-LD](#jsonldDef) documents.  Each Caliper [Event](#event) and [Entity](#entity) *describe* emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that provides a context definition.
+[JSON-LD](#jsonldDef) contexts can be inserted in-line or located in a file
+external to the document and referenced. In the case of Caliper an external IMS
+Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) is
+available and MUST be referenced in Caliper [JSON-LD](#jsonldDef)
+documents. Each Caliper [Event](#event) and [Entity](#entity) *describe*
+emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that
+provides a context definition.
 
 #### Example: referencing an external JSON-LD context
 ```
@@ -789,7 +1448,16 @@ Caliper [JSON-LD](#jsonldDef) documents define a *context*, denoted by the `@con
 }
 ```
 
-A [JSON-LD](#jsonldDef) document can reference more than one context.  Additional contexts MAY be defined for a Caliper [Event](#event) or [Entity](#entity) *describe* in order to ascribe meaning to terms not defined by the model.  However, Caliper-defined terms MUST NOT be overridden by additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a "most-recently-defined-wins" approach when parsing duplicate terms).  Defining a context for an [Entity](#entity) that duplicates a local [Event](#event) context SHOULD be avoided.  In cases where a duplicate context exists in a Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing the object.  
+A [JSON-LD](#jsonldDef) document can reference more than one
+context. Additional contexts MAY be defined for a Caliper [Event](#event)
+or [Entity](#entity) *describe* in order to ascribe meaning to terms not
+defined by the model. However, Caliper-defined terms MUST NOT be overridden by
+additional contexts added to the document ([JSON-LD](#jsonldDef) relies on a
+"most-recently-defined-wins" approach when parsing duplicate terms). Defining a
+context for an [Entity](#entity) that duplicates a local [Event](#event)
+context SHOULD be avoided. In cases where a duplicate context exists in a
+Caliper [JSON-LD](#jsonldDef) document it SHOULD be omitted when serializing
+the object.
 
 #### Example: using multiple contexts in an Entity describe (external and in-line)
 ```
@@ -829,14 +1497,40 @@ A [JSON-LD](#jsonldDef) document can reference more than one context.  Additiona
 <a name="jsonldIdentifiers" />
 
 ### 3.2 Identifiers
-[Linked Data](#linkedData) relies on [IRIs](#iriDef)/[URIs](#uriDefs) for the identification and retrieval of resources.  Likewise, [JSON-LD](#jsonldDef) specifies the use of [IRIs](#iriDef)/[URIs](#uriDefs) for identifying most nodes (i.e., JSON objects) and their attributes.  In [JSON-LD](#jsonldDef), [IRIs](#iriDef) may be represented either as an absolute IRI containing a scheme, path and optional query and fragment segments or as a relative IRI minus the scheme and/or domain that is resolved relative to a base IRI.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.  [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning identifiers to nodes.
+[Linked Data](#linkedData) relies on [IRIs](#iriDef)/[URIs](#uriDefs) for the
+identification and retrieval of resources. Likewise, [JSON-LD](#jsonldDef)
+specifies the use of [IRIs](#iriDef)/[URIs](#uriDefs) for identifying most
+nodes (i.e., JSON objects) and their
+attributes. In [JSON-LD](#jsonldDef), [IRIs](#iriDef) may be represented either
+as an absolute IRI containing a scheme, path and optional query and fragment
+segments or as a relative IRI minus the scheme and/or domain that is resolved
+relative to a base IRI. If an [IRI](#iriDef) is deemed inappropriate for the
+resource a [blank node](#blankNodeDef) identifier may be
+assigned. [JSON-LD](#jsonldDef) provides a special `@id` keyword for assigning
+identifiers to nodes.
     
-In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  This is done in order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as JSON object property names and is aligned with [JSON-LD](#jsonldDef) community practice.  Thus, each Caliper [Entity](#entity) described by the information model is provisioned with an `id` rather than `@id` property for identifying the resource.
+In Caliper, the [JSON-LD](#jsonldDef) `@id` keyword is aliased as `id` in the
+external IMS Caliper
+JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). This is done in
+order to avoid the temptation of employing [JSON-LD](#jsonldDef) keywords as
+JSON object property names and is aligned with [JSON-LD](#jsonldDef) community
+practice. Thus, each Caliper [Entity](#entity) described by the information
+model is provisioned with an `id` rather than `@id` property for identifying
+the resource.
 
-Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes a [URN](#urnDef) namespace for [UUIDs](#uuidDef).  Every [Entity](#entity) represented in the [Event](#event) MUST be assigned an `id` in the form of a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](#entity).  A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided although care should be taken when employing a location-independent identifier since it precludes the possibility of utilizing it to retrieve machine-readable data.
+Each [Event](#event) MUST be assigned an identifier in the form of
+a [UUID](#uuidDef) as a [URN](#urnDef) per [RFC 4122](#rfc4122) which describes
+a [URN](#urnDef) namespace for [UUIDs](#uuidDef). Every [Entity](#entity)
+represented in the [Event](#event) MUST be assigned an `id` in the form of a
+valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be
+unique and persistent. The [IRI](#iriDef) SHOULD be dereferenceable; i.e.,
+capable of returning a representation of
+the [Entity](#entity). A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY
+be provided although care should be taken when employing a location-independent
+identifier since it precludes the possibility of utilizing it to retrieve
+machine-readable data.
 
 #### Example: Event and Entity identifiers
-
 ```
 {
   . . .
@@ -859,14 +1553,34 @@ Each [Event](#event) MUST be assigned an identifier in the form of a [UUID](#uui
 <a name="jsonldTypes" />
 
 ### 3.3 Types and Type Coercion
-[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways.  Individual *nodes* (i.e., the thing being described) can be assigned a type.  Values can also be associated with or *coerced* to a particular type.  As with the aliasing of the `@id` keyword as `id`, `@type` is aliased as `type` in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in keeping with [JSON-LD](#jsonldDef) community practice.
+[JSON-LD](#jsonldDef) employs the `@type` keyword in two ways. Individual
+*nodes* (i.e., the thing being described) can be assigned a type. Values can
+also be associated with or *coerced* to a particular type. As with the aliasing
+of the `@id` keyword as `id`, `@type` is aliased as `type` in the external IMS
+Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in
+keeping with [JSON-LD](#jsonldDef) community practice.
   
-The following [MessageEvent](#messageEvent) example utilizes an in-line context to illustrate how [JSON-LD](#jsonldDef) types can be specified.  The [MessageEvent](#messageEvent), [Person](#person) and [Message](#message) terms are all considered node types.  Other terms illustrate the *coercion* of values to specified data types.  In the example below, the values of the `actor`, `object` and `edApp` terms are *coerced* to the `@id` keyword.  This signals to a [JSON-LD](#jsonldDef) parser that if the value is set to a string (as is the case with `edApp`) it is to be interpreted as an [IRI](#iriDef).  In a like manner, the `action` value is *coerced* to the `@vocab` keyword indicating that the value is to be interpreted as a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in this case *Posted*.  Terms such as `name`, `description`, `dateCreated`, `dateModified` and `duration` are *coerced* to a particular value type such as a string, integer, boolean or date.
+The following [MessageEvent](#messageEvent) example utilizes an in-line context
+to illustrate how [JSON-LD](#jsonldDef) types can be
+specified. The [MessageEvent](#messageEvent), [Person](#person)
+and [Message](#message) terms are all considered node types. Other terms
+illustrate the *coercion* of values to specified data types. In the example
+below, the values of the `actor`, `object` and `edApp` terms are *coerced* to
+the `@id` keyword. This signals to a [JSON-LD](#jsonldDef) parser that if the
+value is set to a string (as is the case with `edApp`) it is to be interpreted
+as an [IRI](#iriDef). In a like manner, the `action` value is *coerced* to the
+`@vocab` keyword indicating that the value is to be interpreted as
+a [Term](#termDef) defined in the active context or as an [IRI](#iriDef); in
+this case *Posted*. Terms such as `name`, `description`, `dateCreated`,
+`dateModified` and `duration` are *coerced* to a particular value type such as
+a string, integer, boolean or date.
 
-Both node types and typed values are specified in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Implementors are encouraged to familiarize themselves with the term definitions described therein.
+Both node types and typed values are specified in the external IMS Caliper
+JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). Implementors are
+encouraged to familiarize themselves with the term definitions described
+therein.
  
 #### Example: node and value types
-
 ```
 {
   "@context": {
@@ -905,7 +1619,19 @@ Both node types and typed values are specified in the external IMS Caliper JSON-
 }
 ```
 
-As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to the `@id` keyword, which signals that string values are to be interpreted as [IRIs](#iriDef).  In other words, certain [Event](#event) and [Entity](#entity) attributes MAY be expressed either as a JSON object or as a string that corresponds to its identifier.  Type coercion of this sort provides an element of representational flexibility that implementors are encouraged to leverage.  As the abbreviated [ForumEvent](#forumEvent) example below demonstrates, in cases where an [Event](#event) references the same [Entity](#entity) more than once (e.g., `actor`, `member`, `user`; `group`, `organization`), or a property is associated with a specific type (e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is dereferenceable, consider expressing the value as a string corresponding to the [Entity's](#entity) identifier.
+As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to
+the `@id` keyword, which signals that string values are to be interpreted
+as [IRIs](#iriDef). In other words, certain [Event](#event)
+and [Entity](#entity) attributes MAY be expressed either as a JSON object or as
+a string that corresponds to its identifier. Type coercion of this sort
+provides an element of representational flexibility that implementors are
+encouraged to leverage. As the abbreviated [ForumEvent](#forumEvent) example
+below demonstrates, in cases where an [Event](#event) references the
+same [Entity](#entity) more than once (e.g., `actor`, `member`, `user`;
+`group`, `organization`), or a property is associated with a specific type
+(e.g., `edApp`) or an [Entity](#entity) possesses an [IRI](#iriDef) that is
+dereferenceable, consider expressing the value as a string corresponding to
+the [Entity's](#entity) identifier.
 
 #### Example: `membership` and `session` references to `actor` and `group` expressed as IRIs
 ```
@@ -951,9 +1677,12 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
-````
+```
 
-Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
+Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if
+each referenced [Entity](#entity) is provisioned with a
+dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust
+representation of the object if required.
 
 #### Example: Thinned ForumEvent comprised of (dereferenceable) IRI values
 ```
@@ -972,40 +1701,70 @@ Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if 
 }
 ```
 
-Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions to be capable of interpreting coerced values.  For Caliper defined [Terms](#terms) implementors need only reference the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef) documents in order to link to the associated term definitions.  A Caliper [Event](#event) or [Entity](#entity) containing coerced values that do not map to an explicit context declaration will be considered nonconformant.
+Analytical consumers require accurate [JSON-LD](#jsonldDef) context definitions
+to be capable of interpreting coerced values. For Caliper
+defined [Terms](#terms) implementors need only reference the external IMS
+Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) in
+their [Event](#event) or [Entity](#entity) *describe* [JSON-LD](#jsonldDef)
+documents in order to link to the associated term definitions. A
+Caliper [Event](#event) or [Entity](#entity) containing coerced values that do
+not map to an explicit context declaration will be considered nonconformant.
 
 <a name="sensor" />
 
 ## 4.0 The Sensor API™
-Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data to a target endpoints.  Adopting one or more [metric profiles](#metricProfiles) ensures adherence to the information model; implementing the [Sensor](#sensor) provides instrumented platforms, applications and services with a transport interface for communicating with data consumers.
+Caliper defines an application programming interface (the Sensor API™) for
+marshalling and transmitting data to a target endpoints. Adopting one or
+more [metric profiles](#metricProfiles) ensures adherence to the information
+model; implementing the [Sensor](#sensor) provides instrumented platforms,
+applications and services with a transport interface for communicating with
+data consumers.
 
-<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor" src="assets/caliper-sensor-v2.png"></div>
+<div style="design: block;margin: 0 auto"><img alt="Caliper Sensor"
+src="assets/caliper-sensor-v2.png"></div>
 
 <a name="sensorBehavior" />
 
 ### 4.1 Behavior
-A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a Caliper [Envelope](#envelope) containing the following payloads to one or more target [Endpoints](#endpoint).
+A Caliper [Sensor](#sensor) MUST be capable of serializing and sending a
+Caliper [Envelope](#envelope) containing the following payloads to one or more
+target [Endpoints](#endpoint).
 
-* A JSON array consisting of one or more Caliper [Event](#event) documents, each expressed as JSON-LD.
-* A JSON array consisting of one or more Caliper [Entity](#entity) "describe" documents, each expressed as JSON-LD.
-* A JSON array consisting of a mix of one or more Caliper [Event](#event) and [Entity](#entity) describe documents, each expressed as JSON-LD.
+* A JSON array consisting of one or more Caliper [Event](#event) documents,
+  each expressed as JSON-LD.
+  
+* A JSON array consisting of one or more Caliper [Entity](#entity) "describe"
+  documents, each expressed as JSON-LD.
+  
+* A JSON array consisting of a mix of one or more Caliper [Event](#event)
+  and [Entity](#entity) describe documents, each expressed as JSON-LD.
 
-A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and validating Caliper entities and events but such capabilities need not be exposed to external data consumers.  
+A [Sensor](#sensor) MAY be assigned other responsibilities such as creating and
+validating Caliper entities and events but such capabilities need not be
+exposed to external data consumers.
 
 <a name="sensorEnvelope" />
 
-### 4.2 Envelope
-Caliper [Event](#event) and [Entity](#entity) data are transmitted inside an [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.  Each [Event](#event) and [Entity](#entity) "describe" included in an envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document. 
+### 4.2 Envelop
+Caliper [Event](#event) and [Entity](#entity) data are transmitted inside
+an [Envelope](#envelope), a purpose-built JSON data structure that includes
+metadata about the emitting [Sensor](#sensor) and the data
+payload. Each [Event](#event) and [Entity](#entity) "describe" included in an
+envelope's `data` array MUST be expressed as a [JSON-LD](#jsonld) document.
+
 
 #### Properties
-Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendTime`, `dataVersion` and `data` properties are required.  Each property MUST be referenced only once.  No custom properties are permitted.
+Caliper [Envelope](#envelope) properties are listed below. The `sensor`,
+`sendTime`, `dataVersion` and `data` properties are required. Each property
+MUST be referenced only once. No custom properties are permitted.
+
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified.  The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
-| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| sensor | string | A unique identifier assigned either to the [Sensor](#sensor) or to the instrumented platform, application or service utilizing the [Sensor](#sensor) MUST be specified. The identifier SHOULD be in the form of an [IRI](#iriDef). | Required |
+| sendTime | DateTime | A date and time string value expressed with millisecond precision that indicates the time at which the [Sensor](#sensor) issued the message MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
 | dataVersion | string | A string value indicating which version of the IMS Caliper Analytics® specification governs the form of the Caliper entities and events contained in the `data` payload MUST be specified. The value MUST be set to the IMS Caliper [Context](http://purl.imsglobal.org/ctx/caliper/v1p1) [IRI](#iriDef) used to resolve the meanings of the `data` payload's terms and values. | Required |
-| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types.  The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
+| data | Array | An ordered collection of one or more Caliper [Entity](#entity) describes and/or [Event](#event) types. The Sensor MAY mix describes and events in the same [Envelope](#envelope). | Required |
 
 #### Example: Mixed payload
 ```
@@ -1184,37 +1943,80 @@ Caliper [Envelope](#envelope) properties are listed below.  The `sensor`, `sendT
 <a name="sensorTransport" />
 
 ### 4.3 Transport
+Business requirements informed by industry best practices will determine the
+choice of transport protocol for Caliper [Sensor](#sensor)
+and [Endpoint](#endpoint) implementors. _Note that the IMS Caliper
+certification suite currently requires implementors seeking certification to
+send data to the certification test [Endpoint](#endpoint) using HTTPS with a
+bearer token credential consistent with [RFC 6750](#rfc6750)._  Where an
+alternate transport protocol is preferred for performance or other
+considerations, it is recommended to add that support in addition to HTTP
+transport for maximum interoperability.
 
-Business requirements informed by industry best practices will determine the choice of transport protocol for Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementors.  _Note that the IMS Caliper certification suite currently requires implementors seeking certification to send data to the certification test [Endpoint](#endpoint) using HTTPS with a bearer token credential consistent with [RFC 6750](#rfc6750)._  Where an alternate transport protocol is preferred for performance or other considerations, it is recommended to add that support in addition to HTTP transport for maximum interoperability.
-
-Irrespective of the chosen transport protocol, each message sent by a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single JSON representation of a Caliper [Envelope](#envelope). 
+Irrespective of the chosen transport protocol, each message sent by
+a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single
+JSON representation of a Caliper [Envelope](#envelope).
 
 #### 4.3.1 HTTP Transport Requirements
- 
-* A [Sensor](#sensor) SHOULD be capable of communicating with a Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS or SSL.
+* A [Sensor](#sensor) SHOULD be capable of communicating with a
+  Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS
+  or SSL.
+  
 * Messages MUST be sent using the POST request method.
-* The following standard HTTP request headers MUST be set for use by the [Endpoint](#endpoint):
-  * `Accept`
-  * `Content-Type`
-  * `Host`
-* The `Content-Type` value MUST be set to the IANA media type "application/json".
-* The following standard HTTP request headers SHOULD be set for use by the [Endpoint](#endpoint):
-  * `Authorization`
-  * `Content-Length`
-* A [Sensor](#sensor) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).  The `b64token` authorization credential sent by a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate although the credential MAY be opaque to the emitting [Sensor](#sensor) itself. 
-* The `Content-Length` of the request body MUST be measured in octets (8-bit bytes).
 
+* The following standard HTTP request headers MUST be set for use by
+  the [Endpoint](#endpoint):
+  
+  - `Accept`
+  
+  - `Content-Type`
+  
+  - `Host`
+  
+* The `Content-Type` value MUST be set to the IANA media type
+  "application/json".
+  
+* The following standard HTTP request headers SHOULD be set for use by
+  the [Endpoint](#endpoint):
+  
+  - `Authorization`
+  - `Content-Length`
+
+* A [Sensor](#sensor) SHOULD support message authentication using the
+  `Authorization` request header as described in [RFC 6750](#rfc6750),
+  [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2). The `b64token`
+  authorization credential sent by a [Sensor](#sensor) MUST be one
+  the [Endpoint](#endpoint) can validate although the credential MAY be opaque
+  to the emitting [Sensor](#sensor) itself.
+  
+* The `Content-Length` of the request body MUST be measured in octets (8-bit
+  bytes).
 
 <a name="endpoint" />
 
 ## 5.0 Endpoint
-
-A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with a [Sensor](#sensor) via the conventional HTTP protocol using standard POST request method.  Caliper [Endpoints](#endpoint) MAY use other transport protocols to receive data from sensors.  See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for recommendations.
+A Caliper [Endpoint](#endpoint) SHOULD be capable of communicating with
+a [Sensor](#sensor) via the conventional HTTP protocol using standard POST
+request method. Caliper [Endpoints](#endpoint) MAY use other transport
+protocols to receive data from
+sensors. See [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint) for
+recommendations.
 
 <a name="endpointStringLengths" />
 
 ### 5.1 Minimum Supported String Lengths
-Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementors will choose to store each incoming [Event](#event) and [Entity](#entity) *describe* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, the following *minimum* character lengths SHOULD be adopted for the Caliper string properties listed below.  
+Certain Caliper data properties are expressed as strings of variable
+length. [JSON-LD](#jsonldDef) also defines a set of processing algorithms for
+transforming [JSON-LD](#jsonldDef) documents in ways that can change the length
+of keys and values that are expressed as [IRIs](#iridDef),
+compact [IRIs](#iridDef) or [Terms](#termDef). Many implementors will choose to
+store each incoming [Event](#event) and [Entity](#entity) *describe* received
+as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of
+nodes, edges and properties. Others may opt to normalize or "flatten" some or
+all of the nested JSON objects that comprise a Caliper [Event](#event)
+or [Entity](#entity). If the chosen persistence strategy involves normalizing
+Caliper semi-structured data, the following *minimum* character lengths SHOULD
+be adopted for the Caliper string properties listed below.
 
 | Domain | Property | Description | Minimum Length |
 | :------| :------- | :---------- | ---------: |
@@ -1234,10 +2036,10 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [AssignableDigitalResource](#assignableDigitalResource) | dateToSubmit | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Attempt](#attempt) | staredAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Attempt](#attempt) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Attempt](#attempt) | duration | A time interval that represents the time taken to complete the [Attempt](#attempt). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [AudioObject](#audioObject) | volumeLevel | The current volume level. | 32 |
 | [AudioObject](#audioObject) | volumeMax | The maximum volume level permitted. | 32 |
-| [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted.  | 32 |
+| [AudioObject](#audioObject) | volumeMin | The minimum volume level permitted. | 32 |
 | [BookmarkAnnotation](#bookmarkAnnotation) | BookmarkNotes | A plain text rendering of the note that accompanies the bookmark. | 1024 |
 | [CourseOffering](#courseOffering) | academicSession | A human-readable identifier of the designated period in which the course occurs. | 256 |
 | [CourseOffering](#courseOffering) | courseNumber | A human-readable identifier assigned to the course. | 128 |
@@ -1247,8 +2049,8 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [DigitalResource](#digitalResource) | version | Designates the current form or version of the resource. | 64 |
 | [FillinBlankResponse](#fillinBlankResponse) | values\<value\> | Minimum supported length applies to each plain text response included in the `values` array. | 256 |
 | [HighlightAnnotation](#highlightAnnotation) | selectionText | A plain text rendering of the highlighted segment of the annotated resource. | 2048 |
-| [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
-| [MediaObject](#mediaObject) | duration | A time interval that represents the time taken to complete the [MediaObject](#mediaObject).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [MediaLocation](#mediaLocation) | currentTime | A time interval or duration that represents the current playback position measured from the beginning of a [MediaObject](#mediaObject). The value MUST conform to the ISO-8601 duration format. | 64 |
+| [MediaObject](#mediaObject) | duration | A time interval that represents the time taken to complete the [MediaObject](#mediaObject). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [Membership](#membership) | roles\<role\> | Minimum supported length applies to each Caliper designated role [Term](#termDef) included in the `roles` array. | 256 |
 | [Membership](#membership) | status | The Caliper [Term](termDef) designated for the selected status. | 256 | 
 | [Message](#message) | body | A plain-text rendering of the body content of the [Message](#message). | 4096 | 
@@ -1256,51 +2058,105 @@ Certain Caliper data properties are expressed as strings of variable length.  [J
 | [MultipleResponseResponse](#multipleResponseResponse) | values\<value\> | Minimum supported length applies to each selected option included in the `values` array. | 256 |
 | [Response](#response) | staredAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Response](#response) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Response](#response) | duration | A time interval that represents the time taken to complete the [Response](#response).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Response](#response) | duration | A time interval that represents the time taken to complete the [Response](#response). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [Result](#result) | comment | Plain text feedback provided by the scorer. | 1024 |
 | [SelectTextResponse](#selectTextResponse) | values\<value\> | Minimum supported length applies to each selected response included in the `values` array. | 256 |
 | [SoftwareApplication](#softwareApplication) | version | Designates the current form or version of the [SoftwareApplication](#softwareApplication). | 64 |
 | [Session](#session) | staredAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
-| [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session).  The value MUST conform to the ISO-8601 duration format. | 64 |
+| [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
 ### 5.2 Endpoint Requirements
-
 <a name="httpEndpoint" />
 
 #### 5.2.1 HTTP Endpoint Requirements
-* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL Certificate MUST be provided.
-* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP request headers.
-* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the `Authorization` request header as described in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+* An [Endpoint](#httpEndpoint) SHOULD use HTTPS to secure the connection
+  between the [Sensor](#sensor) and itself; if implemented a valid TLS/SSL
+  Certificate MUST be provided.
+  
+* An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP
+  request headers.
+  
+* An [Endpoint](#httpEndpoint) SHOULD support message authentication using the
+  `Authorization` request header as described in [RFC 6750](#rfc6750),
+  [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+  
 
-When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the following response behaviour:
+When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the
+following response behaviour:
 
-* To signal to a [Sensor](#sensor) that it has successfully received an emitted [Envelope](#envelope) an [Endpoint](#httpEndpoint) MUST reply with a `2xx` class status code. The [Endpoint](#httpEndpoint) SHOULD use the `200 OK` response but MAY instead choose to send a `201 Created` response (to indicate successful receipt of the message and creation of a new resource) or a `202 Accepted` response (to indicate successful acceptance of the message and queueing for further processing). The body of a successful response SHOULD be empty.
-* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad Request` response.  Note that the [Endpoint](#httpEndpoint) SHOULD NOT send a `400 Bad Request` response if the [Envelope](#envelope) contains a `dataVersion` value that the [Endpoint](#httpEndpoint) cannot support; in this case, the [Endpoint](#httpEndpoint) SHOULD send a `422 Unprocessable Entity` response instead.
-* If the [Sensor](#sensor) sends a message with a `Content-Type` other than "application/json", the [Endpoint](#httpEndpoint) SHOULD reply with a `415 Unsupported Media Type` response.
-* If the [Sensor](#sensor) sends a message without an `Authorization` request header of the RECOMMENDED form or sends a token credential that the [Endpoint](#httpEndpoint) is unable to either validate or determine has sufficient privileges to submit Caliper data, the [Endpoint](#httpEndpoint) SHOULD reply with a `401 Unauthorized` response.
-* The [Endpoint](#httpEndpoint) MAY respond to [Sensor](#sensor) messages with other standard HTTP status codes to indicate result dispositions of varying kinds.  The [Endpoint](#httpEndpoint) MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
+* To signal to a [Sensor](#sensor) that it has successfully received an
+  emitted [Envelope](#envelope) an [Endpoint](#httpEndpoint) MUST reply with a
+  `2xx` class status code. The [Endpoint](#httpEndpoint) SHOULD use the `200
+  OK` response but MAY instead choose to send a `201 Created` response (to
+  indicate successful receipt of the message and creation of a new resource) or
+  a `202 Accepted` response (to indicate successful acceptance of the message
+  and queueing for further processing). The body of a successful response
+  SHOULD be empty.
+  
+* If the [Sensor](#sensor) sends a malformed Caliper [Envelope](#envelope) (it
+  does not contain `sensor`, `sendTime`, `dataVersion` and `data` properties of
+  the required form), the [Endpoint](#endpoint) SHOULD reply with a `400 Bad
+  Request` response. Note that the [Endpoint](#httpEndpoint) SHOULD NOT send a
+  `400 Bad Request` response if the [Envelope](#envelope) contains a
+  `dataVersion` value that the [Endpoint](#httpEndpoint) cannot support; in
+  this case, the [Endpoint](#httpEndpoint) SHOULD send a `422 Unprocessable
+  Entity` response instead.
+  
+* If the [Sensor](#sensor) sends a message with a `Content-Type` other than
+  "application/json", the [Endpoint](#httpEndpoint) SHOULD reply with a `415
+  Unsupported Media Type` response.
+  
+* If the [Sensor](#sensor) sends a message without an `Authorization` request
+  header of the RECOMMENDED form or sends a token credential that
+  the [Endpoint](#httpEndpoint) is unable to either validate or determine has
+  sufficient privileges to submit Caliper data, the [Endpoint](#httpEndpoint)
+  SHOULD reply with a `401 Unauthorized` response.
+  
+* The [Endpoint](#httpEndpoint) MAY respond to [Sensor](#sensor) messages with
+  other standard HTTP status codes to indicate result dispositions of varying
+  kinds. The [Endpoint](#httpEndpoint) MAY also communicate more detailed
+  information about problem states, using the standard method for reporting
+  problem details described in [RFC 7807](#rfc7807).
 
-Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some Caliper [Sensor](#sensor) implementations may lack sophisticated error handling.
+Caliper [Endpoint](#httpEndpoint) implementers should bear in mind that some
+Caliper [Sensor](#sensor) implementations may lack sophisticated error
+handling.
 
 <a name="nonHttpEndpoint" />
 
 #### 5.2.2 Endpoints supporting non-HTTP protocols
-Support for non-HTTP transport protocols involves a negotiation between the Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum interoperability.
+Support for non-HTTP transport protocols involves a negotiation between the
+Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is
+RECOMMENDED that a Caliper [Endpoint](#endpoint) include support for
+communicating with Caliper [Sensors](#sensor) over HTTP to ensure maximum
+interoperability.
 
 <a name="actions"/>
    
 ## Appendix A. Actions
-Caliper includes a vocabulary of actions for describing learning interactions. Each action [Term](#termdef) is based on the past-tense form of an English (en-US) verb.  An action [Term](#termdef) can also indicate a change in a particular characteristic of the `object` (e.g., resolution, size, speed, volume).  Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef) listed in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  Each action is also linked to a brief definition ("gloss") derived in whole or in part from Princeton University's WordNet® project in order to eliminate ambiguity and aid natural language processing.
+Caliper includes a vocabulary of actions for describing learning
+interactions. Each action [Term](#termdef) is based on the past-tense form of
+an English (en-US) verb. An action [Term](#termdef) can also indicate a change
+in a particular characteristic of the `object` (e.g., resolution, size, speed,
+volume). Each action [Term](#termdef) is mapped to a persistent [IRI](#iriDef)
+listed in the external IMS Caliper
+JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). Each action is
+also linked to a brief definition ("gloss") derived in whole or in part from
+Princeton University's WordNet® project in order to eliminate ambiguity and aid
+natural language processing.
  
- Each Caliper [Event](#event) type supports one one or more of the actions listed below.  The [Event](#event) `action` property string value MUST be set to the appropriate [Term](#termDef). Only one action may be specified per [Event](#event).
+Each Caliper [Event](#event) type supports one one or more of the actions
+listed below. The [Event](#event) `action` property string value MUST be set to
+the appropriate [Term](#termDef). Only one action may be specified
+per [Event](#event).
 
 | Term (IRI) | WordNet® Gloss |
 | :--------- | :------------- |
 | <a name="abandoned" />Abandoned (http://purl.imsglobal.org/vocab/caliper/action#Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
-| <a name="activated" />Activated (http://purl.imsglobal.org/vocab/caliper/action#Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
-| <a name="added" />Added (http://purl.imsglobal.org/vocab/caliper/action#Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
+| <a name="activated" />Activated (http://purl.imsglobal.org/vocab/caliper/action#Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v). Inverse of [Deactivated](#deactivated). |
+| <a name="added" />Added (http://purl.imsglobal.org/vocab/caliper/action#Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v). Inverse of [Removed](#removed). |
 | <a name="attached" />Attached (http://purl.imsglobal.org/vocab/caliper/action#Attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
 | <a name="bookmarked" />Bookmarked (http://purl.imsglobal.org/vocab/caliper/action#Bookmarked) | [A marker](http://wordnet-rdf.princeton.edu/wn31/102874508-n) that specifies a location of interest in a [DigitalResource](#digitalResource) that is recorded for later retrieval. |
 | <a name="changedResolution" />ChangedResolution (http://purl.imsglobal.org/vocab/caliper/action#ChangedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
@@ -1308,54 +2164,54 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="changedSpeed" />ChangedSpeed (http://purl.imsglobal.org/vocab/caliper/action#ChangedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
 | <a name="changedVolume" />ChangedVolume (http://purl.imsglobal.org/vocab/caliper/action#ChangedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
 | <a name="classified" />Classified (http://purl.imsglobal.org/vocab/caliper/action#Classified) | [Assign to a class or kind](http://wordnet-rdf.princeton.edu/wn31/200741667-v). |
-| <a name="closedPopout" />ClosedPopout (http://purl.imsglobal.org/vocab/caliper/action#ClosedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
+| <a name="closedPopout" />ClosedPopout (http://purl.imsglobal.org/vocab/caliper/action#ClosedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout. Inverse of [OpenedPopout](#openedPopout). |
 | <a name="commented" />Commented (http://purl.imsglobal.org/vocab/caliper/action#Commented) | [Make or write a comment on](http://wordnet-rdf.princeton.edu/wn31/201060446-v). |
 | <a name="completed" />Completed (http://purl.imsglobal.org/vocab/caliper/action#Completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
-| <a name="created" />Created (http://purl.imsglobal.org/vocab/caliper/action#Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
-| <a name="deactivated" />Deactivated (http://purl.imsglobal.org/vocab/caliper/action#Deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
-| <a name="deleted" />Deleted (http://purl.imsglobal.org/vocab/caliper/action#Deleted) | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
+| <a name="created" />Created (http://purl.imsglobal.org/vocab/caliper/action#Created) | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v). Inverse of [Deleted](#deleted). |
+| <a name="deactivated" />Deactivated (http://purl.imsglobal.org/vocab/caliper/action#Deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v). Inverse of [Activated](#activated). |
+| <a name="deleted" />Deleted (http://purl.imsglobal.org/vocab/caliper/action#Deleted) | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v). Inverse of [Created](#created). |
 | <a name="described" />Described (http://purl.imsglobal.org/vocab/caliper/action#Described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). |
-| <a name="disabledClosedCaptioning" />DisabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#DisabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
+| <a name="disabledClosedCaptioning" />DisabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#DisabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output. Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
 | <a name="disliked" />Disliked (http://purl.imsglobal.org/vocab/caliper/action#Disliked) | [Have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v). Inverse of [Liked](#liked). |
-| <a name="enabledClosedCaptioning" />EnabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#EnabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
-| <a name="ended" />Ended (http://purl.imsglobal.org/vocab/caliper/action#Ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
-| <a name="enteredFullscreen" />EnteredFullScreen (http://purl.imsglobal.org/vocab/caliper/action#EnteredFullscreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
-| <a name="exitedFullscreen" />ExitedFullScreen (http://purl.imsglobal.org/vocab/caliper/action#ExitedFullscreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
+| <a name="enabledClosedCaptioning" />EnabledClosedCaptioning (http://purl.imsglobal.org/vocab/caliper/action#EnabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output. Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
+| <a name="ended" />Ended (http://purl.imsglobal.org/vocab/caliper/action#Ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v). Inverse of [Started](#started). |
+| <a name="enteredFullscreen" />EnteredFullScreen (http://purl.imsglobal.org/vocab/caliper/action#EnteredFullscreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen. Inverse of [ExitedFullScreen](#exitedFullScreen). |
+| <a name="exitedFullscreen" />ExitedFullScreen (http://purl.imsglobal.org/vocab/caliper/action#ExitedFullscreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen. Inverse of [EnteredFullScreen](#enteredFullScreen). |
 | <a name="forwardedTo" />ForwardedTo (http://purl.imsglobal.org/vocab/caliper/action#ForwardedTo) | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
 | <a name="graded" />Graded (http://purl.imsglobal.org/vocab/caliper/action#Graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
-| <a name="hid" />Hid ([http://purl.imsglobal.org/vocab/caliper/action#Hid](http://purl.imsglobal.org/vocab/caliper/action#Hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
+| <a name="hid" />Hid ([http://purl.imsglobal.org/vocab/caliper/action#Hid](http://purl.imsglobal.org/vocab/caliper/action#Hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v). Inverse of [Showed](#showed). |
 | <a name="highlighted" />Highlighted (http://purl.imsglobal.org/vocab/caliper/action#Highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
 | <a name="identified" />Identified (http://purl.imsglobal.org/vocab/caliper/action#Identified) | [Recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v). |
 | <a name="jumpedTo" />JumpedTo (http://purl.imsglobal.org/vocab/caliper/action#JumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
-| <a name="liked" />Liked (http://purl.imsglobal.org/vocab/caliper/action#Liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v).  Inverse of [Disliked](#disliked). |
+| <a name="liked" />Liked (http://purl.imsglobal.org/vocab/caliper/action#Liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v). Inverse of [Disliked](#disliked). |
 | <a name="linked" />Linked (http://purl.imsglobal.org/vocab/caliper/action#Linked) | [Connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v). |
-| <a name="loggedIn" />LoggedIn (http://purl.imsglobal.org/vocab/caliper/action#LoggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
-| <a name="loggedOut" />LoggedOut (http://purl.imsglobal.org/vocab/caliper/action#LoggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
-| <a name="markedAsRead" />MarkedAsRead (http://purl.imsglobal.org/vocab/caliper/action#MarkedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
+| <a name="loggedIn" />LoggedIn (http://purl.imsglobal.org/vocab/caliper/action#LoggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v). Inverse of [LoggedOut](#loggedOut). |
+| <a name="loggedOut" />LoggedOut (http://purl.imsglobal.org/vocab/caliper/action#LoggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v). Inverse of [LoggedIn](#loggedIn). |
+| <a name="markedAsRead" />MarkedAsRead (http://purl.imsglobal.org/vocab/caliper/action#MarkedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). |
 | <a name="markedAsUnread" />MarkedAsUnread (http://purl.imsglobal.org/vocab/caliper/action#MarkedAsUnread) | Inverse of [MarkedAsRead](#markedAsRead). |
 | <a name="modified" />Modified (http://purl.imsglobal.org/vocab/caliper/action#Modified) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v). |
-| <a name="muted" />Muted (http://purl.imsglobal.org/vocab/caliper/action#Muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
+| <a name="muted" />Muted (http://purl.imsglobal.org/vocab/caliper/action#Muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v). Inverse of [Unmuted](#unmuted). |
 | <a name="navigated to" />NavigatedTo (http://purl.imsglobal.org/vocab/caliper/action#NavigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
-| <a name="openedPopout" />OpenedPopout (http://purl.imsglobal.org/vocab/caliper/action#OpenedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
-| <a name="paused" />Paused (http://purl.imsglobal.org/vocab/caliper/action#Paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed). |
+| <a name="openedPopout" />OpenedPopout (http://purl.imsglobal.org/vocab/caliper/action#OpenedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout. Inverse of [ClosedPopout](#closedPopout). |
+| <a name="paused" />Paused (http://purl.imsglobal.org/vocab/caliper/action#Paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v). Inverse of [Resumed](#resumed). |
 | <a name="posted" />Posted (http://purl.imsglobal.org/vocab/caliper/action#Posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
 | <a name="questioned" />Questioned (http://purl.imsglobal.org/vocab/caliper/action#Questioned) | [Pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v). |
 | <a name="ranked" />Ranked (http://purl.imsglobal.org/vocab/caliper/action#Ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
 | <a name="recommended" />Recommended (http://purl.imsglobal.org/vocab/caliper/action#Recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
-| <a name="removed" />Removed (http://purl.imsglobal.org/vocab/caliper/action#Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
+| <a name="removed" />Removed (http://purl.imsglobal.org/vocab/caliper/action#Removed) | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v). Inverse of [Added](#added). |
 | <a name="reset" />Reset (http://purl.imsglobal.org/vocab/caliper/action#Reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v). |
 | <a name="restarted" />Restarted (http://purl.imsglobal.org/vocab/caliper/action#Restarted) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. |
-| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused). |
+| <a name="resumed" />Resumed (http://purl.imsglobal.org/vocab/caliper/action#Resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred. Inverse of [Paused](#paused). |
 | <a name="retrieved" />Retrieved (http://purl.imsglobal.org/vocab/caliper/action#Retrieved) | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | <a name="reviewed" />Reviewed (http://purl.imsglobal.org/vocab/caliper/action#Reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 | <a name="rewound" />Rewound (http://purl.imsglobal.org/vocab/caliper/action#Rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
 | <a name="searched" />Searched (http://purl.imsglobal.org/vocab/caliper/action#Searched) | [Try to locate or discover, or try to establish the existence of](http://wordnet-rdf.princeton.edu/wn31/201318273-v). |
 | <a name="shared" />Shared (http://purl.imsglobal.org/vocab/caliper/action#Shared) | [Communicate](http://wordnet-rdf.princeton.edu/wn31/201065952-v). |
-| <a name="showed" />Showed (http://purl.imsglobal.org/vocab/caliper/action#Showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
+| <a name="showed" />Showed (http://purl.imsglobal.org/vocab/caliper/action#Showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v). Inverse of [Hid](#hid). |
 | <a name="skipped" />Skipped (http://purl.imsglobal.org/vocab/caliper/action#Skipped) | [Bypass](http://wordnet-rdf.princeton.edu/wn31/200618188-v). |
-| <a name="started" />Started (http://purl.imsglobal.org/vocab/caliper/action#Started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
+| <a name="started" />Started (http://purl.imsglobal.org/vocab/caliper/action#Started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). Inverse of [Ended](#ended). |
 | <a name="submitted" />Submitted (http://purl.imsglobal.org/vocab/caliper/action#Submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
-| <a name="subscribed" />Subscribed (http://purl.imsglobal.org/vocab/caliper/action#Subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+| <a name="subscribed" />Subscribed (http://purl.imsglobal.org/vocab/caliper/action#Subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v). Inverse of [Unsubscribed](#unsubscribed). |
 | <a name="tagged" />Tagged (http://purl.imsglobal.org/vocab/caliper/action#Tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
 | <a name="timedOut" />TimedOut (http://purl.imsglobal.org/vocab/caliper/action#TimedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
 | <a name="unmuted" />Unmuted (http://purl.imsglobal.org/vocab/caliper/action#Unmuted) | Inverse of [Muted](#muted). |
@@ -1370,7 +2226,12 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 <a name="event" />
 
 ### B.1 Event
-A Caliper [Event](#event) is a generic type that describes a relationship established between an `actor` and an `object`, formed as a result of a purposeful [action](#actions) undertaken by the `actor` in connection to the `object` at a particular moment in time. The [Event](#event) properties `actor`, `action` and `object` form a compact data structure that resembles an [RDF](#rdf) triple linking a subject to an object via a predicate.
+A Caliper [Event](#event) is a generic type that describes a relationship
+established between an `actor` and an `object`, formed as a result of a
+purposeful [action](#actions) undertaken by the `actor` in connection to the
+`object` at a particular moment in time. The [Event](#event) properties
+`actor`, `action` and `object` form a compact data structure that resembles
+an [RDF](#rdf) triple linking a subject to an object via a predicate.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Event
@@ -1380,30 +2241,45 @@ http://purl.imsglobal.org/caliper/Event
 #### Properties
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Event](#event) set the `type` to the string value *Event*.  If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person](#person), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
-| referrer | [Entity](#entity)  | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Event](#event) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified. For a generic [Event](#event) set the `type` to the string value *Event*. If a subtype of [Entity](#entity) is created, set the `type` to the [Term](#termDef) corresponding to the subtype utilized, e.g., *NavigationEvent*. | Required |
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the [Event](#event), typically a [Person](#person), [Organization](#organization) or [SoftwareApplication](#softwareApplication), MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object MUST be specified. The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Entity](#entity) | The [Entity](#entity) that comprises the object of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity)  | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Subtypes
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [OutcomeEvent](#outcomeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](#annotationEvent),
+[AssignableEvent](#assignableEvent),
+[AssessmentEvent](#assessmentEvent),
+[AssessmentItemEvent](#assessmentItemEvent),
+[ForumEvent](#forumEvent),
+[MediaEvent](#mediaEvent),
+[MessageEvent](#messageEvent),
+[NavigationEvent](#navigationEvent),
+[OutcomeEvent](#outcomeEvent),
+[SessionEvent](#sessionEvent),
+[ToolUseEvent](#toolUseEvent),
+[ThreadEvent](#threadEvent),
+[ViewEvent](#viewEvent)
 
 #### Deprecated subtypes
 [ReadingEvent](#readingEvent)
 
 #### Example
-When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).
+When representing the [Event](#event)
+as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be
+embedded in the document with a value that references the external IMS Caliper
+JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).
 
 ```
 {
@@ -1429,7 +2305,9 @@ When representing the [Event](#event) as [JSON-LD](http://json-ld.org/spec/lates
 <a name="annotationEvent" />
 
 ### B.2 AnnotationEvent
-A Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital content.  The resulting [Annotation](#annotation) is also described and is subtyped for greater type specificity.
+A Caliper [AnnotationEvent](#annotationEvent) models the annotating of digital
+content. The resulting [Annotation](#annotation) is also described and is
+subtyped for greater type specificity.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AnnotationEvent
@@ -1440,7 +2318,11 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 [Event](#event)
 
 #### Generated annotations
-[Annotation](#annotation), [BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
+[Annotation](#annotation),
+[BookmarkAnnotation](#bookmarkAnnotation),
+[HighlightAnnotation](#highlightAnnotation),
+[SharedAnnotation](#sharedAnnotation),
+[TagAnnotation](#tagAnnotation)
 
 #### Supported Actions
 | Action | WordNet® Gloss |
@@ -1451,7 +2333,10 @@ http://purl.imsglobal.org/caliper/AnnotationEvent
 | [Tagged](#tagged) | [Attach a tag or label to](http://wordnet-rdf.princeton.edu/wn31/201591414-v). |
 
 #### Deprecated Actions
-The following actions are deprecated and targeted for removal from the [AnnotationEvent](#annotationEvent) list of supported actions.  The actions will be retained as entries in the Caliper [actions](#actions) vocabulary as many are likely to appear in future Metric Profiles.  
+The following actions are deprecated and targeted for removal from
+the [AnnotationEvent](#annotationEvent) list of supported actions. The actions
+will be retained as entries in the Caliper [actions](#actions) vocabulary as
+many are likely to appear in future Metric Profiles.
 
 | Action | WordNet® Gloss |
 | :----- | :------------- |
@@ -1461,32 +2346,33 @@ The following actions are deprecated and targeted for removal from the [Annotati
 | [Described](#described) | [Give a description of](http://wordnet-rdf.princeton.edu/wn31/200989103-v). ||
 | [Disliked](#disliked) | [Have or feel a dislike or distaste for](http://wordnet-rdf.princeton.edu/wn31/201780648-v). Inverse of [Liked](#liked). |
 | [Identified](#identified) | [Recognize as being; establish the identity of someone or something](http://wordnet-rdf.princeton.edu/wn31/200620568-v). |
-| [Liked](#liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v).  Inverse of [Disliked](#disliked). |
+| [Liked](#liked) | [Be fond of](http://wordnet-rdf.princeton.edu/wn31/201780873-v). Inverse of [Disliked](#disliked). |
 | [Linked](#linked) | [Connect, fasten, or put together two or more pieces](http://wordnet-rdf.princeton.edu/wn31/201357376-v). |
 | [Questioned](#questioned) | [Pose a question](http://wordnet-rdf.princeton.edu/wn31/200786670-v). |
 | [Ranked](#ranked) | [Assign a rank or rating to](http://wordnet-rdf.princeton.edu/wn31/200659723-v). |
 | [Recommended](#recommended) | [Express a good opinion of](http://wordnet-rdf.princeton.edu/wn31/200884469-v). |
-| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v). Inverse of [Unsubscribed](#unsubscribed). |
  
 #### Properties
-[AnnotationEvent](#annotationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[AnnotationEvent](#annotationEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AnnotationEvent*. | Required |
-| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | string | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` term may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required |
-| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | string | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the supported action terms listed above. Only one `action` term may be specified per [Event](#event). DEPRECATED  actions SHOULD NOT be utilized. | Required |
+| object | [DigitalResource](#digitalResource) | The annotated [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Annotation](#annotation) | the `generated` [Annotation](#annotation) SHOULD be specified. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AnnotationEvent (bookmarked)
@@ -1547,7 +2433,8 @@ The following actions are deprecated and targeted for removal from the [Annotati
 <a name="assessmentEvent" />
 
 ### B.3 AssessmentEvent
-A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with assessments instruments such as online tests or quizzes.
+A Caliper [AssessmentEvent](#assessmentEvent) models learner interactions with
+assessments instruments such as online tests or quizzes.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentEvent
@@ -1561,31 +2448,32 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
-| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [Attempt](#attempt) `count` value MUST NOT be changed. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [Attempt](#attempt) `count` value MUST be incremented by 1. |
+| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v). Inverse of [Resumed](#resumed). The [Attempt](#attempt) `count` value MUST NOT be changed. |
+| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred. Inverse of [Paused](#paused). The [Attempt](#attempt) `count` value MUST NOT be changed. |
+| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. The [Attempt](#attempt) `count` value MUST be incremented by 1. |
 | [Reset](#reset) | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt](#attempt) `count` value. |
 | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 
 #### Properties
-[AssessmentEvent](#assessmentEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[AssessmentEvent](#assessmentEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentEvent*. | Required |
-| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.   The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the supported action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| actor | [Person](#person) | the [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the supported action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [Assessment](#assessment) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
 | generated | [Attempt](#attempt) | The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentEvent (started)
@@ -1651,7 +2539,8 @@ http://purl.imsglobal.org/caliper/AssessmentEvent
 <a name="assessmentItemEvent" />
 
 ### B.4 AssessmentItemEvent
-A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's interaction with an individual [AssessmentItem](#assessmentItem).
+A Caliper [AssessmentItemEvent](#assessmentItemEvent) models a learner's
+interaction with an individual [AssessmentItem](#assessmentItem).
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssessmentItemEvent
@@ -1662,7 +2551,12 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 [Event](#event)
 
 #### Generated responses
-[Response](#response), [FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+[Response](#response),
+[FillinBlankResponse](#fillinBlankResponse),
+[MultipleChoiceResponse](#multipleChoiceResponse),
+[MultipleResponseResponse](#multipleResponseResponse),
+[SelectTextResponse](#selectTextResponse),
+[TrueFalseResponse](#trueFalseResponse)
  
 #### Supported Actions
 | Action | WordNet® Gloss |
@@ -1678,24 +2572,25 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Properties
-[AssessmentItemEvent](#assessmentItemEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[AssessmentItemEvent](#assessmentItemEvent) inherits all properties defined by
+its supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssessmentItemEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
 | object | [AssessmentItem](#assessmentItem) | The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Response](#response) | For a [completed](#completed) action a `generated` [Response](#response) MAY be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
-| referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.   The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Response](#response) | For a [completed](#completed) action a `generated` [Response](#response) MAY be specified. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [AssessmentItem](#assessmentItem) | The previous [AssessmentItem](#assessmentItem) attempted MAY be specified as the `referrer`. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssessmentItem (started)
@@ -1770,7 +2665,8 @@ http://purl.imsglobal.org/caliper/AssessmentItemEvent
 <a name="assignableEvent" />
 
 ### B.5 AssignableEvent
-A Caliper [AssignableEvent](#assignableEvent) models activities associated with the assignment of digital content assigned to a learner for completion.
+A Caliper [AssignableEvent](#assignableEvent) models activities associated with
+the assignment of digital content assigned to a learner for completion.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableEvent
@@ -1783,41 +2679,43 @@ http://purl.imsglobal.org/caliper/AssignableEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
-| [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v).  Inverse of [Activated](#activated). |
+| [Activated](#activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v). Inverse of [Deactivated](#deactivated). |
+| [Deactivated](#deactivated) | [Make inactive](http://wordnet-rdf.princeton.edu/wn31/200191849-v). Inverse of [Activated](#activated). |
 | [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). |
 | [Completed](#completed) | [Come or bring to a finish or an end](http://wordnet-rdf.princeton.edu/wn31/200485097-v). |
 | [Submitted](#submitted) | [Hand over formally](http://wordnet-rdf.princeton.edu/wn31/202267560-v). |
 | [Reviewed](#reviewed) | [Appraise critically](http://wordnet-rdf.princeton.edu/wn31/200857194-v). |
 
 #### Deprecated Actions
-The following actions are deprecated and targeted for removal from the [AssignableEvent](#assignableEvent) list of supported actions.
+The following actions are deprecated and targeted for removal from
+the [AssignableEvent](#assignableEvent) list of supported actions.
 
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Abandoned](#abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
-| [Hid](#hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
-| [Showed](#showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v).  Inverse of [Hid](#hid). |
+| [Hid](#hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v). Inverse of [Showed](#showed). |
+| [Showed](#showed) | [Make visible or noticeable](http://wordnet-rdf.princeton.edu/wn31/202141597-v). Inverse of [Hid](#hid). |
 
 #### Properties
-[AssignableEvent](#assignableEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[AssignableEvent](#assignableEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *AssignableEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event).  DEPRECATED  actions SHOULD NOT be utilized. | Required | 
-| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Attempt](#attempt) | For [Started](#started), [Completed](#completed) and [Reviewed](reviewed) actions, the actor's [Attempt](#attempt) SHOULD be specified.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). DEPRECATED  actions SHOULD NOT be utilized. | Required | 
+| object | [AssignableDigitalResource](#assignableDigitalResource) | The [AssignableDigitalResource](#assignableDigitalResource) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Attempt](#attempt) | For [Started](#started), [Completed](#completed) and [Reviewed](reviewed) actions, the actor's [Attempt](#attempt) SHOULD be specified. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: AssignableEvent (activated)
@@ -1878,7 +2776,10 @@ The following actions are deprecated and targeted for removal from the [Assignab
 <a name="forumEvent" />
 
 ### B.6 ForumEvent
-A Caliper [ForumEvent](#forumEvent) models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.
+A Caliper [ForumEvent](#forumEvent) models learners and others participating in
+online forum communities. Forums typically encompass one or more threads or
+topics to which members can subscribe, post messages and reply to other
+messages if a threaded discussion is permitted.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ForumEvent
@@ -1891,29 +2792,30 @@ http://purl.imsglobal.org/caliper/ForumEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v).  Inverse of [Unsubscribed](#unsubscribed). |
+| [Subscribed](#subscribed) | [Receive or obtain regularly](http://wordnet-rdf.princeton.edu/wn31/202214527-v). Inverse of [Unsubscribed](#unsubscribed). |
 | [Unsubscribed](#unsubscribed) | Inverse of [Subscribed](#subscribed). |
 
 #### Properties
-[ForumEvent](#forumEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[ForumEvent](#forumEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ForumEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object| [Forum](#forum) | The [Forum](#forum) that comprises the `object` of this interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object| [Forum](#forum) | The [Forum](#forum) that comprises the `object` of this interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
 | referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ForumEvent (subscribed)
@@ -1969,7 +2871,8 @@ http://purl.imsglobal.org/caliper/ForumEvent
 <a name="mediaEvent" />
 
 ### B.7 MediaEvent
-A Caliper [MediaEvent](#mediaEvent) models interactions between learners and rich content such as audio, images and video.
+A Caliper [MediaEvent](#mediaEvent) models interactions between learners and
+rich content such as audio, images and video.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaEvent
@@ -1982,52 +2885,54 @@ http://purl.imsglobal.org/caliper/MediaEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v).  Inverse of [Ended](#ended). |
-| [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v).  Inverse of [Started](#started). |
-| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v).  Inverse of [Resumed](#resumed).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
-| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred.  Inverse of [Paused](#paused).  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
-| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again.  The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
+| [Started](#started) | [Set in motion, cause to start](http://wordnet-rdf.princeton.edu/wn31/200349400-v). Inverse of [Ended](#ended). |
+| [Ended](#ended) | [Bring to an end or halt](http://wordnet-rdf.princeton.edu/wn31/200353480-v). Inverse of [Started](#started). |
+| [Paused](#paused) | [Cease an action temporarily](http://wordnet-rdf.princeton.edu/wn31/200781106-v). Inverse of [Resumed](#resumed). The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the pause occurred. |
+| [Resumed](#resumed) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, pause and then begin again at the location where the pause in action occurred. Inverse of [Paused](#paused). The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the location in the audio or video stream where the previous pause occurred. |
+| [Restarted](#restared) | [Take up or begin anew](http://wordnet-rdf.princeton.edu/wn31/200350758-v), as in to start something, make progress but then stop and return to the beginning in order to start again. The [MediaLocation](#mediaLocation) `currentTime` value MUST be set to the beginning or initial starting location in the audio or video stream. |
 | [ForwardedTo](#forwardedTo)  | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
 | [JumpedTo](#jumpedTo) | [Pass abruptly from one state or topic to another](http://wordnet-rdf.princeton.edu/wn31/200561468-v). |
 | [ChangedResolution](#changedResolution) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the number of pixels per square inch on a computer-generated display](http://wordnet-rdf.princeton.edu/wn31/111526370-n). |
 | [ChangedSize](#changedSize) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the physical magnitude of something](http://wordnet-rdf.princeton.edu/wn31/105106204-n). |
 | [ChangedSpeed](#changedSpeed) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of the [rate at which something happens](http://wordnet-rdf.princeton.edu/wn31/105065291-n). |
 | [ChangedVolume](#changedVolume) | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v) of [the magnitude of sound &#40;usually in a specified direction&#41;](http://wordnet-rdf.princeton.edu/wn31/104997456-n). |
-| [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output.  Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
-| [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output.  Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
-| [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
-| [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
-| [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v).  Inverse of [Unmuted](#unmuted). |
+| [EnabledClosedCaptioning](#enabledClosedCaptioning) | [Render capable or able](http://wordnet-rdf.princeton.edu/wn31/200513958-v) the visual display of a plain text transcription of audio output. Inverse of [DisabledClosedCaptioning](#disabledClosedCaptioning). |
+| [DisabledClosedCaptioning](#disabledClosedCaptioning) | [Render unable to perform](http://wordnet-rdf.princeton.edu/wn31/200513267-v) the visual display of a plain text transcription of audio output. Inverse of [EnabledClosedCaptioning](#enabledClosedCaptioning). |
+| [EnteredFullScreen](#enteredFullScreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen. Inverse of [ExitedFullScreen](#exitedFullScreen). |
+| [ExitedFullScreen](#exitedFullScreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen. Inverse of [EnteredFullScreen](#enteredFullScreen). |
+| [Muted](#muted) | [Deaden (a sound or noise)](http://wordnet-rdf.princeton.edu/wn31/mute-v). Inverse of [Unmuted](#unmuted). |
 | [Unmuted](#unmuted) | Inverse of [Muted](#muted). |
-| [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout.  Inverse of [ClosedPopout](#closedPopout). |
-| [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout.  Inverse of [OpenedPopout](#openedPopout). |
+| [OpenedPopout](#openedPopout) | [Start to operate or function or cause to start operating or functioning](http://wordnet-rdf.princeton.edu/wn31/202431018-v) a video popout. Inverse of [ClosedPopout](#closedPopout). |
+| [ClosedPopout](#closedPopout) | [Close or shut](http://wordnet-rdf.princeton.edu/wn31/201349660-v) a video popout. Inverse of [OpenedPopout](#openedPopout). |
 
 #### Deprecated Actions
-The following actions are deprecated and targeted for removal from the [MediaEvent](#mediaEvent) list of supported actions.
+The following actions are deprecated and targeted for removal from
+the [MediaEvent](#mediaEvent) list of supported actions.
 
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Rewound](#rewound) | [Wind up again](http://wordnet-rdf.princeton.edu/wn31/201524927-v). |
 
 #### Properties
-[MediaEvent](#mediaEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[MediaEvent](#mediaEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MediaEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` term may be specified per [Event](#event). | Required |
-| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action.  The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S".  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Recommended |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` term may be specified per [Event](#event). | Required |
+| object | [MediaObject](#mediaObject) | The [MediaObject](#mediaObject) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [MediaLocation](#mediaLocation) | If the `object` is an [AudioObject](#audioObject) or [VideoObject](#videoObject) a [MediaLocation](#mediaLocation) SHOULD be specified in order to provide the [currentTime](#currentTime) in the audio or video stream that marks the action. The value MUST be an ISO 8601 formatted duration, e.g., "PT30M54S". The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Recommended |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MediaEvent (paused)
@@ -2081,7 +2986,8 @@ The following actions are deprecated and targeted for removal from the [MediaEve
 <a name="messageEvent" />
 
 ### B.8 MessageEvent
-A Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting a [Message](#message) or marking a post as either read or unread.
+A Caliper [MessageEvent](#messageEvent) describes a [Person](#person) posting
+a [Message](#message) or marking a post as either read or unread.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MessageEvent
@@ -2095,28 +3001,29 @@ http://purl.imsglobal.org/caliper/MessageEvent
 | Action | WordNet® Gloss |
 | :----- | :------------- |
 | [Posted](#posted) | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
-| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
+| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). |
 | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). |
 
 #### Properties
-[MessageEvent](#messageEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[MessageEvent](#messageEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MessageEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Message](#message) | The [Message](#message) that constitutes the `object` of the interaction MUST be specified.  If the `object` represents a [Message](#message) posted in reply to a previous post, the prior post prompting the [Message](#message) SHOULD be referenced using the [Message](#message) `replyTo` property.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef).  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Message](#message) | The [Message](#message) that constitutes the `object` of the interaction MUST be specified. If the `object` represents a [Message](#message) posted in reply to a previous post, the prior post prompting the [Message](#message) SHOULD be referenced using the [Message](#message) `replyTo` property. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional | 
 | session | [Session](#session) | The current user [Session](#session) MAY be specified. | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: MessageEvent (posted)
@@ -2247,7 +3154,8 @@ http://purl.imsglobal.org/caliper/MessageEvent
 <a name="navigationEvent" />
 
 ### B.9 NavigationEvent
-A Caliper [NavigationEvent](#navigationEvent) models an actor traversing a network of digital resources.
+A Caliper [NavigationEvent](#navigationEvent) models an actor traversing a
+network of digital resources.
 
 #### IRI
 http://purl.imsglobal.org/caliper/NavigationEvent
@@ -2263,28 +3171,31 @@ http://purl.imsglobal.org/caliper/NavigationEvent
 | [NavigatedTo](#navigatedTo) | [Direct the course; determine the direction of travelling](http://wordnet-rdf.princeton.edu/wn31/201935739-v). |
 
 #### Properties
-[NavigationEvent](#navigationEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[NavigationEvent](#navigationEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *NavigationEvent*. |Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context SHOULD be specified.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Recommended |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication)| The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context SHOULD be specified. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Recommended |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Deprecated Properties
-The following [NavigationEvent](#navigationEvent) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [NavigationEvent](#navigationEvent) properties have been
+DEPRECATED and MUST NOT be utilized. The properties will be removed in a future
+version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -2340,7 +3251,9 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 <a name="outcomeEvent" />
 
 ### B.10 OutcomeEvent
-A Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).
+A Caliper [OutcomeEvent](#outcomeEvent) models grading activities performed by
+an [Agent](#agent), typically a [Person](#person) or
+a [SoftwareApplication](#softwareApplication).
 
 #### IRI
 http://purl.imsglobal.org/caliper/OutcomeEvent
@@ -2356,24 +3269,25 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | [Graded](#graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
 
 #### Properties
-[OutcomeEvent](#outcomeEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[OutcomeEvent](#outcomeEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *OutcomeEvent*. | Required |
-| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
-| generated | [Result](#result) | The generated [Result](#result) SHOULD be provided.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Agent](#agent) | A generic [Agent](#agent) or one of its subtypes, typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Attempt](#attempt) | The completed [Attempt](#attempt) MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Not Applicable |
+| generated | [Result](#result) | The generated [Result](#result) SHOULD be provided. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Recommended |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: OutcomeEvent (graded)
@@ -2427,8 +3341,9 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 <a name="readingEvent" />
 
 ### B.11 ReadingEvent DEPRECATED
-
-A Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  ReadingEvent is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [ReadingEvent](#readingEvent) models an actor reading textural
+content. ReadingEvent is DEPRECATED and will be removed in a future version of
+the specification. It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ReadingEvent
@@ -2444,30 +3359,33 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Properties
-[ReadingEvent](#readingEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[ReadingEvent](#readingEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ReadingEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
-| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event).  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | the action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 
 <a name="sessionEvent" />
 
 ### B.12 SessionEvent
-A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).
+A Caliper [SessionEvent](#sessionEvent) models the creation and subsequent
+termination of a user session established by a [Person](#person) interacting
+with a [SoftwareApplication](#softwareApplication).
 
 #### IRI
 http://purl.imsglobal.org/caliper/SessionEvent
@@ -2479,29 +3397,30 @@ http://purl.imsglobal.org/caliper/SessionEvent
 #### Supported actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v).  Inverse of [LoggedOut](#loggedOut). |
-| [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v).  Inverse of [LoggedIn](#loggedIn). |
+| [LoggedIn](#loggedIn) | [Enter a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202253955-v). Inverse of [LoggedOut](#loggedOut). |
+| [LoggedOut](#loggedOut) | [Exit a computer or software application](http://wordnet-rdf.princeton.edu/wn31/202254101-v). Inverse of [LoggedIn](#loggedIn). |
 | [TimedOut](#timedOut) | Cancellation of a user session after a predetermined time interval has occurred without activity. |
 
 #### Properties
-[SessionEvent](#sessionEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[SessionEvent](#sessionEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required | 
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required | 
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SessionEvent*. | Required |
-| actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified.  For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`.  For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Session](#session), [SoftwareApplication](#softwareApplication) | For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) MUST be specified as the `object`.  For a [TimedOut](#timedOut) action the [Session](#session) MUST be specified as the object.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [DigitalResource](#digitalResource) | When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | the relevant user [Session](#session) SHOULD be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Recommended |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Agent](#agent) | The [Agent](#agent) who initiated the `action` MUST be specified. For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [Person](#person) MUST be specified as the `actor`. For a [TimedOut](#timedOut) action a [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Session](#session), [SoftwareApplication](#softwareApplication) | For [LoggedIn](#loggedIn) and [LoggedOut](#loggedOut) actions a [SoftwareApplication](#softwareApplication) MUST be specified as the `object`. For a [TimedOut](#timedOut) action the [Session](#session) MUST be specified as the object. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [DigitalResource](#digitalResource) | When logging in to a [SoftwareApplication](#softwareApplication), if the actor is attempting to access a particular [DigitalResource](#digitalResource) it MAY be designated as the `target` of the interaction. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [DigitalResource](#digitalResource), [SoftwareApplication](#softwareApplication) | The [DigitalResource](#digitalResource) or [SoftwareApplication](#softwareApplication) that constitutes the referring context MAY be specified as the `referrer`. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | the relevant user [Session](#session) SHOULD be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Recommended |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: SessionEvent (logged in)
@@ -2593,7 +3512,8 @@ http://purl.imsglobal.org/caliper/SessionEvent
 <a name="threadEvent" />
 
 ### B.13 ThreadEvent
-A Caliper [ThreadEvent](#threadEvent) models an actor interacting with a [Forum](#forum) thread or topic. 
+A Caliper [ThreadEvent](#threadEvent) models an actor interacting with
+a [Forum](#forum) thread or topic.
  
 #### IRI
 http://purl.imsglobal.org/caliper/ThreadEvent
@@ -2606,28 +3526,29 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 #### Supported Actions
 | Action | WordNet® Gloss |
 | :----- | :------------- |
-| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread).  |
+| [MarkedAsRead](#markedAsRead) | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). |
 | [MarkedAsUnRead](#markedAsUnRead) | Inverse of [MarkedAsRead](#markedAsRead). | 
 
 #### Properties
-[ThreadEvent](#threadEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[ThreadEvent](#threadEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the term *ThreadEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event).  | Required |
-| object | [Thread](#thread) | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Thread](#thread) | The [Thread](#thread) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Entity](#entity) | An [Entity](#entity) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ThreadEvent (marked as read)
@@ -2685,7 +3606,9 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 <a name="toolUseEvent" />
 
 ### B.14 ToolUseEvent
-A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a learning tool in a way that the tool's creators have determined is an indication of a learning interaction.
+A Caliper [ToolUseEvent](#toolUseEvent) models a [Person](#person) using a
+learning tool in a way that the tool's creators have determined is an
+indication of a learning interaction.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ToolUseEvent
@@ -2701,24 +3624,25 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 | Used | [Put into service; make work or employ for a particular purpose or for its inherent or natural purpose](http://wordnet-rdf.princeton.edu/wn31/201161188-v). |
 
 #### Properties
-[ToolUseEvent](#toolUseEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[ToolUseEvent](#toolUseEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ToolUseEvent*. | Required |
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
-| object | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes  the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that represents a particular capability or feature provided by the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
+| object | [SoftwareApplication](#softwareApplication) | The [SoftwareApplication](#softwareApplication) that constitutes  the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that represents a particular capability or feature provided by the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example: ToolUseEvent (used)
@@ -2764,7 +3688,9 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 <a name="viewEvent" />
 
 ### B.15 ViewEvent
-A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.
+A Caliper [ViewEvent](#viewEvent) describes an actor's examination of digital
+content whenever the activity emphasizes thoughtful observation or study as
+opposed to the mere retrieval of a resource.
 
 #### IRI
 http://purl.imsglobal.org/caliper/ViewEvent
@@ -2780,24 +3706,25 @@ http://purl.imsglobal.org/caliper/ViewEvent
 | [Viewed](#viewed) |[Look at carefully; study mentally](http://wordnet-rdf.princeton.edu/wn31/202134765-v). |
 
 #### Properties
-[ViewEvent](#viewEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+[ViewEvent](#viewEvent) inherits all properties defined by its
+supertype [Event](#event). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef). A version 4 [UUID](#uuidDef) SHOULD be generated. The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *ViewEvent* MUST be specified.
-| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified.  The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
-| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
-| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified.  The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
-| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
-| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
-| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified.  The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
-| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
-| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified.  The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
-| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified.  The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
-| session | [Session](#session) | The current user [Session](#session) MAY be specified.  The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
-| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
+| actor | [Person](#person) | The [Person](#person) who initiated the `action` MUST be specified. The `actor` value MUST be expressed either as an object or coerced to a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object` MUST be specified. The value range is limited to the action terms listed above. Only one `action` [Term](#termDef)  may be specified per [Event](#event). | Required |
+| object | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the `object` of the interaction MUST be specified. The `object` value MUST be expressed either as an object or coerced to a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | A date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred MUST be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Required |
+| target | [Frame](#frame) | A [Frame](#frame) that represents a particular segment or location within the `object`. The `target` value MUST be expressed either as an object or coerced to a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) | An [Entity](#entity) created or generated as a result of the interaction. The `generated` value MUST be expressed either as an object or coerced to a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) | A [SoftwareApplication](#softwareApplication) that constitutes the application context MAY be specified. The `edApp` value MUST be expressed either as an object or coerced to a string corresponding to the edApp's [IRI](#iriDef). | Optional | 
+| referrer | [Entity](#entity) | An [Entity](#entity) that represents the referring context MAY be specified. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context. The `referrer` value MUST be expressed either as an object or coerced to a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) | An [Organization](#organization) that represents the group context MAY be specified. The `group` value MUST be expressed either as an object or coerced to a string corresponding to the group's [IRI](#iriDef). | Optional | 
+| membership | [Membership](#membership) | The relationship between the `actor` and the `group` in terms of roles assigned and current status MAY be specified. The `membership` value MUST be expressed either as an object or coerced to a string corresponding to the membership entity's [IRI](#iriDef). | Optional | 
+| session | [Session](#session) | The current user [Session](#session) MAY be specified. The `session` value MUST be expressed either as an object or coerced to a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) | If the [Event](#event) occurs within the context of an [LTI](#lti) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced. The `federatedSession` value MUST be expressed either as an object or coerced to a string corresponding to the federatedSession's [IRI](#iriDef). | Optional | 
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Event](#event). | Optional |
 
 #### Example ViewEvent (viewed)
@@ -2851,34 +3778,95 @@ http://purl.imsglobal.org/caliper/ViewEvent
 <a name="entity" />
 
 ### C.1 Entity
-A Caliper [Entity](#entity) is a generic type that represents objects or things that participate in learning-related activities.  [Entity](#entity) is subtyped for enhanced type specificity in order to better describe people, groups, digital content, courses, assignments, assessments, forums, messages, software applications and other entities that constitute the "stuff" of a Caliper [Event](#event).
+A Caliper [Entity](#entity) is a generic type that represents objects or things
+that participate in learning-related activities. [Entity](#entity) is subtyped
+for enhanced type specificity in order to better describe people, groups,
+digital content, courses, assignments, assessments, forums, messages, software
+applications and other entities that constitute the "stuff" of a
+Caliper [Event](#event).
 
-Utilize [Entity](#entity) only if no suitable subtype exists to represent the thing being described.
+Utilize [Entity](#entity) only if no suitable subtype exists to represent the
+thing being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Entity
 
 #### Properties
-The base set of [Entity](#entity) properties is listed below.  Each property MUST be referenced only once.  The `id` and `type` properties are required; all other properties are optional.  Custom properties not described by the model MAY be included but MUST be added to the `extensions` property object array as values.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization. 
+The base set of [Entity](#entity) properties is listed below. Each property
+MUST be referenced only once. The `id` and `type` properties are required; all
+other properties are optional. Custom properties not described by the model MAY
+be included but MUST be added to the `extensions` property object array as
+values. Properties with a value of *null* or empty SHOULD be excluded prior to
+serialization.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified.  For a generic [Entity](#entity) set the `type` value to the term *Entity*.  If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
+| type | [Term](#termDef) | A string value corresponding to the [Term](#termDef) defined for the [Entity](#entity) in the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document MUST be specified. For a generic [Entity](#entity) set the `type` value to the term *Entity*. If a subtype of [Entity](#entity) is created, set the type to the [Term](#termDef) corresponding to the subtype utilized, e.g., *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Entity](#entity) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, plain text representation of the [Entity](#entity) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Entity](#entity) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Entity](#entity). | Optional |
 
 #### Subtypes
-[Agent](#agent), [Annotation](#annotation), [Assessment](#assessment), [AssessmentItem](#assessmentItem), [AssignableDigitalResource](#assignableDigitalResource), [Attempt](#attempt), [AudioObject](#audioObject), [BookmarkAnnotation](#bookmarkAnnotation), [Chapter](#chapter), [CourseOffering](#courseOffering), [CourseSection](#courseSection), [DigitalResource](#digitalResource), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [FillinBlankResponse](#fillinBlankResponse), [Frame](#frame), [Forum](#forum), [Group](#group), [HighlightAnnotation](#highlightAnnotation), [ImageObject](#imageobject), [LearningObjective](#learningObjective), [LtiSession](#ltiSession), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Membership](#membership), [Message](#message), [MultipleChoiceResponse](#multipleChoiceResponse), [MultipleResponseResponse](#multipleResponseResponse), [Organization](#organization), [Page](#page), [Person](#person), [Response](#response), [Result](#result), [SelectTextResponse](#selectTextResponse), [Session](#session), [SharedAnnotation](#sharedAnnotation), [SoftwareApplication](#softwareapplication), [TagAnnotation](#tagAnnotation), [Thread](#thread), [TrueFalseResponse](#trueFalseResponse), [VideoObject](#videoobject), [WebPage](#webPage)
+[Agent](#agent),
+[Annotation](#annotation),
+[Assessment](#assessment),
+[AssessmentItem](#assessmentItem),
+[AssignableDigitalResource](#assignableDigitalResource),
+[Attempt](#attempt),
+[AudioObject](#audioObject),
+[BookmarkAnnotation](#bookmarkAnnotation),
+[Chapter](#chapter),
+[CourseOffering](#courseOffering),
+[CourseSection](#courseSection),
+[DigitalResource](#digitalResource),
+[DigitalResourceCollection](#digitalResourceCollection),
+[Document](#document),
+[FillinBlankResponse](#fillinBlankResponse),
+[Frame](#frame),
+[Forum](#forum),
+[Group](#group),
+[HighlightAnnotation](#highlightAnnotation),
+[ImageObject](#imageobject),
+[LearningObjective](#learningObjective),
+[LtiSession](#ltiSession),
+[MediaLocation](#mediaLocation),
+[MediaObject](#mediaobject),
+[Membership](#membership),
+[Message](#message),
+[MultipleChoiceResponse](#multipleChoiceResponse),
+[MultipleResponseResponse](#multipleResponseResponse),
+[Organization](#organization),
+[Page](#page),
+[Person](#person),
+[Response](#response),
+[Result](#result),
+[SelectTextResponse](#selectTextResponse),
+[Session](#session),
+[SharedAnnotation](#sharedAnnotation),
+[SoftwareApplication](#softwareapplication),
+[TagAnnotation](#tagAnnotation),
+[Thread](#thread),
+[TrueFalseResponse](#trueFalseResponse),
+[VideoObject](#videoobject),
+[WebPage](#webPage)
 
 #### Deprecated subtypes
-[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
+[EpubChapter](#epubChapter),
+[EpubPart](#epubPart),
+[EpubSubChapter](#epubSubChapter),
+[EpubVolume](#epubVolume),
+[Reading](#reading)
 
 #### Example
-When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be embedded in the document with a value that references the external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  In cases where an Entity's local context duplicates the active context of an [Event](#event) of which it is a part, the Entity's `@context` property SHOULD be omitted. 
+When representing an [Entity](#entity)
+as [JSON-LD](http://json-ld.org/spec/latest/json-ld/), a `@context` key MUST be
+embedded in the document with a value that references the external IMS Caliper
+JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). In cases where
+an Entity's local context duplicates the active context of an [Event](#event)
+of which it is a part, the Entity's `@context` property SHOULD be omitted.
 
 ```
 {
@@ -2906,9 +3894,11 @@ When representing an [Entity](#entity) as [JSON-LD](http://json-ld.org/spec/late
 <a name="agent" />
 
 ### C.2 Agent
-A Caliper [Agent](#agent) is a generic type that represents an [Entity](#entity) that can initiate or perform an action.  
+A Caliper [Agent](#agent) is a generic type that represents
+an [Entity](#entity) that can initiate or perform an action.
 
-Utilize [Agent](#agent) only if no suitable subtype exists to represent the actor being described.
+Utilize [Agent](#agent) only if no suitable subtype exists to represent the
+actor being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Agent
@@ -2917,7 +3907,8 @@ http://purl.imsglobal.org/caliper/Agent
 [Entity](#entity)
 
 #### Properties
-[Agent](#agent) inherits all properties defined by its supertype [Entity](#entity).  Additional requirements are described below:
+[Agent](#agent) inherits all properties defined by its
+supertype [Entity](#entity). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -2925,12 +3916,14 @@ http://purl.imsglobal.org/caliper/Agent
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Agent*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Agent](#agent) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Agent](#agent) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Agent](#agent) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Agent](#agent). | Optional |
 
 #### Subtypes 
-[Organization](#organization), [Person](#person), [SoftwareApplication](#softwareapplication)
+[Organization](#organization),
+[Person](#person),
+[SoftwareApplication](#softwareapplication)
 
 #### Example
 ```
@@ -2946,9 +3939,14 @@ http://purl.imsglobal.org/caliper/Agent
 <a name="annotation" />
 
 ### C.3 Annotation
-A Caliper [Annotation](#annotation) is a generic type that represents a comment, explanation, highlight, mark, note, question or tag linked to a [DigitalResource](#digitalResource).  The act of sharing a [DigitalResource](#digitalResource) with others is also considered a form of annotation.
+A Caliper [Annotation](#annotation) is a generic type that represents a
+comment, explanation, highlight, mark, note, question or tag linked to
+a [DigitalResource](#digitalResource). The act of sharing
+a [DigitalResource](#digitalResource) with others is also considered a form of
+annotation.
 
-Utilize [Annotation](#annotation) only if no suitable subtype exists to represent the annotation being described.
+Utilize [Annotation](#annotation) only if no suitable subtype exists to
+represent the annotation being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Annotation
@@ -2957,7 +3955,9 @@ http://purl.imsglobal.org/caliper/Annotation
 [Entity](#entity)
 
 #### Properties
-[Annotation](#annotation) inherits all properties defined by its supertype [Entity](#entity).  Additional properties and requirements are described below:
+[Annotation](#annotation) inherits all properties defined by its
+supertype [Entity](#entity). Additional properties and requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -2965,14 +3965,17 @@ http://purl.imsglobal.org/caliper/Annotation
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Annotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Annotation](#annotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [Annotation](#annotation) MAY be specified. | Optional |
-| annotator | [Person](#person) | The [Person](#person) who created the [Annotation](#annotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| annotator | [Person](#person) | The [Person](#person) who created the [Annotation](#annotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified. The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Annotation](#annotation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Annotation](#annotation). | Optional |
 
 #### Subtypes 
-[BookmarkAnnotation](#bookmarkAnnotation), [HighlightAnnotation](#highlightAnnotation), [SharedAnnotation](#sharedAnnotation), [TagAnnotation](#tagAnnotation)
+[BookmarkAnnotation](#bookmarkAnnotation),
+[HighlightAnnotation](#highlightAnnotation),
+[SharedAnnotation](#sharedAnnotation),
+[TagAnnotation](#tagAnnotation)
 
 #### Example
 ```
@@ -2995,16 +3998,21 @@ http://purl.imsglobal.org/caliper/Annotation
 <a name="assessment" />
 
 ### C.4 Assessment
-A Caliper [Assessment](#assessment) represents an assessment instrument such as a test or quiz.
+A Caliper [Assessment](#assessment) represents an assessment instrument such as
+a test or quiz.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Assessment
 
 #### Supertype
-[DigitalResourceCollection](#digitalResourceCollection), [AssignableDigitalResource](#assignableDigitalResource)
+[DigitalResourceCollection](#digitalResourceCollection),
+[AssignableDigitalResource](#assignableDigitalResource)
 
 #### Properties
-[Assessment](#assessment) inherits all the properties and requirements defined by its supertypes [DigitalResourceCollection](#digitalResourceCollection) and [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
+[Assessment](#assessment) inherits all the properties and requirements defined
+by its supertypes [DigitalResourceCollection](#digitalResourceCollection)
+and [AssignableDigitalResource](#assignableDigitalResource). Additional
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3016,15 +4024,15 @@ http://purl.imsglobal.org/caliper/Assessment
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Assessment](#assessment) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Assessment](#assessment) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Assessment](#assessment) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Assessment](#assessment) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Assessment](#assessment) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | items | Array | An ordered collection of [AssessmentItem](#assessmentItem) entities that comprise this collection MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Assessment](#assessment) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
-| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Assessment](#assessment) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) was activated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
+| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) should be shown or made available to learners MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) can be started MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [Assessment](#assessment) is to be submitted for evaluation MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
 | maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
@@ -3032,12 +4040,14 @@ http://purl.imsglobal.org/caliper/Assessment
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Assessment](#assessment). | Optional |
 
 #### Deprecated Properties
-The following [Assessment](#assessment) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Assessment](#assessment) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -3085,7 +4095,9 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 [AssignableDigitalResource](#assignableDigitalResource)
 
 #### Properties
-[AssessmentItem](#assessmentItem) inherits all the properties and requirements defined by its supertype [AssignableDigitalResource](#assignableDigitalResource).  Additional requirements are described below:
+[AssessmentItem](#assessmentItem) inherits all the properties and requirements
+defined by its supertype [AssignableDigitalResource](#assignableDigitalResource).
+Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3098,14 +4110,14 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssessmentItem](#assessmentItem) MAY be specified. | Optional |
 | isTimeDependent | Boolean | A boolean value indicating whether or not interacting with the item is time dependent MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity), typically an [Assessment](#assessment), that includes or incorporates the [AssessmentItem](#assessmentItem) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AssessmentItem](#assessmentItem) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
-| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity), typically an [Assessment](#assessment), that includes or incorporates the [AssessmentItem](#assessmentItem) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AssessmentItem](#assessmentItem) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) was activated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
+| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) should be shown or made available to learners MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) can be started MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the [AssessmentItem](#assessmentItem) is to be submitted for evaluation MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
 | maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
@@ -3113,12 +4125,14 @@ http://purl.imsglobal.org/caliper/AssessmentItem
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssessmentItem](#assessmentItem). | Optional |
 
 #### Deprecated Properties
-The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED
+and MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -3156,9 +4170,12 @@ The following [AssessmentItem](#assessmentItem) properties have been DEPRECATED 
 <a name="assignableDigitalResource" />
 
 ### C.6 AssignableDigitalResource
-A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic type that represents digital content associated with a graded or ungraded assignment.
+A Caliper [AssignableDigitalResource](#assignableDigitalResource) is a generic
+type that represents digital content associated with a graded or ungraded
+assignment.
 
-Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no suitable subtype exists to represent the resource being described.
+Utilize [AssignableDigitalResource](#assignableDigitalResource) only if no
+suitable subtype exists to represent the resource being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/AssignableDigitalResource
@@ -3167,7 +4184,9 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 [DigitalResource](#digitalResource)
 
 #### Properties
-[AssignableDigitalResource](#assignableDigitalResource) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[AssignableDigitalResource](#assignableDigitalResource) inherits all the
+properties and requirements defined for its supertype [DigitalResource](#digitalResource).
+Additional properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3179,14 +4198,14 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AssignableDigitalResource](#assignableDigitalResource) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [AssignableDigitalResource](#assignableDigitalResource) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the resource was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the resource MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the resource was activated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
-| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the resource can be started MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [AssignableDigitalResource](#assignableDigitalResource) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AssignableDigitalResource](#assignableDigitalResource) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the resource was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the resource MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToActivate | DateTime | A date and time value expressed with millisecond precision that describes when the resource was activated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional | 
+| dateToShow | DateTime | A date and time value expressed with millisecond precision that describes when the resource should be shown or made available to learners MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToStartOn | DateTime | A date and time value expressed with millisecond precision that describes when the resource can be started MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateToSubmit | DateTime | A date and time value expressed with millisecond precision that describes when the resource is to be submitted for evaluation MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | maxAttempts | integer | A non-negative integer that designates the number of permitted attempts MAY be specified. | Optional |
 | maxSubmits | integer | A non-negative integer that designates the number of permitted submissions MAY be specified. | Optional |
 | maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
@@ -3194,15 +4213,18 @@ http://purl.imsglobal.org/caliper/AssignableDigitalResource
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AssignableDigitalResource](#assignableDigitalResource). | Optional |
 
 #### Deprecated Properties
-The following [AssignableDigitalResource](#assignableDigitalResource) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [AssignableDigitalResource](#assignableDigitalResource)
+properties have been DEPRECATED and MUST NOT be utilized. The properties will
+be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes 
-[Assessment](#assessment), [AssessmentItem](#assessmentItem)
+[Assessment](#assessment),
+[AssessmentItem](#assessmentItem)
 
 #### Example
 ```
@@ -3226,7 +4248,11 @@ The following [AssignableDigitalResource](#assignableDigitalResource) properties
 <a name="attempt" />
 
 ### C.7 Attempt
-A Caliper [Attempt](#attempt) provides a count of the number of times an actor has interacted with an [AssignableDigitalResource](#assignabledigitalresource) along with start time, end time and duration information.  An [Attempt](#attempt) is generated as the result of an action such as starting an [Assessment](#assessment).
+A Caliper [Attempt](#attempt) provides a count of the number of times an actor
+has interacted with an [AssignableDigitalResource](#assignabledigitalresource)
+along with start time, end time and duration information.
+An [Attempt](#attempt) is generated as the result of an action
+such as starting an [Assessment](#assessment).
 
 #### IRI
 http://purl.imsglobal.org/caliper/Attempt
@@ -3235,7 +4261,9 @@ http://purl.imsglobal.org/caliper/Attempt
 [Entity](#entity)
 
 #### Properties
-[Attempt](#attempt) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+[Attempt](#attempt) inherits all the properties and requirements defined for
+its supertype [Entity](#entity). Additional properties and requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3243,19 +4271,20 @@ http://purl.imsglobal.org/caliper/Attempt
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Attempt*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Attempt](#attempt) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Attempt](#attempt) MAY be specified. | Optional |
-| assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) of the assigned [DigitalResource](#digitalResource) SHOULD be specified.  The `assignee` value MUST be expressed either as an object or coerced to a string corresponding to the assignee's [IRI](#iriDef). | Recommended |
-| assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified.  The `assignable` value MUST be expressed either as an object or coerced to a string corresponding to the assigned resource's [IRI](#iriDef). | Recommended |
-| isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated attempt's [IRI](#iriDef). | Optional |
+| assignee | [Person](#person) | The [Person](#person) who initiated the [Attempt](#attempt) of the assigned [DigitalResource](#digitalResource) SHOULD be specified. The `assignee` value MUST be expressed either as an object or coerced to a string corresponding to the assignee's [IRI](#iriDef). | Recommended |
+| assignable | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that constitutes the object of the assignment SHOULD be specified. The `assignable` value MUST be expressed either as an object or coerced to a string corresponding to the assigned resource's [IRI](#iriDef). | Recommended |
+| isPartOf | [Attempt](#attempt) | The parent [Attempt](#attempt), if any, MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated attempt's [IRI](#iriDef). | Optional |
 | count | integer | The total number of attempts inclusive of the current attempt that have been registered against the assigned [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [Attempt](#attempt) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Attempt](#attempt) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [Attempt](#attempt) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Attempt](#attempt). | Optional |
 
 #### Deprecated Properties
-The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Attempt](#attempt) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3295,7 +4324,9 @@ http://purl.imsglobal.org/caliper/AudioObject
 [MediaObject](#mediaObject)
 
 #### Properties
-[AudioObject](#audioObject) inherits all the properties and requirements defined for its supertype [MediaObject](#mediaObject).  Additional properties are described below:
+[AudioObject](#audioObject) inherits all the properties and requirements
+defined for its supertype [MediaObject](#mediaObject). Additional properties
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3307,25 +4338,27 @@ http://purl.imsglobal.org/caliper/AudioObject
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [AudioObject](#audioObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [AudioObject](#audioObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [AudioObject](#audioObject) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [AudioObject](#audioObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [AudioObject](#audioObject) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | volumeLevel | string | A string value indicating the current volume level MAY be specified. | Optional |
 | volumeMin | string | A string value indicating the minimum volume level permitted MAY be specified. | Optional |
 | volumeMax | string | A string value indicating the maximum volume level permitted MAY be specified. | Optional |
 | muted | Boolean | An optional boolean value indicating whether or not the AudioObject has been muted MAY be specified. | Optional |
-| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [AudioObject](#audioObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AudioObject](#audioObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [AudioObject](#audioObject) at normal speed MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [AudioObject](#audioObject) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [AudioObject](#audioObject) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [AudioObject](#audioObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [AudioObject](#audioObject). | Optional |
 
 #### Deprecated Properties
-The following [AudioObject](#audioObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [AudioObject](#audioObject) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -3343,7 +4376,8 @@ The following [AudioObject](#audioObject) properties have been DEPRECATED and MU
 <a name="bookmarkAnnotation" />
 
 ### C.9 BookmarkAnnotation
-A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of marking a [DigitalResource](#digitalResource) at a particular location.
+A Caliper [BookmarkAnnotation](#bookmarkAnnotation) represents the act of
+marking a [DigitalResource](#digitalResource) at a particular location.
 
 #### IRI
 http://purl.imsglobal.org/caliper/BookmarkAnnotation
@@ -3352,7 +4386,9 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 [Annotation](#annotation)
 
 #### Properties
-[BookmarkAnnotation](#bookmarkAnnotation) inherits all the properties and requirements defined for its supertype [Annotation](#annotation).  Additional properties and requirements are described below:
+[BookmarkAnnotation](#bookmarkAnnotation) inherits all the properties and
+requirements defined for its supertype [Annotation](#annotation). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3360,11 +4396,11 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [BookmarkAnnotation](#bookmarkAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [BookmarkAnnotation](#bookmarkAnnotation) MAY be specified. | Optional |
-| annotator | [Person](#person) | The [Person](#person) who created the [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
+| annotator | [Person](#person) | The [Person](#person) who created the [BookmarkAnnotation](#bookmarkAnnotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified. The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
 | bookmarkNotes | string | A string value comprising a plain text rendering of the note that accompanies the bookmark MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [BookmarkAnnotation](#bookmarkAnnotation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [BookmarkAnnotation](#bookmarkAnnotation). | Optional |
 
 #### Example
@@ -3389,7 +4425,8 @@ http://purl.imsglobal.org/caliper/BookmarkAnnotation
 <a name="chapter" />
 
 ### C.10 Chapter
-A Caliper [Chapter](#chapter) represents a major sub-division of a piece of digital content.
+A Caliper [Chapter](#chapter) represents a major sub-division of a piece of
+digital content.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Chapter
@@ -3398,7 +4435,9 @@ http://purl.imsglobal.org/caliper/Chapter
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Chapter](#chapter) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[Chapter](#chapter) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3410,20 +4449,21 @@ http://purl.imsglobal.org/caliper/Chapter
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Chapter](#chapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Chapter](#chapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Chapter](#chapter) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Chapter](#chapter) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Chapter](#chapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Chapter](#chapter) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Chapter](#chapter) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Chapter](#chapter) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Chapter](#chapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Chapter](#chapter). | Optional |
 
 #### Deprecated Properties
-The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -3445,7 +4485,11 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 <a name="courseOffering" />
 
 ### C.11 CourseOffering
-A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
+A Caliper [CourseOffering](#courseOffering) represents the occurrence of a
+course or a type during a specified time period.
+[CourseOffering](#courseOffering) is composed of a subset of properties
+specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws
+inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### IRI
 http://purl.imsglobal.org/caliper/CourseOffering
@@ -3454,7 +4498,9 @@ http://purl.imsglobal.org/caliper/CourseOffering
 [Organization](#organization)
 
 #### Properties
-[CourseOffering](#courseOffering) inherits all the properties and requirements defined for its supertype [Organization](#organization).  Additional properties and requirements are described below:
+[CourseOffering](#courseOffering) inherits all the properties and requirements
+defined for its supertype [Organization](#organization). Additional properties
+and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3464,10 +4510,10 @@ http://purl.imsglobal.org/caliper/CourseOffering
 | academicSession | string | A string value that constitutes a human-readable identifier of the designated period in which this [CourseOffering](#courseOffering) occurs SHOULD be specified. | Recommended |
 | name | string | A string value comprising a word or phrase by which the [CourseOffering](#courseOffering) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [CourseOffering](#courseOffering) MAY be specified. | Optional |
-| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseOffering](#courseOffering) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
+| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseOffering](#courseOffering) MAY be specified. The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | Array | An ordered collection of [CourseSection](#courseOffering), [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseOffering](#courseOffering) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [CourseOffering](#courseOffering). | Optional |
 
 #### Subtypes 
@@ -3490,7 +4536,11 @@ http://purl.imsglobal.org/caliper/CourseOffering
 <a name="courseSection" />
 
 ### C.12 CourseSection
-A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.0](#lti) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
+A Caliper [CourseSection](#courseSection) represents a specific instance of
+a [CourseOffering](#courseOffering) occurring during a specific semester, term
+or period. [CourseSection](#courseSection) is composed of a subset of
+properties specified in the IMS [LTI 2.0](#lti) specification, which in turn,
+draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
 #### IRI
 http://purl.imsglobal.org/caliper/CourseSection
@@ -3499,7 +4549,9 @@ http://purl.imsglobal.org/caliper/CourseSection
 [CourseOffering](#courseOffering)
 
 #### Properties
-[CourseSection](#courseSection) inherits all the properties and requirements defined for its supertype [CourseOffering](#courseOffering).  Additional properties and requirements are described below:
+[CourseSection](#courseSection) inherits all the properties and requirements
+defined for its supertype [CourseOffering](#courseOffering). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3510,10 +4562,10 @@ http://purl.imsglobal.org/caliper/CourseSection
 | name | string | A string value comprising a word or phrase by which the [CourseSection](#courseSection) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [CourseSection](#courseSection) MAY be specified. | Optional |
 | category | string | A string value that characterizes the purpose of the section such as "lecture", "lab" or "seminar" MAY be specified. | Optional |
-| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseSection](#courseSection) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
+| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [CourseSection](#courseSection) MAY be specified. The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | Array | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [CourseSection](#courseSection) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [CourseSection](#courseSection). | Optional |
 
 #### Example
@@ -3538,9 +4590,11 @@ http://purl.imsglobal.org/caliper/CourseSection
 <a name="digitalResource" />
 
 ### C.13 DigitalResource
-A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.
+A Caliper [DigitalResource](#digitalResource) is a generic type that represents
+digital content.
 
-Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists to represent the resource being described.
+Utilize [DigitalResource](#digitalResource) only if no suitable subtype exists
+to represent the resource being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/DigitalResource
@@ -3549,7 +4603,9 @@ http://purl.imsglobal.org/caliper/DigitalResource
 [Entity](#entity)
 
 #### Properties
-[DigitalResource](#digitalResource) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+[DigitalResource](#digitalResource) inherits all the properties and
+requirements defined for its supertype [Entity](#entity). Additional properties
+and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3561,26 +4617,43 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of the resource MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the resource MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with the resource MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates the resource as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the resource was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the resource was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the resource MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates the resource as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the resource was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the resource was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the resource MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the resource MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the resource. | Optional |
 
 #### Deprecated Properties
-The following [DigitalResource](#digitalResource) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [DigitalResource](#digitalResource) properties have been
+DEPRECATED and MUST NOT be utilized. The properties will be removed in a future
+version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes
-[AssignableDigitalResource](#assignableDigitalResource), [Chapter](#chapter), [DigitalResourceCollection](#digitalResourceCollection), [Document](#document), [Forum](#forum), [Frame](#frame), [MediaLocation](#mediaLocation), [MediaObject](#mediaobject), [Message](#message), [Page](#page), [Thread](#thread), [WebPage](#webPage)
+[AssignableDigitalResource](#assignableDigitalResource),
+[Chapter](#chapter),
+[DigitalResourceCollection](#digitalResourceCollection),
+[Document](#document),
+[Forum](#forum),
+[Frame](#frame),
+[MediaLocation](#mediaLocation),
+[MediaObject](#mediaobject),
+[Message](#message), 
+[Page](#page),
+[Thread](#thread),
+[WebPage](#webPage)
 
 #### Deprecated subtypes
-[EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume), [Reading](#reading)
+[EpubChapter](#epubChapter),
+[EpubPart](#epubPart),
+[EpubSubChapter](#epubSubChapter),
+[EpubVolume](#epubVolume),
+[Reading](#reading)
 
 #### Example
 ```
@@ -3612,7 +4685,8 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 <a name="digitalResourceCollection" />
 
 ### C.14 DigitalResourceCollection
-A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
+A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an
+ordered collection of [DigitalResource](#digitalResource) entities.
 
 #### IRI
 http://purl.imsglobal.org/caliper/DigitalResourceCollection
@@ -3621,7 +4695,10 @@ http://purl.imsglobal.org/caliper/DigitalResourceCollection
 [DigitalResource](#digitalResource)
 
 #### Properties
-[DigitalResourceCollection](#digitalResourceCollection) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[DigitalResourceCollection](#digitalResourceCollection) inherits all the
+properties and requirements defined for its
+supertype [DigitalResource](#digitalResource). Additional properties and
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3633,24 +4710,28 @@ http://purl.imsglobal.org/caliper/DigitalResourceCollection
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [DigitalResourceCollection](#digitalResourceCollection) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [DigitalResourceCollection](#digitalResourceCollection) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | items | Array | An ordered collection of [DigitalResource](#digitalResource) entities that comprise this collection MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the collection was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the collection was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the collection MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the collection was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the collection was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the collection MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [DigitalResourceCollection](#digitalResourceCollection) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [DigitalResourceCollection](#digitalResourceCollection). | Optional |
 
 #### Deprecated Properties
-The following [DigitalResourceCollection](#digitalResourceCollection) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [DigitalResourceCollection](#digitalResourceCollection)
+properties have been DEPRECATED and MUST NOT be utilized. The properties will
+be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes 
-[Assessment](#assessment), [Forum](#forum), [Thread](#thread)
+[Assessment](#assessment),
+[Forum](#forum), 
+[Thread](#thread)
 
 #### Example
 ```
@@ -3705,7 +4786,9 @@ http://purl.imsglobal.org/caliper/Document
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Document](#document) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[Document](#document) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional properties and
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3717,20 +4800,21 @@ http://purl.imsglobal.org/caliper/Document
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Document](#document) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Document](#document) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Document](#document) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Document](#document) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Document](#document) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Document](#document) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Document](#document) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Document](#document) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Document](#document) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Document](#document). | Optional | 
 
 #### Deprecated Properties
-The following [Document](#document) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Document](#document) properties have been DEPRECATED and MUST
+NOT be utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -3759,7 +4843,10 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 <a name="epubChapter" />
 
 ### C.16 EpubChapter (DEPRECATED)
-A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [EpubChapter](#epubChapter) represents a major structural division of
+a piece of writing. [EpubChapter](#epubChapter) is a DEPRECATED entity that
+will be removed in a future version of the specification. It SHOULD NOT be
+referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/EpubChapter
@@ -3768,7 +4855,9 @@ http://purl.imsglobal.org/caliper/EpubChapter
 [DigitalResource](#digitalResource)
 
 #### Properties
-[EpubChapter](#epubChapter) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[EpubChapter](#epubChapter) inherits all the properties and requirements
+defined for its supertype [DigitalResource](#digitalResource). Additional
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3780,25 +4869,30 @@ http://purl.imsglobal.org/caliper/EpubChapter
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubChapter](#epubChapter) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubChapter](#epubChapter) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubChapter](#epubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubChapter](#epubChapter) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubChapter](#epubChapter) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubChapter](#epubChapter) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [EpubChapter](#epubChapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubChapter](#epubChapter). | Optional |
  
 #### Deprecated Properties
-The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [EpubChapter](#epubChapter) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubPart" />
 
 ### C.17 EpubPart (DEPRECATED)
-A Caliper [EpubPart](#epubPart) represents a major structural division of a piece of writing, typically encapsulating a set of related chapters.  [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [EpubPart](#epubPart) represents a major structural division of a
+piece of writing, typically encapsulating a set of related
+chapters. [EpubPart](#epubPart) is a DEPRECATED entity that will be removed in
+a future version of the specification. It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/EpubPart
@@ -3807,7 +4901,9 @@ http://purl.imsglobal.org/caliper/EpubPart
 [DigitalResource](#digitalResource)
 
 #### Properties
-[EpubPart](#epubPart) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[EpubPart](#epubPart) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3819,25 +4915,29 @@ http://purl.imsglobal.org/caliper/EpubPart
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubPart](#epubPart) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubPart](#epubPart) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubPart](#epubPart) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubPart](#epubPart) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubPart](#epubPart) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubPart](#epubPart) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubPart](#epubPart) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubPart](#epubPart) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [EpubPart](#epubPart) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubPart](#epubPart). | Optional |
   
 #### Deprecated Properties
-The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [EpubPart](#epubPart) properties have been DEPRECATED and MUST
+NOT be utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |   
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |   
 
 <a name="epubSubChapter" />
 
 ### C.18 EpubSubChapter (DEPRECATED)
-A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of an [EpubChapter](#epubChapter).  [EpubSubChapter](#epubSubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [EpubSubChapter](#epubSubChapter) represents a major sub-division of
+an [EpubChapter](#epubChapter). [EpubSubChapter](#epubSubChapter) is a
+DEPRECATED entity that will be removed in a future version of the
+specification. It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/EpubSubChapter
@@ -3846,7 +4946,9 @@ http://purl.imsglobal.org/caliper/EpubSubChapter
 [DigitalResource](#digitalResource)
 
 #### Properties
-[EpubSubChapter](#epubSubChapter) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[EpubSubChapter](#epubSubChapter) inherits all the properties and requirements
+defined for its supertype [DigitalResource](#digitalResource). Additional
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3858,25 +4960,31 @@ http://purl.imsglobal.org/caliper/EpubSubChapter
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
-| isPartOf | [EpubChapter](#epubChapter) | A related [EpubChapter](#epubChapter) that includes or incorporates this [EpubSubChapter](#epubSubChapter) as a part MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubSubChapter](#epubSubChapter) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [EpubChapter](#epubChapter) | A related [EpubChapter](#epubChapter) that includes or incorporates this [EpubSubChapter](#epubSubChapter) as a part MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubSubChapter](#epubSubChapter) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubSubChapter](#epubSubChapter) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [EpubSubChapter](#epubSubChapter) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubSubChapter](#epubSubChapter). | Optional |
  
 #### Deprecated Properties
-The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [EpubChapter](#epubChapter) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 <a name="epubVolume" />
 
 ### C.19 EpubVolume (DEPRECATED)
-A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [EpubVolume](#epubVolume) represents a component of a
+collection. EpubVolume inherits all the properties and requirements defined
+for [DigitalResource](#digitalResource), its
+supertype. [EpubVolume](#epubVolume) is a DEPRECATED entity that will be
+removed in a future version of the specification. It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/EpubVolume
@@ -3885,7 +4993,9 @@ http://purl.imsglobal.org/caliper/EpubVolume
 [DigitalResource](#digitalResource)
 
 #### Properties
-[EpubVolume](#epubVolume) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below: 
+[EpubVolume](#epubVolume) inherits all the properties and requirements defined
+for its supertype [DigitalResource](#digitalResource). Additional requirements
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3897,25 +5007,29 @@ http://purl.imsglobal.org/caliper/EpubVolume
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [EpubVolume](#epubVolume) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubVolume](#epubVolume) as a part MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubVolume](#epubVolume) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [EpubVolume](#epubVolume) as a part MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [EpubVolume](#epubVolume) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [EpubVolume](#epubVolume) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [EpubVolume](#epubVolume) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [EpubVolume](#epubVolume). | Optional |
  
 #### Deprecated Properties
-The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [EpubVolume](#epubVolume) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |  
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |  
 
 <a name="fillinBlankResponse" />
 
 ### C.20 FillinBlankResponse
-A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
+A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type
+of [Response](#response) in which a respondent is asked to provide one or more
+words, expressions or short phrases that correctly completes a statement.
 
 #### IRI
 http://purl.imsglobal.org/caliper/FillinBlankResponse
@@ -3924,7 +5038,9 @@ http://purl.imsglobal.org/caliper/FillinBlankResponse
 [Response](#response)
 
 #### Properties
-[FillinBlankResponse](#fillinBlankResponse) inherits all the properties and requirements defined for its supertype [Response](#response).  Additional properties and requirements are described below:
+[FillinBlankResponse](#fillinBlankResponse) inherits all the properties and
+requirements defined for its supertype [Response](#response). Additional
+properties and requirements are described below:
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -3932,21 +5048,23 @@ http://purl.imsglobal.org/caliper/FillinBlankResponse
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *FillinBlankResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [FillinBlankResponse](#fillinBlankResponse)  is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [FillinBlankResponse](#fillinBlankResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [FillinBlankResponse](#fillinBlankResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | An ordered collection of one or more string values representing words, expressions or short phrases that constitute the [FillinBlankResponse](#fillinBlankResponse) SHOULD be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [FillinBlankResponse](#fillinBlankResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [FillinBlankResponse](#fillinBlankResponse) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [FillinBlankResponse](#fillinBlankResponse) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [FillinBlankResponse](#fillinBlankResponse). | Optional |
 
 #### Deprecated Properties
-The following [FillinBlankResponse](#fillinBlankResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [FillinBlankResponse](#fillinBlankResponse) properties have been
+DEPRECATED and MUST NOT be utilized. The properties will be removed in a future
+version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -3984,7 +5102,10 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 <a name="forum" />
 
 ### C.21 Forum
-A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
+A Caliper [Forum](#forum) represents a channel or virtual space in which group
+discussions take place. A [Forum](#forum) typically comprises one or more
+threaded conversations to which members can subscribe, post messages and reply
+to other messages.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Forum
@@ -3993,7 +5114,9 @@ http://purl.imsglobal.org/caliper/Forum
 [DigitalResourceCollection](#digitalResourceCollection)
 
 #### Properties
-[Forum](#forum) inherits all the properties and requirements defined for its supertype [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
+[Forum](#forum) inherits all the properties and requirements defined for its
+supertype [DigitalResourceCollection](#digitalResourceCollection). Additional
+properties and requirements are described below:
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4005,21 +5128,22 @@ http://purl.imsglobal.org/caliper/Forum
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Forum](#forum) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Forum](#forum) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Forum](#forum) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Forum](#forum) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Forum](#forum) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | items | Array | An ordered collection of [Thread](#thread) entities that comprise this collection MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Forum](#forum) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Forum](#forum) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Forum](#forum) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Forum](#forum). | Optional |
  
 #### Deprecated Properties
-The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be
+utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
   
 #### Example
 ```
@@ -4064,7 +5188,8 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 <a name="frame" />
 
 ### C.22 Frame
-A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
+A Caliper [Frame](#frame) represents a part, portion or segment of
+a [DigitalResource](#digitalResource).
 
 #### IRI
 http://purl.imsglobal.org/caliper/Frame
@@ -4073,7 +5198,9 @@ http://purl.imsglobal.org/caliper/Frame
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Frame](#frame) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[Frame](#frame) inherits all the properties and requirements defined for its
+supertype [DigitalResource](#digitalResource). Additional properties and
+requirements are described below:
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4085,21 +5212,22 @@ http://purl.imsglobal.org/caliper/Frame
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Frame](#frame) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Frame](#frame) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Frame](#frame) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Frame](#frame) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Frame](#frame) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | index | integer | A non-negative integer that represents the position of the [Frame](#frame) SHOULD be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Frame](#frame) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Frame](#frame) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Frame](#frame) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Frame](#frame) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Frame](#frame). | Optional | 
 
 #### Deprecated Properties
-The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be
+utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated | 
 
 #### Example
 ```
@@ -4121,7 +5249,10 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 <a name="group" />
 
 ### C.23 Group
-A Caliper [Group](#group) represents an ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
+A Caliper [Group](#group) represents an ad-hoc, informal or short-lived
+collection of people organized for some common educational or social
+purpose. A [Group](#group) can act as an [Agent](#agent). It can be linked both
+to a parent [Organization](#organization) and to its `members`.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Group
@@ -4130,7 +5261,9 @@ http://purl.imsglobal.org/caliper/Group
 [Organization](#organization)
 
 #### Properties
-[Group](#group) inherits all the properties and requirements defined for its supertype [Organization](#organization).  Additional requirements are described below: 
+[Group](#group) inherits all the properties and requirements defined for its
+supertype [Organization](#organization). Additional requirements are described
+below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4138,10 +5271,10 @@ http://purl.imsglobal.org/caliper/Group
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Group*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Group](#group) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Group](#group) MAY be specified. | Optional |
-| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Group](#group) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
+| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Group](#group) MAY be specified. The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | Array | An ordered collection of [Group](#group) and/or [Person](#person) members MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Group](#group) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Group](#group). | Optional |
 
 #### Example
@@ -4188,7 +5321,9 @@ http://purl.imsglobal.org/caliper/Group
 <a name="highlightAnnotation" />
 
 ### C.24 HighlightAnnotation
-A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.
+A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of
+marking a particular segment of a [DigitalResource](#digitalResource) between
+two known coordinates.
   
 #### IRI
 http://purl.imsglobal.org/caliper/HighlightAnnotation 
@@ -4197,7 +5332,9 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 [Annotation](#annotation)
 
 #### Properties
-[HighlightAnnotation](#highlightAnnotation) inherits all the properties and requirements defined for its supertype [Annotation](#annotation).  Additional properties and requirements are described below: 
+[HighlightAnnotation](#highlightAnnotation) inherits all the properties and
+requirements defined for its supertype [Annotation](#annotation). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4205,12 +5342,12 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
-| annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
-| selection | [TextPositionSelector](#textPositionSelector) | The start and end positions of the highlighted text segment SHOULD be specified.  The first character in the full text is character position 0.  If a [TextPositionSelector](#textPositionSelector) is defined both its [start](#start) and [end](#end) positions MUST be specified. | Recommended |
+| annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified. The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
+| selection | [TextPositionSelector](#textPositionSelector) | The start and end positions of the highlighted text segment SHOULD be specified. The first character in the full text is character position 0. If a [TextPositionSelector](#textPositionSelector) is defined both its [start](#start) and [end](#end) positions MUST be specified. | Recommended |
 | selectionText | string | A string value representing a plain-text rendering of the highlighted segment of the annotated [DigitalResource](#digitalResource) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [HighlightAnnotation](#highlightAnnotation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [HighlightAnnotation](#highlightAnnotation). | Optional |
 
 #### Example
@@ -4249,7 +5386,9 @@ http://purl.imsglobal.org/caliper/ImageObject
 [MediaObject](#mediaObject)
 
 #### Properties
-[ImageObject](#imageObject) inherits all the properties and requirements defined for its supertype [MediaObject](#mediaObject).  Additional requirements are described below:
+[ImageObject](#imageObject) inherits all the properties and requirements
+defined for its supertype [MediaObject](#mediaObject). Additional requirements
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4261,21 +5400,23 @@ http://purl.imsglobal.org/caliper/ImageObject
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [ImageObject](#imageObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [ImageObject](#imageObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [ImageObject](#imageObject) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [ImageObject](#imageObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [ImageObject](#imageObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [ImageObject](#imageObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [ImageObject](#imageObject) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [ImageObject](#imageObject) at normal speed MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [ImageObject](#imageObject) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [ImageObject](#imageObject) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [ImageObject](#imageObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [ImageObject](#imageObject). | Optional |
 
 #### Deprecated Properties
-The following [ImageObject](#imageObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [ImageObject](#imageObject) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -4292,7 +5433,9 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 <a name="learningObjective" />
 
 ### C.26 LearningObjective
-A Caliper [LearningObjective](#learningObjective) represents a summary statement that outlines the learning-related goals that a learner is expected to attain as a result of engaging in a learning activity.
+A Caliper [LearningObjective](#learningObjective) represents a summary
+statement that outlines the learning-related goals that a learner is expected
+to attain as a result of engaging in a learning activity.
 
 #### IRI
 http://purl.imsglobal.org/caliper/LearningObjective
@@ -4301,7 +5444,9 @@ http://purl.imsglobal.org/caliper/LearningObjective
 [Entity](#entity)
 
 #### Properties
-[LearningObjective](#learningObjective) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional requirements are described below:
+[LearningObjective](#learningObjective) inherits all the properties and
+requirements defined for its supertype [Entity](#entity). Additional
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4309,8 +5454,8 @@ http://purl.imsglobal.org/caliper/LearningObjective
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *LearningObjective*. | Required |
 | name | string | A string value comprising a word or phrase by which the [LearningObjective](#learningObjective) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [LearningObjective](#learningObjective) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LearningObjective](#learningObjective) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [LearningObjective](#learningObjective). | Optional |
 
 #### Example
@@ -4344,7 +5489,8 @@ http://purl.imsglobal.org/caliper/LearningObjective
 <a name="ltiSession" />
 
 ### C.27 LtiSession
-A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer user session.
+A Caliper [LtiSession](#ltiSession) represents an [LTI](#lti) Tool Consumer
+user session.
 
 #### IRI
 http://purl.imsglobal.org/caliper/LtiSession
@@ -4353,7 +5499,9 @@ http://purl.imsglobal.org/caliper/LtiSession
 [Session](#session)
 
 #### Properties
-[LtiSession](#ltiSession) inherits all the properties and requirements defined for its supertype [Session](#session).  Additional properties and requirements are described below:
+[LtiSession](#ltiSession) inherits all the properties and requirements defined
+for its supertype [Session](#session). Additional properties and requirements
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4362,20 +5510,22 @@ http://purl.imsglobal.org/caliper/LtiSession
 | name | string | A string value comprising a word or phrase by which the [LtiSession](#ltiSession) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [LtiSession](#ltiSession) MAY be specified. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession) SHOULD be specified. | Optional |
-| launchParameters | Object | An object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specified.  LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [LtiSession](#ltiSession) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| launchParameters | Object | An object comprising LTI-specified launch parameters that provide Tool Consumer-related contextual information MAY be specified. LTI parameters of whatever type (i.e., required, recommended, optional, custom and extension) included in the launch request message MAY be referenced. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [LtiSession](#ltiSession) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [LtiSession](#ltiSession) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [LtiSession](#ltiSession). | Optional |
 
 #### Deprecated Properties
-The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [LtiSession](#ltiSession) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession). `actor` property has been DEPRECATED in and replaced by `user`. | Optional |
 
 #### Example
 ```
@@ -4435,8 +5585,9 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
 <a name="mediaLocation" />
 
 ### C.28 MediaLocation
-
-A Caliper [MediaLocation](#mediaLocation) provides the current playback position in a [MediaObject](#mediaObject) such as an [AudioObject](#audioObject) or [VideoObject](#videoObject).
+A Caliper [MediaLocation](#mediaLocation) provides the current playback
+position in a [MediaObject](#mediaObject) such as
+an [AudioObject](#audioObject) or [VideoObject](#videoObject).
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaLocation
@@ -4445,7 +5596,9 @@ http://purl.imsglobal.org/caliper/MediaLocation
 [DigitalResource](#digitalResource)
 
 #### Properties
-[MediaLocation](#mediaLocation) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
+[MediaLocation](#mediaLocation) inherits all the properties and requirements
+defined for its supertype [DigitalResource](#digitalResource). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4457,21 +5610,23 @@ http://purl.imsglobal.org/caliper/MediaLocation
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaLocation](#mediaLocation) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [MediaLocation](#mediaLocation) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| currentTime | Duration | A time interval or duration that represents the current playback position measured from the beginning of an [AudioObject](#audioObject) or [VideoObject](#videoObject) SHOULD be specified.  If a currentTime is specified the value MUST conform to the ISO-8601 duration format. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaLocation](#mediaLocation) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [MediaLocation](#mediaLocation) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| currentTime | Duration | A time interval or duration that represents the current playback position measured from the beginning of an [AudioObject](#audioObject) or [VideoObject](#videoObject) SHOULD be specified. If a currentTime is specified the value MUST conform to the ISO-8601 duration format. | Recommended |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaLocation](#mediaLocation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaLocation](#mediaLocation) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [MediaLocation](#mediaLocation) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaLocation](#mediaLocation). | Optional |
 
 #### Deprecated Properties
-The following [MediaLocation](#mediaLocation) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [MediaLocation](#mediaLocation) properties have been DEPRECATED
+and MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -4487,9 +5642,11 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 <a name="mediaObject" />
 
 ### C.29 MediaObject
-A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
+A Caliper [MediaObject](#mediaObject) represents a generic piece of media
+content.
 
-Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to represent the resource being described.
+Utilize [MediaObject](#mediaObject) only if no suitable subtype exists to
+represent the resource being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MediaObject
@@ -4498,7 +5655,9 @@ http://purl.imsglobal.org/caliper/MediaObject
 [DigitalResource](#digitalResource)
 
 #### Properties
-[MediaObject](#mediaObject) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
+[MediaObject](#mediaObject) inherits all the properties and requirements
+defined for its supertype [DigitalResource](#digitalResource). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4510,24 +5669,28 @@ http://purl.imsglobal.org/caliper/MediaObject
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [MediaObject](#mediaObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [MediaObject](#mediaObject) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [MediaObject](#mediaObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [MediaObject](#mediaObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaObject](#mediaObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [MediaObject](#mediaObject) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [MediaObject](#mediaObject) at normal speed MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MediaObject](#mediaObject) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [MediaObject](#mediaObject) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [MediaObject](#mediaObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MediaObject](#mediaObject). | Optional |
 
 #### Deprecated Properties
-The following [MediaObject](#mediaObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [MediaObject](#mediaObject) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Subtypes
-[AudioObject](#audioObject), [ImageObject](#imageObject), [VideoObject](#videoObject)
+[AudioObject](#audioObject),
+[ImageObject](#imageObject),
+[VideoObject](#videoObject)
 
 #### Example
 ```
@@ -4544,7 +5707,9 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 <a name="membership" />
 
 ### C.30 Membership
-A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.
+A Caliper [Membership](#membership) describes the relationship between
+an [Organization](#organization) and a [Person](#person) (i.e.,
+a [member](#member)) in terms of the roles assigned and current status.
   
 #### IRI
 http://purl.imsglobal.org/caliper/Membership  
@@ -4553,7 +5718,9 @@ http://purl.imsglobal.org/caliper/Membership
 [Entity](#entity)
 
 #### Properties
-[Membership](#membership) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+[Membership](#membership) inherits all the properties and requirements defined
+for its supertype [Entity](#entity). Additional properties and requirements are
+described below:
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4561,12 +5728,12 @@ http://purl.imsglobal.org/caliper/Membership
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Membership*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Membership](#membership) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Membership](#membership) MAY be specified. | Optional |
-| organization | [Organization](#organization) | The [Organization](#organization) associated with the [Membership](#membership) SHOULD be specified.  The `organization` value MUST be expressed either as an object or coerced to a string corresponding to the organization's [IRI](#iriDef). | Recommended |
-| member | [Person](#person) | The [Person](#person) associated with this [Membership](#membership) SHOULD be specified.  The `member` value MUST be expressed either as an object or coerced to a string corresponding to the member's [IRI](#iriDef). | Recommended |
-| roles | Array | An ordered collection of organizational roles assigned to the `member` MAY be specified.  If one or more roles are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles) terms. | Optional |
-| status | [Term](#term) | A string value that indicates the current standing of the `member` MAY be specified.  If a status is specified, the value be chosen from the list of Caliper defined [statuses](#statuses). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| organization | [Organization](#organization) | The [Organization](#organization) associated with the [Membership](#membership) SHOULD be specified. The `organization` value MUST be expressed either as an object or coerced to a string corresponding to the organization's [IRI](#iriDef). | Recommended |
+| member | [Person](#person) | The [Person](#person) associated with this [Membership](#membership) SHOULD be specified. The `member` value MUST be expressed either as an object or coerced to a string corresponding to the member's [IRI](#iriDef). | Recommended |
+| roles | Array | An ordered collection of organizational roles assigned to the `member` MAY be specified. If one or more roles are specified the value(s) MUST be chosen from the list of Caliper defined [roles](#roles) terms. | Optional |
+| status | [Term](#term) | A string value that indicates the current standing of the `member` MAY be specified. If a status is specified, the value be chosen from the list of Caliper defined [statuses](#statuses). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Membership](#membership) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Membership](#membership). | Optional |
 
 #### Example
@@ -4596,7 +5763,9 @@ http://purl.imsglobal.org/caliper/Membership
 <a name="message" />
 
 ### C.31 Message
-A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
+A Caliper [Message](#message) is a digital form of written communication sent
+to a recipient. A series of messages may constitute a [Thread](#thread) if they
+share a common subject and are connected by a reply or by date relationships.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Message
@@ -4605,7 +5774,9 @@ http://purl.imsglobal.org/caliper/Message
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Message](#message) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below: 
+[Message](#message) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional properties and
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4617,23 +5788,24 @@ http://purl.imsglobal.org/caliper/Message
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Message](#message) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Message](#message) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Message](#message) MAY be specified. | Optional |
-| isPartOf | [Thread](#thread) | A related [Thread](#thread) that includes or incorporates this [Message](#message) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated thread's [IRI](#iriDef). | Optional |
-| replyTo | [Message](#message) | A [Message](#message) that represents the post to which this [Message](#message) is directed in reply SHOULD be referenced.  The `replyTo` value MUST be expressed either as an object or coerced to a string corresponding to the associated message's [IRI](#iriDef). | Optional |
+| isPartOf | [Thread](#thread) | A related [Thread](#thread) that includes or incorporates this [Message](#message) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated thread's [IRI](#iriDef). | Optional |
+| replyTo | [Message](#message) | A [Message](#message) that represents the post to which this [Message](#message) is directed in reply SHOULD be referenced. The `replyTo` value MUST be expressed either as an object or coerced to a string corresponding to the associated message's [IRI](#iriDef). | Optional |
 | body | string | A string value comprising a plain-text rendering of the `body` content of the [Message](#message) MAY be specified. | Optional |
 | attachments | Array | An ordered collection of one or more [DigitalResource](#digitalResource) entities attached to this [Message](#message) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Message](#message) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Message](#message) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Message](#message) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Message](#message) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Message](#message). | Optional |
 
 #### Deprecated Properties
-The following [Message](#message) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Message](#message) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -4647,7 +5819,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
       "type": "Person"
     }
   ],
-  "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation.  They have not been tested for use in a production environment.  See the Caliper Implementation Guide for more details.",
+  "body": "The Caliper working group provides a set of Caliper Sensor reference implementations for the purposes of education and experimentation. They have not been tested for use in a production environment. See the Caliper Implementation Guide for more details.",
   "replyTo": {
     "id": "https://example.edu/terms/201701/courses/7/sections/1/forums/2/topics/1/messages/2",
     "type": "Message"
@@ -4676,7 +5848,9 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 <a name="multipleChoiceResponse" />
 
 ### C.32 MultipleChoiceResponse
-A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
+A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type
+of [Response](#response) in which a respondent is asked to provide the best
+possible answer from a list of choices.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MultipleChoiceResponse
@@ -4685,7 +5859,9 @@ http://purl.imsglobal.org/caliper/MultipleChoiceResponse
 [Response](#response)
 
 #### Properties
-[MultipleChoiceResponse](#multipleChoiceResponse) inherits all the properties and requirements defined for its supertype [Response](#response).  Additional properties and requirements are described below:
+[MultipleChoiceResponse](#multipleChoiceResponse) inherits all the properties
+and requirements defined for its supertype [Response](#response). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4693,21 +5869,23 @@ http://purl.imsglobal.org/caliper/MultipleChoiceResponse
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleChoiceResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MultipleChoiceResponse](#multipleChoiceResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleChoiceResponse](#multipleChoiceResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleChoiceResponse](#multipleChoiceResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | value | string | A string value that represents the selected option SHOULD be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleChoiceResponse](#multipleChoiceResponse) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [MultipleChoiceResponse](#multipleChoiceResponse) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MultipleChoiceResponse](#multipleChoiceResponse). | Optional |
 
 #### Deprecated Properties
-The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have
+been DEPRECATED and MUST NOT be utilized. The properties will be removed in a
+future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -4745,7 +5923,9 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 <a name="multipleResponseResponse" />
 
 ### C.33 MultipleResponseResponse
-A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
+A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a
+form of response in which a respondent is asked to select more than one correct
+answer from a list of choices.
 
 #### IRI
 http://purl.imsglobal.org/caliper/MultipleResponseResponse
@@ -4754,7 +5934,10 @@ http://purl.imsglobal.org/caliper/MultipleResponseResponse
 [Response](#response)
 
 #### Properties
-[MultipleResponseResponse](#multipleResponseResponse) inherits all the properties and requirements defined for its supertype [Response](#response).  Additional properties and requirements are described below:
+[MultipleResponseResponse](#multipleResponseResponse) inherits all the
+properties and requirements defined for its
+supertype [Response](#response). Additional properties and requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4762,21 +5945,23 @@ http://purl.imsglobal.org/caliper/MultipleResponseResponse
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *MultipleResponseResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [MultipleResponseResponse](#multipleResponseResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleResponseResponse](#multipleResponseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [MultipleResponseResponse](#multipleResponseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | An ordered collection of one or more selected options MAY be specified | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [MultipleResponseResponse](#multipleResponseResponse) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [MultipleResponseResponse](#multipleResponseResponse) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [MultipleResponseResponse](#multipleResponseResponse). | Optional |
 
 #### Deprecated Properties
-The following [MultipleResponseResponse](#multipleResponseResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [MultipleResponseResponse](#multipleResponseResponse) properties
+have been DEPRECATED and MUST NOT be utilized. The properties will be removed
+in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -4814,7 +5999,10 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 <a name="organization" />
 
 ### C.34 Organization
-A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
+A Caliper [Organization](#organization) represents a formal collection of
+people organized for some common educational, social or administrative
+purpose. An [Organization](#organization) can act as an [Agent](#agent). It can
+be linked both to a parent [Organization](#organization) and to its `members`.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Organization
@@ -4823,7 +6011,9 @@ http://purl.imsglobal.org/caliper/Organization
 [Agent](#agent)
 
 ### Required properties
-Organization inherits all the properties and requirements defined for [Agent](#agent), its supertype.  Additional properties and requirements are described below:
+Organization inherits all the properties and requirements defined
+for [Agent](#agent), its supertype. Additional properties and requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4831,14 +6021,16 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Organization*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Organization](#organization) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Organization](#organization) MAY be specified. | Optional |
-| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Organization](#organization) MAY be specified.  The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
+| subOrganizationOf | [Organization](#organization) | The parent [Organization](#organization) of this [Organization](#organization) MAY be specified. The `subOrganizationOf` value MUST be expressed either as an object or coerced to a string corresponding to the parent organization's [IRI](#iriDef). | Optional |
 | members | Array | An ordered collection of [Agent](#agent) members MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Organization](#organization) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Organization](#organization). | Optional |
 
 #### Subtypes 
-[CourseOffering](#courseOffering), [CourseSection](#courseSection), [Group](#group)
+[CourseOffering](#courseOffering),
+[CourseSection](#courseSection),
+[Group](#group)
 
 #### Example
 ```
@@ -4867,7 +6059,9 @@ http://purl.imsglobal.org/caliper/Page
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Page](#page) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[Page](#page) inherits all the properties and requirements defined for its
+supertype [DigitalResource](#digitalResource). Additional requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4879,20 +6073,21 @@ http://purl.imsglobal.org/caliper/Page
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Page](#page) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Page](#page) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Page](#page) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Page](#page) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Page](#page) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Page](#page) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Page](#page) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Page](#page) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Page](#page) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Page](#page). | Optional | 
 
 #### Deprecated Properties
-The following [Page](#page) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Page](#page) properties have been DEPRECATED and MUST NOT be
+utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -4919,7 +6114,8 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 <a name="person" />
 
 ### C.36 Person
-A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
+A Caliper [Person](#person) represents a human being, alive or deceased, real
+or imaginary.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Person
@@ -4928,7 +6124,8 @@ http://purl.imsglobal.org/caliper/Person
 [Agent](#agent)
 
 #### Properties
-[Person](#person) inherits all the properties and requirements defined for its supertype [Agent](#agent).  Additional requirements are described below:
+[Person](#person) inherits all the properties and requirements defined for its
+supertype [Agent](#agent). Additional requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4936,8 +6133,8 @@ http://purl.imsglobal.org/caliper/Person
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Person*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Person](#person) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Person](#person) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Person](#person) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Person](#person). | Optional |
 
 #### Example
@@ -4954,7 +6151,10 @@ http://purl.imsglobal.org/caliper/Person
 <a name="reading" />
 
 ### C.37 Reading (DEPRECATED)
-A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
+A Caliper [Reading](#reading) represents an item of paginated
+content. [Reading](#reading) is a DEPRECATED entity superseded
+by [Document](#document) that will be removed in a future version of the
+specification. It SHOULD NOT be referenced.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Reading
@@ -4963,7 +6163,9 @@ http://purl.imsglobal.org/caliper/Reading
 [DigitalResource](#digitalResource)
 
 #### Properties
-[Reading](#reading) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[Reading](#reading) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -4975,27 +6177,31 @@ http://purl.imsglobal.org/caliper/Reading
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Reading](#reading) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Reading](#reading) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Reading](#reading) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Reading](#reading) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Reading](#reading) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [Reading](#reading) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Reading](#reading) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Reading](#reading) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Reading](#reading) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Reading](#reading). | Optional |
 
 #### Deprecated Properties
-The following [Reading](#reading) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Reading](#reading) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 <a name="response" />
 
 ### C.38 Response
-A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [AssessmentItem](#assessmentItem).
+A Caliper [Response](#response) is a generic type that represents the selected
+option generated by a [Person](#person) interacting with
+an [AssessmentItem](#assessmentItem).
 
-Utilize [Response](#response) only if no suitable subtype exists to represent the response being described.
+Utilize [Response](#response) only if no suitable subtype exists to represent
+the response being described.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Response
@@ -5004,7 +6210,9 @@ http://purl.imsglobal.org/caliper/Response
 [Entity](#entity)
 
 #### Properties
-[Response](#response) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional properties and requirements are described below:
+[Response](#response) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional properties and
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5012,24 +6220,29 @@ http://purl.imsglobal.org/caliper/Response
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Response*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Response](#response)  is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Response](#response) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Response](#response) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response)  was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [Response](#response) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [Response](#response) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response)  was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Response](#response) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [Response](#response) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Response](#response). | Optional |
 
 #### Deprecated Properties
-The following [Response](#response) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Response](#response) properties have been DEPRECATED and MUST
+NOT be utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Subtypes
-[FillinBlankResponse](#fillinBlankResponse), [MultipleChoiceResponse](#multipleChoiceResponse), [MutlipleResponseResponse](#multipleResponseResponse), [SelectTextResponse](#selectTextResponse), [TrueFalseResponse](#trueFalseResponse)
+[FillinBlankResponse](#fillinBlankResponse),
+[MultipleChoiceResponse](#multipleChoiceResponse),
+[MutlipleResponseResponse](#multipleResponseResponse),
+[SelectTextResponse](#selectTextResponse),
+[TrueFalseResponse](#trueFalseResponse)
 
 #### Example
 ```
@@ -5080,7 +6293,8 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 <a name="result" />
 
 ### C.39 Result
-A Caliper [Result](#result) represents a grade applied to an assignment submission.
+A Caliper [Result](#result) represents a grade applied to an assignment
+submission.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Result
@@ -5089,7 +6303,9 @@ http://purl.imsglobal.org/caliper/Result
 [Entity](#entity)
 
 #### Properties
-[Result](#result) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+[Result](#result) inherits all the properties and requirements defined for its
+supertype [Entity](#entity). Additional properties and requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5097,25 +6313,26 @@ http://purl.imsglobal.org/caliper/Result
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Result*. | Required |
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
 | normalScore | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
 | penaltyScore | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
 | extraCreditScore | decimal | The number of extra credit points earned by the learner. | Optional |
-| totalScore | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
+| totalScore | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`. This value does not take into account the effects of curving. | Optional |
 | curvedTotalScore | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
 | curveFactor | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Plain text feedback provided by the scorer. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
 
 #### Deprecated Properties
-The following [Result](#result) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Result](#result) properties have been DEPRECATED and MUST NOT be
+utilized. The properties will be removed in a future version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -5157,7 +6374,9 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 <a name="selectTextResponse" />
 
 ### C.40 SelectTextResponse
-A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
+A Caliper [SelectTextResponse](#selectTextResponse) represents a type
+of [Response](#response) that identifies text or a mapping from a presented
+paragraph or list.
 
 #### IRI
 http://purl.imsglobal.org/caliper/SelectTextResponse
@@ -5166,7 +6385,9 @@ http://purl.imsglobal.org/caliper/SelectTextResponse
 [Response](#response)
 
 #### Properties
-[SelectTextResponse](#selectTextResponse) inherits all the properties and requirements defined for its supertype [Response](#response).  Additional properties and requirements are described below:
+[SelectTextResponse](#selectTextResponse) inherits all the properties and
+requirements defined for its supertype [Response](#response). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5174,21 +6395,23 @@ http://purl.imsglobal.org/caliper/SelectTextResponse
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SelectTextResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SelectTextResponse](#selectTextResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [SelectTextResponse](#selectTextResponse) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [SelectTextResponse](#selectTextResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [SelectTextResponse](#selectTextResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | values | Array | An ordered collection of one or more selected options MAY be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [SelectTextResponse](#selectTextResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [SelectTextResponse](#selectTextResponse) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [SelectTextResponse](#selectTextResponse) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SelectTextResponse](#selectTextResponse). | Optional |
 
 #### Deprecated Properties
-The following [SelectTextResponse](#selectTextResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [SelectTextResponse](#selectTextResponse) properties have been
+DEPRECATED and MUST NOT be utilized. The properties will be removed in a future
+version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -5235,7 +6458,9 @@ http://purl.imsglobal.org/caliper/Session
 [Entity](#entity)
 
 #### Properties
-[Session](#session) inherits all the properties and requirements defined for [Entity](#entity), its supertype.  Additional properties and requirements are described below:
+[Session](#session) inherits all the properties and requirements defined
+for [Entity](#entity), its supertype. Additional properties and requirements
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5244,19 +6469,20 @@ http://purl.imsglobal.org/caliper/Session
 | name | string | A string value comprising a word or phrase by which the [Session](#session) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Session](#session) MAY be specified. | Optional |
 | user | [Person](#person) | The [Person](#person) who initiated the [Session](#session) SHOULD be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [Session](#session) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [Session](#session) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Session](#session). | Optional |
 
 #### Deprecated Properties
-The following [Session](#session) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Session](#session) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
  
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession).  `actor` property has been DEPRECATED and replaced by `user`. | Optional |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who initiated the [LtiSession](#ltiSession). `actor` property has been DEPRECATED and replaced by `user`. | Optional |
 
 #### Subtypes
 [LtiSession](#ltiSession)
@@ -5278,7 +6504,8 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 <a name="sharedAnnotation" />
 
 ### C.42 SharedAnnotation
-A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
+A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a
+reference to a [DigitalResource](#digitalResource) with other agents.
 
 #### IRI
 http://purl.imsglobal.org/caliper/SharedAnnotation
@@ -5287,7 +6514,9 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 [Annotation](#annotation)
 
 #### Properties
-[SharedAnnotation](#sharedAnnotation) inherits all the properties and requirements defined for its supertype [Annotation](#annotation).  Additional properties and requirements are described below:
+[SharedAnnotation](#sharedAnnotation) inherits all the properties and
+requirements defined for its supertype [Annotation](#annotation). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5295,11 +6524,11 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SharedAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SharedAnnotation](#sharedAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [SharedAnnotation](#sharedAnnotation) MAY be specified. | Optional |
-| annotator | [Person](#person) | The [Person](#person) who created the [SharedAnnotation](#sharedAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
+| annotator | [Person](#person) | The [Person](#person) who created the [SharedAnnotation](#sharedAnnotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified. The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
 | withAgents | Array | An ordered collection of one or more [Agent](#agent) entities, typically of type [Person](#person), with whom the annotated [DigitalResource](#digitalResource) has been shared SHOULD be specified.. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SharedAnnotation](#sharedAnnotation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SharedAnnotation](#sharedAnnotation). | Optional |
 
 #### Example
@@ -5333,7 +6562,8 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 <a name="softwareApplication" />
 
 #### C.43 SoftwareApplication
-A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
+A Caliper [SoftwareApplication](#softwareApplication) represents a computer
+program, application, module, platform or system.
 
 #### IRI
 http://purl.imsglobal.org/caliper/SoftwareApplication
@@ -5342,7 +6572,9 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 [Agent](#agent)
 
 #### Properties
-[SoftwareApplication](#softwareApplication) inherits all the properties and requirements defined for its supertype [Agent](#agent).  Additional properties and requirements are described below:
+[SoftwareApplication](#softwareApplication) inherits all the properties and
+requirements defined for its supertype [Agent](#agent). Additional properties
+and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5350,8 +6582,8 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *SoftwareApplication*. | Required |
 | name | string | A string value comprising a word or phrase by which the [SoftwareApplication](#softwareApplication) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [SoftwareApplication](#softwareApplication) MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [SoftwareApplication](#softwareApplication) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | An optional string value that designates the current form or version of this [SoftwareApplication](#softwareApplication). | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [SoftwareApplication](#softwareApplication). | Optional |
 
@@ -5370,7 +6602,8 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 <a name="tagAnnotation" />
 
 ### C.44 TagAnnotation
-A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
+A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging
+a [DigitalResource](#digitalResource) with tags or labels.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TagAnnotation
@@ -5379,7 +6612,9 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 [Annotation](#annotation)
 
 #### Properties
-[TagAnnotation](#tagAnnotation) inherits all the properties and requirements defined for its supertype [Annotation](#annotation).  Additional properties and requirements are described below:
+[TagAnnotation](#tagAnnotation) inherits all the properties and requirements
+defined for its supertype [Annotation](#annotation). Additional properties and
+requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5387,11 +6622,11 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TagAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [TagAnnotation](#tagAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [TagAnnotation](#tagAnnotation) MAY be specified. | Optional |
-| annotator | [Person](#person) | The [Person](#person) who created the [TagAnnotation](#tagAnnotation) SHOULD be specified.  The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
-| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified.  The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef).  | Recommended |
+| annotator | [Person](#person) | The [Person](#person) who created the [TagAnnotation](#tagAnnotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
+| annotated | [DigitalResource](#digitalResource) | The [DigitalResource](#digitalResource) that was annotated by the `annotator` SHOULD be specified. The `annotated` value MUST be expressed either as an object or coerced to a string corresponding to the annotated resource's [IRI](#iriDef). | Recommended |
 | tags | Array | An ordered collection of one or more string values that represent the tags associated with the annotated [DigitalResource](#digitalResource) SHOULD be specified. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TagAnnotation](#tagAnnotation) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [TagAnnotation](#tagAnnotation). | Optional |
 
 #### Example
@@ -5416,7 +6651,8 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 <a name="thread" />
 
 ### C.45 Thread
-A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
+A Caliper [Thread](#thread) represents a series of one or more messages that
+share a common subject and are connected by a reply or by date relationships.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Thread
@@ -5425,7 +6661,9 @@ http://purl.imsglobal.org/caliper/Thread
 [DigitalResourceCollection](#digitalResourceCollection)
 
 #### Properties
-[Thread](#thread) inherits all the properties and requirements defined for its supertype [DigitalResourceCollection](#digitalResourceCollection).  Additional properties and requirements are described below:
+[Thread](#thread) inherits all the properties and requirements defined for its
+supertype [DigitalResourceCollection](#digitalResourceCollection). Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5437,21 +6675,22 @@ http://purl.imsglobal.org/caliper/Thread
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [Thread](#thread) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [Thread](#thread) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [Thread](#thread) MAY be specified. | Optional |
-| isPartOf | [Forum](#forum) | A related [Forum](#forum) that includes or incorporates this [Thread](#thread) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| isPartOf | [Forum](#forum) | A related [Forum](#forum) that includes or incorporates this [Thread](#thread) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
 | items | Array | An ordered collection of [Message](#message) entities that comprise this collection MAY be specified. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Thread](#thread) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Thread](#thread) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [Thread](#thread) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [Forum](#forum) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Thread](#thread). | Optional |
  
 #### Deprecated Properties
-The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be
+utilized. The properties will be removed in a future version of Caliper.
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -5503,7 +6742,9 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 <a name="trueFalseResponse" />
 
 ### C.46 TrueFalseResponse
-A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
+A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type
+of [Response](#response) to an [AssessmentItem](#assessmentItem) in which only
+two possible options are provided (e.g., true/false, yes/no).
 
 #### IRI
 http://purl.imsglobal.org/caliper/TrueFalseResponse
@@ -5512,7 +6753,9 @@ http://purl.imsglobal.org/caliper/TrueFalseResponse
 [Response](#response)
 
 #### Properties
-[TrueFalseResponse](#trueFalseResponse) inherits all the properties and requirements defined for [Response](#response), its supertype.  Additional properties and requirements are described below:
+[TrueFalseResponse](#trueFalseResponse) inherits all the properties and
+requirements defined for [Response](#response), its supertype. Additional
+properties and requirements are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5520,21 +6763,23 @@ http://purl.imsglobal.org/caliper/TrueFalseResponse
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TrueFalseResponse*. | Required |
 | name | string | A string value comprising a word or phrase by which the [TrueFalseResponse](#trueFalseResponse) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [TrueFalseResponse](#trueFalseResponse) MAY be specified. | Optional |
-| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [TrueFalseResponse](#trueFalseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified. The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef). If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who initiated the [TrueFalseResponse](#trueFalseResponse) and the relevant [AssessmentItem](#assessmentItem). | Recommended |
 | value | string | A string value that provides the true/false, yes/no binary selection SHOULD be provided. | Recommended |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was commenced SHOULD be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
-| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was completed or terminated MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| duration | Duration | A time interval that represents the time taken to complete the [TrueFalseResponse](#trueFalseResponse) MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| startedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was commenced SHOULD be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Recommended |
+| endedAtTime | DateTime | A date and time value expressed with millisecond precision that describes when the [TrueFalseResponse](#trueFalseResponse) was completed or terminated MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| duration | Duration | A time interval that represents the time taken to complete the [TrueFalseResponse](#trueFalseResponse) MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [TrueFalseResponse](#trueFalseResponse). | Optional |
 
 #### Deprecated Properties
-The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [TrueFalseResponse](#trueFalseResponse) properties have been
+DEPRECATED and MUST NOT be utilized. The properties will be removed in a future
+version of Caliper.
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
-| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Response](#response). `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [AssessmentItem](#assessmentItem) | The [AssessmentItem](#assessmentItem) associated with the [Response](#response). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 
 #### Example
@@ -5572,7 +6817,8 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 <a name="videoObject" />
 
 ### C.47 VideoObject
-A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
+A Caliper [VideoObject](#videoObject) represents a visual recording stored in
+digital form.
 
 #### IRI
 http://purl.imsglobal.org/caliper/VideoObject
@@ -5581,7 +6827,9 @@ http://purl.imsglobal.org/caliper/VideoObject
 [MediaObject](#mediaObject)
 
 #### Properties
-[VideoObject](#videoObject) inherits all the properties and requirements defined for its supertype [MediaObject](#mediaObject).  Additional requirements are described below:
+[VideoObject](#videoObject) inherits all the properties and requirements
+defined for its supertype [MediaObject](#mediaObject). Additional requirements
+are described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5593,21 +6841,23 @@ http://purl.imsglobal.org/caliper/VideoObject
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [VideoObject](#videoObject) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [VideoObject](#videoObject) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [VideoObject](#videoObject) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [VideoObject](#videoObject) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [VideoObject](#videoObject) at normal speed MAY be specified.  If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [VideoObject](#videoObject) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [VideoObject](#videoObject) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| duration | Duration | An optional time interval that represents the total time required to view and/or listen to the [VideoObject](#videoObject) at normal speed MAY be specified. If a duration is specified the value MUST conform to the ISO-8601 duration format. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [VideoObject](#videoObject) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [VideoObject](#videoObject) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [VideoObject](#videoObject) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [VideoObject](#videoObject). | Optional |
 
 #### Deprecated Properties
-The following [VideoObject](#videoObject) properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [VideoObject](#videoObject) properties have been DEPRECATED and
+MUST NOT be utilized. The properties will be removed in a future version of
+Caliper.
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -5627,7 +6877,8 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 <a name="webPage" />
 
 ### C.48 WebPage
-A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
+A Caliper [WebPage](#webPage) represents a document containing markup that is
+suitable for display in a web browser.
 
 #### IRI
 http://purl.imsglobal.org/caliper/WebPage
@@ -5636,7 +6887,9 @@ http://purl.imsglobal.org/caliper/WebPage
 [DigitalResource](#digitalResource)
 
 #### Properties
-[WebPage](#webPage) inherits all the properties and requirements defined for its supertype [DigitalResource](#digitalResource).  Additional requirements are described below:
+[WebPage](#webPage) inherits all the properties and requirements defined for
+its supertype [DigitalResource](#digitalResource). Additional requirements are
+described below:
 
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
@@ -5648,20 +6901,21 @@ http://purl.imsglobal.org/caliper/WebPage
 | mediaType | string | A string value drawn from the list of [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) approved media types and subtypes that identifies the file format of this [WebPage](#webPage) MAY be specified. | Optional |
 | keywords | Array | An ordered collection of one or more string values that represent tags or labels used to identify the [WebPage](#webPage) MAY be specified. | Optional |
 | learningObjectives | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with this [WebPage](#webPage) MAY be specified. | Optional |
-| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [WebPage](#webPage) as a part of its whole MAY be specified.  The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
-| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
-| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [WebPage](#webPage) MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| isPartOf | [Entity](#entity) | A related [Entity](#entity) that includes or incorporates this [WebPage](#webPage) as a part of its whole MAY be specified. The `isPartOf` value MUST be expressed either as an object or coerced to a string corresponding to the associated entity's [IRI](#iriDef). | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was created MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [WebPage](#webPage) was last changed or modified MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| datePublished | DateTime | A date and time value expressed with millisecond precision that provides the publication date of the [WebPage](#webPage) MAY be specified. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
 | version | string | A string value that designates the current form or version of the [WebPage](#webPage) MAY be specified. | Optional |
 | extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [WebPage](#webPage). | Optional |
 
 #### Deprecated Properties
-The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT be utilized.  The properties will be removed in a future version of Caliper.  
+The following [WebPage](#webPage) properties have been DEPRECATED and MUST NOT
+be utilized. The properties will be removed in a future version of Caliper.
   
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Deprecated |
-| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
+| ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource). `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Deprecated |
 
 #### Example
 ```
@@ -5683,12 +6937,16 @@ The following [WebPage](#webPage)  properties have been DEPRECATED and MUST NOT 
 <a name="selectors" />
 
 ## Appendix D. Selectors
-A Caliper Selector represents a fragment, selection or part of an [Entity](#entity).
+A Caliper Selector represents a fragment, selection or part of
+an [Entity](#entity).
 
 <a name="textPositionSelector" />
 
 ### D.1 TextPositionSelector
-A Caliper [TextPositionSelector](#textPositionSelector) represents a fragment or selection of textual content, the starting and ending positions of which are determined by the distance in characters from the initial character (position 0) of the enclosing full text.
+A Caliper [TextPositionSelector](#textPositionSelector) represents a fragment
+or selection of textual content, the starting and ending positions of which are
+determined by the distance in characters from the initial character (position
+0) of the enclosing full text.
 
 #### IRI
 http://purl.imsglobal.org/caliper/TextPositionSelector
@@ -5697,7 +6955,7 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | type| [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *TextPositionSelector*. | Required |
-| start | integer | The starting position of the selected text MUST be specified.  The first character in the full text is character position 0. | Required |
+| start | integer | The starting position of the selected text MUST be specified. The first character in the full text is character position 0. | Required |
 | end | integer | The end position of the selected text MUST be specified. | Required |
 
 ```
@@ -5728,7 +6986,10 @@ http://purl.imsglobal.org/caliper/TextPositionSelector
 ## Appendix E. Roles
 
 ### Roles
-One or more roles assigned to a [member](#member) of an organization can be specified.  Typical roles include learner, instructor, teaching assistant, mentor or administrator.  The value MUST be set to the appropriate [Term](#term) string value:
+One or more roles assigned to a [member](#member) of an organization can be
+specified. Typical roles include learner, instructor, teaching assistant,
+mentor or administrator. The value MUST be set to the appropriate [Term](#term)
+string value:
 
 | Term | IRI |
 | :--- | :-- | 
@@ -5788,7 +7049,9 @@ One or more roles assigned to a [member](#member) of an organization can be spec
 <a name="status" />
 
 ## Appendix F. Status
-The status of a [member](#member) within an organization can be set to one of the following states: active or inactive.  The value MUST be set to the appropriate [Term](#term) string value:
+The status of a [member](#member) within an organization can be set to one of
+the following states: active or inactive. The value MUST be set to the
+appropriate [Term](#term) string value:
 
 | Term | IRI |
 | :--- | :-- | 
@@ -5815,14 +7078,14 @@ Caliper 1.1 additions and deprecations are summarized below.
 ### G.2 Actions
 | Actions | Status | WordNet® Gloss |
 | :------ | :----: | :------------- |
-| [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
-| [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v).  Inverse of [Deleted](#deleted). |
-| [Deleted](#deleted) | New | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v).  Inverse of [Created](#created). |
-| [MarkedAsRead](#markedAsRead) | New | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [Read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v).  Inverse of [MarkedAsUnread](#markedAsUnread). |
+| [Added](#added) | New | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v). Inverse of [Removed](#removed). |
+| [Created](#created) | New | [Make or cause to be or to become](http://wordnet-rdf.princeton.edu/wn31/201620211-v). Inverse of [Deleted](#deleted). |
+| [Deleted](#deleted) | New | [Wipe out digitally](http://wordnet-rdf.princeton.edu/wn31/201001860-v). Inverse of [Created](#created). |
+| [MarkedAsRead](#markedAsRead) | New | [Mark: designate as if by a mark](http://wordnet-rdf.princeton.edu/wn31/200923709-v), [Read: interpret something that is written or printed](http://wordnet-rdf.princeton.edu/wn31/200626756-v). Inverse of [MarkedAsUnread](#markedAsUnread). |
 | [MarkedAsUnread](#markedAsUnread) | New | Inverse of [MarkedAsRead](#markedAsRead). |
 | [Modified](#modified) | New | [Cause to change; make different; cause a transformation](http://wordnet-rdf.princeton.edu/wn31/200126072-v). |
-| [Posted](#posted) | New  | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v).  |
-| [Removed](#removed) | New | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v).  Inverse of [Added](#added). |
+| [Posted](#posted) | New  | [To cause to be directed or transmitted to another place](http://wordnet-rdf.princeton.edu/wn31/201033289-v). |
+| [Removed](#removed) | New | [Remove from sight](http://wordnet-rdf.princeton.edu/wn31/200181704-v). Inverse of [Added](#added). |
 | [Reset](#reset) | New | [Set anew](http://wordnet-rdf.princeton.edu/wn31/200949623-v) without changing or incrementing the [Attempt] `count` value. |
 | [Retrieved](#retrieved) | New | [Obtain or retrieve from a storage device; as of information on a computer](http://wordnet-rdf.princeton.edu/wn31/202253616-v). |
 | [Unsubscribed](#unsubscribed) | New | Inverse of [Subscribed](#subscribed). |
@@ -5836,13 +7099,13 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [AnnotationEvent](#annotationEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AnnotationEvent](#annotationEvent) actions: [Attached](#attached), [Classified](#classified),  [Commented](#commented), [Described](#described), [Disliked](#disliked), [Identified](#identified), [Liked](#liked), [Linked](#linked), [Questioned](#questioned), [Ranked](#ranked), [Recommended](#recommended) and [Subscribed](#subscribed). |
 | [AssessmentEvent](#assessmentEvent) | Revised | [Reset](#reset) and [Restarted](#restarted) added to the list of supported actions. |
 | [AssessmentItemEvent](#assessmentItemEvent) | Revised | The following actions have been deprecated and are targeted for removal from the list of supported [AssessmentItemEvent](#assessmentItemEvent) actions: [Reviewed](#reviewed), [Viewed](#viewed). |
-| [AssignableEvent](#assignableEvent) | Revised | [Submitted](#submitted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [AssignableEvent](#assignableEvent) actions: [Abandoned](#abandoned), [Hid](#hid), [Showed](#showed). |
-| [ForumEvent](#forumEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed). |
-| [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions.  The following actions have been deprecated and are targeted for removal from the list of supported [MediaEvent](#mediaEvent) actions: [Rewound](#rewound). |
-| [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
+| [AssignableEvent](#assignableEvent) | Revised | [Submitted](#submitted) added to the list of supported actions. The following actions have been deprecated and are targeted for removal from the list of supported [AssignableEvent](#assignableEvent) actions: [Abandoned](#abandoned), [Hid](#hid), [Showed](#showed). |
+| [ForumEvent](#forumEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). Supported actions: [Subscribed](#subscribed), [Unsubscribed](#unsubscribed). |
+| [MediaEvent](#mediaEvent) | Revised | [Restarted](#restarted) added to the list of supported actions. The following actions have been deprecated and are targeted for removal from the list of supported [MediaEvent](#mediaEvent) actions: [Rewound](#rewound). |
+| [MessageEvent](#messageEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
 | [ReadingEvent](#readingEvent) | Deprecated | Targeted for removal in a future version of the specification. |
-| [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile).  Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
-| [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile).  Supported actions: [Used](#used). |
+| [ThreadEvent](#threadEvent) | New | Introduced in conjunction with the Caliper 1.1 [Forum Profile](#forumProfile). Supported actions: [Posted](#posted), [MarkedAsRead](#markedAsRead), [MarkedAsUnRead](#markedAsUnRead). |
+| [ToolUseEvent](#toolUseEvent) | New | Introduced in conjunction with the Caliper 1.1 [Tool Use Profile](#toolUseProfile). Supported actions: [Used](#used). |
 
 <a name="changeLogEntities">
 
@@ -5868,51 +7131,53 @@ Caliper 1.1 additions and deprecations are summarized below.
 ### G.5 Properties
 | Domain | Property | Status | Disposition |
 | :------| :------- | :----: | :---------- |
-| [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122).  A version 4 [UUID](#uuidDef) is RECOMMENDED. | 
-| [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document.  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
+| [Event](#event) | id | New | Each [Event](#event) MUST be provisioned with a [UUID](#uuidDef). The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). A version 4 [UUID](#uuidDef) is RECOMMENDED. | 
+| [Event](#event) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document. `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *MessageEvent*. |
 | [Event](#event) | @type | Deprecated | Use `type`. |
 | [Event](#event) | action | Revised | `action` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Started*. |
-| [Event](#event) | referrer | New | Adds the ability to specify a referring context.  In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
+| [Event](#event) | referrer | New | Adds the ability to specify a referring context. In the case of [NavigationEvent](#navigationEvent) `referrer` supersedes the deprecated `navigatedFrom` property. |
 | [Event](#event) | extensions | New | Adds the ability to include an ordered collection of custom objects not defined by the model. |
-| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification.  Use `referrer`. |
+| [NavigationEvent](#navigationEvent) | navigatedFrom | Deprecated | Targeted for removal in a future version of the specification. Use `referrer`. |
 | [Entity](#entity) | id | New | Replaces use of the [JSON-LD](#jsonldDef) keyword `@id` which is now aliased as `id` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). |
 | [Entity](#entity) | @id | Deprecated | Use `id`. |
-| [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1).  `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
+| [Entity](#entity) | type | New | Replaces use of the [JSON-LD](#jsonldDef) `@type` keyword which is now aliased as `type` in the external external IMS Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1). `type` string value also changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Person*. |
 | [Entity](#entity) | @type | Deprecated | Use `type`. |
 | [Annotation](#annotation) | annotator | New | Adds the ability to specify the [Person](#person) who created the [Annotation](#annotation). |
 | [Attempt](#attempt) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `assignee`. |
 | [Attempt](#attempt) | assignee | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [Attempt](#attempt) | isPartOf | New | Adds the ability to reference the parent [Attempt](#attempt), if any. |
-| [DigitalResource](#digitalResource) | alignedLearningObjective | Deprecated | Targeted for removal in a future version of the specification.  Use `learningObjectives`. |
+| [DigitalResource](#digitalResource) | alignedLearningObjective | Deprecated | Targeted for removal in a future version of the specification. Use `learningObjectives`. |
 | [DigitalResource](#digitalResource) | creators | New | Adds the ability to specify the authors of the resource. |
 | [DigitalResource](#digitalResource) | learningObjectives | New | Replaces the deprecated `alignedLearningObjective` property with a plural term that adheres to the naming format adopted for collections and lists. |
 | [DigitalResource](#digitalResource) | mediaType | New | Adds the ability to specify the IANA media type that identifies the file format of the resource. |
-| [DigitalResource](#digitalResource) | objectType | Deprecated | Targeted for removal in a future version of the specification.  Use `type`. |
+| [DigitalResource](#digitalResource) | objectType | Deprecated | Targeted for removal in a future version of the specification. Use `type`. |
 | [DigitalResourceCollection](#digitalResourceCollection) | items | New | Adds the ability to specify the individual resources that comprise the collection. |
 | [LtiSession](#ltiSession) | launchParameters | New | Adds the ability to specify LTI launch parameters. |
 | [MediaLocation](#mediaLocation) | currentTime | Revised | Datatype changed to an ISO-8601 formatted duration string set to UTC. | 
 | [Membership](#membership) | roles | Revised | Individual role values changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Learner*. |
 | [Membership](#membership) | status | Revised | `status` string value changed from [IRI](#iriDef) to [Term](#termDef), e.g. *Active*. |
 | [Organization](#organization) | members | New | Adds the ability to specify the collection of members that comprise the [Organization](#organization). |
-| [Response](#response)| actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Response](#response) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable`. |
-| [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
-| [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
-| [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
+| [Response](#response)| actor | Deprecated | Targeted for removal in a future version of the specification. Use `attempt`. |
+| [Response](#response) | assignable | Deprecated | Targeted for removal in a future version of the specification. Use `attempt`. |
+| [Response](#response) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt). Replaces the deprecated `actor` and `assignable`. |
+| [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `attempt`. |
+| [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification. Use `attempt`. |
+| [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt). Replaces the deprecated `actor` and `assignable` properties. |
+| [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification. Use `user`. |
 | [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
 
 <a name="changeLogJsonldContext">
 
 ### G.6 JSON-LD context
-A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1) document has been created.  See http://purl.imsglobal.org/ctx/caliper/v1p1.
+A new IMS Caliper [context](http://purl.imsglobal.org/ctx/caliper/v1p1)
+document has been created. See http://purl.imsglobal.org/ctx/caliper/v1p1.
 
 <a name="contributors" />
 
 ## Contributors
-The following Caliper Working Group participants contributed to the writing of this specification:
+The following Caliper Working Group participants contributed to the writing of
+this specification:
 
 #### Authors
 | Name | Organization |
@@ -5945,78 +7210,106 @@ The following Caliper Working Group participants contributed to the writing of t
 <a name="reference" />
 
 ## References
-
 <a name="jsonldSyntax" />
 
-__JSON-LD Syntax__.  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström.  JSON-LD 1.1.  A JSON-based Serialization for Linked Data. 15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld/
+__JSON-LD Syntax__. W3C. M. Sporny, D. Longley, G. Kellog, M. Lanthaler and
+N. Lindström. JSON-LD 1.1. A JSON-based Serialization for Linked Data. 15
+February 2017. URL: http://json-ld.org/spec/latest/json-ld/
 
 <a name="jsonldProcessing" />
 
-__JSON-LD Processing__.  D. Longley, G. Kellog, M. Lanthaler, M. Sporny.  JSON-LD 1.1 Processing Algorithms and API.  15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld-api/
+__JSON-LD Processing__. D. Longley, G. Kellog, M. Lanthaler, M. Sporny. JSON-LD
+1.1 Processing Algorithms and API. 15 February 2017. URL:
+http://json-ld.org/spec/latest/json-ld-api/
 
 <a name="linkedData" />
 
-__Linked Data__.  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
+__Linked Data__. Tim Berners-Lee. "Linked Data."  W3C internal document. July
+2006, rev. June 2009. URL: https://www.w3.org/DesignIssues/LinkedData.html
 
 <a name="lti" />
 
-__LTI__.  IMS Global Learning Consortium.  Learning Tools Interoperability<sup>&reg;</sup> 2.0.  January 2014.  URL: https://www.imsglobal.org/specs/ltiv2p0
+__LTI__. IMS Global Learning Consortium. Learning Tools
+Interoperability<sup>&reg;</sup> 2.0. January 2014. URL:
+https://www.imsglobal.org/specs/ltiv2p0
 
 <a name="rdf" />
 
-__RDF__.  W3C. Resource Description Framework (RDF).  URL: https://www.w3.org/RDF/
+__RDF__. W3C. Resource Description Framework (RDF). URL:
+https://www.w3.org/RDF/
 
 <a name="rfc2119" />
 
-__RFC 2119__.  IETF.  S. Bradner.  "Key words for use in RFCs to Indicate Requirement Levels."  March 1997.  URL: https://tools.ietf.org/html/rfc2119
+__RFC 2119__. IETF. S. Bradner. "Key words for use in RFCs to Indicate
+Requirement Levels."  March 1997. URL: https://tools.ietf.org/html/rfc2119
 
 <a name="rfc2396" />
 
-__RFC 2396__.  IETF.  T. Berners-Lee, R. Fielding, L. Masinter.  "Uniform Resource Identifiers (URI): Generic Syntax."  August 1998.  URL: https://www.ietf.org/rfc/rfc2396.txt
+__RFC 2396__. IETF. T. Berners-Lee, R. Fielding, L. Masinter. "Uniform Resource
+Identifiers (URI): Generic Syntax."  August 1998. URL:
+https://www.ietf.org/rfc/rfc2396.txt
 
 <a name="rfc3987" />
 
-__RFC 3987__.  IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: https://www.ietf.org/rfc/rfc3987.txt
+__RFC 3987__. IETF. M. Duerst and M. Suignard. "Internationalized Resource
+Identifiers (IRIs). January 2005. URL: https://www.ietf.org/rfc/rfc3987.txt
 
 <a name="rfc4122" />
 
-__RFC 4122__.  IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
+__RFC 4122__. IETF. P. Leach, M. Mealling and R. Salz. "A Universally Unique
+Identifier (UUID) URN Namespace."  July 2005. URL:
+https://tools.ietf.org/html/rfc4122
 
 <a name="rfc6750" />
 
-__RFC 6750__.  IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
+__RFC 6750__. IETF. M. Jones and D. Hardt. "The OAuth 2.0 Authorization
+Framework: Bearer Token Usage."  October 2012. URL:
+https://tools.ietf.org/html/rfc6750
 
 <a name="rfc7807" />
 
-__RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
+__RFC 7807__. IETF. M. Nottingham, E. Wilde. "Problem Details for HTTP APIs."
+March 2017. URL: https://tools.ietf.org/html/rfc7807
 
 <a name="caliperWhitepaper" />
 
-__White paper__.  IMS Global Learning Consortium.  "Learning Measurement for Analytics Whitepaper \[sic\]."  August 2013.  URL: https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
+__White paper__. IMS Global Learning Consortium. "Learning Measurement for
+Analytics Whitepaper \[sic\]."  August 2013. URL:
+https://www.imsglobal.org/sites/default/files/caliper/IMSLearningAnalyticsWP.pdf
 
-__WordNet__.  Princeton University.  WordNet®.  A lexical database for English. 2010.  URL: https://wordnet.princeton.edu/
+__WordNet__. Princeton University. WordNet®. A lexical database for
+English. 2010. URL: https://wordnet.princeton.edu/
 
 <a name="aboutThisDoc" />
 
 ## About this Document
+IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the
+information contained in this document ("Specification") for purposes of
+scientific, experimental, and scholarly collaboration only.
 
-IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the information contained in this document ("Specification") for purposes of scientific, experimental, and scholarly collaboration only.
-
-IMS Global makes no warranty or representation regarding the accuracy or completeness of the Specification.
+IMS Global makes no warranty or representation regarding the accuracy or
+completeness of the Specification.
 
 This material is provided on an "As Is" and "As Available" basis.
 
-The Specification is at all times subject to change and revision without notice.
+The Specification is at all times subject to change and revision without
+notice.
 
-It is your sole responsibility to evaluate the usefulness, accuracy, and completeness of the Specification as it relates to you.
+It is your sole responsibility to evaluate the usefulness, accuracy, and
+completeness of the Specification as it relates to you.
 
 IMS Global would appreciate receiving your comments and suggestions.
 
 Please contact IMS Global through our website at http://www.imsglobal.org.
 
-Please refer to Document Name: IMS Caliper Analytics® 1.1
-Candidate Final Specification v1.1
+Please refer to Document Name: IMS Caliper Analytics® 1.1 Candidate Final
+Specification v1.1
 
 Date: 31 May 2017
 
-This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®), Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and SensorAPI™. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
+This document contains trademarks of the IMS Global Learning Consortium
+including the IMS Logos, Learning Tools Interoperability® (LTI®), Accessible
+Portable Item Protocol® (APIP®), Question and Test Interoperability® (QTI®),
+Common Cartridge® (CC®), AccessForAll™, OneRoster®, Caliper Analytics® and
+SensorAPI™. For more information on the IMS trademark usage policy see
+trademark policy page - https://www.imsglobal.org/trademarks
