@@ -1,4 +1,4 @@
-# IMS Global Learning Consortium, Inc.
+﻿# IMS Global Learning Consortium, Inc.
 
 # Caliper Analytics® Specification, version 1.1
 
@@ -210,7 +210,7 @@ __Object__: an [Entity](#entity) that an [Agent](#agent) interacts with that bec
 
 <a name="sensorDef" />
 
-__Sensor__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint.
+__Sensor API™__: Software assets deployed within a learning application for marshalling and transmitting Caliper data to a target endpoint.
 
 <a name="termDef" />
 
