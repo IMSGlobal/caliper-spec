@@ -61,14 +61,17 @@ SPECIFICATION.
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [Sensor API](#sensor)
+* 4.0 [The Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
+      * 4.3.1 [HTTP Transport Requirements](#sensorHTTPTransportRequirements)
+      * 4.3.2 [Sensors Supporting Non-HTTP Protocols](#nonHttpSensors)
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
-  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
+  * 5.2 [Endpoint Requirements](#endpointRequirements)
+      * 5.2.1 [HTTP Endpoint Requirements](#httpEndpoint)
+      * 5.2.2 [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -240,7 +243,7 @@ __Entity__: an object or a thing that participates in learning-related
 activity. Caliper [Entity](#entity) types provide course-grained
 representations of applications, people, groups and resources that constitute
 the "stuff" of a Caliper [Event](#event). Each [Entity](#entity) corresponds
-to a node in a directed graph.
+to a node in a linked data graph.
 
 <a name="eventDef" />
 
@@ -283,6 +286,13 @@ HTTP [IRIs](#iriDef)/[URIs](#uriDef) so that information about things (e.g.,
 people, objects, concepts) can be retrieved using a standard format; link out
 to other relevant things by way of their [IRIs](#iriDef)/[URIs](#uriDef) in
 order to promote discovery of new relationships between things.
+
+__Linked Data Graph__: As defined in the [JSON-LD specification](#jsonldSyntax): 
+"A labeled directed graph, i.e., a set of nodes connected by edges, as
+specialized in the Data Model Section of
+the [JSON-LD specification](#jsonldSyntax). A linked data graph is a
+generalized representation of an RDF graph as defined
+in [RDF Concepts](#rdfConcepts)."
  
 <a name="ltiDef" />
  
@@ -1957,6 +1967,8 @@ Irrespective of the chosen transport protocol, each message sent by
 a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single
 JSON representation of a Caliper [Envelope](#envelope).
 
+<a name="sensorHTTPTransportRequirements">
+
 #### 4.3.1 HTTP Transport Requirements
 * A [Sensor](#sensor) SHOULD be capable of communicating with a
   Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS
@@ -1980,17 +1992,29 @@ JSON representation of a Caliper [Envelope](#envelope).
   the [Endpoint](#endpoint):
   
   - `Authorization`
+  
   - `Content-Length`
 
 * A [Sensor](#sensor) SHOULD support message authentication using the
-  `Authorization` request header as described in [RFC 6750](#rfc6750),
-  [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2). The `b64token`
-  authorization credential sent by a [Sensor](#sensor) MUST be one
-  the [Endpoint](#endpoint) can validate although the credential MAY be opaque
-  to the emitting [Sensor](#sensor) itself.
+  `Authorization` request header as described
+  in [RFC 6750](#rfc6750), [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2),
+  using the `Bearer` authorization type. The `b64token` authorization credential sent by
+  a [Sensor](#sensor) MUST be one the [Endpoint](#endpoint) can validate
+  although the credential MAY be opaque to the emitting [Sensor](#sensor)
+  itself.
   
 * The `Content-Length` of the request body MUST be measured in octets (8-bit
   bytes).
+
+<a name="nonHttpSensors">
+
+#### 4.3.2 Sensors Supporting Non-HTTP Protocols
+
+Support for non-HTTP transport protocols involves a negotiation between the
+Caliper [Sensor](#sensor) and [Endpoint](#endpoint) implementations. It is
+RECOMMENDED that a Caliper [Sensor](#sensor) include support for communicating
+with Caliper [Endpoints](#endpoint) over HTTP to ensure maximum
+interoperability.
 
 <a name="endpoint" />
 
@@ -2067,6 +2091,8 @@ be adopted for the Caliper string properties listed below.
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
 
+<a name="endpointRequirements">
+
 ### 5.2 Endpoint Requirements
 <a name="httpEndpoint" />
 
@@ -2076,13 +2102,15 @@ be adopted for the Caliper string properties listed below.
   Certificate MUST be provided.
   
 * An [Endpoint](#httpEndpoint) MUST be capable of accessing standard HTTP
-  request headers.
+  request headers (see
+  [Section 4.3.1 HTTP Endpoint Requirements](#sensorHTTPTransportRequirements)
+  for the HTTP request header behaviour required of Sensors)
   
 * An [Endpoint](#httpEndpoint) SHOULD support message authentication using the
   `Authorization` request header as described in [RFC 6750](#rfc6750),
-  [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2).
+  [Section 2.1](https://tools.ietf.org/html/rfc6750#section-2), using the
+  `Bearer` authorization type.
   
-
 When communicating over HTTP an [Endpoint](#httpEndpoint) MUST exhibit the
 following response behaviour:
 
@@ -7237,6 +7265,10 @@ https://www.imsglobal.org/specs/ltiv2p0
 
 __RDF__. W3C. Resource Description Framework (RDF). URL:
 https://www.w3.org/RDF/
+
+<a name="rdfConcepts" />
+
+__RDF Concepts__. W3C. G. Klyne, J. Carroll. Resource Description Framework (RDF): Concepts and Abstract Syntax. 10 February 2004. W3C Recommendation. URL: https://www.w3.org/TR/rdf-concepts
 
 <a name="rfc2119" />
 
