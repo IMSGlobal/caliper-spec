@@ -61,17 +61,14 @@ SPECIFICATION.
   * 3.1 [Context](#jsonldContext)
   * 3.2 [Identifiers](#jsonldIdentifiers)
   * 3.3 [Types and Type Coercion](#jsonldTypes)
-* 4.0 [The Sensor API](#sensor)
+* 4.0 [Sensor API](#sensor)
   * 4.1 [Behavior](#sensorBehavior)
   * 4.2 [Envelope](#sensorEnvelope)
   * 4.3 [Transport](#sensorTransport)
-      * 4.3.1 [HTTP Transport Requirements](#sensorHTTPTransportRequirements)
-      * 4.3.2 [Sensors Supporting Non-HTTP Protocols](#nonHttpSensors)
 * 5.0 [Endpoint](#endpoint)
   * 5.1 [Minimum Supported String Lengths](#endpointStringLengths)
-  * 5.2 [Endpoint Requirements](#endpointRequirements)
-      * 5.2.1 [HTTP Endpoint Requirements](#httpEndpoint)
-      * 5.2.2 [Endpoints Supporting Non-HTTP Protocols](#nonHttpEndpoint)
+  * 5.2.1 [HTTP Endpoint](#httpEndpoint)
+  * 5.2.2 [Endpoints supporting non-HTTP protocols](#nonHttpEndpoint)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Events](#events)
   * B.1 [Event](#event)
@@ -156,31 +153,43 @@ SPECIFICATION.
 <a name="introduction" />
   
 ## 1.0. Introduction
-The drive to deliver education at scale coupled with a demand for measurable
-accountability has spurred interest in the application of “big data” principles
-to the business of education. Opportunities to tap new data sources, ask new
-questions and pursue new insights have grown as both the learning technology
-ecosystem has expanded and the definition of what constitutes learning has
-evolved beyond the formal classroom experience to include informal, social and
-experiential modes of acquiring knowledge and skills. The challenges inherent
-in describing, collecting and exchanging learning activity data originating
-from such diverse learning sources and context are now formidable.
+Delivering teaching and learning at scale is encouraging adoption of “big data”
+practices. Cloud computing and machine learning are changing both the learning
+technology landscape and the business of education. The definition of what
+constitutes learning is also evolving beyond the formal classroom experience to
+include informal, social and experiential modes of acquiring knowledge and
+skills. Opportunities exist to leverage new tools, tap new data sources, ask
+new questions and pursue new insights.
 
-<div style="design: block;margin: 0 auto"><img alt=".edu Graph"
-src="assets/caliper-edu_graph.png"></div>
+Consider the enterprising instructor seeking to augment if not transform the
+classroom environment for her students. She utilizes a video platform to
+create and post video assignments. Class discussions and Q&A sessions are
+conducted online using another service. She administers her course using a
+learning management system. Three services, three vendors, three potential
+sources of data.
 
-The Caliper Analytics® specification attempts to address the underlying
-interoperability challenges posed by these shifts in the learning technology
-landscape. Caliper provides an information model and domain-specific
-controlled vocabularies for describing learning activities, events and related
-entities. Serialization of the model is performed using [JSON-LD](#jsonldDef).
+Analyzing the viewing behavior of her students in relation to the questions
+they pose about her course content is vital to understanding student
+comprehension and performance. Yet exploring such relationships is all too
+often a challenging exercise. Likely there are significant barriers to
+overcome. Is the data required for analysis actually collected?  If it exists,
+who owns it?  If ownership is not an issue what about privacy concerns?  If
+privacy protocols are in place is the data easy to retrieve?  If retrievable
+how difficult is it to combine data sourced from multiple platforms?
+
+The Caliper Analytics® specification seeks to address a number of the issues
+outlined above by providing a structured approach to describing, collecting and
+exchanging learning activity data. Establishing a common vocabulary for
+describing learning interactions is a central objective. Promoting data
+interoperability, data sharing and data-informed decision making are also
+important goals.
+
 Caliper also defines an application programming interface (the Sensor API™) for
-marshalling and transmitting Caliper events from instrumented applications to
-one or more target endpoints for storage, analysis and re-use. Industry-wide
-adoption of Caliper offers academic institutions and Ed Tech organizations the
-tantalizing prospect of a more unified learning data environment in which to
-build new and innovative services designed to measure, infer, predict, report
-and visualize.
+marshalling and transmitting event data from instrumented applications to
+target endpoints for storage, analysis and use. Industry-wide adoption of
+Caliper offers the tantalizing prospect of a more unified learning data
+environment in which to build new and innovative services designed to measure,
+infer, predict, report and visualize.
 
 <a name="conventions" />
 
@@ -1108,6 +1117,14 @@ and [VideoObject](#videoObject), each subtyped from a generic [MediaObject](#med
 A [MediaLocation](#mediaLocation) entity is also provided in order to represent
 the current location in an audio or video stream.
 
+As an example of how this profile could be used, consider the following scenario: an instructor has decided to incorporate a video player into their course.  The video content may or may not be launched via LTI from the Learning Management System (LMS).  Since the video player tool is instrumented to emit activity data via Caliper, the instructor will be able to collect useful information about student viewing behaviour.  In addition, he will be able to compare this data along with other relevent information in the LMS, such as assignment and quiz results.  Using data collected via Caliper, instructors (and administrators) can answer key questions, such as:
+ 
+* Who is using the tool?
+* Which videos are being played the most?
+* How long are they spending on each video?
+* Where do they pause the video?
+* Are there instances of where students are replaying sections of the video?
+
 #### Minimum Conformance
 Create and send a [MediaEvent](#mediaEvent) to a target
 endpoint. The [Started](#started) and [Ended](#ended) actions are required and
@@ -1152,7 +1169,7 @@ events and actions are considered optional.
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Ended](#ended) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Paused](#paused) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [Resumed](#resumed) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
-| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restared) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
+| [MediaEvent](#mediaEvent) | [Person](#person) | [Restarted](#restarted) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ForwardedTo](#forwardedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [JumpedTo](#jumpedTo) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
 | [MediaEvent](#mediaEvent) | [Person](#person) | [ChangedResolution](#changedResolution) | [MediaObject](#mediaObject) | [MediaLocation](#mediaLocation) | &nbsp; |
@@ -1437,7 +1454,11 @@ Caliper JSON-LD [context](http://purl.imsglobal.org/ctx/caliper/v1p1) is
 available and MUST be referenced in Caliper [JSON-LD](#jsonldDef)
 documents. Each Caliper [Event](#event) and [Entity](#entity) *describe*
 emitted by a [Sensor](#sensor) MUST be provisioned with a `@context` key that
-provides a context definition.
+provides a context definition and that `@context` field MUST appear at the "top
+level" of the Event or Entity sent by the Sensor (in the following example,
+note that `@context` is a field on the Event, and not on the composed `Person`
+that is the `Event.actor` field's value -- that `Person` object will inherit
+the context mappings found in the containing event's `@context` document).
 
 #### Example: referencing an external JSON-LD context
 ```
@@ -1503,6 +1524,25 @@ the object.
   ]
 }
 ```
+
+#### 3.1.1 Context versions
+Each released version of the Caliper specification describes all the
+Caliper [Events](#event), [Entities](#entities), and vocabulary terms supported
+by that version and how they must appear for the purposes of certification and
+interoperability claims. The rules about the placement of the `@context` field
+described in the previous section mean that each [Event](#event)
+or [Entity](#entities) in and of itself can be entirely understood by using the
+version of the Caliper context referred to in the `@context` property.
+
+Sensors SHOULD avoid sending payloads that mix versions where
+some [Events](#event) use one version of the Caliper context and others use
+another version: the receiver of a set of [Events](#event)
+and [Entities](#entitites) should have an expectation that they can use a
+single set of rules to interpret the data they have received.
+
+Vendors that wish to support multiple versions of Caliper in production SHOULD
+provide a way for their customers to select one of the versions for use in
+their installations.
 
 <a name="jsonldIdentifiers" />
 
@@ -1967,8 +2007,6 @@ Irrespective of the chosen transport protocol, each message sent by
 a [Sensor](#sensor) to a target [Endpoint](#endpoint) MUST consist of a single
 JSON representation of a Caliper [Envelope](#envelope).
 
-<a name="sensorHTTPTransportRequirements">
-
 #### 4.3.1 HTTP Transport Requirements
 * A [Sensor](#sensor) SHOULD be capable of communicating with a
   Caliper [Endpoint](#endpoint) over HTTP with the connection encrypted by TLS
@@ -2090,8 +2128,6 @@ be adopted for the Caliper string properties listed below.
 | [Session](#session) | endedAtTime | A date and time value expressed with millisecond precision that describes when the [Session](#session) was completed or terminated. The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | 64 |
 | [Session](#session) | duration | A time interval that represents the time taken to complete the [Session](#session). The value MUST conform to the ISO-8601 duration format. | 64 |
 | [TrueFalseResponse](#trueFalseResponse) | value | True/false, yes/no binary selection that constitutes the selected option. | 32 |
-
-<a name="endpointRequirements">
 
 ### 5.2 Endpoint Requirements
 <a name="httpEndpoint" />
@@ -5367,7 +5403,7 @@ properties and requirements are described below:
 | Property | Type | Description | Conformance |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *BookmarkAnnotation*. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *HighlightAnnotation*. | Required |
 | name | string | A string value comprising a word or phrase by which the [HighlightAnnotation](#highlightAnnotation) is known MAY be specified. | Optional |
 | description | string | A string value comprising a brief, written representation of the [HighlightAnnotation](#highlightAnnotation) MAY be specified. | Optional |
 | annotator | [Person](#person) | The [Person](#person) who created the [HighlightAnnotation](#highlightAnnotation) SHOULD be specified. The `annotator` value MUST be expressed either as an object or coerced to a string corresponding to the annotator's [IRI](#iriDef). | Recommended |
@@ -7265,10 +7301,6 @@ https://www.imsglobal.org/specs/ltiv2p0
 
 __RDF__. W3C. Resource Description Framework (RDF). URL:
 https://www.w3.org/RDF/
-
-<a name="rdfConcepts" />
-
-__RDF Concepts__. W3C. G. Klyne, J. Carroll. Resource Description Framework (RDF): Concepts and Abstract Syntax. 10 February 2004. W3C Recommendation. URL: https://www.w3.org/TR/rdf-concepts
 
 <a name="rfc2119" />
 
