@@ -105,14 +105,15 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.38 [Response](#response)
   * C.39 [Result](#result)
   * C.40 [Session](#session)
-  * C.41 [SharedAnnotation](#sharedAnnotation)
-  * C.42 [SelectTextResponse](#selectTextResponse)
-  * C.43 [SoftwareApplication](#softwareApplication)
-  * C.44 [TagAnnotation](#tagAnnotation)
-  * C.45 [TrueFalseResponse](#trueFalseResponse)
-  * C.46 [Thread](#thread)
-  * C.47 [VideoObject](#videoObject)
-  * C.48 [WebPage](#webPage)
+  * C.41 [Session](#session)
+  * C.42 [SharedAnnotation](#sharedAnnotation)
+  * C.43 [SelectTextResponse](#selectTextResponse)
+  * C.44 [SoftwareApplication](#softwareApplication)
+  * C.45 [TagAnnotation](#tagAnnotation)
+  * C.46 [TrueFalseResponse](#trueFalseResponse)
+  * C.47 [Thread](#thread)
+  * C.48 [VideoObject](#videoObject)
+  * C.49 [WebPage](#webPage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
@@ -365,17 +366,6 @@ All actions included in the Caliper [actions](#actions) vocabulary are supported
 
 The Caliper Annotation Profile models activities related to the annotation of a [DigitalResource](#digitalResource). Creating a bookmark, highlighting selected text, sharing a resource, tagging a document, and viewing an annotation are modeled.  The generated [Annotation](#annotation) is also described and is subtyped for greater type specificity.
 
-As an example, instructors can use the places where students are making notes in the course material to determine whether they have the right idea about which material should be highlighted.  In addition, if there are students who are asking questions or making notes indicating confusion about a particular piece of content, this can also inform the instructor about the suitability or quality of the material which they have chosen to use.  
-
-Questions which can be answered using this profile are as follows:
-
-* Which students are generating annotations?
-* What content is most often annotated?
-* What types of annotations are being created?
-* Which segments of text are being highlighted?
-* What tags are being used?
-* What notes are being added?
-
 #### Minimum Conformance
 Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#endpoint).  The [Bookmarked](#bookmarked) action is required and MUST be implemented.  All other supported actions are considered optional.
 
@@ -412,14 +402,6 @@ Create and send an [AnnotationEvent](#annotationEvent) to a target [Endpoint](#e
 <div style="design: block;margin: 0 auto"><img alt="Assessment Profile" src="assets/caliper-profile_assessment.png"></div>
 
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items. Caliper provides [Assessment](#assessment) and [AssessmentItem](#assessmentItem) entities for describing the `object` of these activities, as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.  Five [Response](#response) types are also provided for capturing individual item responses.  _Note that the Caliper 1.0 AssessmentItem Profile has been merged into the Assessment Profile._
-
-Tracking patterns using the assessment profile will allow instructors to understand more about how students are interacting with their assessments.  Typical ways to make use of this profile are to answer the following questions:
-
-* How much time is required to complete and submit an assessment?
-* How much time is spent answering individual questions?
-* Which questions are completed?
-* Which questions are skipped?
-* If test-taking times are flexible, when do learners start their assessments?
 
 #### Minimum Conformance
 Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#endpoint).  The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  All other supported events and actions are considered optional.
@@ -477,12 +459,6 @@ Create and send an [AssessmentEvent](#assessmentEvent) to a target [Endpoint](#e
 
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.  Caliper provides a generic [AssignableDigitalResource](#assignableDigitalResource) for describing the `object` of these activities as well as a learner's [Attempt](#attempt) for recording a count of the number of times an assigned resource has been attempted.
 
-This profile would be useful for instructors to gather insight about the relationship between students and their assignments.  Answers to the following questions can be enabled using this profile:
-
-* Who is assigned what material?
-* How long does it take to complete something that has been assigned?
-* What piece of assigned material presents the biggest challenge (i.e. needs most retake attempts)
-
 #### Minimum Conformance
 Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#endpoint). The [Started](#started) and [Submitted](#submitted) actions are required and MUST be implemented.  The [Completed](#completed) action SHOULD be implemented.  All other supported events and actions are considered optional.
 
@@ -535,13 +511,6 @@ Create and send an [AssignableEvent](#assignableEvent) to a target [Endpoint](#e
 
 The Caliper Forum Profile models learners and others participating in online forum communities.  Forums typically encompass one or more threads or topics to which members can subscribe, post messages and reply to other messages if a threaded discussion is permitted.  Caliper provides [Forum](#forum), [Thread](#thread) and [Message](#message) entities for representing the `object` of these activities.
 
-Tracking patterns using the forum profile will allow instructors to understand more about how students are engaged within discussion forums.  Using this profile, instructors can gain insight in the following areas:
-
-* Who is posting most often
-* Which posts create the most replies?
-* Compare graded vs. non-graded discussions
-
-
 #### Minimum Conformance
 Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint). The [Posted](#posted) action is required and MUST be implemented.  All other supported events and actions are considered optional.
 
@@ -589,11 +558,6 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 <div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
 The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
-
-The grading profile allows information to be captured about grade changes for a given assessment or submission.  This may be useful to understand the way in which students and teachers may be interacting throughout the course.  For example, the grading profile can be used to answer questions such as:
-
-* How often are grades changed for an assessment?
-
 
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
@@ -755,12 +719,6 @@ Create and send a [NavigationEvent](#navigationEvent) and a [ViewEvent](#viewEve
 
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](#person) interacting with a [SoftwareApplication](#softwareApplication).  A [Session](#session) entity is described for representing the user session.
 
-The session profile can facilitate the capture of data about who is logging into the learning environment, and more importantly, which students are not logging in.   The following are examples of the information best captured using the session profile:
-
-* Session logins
-* Which students have not logged in for more than a week
-* Who logs in/logs out most/least
-
 #### Minimum Conformance
 Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint). The [LoggedIn](#loggedIn) action is required and MUST be implemented.
 
@@ -794,13 +752,6 @@ Create and send a [SessionEvent](#sessionEvent) to a target [Endpoint](#endpoint
 <div style="design: block;margin: 0 auto"><img alt="Tool Use Profile" src="assets/caliper-profile_tool_use.png"></div>
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.  In other words, when a [Person](#person) utilizes a [SoftwareApplication](#softwareApplication) in a manner that the application determines to be its "intended use for learning", an application that implements the Tool Use Profile can emit a [ToolUseEvent](#toolUseEvent) indicating such usage.
-
-The Tool Use Profile enables gathering basic usage information about learning apps. This is an easy way to get started with a base level of instrumentation and letting the learning tool make the determination of its own use.   Any learning app can be instrumented through this profile to detect when a student accesses the tool and uses it in the way it was intended.   Common questions that could be answered through the use of this profile are:
-
-* What tools are being used, and how much?
-* Who is the most active/least active user of tools?
-* Does tool usage help/hinder student performance?
-* Which tools have the greatest impact on student performance?
 
 #### Minimum Conformance
 Create and send a Caliper [ToolUseEvent](#toolUseEvent) to a target [Endpoint](#endpoint).  The [Used](#used) action is required and MUST be implemented.
@@ -1022,7 +973,7 @@ As noted above the values of certain Caliper [Terms](#termDef) are *coerced* to 
     "startedAtTime": "2017-11-15T10:00:00.000Z"
   }
 }
-```
+````
 
 Indeed, the example [ForumEvent](#forumEvent) could be thinned still further if each referenced [Entity](#entity) is provisioned with a dereferenceable [IRI](#iriDef) that permits consumers to retrieve a more robust representation of the object if required.
 
@@ -5225,9 +5176,67 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 }
 ```
 
+<a name="score" />
+
+### C.40 Score
+A Caliper [Score](#score) represents an evaluation of a learner's performance on an assignment expressed as a numeric value.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Score
+
+#### Supertype 
+[Entity](#entity)
+
+#### Properties
+[Score](#score) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+
+| Property | Type | Description | Conformance |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Score*. | Required |
+| name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
+| description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
+| attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
+| maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
+| scoreGiven | decimal | A number with a fractional part denoted by a decimal separator that designates the actual score awarded MAY be specified. | Optional |
+| scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
+| comment | string | Plain text feedback provided by the scorer. | Optional |
+| dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| dateModified | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was last changed or modified MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
+| extensions | Array | An ordered collection of objects not defined by the model MAY be specified for a more concise representation of the [Result](#result). | Optional |
+
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+  "type": "Score",
+  "attempt": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": "https://example.edu/users/554433",
+    "assignable": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
+    "count": 1,
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
+    "duration": "PT50M30S"
+  },
+  "maxScore": 15.0,
+  "scoreGiven": 10.0,
+  "scoredBy": {
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "dateCreated": "2016-11-15T10:55:58.000Z"
+  },
+  "comment": "auto-graded exam",
+  "dateCreated": "2016-11-15T10:56:00.000Z"
+}
+```
+
 <a name="selectTextResponse" />
 
-### C.40 SelectTextResponse
+### C.41 SelectTextResponse
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
 #### IRI
@@ -5296,7 +5305,7 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 
 <a name="session" />
 
-### C.41 Session
+### C.42 Session
 A Caliper [Session](#session) represents a web application user session.
 
 #### IRI
@@ -5348,7 +5357,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 
 <a name="sharedAnnotation" />
 
-### C.42 SharedAnnotation
+### C.43 SharedAnnotation
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
 #### IRI
@@ -5403,7 +5412,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 
 <a name="softwareApplication" />
 
-#### C.43 SoftwareApplication
+#### C.44 SoftwareApplication
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
 #### IRI
@@ -5440,7 +5449,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 
 <a name="tagAnnotation" />
 
-### C.44 TagAnnotation
+### C.45 TagAnnotation
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
 #### IRI
@@ -5486,7 +5495,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 
 <a name="thread" />
 
-### C.45 Thread
+### C.46 Thread
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
 #### IRI
@@ -5573,7 +5582,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 
 <a name="trueFalseResponse" />
 
-### C.46 TrueFalseResponse
+### C.47 TrueFalseResponse
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
 #### IRI
@@ -5642,7 +5651,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 
 <a name="videoObject" />
 
-### C.47 VideoObject
+### C.48 VideoObject
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
 #### IRI
@@ -5697,7 +5706,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 
 <a name="webPage" />
 
-### C.48 WebPage
+### C.49 WebPage
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
 #### IRI
