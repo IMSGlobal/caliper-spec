@@ -104,7 +104,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.37 [Reading](#reading) (deprecated)
   * C.38 [Response](#response)
   * C.39 [Result](#result)
-  * C.40 [Session](#session)
+  * C.40 [Score](#score)
   * C.41 [Session](#session)
   * C.42 [SharedAnnotation](#sharedAnnotation)
   * C.43 [SelectTextResponse](#selectTextResponse)
