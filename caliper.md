@@ -557,7 +557,7 @@ Create and send a [MessageEvent](#messageEvent) to a target [Endpoint](#endpoint
 ### 2.3.6 Grading Profile
 <div style="design: block;margin: 0 auto"><img alt="Grading Profile" src="assets/caliper-profile_grading.png"></div>
 
-The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Result](#result) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
+The Caliper Grading Profile models grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  Grading a learner's [Attempt](#attempt) of an [AssignableDigitalResource](#assignableDigitalResource) and generating a [Score](#score) is modeled. _Note that the Caliper 1.0 Outcomes Profile has been replaced by the Grading Profile._
 
 #### Minimum Conformance
 Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#endpoint).  The [Graded](#graded) action is required and MUST be implemented.
@@ -574,14 +574,15 @@ Create and send a Caliper [OutcomeEvent](#outcomeEvent) to a target [Endpoint](#
 #### Supported Entities
 | Event | Actor |	Action | Object | Generated |
 | :---- | :---- | :----- | :----- | :-------- |
-| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Result](#result) |
+| [OutcomeEvent](#outcomeEvent) | [Agent](#agent) | [Graded](#graded) | [Attempt](#attempt) | [Score](#score) |
+| [ViewEvent](#viewEvent) | [Agent](#agent) | [Viewed](#viewed) | [Result](#result) | &nbsp; |
 
 #### Requirements
 * Certain [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are required and MUST be specified.  Required properties include `id`, `type`, `actor`, `action`, `object` and `eventTime`.  All other [OutcomeEvent](#outcomeEvent) and [ViewEvent](#viewEvent) properties are considered optional and need not be referenced.  Adherence to the rules associated with each property referenced is mandatory.  
 * Each [Entity](#entity) participating in the [OutcomeEvent](#outcomeEvent) or [ViewEvent](#viewEvent) MUST be expressed either as an object or coerced to a string corresponding to it's [IRI](#iriDef).
 * For auto-graded scenarios the [SoftwareApplication](#softwareApplication) MUST be specified as the `actor`.
 * The `action` vocabulary is limited to the supported actions described in the profile.
-* For a [Graded](#graded) action, the `generated` [Result](#result) SHOULD be specified.
+* For a [Graded](#graded) action, the `generated` [Score](#score) SHOULD be specified.
 
 <a name="mediaProfile" />
 
