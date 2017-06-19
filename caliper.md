@@ -5102,7 +5102,7 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 <a name="result" />
 
 ### C.39 Result
-A Caliper [Result](#result) represents a grade applied to an assignment submission.
+A Caliper [Result](#result) represents the current score or grade as recorded in a gradebook.  The [Result](#result) score value may represent an adjusted or scaled value and is considered mutable. 
 
 #### IRI
 http://purl.imsglobal.org/caliper/Result
@@ -5120,12 +5120,8 @@ http://purl.imsglobal.org/caliper/Result
 | name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
-| normalScore | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
-| penaltyScore | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
-| extraCreditScore | decimal | The number of extra credit points earned by the learner. | Optional |
-| totalScore | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
-| curvedTotalScore | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
-| curveFactor | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
+| maxResultScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum result score permitted MAY be specified. | Optional |
+| resultScore | decimal | A number with a fractional part denoted by a decimal separator that designates the actual result score awarded MAY be specified. | Optional |
 | scoredBy | [Agent](#agent) | The [Agent](#agent) who scored or graded the [Attempt](#attempt).| Optional |
 | comment | string | Plain text feedback provided by the scorer. | Optional |
 | dateCreated | DateTime | A date and time value expressed with millisecond precision that describes when the [Result](#result) was created MAY be specified.  The value MUST be expressed as an ISO-8601 formatted date/time string set to UTC. | Optional |
@@ -5139,47 +5135,52 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 | :------- | :--- | ----------- | :---------: |
 | ~~actor~~ | [Person](#person) | The [Person](#person) who generated the [Attempt](#attempt).  `actor` has been DEPRECATED and replaced by `attempt`. | Deprecated |
 | ~~assignable~~ | [DigitalResource](#digitalResource) | The assigned [DigitalResource](#digitalResource) associated with the [Result](#result). `assignable` has been DEPRECATED and replaced by `attempt`. | Deprecated |
+| ~~normalScore~~ | decimal | The score earned by the learner *before* adding the `extraCreditScore`, subtracting the `penaltyScore` or applying the `curveFactor`, if any. | Optional |
+| ~~penaltyScore~~ | decimal | The number of points deducted from the `normalScore` due to an infraction such as submitting an [Attempt](#attempt) after the due date. | Optional |
+| ~~extraCreditScore~~ | decimal | The number of extra credit points earned by the learner. | Optional |
+| ~~totalScore~~ | decimal | A score earned by the learner equal to the sum of `normalScore` + `extraCreditScore` - `penaltyScore`.  This value does not take into account the effects of curving. | Optional |
+| ~~curvedTotalScore~~ | decimal | The total score earned by the learner after applying a `curveFactor` to a method for computing a scaled score; e.g., adjusting the score equal to the sum of 100 - `curvedFactor`(100 - `totalScore`). | Optional |
+| ~~curveFactor~~ | decimal | A scale factor to be used in adjusting the `totalScore`. | Optional |
 
 #### Example
 ```
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
+  "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/results/1",
   "type": "Result",
   "attempt": {
-    "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1",
     "type": "Attempt",
     "assignee": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
     },
     "assignable": {
-      "id": "https://example.edu/terms/201701/courses/7/sections/1/assess/1",
+      "id": "https://example.edu/terms/201601/courses/7/sections/1/assess/1",
       "type": "Assessment"
     },
     "count": 1,
-    "dateCreated": "2017-11-15T10:05:00.000Z",
-    "startedAtTime": "2017-11-15T10:05:00.000Z",
-    "endedAtTime": "2017-11-15T10:55:30.000Z",
+    "dateCreated": "2016-11-15T10:05:00.000Z",
+    "startedAtTime": "2016-11-15T10:05:00.000Z",
+    "endedAtTime": "2016-11-15T10:55:30.000Z",
     "duration": "PT50M30S"
   },
-  "comment": "Well done.",
-  "normalScore": 15.0,
-  "penaltyScore": 0.0,
-  "totalScore": 15.0,
+  "maxResultScore": 15.0,
+  "resultScore": 10.0,
   "scoredBy": {
     "id": "https://example.edu/autograder",
     "type": "SoftwareApplication",
-    "dateCreated": "2017-11-15T10:55:58.000Z"
+    "dateCreated": "2016-11-15T10:55:58.000Z"
   },
-  "dateCreated": "2017-11-15T10:56:00.000Z"
+  "comment": "Consider retaking the assessment.",
+  "dateCreated": "2016-11-15T10:56:00.000Z"
 }
 ```
 
 <a name="score" />
 
 ### C.40 Score
-A Caliper [Score](#score) represents an evaluation of a learner's performance on an assignment expressed as a numeric value.
+A Caliper [Score](#score) represents a "raw" or unadjusted numeric score or grade awarded for a given assignment submission.  A gradebook SHOULD treat the `scoreGiven` value as read-only and preserve it.
 
 #### IRI
 http://purl.imsglobal.org/caliper/Score
@@ -5194,7 +5195,7 @@ http://purl.imsglobal.org/caliper/Score
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
 | type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Score*. | Required |
-| name | string | A string value comprising a word or phrase by which the [Result](#result) is known MAY be specified. | Optional |
+| name | string | A string value comprising a word or phrase by which the [Score](#score) is known MAY be specified. | Optional |
 | description | string |  A string value comprising a brief, written representation of the [Result](#result) MAY be specified. | Optional |
 | attempt | [Attempt](#attempt) | The associated [Attempt](#attempt) SHOULD be specified.  The `attempt` value MUST be expressed either as an object or coerced to a string corresponding to the attempt's [IRI](#iriDef).  If an object representation is provided, the [Attempt](#attempt) SHOULD reference both the [Person](#person) who generated the [Attempt](#attempt) and the assigned [DigitalResource](#digitalResource). | Recommended |
 | maxScore | decimal | A number with a fractional part denoted by a decimal separator that designates the maximum score permitted MAY be specified. | Optional |
@@ -5980,6 +5981,12 @@ Caliper 1.1 additions and deprecations are summarized below.
 | [Result](#result) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | assignable | Deprecated | Targeted for removal in a future version of the specification.  Use `attempt`. |
 | [Result](#result) | attempt | New | Adds the ability to reference the learner's associated [Attempt](#attempt).  Replaces the deprecated `actor` and `assignable` properties. |
+| [Result](#result) | ~~normalScore~~ | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | ~~penaltyScore~~ | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | ~~extraCreditScore~~ | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | ~~totalScore~~ | Deprecated | Targeted for removal in a future version of the specification.  Use  `resultScore`. |
+| [Result](#result) | ~~curvedTotalScore~~ | Deprecated | Targeted for removal in a future version of the specification. |
+| [Result](#result) | ~~curveFactor~~ | Deprecated | Targeted for removal in a future version of the specification. |
 | [Session](#session) | actor | Deprecated | Targeted for removal in a future version of the specification.  Use `user`. |
 | [Session](#session) | user | New | Replaces the deprecated `actor` property in order to provide a more concise term. |
 | [SoftwareApplication](#softwareApplication) | version | New | Adds the ability to specify the current form or version of the [SoftwareApplication](#softwareApplication). |
