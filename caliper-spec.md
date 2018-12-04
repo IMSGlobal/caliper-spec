@@ -1273,7 +1273,7 @@ Caliper [Endpoint](#endpoint) ping properties are listed below.  The `versions` 
 
 | Property | Type | Description | Disposition |
 | :------- | :--- | ----------- | :---------: |
-| versions | array | An array of the one or more Caliper spec version(s) that the [Endpoint](#endpoint) supports. | Required |
+| versions | array | An array of the one or more Caliper JSON-LD context document(s) that the [Endpoint](#endpoint) supports. | Required |
 | maxPayloadSize | integer | The number (in bytes) of the largest payload that the [Endpoint](#endpoint) can accept in one request. | Optional |
 | extensions | object | A map of additional attributes not defined by the model MAY be specified for the [Endpoint](#endpoint). | Optional |
 
@@ -1281,7 +1281,10 @@ Caliper [Endpoint](#endpoint) ping properties are listed below.  The `versions` 
 
 ```
 {
-  "versions": [ "1.1" ],
+  "versions": [
+        "http://purl.imsglobal.org/ctx/caliper/v1p1",
+        "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension"
+  ],
   "maxPayloadSize": "100000",
   "extensions": {
     "endpointName": "Example endpoint"
