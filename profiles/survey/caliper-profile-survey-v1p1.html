@@ -33,8 +33,11 @@
 </head>
 <body>
 <section id="abstract">
-  <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Survey Profile that
-  describes survey-related activities such as collecting student feedback data via online surveys about learning experiences and levels of engagement. Everyone learns differently with a mix of their own learning styles, and student feedback on their learning experience is a key source of data that can help glean insights into students’ learning styles and interests. Thus, student feedback data can complement students’ behavioral data for learning analytics – such as knowing about students’ perceptions of how effectively learning activities helped students’ learning and what specific areas in teaching and learning can be improved to enhance students’ learning experience, leveraging student interests and learning styles, to achieve learning objectives. A survey profile expands the pool of Caliper-instrumented learning data to enhance the learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive. The rest of this spec describes the specific components of the survey profile – survey-related events, actions and entities.
+  <h2>Abstract</h2>  This document extends Caliper 1.1 by defining a Survey Profile that describes survey-related events. A survey profile is to provide a semantically consistent interoperability standard to exchange events associated with students’ participation behaviors in online surveys to provide their perception on student learning experience, student engagement, learning activities, learning progress, and learning performance. It is known that a student’s time spent or other access behavior in online learning activities is not necessarily indicate that the student finds the materials easy or hard, interested or boring, useful or not useful to their learning. In that sense, student feedback data adds an additional dimension of students’ behavioral data to make learning analytics more robust. A survey profile expands the pool of Caliper-instrumented learning data for learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive. The rest of this spec describes the specific components of the survey profile – survey-related events, actions and entities.
+</section>
+
+<section>
+  <p><strong>Work in Progress Draft, Not final</strong> | FOR REVIEW AND DISCUSSION ONLY |  LAST UPDATED: DEC. 10, 2018 </p>
 </section>
 
 <section>
@@ -44,9 +47,9 @@
 
     <img height="100%" width="100%" src="./assets/caliper-profile_survey.png" alt="Survey Profile"/>
 
-    <p>The Caliper Survey Profile models a <code>Person</code>, typically a respondent or a rater, participating in a survey that solicites feedback about their learning experiences.  Everyone learns differently with a mix of their own learning styles, and student feedback on their learning experience is a key source of data that can help glean insights into students’ learning styles and interests. Thus, student feedback data can complement students’ behavioral data for learning analytics – such as knowing about students’ perceptions of how effectively learning activities helped students’ learning and what specific areas in teaching and learning can be improved to enhance students’ learning experience, leveraging student interests and learning styles, to achieve learning objectives. The Caliper survey profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive, by allowing to incorporate student voices in a semantically interoperable manner in learning analytics.
-    </p>
+    <p>The Caliper survey profile is to provide a semantically consistent interoperability standard to exchange events associated with students’ participation behaviors in online surveys to provide their perception on student learning experience, student engagement, learning activities, learning progress, learning performance. It models a Person, typically a respondent or a rater, participating in a survey to provide the feedback on their learning and academic experience. </p>
 
+    <p> Everybody learns differently with a mix of their own learning styles. It is also known that a student’s time spent or other access behavior in online learning activities is not necessarily indicate that the student finds the materials easy or hard, interested or boring, useful or not useful to their learning. Student feedback is a key source of data that can help glean insights into students’ learning styles and interests, as well as areas to improve. In that sense, student feedback data adds an additional dimension of students’ behavioral data for learning analytics such as learning about student perceptions of how effectively learning activities helped student learning and what specific areas in teaching and learning can be improved to enhance students’ learning experience and learning objectives. The Caliper survey profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive, by allowing to incorporate student voices to make learning analytics more robust. </p>
   </section>
 
   <section class="informative" id="usecases">
@@ -54,27 +57,40 @@
     <p>The Survey Profile supports the following use cases:</p>
     <table>
       <tr>
-        <td>Analytics for monitoring and improving response rates: getting a sufficient number of feedback responses is a critical part of reliability of results for data-driven, informed decision making. A low response rate may decrease the statistical power of the data collected and undermine the reliability of the results.</td>
+        <td>2. <strong>Analytics for student engagement</strong>: Student feedback survey participation behavioral data is an input to the student engagement modeling (description, predictive, and prescription)</td>
       </tr>
       <tr>
-        <td>Analytics for student engagement. Student feedback participation behavioral data is an input to the student engagement modeling (description, predictive, and prescription).</td>
+        <td>3. <strong>Analytics for predicting student retention and success</strong>: Student feedback on their learning experience is an input to predictive modeling of student retention and student success, combined with other data such as LMS behavioral data, demographics, learning performance </td>
       </tr>
       <tr>
-        <td>Analytics for predicting student retention and success. Student feedback on their learning experience is an input to predictive modeling of student retention and student success, combined with other data such as LMS behavioral data, demographics, learning performance (grades).</td>
+        <td>4. <strong>Analytics for instructional designs and learning strategies</strong>: Student feedback data is an input to personalized learning and adaptive learning that incorporates student feedback, determining efficacy of particular learning interventions and learning strategies.</td>
       </tr>
       <tr>
-        <td>Analytics for instructional design and learning delivery. Student feedback data is an input to personalized learning and adaptive learning that incorporates student feedback, Example: learning analytics for diagnosing why students are not being able to complete one particular assignment or learning activities online within a certain amount of time and prescribing potential personalized interventions, measuring progress over time.</td>
+        <td>5. <strong>Analytics for identifying areas to improve</strong> teaching and learning effectiveness, validating the pertinent KPIs to measure progress, and prescribing potential corrective interventions.</td>
       </tr>
       <tr>
-        <td>Analytics for identifying areas to improve teaching and learning effectiveness, validating the pertinent KPIs to measure progress, and prescribing potential corrective interventions.</td>
+        <td>6. <strong>Analytics for workload</strong> Measuring student workload is essential for optimizing learning, and workload research is under development. Various studies observed the gap between what logs (click behaviors) say and what students say (survey) about workload, which need a deeper understanding to predict or prescribe optimal workload that contributes to optimize learning </td>
+      </tr>
+      <tr>
+        <td>7. <strong>Analytics for monitoring and improving response rates</strong>: getting a sufficient number of feedback responses is a critical part of reliability and validity of results for data-driven, informed decision making. A low response rate may decrease the statistical power of the data collected and undermine the reliability of the results.</td>
       </tr>
     </table>
   </section>
 
   <section id="terminology">
     <h3>Terminology</h3>
-    <p>All terminology used in this specification is concordant with the term
+    <p>The Survey profile introduces 3 terms into the Caliper space. </p>
+
+    <p><strong>Survey</strong>: A Survey is the process of collecting, aggregating, and analyzing the responses from the questions in a questionnaire. During their college/university days, students can invited to various types of survey to provide their voice such as formative feedback,  course evaluations, graduate exit surveys, alum surveys, library services survey, etc. Raters will be invited to participate in a survey. Then, raters can opt out or opt in, depending on how the survey is set up. Raters can be reminded to participate after the first invitation, in an effort to improve the response rates, as a low response rate may decrease the statistical power of the data collected and undermine the validity of the results. </p>
+
+    <p><strong>Survey Questionnaire (SurveyQuestionnaire)</strong>: a survey questionnaire is a set of feedback questions that raters will respond to in a particular survey. </p>
+
+    <p><strong>Survey Questionnaire Item (SurveyQuestionnaireItem)</strong>:
+
+      All terminology used in this specification is concordant with the term
       definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+
+      <p><strong>Survey Invitation</strong>: an invitation to participate in a survey that is sent out to raters (such as students) </p>
   </section>
 
   <section id="conformance">
@@ -131,28 +147,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>SurveyEvent</code></td>
-        <td>A Caliper <code>SurveyEvent</code> models interactions between an <code>actor</code> and a <code>Survey</code> comprising one or more questionnaires.</td>
+        <td>SurveyEvent</td>
+        <td>A Caliper SurveyEvent . . . TODO</td>
         <td>Required</td>
       </tr>
       <tr>
-        <td><code>SurveyQuestionnaireEvent</code></td>
-        <td>A Caliper <code>SurveyQuestionnaireEvent</code> models interactions between an <code>actor</code> and a <code>SurveyQuestionnaire</code>.</td>
+        <td>SurveyInstrumentEvent</td>
+        <td>A Caliper SurveyInstrumentEvent . . . TODO</td>
         <td>Required</td>
       </tr>
       <tr>
-        <td><code>SurveyQuestionEvent</code></td>
-        <td>A Caliper SurveyQuestionEvent models interactions between an <code>actor</code> and a <code>SurveyQuestion</code>.</td>
+        <td>SurveyInstrumentItemEvent</td>
+        <td>A Caliper SurveyInstrumentItemEvent . . . TODO</td>
         <td>Optional</td>
       </tr>
       <tr>
-        <td><code>NavigationEvent</code></td>
-        <td>A Caliper <code>NavigationEvent</code> models an <code>actor</code> traversing a network of digital resources.</td>
+        <td>NavigationEvent</td>
+        <td>A Caliper NavigationEvent models an actor traversing a network of digital resources.</td>
         <td>Optional</td>
       </tr>
       <tr>
-        <td><code>ViewEvent</code></td>
-        <td>A Caliper <code>ViewEvent</code> models an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.</td>
+        <td>ViewEvent</td>
+        <td>A Caliper ViewEvent describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.</td>
         <td>Optional</td>
       </tr>
     </tbody>
@@ -254,20 +270,20 @@
     </table>
   </section>
 
-  <section id="event-SurveyQuestionnaire">
-    <h3>SurveyQuestionnaireEvent</h3>
+  <section id="event-surveyinstrument">
+    <h3>SurveyInstrumentEvent</h3>
 
     <img height="100%" width="100%"
          src="./assets/caliper-survey_instrument_event-v1p1.png"
          alt="Survey Instrument Event"/>
 
-    <p>A Caliper <code>SurveyQuestionnaireEvent</code> models activities associated with respondents or
-      raters starting and submitting a <code>SurveyQuestionnaire</code> or questionnaire.  TODO
+    <p>A Caliper <code>SurveyInstrumentEvent</code> models activities associated with respondents or
+      raters starting and submitting a <code>SurveyInstrument</code> or questionnaire.  TODO
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyQuestionnaireEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInstrumentEvent</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
@@ -275,12 +291,12 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-SurveyQuestionnaire-started">Started</a>, <a
-        href="action-SurveyQuestionnaire-submitted">Submitted</a></dd>
+      <dd><a href="action-surveyinstrument-started">Started</a>, <a
+        href="action-surveyinstrument-submitted">Submitted</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a></dd>
+      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyQuestionnaireEvent</code> inherits all properties defined by its supertype<code>Event</code>.
+      <dd><code>SurveyInstrumentEvent</code> inherits all properties defined by its supertype<code>Event</code>.
         Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -299,7 +315,7 @@
         <td>id</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
         >UUID</a></td>
-        <td>The emitting application MUST provision the <code>SurveyQuestionnaireEvent</code> with a
+        <td>The emitting application MUST provision the <code>SurveyInstrumentEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
           <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
@@ -309,7 +325,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'SurveyQuestionnaireEvent'.</td>
+        <td>The string value MUST be set to 'SurveyInstrumentEvent'.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -332,10 +348,10 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a> | <a
+        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>SurveyQuestionnaire</code> that the <code>actor</code> is taking.  The
+        <td>The <code>SurveyInstrument</code> that the <code>actor</code> is taking.  The
           <code>object</code> value MUST be expressed either as an object or as
           a string corresponding to the resources's IRI.</td>
         <td>Required</td>
@@ -348,7 +364,7 @@
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The total number of attempts inclusive of the current attempt that have been
-          registered against the <code>SurveyQuestionnaire</code> by the <code>actor</code>. The
+          registered against the <code>SurveyInstrument</code> by the <code>actor</code>. The
           <code>Attempt</code> value MUST be expressed either as an object or as a string
           corresponding to the attempt's IRI.</td>
         <td>Optional</td>
@@ -357,20 +373,20 @@
     </table>
   </section>
 
-  <section id="event-SurveyQuestion">
-    <h3>SurveyQuestionEvent</h3>
+  <section id="event-surveyinstrumentitem">
+    <h3>SurveyInstrumentItemEvent</h3>
 
     <img height="100%" width="100%"
          src="./assets/caliper-survey_instrument_item_event-v1p1.png"
          alt="Survey Instrument Event"/>
 
-    <p>A Caliper <code>SurveyQuestionEvent</code> models activities associated with
-      respondents or raters starting, completing or skipping a <code>SurveyQuestion</code>. TODO
+    <p>A Caliper <code>SurveyInstrumentItemEvent</code> models activities associated with
+      respondents or raters starting, completing or skipping a <code>SurveyInstrumentItem</code>. TODO
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyQuestionEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInstrumentItemEvent</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
@@ -378,13 +394,13 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-SurveyQuestion-started">Started</a>,
-        <a href="action-SurveyQuestion-skipped">Skipped</a>
-        <a href="action-SurveyQuestion-submitted">Submitted</a></dd>
+      <dd><a href="action-surveyinstrumentitem-started">Started</a>,
+        <a href="action-surveyinstrumentitem-skipped">Skipped</a>
+        <a href="action-surveyinstrumentitem-submitted">Submitted</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-SurveyQuestion">SurveyQuestion</a></dd>
+      <dd><a href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyQuestionEvent</code> inherits all properties defined by its
+      <dd><code>SurveyInstrumentItemEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -403,7 +419,7 @@
         <td>id</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
         >UUID</a></td>
-        <td>The emitting application MUST provision the <code>SurveyQuestionnaireEvent</code> with a
+        <td>The emitting application MUST provision the <code>SurveyInstrumentEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
           <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
@@ -413,7 +429,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'SurveyQuestionEvent'.</td>
+        <td>The string value MUST be set to 'SurveyInstrumentItemEvent'.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -437,10 +453,10 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-SurveyQuestion">SurveyQuestion</a> | <a
+        <td><a href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>SurveyQuestion</code> attempted or skipped by the <code>actor</code>. The
+        <td>The <code>SurveyInstrumentItem</code> attempted or skipped by the <code>actor</code>. The
           <code>object</code> value MUST be expressed either as an object or as a string corresponding to the resources's IRI.</td>
         <td>Required</td>
       </tr>
@@ -456,7 +472,7 @@
         <td>If a <code>generated</code> value is provided, the following rules apply: For a
           "started" action a generated <code>Attempt</code> MAY be referenced. The
           <code>Attempt</code> SHOULD indicate the total number of attempts inclusive of the current
-          attempt that have been registered against the <code>SurveyQuestion</code> by the <code>actor
+          attempt that have been registered against the <code>SurveyInstrumentItem</code> by the <code>actor
           </code>. For a "skipped" action, the <code>Attempt</code> count MUST not be incremented.
           For a "completed" action a generated <code>Response</code> MAY be referenced. In all cases,
           the<code>generated</code> value MUST be expressed either as an object or as a string
@@ -476,7 +492,7 @@
 
     <p>A Caliper <code>NavigationEvent</code> models an <code>actor</code> traversing a network
       of digital resources.  In this particular case the <code>object</code> of the navigable
-      interaction is limited to either <code>SurveyQuestionnaire</code> or <code>SurveyQuestion</code>.
+      interaction is limited to either <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code>.
     </p>
 
     <dl>
@@ -491,8 +507,8 @@
       <dt>Supported actions</dt>
       <dd><a href="action-navigatedto">NavigatedTo</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a>, <a
-        href="#entity-SurveyQuestion">SurveyQuestion</a></dd>
+      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a>, <a
+        href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
       <dd><code>NavigationEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
@@ -546,11 +562,11 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a> | <a
-          href="#entity-SurveyQuestion">SurveyQuestion</a> | <a
+        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
+          href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>SurveyQuestionnaire</code> or <code>SurveyQuestion</code> to which the
+        <td>The <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code> to which the
           <code>actor</code> navigated. The <code>object</code> value MUST be expressed either as
           an object or as a string corresponding to the resources's IRI.</td>
         <td>Required</td>
@@ -583,7 +599,7 @@
     <p>A Caliper <code>ViewEvent</code> models an actor's examination of digital content whenever
       the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a
       resource. In this particular case the <code>object</code> of the viewable interaction is
-      limited to either <code>SurveyQuestionnaire</code> or <code>SurveyQuestion</code>.
+      limited to either <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code>.
     </p>
 
     <dl>
@@ -598,8 +614,8 @@
       <dt>Supported actions</dt>
       <dd><a href="action-viewed">Viewed</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a>, <a
-        href="#entity-SurveyQuestion">SurveyQuestion</a></dd>
+      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a>, <a
+        href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
       <dd><code>ViewEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
@@ -653,11 +669,11 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-SurveyQuestionnaire">SurveyQuestionnaire</a> | <a
-          href="#entity-SurveyQuestion">SurveyQuestion</a> | <a
+        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
+          href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>SurveyQuestionnaire</code> or <code>SurveyQuestion</code> that the
+        <td>The <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code> that the
           <code>actor</code> viewed. The <code>object</code> value MUST be expressed either as
           an object or as a string corresponding to the resources's IRI.</td>
         <td>Required</td>
@@ -701,42 +717,42 @@
       <td id="action-agreedtoparticipate"><a
         href="http://purl.imsglobal.org/caliper/actions/AgreedToParticipate" rel="nofollow">
         AgreedToParticipate</a></td>
-      <td>TODO  Yeona suggests instead "OptedIn".</td>
+      <td>TODO</td>
     </tr>
     <tr>
       <td>SurveyEvent</td>
       <td id="action-declinedtoparticipate"><a
         href="http://purl.imsglobal.org/caliper/actions/DeclinedToParticipate" rel="nofollow">
         DeclinedToParticipate</a></td>
-      <td>TODO Yeona suggests instead "OptedOut".</td>
+      <td>TODO</td>
     </tr>
     <tr>
-      <td>SurveyQuestionnaireEvent</td>
-      <td id="action-SurveyQuestionnaire-started"><a
+      <td>SurveyInstrumentEvent</td>
+      <td id="action-surveyinstrument-started"><a
         href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">Started</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a></td>
     </tr>
     <tr>
-      <td>SurveyQuestionnaireEvent</td>
-      <td id="action-SurveyQuestionnaire-submitted"><a
+      <td>SurveyInstrumentEvent</td>
+      <td id="action-surveyinstrument-submitted"><a
         href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">Submitted</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally</a></td>
     </tr>
     <tr>
-      <td>SurveyQuestionEvent</td>
-      <td id="action-SurveyQuestion-started"><a
+      <td>SurveyInstrumentItemEvent</td>
+      <td id="action-surveyinstrumentitem-started"><a
         href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">Started</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a></td>
     </tr>
     <tr>
-      <td>SurveyQuestionEvent</td>
-      <td id="action-SurveyQuestion-skipped"><a
+      <td>SurveyInstrumentItemEvent</td>
+      <td id="action-surveyinstrumentitem-skipped"><a
         href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">Skipped</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a></td>
     </tr>
     <tr>
-      <td>SurveyQuestionEvent</td>
-      <td id="action-SurveyQuestion-completed"><a
+      <td>SurveyInstrumentItemEvent</td>
+      <td id="action-surveyinstrumentitem-completed"><a
         href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">Completed</a>
       </td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a finish or an end</a></td>
@@ -763,10 +779,6 @@
 
   <section id="entity-survey">
     <h3>Survey</h3>
-
-    <p>A <code>Survey</code> is the process of collecting, aggregating, and analyzing the responses from questions posed in one or more questionnaires.</p>
-
-    <TODO> A <code>Survey</code> represents a collection of one or more questionnaires that together . . . .
 
     <dl>
       <dt>IRI</dt>
@@ -816,7 +828,7 @@
       <tr>
         <td>items</td>
         <td>array</td>
-        <td>An array of one or more <code>SurveyQuestionnaire</code> entities that together comprise
+        <td>An array of one or more <code>SurveyInstrument</code> entities that together comprise
           the <code>Survey</code>. The <code>object</code> value MUST be expressed either as
           an object or as a string corresponding to the resources's IRI.</td>
         <td>Required</td>
@@ -825,21 +837,19 @@
     </table>
   </section>
 
-  <section id="entity-SurveyQuestionnaire">
-    <h3>SurveyQuestionnaire</h3>
-
-    <p>A <code>SurveyQuestionnaire</code> is composed of a set of questions that raters will respond to in a particular survey
+  <section id="entity-surveyinstrument">
+    <h3>SurveyInstrument</h3>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyQuestionnaire</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInstrument</dd>
       <dt>Supertype</dt>
       <dd><a href=
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
       >Entity</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyQuestionnaire</code> inherits all properties defined by its supertype
-        <code>DigitalResourceCollection</code>. Profile-specific type restrictions are described below:
+      <dd><code>SurveyInstrument</code> inherits all properties defined by its supertype
+        <code>DigitalResource</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
 
@@ -872,34 +882,25 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'SurveyQuestionnaire'.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>items</td>
-        <td>array</td>
-        <td>An array of one or more <code>SurveyQuestion</code> entities that together comprise
-          the <code>SurveyQuestionnaire</code>. The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the resources's IRI.</td>
+        <td>The string value MUST be set to the Term 'SurveyInstrument'.</td>
         <td>Required</td>
       </tr>
       </tbody>
     </table>
   </section>
 
-  <section id="entity-SurveyQuestion">
-    <h3>SurveyQuestion</h3>
-
-    <p>A <code>SurveyQuestion</code> models a question included in a <code>SurveyQuestionnaire</code>.
+  <section id="entity-surveyinstrumentitem">
+    <h3>SurveyInstrumentItem</h3>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyQuestion</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInstrumentItem</dd>
       <dt>Supertype</dt>
       <dd><a href=
                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
       >Entity</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyQuestion</code> inherits all properties defined by its supertype
+      <dd><code>SurveyInstrumentItem</code> inherits all properties defined by its supertype
         <code>DigitalResource</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -933,7 +934,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'SurveyQuestion'.</td>
+        <td>The string value MUST be set to the Term 'SurveyInstrumentItem'.</td>
         <td>Required</td>
       </tr>
       </tbody>
@@ -972,35 +973,35 @@
       <pre><code>{ TODO }</code></pre>
     </figure>
 
-    <p>Below is an example of a Caliper <code>SurveyQuestionnaireEvent</code> expressed as JSON-LD.
-      The<code>SurveyQuestionnaireEvent</code> records a <code>Person</code> . . . TODO</p>
+    <p>Below is an example of a Caliper <code>SurveyInstrumentEvent</code> expressed as JSON-LD.
+      The<code>SurveyInstrumentEvent</code> records a <code>Person</code> . . . TODO</p>
 
     <figure class="example">
-      <figcaption><code>SurveyQuestionnaireEvent</code> JSON-LD</figcaption>
+      <figcaption><code>SurveyInstrumentEvent</code> JSON-LD</figcaption>
       <pre><code>{ TODO }</code></pre>
     </figure>
 
-    <p>Below is an example of a Caliper <code>SurveyQuestionEvent</code> expressed as JSON-LD.
-      The<code>SurveyQuestionEvent</code> records a <code>Person</code> . . . TODO</p>
+    <p>Below is an example of a Caliper <code>SurveyInstrumentItemEvent</code> expressed as JSON-LD.
+      The<code>SurveyInstrumentItemEvent</code> records a <code>Person</code> . . . TODO</p>
 
     <figure class="example">
-      <figcaption><code>SurveyQuestionEvent</code> JSON-LD</figcaption>
+      <figcaption><code>SurveyInstrumentItemEvent</code> JSON-LD</figcaption>
       <pre><code>{ TODO }</code></pre>
     </figure>
 
-    <p>Below is an example of a <code>SurveyQuestionnaire</code> entity describe that can be sent
-      to an endpoint. The <code>SurveyQuestionnaire</code> references . . . TODO</p>
+    <p>Below is an example of a <code>SurveyInstrument</code> entity describe that can be sent
+      to an endpoint. The <code>SurveyInstrument</code> references . . . TODO</p>
 
     <figure class="example">
-      <figcaption><code>SurveyQuestionnaire</code> describe JSON-LD</figcaption>
+      <figcaption><code>SurveyInstrument</code> describe JSON-LD</figcaption>
       <pre><code>{ TODO }</code></pre>
     </figure>
 
-    <p>Below is an example of a <code>SurveyQuestion</code> entity describe that can also be
-      sent to an endpoint. The <code>SurveyQuestion</code> references . . . TODO</p>
+    <p>Below is an example of a <code>SurveyInstrumentItem</code> entity describe that can also be
+      sent to an endpoint. The <code>SurveyInstrumentItem</code> references . . . TODO</p>
 
     <figure class="example">
-      <figcaption><code>SurveyQuestion</code> describe JSON-LD</figcaption>
+      <figcaption><code>SurveyInstrumentItem</code> describe JSON-LD</figcaption>
       <pre><code>{ TODO }</code></pre>
     </figure>
   </section>
