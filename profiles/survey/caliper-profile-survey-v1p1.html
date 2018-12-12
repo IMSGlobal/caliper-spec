@@ -25,6 +25,12 @@
           company: "University of Michigan (USA)",
           companyURL: "https://www.umich.edu/",
           role: "Author"
+        },
+        {
+          name: "Andrew Gardener",
+          company: "University of British Columbia (Canada)",
+          companyURL: "https://www.ubc.ca/",
+          role: "Author"
         }
         ],
       localBiblio: _localBiblio
@@ -47,9 +53,23 @@
 
     <img height="100%" width="100%" src="./assets/caliper-profile_survey.png" alt="Survey Profile"/>
 
-    <p>The Caliper survey profile is to provide a semantically consistent interoperability standard to exchange events associated with students’ participation behaviors in online surveys to provide their perception on student learning experience, student engagement, learning activities, learning progress, learning performance. It models a Person, typically a respondent or a rater, participating in a survey to provide the feedback on their learning and academic experience. </p>
+    <p>The Caliper survey profile is to provide a semantically consistent interoperability standard to exchange
+      events associated with students’ participation behaviors in online surveys to provide their perception on
+      student learning experience, student engagement, learning activities, learning progress, learning
+      performance. It models a Person, typically a respondent or a rater, participating in a survey to provide
+      the feedback on their learning and academic experience. </p>
 
-    <p> Everybody learns differently with a mix of their own learning styles. It is also known that a student’s time spent or other access behavior in online learning activities is not necessarily indicate that the student finds the materials easy or hard, interested or boring, useful or not useful to their learning. Student feedback is a key source of data that can help glean insights into students’ learning styles and interests, as well as areas to improve. In that sense, student feedback data adds an additional dimension of students’ behavioral data for learning analytics such as learning about student perceptions of how effectively learning activities helped student learning and what specific areas in teaching and learning can be improved to enhance students’ learning experience and learning objectives. The Caliper survey profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive, by allowing to incorporate student voices to make learning analytics more robust. </p>
+    <p>Everybody learns differently with a mix of their own learning styles. It is also known that a student’s
+      time spent or other access behavior in online learning activities is not necessarily indicate that the
+      student finds the materials easy or hard, interested or boring, useful or not useful to their learning.
+      Student feedback is a key source of data that can help glean insights into students’ learning styles and
+      interests, as well as areas to improve. In that sense, student feedback data adds an additional dimension
+      of students’ behavioral data for learning analytics such as learning about student perceptions of how
+      effectively learning activities helped student learning and what specific areas in teaching and learning
+      can be improved to enhance students’ learning experience and learning objectives. The Caliper survey
+      profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics
+      across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive, by allowing to
+      incorporate student voices to make learning analytics more robust. </p>
   </section>
 
   <section class="informative" id="usecases">
@@ -57,40 +77,60 @@
     <p>The Survey Profile supports the following use cases:</p>
     <table>
       <tr>
-        <td>2. <strong>Analytics for student engagement</strong>: Student feedback survey participation behavioral data is an input to the student engagement modeling (description, predictive, and prescription)</td>
+        <td>2. <strong>Analytics for student engagement</strong>: Student feedback survey participation behavioral
+          data is an input to the student engagement modeling (description, predictive, and prescription)</td>
       </tr>
       <tr>
-        <td>3. <strong>Analytics for predicting student retention and success</strong>: Student feedback on their learning experience is an input to predictive modeling of student retention and student success, combined with other data such as LMS behavioral data, demographics, learning performance </td>
+        <td>3. <strong>Analytics for predicting student retention and success</strong>: Student feedback on their
+          learning experience is an input to predictive modeling of student retention and student success,
+          combined with other data such as LMS behavioral data, demographics, learning performance </td>
       </tr>
       <tr>
-        <td>4. <strong>Analytics for instructional designs and learning strategies</strong>: Student feedback data is an input to personalized learning and adaptive learning that incorporates student feedback, determining efficacy of particular learning interventions and learning strategies.</td>
+        <td>4. <strong>Analytics for instructional designs and learning strategies</strong>: Student feedback
+          data is an input to personalized learning and adaptive learning that incorporates student feedback,
+          determining efficacy of particular learning interventions and learning strategies.</td>
       </tr>
       <tr>
-        <td>5. <strong>Analytics for identifying areas to improve</strong> teaching and learning effectiveness, validating the pertinent KPIs to measure progress, and prescribing potential corrective interventions.</td>
+        <td>5. <strong>Analytics for identifying areas to improve</strong> teaching and learning effectiveness,
+          validating the pertinent KPIs to measure progress, and prescribing potential corrective interventions.</td>
       </tr>
       <tr>
-        <td>6. <strong>Analytics for workload</strong> Measuring student workload is essential for optimizing learning, and workload research is under development. Various studies observed the gap between what logs (click behaviors) say and what students say (survey) about workload, which need a deeper understanding to predict or prescribe optimal workload that contributes to optimize learning </td>
+        <td>6. <strong>Analytics for workload</strong> Measuring student workload is essential for optimizing
+          learning, and workload research is under development. Various studies observed the gap between what
+          logs (click behaviors) say and what students say (survey) about workload, which need a deeper
+          understanding to predict or prescribe optimal workload that contributes to optimize learning </td>
       </tr>
       <tr>
-        <td>7. <strong>Analytics for monitoring and improving response rates</strong>: getting a sufficient number of feedback responses is a critical part of reliability and validity of results for data-driven, informed decision making. A low response rate may decrease the statistical power of the data collected and undermine the reliability of the results.</td>
+        <td>7. <strong>Analytics for monitoring and improving response rates</strong>: getting a sufficient
+          number of feedback responses is a critical part of reliability and validity of results for data-driven,
+          informed decision making. A low response rate may decrease the statistical power of the data collected
+          and undermine the reliability of the results.</td>
       </tr>
     </table>
   </section>
 
   <section id="terminology">
     <h3>Terminology</h3>
-    <p>The Survey profile introduces 3 terms into the Caliper space. </p>
+    <p>The Survey profile introduces 4 terms into the Caliper space.</p>
 
-    <p><strong>Survey</strong>: A Survey is the process of collecting, aggregating, and analyzing the responses from the questions in a questionnaire. During their college/university days, students can invited to various types of survey to provide their voice such as formative feedback,  course evaluations, graduate exit surveys, alum surveys, library services survey, etc. Raters will be invited to participate in a survey. Then, raters can opt out or opt in, depending on how the survey is set up. Raters can be reminded to participate after the first invitation, in an effort to improve the response rates, as a low response rate may decrease the statistical power of the data collected and undermine the validity of the results. </p>
+    <p><strong>Survey</strong>: A Survey is the process of collecting, aggregating, and analyzing the responses
+      from the questions in a questionnaire. During their college/university days, students can invited to
+      various types of survey to provide their voice such as formative feedback, course evaluations, graduate
+      exit surveys, alum surveys, library services survey, etc. Raters will be invited to participate in a survey.
+      Then, raters can opt out or opt in, depending on how the survey is set up. Raters can be reminded to
+      participate after the first invitation, in an effort to improve the response rates, as a low response rate
+      may decrease the statistical power of the data collected and undermine the validity of the results. </p>
 
-    <p><strong>Survey Questionnaire (SurveyQuestionnaire)</strong>: a survey questionnaire is a set of feedback questions that raters will respond to in a particular survey. </p>
+    <p><strong>Survey Questionnaire (SurveyQuestionnaire)</strong>: a survey questionnaire is a set of
+      feedback questions that raters will respond to in a particular survey.</p>
 
-    <p><strong>Survey Questionnaire Item (SurveyQuestionnaireItem)</strong>:
+    <p><strong>Survey Questionnaire Item (SurveyQuestionnaireItem)</strong>:</p>
 
-      All terminology used in this specification is concordant with the term
+    <p><strong>Survey Invitation</strong>: an invitation to participate in a survey that is sent out to
+      raters (such as students) </p>
+
+    <p>All terminology used in this specification is concordant with the term
       definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
-
-      <p><strong>Survey Invitation</strong>: an invitation to participate in a survey that is sent out to raters (such as students) </p>
   </section>
 
   <section id="conformance">
@@ -188,12 +228,10 @@
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/SurveyEvent</dd>
       <dt>Supertype</dt>
-      <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
       <dt>Supported actors</dt>
-      <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
       <dd><a href="action-wasinvitedtoparticipate">WasInvitedToParticipate</a>, <a
@@ -220,8 +258,7 @@
       <tbody>
       <tr>
         <td>id</td>
-        <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
         >UUID</a></td>
         <td>The emitting application MUST provision the <code>SurveyEvent</code> with a UUID. A
           version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
@@ -246,8 +283,7 @@
       </tr>
       <tr>
         <td>action</td>
-        <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
           <code>object</code>. The value range is limited to the actions: "WasInvitedToParticipate",
@@ -660,8 +696,7 @@
       </tr>
       <tr>
         <td>action</td>
-        <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
           <code>object</code>. The value range is limited to the actions: "Viewed".</td>
@@ -784,8 +819,7 @@
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/Survey</dd>
       <dt>Supertype</dt>
-      <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
       >Entity</a></dd>
       <dt>Properties</dt>
       <dd><code>Survey</code> inherits all properties defined by its supertype
@@ -844,8 +878,7 @@
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/SurveyInstrument</dd>
       <dt>Supertype</dt>
-      <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
       >Entity</a></dd>
       <dt>Properties</dt>
       <dd><code>SurveyInstrument</code> inherits all properties defined by its supertype
@@ -870,7 +903,7 @@
         <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
           also be dereferenceable, i.e., capable of returning a representation of the resource.
           A <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
           >URI</a> employing the <a href=
             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> scheme MAY be provided in cases where a <a href=
@@ -896,8 +929,7 @@
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/SurveyInstrumentItem</dd>
       <dt>Supertype</dt>
-      <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
       >Entity</a></dd>
       <dt>Properties</dt>
       <dd><code>SurveyInstrumentItem</code> inherits all properties defined by its supertype
@@ -922,11 +954,11 @@
         <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
           also be dereferenceable, i.e., capable of returning a representation of the resource.
           A <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
           >URI</a> employing the <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> scheme MAY be provided in cases where a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
           >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
         <td>Required</td>
       </tr>
