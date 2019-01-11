@@ -187,8 +187,8 @@
     </thead>
     <tbody>
       <tr>
-        <td>SurveyEvent</td>
-        <td>A Caliper SurveyEvent . . . TODO</td>
+        <td>SurveyInvitationEvent</td>
+        <td>A Caliper SurveyInvitationEvent . . . TODO</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -211,22 +211,27 @@
         <td>A Caliper ViewEvent describes an actor's examination of digital content whenever the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a resource.</td>
         <td>Optional</td>
       </tr>
+      <tr>
+        <td>ResourceManagementEvent</td>
+        <td>A Caliper ResourceManagementEvent models a Person managing an Entity.</td>
+        <td>Required</td>
+      </tr>
     </tbody>
   </table>
 
-  <section id="event-survey">
-    <h3>SurveyEvent</h3>
+  <section id="event-survey-invitation">
+    <h3>SurveyInvitationEvent</h3>
 
     <img height="100%" width="100%" src="./assets/caliper-survey_event-v1p1.png"
          alt="Survey Event"/>
 
-    <p>A Caliper <code>SurveyEvent</code> models activities associated with calls to participate
-      in a <code>Survey</code>.  TODO
+    <p>A Caliper <code>SurveyInvitationEvent</code> models activities associated with calls to participate
+      in a <code>Survey</code>.
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInvitationEvent</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
@@ -234,14 +239,15 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-wasinvitedtoparticipate">WasInvitedToParticipate</a>, <a
-        href="action-wasremindedtoparticipate">WasRemindedToParticipate</a>, <a
-        href="action-agreedtoparticipate">AgreedToParticipate</a>, <a
-        href="action-declinedtoparticipate">DeclinedToParticipate</a></dd>
+      <dd>
+        <a href="#action-accepted">Accepted</a>,
+        <a href="#action-declined">Declined</a>,
+        <a href="#action-sent">Sent</a>
+      </dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-survey">Survey</a></dd>
+      <dd><a href="#entity-survey-invitation">SurveyInvitation</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyEvent</code> inherits all properties defined by its supertype<code>Event</code>.
+      <dd><code>SurveyInvitationEvent</code> inherits all properties defined by its supertype<code>Event</code>.
         Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -260,8 +266,8 @@
         <td>id</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
         >UUID</a></td>
-        <td>The emitting application MUST provision the <code>SurveyEvent</code> with a UUID. A
-          version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+        <td>The emitting application MUST provision the <code>SurveyInvitationEvent</code> with a UUID. A
+          version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
         <td>Required</td>
       </tr>
@@ -269,7 +275,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'SurveyEvent'.</td>
+        <td>The string value MUST be set to 'SurveyInvitationEvent'.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -286,19 +292,19 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "WasInvitedToParticipate",
-          "WasRemindedToParticipate", "AgreedToParticipate", or "DeclinedToParticipate".
+          <code>object</code>. The value range is limited to the actions: "Sent",
+          "Accepted", or "Declined".
           </code>
           .</td>
         <td>Required</td>
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-survey">Survey</a> |
+        <td><a href="#entity-survey-invitation">SurveyInvitation</a> |
           <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>Survey</code> in which the <code>actor</code> has been invited to
-          participate. The <code>object</code> value MUST be expressed either as an object or as
+        <td>The <code>SurveyInvitation</code> to which the <code>actor</code> is sending out or responding to.
+          The <code>object</code> value MUST be expressed either as an object or as
           a string corresponding to the resources's IRI.</td>
         <td>Required</td>
       </tr>
@@ -306,7 +312,7 @@
     </table>
   </section>
 
-  <section id="event-surveyinstrument">
+  <section id="event-survey-instrument">
     <h3>SurveyInstrumentEvent</h3>
 
     <img height="100%" width="100%"
@@ -327,10 +333,10 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-surveyinstrument-started">Started</a>, <a
-        href="action-surveyinstrument-submitted">Submitted</a></dd>
+      <dd><a href="#action-survey-instrument-started">Started</a>, <a
+        href="#action-survey-instrument-submitted">Submitted</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a></dd>
+      <dd><a href="#entity-survey-instrument">SurveyInstrument</a></dd>
       <dt>Properties</dt>
       <dd><code>SurveyInstrumentEvent</code> inherits all properties defined by its supertype<code>Event</code>.
         Profile-specific type restrictions are described below:
@@ -353,7 +359,7 @@
         >UUID</a></td>
         <td>The emitting application MUST provision the <code>SurveyInstrumentEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
-          <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
         <td>Required</td>
       </tr>
@@ -384,7 +390,7 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
+        <td><a href="#entity-survey-instrument">SurveyInstrument</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>SurveyInstrument</code> that the <code>actor</code> is taking.  The
@@ -409,7 +415,7 @@
     </table>
   </section>
 
-  <section id="event-surveyinstrumentitem">
+  <section id="event-survey-instrument-item">
     <h3>SurveyInstrumentItemEvent</h3>
 
     <img height="100%" width="100%"
@@ -430,11 +436,11 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-surveyinstrumentitem-started">Started</a>,
-        <a href="action-surveyinstrumentitem-skipped">Skipped</a>
-        <a href="action-surveyinstrumentitem-submitted">Submitted</a></dd>
+      <dd><a href="#action-survey-instrument-item-started">Started</a>,
+        <a href="#action-survey-instrument-item-skipped">Skipped</a>
+        <a href="#action-survey-instrument-item-submitted">Submitted</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
+      <dd><a href="#entity-survey-instrument-item">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
       <dd><code>SurveyInstrumentItemEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
@@ -457,7 +463,7 @@
         >UUID</a></td>
         <td>The emitting application MUST provision the <code>SurveyInstrumentEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
-          <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
         <td>Required</td>
       </tr>
@@ -489,7 +495,7 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
+        <td><a href="#entity-survey-instrument-item">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>SurveyInstrumentItem</code> attempted or skipped by the <code>actor</code>. The
@@ -541,10 +547,10 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-navigatedto">NavigatedTo</a></dd>
+      <dd><a href="#action-navigatedto">NavigatedTo</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a>, <a
-        href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
+      <dd><a href="#entity-survey-instrument">SurveyInstrument</a>, <a
+        href="#entity-survey-instrument-item">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
       <dd><code>NavigationEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
@@ -567,7 +573,7 @@
         >UUID</a></td>
         <td>The emitting application MUST provision the <code>NavigationEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
-          <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
         <td>Required</td>
       </tr>
@@ -598,8 +604,8 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
-          href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
+        <td><a href="#entity-survey-instrument">SurveyInstrument</a> | <a
+          href="#entity-survey-instrument-item">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code> to which the
@@ -648,10 +654,10 @@
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
       >Person</a></dd>
       <dt>Supported actions</dt>
-      <dd><a href="action-viewed">Viewed</a></dd>
+      <dd><a href="#action-viewed">Viewed</a></dd>
       <dt>Supported objects</dt>
-      <dd><a href="#entity-surveyinstrument">SurveyInstrument</a>, <a
-        href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a></dd>
+      <dd><a href="#entity-survey-instrument">SurveyInstrument</a>, <a
+        href="#entity-survey-instrument-item">SurveyInstrumentItem</a></dd>
       <dt>Properties</dt>
       <dd><code>ViewEvent</code> inherits all properties defined by its
         supertype<code>Event</code>. Profile-specific type restrictions are described below:
@@ -674,7 +680,7 @@
         >UUID</a></td>
         <td>The emitting application MUST provision the <code>ViewEvent</code> with a
           UUID. A version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a
-          <a href"https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
           >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
         <td>Required</td>
       </tr>
@@ -704,8 +710,8 @@
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-surveyinstrument">SurveyInstrument</a> | <a
-          href="#entity-surveyinstrumentitem">SurveyInstrumentItem</a> | <a
+        <td><a href="#entity-survey-instrument">SurveyInstrument</a> | <a
+          href="#entity-survey-instrument-item">SurveyInstrumentItem</a> | <a
           href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
         <td>The <code>SurveyInstrument</code> or <code>SurveyInstrumentItem</code> that the
@@ -716,6 +722,117 @@
       </tbody>
     </table>
   </section>
+
+  <section id="event-resource-management">
+    <h3>ResourceManagementEvent</h3>
+
+    <img height="100%" width="100%"
+         src="./assets/caliper-survey_resource_management_event-v1p1.png"
+         alt="Resource Management Event"/>
+
+    <p>A Caliper <code>ResourceManagementEvent</code> models a <code>Person</code>
+      managing an <code>Entity</code>.
+    </p>
+
+    <p>All actions require the 'id', 'type', 'actor', 'action', and 'object' properties.
+      In addition the 'Copied' action requires the 'generated' property to store the newly
+      generated <code>Entity</code> generated by the action.
+    </p>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/ResourceManagementEvent</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef">Event</a></dd>
+      <dt>Supported actors</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person">Person</a></dd>
+      <dt>Supported actions</dt>
+      <dd><a href="#action-archived">Archived</a></dd>
+      <dd><a href="#action-copied">Copied</a></dd>
+      <dd><a href="#action-created">Created</a></dd>
+      <dd><a href="#action-deleted">Deleted</a></dd>
+      <dd><a href="#action-described">Described</a></dd>
+      <dd><a href="#action-modified">Modified</a></dd>
+      <dd><a href="#action-published">Published</a></dd>
+      <dd><a href="#action-restored">Restored</a></dd>
+      <dd><a href="#action-retrieved">Retrieved</a></dd>
+      <dd><a href="#action-unpublished">Unpublished</a></dd>
+      <dt>Supported objects</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity">Entity</a></dd>
+      <dd>
+        </dd><dt>Supported generated</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity">Entity</a></dd>
+        <dd>
+    </dd></dl>
+
+    <div class="overlarge"><table class="data">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef">UUID</a></td>
+          <td>The emitting application <em class="rfc2119" title="MUST">MUST</em> provision the <code>ResourceManagementEvent</code>
+            with a UUID. A version 4 UUID <em class="rfc2119" title="SHOULD">SHOULD</em> be generated.
+            The UUID <em class="rfc2119" title="MUST">MUST</em> be expressed as a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef">
+            URN</a> using the form 'urn:uuid:&lt;UUID&gt;' per [<cite><a class="bibref" href="#bib-rfc4122">rfc4122</a></cite>].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            >Term</a></td>
+          <td>The string value <em class="rfc2119" title="MUST">MUST</em> be set to 'ResourceManagementEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+            >Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value <em class="rfc2119" title="MUST">MUST</em>
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef">Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The value range is limited to the 'Archived', 'Copied', 'Created',
+            'Deleted', 'Described', 'Modified', 'Published', 'Restored', 'Retrieved',
+            and 'Unpublished' actions only.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity">Entity</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
+          <td>The <code>Entity</code> that is being managed. The
+            <code>object</code> value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+            corresponding to the resource's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity">Entity</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
+          <td>The <code>Entity</code> that was generated by the 'Copied' action. The
+            <code>object</code> value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+            corresponding to the resource's IRI.</td>
+          <td>Required (for 'Copied' action)</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
 </section>
 
 <section id="actions">
@@ -734,60 +851,52 @@
     </thead>
     <tbody>
     <tr>
-      <td>SurveyEvent</td>
-      <td id="action-wasinvitedtoparticipate">
-        <a href="http://purl.imsglobal.org/caliper/actions/WasInvitedToParticipate" rel="nofollow">
-        WasInvitedToParticipate</a></td>
-      <td>TODO</td>
+      <td>SurveyInvitationEvent</td>
+      <td id="action-declined"><a
+        href="http://purl.imsglobal.org/caliper/actions/Declined" rel="nofollow">Declined</a></td>
+        <td><a href="http://wordnet-rdf.princeton.edu/wn31/202242120-v">refuse to accept</a>.
+          Inverse of <a href="#action-accepted">Accepted</a></td>
     </tr>
     <tr>
-      <td>SurveyEvent</td>
-      <td id="action-wasremindedtoparticipate"><a
-        href="http://purl.imsglobal.org/caliper/actions/WasRemindedToParticipate" rel="nofollow">
-        WasRemindedToParticipate</a></td>
-      <td>TODO</td>
+      <td>SurveyInvitationEvent</td>
+      <td id="action-accepted"><a
+        href="http://purl.imsglobal.org/caliper/actions/Accepted" rel="nofollow">Accepted</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200799359-v">give an affirmative reply to</a>.
+        Inverse of <a href="#action-declined">Declined</a></td>
     </tr>
     <tr>
-      <td>SurveyEvent</td>
-      <td id="action-agreedtoparticipate"><a
-        href="http://purl.imsglobal.org/caliper/actions/AgreedToParticipate" rel="nofollow">
-        AgreedToParticipate</a></td>
-      <td>TODO</td>
-    </tr>
-    <tr>
-      <td>SurveyEvent</td>
-      <td id="action-declinedtoparticipate"><a
-        href="http://purl.imsglobal.org/caliper/actions/DeclinedToParticipate" rel="nofollow">
-        DeclinedToParticipate</a></td>
-      <td>TODO</td>
+      <td>SurveyInvitationEvent</td>
+      <td id="action-sent">
+        <a href="http://purl.imsglobal.org/caliper/actions/Sent" rel="nofollow">Sent</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201064577-v">transfer</a>.</td>
     </tr>
     <tr>
       <td>SurveyInstrumentEvent</td>
-      <td id="action-surveyinstrument-started"><a
+      <td id="action-survey-instrument-started"><a
         href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">Started</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a></td>
     </tr>
     <tr>
       <td>SurveyInstrumentEvent</td>
-      <td id="action-surveyinstrument-submitted"><a
+      <td id="action-survey-instrument-submitted"><a
         href="http://purl.imsglobal.org/caliper/actions/Submitted" rel="nofollow">Submitted</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally</a></td>
     </tr>
     <tr>
       <td>SurveyInstrumentItemEvent</td>
-      <td id="action-surveyinstrumentitem-started"><a
+      <td id="action-survey-instrument-item-started"><a
         href="http://purl.imsglobal.org/caliper/actions/Started" rel="nofollow">Started</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a></td>
     </tr>
     <tr>
       <td>SurveyInstrumentItemEvent</td>
-      <td id="action-surveyinstrumentitem-skipped"><a
+      <td id="action-survey-instrument-item-skipped"><a
         href="http://purl.imsglobal.org/caliper/actions/Skipped" rel="nofollow">Skipped</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200618188-v">Bypass</a></td>
     </tr>
     <tr>
       <td>SurveyInstrumentItemEvent</td>
-      <td id="action-surveyinstrumentitem-completed"><a
+      <td id="action-survey-instrument-item-completed"><a
         href="http://purl.imsglobal.org/caliper/actions/Completed" rel="nofollow">Completed</a>
       </td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a finish or an end</a></td>
@@ -804,6 +913,82 @@
       <td id="action-viewed"><a
         href="http://purl.imsglobal.org/caliper/actions/Viewed" rel="nofollow">Viewed</a></td>
       <td><a href="http://wordnet-rdf.princeton.edu/wn31/202134765-v">Look at carefully; study mentally</a></td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-archived">
+        <a href="http://purl.imsglobal.org/caliper/actions/Archived" rel="nofollow">Archived</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201387292-v" rel="nofollow">
+        Put into an archive</a>.
+        Inverse of <a href="#action-restored">Restored</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-copied">
+        <a href="http://purl.imsglobal.org/caliper/actions/Copied" rel="nofollow">Copied</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201697776-v" rel="nofollow">
+        Make a replica of</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-created">
+        <a href="http://purl.imsglobal.org/caliper/actions/Created" rel="nofollow">Created</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201620211-v" rel="nofollow">
+        Make or cause to be or to become</a>.
+        Inverse of <a href="#action-deleted">Deleted</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-deleted">
+        <a href="http://purl.imsglobal.org/caliper/actions/Deleted" rel="nofollow">Deleted</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201001860-v" rel="nofollow">
+        Wipe out digitally</a>.
+        Inverse of <a href="#action-created">Created</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-described">
+        <a href="http://purl.imsglobal.org/caliper/actions/Described" rel="nofollow">Described</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200989103-v" rel="nofollow">
+        Give a description of</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-modified">
+        <a href="http://purl.imsglobal.org/caliper/actions/Modified" rel="nofollow">Modified</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202149298-v" rel="nofollow">
+        Cause to change; make different; cause a transformation</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-published">
+        <a href="http://purl.imsglobal.org/caliper/actions/Published" rel="nofollow">Published</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Prepare and issue for public distribution or sale</a>.
+        Inverse of <a href="#action-unpublished">Unpublished</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-restored">
+        <a href="http://purl.imsglobal.org/caliper/actions/Restored" rel="nofollow">Restored</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">
+        Return to its original or usable and functioning condition</a>.
+        Inverse of <a href="#action-archived">Archived</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-retrieved">
+        <a href="http://purl.imsglobal.org/caliper/actions/Retrieved" rel="nofollow">Retrieved</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202253616-v" rel="nofollow">
+        Obtain or retrieve from a storage device; as of information on a computer</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-unpublished">
+        <a href="http://purl.imsglobal.org/caliper/actions/Unpublished" rel="nofollow">Unpublished</a></td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Remove from public distribution or sale</a>.
+        Inverse of <a href="#action-published">Published</a>.</td>
     </tr>
     </tbody>
   </table>
@@ -871,7 +1056,7 @@
     </table>
   </section>
 
-  <section id="entity-surveyinstrument">
+  <section id="entity-survey-instrument">
     <h3>SurveyInstrument</h3>
 
     <dl>
@@ -922,7 +1107,7 @@
     </table>
   </section>
 
-  <section id="entity-surveyinstrumentitem">
+  <section id="entity-survey-instrument-item">
     <h3>SurveyInstrumentItem</h3>
 
     <dl>
@@ -972,6 +1157,104 @@
       </tbody>
     </table>
   </section>
+
+  <section id="entity-survey-invitation">
+    <h3>SurveyInvitation</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInvitation</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyInvitation</code> inherits all properties defined by its supertype
+        <code>DigitalResource</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyInvitation'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>rater</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person">Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
+        <td>The <code>Person</code> which will rate the <code>Survey</code>.
+          The rater value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+          corresponding to the rater resource’s IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>survey</td>
+        <td><a href="#entity-survey">Survey</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The <code>Survey</code> that the invitation is for.
+          The survey value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+          corresponding to the rater resource’s IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>sentCount</td>
+        <td>Integer</td>
+        <td>A integer value used to determine the amount of times the invitation was sent to the rater.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>dateCreated</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>SurveyInvitation</code> was created. The value <em class="rfc2119" title="MUST">MUST</em> be expressed
+            using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>dateModified</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>SurveyInvitation</code> was last changed or modified. The value <em class="rfc2119" title="MUST">MUST</em>
+            be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>extensions</td>
+        <td>Object</td>
+        <td>A map of additional attributes not defined by the model <em class="rfc2119" title="MAY">MAY</em> be specified
+            for a more concise representation of the <code>SurveyInvitation</code>.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </section>
 
 <section id="jsonld">
@@ -980,8 +1263,11 @@
   <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
     provides a remote Survey Profile JSON-LD <a href=
       "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension">context</a> for mapping
-    <code>SurveyEvent</code> terms to IRIs. Caliper message producers MUST reference this
-    context in every Caliper 1.1 <code>SurveyEvent</code> and/or <code>Query</code> describe created
+    <code>SurveyInvitationEvent</code>, <code>SurveyInstrumentEvent</code>, and <code>SurveyInstrumentItemEvent</code>,
+    terms to IRIs. Caliper message producers MUST reference this
+    context in every Caliper 1.1 <code>SurveyInvitationEvent</code>, <code>SurveyInstrumentEvent</code>,
+    <code>SurveyInstrumentItemEvent</code>, <code>Survey</code>, <code>SurveyInstrument</code>,
+    <code>SurveyInstrumentItem</code> and/or <code>SurveyInvitation</code> describe created
     and serialized for transmission to a target endpoint.</p>
 
   <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
@@ -997,12 +1283,106 @@
 
   <section class="informative">
     <h2>Survey Profile JSON-LD Examples</h2>
-    <p>Below is an example of a Caliper <code>SurveyEvent</code> expressed as JSON-LD.  The
-      <code>SurveyEvent</code> records a <code>Person</code> . . . TODO</p>
+    <p>Below is an example of a Caliper <code>SurveyInvitationEvent</code> expressed as JSON-LD.</p>
 
     <figure class="example">
-      <figcaption><code>SurveyEvent</code> JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
+      <figcaption><code>SurveyInvitationEvent</code> JSON-LD</figcaption>
+      <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "SurveyInvitationEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Accepted",
+  "object": {
+    "id": "https://example.com/surveys/1/invitations/users/554433",
+    "type": "SurveyInvitation",
+    "sentCount": 2,
+    "rater": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "survey": {
+      "id": "https://example.edu/survey/1",
+      "type": "Survey"
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+
+    <figure class="example">
+      <figcaption><code>SurveyInvitationEvent</code> JSON-LD</figcaption>
+      <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "SurveyInvitationEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Sent",
+  "object": {
+    "id": "https://example.com/surveys/1/invitations/users/554433",
+    "type": "SurveyInvitation",
+    "sentCount": 2,
+    "rater": {
+      "id": "https://example.edu/users/112233",
+      "type": "Person"
+    },
+    "survey": {
+      "id": "https://example.edu/survey/1",
+      "type": "Survey"
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/112233",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
     </figure>
 
     <p>Below is an example of a Caliper <code>SurveyInstrumentEvent</code> expressed as JSON-LD.
@@ -1035,6 +1415,28 @@
     <figure class="example">
       <figcaption><code>SurveyInstrumentItem</code> describe JSON-LD</figcaption>
       <pre><code>{ TODO }</code></pre>
+    </figure>
+
+    <p>Below is an example of a <code>SurveyInvitation</code> entity describe that can also be
+      sent to an endpoint.</p>
+
+    <figure class="example">
+      <figcaption><code>SurveyInstrumentItem</code> describe JSON-LD</figcaption>
+      <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/1/invitations/users/554433",
+  "type": "SurveyInvitation",
+  "sentCount": 2,
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "survey": {
+    "id": "https://example.edu/survey/1",
+    "type": "Survey"
+  },
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
     </figure>
   </section>
 </section>
