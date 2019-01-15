@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+  <script src='local-biblio.js' class='remove'></script>
+  <script class='remove'>
+    var respecConfig = {
+      specTitle: "Caliper Analytics® Resource Management Profile",
+      shortName: "caliper-resource-management",
+      specStatus: "IMS Base Document",
+      specDate: "Oct 31st, 2018",
+      specVersion: "1.1",
+      specNature: "normative",
+      specType: "spec",
+      contributors: [
+        {
+          name: "Andrew Gardener",
+          company: "University of British Columbia (Canada)",
+          companyURL: "https://www.ubc.ca/",
+          role: "Author"
+        }
+      ],
+      localBiblio: _localBiblio
+    };
+  </script>
+</head>
+<body>
+<section id="abstract">
+  <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Resource Management Profile that
+    describes actions related to managing entities.
+</section>
+
+<section>
+  <h2>Overview</h2>
+    <section class="informative">
+      <h3>Design Goals and Rationale</h3>
+
+      <!-- TODO: Add image -->
+      <img height="100%" width="100%" src="" alt="Resource Management Profile"/>
+
+      <p>The Caliper Resource Management Profile models a <code>Person</code>
+        managing a <code>Entity</code>.
+        The profile provides a <code>ResourceManagementEvent</code> with several actions describing how the
+        resource is being managed: 'Archived', 'Copied', 'Created', 'Deleted', 'Described', 'Modified',
+        'Published', 'Restored', 'Retrieved', and 'Unpublished'.
+        The 'Archived', 'Copied', 'Published', 'Restored', and 'Unpublished' actions are new actions</p>
+    </section>
+
+    <section class="informative" id="user-stories">
+      <h3>User Stories</h3>
+      <p>The Resource Management Profile supports the following learner-centric user stories:</p>
+      <table>
+        <tr>
+          <td>As a content developer, I would like to measure the interval between resource availability and
+            learner engagement with learning resources in order to gain insights into both the administrative
+            impact on the learning process and the timing decisions of learners who are expected to ingest the
+            materials.
+          </td>
+        </tr>
+        <tr>
+          <td>As an instructor, I would like to measure engagement between different revisions of learning resources
+            over time in order to help determine what content is most effective.
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="terminology">
+      <h3>Terminology</h3>
+      <p>All terminology used in this specification is concordant with the term
+        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+    </section>
+
+    <section id="conformance">
+      <h3>Conformance Statements</h3>
+    </section>
+
+    <section id="documentset">
+      <h3>Document Set</h3>
+      <section>
+        <h4>Normative Documents</h4>
+        <dl>
+          <dt>Caliper 1.1</dt>
+          <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
+            All requirements in the Caliper 1.1 specification also apply to implementations of this
+            specification.
+          </dd>
+          <dt>JSON-LD Context</dt>
+          <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
+            [[!CALIPER-RESOURCE-MANAGEMENT-11-CONTEXT]]. </dd>
+          <dt>Errata</dt>
+          <dd>The errata [[!CALIPER-RESOURCE-MANAGEMENT-11-ERRATA]] details any errata registered for this version
+            of this specification since its publication.</dd>
+          <dt>Conformance and Certification guide</dt>
+          <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
+            defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+          </dd>
+        </dl>
+      </section>
+
+      <section class="informative">
+        <h4>Informative Documents</h4>
+        <dl>
+          <dt>Caliper 1.1 Implementation Guide</dt>
+          <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
+            advice and guidance for implementors [[CALIPER-IMPL-11]].
+          </dd>
+        </dl>
+      </section>
+    </section>
+</section>
+
+<section id="events">
+  <h2>Events</h2>
+
+  <p>The Resource Management Profile includes the following <code>Event</code> types: </p>
+
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ResourceManagementEvent</td>
+        <td>A Caliper <code>ResourceManagementEvent</code> models a <code>Person</code>
+          managing an <code>Entity</code>.
+        </td>
+        <td>Required</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <section id="event-resource-management">
+    <h3>ResourceManagementEvent</h3>
+
+    <!-- TODO: add Resource Management event picture -->
+    <img height="100%" width="100%" src="" alt="Resource Management Event"/>
+
+    <p>A Caliper <code>ResourceManagementEvent</code> models a <code>Person</code>
+      managing an <code>Entity</code>.
+    </p>
+
+    <p>All actions require the 'id', 'type', 'actor', 'action', and 'object' properties.
+      In addition the 'Copied' action requires the 'generated' property to store the newly
+      generated <code>Entity</code> generated by the action.
+    </p>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/ResourceManagementEvent</dd>
+      <dt>Supertype</dt>
+      <dd><a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+      >Event</a></dd>
+      <dt>Supported actors</dt>
+      <dd><a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+      >Person</a></dd>
+      <dt>Supported actions</dt>
+      <dd><a href="#action-archived">Archived</a></dd>
+      <dd><a href="#action-copied">Copied</a></dd>
+      <dd><a href="#action-created">Created</a></dd>
+      <dd><a href="#action-deleted">Deleted</a></dd>
+      <dd><a href="#action-described">Described</a></dd>
+      <dd><a href="#action-modified">Modified</a></dd>
+      <dd><a href="#action-published">Published</a></dd>
+      <dd><a href="#action-restored">Restored</a></dd>
+      <dd><a href="#action-retrieved">Retrieved</a></dd>
+      <dd><a href="#action-unpublished">Unpublished</a></dd>
+      <dt>Supported objects</dt>
+      <dd><a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dd>
+        <dt>Supported generated</dt>
+        <dd><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a></dd>
+        <dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td><a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
+            >UUID</a></td>
+          <td>The emitting application MUST provision the <code>ResourceManagementEvent</code> with a UUID. A
+            version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
+              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+            >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[rfc4122]].</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to 'ResourceManagementEvent'.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>actor</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+          >Person</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>action</td>
+          <td><a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The value range is limited to the 'Archived', 'Copied', 'Created',
+            'Deleted', 'Described', 'Modified', 'Published', 'Restored', 'Retrieved',
+            and 'Unpublished' actions only.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>object</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+          >Entity</a> | <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Entity</code> that is being managed. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resource's IRI.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>generated</td>
+          <td><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+          >Entity</a> | <a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Entity</code> that was generated by the 'Copied' action. The
+            <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resource's IRI.</td>
+          <td>Required (for 'Copied' action)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <figure class="example">
+      <figcaption><code>ResourceManagementEvent</code> JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "ResourceManagementEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+
+    <figure class="example">
+        <figcaption><code>ResourceManagementEvent</code> JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "ResourceManagementEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Copied",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "generated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2/syllabus_copy.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus (copy)",
+    "mediaType": "application/pdf",
+    "creators": [
+      {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      }
+    ],
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-11-15T10:05:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+      </figure>
+  </section>
+</section>
+
+<section id="actions">
+  <h2>Actions</h2>
+
+  <p>The Caliper <code>Event</code> types included in the Resource Management Profile support the following
+    actions:</p>
+
+  <table class="data">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Term</th>
+      <th>WordNet® Gloss</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-archived">Archived</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201387292-v" rel="nofollow">
+        Put into an archive</a>.
+        Inverse of <a href="#action-restored">Restored</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-copied">Copied</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201697776-v" rel="nofollow">
+        Make a replica of</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-created">Created</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201620211-v" rel="nofollow">
+        Make or cause to be or to become</a>.
+        Inverse of <a href="#action-deleted">Deleted</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-deleted">Deleted</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/201001860-v" rel="nofollow">
+        Wipe out digitally</a>.
+        Inverse of <a href="#action-created">Created</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-described">Described</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200989103-v" rel="nofollow">
+        Give a description of</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-modified">Modified</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202149298-v" rel="nofollow">
+        Cause to change; make different; cause a transformation</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-published">Published</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Prepare and issue for public distribution or sale</a>.
+        Inverse of <a href="#action-unpublished">Unpublished</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-restored">Restored</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">
+        Return to its original or usable and functioning condition</a>.
+        Inverse of <a href="#action-archived">Archived</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-retrieved">Retrieved</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/202253616-v" rel="nofollow">
+        Obtain or retrieve from a storage device; as of information on a computer</a>.</td>
+    </tr>
+    <tr>
+      <td>ResourceManagementEvent</td>
+      <td id="action-unpublished">Unpublished</td>
+      <td><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">
+        Remove from public distribution or sale</a>.
+        Inverse of <a href="#action-published">Published</a>.</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="entities">
+  <h2>Entities</h2>
+
+  <p>The <code>ResourceManagementEvent</code> does not add any new entities.</p>
+</section>
+
+<section id="jsonld">
+  <h3>JSON-LD</h3>
+  <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+    provides a remote Resource Management Profile JSON-LD <a href=
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension">context</a> for mapping
+    <code>ResourceManagementEvent</code> terms to IRIs. Caliper message producers MUST reference this
+    context in every Caliper 1.1 <code>ResourceManagementEvent</code> describe created and
+    serialized for transmission to a target endpoint.</p>
+
+  <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
+    context handling.</p>
+
+  <figure class="example">
+    <figcaption>JSON-LD Context</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
+  . . .
+}</code></pre>
+  </figure>
+</section>
+
+<section class="appendix informative" id="revisionhistory">
+  <h2>Revision History</h2>
+
+  <section>
+    <h3>Version History</h3>
+    <table title="Revision History" summary="Publication history and revision details for this specification.">
+      <thead>
+      <tr>
+        <th>Version No.</th>
+        <th>Release Date</th>
+        <th>Comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>IMS Base Document 1.0</td>
+        <td>Month Day, 2018</td>
+        <td>The first internal draft release.</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+      <h3>Changes from previous version</h3>
+      <p>As this is the first version of this document, no previous version change log exists.</p>
+  </section>
+</section>
+</body>
+</html>
