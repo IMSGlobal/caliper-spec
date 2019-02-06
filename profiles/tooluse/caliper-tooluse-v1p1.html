@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>  
+  <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
   <script class='remove'>
     var respecConfig = {
       specTitle: "Caliper Analytics® Tool Use Profile",
@@ -20,17 +20,24 @@
           role: "Author, Editor"
         },
         {
-        name: "Markus Gylling",
-        company: "IMS Global (Sweden)",
-        companyURL: "https://www.imsglobal.org",
-        role: "Author, Editor"
-      }]      
+          name: "Markus Gylling",
+          company: "IMS Global (Sweden)",
+          companyURL: "https://www.imsglobal.org",
+          role: "Author, Editor"
+        },
+        {
+          name: "Anthony Whytte",
+          company: "University of Michigan (USA)",
+          companyURL: "https://umich.edu",
+          role: "Editor"
+        }
+      ]
     };
   </script>
 </head>
 <body>
   <section id="abstract" class="introductory">
-    <h2>Abstract</h2> This document extends Caliper 1.1 by enhancing the Tool Use 
+    <h2>Abstract</h2> This document extends Caliper 1.1 by enhancing the Tool Use
       Profile to include support for aggregated metrics.
   </section>
 
@@ -39,22 +46,22 @@
     <section class="informative">
       <h3>Design Goals and Rationale</h3>
 
-      <img height="100%" width="100%" src="./assets/caliper-profile_tool_use.png" 
+      <img height="100%" width="100%" src="./assets/caliper-profile_tool_use.png"
         alt="Tool Use Profile"/>
 
       <aside class="issue"><p>TODO Update image to include generated & progress properties</aside>
 
-      <p>The Caliper Tool Use Profile models an intended interaction between a 
-        user and a tool. In other words, when a <code>Person</code> utilizes a 
-        <code>SoftwareApplication</code> in a manner that the application determines to be 
-        its "intended use for learning", an application that implements the Tool 
+      <p>The Caliper Tool Use Profile models an intended interaction between a
+        user and a tool. In other words, when a <code>Person</code> utilizes a
+        <code>SoftwareApplication</code> in a manner that the application determines to be
+        its "intended use for learning", an application that implements the Tool
         Use Profile can emit a <code>ToolUseEvent</code> indicating such usage.</p>
 
-      <p>The Tool Use Profile enables the gathering of basic usage information. 
-        It provides an easy way to get started with a base level of 
-        instrumentation by allowing the learning tool to make the determination 
-        of its own use. Any learning app can be instrumented using this profile 
-        to detect when a student accesses the tool and uses it in the way it was 
+      <p>The Tool Use Profile enables the gathering of basic usage information.
+        It provides an easy way to get started with a base level of
+        instrumentation by allowing the learning tool to make the determination
+        of its own use. Any learning app can be instrumented using this profile
+        to detect when a student accesses the tool and uses it in the way it was
         intended. Common questions that can be answered by using this profile include:</p>
 
         <ul>
@@ -65,7 +72,7 @@
           <li>How much time are users spending in a tool?</li>
           <li>How much curricular progress have users made in a tool?</li>
         </ul>
-        
+
         <dl>
           <dt>Supported Events</dt>
           <dd><a href="#tooluseevent">ToolUseEvent</a></dd>
@@ -148,14 +155,14 @@
     <h2>Events</h2>
     <section id="event-tooluse">
       <h3>ToolUseEvent</h3>
-      <img height="100%" width="100%" 
+      <img height="100%" width="100%"
         src="assets/caliper-profile_tool_use_event.png"
            alt="ToolUseEvent" />
       <aside class="issue"><p>TODO Update image to include generated & progress properties</aside>
-        <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have 
+        <p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have
           determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a> may include information on the aggregate time
           or progress the <a href="#Person">Person</a> has made in the learning tool.</p>
-                
+
         <dl>
           <dt>IRI</dt>
           <dd><a href="https://purl.imsglobal.org/caliper/ToolUseEvent">https://purl.imsglobal.org/caliper/ToolUseEvent</a></dd>
@@ -175,7 +182,7 @@
           <dd><code>ToolUseEvent</code> inherits all properties defined by
             its supertype <code>Event</code>. Additional requirements are described below:
           </dd>
-        </dl>  
+        </dl>
         <table class="data">
           <thead>
             <tr>
@@ -284,7 +291,7 @@
   <section id="actions">
     <h2>Actions</h2>
 
-  
+
   </section>
 
   <section id="entities">
@@ -538,7 +545,7 @@
       "startedAtTime": "2018-08-15T10:15:00.000Z",
       "endedAtTime": "2018-11-15T10:15:00.000Z"
     }
-  ]  }, 
+  ]  },
   "membership": {
     "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
@@ -551,7 +558,7 @@
   "session": {
     "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
     "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z" 
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
 }</code></pre>
       </figure>
     </section></section>
@@ -570,13 +577,13 @@
       <tr><td>MinutesOnTask</td><td>TODO: Definition</td></tr>
       <tr><td>SkillsMastered</td><td>TODO: Definition</td></tr>
       <tr><td>StandardsMastered</td><td>TODO: Definition</td></tr>
-      <tr><td>UnitsCompleted</td><td>TODO: Definition</td></tr>
-      <tr><td>UnitsPassed</td><td>TODO: Definition</td></tr>
-      <tr><td>WordsRead</td><td>TODO: Definition</td></tr>
+      <tr><td>UnitsCompleted</td><td>Count of instructional units completed by the learner.</td>
+      <tr><td>UnitsPassed</td><td>Count of instructional units completed by the learner, submitted for evaluation, and scored with a passing mark.</td></tr>
+      <tr><td>WordsRead</td><td>Count of the number of words read by the learner.</td></tr>
     </tbody>
   </table>
 </section>
-  
+
   <section class="appendix informative" id="revisionhistory">
     <h2>Revision History</h2>
 
