@@ -1161,6 +1161,625 @@
         <td>The string value MUST be set to the Term 'SurveyQuestion'.</td>
         <td>Required</td>
       </tr>
+      <tr>
+        <td>question</td>
+        <td>string</td>
+        <td>A string value comprising the question posed by the survey question.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>categories</td>
+        <td>Array[string]</td>
+        <td>An array of category strings comprising the categories the survey question encompasses.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>weight</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the importance of the survey question.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-scale-question">
+    <h3>SurveyScaleQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyScaleQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a>, <a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyScaleQuestion</code> inherits all properties defined by its supertypes
+        <code>SurveyQuestion</code> and <code>Scale</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyScaleQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-likert-scale-question">
+    <h3>SurveyLikertScaleQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyLikertScaleQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a>, <a href="#entity-likert-scale">LikertScale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyLikertScaleQuestion</code> inherits all properties defined by its supertypes
+        <code>SurveyQuestion</code> and <code>LikertScale</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyLikertScaleQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-multiselection-scale-question">
+    <h3>SurveyMultiselectionScaleQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyMultiselectionScaleQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a>, <a href="#entity-multiselection-scale">MultiselectionScale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyMultiselectionScaleQuestion</code> inherits all properties defined by its supertypes
+        <code>SurveyQuestion</code> and <code>MultiselectionScale</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyMultiselectionScaleQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-numeric-scale-question">
+    <h3>SurveyNumericScaleQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyNumericScaleQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a>, <a href="#entity-numeric-scale">NumericScale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyNumericScaleQuestion</code> inherits all properties defined by its supertypes
+        <code>SurveyQuestion</code> and <code>NumericScale</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyNumericScaleQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-date-time-question">
+    <h3>SurveyDateTimeQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyDateTimeQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyDateTimeQuestion</code> inherits all properties defined by its supertype
+        <code>SurveyQuestion</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyDateTimeQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>minDateTime</td>
+        <td>DateTime</td>
+        <td>A DateTime value used to determine the minimum value allowed.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>minLabel</td>
+        <td>string</td>
+        <td>The label for the minimum DateTime.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxDateTime</td>
+        <td>DateTime</td>
+        <td>A DateTime value used to determine the maximum value allowed.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxLabel</td>
+        <td>string</td>
+        <td>The label for the maximum value.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-multiselection-question">
+    <h3>SurveyMultiselectionQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyMultiselectionQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyMultiselectionQuestion</code> inherits all properties defined by its supertype
+        <code>SurveyQuestion</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyMultiselectionQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>SurveyMultiselectionQuestion</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemLabels</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The list of labels for each each selectable option in the question.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemValues</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The list of values for each selectable option in the question.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-open-ended-question">
+    <h3>SurveyOpenEndedQuestion</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyOpenEndedQuestion</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-question">SurveyQuestion</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyOpenEndedQuestion</code> inherits all properties defined by its supertype
+        <code>SurveyQuestion</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyOpenEndedQuestion'.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-response">
+    <h3>SurveyResponse</h3>
+
+    <p>A Caliper SurveyResponse is a generic type that represents the selected option generated by a
+      <code>Person</code> interacting with an <code>SurveyQuestion</code>.</p>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyResponse</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
+      >Response</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyResponse</code> inherits all properties defined by its supertype
+        <code>Response</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyResponse'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>attempt</td>
+        <td>
+          <a href="#entity-survey-attempt">SurveyAttempt</a> |
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
+        <td>The associated <code>SurveyAttempt</code>. The attempt value <em class="rfc2119" title="MUST">MUST</em>
+          be expressed either as an object or as a string corresponding to the attempt’s IRI. If an object
+          representation is provided, the <code>SurveyAttempt</code> SHOULD reference both the <code>Person</code>
+          who initiated the <code>SurveyResponse</code> and the relevant <code>SurveyQuestion</code>.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-scale-response">
+    <h3>SurveyScaleResponse</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyScaleResponse</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-response"
+      >SurveyResponse</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyScaleResponse</code> inherits all properties defined by its supertype
+        <code>SurveyResponse</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyScaleResponse'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>selections</td>
+        <td>Array</td>
+        <td>An array of the values representing the rater's selected responses.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-date-time-response">
+    <h3>SurveyDateTimeResponse</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyDateTimeResponse</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-response"
+      >SurveyResponse</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyDateTimeResponse</code> inherits all properties defined by its supertype
+        <code>SurveyResponse</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyDateTimeResponse'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>DateTime</td>
+        <td>The DateTime response provided by the rater.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-multiselection-response">
+    <h3>SurveyMultiselectionResponse</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyMultiselectionResponse</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-response"
+      >SurveyResponse</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyMultiselectionResponse</code> inherits all properties defined by its supertype
+        <code>SurveyResponse</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyMultiselectionResponse'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>selections</td>
+        <td>Array</td>
+        <td>An array of the values representing the rater's selected responses.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-open-ended-response">
+    <h3>SurveyOpenEndedResponse</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyOpenEndedResponse</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-survey-response"
+      >SurveyResponse</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyOpenEndedResponse</code> inherits all properties defined by its supertype
+        <code>SurveyResponse</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyOpenEndedResponse'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>string</td>
+        <td>the textual value of the response.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-survey-attempt">
+    <h3>SurveyAttempt</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyAttempt</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyAttempt</code> inherits all properties defined by its supertype
+        <code>Entity</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'SurveyAttempt'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>rater</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person">Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef">IRI</a></td>
+        <td>The <code>Person</code> which rated the <code>SurveyQuestion</code>.
+          The rater value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+          corresponding to the rater resource’s IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>survey</td>
+        <td><a href="#entity-survey-question">SurveyQuestion</a> |
+            <a href="#entity-survey-questionnaire">SurveyQuestionnaire</a> |
+            <a href="#entity-survey">Survey</a> |  <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The <code>SurveyQuestion</code>, <code>SurveyQuestionnaire</code>, or <code>Survey</code> that
+          the attempt is made on. The survey value <em class="rfc2119" title="MUST">MUST</em> be expressed
+          either as an object or as a string corresponding to the resource’s IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>isPartOf</td>
+        <td><a href="#entity-survey-attempt">SurveyAttempt</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The parent <code>SurveyAttempt</code>, if one exists.
+          The isPartOf value <em class="rfc2119" title="MUST">MUST</em> be expressed
+          either as an object or as a string corresponding to the resource’s IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>count</td>
+        <td>integer</td>
+        <td>The total number of attempts inclusive of the current attempt that have been registered
+          against the <code>SurveyQuestion</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>startedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>SurveyAttempt</code> was commenced. The value <em class="rfc2119" title="MUST">MUST</em>
+            be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>endedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>SurveyAttempt</code> was completed or terminated. The value <em class="rfc2119" title="MUST">MUST</em>
+            be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>duration</td>
+        <td>Duration</td>
+        <td>A time interval that represents the time taken to complete the <code>SurveyAttempt</code>.
+            If a duration is specified the value MUST conform to the ISO 8601 duration format.</td>
+        <td>Optional</td>
+      </tr>
       </tbody>
     </table>
   </section>
