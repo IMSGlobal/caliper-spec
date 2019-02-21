@@ -1232,6 +1232,314 @@
       </tbody>
     </table>
   </section>
+
+  <section id="entity-scale">
+    <h3>Scale</h3>
+    <p>A Caliper <code>Scale</code> models a scale employed in order to capture some rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/Scale</dd>
+      <dt>Supertype</dt>
+      <dd><a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>Scale</code> inherits all properties defined by its supertype <code>Entity</code>.
+        <code>Scale</code> is also provisioned with the additional property <code>question</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'Scale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>question</td>
+        <td>string</td>
+        <td>A string value comprising the question posed to be scaled.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-likert-scale">
+    <h3>LikertScale</h3>
+    <p>A Caliper <code>LikertScale</code> models a likert scale employed in order to capture some likert rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>.
+        <code>LikertScale</code> is also provisioned with the additional properties <code>points</code>,
+        <code>itemLabels</code>, and <code>itemValues</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'LikertScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemLabels</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of labels for each point on the likert scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemValues</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of values for each point on the likert scale.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-multiselection-scale">
+    <h3>MultiselectionScale</h3>
+    <p>A Caliper <code>MultiselectionScale</code> models a scale used in order to capture one or more options when ratings.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/MultiselectionScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>MultiselectionScale</code> inherits all properties defined by its supertype <code>Scale</code>.
+        <code>MultiselectionScale</code> is also provisioned with the additional properties <code>points</code>,
+        <code>itemLabels</code>, <code>itemValues</code>, <code>orderedSelection</code>,
+        <code>minSelections</code>, and <code>maxSelections</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'MultiselectionScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>MultiselectionScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemLabels</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of labels for each point on the scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>itemValues</td>
+        <td>Array [{key:value}] | Array [value]</td>
+        <td>The ordered list of values for each point on the scale.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>orderedSelection</td>
+        <td>boolean</td>
+        <td>Indicates whether the order the selected items is important.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>minSelections</td>
+        <td>integer</td>
+        <td>Indicates the minimum number of selections that can be chosen.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxSelections</td>
+        <td>integer</td>
+        <td>Indicates the maximum number of selections that can be chosen.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="entity-numeric-scale">
+    <h3>NumericScale</h3>
+    <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/NumericScale</dd>
+      <dt>Supertype</dt>
+      <dd><a href="#entity-scale">Scale</a></dd>
+      <dt>Properties</dt>
+      <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>.
+        <code>NumericScale</code> is also provisioned with the additional properties <code>minValue</code>,
+        <code>minLabel</code>, <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>.
+        Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
+          also be dereferenceable, i.e., capable of returning a representation of the resource.
+          A <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
+          >URI</a> employing the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
+          >URN</a> scheme MAY be provided in cases where a <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
+          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td><a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'NumericScale'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>minValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>minLabel</td>
+        <td>string</td>
+        <td>The label for the minimum value.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>maxLabel</td>
+        <td>string</td>
+        <td>The label for the maximum value.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>step</td>
+        <td>decimal</td>
+        <td>Indicates the decimal step used for determining the options between the minimum and maximum values.</td>
+        <td>Optional</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </section>
 
 <section id="jsonld">
@@ -1469,6 +1777,77 @@
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
+
+    <p>Below is an example of a <code>Scale</code> entity describe that can also be
+      sent to an endpoint.</p>
+
+    <figure class="example">
+      <figcaption><code>Scale</code> describe JSON-LD</figcaption>
+<pre><code>{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/1",
+    "type": "Scale",
+    "question": "How would you rate this?",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+
+    <p>Below is an example of a <code>LikertScale</code> entity describe that can also be
+      sent to an endpoint.</p>
+
+    <figure class="example">
+      <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "question": "Do you agree with the opinion presented?",
+    "points": 4,
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": [-2, -1, 1, 2],
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+
+    <p>Below is an example of a <code>MultiselectionScale</code> entity describe that can also be
+      sent to an endpoint.</p>
+
+    <figure class="example">
+      <figcaption><code>MultiselectionScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/3",
+    "type": "MultiselectionScale",
+    "question": "How do you feel about this content? (select one or more)",
+    "points": 5,
+    "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+    "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+    "orderedSelection": false,
+    "minSelections": 1,
+    "maxSelections": 5,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+
+    <p>Below is an example of a <code>NumericScale</code> entity describe that can also be
+      sent to an endpoint.</p>
+
+    <figure class="example">
+      <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
+<pre><code>{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+    "id": "https://example.edu/scale/4",
+    "type": "NumericScale",
+    "question": "How do you feel about this content?",
+    "minValue": 0.0,
+    "minLabel": "Disliked",
+    "maxValue": 10.0,
+    "maxLabel": "Liked",
+    "step": 0.5,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+
   </section>
 </section>
 
