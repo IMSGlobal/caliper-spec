@@ -1059,6 +1059,49 @@
 <section id="entities">
   <h2>Entities</h2>
 
+  <section id="entity-collection">
+    <h3>Collection</h3>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/Collection</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>Collection</code> inherits all properties defined by its supertype
+        <code>Entity</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term 'Entity'.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>items</td>
+        <td>array</td>
+        <td>An ordered collection of entities. Each array item MUST be expressed either as an object
+          or as a string corresponding to the resource's IRI.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
   <section id="entity-survey">
     <h3>Survey</h3>
 
@@ -1066,11 +1109,11 @@
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/Survey</dd>
       <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResourceCollection"
-      >DigitalResourceCollection</a></dd>
+      <dd><a href="#entity-collection"
+      >Collection</a></dd>
       <dt>Properties</dt>
       <dd><code>Survey</code> inherits all properties defined by its supertype
-        <code>DigitalResourceCollection</code>. Profile-specific type restrictions are described below:
+        <code>Collection</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
 
