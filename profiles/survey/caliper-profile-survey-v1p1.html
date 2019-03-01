@@ -1253,41 +1253,6 @@
     </table>
   </section>
 
-  <section id="entity-survey-multiselection-scale-question">
-    <h3>SurveyMultiselectionScaleQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyMultiselectionScaleQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-survey-question">SurveyQuestion</a>, <a href="#entity-multiselection-scale">MultiselectionScale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>SurveyMultiselectionScaleQuestion</code> inherits all properties defined by its supertypes
-        <code>SurveyQuestion</code> and <code>MultiselectionScale</code>. Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term 'SurveyMultiselectionScaleQuestion'.</td>
-        <td>Required</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
   <section id="entity-survey-numeric-scale-question">
     <h3>SurveyNumericScaleQuestion</h3>
 
@@ -1985,97 +1950,6 @@
     </table>
   </section>
 
-  <section id="entity-multiselection-scale">
-    <h3>MultiselectionScale</h3>
-    <p>A Caliper <code>MultiselectionScale</code> models a scale used in order to capture one or more options when ratings.</p>
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/MultiselectionScale</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-scale">Scale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>MultiselectionScale</code> inherits all properties defined by its supertype <code>Scale</code>.
-        <code>MultiselectionScale</code> is also provisioned with the additional properties <code>points</code>,
-        <code>itemLabels</code>, <code>itemValues</code>, <code>orderedSelection</code>,
-        <code>minSelections</code>, and <code>maxSelections</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>id</td>
-        <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-          also be dereferenceable, i.e., capable of returning a representation of the resource.
-          A <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-          >URI</a> employing the <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-          >URN</a> scheme MAY be provided in cases where a <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-          >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term 'MultiselectionScale'.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>points</td>
-        <td>integer</td>
-        <td>A integer value used to determine the amount of points on the <code>MultiselectionScale</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemLabels</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The ordered list of labels for each point on the scale.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemValues</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The ordered list of values for each point on the scale.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>orderedSelection</td>
-        <td>boolean</td>
-        <td>Indicates whether the order the selected items is important.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>minSelections</td>
-        <td>integer</td>
-        <td>Indicates the minimum number of selections that can be chosen.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>maxSelections</td>
-        <td>integer</td>
-        <td>Indicates the maximum number of selections that can be chosen.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
   <section id="entity-numeric-scale">
     <h3>NumericScale</h3>
     <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
@@ -2424,26 +2298,6 @@
     "points": 4,
     "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
     "itemValues": [-2, -1, 1, 2],
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-}</code></pre>
-    </figure>
-
-    <p>Below is an example of a <code>MultiselectionScale</code> entity describe that can also be
-      sent to an endpoint.</p>
-
-    <figure class="example">
-      <figcaption><code>MultiselectionScale</code> describe JSON-LD</figcaption>
-<pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-    "id": "https://example.edu/scale/3",
-    "type": "MultiselectionScale",
-    "question": "How do you feel about this content? (select one or more)",
-    "points": 5,
-    "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
-    "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-    "orderedSelection": false,
-    "minSelections": 1,
-    "maxSelections": 5,
     "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
