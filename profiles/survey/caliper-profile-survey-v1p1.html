@@ -1966,7 +1966,7 @@
 </section>
 
 <section id="jsonld">
-  <h2>Representing Caliper as JSON-LD</h2>
+  <h2>Expressing Caliper as JSON-LD</h2>
 
   <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
     provides a remote Survey Profile JSON-LD <a href=
@@ -1994,12 +1994,10 @@
   </figure>
 
   <section class="informative">
-    <h2>Survey Profile JSON-LD Examples</h2>
-
-    <p>Below is an example of a Caliper <code>SurveyEvent</code> expressed as JSON-LD.</p>
+    <h2>OptedIn SurveyEvent</h2>
 
     <figure class="example">
-      <figcaption><code>SurveyEvent</code> JSON-LD</figcaption>
+      <figcaption><code>SurveyEvent</code> OptedIn JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:4bfb7726-3564-11e9-b210-d663bd873d93",
@@ -2016,16 +2014,16 @@
   "eventTime": "2018-11-15T10:05:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2018"
   },
   "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
     "type": "Membership",
     "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
     "roles": [ "Learner" ],
     "status": "Active",
     "dateCreated": "2018-08-01T06:00:00.000Z"
@@ -2037,11 +2035,13 @@
   }
 }</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a Caliper <code>SurveyInvitationEvent</code> expressed as JSON-LD.</p>
+  <section class="informative">
+    <h2>Accepted SurveyInvitationEvent</h2>
 
     <figure class="example">
-      <figcaption><code>SurveyInvitationEvent</code> JSON-LD</figcaption>
+      <figcaption><code>SurveyInvitationEvent</code> Accepted JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "urn:uuid:534afa10-3564-11e9-b210-d663bd873d93",
@@ -2052,58 +2052,7 @@
   },
   "action": "Accepted",
   "object": {
-    "id": "https://example.com/surveys/1/invitations/users/554433",
-    "type": "SurveyInvitation",
-    "sentCount": 1,
-    "sentDate": "2018-11-15T10:05:00.000Z",
-    "rater": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "survey": {
-      "id": "https://example.edu/survey/1",
-      "type": "Survey"
-    },
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Learner" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
-    </figure>
-
-    <figure class="example">
-      <figcaption><code>SurveyInvitationEvent</code> JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "urn:uuid:5801f73e-3564-11e9-b210-d663bd873d93",
-  "type": "SurveyInvitationEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Sent",
-  "object": {
-    "id": "https://example.com/surveys/1/invitations/users/554433",
+    "id": "https://example.com/surveys/100/invitations/users/112233",
     "type": "SurveyInvitation",
     "sentCount": 1,
     "sentDate": "2018-11-15T10:05:00.000Z",
@@ -2117,10 +2066,65 @@
     },
     "dateCreated": "2018-08-01T06:00:00.000Z"
   },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Sent SurveyInvitationEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>SurveyInvitationEvent</code> Sent JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:5801f73e-3564-11e9-b210-d663bd873d93",
+  "type": "SurveyInvitationEvent",
+  "actor": {
+    "id": "https://example.edu/users/112233",
+    "type": "Person"
+  },
+  "action": "Sent",
+  "object": {
+    "id": "https://example.com/surveys/100/invitations/users/554433",
+    "type": "SurveyInvitation",
+    "sentCount": 1,
+    "sentDate": "2018-11-15T10:05:00.000Z",
+    "rater": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "survey": {
+      "id": "https://example.edu/survey/1",
+      "type": "Survey"
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
   "eventTime": "2018-11-12T10:15:00.000Z",
   "edApp": "https://example.edu",
   "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
     "type": "CourseSection",
     "courseNumber": "CPS 435-01",
     "academicSession": "Fall 2018"
@@ -2141,55 +2145,769 @@
   }
 }</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a Caliper <code>QuestionnaireEvent</code> expressed as JSON-LD.
-      The<code>QuestionnaireEvent</code> records a <code>Person</code> . . . TODO</p>
-
-    <figure class="example">
-      <figcaption><code>QuestionnaireEvent</code> JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
-    </figure>
-
-    <p>Below is an example of a Caliper <code>QuestionnaireItemEvent</code> expressed as JSON-LD.
-      The<code>QuestionnaireItemEvent</code> records a <code>Person</code> . . . TODO</p>
+  <section class="informative">
+    <h2>Started QuestionnaireEvent</h2>
 
     <figure class="example">
-      <figcaption><code>QuestionnaireItemEvent</code> JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
+      <figcaption><code>QuestionnaireEvent</code> Started JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:23995ed4-3c6b-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Started",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30",
+    "type": "Questionnaire",
+    "items": [
+      {
+        "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+        "type": "QuestionnaireItem"
+      },
+      {
+        "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+        "type": "QuestionnaireItem"
+      }
+    ],
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>Survey</code> entity describe that can be sent
-      to an endpoint. The <code>Survey</code> references . . . TODO</p>
+  <section class="informative">
+    <h2>Completed QuestionnaireEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>QuestionnaireEvent</code> Completed JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:79f18ac2-3c6b-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Completed",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30",
+    "type": "Questionnaire",
+    "items": [
+      {
+        "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+        "type": "QuestionnaireItem"
+      },
+      {
+        "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+        "type": "QuestionnaireItem"
+      }
+    ],
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Started QuestionnaireItemEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>QuestionnaireItemEvent</code> Started JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:23995ed4-3c6b-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireItemEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Started",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+    "type": "QuestionnaireItem",
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+
+  <section class="informative">
+    <h2>Submitted (LikertScaleQuestion) QuestionnaireItemEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>QuestionnaireItemEvent</code> Submitted JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:590f1ff2-3c6d-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireItemEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Submitted",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
+      "type": "LikertScaleQuestion",
+      "questionPosed": "How satisfied are you with our services?",
+      "points": 4,
+      "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
+      "itemValues": [-2, -1, 1, 2]
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "generated": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
+    "type": "ScaleResponse",
+    "selections": ["Satisfied"],
+    "startedAtTime": "2018-08-01T05:55:48.000Z",
+    "endedAtTime": "2018-08-01T06:00:00.000Z",
+    "duration": "PT4M12S"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Submitted (OpenEndedQuestion) QuestionnaireItemEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>QuestionnaireItemEvent</code> Submitted JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:590f1ff2-3c6d-11e9-b210-d663bd873d93",
+  "type": "QuestionnaireItemEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Submitted",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "type": "OpenEndedQuestion",
+      "questionPosed": "What would you change about your course?"
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "generated": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
+    "type": "OpenEndedResponse",
+    "value": "I feel that ...",
+    "startedAtTime": "2018-08-01T05:55:48.000Z",
+    "endedAtTime": "2018-08-01T06:00:00.000Z",
+    "duration": "PT4M12S"
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>NavigatedTo NavigationEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>NavigationEvent</code> NavigatedTo JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:a9ea1cb9-3445-4f5a-b5e5-44630cc054a9",
+  "type": "NavigationEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "NavigatedTo",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "type": "OpenEndedQuestion",
+      "questionPosed": "What would you change about your course?"
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Viewed ViewEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>ViewEvent</code> Viewed JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:bc780773-ee1e-49f6-ab2b-fe16eb391dd8",
+  "type": "ViewEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Viewed",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "type": "OpenEndedQuestion",
+      "questionPosed": "What would you change about your course?"
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Created ResourceManagementEvent</h2>
+
+    <figure class="example">
+      <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "urn:uuid:264a9afc-c023-43f9-ab15-bdb8b39ab8ae",
+  "type": "ResourceManagementEvent",
+  "actor": {
+    "id": "https://example.edu/users/112233",
+    "type": "Person"
+  },
+  "action": "Created",
+  "object": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "type": "OpenEndedQuestion",
+      "questionPosed": "What would you change about your course?"
+    },
+    "categories": ["teaching effectiveness", "Course structure"],
+    "weight": 1.0
+  },
+  "eventTime": "2018-11-12T10:15:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/112233",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Instructor" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/f095bbd391ea4a5dd639724a40b606e98a631823",
+    "type": "Session",
+    "startedAtTime": "2018-11-12T10:00:00.000Z"
+  }
+}</code></pre>
+    </figure>
+  </section>
+
+
+  <section class="informative">
+    <h2>Collection Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>Collection</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/collections/1",
+  "type": "Collection",
+  "items": [
+    {
+      "id": "https://example.edu/videos/1225",
+      "type": "VideoObject",
+      "mediaType": "video/ogg",
+      "name": "Introduction to IMS Caliper",
+      "dateCreated": "2018-08-01T06:00:00.000Z",
+      "duration": "PT1H12M27S",
+      "version": "1.1"
+    },
+    {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/554433/responses/1",
+      "type": "Response",
+      "dateCreated": "2018-11-15T10:15:46.000Z",
+      "startedAtTime": "2018-11-15T10:15:46.000Z",
+      "endedAtTime": "2018-11-15T10:17:20.000Z"
+    }
+  ]
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Survey Describe</h2>
 
     <figure class="example">
       <figcaption><code>Survey</code> describe JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/collections/1",
+  "type": "Survey",
+  "items": [
+    {
+      "id": "https://example.com/surveys/100/questionnaires/30",
+      "type": "Questionnaire",
+      "items": [
+        {
+          "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+          "type": "QuestionnaireItem"
+        },
+        {
+          "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+          "type": "QuestionnaireItem"
+        }
+      ],
+      "dateCreated": "2018-08-01T06:00:00.000Z"
+    },
+    {
+      "id": "https://example.com/surveys/100/questionnaires/31",
+      "type": "Questionnaire",
+      "items": [
+        {
+          "id": "https://example.com/surveys/100/questionnaires/31/items/1",
+          "type": "QuestionnaireItem"
+        },
+        {
+          "id": "https://example.com/surveys/100/questionnaires/31/items/2",
+          "type": "QuestionnaireItem"
+        }
+      ],
+      "dateCreated": "2018-08-01T06:00:00.000Z"
+    }
+  ]
+}</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>Questionnaire</code> entity describe that can be sent
-      to an endpoint. The <code>Questionnaire</code> references . . . TODO</p>
+  <section class="informative">
+    <h2>Questionnaire Describe</h2>
 
     <figure class="example">
       <figcaption><code>Questionnaire</code> describe JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30",
+  "type": "Questionnaire",
+  "items": [
+    {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+      "type": "QuestionnaireItem"
+    },
+    {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+      "type": "QuestionnaireItem"
+    }
+  ],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>QuestionnaireItem</code> entity describe that can also be
-      sent to an endpoint. The <code>QuestionnaireItem</code> references . . . TODO</p>
-
-    <figure class="example">
-      <figcaption><code>QuestionnaireItem</code> describe JSON-LD</figcaption>
-      <pre><code>{ TODO }</code></pre>
-    </figure>
-
-    <p>Below is an example of a <code>SurveyInvitation</code> entity describe that can also be
-      sent to an endpoint.</p>
+  <section class="informative">
+    <h2>QuestionnaireItem Describe</h2>
 
     <figure class="example">
       <figcaption><code>QuestionnaireItem</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/1/invitations/users/554433",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+  "type": "QuestionnaireItem",
+  "question": {
+    "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
+    "type": "LikertScaleQuestion",
+    "questionPosed": "How satisfied are you with our services?",
+    "points": 4,
+    "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
+    "itemValues": [-2, -1, 1, 2]
+  },
+  "categories": ["teaching effectiveness", "Course structure"],
+  "weight": 1.0
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>Question Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>Question</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/question/1",
+  "type": "Question",
+  "questionPosed": "What is this generic question about?",
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>ScaleQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>ScaleQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/question/1",
+  "type": "ScaleQuestion",
+  "questionPosed": "What is this generic scale question about?",
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>LikertScaleQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>LikertScaleQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
+  "type": "LikertScaleQuestion",
+  "questionPosed": "How satisfied are you with our services?",
+  "points": 4,
+  "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
+  "itemValues": [-2, -1, 1, 2]
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>NumericScaleQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>NumericScaleQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/3/question",
+  "type": "NumericScaleQuestion",
+  "questionPosed": "How satisfied are you with our services?",
+  "minValue": 0.0,
+  "minLabel": "Unsatisfied",
+  "maxValue": 10.0,
+  "maxLabel": "Satisfied",
+  "step": 0.5
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>DateTimeQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>DateTimeQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/4/question",
+  "type": "DateTimeQuestion",
+  "questionPosed": "When would you be available for an exam next term?",
+  "minDateTime": "2018-09-01T06:00:00.000Z",
+  "minLabel": "Start of Term",
+  "maxDateTime": "2018-12-30T06:00:00.000Z",
+  "maxLabel": "End of Term"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>MultiselectQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>MultiselectQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/5/question",
+  "type": "MultiselectQuestion",
+  "questionPosed": "What do you want to study today?",
+  "points": 4,
+  "itemLabels": ["Calculus", "Number theory", "Combinatorics", "Algebra"],
+  "itemValues": [
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/2",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/3",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/4",
+  ],
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>OpenEndedQuestion Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>OpenEndedQuestion</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+  "type": "OpenEndedQuestion",
+  "questionPosed": "What would you change about your course?"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>ScaleResponse Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>ScaleResponse</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
+  "type": "ScaleResponse",
+  "selections": ["Satisfied"],
+  "startedAtTime": "2018-08-01T05:55:48.000Z",
+  "endedAtTime": "2018-08-01T06:00:00.000Z",
+  "duration": "PT4M12S"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>DateTimeResponse Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>DateTimeResponse</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/4/users/554433/responses/4",
+  "type": "DateTimeResponse",
+  "dateTimeSelected": "2018-12-15T06:00:00.000Z",
+  "startedAtTime": "2018-08-01T05:55:48.000Z",
+  "endedAtTime": "2018-08-01T06:00:00.000Z",
+  "duration": "PT4M12S"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+  <section class="informative">
+    <h2>MultiselectResponse Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>MultiselectResponse</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/5/users/554433/responses/5",
+  "type": "MultiselectResponse",
+  "selections": [
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
+    "https://example.edu/terms/201801/courses/7/sections/1/objectives/2"
+  ],
+  "startedAtTime": "2018-08-01T05:55:48.000Z",
+  "endedAtTime": "2018-08-01T06:00:00.000Z",
+  "duration": "PT4M12S"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+
+  <section class="informative">
+    <h2>OpenEndedResponse Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>OpenEndedResponse</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
+  "type": "OpenEndedResponse",,
+  "value": "I feel that ...",
+  "startedAtTime": "2018-08-01T05:55:48.000Z",
+  "endedAtTime": "2018-08-01T06:00:00.000Z",
+  "duration": "PT4M12S"
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+    </figure>
+  </section>
+
+
+  <section class="informative">
+    <h2>SurveyInvitation Describe</h2>
+
+    <figure class="example">
+      <figcaption><code>SurveyInvitation</code> describe JSON-LD</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.com/surveys/100/invitations/users/112233",
   "type": "SurveyInvitation",
   "sentCount": 1,
   "sentDate": "2018-11-15T10:05:00.000Z",
@@ -2204,58 +2922,61 @@
   "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>Scale</code> entity describe that can also be
-      sent to an endpoint.</p>
+
+  <section class="informative">
+    <h2>Scale Describe</h2>
 
     <figure class="example">
       <figcaption><code>Scale</code> describe JSON-LD</figcaption>
 <pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-    "id": "https://example.edu/scale/1",
-    "type": "Scale",
-    "question": "How would you rate this?",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/scale/1",
+  "type": "Scale",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>LikertScale</code> entity describe that can also be
-      sent to an endpoint.</p>
+  <section class="informative">
+    <h2>LikertScale Describe</h2>
 
     <figure class="example">
       <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
 <pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-    "id": "https://example.edu/scale/2",
-    "type": "LikertScale",
-    "question": "Do you agree with the opinion presented?",
-    "points": 4,
-    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-    "itemValues": [-2, -1, 1, 2],
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/scale/2",
+  "type": "LikertScale",
+  "question": "Do you agree with the opinion presented?",
+  "points": 4,
+  "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+  "itemValues": [-2, -1, 1, 2],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
+  </section>
 
-    <p>Below is an example of a <code>NumericScale</code> entity describe that can also be
-      sent to an endpoint.</p>
+  <section class="informative">
+    <h2>NumericScale Describe</h2>
 
     <figure class="example">
       <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
 <pre><code>{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
-    "id": "https://example.edu/scale/4",
-    "type": "NumericScale",
-    "question": "How do you feel about this content?",
-    "minValue": 0.0,
-    "minLabel": "Disliked",
-    "maxValue": 10.0,
-    "maxLabel": "Liked",
-    "step": 0.5,
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
+  "id": "https://example.edu/scale/4",
+  "type": "NumericScale",
+  "question": "How do you feel about this content?",
+  "minValue": 0.0,
+  "minLabel": "Disliked",
+  "maxValue": 10.0,
+  "maxLabel": "Liked",
+  "step": 0.5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
 }</code></pre>
     </figure>
-
   </section>
+
 </section>
 
 <section class="appendix informative" id="revisionhistory">
