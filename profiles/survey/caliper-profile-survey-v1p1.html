@@ -2274,9 +2274,16 @@
   "object": {
     "id": "https://example.com/surveys/100/questionnaires/30/items/1",
     "type": "QuestionnaireItem",
+    "question": {
+      "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
+      "type": "LikertScaleQuestion",
+      "questionPosed": "How satisfied are you with our services?",
+      "points": 4,
+      "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
+      "itemValues": [-2, -1, 1, 2]
+    },
     "categories": ["teaching effectiveness", "Course structure"],
-    "weight": 1.0,
-    "dateCreated": "2018-08-01T06:00:00.000Z"
+    "weight": 1.0
   },
   "eventTime": "2018-11-12T10:15:00.000Z",
   "edApp": "https://example.edu",
