@@ -3459,7 +3459,7 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | Property | Type | Description | Disposition |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResource*. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitalResource*. | Required |
 | name | string | A string value comprising a word or phrase by which the resource is known. | Optional |
 | description | string |  A string value comprising a brief, written representation of the resource. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing resource into being.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). | Optional |

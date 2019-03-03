@@ -1,513 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>  
-  <script class='remove'>
-    var respecConfig = {
-      specTitle: "Caliper Analytics® Search Profile",
-      shortName: "caliper-search",
-      specStatus: "IMS Base Document",
-      specDate: "October 31, 2018",
-      specVersion: "1.1",
-      specNature: "normative",
-      specType: "spec",
-      contributors: [
-        {
-          name: "Daniel Green",
-          company: "VitalSource (USA)",
-          companyURL: "https://www.vitalsource.com/",
-          role: "Author"
-        },
-        {
-          name: "Anthony Whyte",
-          company: "University of Michigan (USA)",
-          companyURL: "https://www.umich.edu/",
-          role: "Author"
-        },
-        {
-        name: "Markus Gylling",
-        company: "IMS Global (Sweden)",
-        companyURL: "https://www.imsglobal.org",
-        role: "Editor"
-      }]      
-    };
-  </script>
+    <meta charset='utf-8'>
+    <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+    <script class='remove'>
+        var respecConfig = {
+            specTitle: "Caliper Analytics® Search Profile",
+            shortName: "caliper-search",
+            specStatus: "IMS Base Document",
+            specDate: "June 1, 2019",
+            specVersion: "1.1",
+            specNature: "normative",
+            specType: "spec",
+            contributors: [
+                {
+                    name: "Daniel Green",
+                    company: "VitalSource (USA)",
+                    companyURL: "https://www.vitalsource.com/",
+                    role: "Author"
+                },
+                {
+                    name: "Anthony Whyte",
+                    company: "University of Michigan (USA)",
+                    companyURL: "https://www.umich.edu/",
+                    role: "Author"
+                },
+                {
+                    name: "Markus Gylling",
+                    company: "IMS Global (Sweden)",
+                    companyURL: "https://www.imsglobal.org",
+                    role: "Editor"
+                }]
+        };
+    </script>
 </head>
 <body>
-  <section id="abstract">
+<section id="abstract">
     <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Search Profile that
-      describes search-related learning activities.
-  </section>
+    describes search-related learning activities.
+</section>
 
-  <section>
+<section>
     <h2>Overview</h2>
     <section class="informative">
-      <h3>Design Goals and Rationale</h3>
+        <h3>Design Goals and Rationale</h3>
 
-      <img height="100%" width="100%" src="./assets/caliper-profile_search.png" alt="Search Profile"/>
+        <img height="100%" width="100%" src="./assets/caliper-profile_search.png" alt="Search Profile"/>
 
-      <p>The Caliper Search Profile models a <code>Person</code>, typically a learner,
-        querying a resource for information. The profile provides a <code>SearchEvent</code> and
-        a 'Searched' action for describing information retrieval activities. An optional
-        <code>SearchResponse</code> entity can be employed to describe the <code>Query</code>
-        submitted by a user as well as any <code>searchResults</code> returned as a result of the
-        search.</p>
+        <p>The Caliper Search Profile models an <code>actor</code>, typically a learner,
+            querying a resource for information. The profile provides a <a href="#event-search">SearchEvent</a> and
+            and a <a href="#actions">Searched</a> action for describing information retrieval activities. An optional
+            <a href="#entity-searchresponse">SearchResponse</a> entity can be employed to describe the
+            <a href="#entity-query">Query</a> submitted by a user as well as any <code>searchResults</code> returned
+            as a result of the search.</p>
 
-      <p>When the Search Profile is used in conjunction with the <a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
-        Reading Profile</a>, a learner's navigation, search and viewing behavior can be combined
-        to provide a richer picture of learner interactions with digital resources.</p>
+        <p>When the Search Profile is used in conjunction with the <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#readingProfile">
+            Reading Profile</a>, a learner's navigation, search and viewing behavior can be combined
+            to provide a richer picture of learner interactions with digital resources.</p>
     </section>
 
     <section class="informative" id="usecases">
-      <h3>Use cases</h3>
-      <p>The Search Profile supports the following learner-centric use cases:</p>
-      <table>
-        <tr>
-          <td>Frequency of searches conducted and resources queried.</td>
-        </tr>
-        <tr>
-          <td>Topics searched and query terms employed.</td>
-        </tr>
-        <tr>
-          <td>Use and design of structured queries.</td>
-        </tr>
-      </table>
+        <h3>Use cases</h3>
+        <p>The Search Profile supports the following learner-centric use cases:</p>
+        <table>
+            <tr>
+                <td>Frequency of searches conducted and resources queried.</td>
+            </tr>
+            <tr>
+                <td>Topics searched and query terms employed.</td>
+            </tr>
+            <tr>
+                <td>Use and design of structured queries.</td>
+            </tr>
+        </table>
     </section>
 
     <section id="terminology">
-      <h3>Terminology</h3>
-      <p>All terminology used in this specification is concordant with the term
-        definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+        <h3>Terminology</h3>
+        <p>All terminology used in this specification is concordant with the term
+            definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
     </section>
 
     <section id="conformance">
-      <h3>Conformance Statements</h3>
+        <h3>Conformance Statements</h3>
     </section>
 
     <section id="documentset">
-      <h3>Document Set</h3>
-      <section>
-        <h4>Normative Documents</h4>
-        <dl>
-          <dt>Caliper 1.1</dt>
-          <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
-            All requirements in the Caliper 1.1 specification also apply to implementations of this
-            specification.
-          </dd>
-          <dt>JSON-LD Context</dt>
-          <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
-            [[!CALIPER-SEARCH-11-CONTEXT]]. </dd>
-          <dt>Errata</dt>
-          <dd>The errata [[!CALIPER-SEARCH-11-ERRATA]] details any errata registered for this version
-            of this specification since its publication.</dd>
-          <dt>Conformance and Certification guide</dt>
-          <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
-            defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
-          </dd>
-        </dl>
-      </section>
+        <h3>Document Set</h3>
+        <section>
+            <h4>Normative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1</dt>
+                <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
+                    All requirements in the Caliper 1.1 specification also apply to implementations of this
+                    specification.
+                </dd>
+                <dt>JSON-LD Context</dt>
+                <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
+                    [[!CALIPER-SEARCH-11-CONTEXT]].
+                </dd>
+                <dt>Errata</dt>
+                <dd>The errata [[!CALIPER-SEARCH-11-ERRATA]] details any errata registered for this version
+                    of this specification since its publication.
+                </dd>
+                <dt>Conformance and Certification guide</dt>
+                <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
+                    defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+                </dd>
+            </dl>
+        </section>
 
-      <section class="informative">
-        <h4>Informative Documents</h4>
-        <dl>
-          <dt>Caliper 1.1 Implementation Guide</dt>
-          <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
-            advice and guidance for implementors [[CALIPER-IMPL-11]].
-          </dd>
-        </dl>
-      </section>
+        <section class="informative">
+            <h4>Informative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1 Implementation Guide</dt>
+                <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
+                    advice and guidance for implementors [[CALIPER-IMPL-11]].
+                </dd>
+            </dl>
+        </section>
     </section>
-  </section>
+</section>
 
-  <section id="events">
+<section id="events">
     <h2>Events</h2>
 
-    <p>The Search Profile is provisioned with a single a <code>SearchEvent</code> for describing
-      information retrieval activities.</p>
+    <p>The Search Profile is provisioned with a single a <a href="#event-search">SearchEvent</a> for describing
+        information retrieval activities.</p>
 
     <section id="event-search">
-      <h3>SearchEvent</h3>
+        <h3>SearchEvent</h3>
 
-      <img height="100%" width="100%"
-           src="./assets/caliper-search_event_searched-query_generated-v1p1.png" alt="Search Event"/>
+        <img height="100%" width="100%"
+             src="./assets/caliper-search_event_searched-query_generated-v1p1.png" alt="Search Event"/>
 
-      <p>A Caliper <code>SearchEvent</code> models a <code>Person</code> querying a resource for
-        information, typically a <code>DigitalResource</code> or <code>SoftwareApplication</code>.
-        A <code>SearchResponse</code> may be referenced using the <code>generated</code>
-        property.
-      </p>
-
-      <dl>
-        <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/SearchEvent</dd>
-        <dt>Supertype</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-        >Event</a></dd>
-        <dt>Supported actors</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-        >Person</a></dd>
-        <dt>Supported actions</dt>
-        <dd><a href="action-Searched">Searched</a></dd>
-        <dt>Supported objects</dt>
-        <dd><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-        >Entity</a></dd>
-        <dt>Supported generated entities</dt>
-        <dd><a href="#query">SearchResponse</a></dd>
-        <dt>Properties</dt>
-        <dd><code>SearchEvent</code> inherits all properties defined by its supertype
-            <code>Event</code>. Profile-specific type restrictions are described below:
-        </dd>
-      </dl>
-
-      <table class="data">
-        <thead>
-          <tr>
-            <th>Property</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Disposition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>id</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uuidDef"
-            >UUID</a></td>
-            <td>The emitting application MUST provision the <code>SearchEvent</code> with a UUID. A
-              version 4 UUID SHOULD be generated.  The UUID MUST be expressed as a <a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-              >URN</a> using the form 'urn:uuid:&#60;UUID&#62;' per [[!RFC4122]].</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>type</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-            >Term</a></td>
-            <td>The string value MUST be set to 'SearchEvent'.</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>actor</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-            >Person</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
-              be expressed either as an object or as a string corresponding to the actor's IRI.</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>action</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-            >Term</a></td>
-            <td>The action or predicate that binds the <code>actor</code> or subject to the
-                <code>object</code>. The value range is limited to the 'Searched' action only
-              .</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>object</td>
-            <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-            >Entity</a> | <a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
-              <code>SoftwareApplication</code>, that is the target of the search. The
-              <code>object</code> value MUST be expressed either as an object or as a string
-              corresponding to the resources's IRI.</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>generated</td>
-            <td><a href="#query">SearchResponse</a> | <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>SearchResponse</code> generated by the search provider that describes the
-              search criteria, count of search results returned (if any), and references to the
-              search result items (if any) returned by the search. The <code>SearchResponse</code>
-              value MUST be expressed either as an object or as a string corresponding to the
-              query’s <code>IRI</code>.</td>
-            <td>Optional</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </section>
-
-  <section id="actions">
-    <h2>Actions</h2>
-
-    <p>The Caliper <a href="#searchEvent">SearchEvent</a> supports a single 'Searched' action.</p>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Term</th>
-        <th>IRI</th>
-        <th>WordNet® Gloss</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td id="action-Searched">Searched</td>
-        <td><a href="http://purl.imsglobal.org/caliper/actions/Searched" rel="nofollow">
-            http://purl.imsglobal.org/caliper/actions/Searched</a></td>
-        <td><a href="http://wordnet-rdf.princeton.edu/wn31/201318273-v" rel="nofollow">Try to locate
-          or discover, or try to establish the existence of.</a>.</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entities">
-    <h2>Entities</h2>
-
-    <p>The <code>SearchEvent</code> MAY reference a generated <code>SearchResponse</code>
-      that describes the search criteria as well as the search results returned by the query.</p>
-
-      <section id="entity-searchresponse">
-        <h3>SearchResponse</h3>
-        <p>A Caliper <code>SearchResponse</code> models a search engine response to an <code>actor
-        </code> querying a searchable resource.</p>
+        <p>A Caliper <code>SearchEvent</code> models a <code>Person</code> querying a resource for
+            information, typically a <code>DigitalResource</code> or <code>SoftwareApplication</code>.
+            A <a href="#entity-searchresponse">SearchResponse</a> may be referenced using the <code>generated</code>
+            property.
+        </p>
 
         <dl>
-          <dt>IRI</dt>
-          <dd>https://purl.imsglobal.org/caliper/SearchResponse</dd>
-          <dt>Supertype</dt>
-          <dd><a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
-          >Entity</a></dd>
-          <dt>Properties</dt>
-          <dd><code>SearchResponse</code> inherits all properties defined by its supertype
-            <code>Entity</code>. <code>SearchResponse</code> is also provisioned with four additional
-            properties: <code>searchProvider</code>, <code>searchTarget</code>, <code>query</code>,
-            <code>searchResultsItemCount</code>, and <code>searchResults</code>.
-            Profile-specific type restrictions are described below:
-          </dd>
+            <dt>Term</dt>
+            <dd>SearchEvent</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/SearchEvent</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+            >Event</a></dd>
+            <dt>Properties</dt>
+            <dd>The <code>SearchEvent</code> inherits all properties defined by its supertype
+                <a href=
+                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+                <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+                restrictions are described below:
+            </dd>
         </dl>
 
         <table class="data">
-          <thead>
-          <tr>
-            <th>Property</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Disposition</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>id</td>
-            <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-              also be dereferenceable, i.e., capable of returning a representation of the resource.
-              A <a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-              >URI</a> employing the <a href=
-                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-              >URN</a> scheme MAY be provided in cases where a <a href=
-                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-              >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>type</td>
-            <td><a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-            >Term</a></td>
-            <td>The string value MUST be set to the Term 'SearchResponse'.</td>
-            <td>Required</td>
-          </tr>
-          <tr>
-            <td>searchProvider</td>
-            <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-            >SoftwareApplication</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>SoftwareApplication</code> that is the provider of this
-              <code>SearchResponse</code>. The <code>searchProvider</code> value MUST be expressed
-              either as an object or as a string corresponding to the resources's IRI.</td>
-            <td>Optional</td>
-          </tr>
-          <tr>
-            <td>searchTarget</td>
-            <td><a href=
-              "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-            >Entity</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
-              <code>SoftwareApplication</code>, that is the target of the search. The
-              <code>resourceSearched</code> value MUST be expressed either as an object or as a
-              string corresponding to the resources's IRI.</td>
-            <td>Optional</td>
-          </tr>
-          <tr>
-            <td>query</td>
-            <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#query"
-            >Query</a> | <a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-            >IRI</a></td>
-            <td>The <code>Query</code> submitted by the <code>actor</code>.</td>
-            <td>Optional</td>
-          </tr>
-          <tr>
-            <td>searchResultsItemCount</td>
-            <td><a href="#string">integer</a></td>
-            <td>A total count of <code>searchResults</code> returned. If the <code>Query</code>
-              submitted returned no results the count equal to zero (0).</td>
-            <td>Optional</td>
-          </tr>
-          <tr>
-            <td>searchResults</td>
-            <td><a href="#string">array</a></td>
-            <td>An ordered collection of entities, typically of type <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-              >DigitalResource</a> that constitute the results of the search.  Each
-              <code>DigitalResource</code> referenced MUST be expressed either as an object or as a
-              string corresponding to the resource's IRI.</td>
-            <td>Optional</td>
-          </tr>
-          </tbody>
-      </table>
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the term <em>SearchEvent</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>actor</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+                    be expressed either as an object or as a string corresponding to the actor's IRI.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>action</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The action or predicate that binds the <code>actor</code> or subject to the
+                    <code>object</code>. The value range is limited to the <a href="#actions">Searched</a> action only.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>object</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a href=
+                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
+                    <code>SoftwareApplication</code>, that is the target of the search. The
+                    <code>object</code> value MUST be expressed either as an object or as a string
+                    corresponding to the resources's IRI.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>generated</td>
+                <td><a href="#query">SearchResponse</a> | <a href=
+                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>SearchResponse</code> generated by the search provider that describes the
+                    search criteria, count of search results returned (if any), and references to the
+                    search result items (if any) returned by the search. The <code>SearchResponse</code>
+                    value MUST be expressed either as an object or as a string corresponding to the
+                    query’s <code>IRI</code>.
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
     </section>
+</section>
+
+<section id="actions">
+    <h2>Actions</h2>
+
+    <p>The Caliper <a href="#event-search">SearchEvent</a> supports the <em>Searched</em> action only.</p>
+
+    <section id="action-Searched">
+        <h3>Searched</h3>
+        The <em>Searched</em> action signals that an <code>actor</code>, typically a learner, has queried a
+        resource for information.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Searched</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Searched</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/00649877-v" rel="nofollow">inquire into.</a></dd>
+        </dl>
+    </section>
+</section>
+
+<section id="entities">
+    <h2>Entities</h2>
+
+    <p>The <a href="#event-search">SearchEvent</a> MAY reference a <code>generated</code>
+        <a href="#entity-searchresponse">SearchResponse</a> that describes the search criteria as well as
+        the search results returned by the <a href="#entity-query">Query</a>.</p>
 
     <section id="entity-query">
-      <h3>Query</h3>
-      <p>A Caliper <code>Query</code> models search criteria created by an <code>actor</code>
-        that targets a searchable resource.</p>
+        <h3>Query</h3>
+        <p>A Caliper <code>Query</code> models search criteria created by an <code>actor</code>
+            that targets a searchable resource.</p>
 
-      <dl>
-        <dt>IRI</dt>
-        <dd>https://purl.imsglobal.org/caliper/Query</dd>
-        <dt>Supertype</dt>
-        <dd><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
-        >Entity</a></dd>
-        <dt>Properties</dt>
-        <dd><code>Query</code> inherits all properties defined by its supertype
-          <code>Entity</code>.  <code>Query</code> is also provisioned with three additional
-          properties: <code>creator</code>, <code>searchTarget</code>, and <code>searchTerms
-          </code>. Profile-specific type restrictions are described below:
-        </dd>
-      </dl>
+        <dl>
+            <dt>Term</dt>
+            <dd>Query</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/Query</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+            >Entity</a></dd>
+            <dt>Properties</dt>
+            <dd><code>Query</code> inherits all properties defined by its supertype
+                <code>Entity</code>, of which <code>id</code>, and <code>type</code> are required. <code>Query</code> is
+                also provisioned with three additional properties: <code>creator</code>, <code>searchTarget</code>,
+                and <code>searchTerms</code>. Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
 
-      <table class="data">
-        <thead>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Disposition</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>id</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>A valid IRI MUST be specified. The IRI MUST be unique and persistent. The IRI SHOULD
-            also be dereferenceable, i.e., capable of returning a representation of the resource.
-            A <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#uriDef"
-            >URI</a> employing the <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#urnDef"
-            >URN</a> scheme MAY be provided in cases where a <a href=
-                "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#linkedDataDef"
-            >Linked Data</a> friendly HTTP URI is either unavailable or inappropriate.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-          >Term</a></td>
-          <td>The string value MUST be set to the Term 'Query'.</td>
-          <td>Required</td>
-        </tr>
-        <tr>
-          <td>creator</td>
-          <td><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-          >Person</a> | <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <code>Person</code> who devised the search terms comprising this <code>Query</code>.
-            The <code>creator</code> value MUST be expressed either as an object or as a string
-            corresponding to the creator's IRI.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>searchTarget</td>
-          <td><a href=
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the term <em>Query</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>creator</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> who devised the search terms comprising this <code>Query</code>.
+                    The <code>creator</code> value MUST be expressed either as an object or as a string
+                    corresponding to the creator's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>searchTarget</td>
+                <td><a href=
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
-          >Entity</a> | <a href=
-                             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-          >IRI</a></td>
-          <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
-            <code>SoftwareApplication</code>, that is the target of the <code>Query</code>. The
-            <code>resourceSearched</code> value MUST be expressed either as an object or as a
-            string corresponding to the resources's IRI.</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>searchTerms</td>
-          <td><a href="#string">string</a></td>
-          <td>The search terms employed by the <code>creator</code> of this <code>Query</code>.</td>
-          <td>Optional</td>
-        </tr>
-        </tbody>
-      </table>
+                >Entity</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
+                    <code>SoftwareApplication</code>, that is the target of the <code>Query</code>. The
+                    <code>resourceSearched</code> value MUST be expressed either as an object or as a
+                    string corresponding to the resources's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>searchTerms</td>
+                <td><a href="#string">string</a></td>
+                <td>The search terms employed by the <code>creator</code> of this <code>Query</code>.</td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
     </section>
-  </section>
 
-  <section id="jsonld">
-    <h2>Representing Caliper as JSON-LD</h2>
+    <section id="entity-searchresponse">
+        <h3>SearchResponse</h3>
+        <p>A Caliper <code>SearchResponse</code> models a search engine response to an <code>actor</code>
+            querying a searchable resource.</p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>SearchResponse</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/SearchResponse</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+            >Entity</a>
+            </dd>
+            <dt>Properties</dt>
+            <dd><code>SearchResponse</code> inherits all properties defined by its supertype
+                <code>Entity</code>, of which <code>id</code>, and <code>type</code> are required.
+                <code>SearchResponse</code> is also provisioned with five additional properties:
+                <code>searchProvider</code>, <code>searchTarget</code>, <code>query</code>,
+                <code>searchResultsItemCount</code>, and <code>searchResults</code>.
+                Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the term <em>SearchResponse</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>searchProvider</td>
+                <td><a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >SoftwareApplication</a> | <a href=
+                                                      "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>SoftwareApplication</code> that is the provider of this
+                    <code>SearchResponse</code>. The <code>searchProvider</code> value MUST be expressed
+                    either as an object or as a string corresponding to the resources's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>searchTarget</td>
+                <td><a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a href=
+                                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
+                    <code>SoftwareApplication</code>, that is the target of the search. The
+                    <code>resourceSearched</code> value MUST be expressed either as an object or as a
+                    string corresponding to the resources's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>query</td>
+                <td><a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#query"
+                >Query</a> | <a href=
+                                        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Query</code> submitted by the <code>actor</code>.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>searchResultsItemCount</td>
+                <td><a href="#string">integer</a></td>
+                <td>A total count of <code>searchResults</code> returned. If the <code>Query</code>
+                    submitted returned no results the count equal to zero (0).
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>searchResults</td>
+                <td><a href="#string">array</a></td>
+                <td>An ordered collection of entities, typically of type <a href=
+                                                                                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+                >DigitalResource</a> that constitute the results of the search. Each
+                    <code>DigitalResource</code> referenced MUST be expressed either as an object or as a
+                    string corresponding to the resource's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<section id="jsonld">
+    <h2>Expressing Caliper as JSON-LD</h2>
 
     <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-      provides a remote Search Profile JSON-LD <a href=
-      "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a> for mapping
-      <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
-      context in every Caliper 1.1 <code>SearchEvent</code> and/or <code>Query</code> describe created
-      and serialized for transmission to a target endpoint.</p>
+        provides a remote Search Profile JSON-LD <a href=
+         "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension">context</a>
+        for mapping <code>SearchEvent</code> terms to IRIs. Caliper message producers MUST reference this
+        context in every Caliper 1.1 <a href="#event-search">SearchEvent</a> and/or <a href="#entity-query">Query</a>
+        describe created and serialized for transmission to a target endpoint.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
-      context handling.</p>
+        context handling.</p>
 
     <figure class="example">
-      <figcaption>JSON-LD Context</figcaption>
-      <pre><code>{
+        <figcaption>JSON-LD Context</figcaption>
+        <pre><code>{
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
     . . .
 }</code></pre>
     </figure>
 
     <section class="informative">
-      <h2>Search Profile JSON-LD Examples</h2>
-      <p>Below is an example of a Caliper <code>SearchEvent</code> expressed as JSON-LD.  The
-        <code>SearchEvent</code> records a <code>Person</code> searching a
-        <code>SoftwareApplication</code>. The <code>SearchEvent</code> is further enriched by
-        inclusion of the generated <code>Query</code> which references both the search criteria
-        employed and the search results returned.</p>
+        <h2>Searched SearchEvent</h2>
 
-      <figure class="example">
-        <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
-        <pre><code>{
+        <p>Below is an example of a Caliper <a href="#event-search">SearchEvent</a> that records a
+            <code>Person</code> searching a <code>SoftwareApplication</code>. The
+            <a href="#event-search">SearchEvent</a> is further enriched by inclusion of the generated
+            <a href="#entity-searchresponse">SearchResponse</a> which references both the search criteria
+            employed and the search results returned.</p>
+
+        <figure class="example">
+            <figcaption><code>SearchEvent</code> JSON-LD</figcaption>
+            <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
   "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
   "type": "SearchEvent",
@@ -564,15 +530,46 @@
     "startedAtTime": "2018-11-15T10:00:00.000Z"
   }
 }</code></pre>
-      </figure>
+        </figure>
+    </section>
 
-      <p>Below is an example of a <code>SearchResponse</code> entity describe that can also be
-        sent to an endpoint. The <code>SearchResponse</code> references the search provider, a list
-        of search results expressed as JSON objects.</p>
+    <section class="informative">
+        <h2>Query Describe</h2>
 
-      <figure class="example">
-        <figcaption><code>SearchResponse</code> describe JSON-LD</figcaption>
-        <pre><code>{
+        <p>Below is an example of a <a href="#entity-query">Query</a> entity describe that can also be sent to an
+            endpoint. The <a href="#entity-query">Query</a> references the author, the resource searched, the search
+            string employed, and a list of search results expressed as JSON objects.</p>
+
+        <figure class="example">
+            <figcaption><code>Query</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
+  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
+  "type": "Query",
+  "creator": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "searchTarget": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "searchTerms": "IMS AND (Caliper OR Analytics)",
+  "dateCreated": "2018-11-15T10:05:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>SearchResponse Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-searchresponse">SearchResponse</a> entity describe that can
+            also be sent to an endpoint. The <a href="#entity-searchresponse">SearchResponse</a> references the
+            search provider, a list of search results expressed as JSON objects.</p>
+
+        <figure class="example">
+            <figcaption><code>SearchResponse</code> describe JSON-LD</figcaption>
+            <pre><code>{
   "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
   "type": "SearchResponse",
   "searchProvider": {
@@ -614,61 +611,37 @@
   ],
   "dateCreated": "2018-11-15T10:05:00.000Z"
 }</code></pre>
-      </figure>
-
-      <p>Below is an example of a <code>Query</code> entity describe that can also be sent to an
-        endpoint.
-        The <code>Query</code> references the author, the resource searched, the search
-        string employed, and a list of search results expressed as JSON objects.</p>
-
-      <figure class="example">
-      <figcaption><code>Query</code> describe JSON-LD</figcaption>
-      <pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension",
-  "id": "https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29",
-  "type": "Query",
-  "creator": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "searchTarget": {
-    "id": "https://example.edu/catalog",
-    "type": "SoftwareApplication"
-  },
-  "searchTerms": "IMS AND (Caliper OR Analytics)",
-  "dateCreated": "2018-11-15T10:05:00.000Z"
-}</code></pre>
-      </figure>
+        </figure>
     </section>
-  </section>
+</section>
 
-  <section class="appendix informative" id="revisionhistory">
+<section class="appendix informative" id="revisionhistory">
     <h2>Revision History</h2>
 
     <section>
-      <h2>Version History</h2>
-      <table title="Revision History" summary="Publication history and revision details for this specification.">
-        <thead>
-        <tr>
-          <th>Version No.</th>
-          <th>Release Date</th>
-          <th>Comments</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>IMS Base Document 1.1</td>
-          <td>October 31, 2018</td>
-          <td>The first Base Document release.</td>
-        </tr>
-        </tbody>
-      </table>
+        <h2>Version History</h2>
+        <table title="Revision History" summary="Publication history and revision details for this specification.">
+            <thead>
+            <tr>
+                <th>Version No.</th>
+                <th>Release Date</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>IMS Base Document 1.1</td>
+                <td>June 1, 2019</td>
+                <td>The first Base Document release.</td>
+            </tr>
+            </tbody>
+        </table>
     </section>
 
     <section>
         <h3>Changes from previous version</h3>
         <p>As this is the first version of this document, no previous version change log exists.</p>
     </section>
-  </section>
+</section>
 </body>
 </html>
