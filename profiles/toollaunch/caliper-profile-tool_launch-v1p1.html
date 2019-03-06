@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+    <script class='remove'>
+        var respecConfig = {
+            specTitle: "Caliper Analytics® Tool Launch Profile",
+            shortName: "caliper-toollaunch",
+            specStatus: "IMS Base Document",
+            specDate: "June 1, 2019",
+            specVersion: "1.1",
+            specNature: "normative",
+            specType: "spec",
+            contributors: [{
+                name: "Markus Gylling",
+                company: "IMS Global (Sweden)",
+                companyURL: "www.imsglobal.org",
+                role: "Author"
+            },
+                {
+                    name: "Viktor Haag",
+                    company: "D2L (Canada)",
+                    companyURL: "www.d2l.com",
+                    role: "Author"
+                },
+                {
+                    name: "Anthony Whyte",
+                    company: "University of Michigan (USA)",
+                    companyURL: "www.umich.edu",
+                    role: "Author"
+                }
+            ]
+        };
+    </script>
+</head>
+
+<body>
+<section id="abstract">
+    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Tool
+    Launch profile, allowing users to track learning tool interactions from a
+    central location (for example, an LTI Tool Platform).
+</section>
+
+<section>
+    <h2>Overview</h2>
+    <section class="informative">
+        <h3>Design Goals and Rationale</h3>
+
+        <img height="100%" width="100%"
+             src="assets/caliper-profile_tool_launch.png" alt="Tool Launch Profile"/>
+
+        <p>The Caliper Tool Launch Profile is intended to capture the utilization
+            of learning tools from a centralized location, such as an LTI Tool
+            Platform (often an LMS). As such, it is distinct from the Caliper Tool
+            Use profile as defined in the Caliper 1.1 specification [[!CALIPER-11]],
+            which captures tool usage as reported by the individual tools themselves
+            (i.e. decentralized capture).</p>
+
+        <p>The Tool Launch and Tool Use profiles have their own unique set of
+            advantages; the primary advantage of the Tool Launch profile is that it_
+            only requires a single sensor to be deployed (typically in an LMS),
+            whereas the Tool Use profile requires all tools being measured to
+            implement the Caliper sensor API.</p>
+
+        <p>Data captured using the Tool Launch profile can be used to determine
+            which tools were launched within a given timeframe, by whom and in what
+            context. It however can not, as opposed to the Tool Use profile, provide
+            a measure of whether the user actually interacted with the tool in a
+            manner that the application determines to be its “intended use for
+            learning”.</p>
+
+        <p>In certain deployment contexts, using both the Tool Launch and the Tool
+            Usage Profile may be advantageous, as it e.g. allows the tracking of the
+            number of tool launches that do <em>not</em> lead to interactions
+            corresponding to the "intended use for learning".</p>
+
+        <p>The following graph shows the intended deployment pattern for the Tool
+            Launch Profile. A Caliper sensor is deployed in the LMS and intercepts tool launch
+            events, and emits these to a Caliper endpoint. In the cases where the tool
+            performs an explicit action to return to the <a>Platform</a>, those are captured
+            too.</p>
+
+        <figure>
+            <img src="assets/caliper-tool_launch-conceptual.png" alt="Deployment pattern"/>
+            <figcaption>Graph of the intended deployment pattern for the Tool Launch Profile.</figcaption>
+        </figure>
+    </section>
+
+    <section class="informative" id="usecases">
+        <h3>Use cases</h3>
+        <p>Administrators, instructors and researchers can utilize data collected
+            via the Tool Launch Profile to answer questions such as: </p>
+        <ul>
+            <li>Which of the available tools are launched the most or the least?</li>
+            <li>Which of the available tools signal workflow completion with an explicit return?</li>
+            <li>Which courses utilize certain tools the most or the least?</li>
+            <li>Are there demographic variances in the utilization of the available tools?</li>
+            <li>Are there temporal variances in the utilization of the available tools?</li>
+        </ul>
+    </section>
+
+    <section id="terminology">
+        <h3>Terminology</h3>
+        <p>All terminology used in this specification is concordant with the term
+            definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+
+        <p>In addition, the following terms from other specifications are used:</p>
+
+        <dl class="termlist" data-sort id="terms">
+            <dt><dfn data-lt="Tool Platform|Platform|Platforms|Platform's">Tool Platform</dfn></dt>
+            <dd>As defined in LTI 1.3 [[!LTI-13]]. Commonly referred to as simply "Platform".</dd>
+
+            <dt><dfn data-lt="Tool|Tools|Tool's">Tool</dfn></dt>
+            <dd>As defined in LTI 1.3 [[!LTI-13]].</dd>
+        </dl>
+
+    </section>
+
+    <section id="conformance">
+        <h3>Conformance Statements</h3>
+    </section>
+
+    <section id="documentset">
+        <h3>Document Set</h3>
+        <section>
+            <h4>Normative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1</dt>
+                <dd>This profile is an extension to the Caliper 1.1 specification
+                    [[!CALIPER-11]]. All requirements in the Caliper 1.1 specification
+                    also apply to implementations of this specification.
+                </dd>
+                <dt>JSON-LD Context</dt>
+                <dd>The JSON-LD Context for this profile defines all relevant
+                    term-IRI mappings [[!CALIPER-TOOLLAUNCH-11-CONTEXT]]. The context IRI
+                    <code>http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension</code>
+                    MUST be used in JSON-LD payloads representing this Caliper profile.
+                </dd>
+                <dt>Errata</dt>
+                <dd>The errata [[!CALIPER-TOOLLAUNCH-11-ERRATA]] details any errata registered
+                    for this version of this specification since its publication.
+                </dd>
+                <dt>Conformance and Certification guide</dt>
+                <dd>The conformance and certification guide that accompanies the Caliper
+                    1.1 specification defines the conformance requirements for Caliper
+                    Sensors [[!CALIPER-CERT-11]].
+                </dd>
+            </dl>
+        </section>
+
+        <section class="informative">
+            <h4>Informative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1 Implementation Guide</dt>
+                <dd>The implementation guide that accompanies the Caliper 1.1 specification provides advice
+                    and guidance for implementors [[CALIPER-IMPL-11]].
+                </dd>
+            </dl>
+        </section>
+    </section>
+
+</section>
+<!-- /overview -->
+
+<section id="events">
+    <h2>Events</h2>
+    <section id="event-toollaunch">
+        <h3>ToolLaunchEvent</h3>
+        <p>The Tool Launch Profile is provisioned with a single <code>ToolLaunchEvent</code>
+            for describing tool launches, typically occuring in the context of an LMS.</p>
+
+        <img height="100%" width="100%" src="assets/caliper-tool_launch_event_launched-v1p2.png" alt="ToolLaunchEvent"/>
+
+        <p>The <code>ToolLaunchEvent</code> models an interaction between a Person and external Tool
+            (SoftwareApplication), at a given time and in a given context. It also provides the ability to
+            model a "return response", which in the context of LTI [[LTI-13]] typically consists of
+            a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">redirect URL</a> or a
+            specific response message, as defined in for example LTI Deep Linking [[LTI-DL-20]].
+        </p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>ToolLaunchEvent</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/ToolLaunchEvent</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+            >Event</a></dd>
+            <dt>Properties</dt>
+            <dd>The <code>ToolLaunchEvent</code> inherits all properties defined by its supertype
+                <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+                <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
+                described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to <em>ToolLaunchEvent</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>actor</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST be expressed
+                    either as an object or as a string corresponding to the actor's IRI.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td id="action">action</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+                    The value range is limited to either the \ or
+                    <a href="#actions">Returned</a> actions.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>object</td>
+                <td><a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareApplication"
+                >SoftwareApplication</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>SoftwareApplication</code> that is the target of the <code>Person</code>'s launch
+                    activity.
+                    The <code>object</code> value MUST be expressed either as an object or as a string corresponding to
+                    the <code>SoftwareApplication</code>'s IRI.
+                </td>
+                <td>Required</td>
+            <tr>
+                <td>generated</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+                >DigitalResource</a></td>
+                <td>In the case that the workflow comes with a resource intended for the receiver of the workflow
+                    message associated with this event (for example, a file, or image, or LTI resource link for
+                    the receiver to embed within its system), this property can carry its representation as a Caliper
+                    <code>DigitalResource</code> (or, more likely, one of its specific sub-types).
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td><a href="#entity-Link">Link</a> | <a href="#entity-LtiLink">LtiLink</a></td>
+                <td>The fully qualified URL to which the workflow was redirected. In the case of the
+                    <a href="#actions">Launched</a> action, this would be the fully qualified entry-point on the external tool to
+                    which the platform launches. In the case of the 'Returned' action, this would be the fully
+                    qualified entry-point on the platform to which the tool is redirecting the workflow after user
+                    activity from the original launch finishes (this could be the
+                    <code>launch_presentation_return_url</code> in the case of a simple LTI Resource
+                    Link request; it could also be the <code>deep_link_return_url</code> in the case of a Deep
+                    Linking Response message).
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>federatedSession</td>
+                <td>
+                    <a href=
+                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#ltiSession"
+                    >LtiSession</a> |
+                    <a href=
+                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                    >IRI</a></td>
+                <td>The <a>Platform's</a> session, constituting part of the tool launch context. The
+                    <code>federatedSession</code> value MUST be expressed either as an object or as a string
+                    corresponding to the federatedSession’s IRI.
+                </td>
+                <td>Required when the <a href="#action">action</a> is <a href="#actions">Launched</a>, otherwise optional. Workflows that
+                    have a specific "return message" component (e.g. LTI Deep Linking response messages) SHOULD provide
+                    the <code>federatedSession</code> property and SHOULD populate its messageParameters field with the
+                    message parameters in the response message.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<section id="actions">
+    <h2>Actions</h2>
+    <p>The Caliper <a href="#toolLaunchEvent">ToolLaunchEvent</a> supports the
+        <em>Launched</em> and <em>Returned</em> actions.</p>
+
+    <section id="action-launched">
+        <h3>Launched</h3>
+        The <em>Launched</em> action signals that a system has commenced a workflow that sends an <code>actor</code>
+        from its own domain out to an external system.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Launched</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Launched</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Get going; give impetus
+                to.</a></dd>
+        </dl>
+    </section>
+
+    <section id="action-returned">
+        <h3>Returned</h3>
+        The <em>Returned</em> action signals that the workflow that started with the <em>Launched</em> action gets
+        completed when the external tool redirects the user back to the launching system.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Returned</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Returned</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/01515196-v" rel="nofollow">Go or come back to place,
+                condition, or activity where one has been before.</a></dd>
+        </dl>
+    </section>
+</section>
+
+<section id="entities">
+    <h2>Entities</h2>
+    <p>The Caliper <a href="#ToolLaunchEvent">ToolLaunchEvent</a> supports the addition of new <code>Link</code> and
+        <code>LtiLink</code> entities.</p>
+
+    <section id="entity-link">
+        <h3>Link</h3>
+        <p>The <code>Link</code> entity represents a URL that might be a UI workflow or service endpoint
+            (transient or otherwise), and not necessarily a proper <code>DigitalResource</code> (such as a
+            <a href="
+                https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#webPage"
+            >WebPage</a> or <a href="#entity-LtiLink">LtiLink</a>).
+        </p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Link</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/Link</dd>
+            <dt>Supertype</dt>
+            <dd>
+                <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef">Entity</a>
+            </dd>
+            <dt>Properties</dt>
+            <dd><code>Link</code> inherits all properties defined by its supertype <code>Entity</code>, of which
+                <code>id</code>, and <code>type</code> are required. Profile-specific type restrictions are described
+                below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href="
+                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to <em>Link</em>.</td>
+                <td>Required</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="entity-ltiLink">
+        <h3>LtiLink</h3>
+        <p>The <code>LtiLink</code> entity represents a <code>DigitalResource</code> that must be retrieved from an
+            external tool application via an LTI request message. It is, effectively, a <code>DigitalResource</code>
+            that must use LTI for access.
+        </p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>LtiLink</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/LtiLink</dd>
+            <dt>Supertype</dt>
+            <dd><a href="
+                https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+            >DigitalResource</a></dd>
+            <dt>Properties</dt>
+            <dd><code>LtiLink</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
+                of which <code>id</code>, and <code>type</code> are required. <code>LtiLink</code> is also provisioned
+                with a <code>messageType</code> property. Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href="
+                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to <code>LtiLink</code>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>messageType</td>
+                <td><a href="
+                    https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef
+              ">Term</a></td>
+                <td>If present, the string value MUST be set to the term name of the LTI message type used to gain
+                    access to this LTI resource link (for example, <em>LtiResourceLinkRequest</em> or
+                    <em>LtiDeepLinkingRequest</em>).
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Note that implementers by best practice SHOULD include
+            the <code>messageType</code> associated with an LTILink entity to
+            provide context for how the link would have been intended to be
+            used.</p>
+
+    </section>
+</section>
+
+<section id="lti-messageTypes">
+    <h2>LTI Message Types</h2>
+    <p>The Caliper <a href="#entity-ltiLink">LtiLink</a> is provisioned with an optional <code>messageType</code>
+        property for describing the type of LTI message associated with the
+        <a href="#event-toollaunch">ToolLaunchEvent</a>. The value range is limited to the following string values:</p>
+
+    <section id="ltiResourceLinkRequest">
+        <h3>LtiResourceLinkRequest</h3>
+        Set the <code>messageType</code> value to <em>LtiResourceLinkRequest</em> if
+        the <a href="#entity-ltiLink">LtiLink</a> is associated with an LTI resource link launch request message.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>LtiResourceLinkRequest</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/LtiResourceLinkRequest</dd>
+        </dl>
+    </section>
+
+    <section id="ltiDeepLinkingRequest">
+        <h3>LtiDeepLinkingRequest</h3>
+        Set the <code>LtiLink.messageType</code> value to <em>LtiDeepLinkingRequest</em> if
+        the <a href="#entity-ltiLink">LtiLink</a> is associated with an LTI deep linking request message.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>LtiDeepLinkingRequest</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/LtiDeepLinkingRequest</dd>
+        </dl>
+    </section>
+</section>
+
+<section id="jsonld">
+    <h2 id="json-ld">Expressing Caliper as JSON-LD</h2>
+    <p>Individual Caliper events and entity describes are serialized as JSON-LD.
+        IMS Global provides a remote ToolLaunch Profile JSON-LD
+        <a href="http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension">context</a>
+        for mapping <code>ToolLaunchEvent</code> terms to IRIs. Caliper message producers
+        MUST reference this context in every Caliper 1.1 <code>ToolLaunchEvent</code>
+        created and serialized for transmission to a target endpoint.</p>
+
+    <p>See the Caliper 1.1 specification [[!CALIPER-11]] for detailed requirements
+        regarding of JSON-LD and JSON-LD context handling.</p>
+
+    <figure class="example">
+        <figcaption>JSON-LD Context example</figcaption>
+        <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+  …
+}</code></pre>
+    </figure>
+
+    <section class="informative">
+        <h3>Launched ToolLaunchEvent</h3>
+        <p>Below is an example of a full JSON-LD payload for a <a href="#event-toollaunch">ToolLaunchEvent</a>
+            using the <a href="#actions">Launched</a> action. The <code>Person</code> launches the tool
+            (represented by the <code>object</code> property) from the <a>Platform</a> (represented by the
+            <code>edApp</code> property). A <code>federatedSession</code> property is included, as is required by
+            this profile, and contains the full set of message parameters used in the LTI 1.3 Resource Link
+            Launch Request launch.
+        </p>
+        <figure class="example">
+            <figcaption>Example of LTI 1.3 Tool Launch Event (<em>Launched</em>)</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+  "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
+  "type": "ToolLaunchEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Launched",
+  "object": {
+    "id": "https://example.com/lti/tool",
+    "type": "SoftwareApplication"
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication"
+  },
+  "referrer": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+    "type": "WebPage"
+  },
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  },
+  "target": {
+    "id": "https://tool.com/link/123",
+    "type": "LtiLink",
+    "messageType": "LtiResourceLinkRequest"
+  },
+  "federatedSession": {
+    "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+    "type": "LtiSession",
+    "user": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "dateCreated": "2018-11-15T10:15:00.000Z",
+    "startedAtTime": "2018-11-15T10:15:00.000Z",
+    "messageParameters": {
+       "iss": "https://example.edu",
+       "sub": "https://example.edu/users/554433",
+       "aud": ["https://example.com/lti/tool"],
+       "exp": 1510185728,
+       "iat": 1510185228,
+       "azp": "962fa4d8-bcbf-49a0-94b2-2de05ad274af",
+       "nonce": "fc5fdc6d-5dd6-47f4-b2c9-5d1216e9b771",
+       "name": "Ms Jane Marie Doe",
+       "given_name": "Jane",
+       "family_name": "Doe",
+       "middle_name": "Marie",
+       "picture": "https://example.edu/jane.jpg",
+       "email": "jane@example.edu",
+       "locale": "en-US",
+       "https://purl.imsglobal.org/spec/lti/claim/deployment_id": "07940580-b309-415e-a37c-914d387c1150",
+       "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
+       "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
+       "https://purl.imsglobal.org/spec/lti/claim/roles": [
+          "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student",
+          "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner",
+          "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor"
+       ],
+       "https://purl.imsglobal.org/spec/lti/claim/role_scope_mentor": [
+          "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator"
+       ],
+       "https://purl.imsglobal.org/spec/lti/claim/context": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "label": "CPS 435-01",
+          "title": "CPS 435 Learning Analytics, Section 01",
+          "type": ["http://purl.imsglobal.org/vocab/lis/v2/course#CourseSection"]
+       },
+       "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
+          "id": "200d101f-2c14-434a-a0f3-57c2a42369fd",
+          "description": "Assignment to introduce who you are",
+          "title": "Introduction Assignment"
+       },
+       "https://purl.imsglobal.org/spec/lti/claim/tool_platform": {
+          "guid": "https://example.edu",
+          "contact_email": "support@example.edu",
+          "description": "An Example Tool Platform",
+          "name": "Example Tool Platform",
+          "url": "https://example.edu",
+          "product_family_code": "ExamplePlatformVendor-Product",
+          "version": "1.0"
+       },
+       "https://purl.imsglobal.org/spec/lti/claim/launch_presentation": {
+          "document_target": "iframe",
+          "height": 320,
+          "width": 240,
+          "return_url": "https://example.edu/terms/201801/courses/7/sections/1/pages/1"
+       },
+       "https://purl.imsglobal.org/spec/lti/claim/custom": {
+          "xstart": "2017-04-21T01:00:00Z",
+          "request_url": "https://tool.com/link/123"
+       },
+       "https://purl.imsglobal.org/spec/lti/claim/lis": {
+          "person_sourcedid": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4",
+          "course_offering_sourcedid": "example.edu:SI182-F16",
+          "course_section_sourcedid": "example.edu:SI182-001-F16"
+       },
+       "http://www.ExamplePlatformVendor.com/session": {
+          "id": "89023sj890dju080"
+       }
+    }
+  }
+}</code></pre>
+    </figure>
+    <p>Legacy LTI systems using LTI 1.0 basic launch requests might
+        populate the <code>messageParameters</code> property in
+        the <code>federatedSession</code> as in the following figure.</p>
+    <figure class="example">
+        <figcaption>LTI 1.0 Basic Launch Request Message Parameters</figcaption>
+        <pre><code>{
+  "messageParameters": {
+      "lti_message_type": "basic-lti-launch-request",
+      "lti_version": "LTI-1p0",
+      "context_id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "context_type": "urn:lti:context-type:ims/lis/CourseSection",
+      "context_label": "CPS 435-01",
+      "context_title": "CPS 435 Learning Analytics, Section 01",
+      "launch_presentation_return_url": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+      "resource_link_id": "6b37a950-42c9-4117-8f4f-03e6e5c88d24",
+      "roles": [ "urn:lti:role:ims/lis/Learner" ],
+      "tool_consumer_instance_guid": "SomeLMS.example.edu",
+      "tool_consumer_instance_description": "Sample University (SomeLMS)",
+      "user_id": "0ae836b9-7fc9-4060-006f-27b2066ac545",
+      "custom_xstart": "2016-08-21T01:00:00Z",
+      "custom_caliper_profile_url": "https://example.edu/lti/tc/cps",
+      "custom_caliper_session_id": "1c519ff7-3dfa-4764-be48-d2fb35a2925a",
+      "ext_com_somelms_example_course_section_instructor": "https://example.edu/faculty/1234"
+  }}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h3>Returned ToolLaunchEvent</h3>
+        <p>Below is an example of a full JSON-LD payload for a <a href="#event-toollaunch">ToolLaunchEvent</a>
+            using the <em>Returned</em> action, representing the closure of an LTI workflow that started with a
+            resource link launch request.
+        </p>
+        <p>
+            The <a>Platform</a> is still represented by the <code>edApp</code>
+            property, and the tool being returned from is still represented by
+            the <code>object</code> property. The <code>federatedSession</code>
+            property is also retained, and corresponds to
+            the <code>federatedSession</code> referenced in the event that
+            represented the <code>Launched</code> action. The <code>target</code>
+            property of the event is the launch presentation return URL that the
+            platform sent in the original LTI launch properties.
+        </p>
+
+        <figure class="example">
+            <figcaption>Example of Tool Launch Event (<em>Returned</em>)</figcaption>
+            <pre><code>{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+    "id": "urn:uuid:a2e8b214-4d4a-4456-bb4c-099945749117",
+    "type": "ToolLaunchEvent",
+    "actor": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "action": "Returned",
+    "object": {   
+      "id": "https://example.com/lti/tool",
+      "type": "SoftwareApplication"
+    },
+    "eventTime": "2018-11-15T10:15:00.000Z",
+    "edApp": {   
+      "id": "https://example.edu",
+      "type": "SoftwareApplication"    
+    },
+    "referrer": {   
+      "id": "https://tool.com/lti/123",
+      "type": "LtiLink"
+    },
+    "group": {   
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "type": "CourseSection",
+      "courseNumber": "CPS 435-01",
+      "academicSession": "Fall 2018"
+    },
+    "membership": {   
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+      "type": "Membership",
+      "member": "https://example.edu/users/554433",
+      "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+      "roles": [ "Learner" ],
+      "status": "Active",
+      "dateCreated": "2018-08-01T06:00:00.000Z"
+    },
+    "session": {   
+      "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+      "type": "Session",
+      "startedAtTime": "2018-11-15T10:00:00.000Z"
+    },
+    "target": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/pages/1",
+      "type": "Link"
+    },
+    "federatedSession": {   
+      "id": "https://example.edu/lti/sessions/b533eb02823f31024e6b7f53436c42fb99b31241",
+      "type": "LtiSession",
+      "user": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      },
+      "dateCreated": "2018-11-15T10:15:00.000Z",
+      "startedAtTime": "2018-11-15T10:15:00.000Z"
+    }
+}</code></pre>
+            </figure>
+        </section>
+    </section>
+
+    <section class="appendix informative" id="revisionhistory">
+        <h1>Revision History</h1>
+        <section>
+            <h2>Version History</h2>
+            <table title="Revision History" summary="Publication history and revision details for this specification.">
+                <thead>
+                <tr>
+                    <th>Version No.</th>
+                    <th>Release Date</th>
+                    <th>Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>IMS Base Document 1.1</td>
+                    <td>June 1, 2019</td>
+                    <td>The first Base Document release.</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section>
+        <h3>Changes from previous version</h3>
+        <p>As this is the first version of this document, no previous version change log exists.</p>
+    </section>
+</section>
+
+</body>
+</html>

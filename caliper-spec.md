@@ -40,7 +40,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.7 [Reading Profile](#readingProfile)
   * 3.8 [Session Profile](#sessionProfile)
   * 3.9 [Tool Use Profile](#toolUseProfile)
-  * 3.10 [Basic Profile](#basicProfile)
+  * 3.10 [General Profile](#generalProfile)
 * 4.0 [Serialization of the Model](#dataSerialization)
   * 4.1 [JSON-LD Context](#jsonldContext)
   * 4.2 [Identifiers](#jsonldIdentifiers)
@@ -159,7 +159,7 @@ Public comments and questions can be posted at the Caliper Analytics&reg; [publi
 ### <a name="changes"></a>1.2 Summary of Changes
 Caliper 1.1 extends as well as refines the Caliper information model and further describes the ways in which Events and Entities can be expressed as [Linked Data](#linkedDataDef) when authoring documents using [JSON-LD](#jsonldDef).
 
-Three new profiles are provided: the [Basic Profile](#basicProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
+Three new profiles are provided: the [General Profile](#generalProfile), [Forum Profile](#forumProfile) and [ToolUse Profile](#toolUseProfile).  The AssessmentItem Profile has been merged into the [Assessment Profile](#assessmentProfile).  The Outcome Profile has been renamed the [Grading Profile](#gradingProfile) and a new [Score](#score) entity has been added.  Both the [Forum Profile](#forumProfile) and the [ToolUse Profile](#toolUseProfile) add new event types to the Caliper event model: [ForumEvent](#forumEvent), [ThreadEvent](#threadEvent), [MessageEvent](#messageEvent), [ToolUseEvent](#toolUseEvent).  New entities and actions are also provided to better describe forum activities and tool use. 
 
 The [ReadingEvent](#readingEvent) has been deprecated while the [OutcomeEvent](#outcomeEvent) has been replaced by the [GradeEvent](#gradeEvent).  Certain action vocabularies have been adjusted as a result of additions and/or removals.  These include actions associated with the [AnnotationEvent](#annotationEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [AssignableEvent](#assignableEvent) and [MediaEvent](#mediaEvent).  A number of entities have also been deprecated.  The list includes [EpubChapter](#epubChapter), [EpubPart](#epubPart), [EpubSubChapter](#epubSubChapter), [EpubVolume](#epubVolume) and [Reading](#reading). 
 
@@ -323,7 +323,7 @@ Extending Caliper's information model involves designing a new metric profile or
 
 The following metric profiles are currently available and are summarized individually below:
 
-[Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [Basic Profile](#basicProfile)
+[Annotation Profile](#annotationProfile), [Assessment Profile](#annotationProfile), [Assignable Profile](#assignableProfile), [Forum Profile](#forumProfile), [Media Profile](#mediaProfile), [Grading Profile](#gradingProfile), [Reading Profile](#readingProfile), [Session Profile](#sessionProfile), [Tool Use Profile](#toolUseProfile), [General Profile](#generalProfile)
 
 ### <a name="annotationProfile"></a>3.1 Annotation Profile
 
@@ -716,11 +716,12 @@ The Tool Use Profile enables the gathering of basic usage information. It provid
 #### Supported Objects
 [SoftwareApplication](#softwareApplication)
 
-### <a name="basicProfile"></a>3.10 Basic Profile
+### <a name="generalProfile"></a>3.10 General Profile
 
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Basic Profile" src="assets/caliper-profile_basic.png"></div>
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="General Profile" 
+src="assets/caliper-profile_general.png"></div>
 
-The Caliper Basic Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
+The Caliper General Profile provides a generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper.  Any of the Caliper [actions](#actions) described in this specification can be used to describe the interaction between the `actor` and the `object`.
 
 #### Supported Events
 [Event](#event) (supertype only)
@@ -735,7 +736,7 @@ Any Caliper action MAY be used to describe the interaction.
 [Entity](#entity)
 
 #### Other Requirements
-* Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
+* Use of the General Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
 ## <a name="dataSerialization"></a>4.0 Serialization of the Model
 
@@ -3458,7 +3459,7 @@ http://purl.imsglobal.org/caliper/DigitalResource
 | Property | Type | Description | Disposition |
 | :------- | :--- | ----------- | :---------: |
 | id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
-| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitaResource*. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *DigitalResource*. | Required |
 | name | string | A string value comprising a word or phrase by which the resource is known. | Optional |
 | description | string |  A string value comprising a brief, written representation of the resource. | Optional |
 | creators | Array | An ordered collection of [Agent](#agent) entities, typically of type [Person](#person), that are responsible for bringing resource into being.  Each array item MUST be expressed either as an object or as a string corresponding to the item's [IRI](#iriDef). | Optional |
@@ -5741,7 +5742,7 @@ Caliper 1.x additions, deprecations and corrections are summarized below.
 | Profile | Status | Disposition |
 | :------ | :----- | :---------- |
 | AssessmentItem Profile | Removed | Considered redundant. [AssessmentItemEvent](#assessmentItemEvent) has been relocated to the [Assessment Profile](#assessmentProfile). |
-| [Basic Profile](#basicProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
+| [General Profile](#generalProfile) | New | Utilize the generic [Event](#event) for describing learning or supporting activities that have yet to be modeled by Caliper. |
 | [Forum Profile](#forumProfile) | New | Models learners and others participating in online forum communities. |
 | [Grading Profile](#gradingProfile) | New | Replaces [Outcome Profile](#outcomeProfile).  Adds [Score](#score). |
 | Outcome Profile | Removed | Replaced by [Grading Profile](#gradingProfile). |

@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+    <script src='local-biblio.js' class='remove'></script>
+    <script class='remove'>
+        var respecConfig = {
+            specTitle: "Caliper Analytics® Feedback Profile",
+            shortName: "caliper-feedback",
+            specStatus: "IMS Base Document",
+            specDate: "June 1, 2019",
+            specVersion: "1.1",
+            specNature: "normative",
+            specType: "spec",
+            contributors: [
+                {
+                    name: "Andrew Gardener",
+                    company: "University of British Columbia (Canada)",
+                    companyURL: "https://www.ubc.ca/",
+                    role: "Author"
+                },
+                {
+                    name: "Anthony Whyte",
+                    company: "University of Michigan (USA)",
+                    companyURL: "https://umich.edu/",
+                    role: "Editor"
+                }
+            ],
+            localBiblio: _localBiblio
+        };
+    </script>
+</head>
+<body>
+<section id="abstract">
+    <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Feedback Profile that
+    describes informal feedback related learning activities.
+</section>
+
+<section>
+    <h2>Overview</h2>
+    <section class="informative">
+        <h3>Design Goals and Rationale</h3>
+
+        <img height="100%" width="100%" src="./assets/caliper-profile_feedback.png" alt="Feedback Profile"/>
+
+        <p>The Caliper Feedback Profile models a <code>Person</code>
+            providing informal feedback on a <code>Entity</code>, typically a piece of student work.
+            The profile provides a <a href="#event-feedback">FeedbackEvent</a> along with
+            <a href="#action-commented">Commented</a> and <a href="#action-ranked">Ranked</a></dd> actions for
+            describing feedback activities. The <a href="#entity-rating">Rating</a> entity is used to capture
+            quantitative feedback while the <a href="#entity-comment">Comment</a> entity is used to
+            capture qualitative feedback.</p>
+    </section>
+
+    <section class="informative" id="user-stories">
+        <h3>User Stories</h3>
+        <p>The Feedback Profile supports the following learner-centric user stories:</p>
+        <table>
+            <tr>
+                <td>As an instructor, I would like an overview of the overall quality of peer feedback my students
+                    gave to each other so I can make informed enhancements to my instructions.
+                </td>
+            </tr>
+            <tr>
+                <td>As a student, I would like to see the common shortcomings and merits in my work over a term/year
+                    based on peer and instructor comments in order to gain insight on what areas I need to improve upon.
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="terminology">
+        <h3>Terminology</h3>
+        <p>All terminology used in this specification is concordant with the term
+            definitions in the Caliper 1.1 Specification [[!CALIPER-11]].</p>
+    </section>
+
+    <section id="conformance">
+        <h3>Conformance Statements</h3>
+    </section>
+
+    <section id="documentset">
+        <h3>Document Set</h3>
+        <section>
+            <h4>Normative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1</dt>
+                <dd>This profile is an extension to the Caliper 1.1 specification [[!CALIPER-11]].
+                    All requirements in the Caliper 1.1 specification also apply to implementations of this
+                    specification.
+                </dd>
+                <dt>JSON-LD Context</dt>
+                <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
+                    [[!CALIPER-FEEDBACK-11-CONTEXT]].
+                </dd>
+                <dt>Errata</dt>
+                <dd>The errata [[!CALIPER-FEEDBACK-11-ERRATA]] details any errata registered for this version
+                    of this specification since its publication.
+                </dd>
+                <dt>Conformance and Certification guide</dt>
+                <dd>The conformance and certification guide that accompanies the Caliper 1.1 specification
+                    defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+                </dd>
+            </dl>
+        </section>
+
+        <section class="informative">
+            <h4>Informative Documents</h4>
+            <dl>
+                <dt>Caliper 1.1 Implementation Guide</dt>
+                <dd>The implementation guide that accompanies the Caliper 1.1 specification provides
+                    advice and guidance for implementors [[CALIPER-IMPL-11]].
+                </dd>
+            </dl>
+        </section>
+    </section>
+</section>
+
+<section id="events">
+    <h2>Events</h2>
+
+    <p>The Feedback Profile is provisioned with a single a <code>FeedbackEvent</code> for describing informal
+        feedback provided by an <code>actor</code>, typically a learner.</p>
+
+    <section id="event-feedback">
+        <h3>FeedbackEvent</h3>
+
+        <img height="100%" width="100%" src="./assets/caliper-feedback_event_ranked-v1p2.png" alt="Feedback Event Ranked"/>
+
+        <img height="100%" width="100%" src="./assets/caliper-feedback_event_commented-v1p2.png" alt="Feedback Event Commented"/>
+
+        <p>A Caliper <code>FeedbackEvent</code> models a <code>Person</code> providing informal feedback
+            on an <code>Entity</code>, typically a <code>DigitalResource</code> or another <code>Person</code>.
+        </p>
+
+        <dl>
+            <dt>Term</dt>
+            <dd>FeedbackEvent</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/FeedbackEvent</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+            >Event</a></dd>
+            <dt>Properties</dt>
+            <dd>The <code>FeedbackEvent</code> inherits all properties defined by its supertype
+                <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+                <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+                restrictions are described below:
+            </dd>
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to <em>FeedbackEvent</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>actor</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+                    be expressed either as an object or as a string corresponding to the actor's IRI.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>action</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The action or predicate that binds the <code>actor</code> or subject to the
+                    <code>object</code>. The value range is limited to the <a href="#action-commented">Commented</a>
+                    and <a href="#action-ranked">Ranked</a> actions only.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>object</td>
+                <td><a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code> that is the target of the feedback. The <code>object</code> value MUST
+                    be expressed either as an object or as a string corresponding to the resource's IRI.
+                </td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td><a href="#frame">Frame</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>If the <code>object</code> of the feedback is a particular segment of a
+                    <code>DigitalResource</code> use a <code>Frame</code> to mark its location. The <code>target</code>
+                    value MUST be expressed either as an object or as a string corresponding to the target entity’s IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>generated</td>
+                <td><a href="#entity-rating">Rating</a> | <a href="#entity-comment">Comment</a> | <a href=
+                     "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <a href="#entity-rating">Rating</a> or <a href="#entity-comment">Comment</a> entity that
+                    describes the feedback provided. If the action is <a href="#action-ranked">Ranked</a> then the
+                    <code>generated</code> value MUST be expressed as a <a href="#entity-rating">Rating</a>.
+                    If the action is <a href="#action-commented">Commented</a> then the <code>generated</code> value
+                    MUST be expressed as a <a href="#entity-comment">Comment</a>. The <code>generated</code> value MUST
+                    be expressed either as an object or as a string corresponding to the entity's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<section id="actions">
+    <h2>Actions</h2>
+
+    <p>The Caliper <a href="#event-feedback">FeedbackEvent</a> supports the following actions:</p>
+
+    <section id="action-commented">
+        <h3>Commented</h3>
+        The <em>Commented</em> action signals that qualitative feedback in the form of a
+        <a href="#entity-comment">Comment</a> has been provided.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Commented</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Commented</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201060446-v" rel="nofollow">Make or
+                write a comment on</a>.
+            </dd>
+        </dl>
+    </section>
+
+    <section id="action-ranked">
+        <h3>Ranked</h3>
+        The <em>Ranked</em> action signals that quantitative feedback in the form of a
+        <a href="#entity-rating">Rating</a> has been provided.
+
+        <dl>
+            <dt>Term</dt>
+            <dd>Ranked</dd>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/actions/Ranked</dd>
+            <dt>WordNet&reg; Gloss</dt>
+            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200659723-v" rel="nofollow">Assign
+                a rank or rating to</a>.
+            </dd>
+        </dl>
+    </section>
+</section>
+
+<section id="entities">
+    <h2>Entities</h2>
+
+    The <a href="#event-feedback">FeedbackEvent</a> SHOULD reference a <code>generated</code>
+    <a href="#entity-comment">Comment</a> or <a href="#entity-rating">Rating</a> that captures the content
+    of the feedback.</p>
+
+    <section id="entity-rating">
+        <h3>Rating</h3>
+        <p>A Caliper <code>Rating</code> models quantitative reactions to an <code>Entity</code>.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>Rating</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/Rating</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+            >Entity</a></dd>
+            <dt>Properties</dt>
+            <dd><code>Rating</code> inherits all properties defined by its supertype
+                <code>Entity</code>, of which <code>id</code>, and <code>type</code> are required.
+                <code>Rating</code> is also provisioned with additional properties, <code>rater</code>,
+                <code>rated</code>, <code>scale</code>, <code>selections</code>, and <code>comment</code>.
+                Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>Rating</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>rater</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> who provided the <code>Rating</code>. The <code>rater</code> value MUST
+                    be expressed either as an object or as a string corresponding to the rater’s IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>rated</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code> which received the rating. The <code>rated</code> value MUST be expressed either
+                    as an object or as a string corresponding to the rated object's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>scale</td>
+                <td><a href="#entity-scale">Scale</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Scale</code> used for the <code>Rating</code>. The <code>scale</code> value MUST be
+                    expressed either as an object or as a string corresponding to the scale's IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>selections</td>
+                <td>Array</td>
+                <td>An array of the values representing the rater's selected response.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>ratingComment</td>
+                <td><a href="#entity-comment">Comment</a> | <a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Comment</code> left with the <code>Rating</code>. The <code>ratingComment</code> value MUST be expressed either as an
+                    object or as a string corresponding to the comment’s IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="entity-comment">
+        <h3>Comment</h3>
+        <p>A Caliper <code>Comment</code> models a person's qualitative reactions to a <code>Entity</code>.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>Comment</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/Comment</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+            >Entity</a></dd>
+            <dt>Properties</dt>
+            <dd><code>Comment</code> inherits all properties defined by its supertype <code>Entity</code>, of which
+                <code>id</code>, and <code>type</code> are required. <code>Comment</code> is also provisioned with
+                additional properties, <code>commenter</code>, <code>commentedOn</code>, and <code>value</code>.
+                Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>Comment</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>commenter</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+                >Person</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Person</code> which gave the comment. The <code>commenter</code> value MUST be
+                    expressed either as an object or as a string corresponding to the commenter’s IRI.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>commentedOn</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+                >Entity</a> | <a href=
+                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+                >IRI</a></td>
+                <td>The <code>Entity</code> which received the comment. The <code>commentedOn</code> value MUST
+                    be expressed either as an object or as a string corresponding to the IRI of the resource that was
+                    commented on.
+                </td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>value</td>
+                <td>string</td>
+                <td>A string value representing the comment's textual value.</td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="entity-scale">
+        <h3>Scale</h3>
+        <p>A Caliper <code>Scale</code> models a scale employed in order to capture some rating.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>Scale</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/Scale</dd>
+            <dt>Supertype</dt>
+            <dd><a href=
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+            >Entity</a></dd>
+            <dt>Properties</dt>
+            <dd><code>Scale</code> inherits all properties defined by its supertype <code>Entity</code>, of which
+                <code>id</code>, and <code>type</code> are required. <code>Scale</code> is also provisioned with an
+                additional <code>question</code> property. Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>Scale</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>question</td>
+                <td>string</td>
+                <td>A string value comprising the question posed to be scaled.</td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <figure class="example">
+            <figcaption><code>Scale</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/1",
+  "type": "Scale",
+  "question": "How would you rate this?",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section id="entity-likert-scale">
+        <h3>LikertScale</h3>
+        <p>A Caliper <code>LikertScale</code> models a Likert scale employed for scaling responses.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>LikertScale</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
+            <dt>Supertype</dt>
+            <dd><a href="#entity-scale">Scale</a></dd>
+            <dt>Properties</dt>
+            <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>, of which
+                <code>id</code>, and <code>type</code> are required. <code>LikertScale</code> is also provisioned
+                with three additional properties <code>points</code>, <code>itemLabels</code>, and
+                <code>itemValues</code>. Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>LikertScale</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>points</td>
+                <td>integer</td>
+                <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>itemLabels</td>
+                <td>Array [{key:value}] | Array [value]</td>
+                <td>The ordered list of labels for each point on the likert scale.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>itemValues</td>
+                <td>Array [{key:value}] | Array [value]</td>
+                <td>The ordered list of values for each point on the likert scale.</td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="entity-multiselection-scale">
+        <h3>MultiselectionScale</h3>
+        <p>A Caliper <code>MultiselectionScale</code> models a scale used to capture one or more rating options.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>MultiselectionScale</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/MultiselectionScale</dd>
+            <dt>Supertype</dt>
+            <dd><a href="#entity-scale">Scale</a></dd>
+            <dt>Properties</dt>
+            <dd><code>MultiselectionScale</code> inherits all properties defined by its supertype <code>Scale</code>,
+                of which<code>id</code>, and <code>type</code> are required. <code>MultiselectionScale</code> is also
+                provisioned with six additional properties <code>points</code>, <code>itemLabels</code>,
+                <code>itemValues</code>, <code>orderedSelection</code>, <code>minSelections</code>, and
+                <code>maxSelections</code>. Profile-specific type restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>MultiselectionScale</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>points</td>
+                <td>integer</td>
+                <td>A integer value used to determine the amount of points on the <code>MultiselectionScale</code>.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>itemLabels</td>
+                <td>Array [{key:value}] | Array [value]</td>
+                <td>The ordered list of labels for each point on the scale.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>itemValues</td>
+                <td>Array [{key:value}] | Array [value]</td>
+                <td>The ordered list of values for each point on the scale.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>orderedSelection</td>
+                <td>boolean</td>
+                <td>Indicates whether the order of the selected items is important.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>minSelections</td>
+                <td>integer</td>
+                <td>Indicates the minimum number of selections that can be chosen.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>maxSelections</td>
+                <td>integer</td>
+                <td>Indicates the maximum number of selections that can be chosen.</td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="entity-numeric-scale">
+        <h3>NumericScale</h3>
+        <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
+        <dl>
+            <dt>Term</dt>
+            <dl>NumericScale</dl>
+            <dt>IRI</dt>
+            <dd>https://purl.imsglobal.org/caliper/NumericScale</dd>
+            <dt>Supertype</dt>
+            <dd><a href="#entity-scale">Scale</a></dd>
+            <dt>Properties</dt>
+            <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>,
+                of which<code>id</code>, and <code>type</code> are required. <code>NumericScale</code> is also
+                provisioned with five additional properties <code>minValue</code>, <code>minLabel</code>,
+                <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>. Profile-specific type
+                restrictions are described below:
+            </dd>
+        </dl>
+
+        <table class="data">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Disposition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>type</td>
+                <td><a href=
+                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+                >Term</a></td>
+                <td>The string value MUST be set to the Term <em>NumericScale</em>.</td>
+                <td>Required</td>
+            </tr>
+            <tr>
+                <td>minValue</td>
+                <td>decimal</td>
+                <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>minLabel</td>
+                <td>string</td>
+                <td>The label for the minimum value.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>maxValue</td>
+                <td>decimal</td>
+                <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>maxLabel</td>
+                <td>string</td>
+                <td>The label for the maximum value.</td>
+                <td>Optional</td>
+            </tr>
+            <tr>
+                <td>step</td>
+                <td>decimal</td>
+                <td>Indicates the decimal step used for determining the options between the minimum and maximum
+                    values.
+                </td>
+                <td>Optional</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<section id="jsonld">
+    <h3>Expressing Caliper as JSON-LD</h3>
+    <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+        provides a remote Feedback Profile JSON-LD <a href=
+          "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension">context</a>
+        for mapping <code>FeedbackEvent</code> terms to IRIs. Caliper message producers MUST reference this
+        context in every Caliper 1.1 <code>FeedbackEvent</code>, <code>Rating</code>, <code>Comment</code>,
+        <code>Scale</code>, <code>LikertScale</code>, <code>MultiselectionScale</code>, and/or
+        <code>NumericScale</code> describe created and serialized for transmission to a target endpoint.</p>
+
+    <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
+        context handling.</p>
+
+    <figure class="example">
+        <figcaption>JSON-LD Context</figcaption>
+        <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  . . .
+}</code></pre>
+    </figure>
+
+    <section class="informative">
+        <h2>Commented FeedbackEvent</h2>
+
+        <p>Below is an example of a Caliper <a href="#event-feedback">FeedbackEvent</a> that records a
+            <code>Person</code> providing informal feedback in the form of a <a href="#entity-comment">Comment</a>.
+        </p>
+
+        <figure class="example">
+            <figcaption><code>FeedbackEvent</code> Commented JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
+  "type": "FeedbackEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Commented",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "generated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+    "type": "Comment",
+    "commenter": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "commentedOn": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
+    },
+    "value": "I like what you did here but you need to improve on...",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>Ranked FeedbackEvent</h2>
+
+        <p>Below is an example of a Caliper <a href="#event-feedback">FeedbackEvent</a> that records a
+            <code>Person</code> providing informal feedback in the form of a <a href="#entity-rating">Rating</a>.
+        </p>
+
+        <figure class="example">
+            <figcaption><code>FeedbackEvent</code> Ranked JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "urn:uuid:a502e4fc-24c1-11e9-ab14-d663bd873d93",
+  "type": "FeedbackEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Ranked",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "generated": {
+    "id": "https://example.edu/users/554433/rating/1",
+    "type": "Rating",
+    "rater": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "rated": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
+    },
+    "scale": {
+      "id": "https://example.edu/scale/2",
+      "type": "LikertScale",
+      "points": 4,
+      "question": "Do you agree with the opinion presented?",
+      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      "itemValues": [-2, -1, 1, 2],
+      "dateCreated": "2018-08-01T06:00:00.000Z"
+    },
+    "selections": ["1"],
+    "ratingComment": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+      "type": "Comment",
+      "commenter": {
+        "id": "https://example.edu/users/554433",
+        "type": "Person"
+      },
+      "commentedOn": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+        "type": "DigitalResource",
+        "name": "Course Syllabus",
+        "mediaType": "application/pdf",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+          "type": "DigitalResourceCollection",
+          "name": "Course Assets",
+          "isPartOf": {
+            "id": "https://example.edu/terms/201801/courses/7/sections/1",
+            "type": "CourseSection"
+          }
+        },
+        "dateCreated": "2018-08-02T11:32:00.000Z"
+      },
+      "value": "I like what you did here but you need to improve on...",
+      "dateCreated": "2018-08-01T06:00:00.000Z"
+    },
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "eventTime": "2018-11-15T10:05:00.000Z",
+  "edApp": "https://example.edu",
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  },
+  "membership": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+    "type": "Membership",
+    "member": "https://example.edu/users/554433",
+    "organization": "https://example.edu/terms/201801/courses/7/sections/1",
+    "roles": [ "Learner" ],
+    "status": "Active",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>Comment Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-comment">Comment</a> entity describe that can also be sent to an
+            endpoint. The <a href="#entity-comment">Comment</a> references the commenter, the resource commented on,
+            and a the comment text value.</p>
+
+        <figure class="example">
+            <figcaption><code>Comment</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+  "type": "Comment",
+  "commenter": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "commentedOn": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "value": "I like what you did here but you need to improve on...",
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>LikertScale Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-likert-scale">LikertScale</a> entity describe that
+            can also be sent to an endpoint. The <a href="#entity-likert-scale">LikertScale</a>
+            references the question, points, item labels, and item values.</p>
+
+        <figure class="example">
+            <figcaption><code>LikertScale</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/2",
+  "type": "LikertScale",
+  "question": "Do you agree with the opinion presented?",
+  "points": 4,
+  "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+  "itemValues": [-2, -1, 1, 2],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>MultiselectionScale Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-multiselection-scale">MultiselectionScale</a> entity describe that
+            can also be sent to an endpoint. The <a href="#entity-multiselection-scale">MultiselectionScale</a>
+            references the question, item labels, item values, ordering (if any), and selection range.</p>
+
+        <figure class="example">
+            <figcaption><code>MultiselectionScale</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/3",
+  "type": "MultiselectionScale",
+  "question": "How do you feel about this content? (select one or more)",
+  "points": 5,
+  "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+  "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+  "orderedSelection": false,
+  "minSelections": 1,
+  "maxSelections": 5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>NumericScale Describe</h2>
+
+        <p>Below is an example of a <a href="#entity-numeric-scale">NumericScale</a> entity describe that
+            can also be sent to an endpoint. The <a href="#entity-numeric-scale">NumericScale</a> references
+            the question, value range, steps, and labels.</p>
+
+        <figure class="example">
+            <figcaption><code>NumericScale</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/scale/4",
+  "type": "NumericScale",
+  "question": "How do you feel about this content?",
+  "minValue": 0.0,
+  "minLabel": "Disliked",
+  "maxValue": 10.0,
+  "maxLabel": "Liked",
+  "step": 0.5,
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+        <h2>Rating (Likert Scale) Describe</h2>
+
+        <p>Below is an example of a Likert Scale <a href="#entity-rating">Rating</a> entity describe that can also be sent to an
+            endpoint. The <a href="#entity-rating">Rating</a> references the rater, the resource rated, the
+            scale employed, the option selected, and a free-form comment.</p>
+
+        <figure class="example">
+            <figcaption>Likert Scale <code>Rating</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/users/554433/rating/1",
+  "type": "Rating",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "rated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+    "type": "DigitalResource",
+    "name": "Course Syllabus",
+    "mediaType": "application/pdf",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+      "type": "DigitalResourceCollection",
+      "name": "Course Assets",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1",
+        "type": "CourseSection"
+      }
+    },
+    "dateCreated": "2018-08-02T11:32:00.000Z"
+  },
+  "scale": {
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "points": 4,
+    "question": "Do you agree with the opinion presented?",
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": [-2, -1, 1, 2]
+  },
+  "selections": ["1"],
+  "ratingComment": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/items/6/users/665544/responses/1/comment/1",
+    "type": "Comment",
+    "commenter": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "commentedOn": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
+      "type": "DigitalResource",
+      "name": "Course Syllabus",
+      "mediaType": "application/pdf",
+      "isPartOf": {
+        "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+        "type": "DigitalResourceCollection",
+        "name": "Course Assets",
+        "isPartOf": {
+          "id": "https://example.edu/terms/201801/courses/7/sections/1",
+          "type": "CourseSection"
+        }
+      },
+      "dateCreated": "2018-08-02T11:32:00.000Z"
+    },
+    "value": "I like what you did here but you need to improve on...",
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+
+    <section class="informative">
+
+        <h2>Rating (Multiselection) Describe</h2>
+
+        <p>Below is an example of a multi-select <a href="#entity-rating">Rating</a> entity describe that can also be sent to an
+            endpoint. The <a href="#entity-rating">Rating</a> references the rater, the resource rated, the
+            scale employed, the option selected, and a free-form comment.</p>
+
+        <figure class="example">
+            <figcaption>Multi-Select <code>Rating</code> describe JSON-LD</figcaption>
+            <pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
+  "id": "https://example.edu/users/554433/rating/2",
+  "type": "Rating",
+  "rater": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "rated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
+    "type": "DigitalResourceCollection",
+    "name": "Course Assets",
+    "isPartOf": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1",
+      "type": "CourseSection"
+    }
+  },
+  "scale": {
+    "id": "https://example.edu/scale/3",
+    "type": "MultiselectionScale",
+    "question": "How do you feel about this content? (select one or more)",
+    "points": 5,
+    "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
+    "itemValues": ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+    "orderedSelection": false,
+    "minSelections": 1,
+    "maxSelections": 5,
+    "dateCreated": "2018-08-01T06:00:00.000Z"
+  },
+  "selections": ["superhappy", "disappointed"],
+  "dateCreated": "2018-08-01T06:00:00.000Z"
+}</code></pre>
+        </figure>
+    </section>
+</section>
+
+<section class="appendix informative" id="revisionhistory">
+    <h2>Revision History</h2>
+
+    <section>
+        <h3>Version History</h3>
+        <table title="Revision History" summary="Publication history and revision details for this specification.">
+            <thead>
+            <tr>
+                <th>Version No.</th>
+                <th>Release Date</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>IMS Base Document 1.0</td>
+                <td>June 1, 2018</td>
+                <td>The first internal draft release.</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Changes from previous version</h3>
+        <p>As this is the first version of this document, no previous version change log exists.</p>
+    </section>
+</section>
+</body>
+</html>
