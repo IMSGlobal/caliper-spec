@@ -566,19 +566,19 @@
         </table>
     </section>
 
-    <section id="entity-multiselection-scale">
-        <h3>MultiselectionScale</h3>
-        <p>A Caliper <code>MultiselectionScale</code> models a scale used to capture one or more rating options.</p>
+    <section id="entity-Multiselect-scale">
+        <h3>MultiselectScale</h3>
+        <p>A Caliper <code>MultiselectScale</code> models a scale used to capture one or more rating options.</p>
         <dl>
             <dt>Term</dt>
-            <dl>MultiselectionScale</dl>
+            <dl>MultiselectScale</dl>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/MultiselectionScale</dd>
+            <dd>https://purl.imsglobal.org/caliper/MultiselectScale</dd>
             <dt>Supertype</dt>
             <dd><a href="#entity-scale">Scale</a></dd>
             <dt>Properties</dt>
-            <dd><code>MultiselectionScale</code> inherits all properties defined by its supertype <code>Scale</code>,
-                of which<code>id</code>, and <code>type</code> are required. <code>MultiselectionScale</code> is also
+            <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <code>Scale</code>,
+                of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
                 provisioned with six additional properties <code>points</code>, <code>itemLabels</code>,
                 <code>itemValues</code>, <code>orderedSelection</code>, <code>minSelections</code>, and
                 <code>maxSelections</code>. Profile-specific type restrictions are described below:
@@ -600,13 +600,13 @@
                 <td><a href=
                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
                 >Term</a></td>
-                <td>The string value MUST be set to the Term <em>MultiselectionScale</em>.</td>
+                <td>The string value MUST be set to the Term <em>MultiselectScale</em>.</td>
                 <td>Required</td>
             </tr>
             <tr>
                 <td>points</td>
                 <td>integer</td>
-                <td>A integer value used to determine the amount of points on the <code>MultiselectionScale</code>.</td>
+                <td>A integer value used to determine the amount of points on the <code>MultiselectScale</code>.</td>
                 <td>Optional</td>
             </tr>
             <tr>
@@ -724,7 +724,7 @@
           "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension">context</a>
         for mapping <code>FeedbackEvent</code> terms to IRIs. Caliper message producers MUST reference this
         context in every Caliper 1.1 <code>FeedbackEvent</code>, <code>Rating</code>, <code>Comment</code>,
-        <code>Scale</code>, <code>LikertScale</code>, <code>MultiselectionScale</code>, and/or
+        <code>Scale</code>, <code>LikertScale</code>, <code>MultiselectScale</code>, and/or
         <code>NumericScale</code> describe created and serialized for transmission to a target endpoint.</p>
 
     <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
@@ -1007,18 +1007,18 @@
     </section>
 
     <section class="informative">
-        <h2>MultiselectionScale Describe</h2>
+        <h2>MultiselectScale Describe</h2>
 
-        <p>Below is an example of a <a href="#entity-multiselection-scale">MultiselectionScale</a> entity describe that
-            can also be sent to an endpoint. The <a href="#entity-multiselection-scale">MultiselectionScale</a>
+        <p>Below is an example of a <a href="#entity-Multiselect-scale">MultiselectScale</a> entity describe that
+            can also be sent to an endpoint. The <a href="#entity-Multiselect-scale">MultiselectScale</a>
             references the question, item labels, item values, ordering (if any), and selection range.</p>
 
         <figure class="example">
-            <figcaption><code>MultiselectionScale</code> describe JSON-LD</figcaption>
+            <figcaption><code>MultiselectScale</code> describe JSON-LD</figcaption>
             <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/FeedbackProfile-extension",
   "id": "https://example.edu/scale/3",
-  "type": "MultiselectionScale",
+  "type": "MultiselectScale",
   "question": "How do you feel about this content? (select one or more)",
   "points": 5,
   "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
@@ -1130,7 +1130,7 @@
 
     <section class="informative">
 
-        <h2>Rating (Multiselection) Describe</h2>
+        <h2>Rating (Multiselect) Describe</h2>
 
         <p>Below is an example of a multi-select <a href="#entity-rating">Rating</a> entity describe that can also be sent to an
             endpoint. The <a href="#entity-rating">Rating</a> references the rater, the resource rated, the
@@ -1157,7 +1157,7 @@
   },
   "scale": {
     "id": "https://example.edu/scale/3",
-    "type": "MultiselectionScale",
+    "type": "MultiselectScale",
     "question": "How do you feel about this content? (select one or more)",
     "points": 5,
     "itemLabels": ["😁", "😀", "😐", "😕", "😞"],
