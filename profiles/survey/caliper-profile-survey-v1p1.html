@@ -1285,18 +1285,19 @@
     </table>
   </section>
 
-  <section id="entity-scale-question">
-    <h3>ScaleQuestion</h3>
+  <section id="entity-rating-scale-question">
+    <h3>RatingScaleQuestion</h3>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/ScaleQuestion</dd>
+      <dd>https://purl.imsglobal.org/caliper/RatingScaleQuestion</dd>
       <dt>Supertype</dt>
-      <dd><a href="#entity-question">Question</a>, <a href="#entity-scale">Scale</a></dd>
+      <dd><a href="#entity-question">Question</a></dd>
       <dt>Properties</dt>
-      <dd><code>ScaleQuestion</code> inherits all properties defined by its supertypes
-        <code>Question</code> and <code>Scale</code>,
+      <dd><code>RatingScaleQuestion</code> inherits all properties defined by its supertypes
+        <code>Question</code>,
         of which <code>id</code> and <code>type</code> are required.
+        <code>RatingScaleQuestion</code> is also provisioned with the additional property <code>scale</code>.
         Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -1318,79 +1319,16 @@
         <td>The string value MUST be set to the Term 'ScaleQuestion'.</td>
         <td>Required</td>
       </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-likert-scale-question">
-    <h3>LikertScaleQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/LikertScaleQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-scale-question">ScaleQuestion</a>, <a href="#entity-likert-scale">LikertScale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>LikertScaleQuestion</code> inherits all properties defined by its supertypes
-        <code>Question</code> and <code>LikertScale</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
       <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term 'LikertScaleQuestion'.</td>
-        <td>Required</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-numeric-scale-question">
-    <h3>NumericScaleQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/NumericScaleQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-scale-question">ScaleQuestion</a>, <a href="#entity-numeric-scale">NumericScale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>NumericScaleQuestion</code> inherits all properties defined by its supertypes
-        <code>Question</code> and <code>NumericScale</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term 'NumericScaleQuestion'.</td>
-        <td>Required</td>
+        <td>scale</td>
+        <td><a
+          href="#entity-scale">Scale</a> | <a
+          href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Scale</code> entity used in the <code>RatingScaleQuestion</code>. The
+          <code>scale</code> value MUST be expressed either as an object or as a string
+          corresponding to the scale's IRI.</td>
+        <td>Optional</td>
       </tr>
       </tbody>
     </table>
@@ -1550,19 +1488,19 @@
     </table>
   </section>
 
-  <section id="entity-scale-response">
-    <h3>ScaleResponse</h3>
+  <section id="entity-rating-scale-response">
+    <h3>RatingScaleResponse</h3>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/ScaleResponse</dd>
+      <dd>https://purl.imsglobal.org/caliper/RatingScaleResponse</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
       >Response</a></dd>
       <dt>Properties</dt>
-      <dd><code>ScaleResponse</code> inherits all properties defined by its supertype <code>Response</code>,
+      <dd><code>RatingScaleResponse</code> inherits all properties defined by its supertype <code>Response</code>,
         of which <code>id</code> and <code>type</code> are required.
-        <code>ScaleResponse</code> is also provisioned with the additional property <code>selections</code>.
+        <code>RatingScaleResponse</code> is also provisioned with the additional property <code>selections</code>.
         Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -1581,7 +1519,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'ScaleResponse'.</td>
+        <td>The string value MUST be set to the Term 'RatingScaleResponse'.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1976,10 +1914,9 @@
     context in every Caliper 1.1 <code>SurveyEvent</code>, <code>SurveyInvitationEvent</code>,
     <code>QuestionnaireEvent</code>, <code>QuestionnaireItemEvent</code>, <code>Collection</code>,
     <code>Survey</code>, <code>Questionnaire</code>, <code>QuestionnaireItem</code>, <code>ScaleQuestion</code>,
-    <code>LikertScaleQuestion</code>, <code>NumericScaleQuestion</code>, <code>DateTimeQuestion</code>,
-    <code>MultiselectQuestion</code>, <code>OpenEndedQuestion</code>, <code>ScaleResponse</code>,
-    <code>DateTimeResponse</code>, <code>MultiselectResponse</code>, <code>OpenEndedResponse</code>,
-    and/or <code>SurveyInvitation</code> describe created
+    <code>DateTimeQuestion</code>, <code>MultiselectQuestion</code>, <code>OpenEndedQuestion</code>,
+    <code>RatingScaleResponse</code>, <code>DateTimeResponse</code>, <code>MultiselectResponse</code>,
+    <code>OpenEndedResponse</code>, and/or <code>SurveyInvitation</code> describe created
     and serialized for transmission to a target endpoint.</p>
 
   <p>See the Caliper 1.1 specification [[!CALIPER-11]] for a discussion of JSON-LD and JSON-LD
@@ -2052,7 +1989,7 @@
   },
   "action": "Accepted",
   "object": {
-    "id": "https://example.com/surveys/100/invitations/users/112233",
+    "id": "https://example.edu/surveys/100/invitations/users/112233",
     "type": "SurveyInvitation",
     "sentCount": 1,
     "sentDate": "2018-11-15T10:05:00.000Z",
@@ -2107,7 +2044,7 @@
   },
   "action": "Sent",
   "object": {
-    "id": "https://example.com/surveys/100/invitations/users/554433",
+    "id": "https://example.edu/surveys/100/invitations/users/554433",
     "type": "SurveyInvitation",
     "sentCount": 1,
     "sentDate": "2018-11-15T10:05:00.000Z",
@@ -2162,15 +2099,15 @@
   },
   "action": "Started",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30",
+    "id": "https://example.edu/surveys/100/questionnaires/30",
     "type": "Questionnaire",
     "items": [
       {
-        "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+        "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
         "type": "QuestionnaireItem"
       },
       {
-        "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+        "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
         "type": "QuestionnaireItem"
       }
     ],
@@ -2217,15 +2154,15 @@
   },
   "action": "Completed",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30",
+    "id": "https://example.edu/surveys/100/questionnaires/30",
     "type": "Questionnaire",
     "items": [
       {
-        "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+        "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
         "type": "QuestionnaireItem"
       },
       {
-        "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+        "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
         "type": "QuestionnaireItem"
       }
     ],
@@ -2272,15 +2209,19 @@
   },
   "action": "Started",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
-      "type": "LikertScaleQuestion",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+      "type": "RatingScaleQuestion",
       "questionPosed": "How satisfied are you with our services?",
-      "points": 4,
-      "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
-      "itemValues": [-2, -1, 1, 2]
+      "scale": {
+        "id": "https://example.edu/scale/2",
+        "type": "LikertScale",
+        "points": 4,
+        "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+        "itemValues": [-2, -1, 1, 2]
+      }
     },
     "categories": ["teaching effectiveness", "Course structure"],
     "weight": 1.0
@@ -2313,7 +2254,7 @@
 
 
   <section class="informative">
-    <h2>Submitted (LikertScaleQuestion) QuestionnaireItemEvent</h2>
+    <h2>Submitted (RatingScaleQuestion) QuestionnaireItemEvent</h2>
 
     <figure class="example">
       <figcaption><code>QuestionnaireItemEvent</code> Submitted JSON-LD</figcaption>
@@ -2327,22 +2268,26 @@
   },
   "action": "Submitted",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
-      "type": "LikertScaleQuestion",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+      "type": "RatingScaleQuestion",
       "questionPosed": "How satisfied are you with our services?",
-      "points": 4,
-      "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
-      "itemValues": [-2, -1, 1, 2]
+      "scale": {
+        "id": "https://example.edu/scale/2",
+        "type": "LikertScale",
+        "points": 4,
+        "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+        "itemValues": [-2, -1, 1, 2]
+      }
     },
     "categories": ["teaching effectiveness", "Course structure"],
     "weight": 1.0
   },
   "generated": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
-    "type": "ScaleResponse",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
+    "type": "RatingScaleResponse",
     "selections": ["Satisfied"],
     "startedAtTime": "2018-08-01T05:55:48.000Z",
     "endedAtTime": "2018-08-01T06:00:00.000Z",
@@ -2390,10 +2335,10 @@
   },
   "action": "Submitted",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/2/question",
       "type": "OpenEndedQuestion",
       "questionPosed": "What would you change about your course?"
     },
@@ -2401,7 +2346,7 @@
     "weight": 1.0
   },
   "generated": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
     "type": "OpenEndedResponse",
     "value": "I feel that ...",
     "startedAtTime": "2018-08-01T05:55:48.000Z",
@@ -2450,10 +2395,10 @@
   },
   "action": "NavigatedTo",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/2/question",
       "type": "OpenEndedQuestion",
       "questionPosed": "What would you change about your course?"
     },
@@ -2501,10 +2446,10 @@
   },
   "action": "Viewed",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/2/question",
       "type": "OpenEndedQuestion",
       "questionPosed": "What would you change about your course?"
     },
@@ -2552,10 +2497,10 @@
   },
   "action": "Created",
   "object": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
     "type": "QuestionnaireItem",
     "question": {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/2/question",
       "type": "OpenEndedQuestion",
       "questionPosed": "What would you change about your course?"
     },
@@ -2631,30 +2576,30 @@
   "type": "Survey",
   "items": [
     {
-      "id": "https://example.com/surveys/100/questionnaires/30",
+      "id": "https://example.edu/surveys/100/questionnaires/30",
       "type": "Questionnaire",
       "items": [
         {
-          "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+          "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
           "type": "QuestionnaireItem"
         },
         {
-          "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+          "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
           "type": "QuestionnaireItem"
         }
       ],
       "dateCreated": "2018-08-01T06:00:00.000Z"
     },
     {
-      "id": "https://example.com/surveys/100/questionnaires/31",
+      "id": "https://example.edu/surveys/100/questionnaires/31",
       "type": "Questionnaire",
       "items": [
         {
-          "id": "https://example.com/surveys/100/questionnaires/31/items/1",
+          "id": "https://example.edu/surveys/100/questionnaires/31/items/1",
           "type": "QuestionnaireItem"
         },
         {
-          "id": "https://example.com/surveys/100/questionnaires/31/items/2",
+          "id": "https://example.edu/surveys/100/questionnaires/31/items/2",
           "type": "QuestionnaireItem"
         }
       ],
@@ -2672,15 +2617,15 @@
       <figcaption><code>Questionnaire</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30",
+  "id": "https://example.edu/surveys/100/questionnaires/30",
   "type": "Questionnaire",
   "items": [
     {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
       "type": "QuestionnaireItem"
     },
     {
-      "id": "https://example.com/surveys/100/questionnaires/30/items/2",
+      "id": "https://example.edu/surveys/100/questionnaires/30/items/2",
       "type": "QuestionnaireItem"
     }
   ],
@@ -2696,15 +2641,19 @@
       <figcaption><code>QuestionnaireItem</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/1",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/1",
   "type": "QuestionnaireItem",
   "question": {
-    "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
-    "type": "LikertScaleQuestion",
+    "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+    "type": "RatingScaleQuestion",
     "questionPosed": "How satisfied are you with our services?",
-    "points": 4,
-    "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
-    "itemValues": [-2, -1, 1, 2]
+    "scale": {
+      "id": "https://example.edu/scale/2",
+      "type": "LikertScale",
+      "points": 4,
+      "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      "itemValues": [-2, -1, 1, 2]
+    }
   },
   "categories": ["teaching effectiveness", "Course structure"],
   "weight": 1.0
@@ -2719,7 +2668,7 @@
       <figcaption><code>Question</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/question/1",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/5/question",
   "type": "Question",
   "questionPosed": "What is this generic question about?",
 }</code></pre>
@@ -2727,51 +2676,22 @@
   </section>
 
   <section class="informative">
-    <h2>ScaleQuestion Describe</h2>
+    <h2>RatingScaleQuestion Describe</h2>
 
     <figure class="example">
-      <figcaption><code>ScaleQuestion</code> describe JSON-LD</figcaption>
+      <figcaption><code>RatingScaleQuestion</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/question/1",
-  "type": "ScaleQuestion",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/1/question",
+  "type": "RatingScaleQuestion",
   "questionPosed": "What is this generic scale question about?",
-}</code></pre>
-    </figure>
-  </section>
-
-  <section class="informative">
-    <h2>LikertScaleQuestion Describe</h2>
-
-    <figure class="example">
-      <figcaption><code>LikertScaleQuestion</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/1/question",
-  "type": "LikertScaleQuestion",
-  "questionPosed": "How satisfied are you with our services?",
-  "points": 4,
-  "itemLabels": ["Very Unsatisfied", "Unsatisfied", "Satisfied", "Very Satisfied"],
-  "itemValues": [-2, -1, 1, 2]
-}</code></pre>
-    </figure>
-  </section>
-
-  <section class="informative">
-    <h2>NumericScaleQuestion Describe</h2>
-
-    <figure class="example">
-      <figcaption><code>NumericScaleQuestion</code> describe JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/3/question",
-  "type": "NumericScaleQuestion",
-  "questionPosed": "How satisfied are you with our services?",
-  "minValue": 0.0,
-  "minLabel": "Unsatisfied",
-  "maxValue": 10.0,
-  "maxLabel": "Satisfied",
-  "step": 0.5
+  "scale": {
+    "id": "https://example.edu/scale/2",
+    "type": "LikertScale",
+    "points": 4,
+    "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+    "itemValues": [-2, -1, 1, 2]
+  }
 }</code></pre>
     </figure>
   </section>
@@ -2783,7 +2703,7 @@
       <figcaption><code>DateTimeQuestion</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/4/question",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/3/question",
   "type": "DateTimeQuestion",
   "questionPosed": "When would you be available for an exam next term?",
   "minDateTime": "2018-09-01T06:00:00.000Z",
@@ -2801,7 +2721,7 @@
       <figcaption><code>MultiselectQuestion</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/5/question",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/4/question",
   "type": "MultiselectQuestion",
   "questionPosed": "What do you want to study today?",
   "points": 4,
@@ -2823,7 +2743,7 @@
       <figcaption><code>OpenEndedQuestion</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/2/question",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/2/question",
   "type": "OpenEndedQuestion",
   "questionPosed": "What would you change about your course?"
 }</code></pre>
@@ -2831,14 +2751,14 @@
   </section>
 
   <section class="informative">
-    <h2>ScaleResponse Describe</h2>
+    <h2>RatingScaleResponse Describe</h2>
 
     <figure class="example">
-      <figcaption><code>ScaleResponse</code> describe JSON-LD</figcaption>
+      <figcaption><code>RatingScaleResponse</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
-  "type": "ScaleResponse",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/1/users/554433/responses/1",
+  "type": "RatingScaleResponse",
   "selections": ["Satisfied"],
   "startedAtTime": "2018-08-01T05:55:48.000Z",
   "endedAtTime": "2018-08-01T06:00:00.000Z",
@@ -2855,7 +2775,7 @@
       <figcaption><code>DateTimeResponse</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/4/users/554433/responses/4",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/4/users/554433/responses/4",
   "type": "DateTimeResponse",
   "dateTimeSelected": "2018-12-15T06:00:00.000Z",
   "startedAtTime": "2018-08-01T05:55:48.000Z",
@@ -2873,7 +2793,7 @@
       <figcaption><code>MultiselectResponse</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/5/users/554433/responses/5",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/5/users/554433/responses/5",
   "type": "MultiselectResponse",
   "selections": [
     "https://example.edu/terms/201801/courses/7/sections/1/objectives/1",
@@ -2895,7 +2815,7 @@
       <figcaption><code>OpenEndedResponse</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
+  "id": "https://example.edu/surveys/100/questionnaires/30/items/2/users/554433/responses/2",
   "type": "OpenEndedResponse",,
   "value": "I feel that ...",
   "startedAtTime": "2018-08-01T05:55:48.000Z",
@@ -2914,7 +2834,7 @@
       <figcaption><code>SurveyInvitation</code> describe JSON-LD</figcaption>
 <pre><code>{
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
-  "id": "https://example.com/surveys/100/invitations/users/112233",
+  "id": "https://example.edu/surveys/100/invitations/users/112233",
   "type": "SurveyInvitation",
   "sentCount": 1,
   "sentDate": "2018-11-15T10:05:00.000Z",
@@ -2955,7 +2875,6 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "https://example.edu/scale/2",
   "type": "LikertScale",
-  "question": "Do you agree with the opinion presented?",
   "points": 4,
   "itemLabels": ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
   "itemValues": [-2, -1, 1, 2],
@@ -2973,7 +2892,6 @@
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/SurveyProfile-extension",
   "id": "https://example.edu/scale/4",
   "type": "NumericScale",
-  "question": "How do you feel about this content?",
   "minValue": 0.0,
   "minLabel": "Disliked",
   "maxValue": 10.0,
