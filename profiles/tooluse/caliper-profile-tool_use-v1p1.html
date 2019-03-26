@@ -243,7 +243,7 @@
 <section id="actions">
     <h2>Actions</h2>
 
-    <p>The Caliper <a href="#toolUseEvent">ToolUse Event</a> supports the <em>Used</em> action only.</p>
+    <p>The Caliper <a href="#toolUseEvent">ToolUseEvent</a> supports the <em>Used</em> action only.</p>
 
     <section id="action-Used">
         <h3>Used</h3>
@@ -279,8 +279,8 @@
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-            >Event</a></dd>
+                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+            >Entity</a></dd>
             <dt>Properties</dt>
             <dd><code>AggregateMeasure</code> inherits all the properties and requirements defined for its
                 supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
@@ -307,16 +307,16 @@
                 <td>Required</td>
             </tr>
             <td>metricValue</td>
-            <td>Number</td>
-            <td>A Number representing the total curricular progress the actor has made in the context of the
+            <td>integer</td>
+            <td>An integer value representing the total curricular progress the actor has made in the context of the
                 application.
             </td>
             <td>Required</td>
             </tr>
             <tr>
-                <td>metricValueMax</td>
-                <td>Number</td>
-                <td>A Number representing the total possible curricular progress the actor can make in the context of
+                <td>maxMetricValue</td>
+                <td>integer</td>
+                <td>An integer value representing the total possible curricular progress the actor can make in the context of
                     the application.
                 </td>
                 <td>Optional</td>
@@ -365,8 +365,8 @@
             </dd>
             <dt>Supertype</dt>
             <dd><a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-            >Event</a></dd>
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+            >Entity</a></dd>
             <dt>Properties</dt>
             <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
                 supertype <a href="#entity">Entity</a>, of which <code>id</code>, and <code>type</code> are required.
@@ -410,7 +410,7 @@
 <section id="metrics">
     <h2>Metrics</h2>
     <p>The <a href="#entity-aggregateMeasure">AggregateMeasure</a> entity includes a required <code>metric</code>
-        property for denoting the metric related to the <a href="#toolUseEvent">ToolUse Event</a>. Metric values are
+        property for denoting the metric related to the <a href="#toolUseEvent">ToolUseEvent</a>. Metric values are
         limited to the list of Caliper terms listed below</p>
 
     <section id="metric-AssessmentsSubmitted">
@@ -421,7 +421,7 @@
             <dt>Term</dt>
             <dd>AssessmentsSubmitted</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/AssessmentsSubmitted</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/AssessmentsSubmitted</dd>
         </dl>
     </section>
 
@@ -433,7 +433,7 @@
             <dt>Term</dt>
             <dd>AssessmentsPassed</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/AssessmentsPassed</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/AssessmentsPassed</dd>
         </dl>
     </section>
 
@@ -445,7 +445,7 @@
             <dt>Term</dt>
             <dd>MinutesOnTask</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/MinutesOnTask</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/MinutesOnTask</dd>
         </dl>
     </section>
 
@@ -457,7 +457,7 @@
             <dt>Term</dt>
             <dd>SkillsMastered</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/SkillsMastered</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/SkillsMastered</dd>
         </dl>
     </section>
 
@@ -469,7 +469,7 @@
             <dt>Term</dt>
             <dd>StandardsMastered</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/StandardsMastered</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/StandardsMastered</dd>
         </dl>
     </section>
 
@@ -481,7 +481,7 @@
             <dt>Term</dt>
             <dd>UnitsCompleted</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/UnitsCompleted</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/UnitsCompleted</dd>
         </dl>
     </section>
 
@@ -494,7 +494,7 @@
             <dt>Term</dt>
             <dd>UnitsPassed</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/UnitsPassed</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/UnitsPassed</dd>
         </dl>
     </section>
 
@@ -506,7 +506,7 @@
             <dt>Term</dt>
             <dd>WordsRead</dd>
             <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/WordsRead</dd>
+            <dd>https://purl.imsglobal.org/caliper/metrics/WordsRead</dd>
         </dl>
     </section>
 </section>
@@ -580,7 +580,7 @@
       "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d988",
       "type": "AggregateMeasure",
       "metricValue": "12",
-      "metricValueMax": "25",
+      "maxMetricValue": "25",
       "metric": "AssessmentsPassed",
       "name": "End of Chapter Assessments Passed",
       "description": "Number of end of chapter assessments successfully passed on first or second attempt",
@@ -619,7 +619,7 @@
   "id":"urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d933",
   "type":"AggregateMeasure",
   "metricValue": "12",
-  "metricValueMax": "25",
+  "maxMetricValue": "25",
   "metric": "AssessmentsPassed",
   "name": "End of Chapter Assessments Passed",
   "description": "Number of end of chapter assessments successfully passed on first or second attempt",
@@ -656,7 +656,7 @@
       "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d918",
       "type": "AggregateMeasure",
       "metricValue": "12",
-      "metricValueMax": "25",
+      "maxMetricValue": "25",
       "metric": "AssessmentsPassed",
       "name": "End of Chapter Assessments Passed",
       "description": "Number of end of chapter assessments successfully passed on first or second attempt",
