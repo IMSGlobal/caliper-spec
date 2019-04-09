@@ -878,6 +878,7 @@
 
   <section id="entity-collection">
     <h3>Collection</h3>
+    <p>A Caliper <code>Collection</code> represents an unordered collection of entities.</p>
 
     <dl>
       <dt>IRI</dt>
@@ -922,6 +923,9 @@
 
   <section id="entity-survey">
     <h3>Survey</h3>
+    <p>A Caliper <code>Survey</code> represents a research method for soliciting information from a targeted group of
+      respondents. The <code>Survey</code> provides a standardized process for gathering data that utilizes one or more
+      <a href="#entity-questionnaire">Questionnaire</a> entities.</p>
 
     <dl>
       <dt>IRI</dt>
@@ -931,7 +935,8 @@
       >Collection</a></dd>
       <dt>Properties</dt>
       <dd><code>Survey</code> inherits all properties defined by its supertype <code>Collection</code>,
-        of which <code>id</code> and <code>type</code> are required. Profile-specific type restrictions are described below:
+        of which <code>id</code> and <code>type</code> are required. Profile-specific type restrictions are described
+        below:
       </dd>
     </dl>
 
@@ -966,6 +971,9 @@
 
   <section id="entity-questionnaire">
     <h3>Questionnaire</h3>
+    <p>A Caliper <code>Questionnaire</code> represents a collection of
+      <a href="#entity-questionnaire-item">QuestionItem</a> entities that is designed to elicit information from
+      one or more respondents.</p>
 
     <dl>
       <dt>IRI</dt>
@@ -1011,6 +1019,8 @@
 
   <section id="entity-questionnaire-item">
     <h3>QuestionnaireItem</h3>
+    <p>A Caliper <code>QuestionnaireItem</code> represents a <a href="#entity-question">Question</a> that is associated
+      with a <a href="#entity-questionnaire">Questionnaire</a>.</p>
 
     <dl>
       <dt>IRI</dt>
@@ -1075,6 +1085,8 @@
 
   <section id="entity-question">
     <h3>Question</h3>
+    <p>A Caliper <code>Question</code> represents an interrogative expression designed to elicit information from a
+    respondent.</p>
 
     <dl>
       <dt>IRI</dt>
