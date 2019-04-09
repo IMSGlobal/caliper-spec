@@ -151,23 +151,15 @@ The Caliper Annotation Profile models activities related to the annotation of a 
 #### Profile Description
 See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.1](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#annotationProfile).
 
-#### Minimum Conformance
-Create and send a "Bookmarked" [AnnotationEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#annotationEvent) to the certification service endpoint.  All other actions included in the profile are considered optional for certification purposes.
+#### Event Conformance Table
 
-#### Required Event
-[AnnotationEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#annotationEvent)
-
-#### Required Actor
-[Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person)
- 
-#### Required Action  
-[Bookmarked](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarked)
-
-#### Required Object
-[DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource) or subtype
-
-#### Recommended Generated Entity
-[BookmarkAnnotation](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarkAnnotation)
+| Event                                                                                       | Action      | Actor                                                                     | Object                                                                                                  | Recommended Generated Entity                                                                      | Required or Optional |
+|---------------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------|
+| [AnnotationEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#annotationEvent) |             |                                                                           |                                                                                                         |                                                                                                   |                      |
+|                                                                                             | Bookmarked  | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) |  [DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource) or subtype | [BookmarkAnnotation](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarkAnnotation) | **Required**         |
+|                                                                                             | Highlighted | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource) or subtype  | [BookmarkAnnotation](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarkAnnotation) | Optional             |
+|                                                                                             | Shared      | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource) or subtype  | [BookmarkAnnotation](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarkAnnotation) | Optional             |
+|                                                                                             | Tagged      | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [DigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#digitalResource) or subtype  | [BookmarkAnnotation](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#bookmarkAnnotation) | Optional             |
  
 ### <a name="assessmentProfile"></a>3.2 Assessment Profile
 
@@ -177,25 +169,27 @@ The Caliper Assessment Profile models assessment-related activities including in
 
 #### Profile Description
 See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.2](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessmentProfile).  
- 
-#### Minimum Conformance
-Create and send a "Started" [AssessmentEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessmentEvent) followed by a "Submitted" [AssessmentEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessmentEvent) to the certification service endpoint.  All other event types and actions included in the profile are considered optional for certification purposes.
 
-#### Required Event
-[AssessmentEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessmentEvent)
+#### Event Conformance Table
 
-#### Required Actor
-[Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person)
+| Event                                                                                       | Action      | Actor                                                                     | Object                                                                            | Recommended Generated Entity                                                | Required or Optional |
+|---------------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|----------------------|
+| [AssessmentEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessmentEvent) |             |                                                                           |                                                                                   |                                                                             |                      |
+|                                                                                             | Paused      | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Reset       | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Restarted   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Resumed     | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Started     | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Submitted   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | **Required**         |
+| AssessmentItemEvent                                                                         |             |                                                                           |                                                                                   |                                                                             |                      |
+|                                                                                             | Completed   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Skipped     | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Started     | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+| NavigationEvent                                                                             |             |                                                                           |                                                                                   |                                                                             |                      |
+|                                                                                             | NavigatedTo | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+| ViewEvent                                                                                   |             |                                                                           |                                                                                   |                                                                             |                      |
+|                                                                                             | Viewed      | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
 
-#### Required Actions
-[Started](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#started), [Submitted](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#submitted) 
-
-#### Required Object
-[Assessment](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assessment)
-
-#### Recommended Generated Entity
-[Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt)
- 
 ### <a name="assignableProfile"></a>3.3 Assignable Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="../assets/caliper-profile_assignable.png"></div>
@@ -205,23 +199,22 @@ The Assignable Profile models activities associated with the assignment of digit
 #### Profile Description
 See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.3](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableProfile).
  
-#### Minimum Conformance
-Create and send a "Started" [AssignableEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableEvent) followed by a "Submitted" [AssignableEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableEvent) to the certification service endpoint.  All other event types and actions included in the profile are considered optional for certification purposes.
-
-#### Required Event
-[AssignableEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableEvent) 
-
-#### Required Actor
-[Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person)
-
-#### Required Actions
-[Started](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#started), [Submitted](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#submitted)   
-
-#### Required Object
-[AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource)
-
-#### Recommended Generated Entity
-[Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt)
+#### Event Conformance Table
+ 
+| Event                                                                                       | Action      | Actor                                                                     | Object                                                                                                          | Recommended Generated Entity                                                | Required or Optional |
+|---------------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|----------------------|
+| [AssignableEvent](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableEvent) |             |                                                                           |                                                                                                                 |                                                                             |                      |
+|                                                                                             | Activated   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Completed   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Deactivated | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Reviewed    | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+|                                                                                             | Started     | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | **Required**         |
+|                                                                                             | Submitted   | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | **Required**         |
+| NavigationEvent                                                                             |             |                                                                           |                                                                                                                 |                                                                             |                      |
+|                                                                                             | NavigatedTo | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+| ViewEvent                                                                                   |             |                                                                           |                                                                                                                 |                                                                             |                      |
+|                                                                                             | Viewed      | [Person](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#person) | [AssignableDigitalResource](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#assignableDigitalResource) | [Attempt](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1#attempt) | Optional             |
+ 
  
 ### <a name="forumProfile"></a>3.4 Forum Profile
 
