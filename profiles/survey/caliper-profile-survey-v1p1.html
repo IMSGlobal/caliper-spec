@@ -39,11 +39,16 @@
 </head>
 <body>
 <section id="abstract">
-  <h2>Abstract</h2>  This document extends Caliper 1.1 by defining a Survey Profile that describes survey-related events. A survey profile is to provide a semantically consistent interoperability standard to exchange events associated with students’ participation behaviors in online surveys to provide their perception on student learning experience, student engagement, learning activities, learning progress, and learning performance. It is known that a student’s time spent or other access behavior in online learning activities is not necessarily indicate that the student finds the materials easy or hard, interested or boring, useful or not useful to their learning. In that sense, student feedback data adds an additional dimension of students’ behavioral data to make learning analytics more robust. A survey profile expands the pool of Caliper-instrumented learning data for learning analytics across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive. The rest of this spec describes the specific components of the survey profile – survey-related events, actions and entities.
-</section>
-
-<section>
-  <p><strong>Work in Progress Draft, Not final</strong> | FOR REVIEW AND DISCUSSION ONLY |  LAST UPDATED: DEC. 10, 2018 </p>
+  <h2>Abstract</h2>  This document extends Caliper 1.1 by defining a Survey Profile that describes survey-related events.
+  A survey profile is to provide a semantically consistent interoperability standard to exchange events associated with
+  students’ participation behaviors in online surveys to provide their perception on student learning experience,
+  student engagement, learning activities, learning progress, and learning performance. It is known that a student’s
+  time spent or other access behavior in online learning activities is not necessarily indicate that the student finds
+  the materials easy or hard, interested or boring, useful or not useful to their learning. In that sense, student
+  feedback data adds an additional dimension of students’ behavioral data to make learning analytics more robust.
+  A survey profile expands the pool of Caliper-instrumented learning data for learning analytics across the analytics
+  continuum – descriptive, diagnostic, predictive, and prescriptive. The rest of this spec describes the specific
+  components of the survey profile – survey-related events, actions and entities.
 </section>
 
 <section>
@@ -77,31 +82,31 @@
     <p>The Survey Profile supports the following use cases:</p>
     <table>
       <tr>
-        <td>2. <strong>Analytics for student engagement</strong>: Student feedback survey participation behavioral
+        <td>1. <strong>Analytics for student engagement</strong>: Student feedback survey participation behavioral
           data is an input to the student engagement modeling (description, predictive, and prescription)</td>
       </tr>
       <tr>
-        <td>3. <strong>Analytics for predicting student retention and success</strong>: Student feedback on their
+        <td>2. <strong>Analytics for predicting student retention and success</strong>: Student feedback on their
           learning experience is an input to predictive modeling of student retention and student success,
           combined with other data such as LMS behavioral data, demographics, learning performance </td>
       </tr>
       <tr>
-        <td>4. <strong>Analytics for instructional designs and learning strategies</strong>: Student feedback
+        <td>3. <strong>Analytics for instructional designs and learning strategies</strong>: Student feedback
           data is an input to personalized learning and adaptive learning that incorporates student feedback,
           determining efficacy of particular learning interventions and learning strategies.</td>
       </tr>
       <tr>
-        <td>5. <strong>Analytics for identifying areas to improve</strong> teaching and learning effectiveness,
+        <td>4. <strong>Analytics for identifying areas to improve</strong> teaching and learning effectiveness,
           validating the pertinent KPIs to measure progress, and prescribing potential corrective interventions.</td>
       </tr>
       <tr>
-        <td>6. <strong>Analytics for workload</strong> Measuring student workload is essential for optimizing
+        <td>5. <strong>Analytics for workload</strong> Measuring student workload is essential for optimizing
           learning, and workload research is under development. Various studies observed the gap between what
           logs (click behaviors) say and what students say (survey) about workload, which need a deeper
           understanding to predict or prescribe optimal workload that contributes to optimize learning </td>
       </tr>
       <tr>
-        <td>7. <strong>Analytics for monitoring and improving response rates</strong>: getting a sufficient
+        <td>6. <strong>Analytics for monitoring and improving response rates</strong>: getting a sufficient
           number of feedback responses is a critical part of reliability and validity of results for data-driven,
           informed decision making. A low response rate may decrease the statistical power of the data collected
           and undermine the reliability of the results.</td>
@@ -198,9 +203,7 @@
   <section id="event-survey">
     <h3>SurveyEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_event-v1p1.png"
-         alt="Survey Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-survey_event_optedin-v1p1-extension.png" alt="SurveyEvent"/>
 
     <p>A Caliper <code>SurveyEvent</code> models activities associated with calls to participate
       in a <code>Survey</code>.
@@ -212,19 +215,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd>
-        <a href="#action-opted-in">OptedIn</a>,
-        <a href="#action-opted-out">OptedOut</a>
-      </dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-survey">Survey</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyEvent</code> inherits all properties defined by its supertype <code>Event</code>.
-        Profile-specific type restrictions are described below:
+      <dd><code>SurveyEvent</code> inherits all properties defined by its supertype
+        <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -242,7 +238,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'SurveyEvent'.</td>
+        <td>The string value MUST be set to <em>SurveyEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -259,7 +255,8 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "OptedIn" or "OptedOut".
+          <code>object</code>. The value range is limited to the actions: <a href="#action-opted-in">OptedIn</a> or
+          <a href="#action-opted-out">OptedOut</a>.
           </code>
           .</td>
         <td>Required</td>
@@ -281,9 +278,7 @@
   <section id="event-survey-invitation">
     <h3>SurveyInvitationEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_invitation_event-v1p1.png"
-         alt="Survey Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-survey_invitation_event_sent-v1p1-extension.png" alt="SurveyInvitationEvent"/>
 
     <p>A Caliper <code>SurveyInvitationEvent</code> models activities associated with calls to participate
       in a <code>Survey</code>.
@@ -295,20 +290,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd>
-        <a href="#action-accepted">Accepted</a>,
-        <a href="#action-declined">Declined</a>,
-        <a href="#action-sent">Sent</a>
-      </dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-survey-invitation">SurveyInvitation</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyInvitationEvent</code> inherits all properties defined by its supertype <code>Event</code>.
-        Profile-specific type restrictions are described below:
+      <dd><code>SurveyInvitationEvent</code> inherits all properties defined by its supertype <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -326,7 +313,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'SurveyInvitationEvent'.</td>
+        <td>The string value MUST be set to <em>SurveyInvitationEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -343,8 +330,8 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "Sent",
-          "Accepted", or "Declined".
+          <code>object</code>. The value range is limited to the actions: <a href="#action-accepted">Accepted</a>,
+          <a href="#action-declined">Declined</a>, or <a href="#action-sent">Sent</a>.
           </code>
           .</td>
         <td>Required</td>
@@ -366,9 +353,7 @@
   <section id="event-questionnaire">
     <h3>QuestionnaireEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_instrument_event-v1p1.png"
-         alt="Survey Instrument Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-questionnaire_event_started-v1p1-extension.png" alt="QuestionnaireEvent"/>
 
     <p>A Caliper <code>QuestionnaireEvent</code> models activities associated with respondents or
       raters starting and submitting a <code>Questionnaire</code> or questionnaire.  TODO
@@ -380,17 +365,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd><a href="#action-questionnaire-started">Started</a>, <a
-        href="#action-questionnaire-submitted">Submitted</a></dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-questionnaire">Questionnaire</a></dd>
       <dt>Properties</dt>
-      <dd><code>QuestionnaireEvent</code> inherits all properties defined by its supertype <code>Event</code>.
-        Profile-specific type restrictions are described below:
+      <dd><code>QuestionnaireEvent</code> inherits all properties defined by its supertype <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -408,7 +388,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'QuestionnaireEvent'.</td>
+        <td>The string value MUST be set to <em>QuestionnaireEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -423,10 +403,11 @@
       <tr>
         <td>action</td>
         <td><a href=
-                 "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "Started" or "Submitted".</td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
+          value range is limited to the actions: <a href="#action-questionnaire-started">Started</a>, or
+          <a href="#action-questionnaire-submitted">Submitted</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -446,9 +427,7 @@
   <section id="event-questionnaire-item">
     <h3>QuestionnaireItemEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_instrument_item_event-v1p1.png"
-         alt="Survey Instrument Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-questionnaireitem_event_submitted-v1p1-extension.png" alt="QuestionnaireItemEvent"/>
 
     <p>A Caliper <code>QuestionnaireItemEvent</code> models activities associated with
       respondents or raters starting, completing or skipping a <code>QuestionnaireItem</code>. TODO
@@ -460,18 +439,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd><a href="#action-questionnaire-item-started">Started</a>,
-        <a href="#action-questionnaire-item-skipped">Skipped</a>,
-        <a href="#action-questionnaire-item-submitted">Submitted</a></dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-questionnaire-item">QuestionnaireItem</a></dd>
       <dt>Properties</dt>
-      <dd><code>QuestionnaireItemEvent</code> inherits all properties defined by its
-        supertype <code>Event</code>. Profile-specific type restrictions are described below:
+      <dd><code>QuestionnaireItemEvent</code> inherits all properties defined by its supertype <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -489,7 +462,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'QuestionnaireItemEvent'.</td>
+        <td>The string value MUST be set to <em>QuestionnaireItemEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -507,8 +480,10 @@
                  "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "Started", "Skipped" or
-          "Completed".</td>
+          <code>object</code>. The value range is limited to the actions:
+          <a href="#action-questionnaire-item-started">Started</a>,
+          <a href="#action-questionnaire-item-skipped">Skipped</a>, or
+          <a href="#action-questionnaire-item-submitted">Submitted</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -539,9 +514,7 @@
   <section id="event-navigation">
     <h3>NavigationEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_navigation_event-v1p1.png"
-         alt="Navigation Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-navigation_event_navigatedto-questionnaire-v1p1-extension.png" alt="NavigationEvent"/>
 
     <p>A Caliper <code>NavigationEvent</code> models an <code>actor</code> traversing a network
       of digital resources.  In this particular case the <code>object</code> of the navigable
@@ -554,17 +527,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd><a href="#action-navigatedto">NavigatedTo</a></dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-questionnaire">Questionnaire</a>, <a
-        href="#entity-questionnaire-item">QuestionnaireItem</a></dd>
       <dt>Properties</dt>
-      <dd><code>NavigationEvent</code> inherits all properties defined by its
-        supertype <code>Event</code>. Profile-specific type restrictions are described below:
+      <dd><code>NavigationEvent</code> inherits all properties defined by its supertype <a href=
+       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+      >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -582,7 +550,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to 'NavigationEvent'.</td>
+        <td>The string value MUST be set to <em>NavigationEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -599,7 +567,7 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "NavigatedTo".</td>
+          <code>object</code>. The value range is limited to the actions: <a href="#action-navigatedto">NavigatedTo</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -634,9 +602,7 @@
   <section id="event-view">
     <h3>ViewEvent</h3>
 
-    <img height="100%" width="100%"
-         src="./assets/caliper-survey_view_event-v1p1.png"
-         alt="View Event"/>
+    <img height="100%" width="100%" src="./assets/caliper-view_event_viewed-questionnaire-v1p1-extension.png" alt="ViewEvent"/>
 
     <p>A Caliper <code>ViewEvent</code> models an actor's examination of digital content whenever
       the activity emphasizes thoughtful observation or study as opposed to the mere retrieval of a
@@ -650,17 +616,12 @@
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
-      <dt>Supported actors</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-      >Person</a></dd>
-      <dt>Supported actions</dt>
-      <dd><a href="#action-viewed">Viewed</a></dd>
-      <dt>Supported objects</dt>
-      <dd><a href="#entity-questionnaire">Questionnaire</a>, <a
-        href="#entity-questionnaire-item">QuestionnaireItem</a></dd>
       <dt>Properties</dt>
-      <dd><code>ViewEvent</code> inherits all properties defined by its
-        supertype <code>Event</code>. Profile-specific type restrictions are described below:
+      <dd><code>ViewEvent</code> inherits all properties defined by its supertype <a href=
+        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
       </dd>
     </dl>
 
@@ -695,7 +656,7 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: "Viewed".</td>
+          <code>object</code>. The value range is limited to the actions: <a href="#action-viewed">Viewed</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -926,9 +887,8 @@
       >Entity</a></dd>
       <dt>Properties</dt>
       <dd><code>Collection</code> inherits all properties defined by its supertype <code>Entity</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>Collection</code> is also provisioned with the additional property <code>items</code>.
-        Profile-specific type restrictions are described below:
+        of which <code>id</code> and <code>type</code> are required.  <code>Collection</code> is also provisioned
+        with the additional property <code>items</code>. Profile-specific type restrictions are described below:
       </dd>
     </dl>
 
@@ -946,7 +906,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'Entity'.</td>
+        <td>The string value MUST be set to the Term <em>Collection</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -989,7 +949,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'Survey'.</td>
+        <td>The string value MUST be set to the Term <em>Survey</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1034,7 +994,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'Questionnaire'.</td>
+        <td>The string value MUST be set to the Term <em>Questionnaire</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1081,7 +1041,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'QuestionnaireItem'.</td>
+        <td>The string value MUST be set to the Term <em>QuestionnaireItem</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1144,7 +1104,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'Question'.</td>
+        <td>The string value MUST be set to the Term <em>Question</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1188,7 +1148,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'ScaleQuestion'.</td>
+        <td>The string value MUST be set to the Term <em>ScaleQuestion</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1237,7 +1197,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'DateTimeQuestion'.</td>
+        <td>The string value MUST be set to the Term <em>DateTimeQuestion</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1299,7 +1259,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'MultiselectQuestion'.</td>
+        <td>The string value MUST be set to the Term <em>MultiselectQuestion</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1353,7 +1313,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'OpenEndedQuestion'.</td>
+        <td>The string value MUST be set to the Term <em>OpenEndedQuestion</em>.</td>
         <td>Required</td>
       </tr>
       </tbody>
@@ -1391,7 +1351,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'RatingScaleResponse'.</td>
+        <td>The string value MUST be set to the Term <em>RatingScaleResponse</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1435,7 +1395,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'DateTimeResponse'.</td>
+        <td>The string value MUST be set to the Term <em>DateTimeResponse</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1479,7 +1439,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'MultiselectResponse'.</td>
+        <td>The string value MUST be set to the Term <em>MultiselectResponse</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1523,7 +1483,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'OpenEndedResponse'.</td>
+        <td>The string value MUST be set to the Term <em>OpenEndedResponse</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1568,7 +1528,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'SurveyInvitation'.</td>
+        <td>The string value MUST be set to the Term <em>SurveyInvitation</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1641,7 +1601,7 @@
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'Scale'.</td>
+        <td>The string value MUST be set to the Term <em>Scale</em>.</td>
         <td>Required</td>
       </tr>
       </tbody>
@@ -1680,7 +1640,7 @@
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'LikertScale'.</td>
+        <td>The string value MUST be set to the Term <em>LikertScale</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -1737,7 +1697,7 @@
         <td><a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term 'NumericScale'.</td>
+        <td>The string value MUST be set to the Term <em>NumericScale</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
