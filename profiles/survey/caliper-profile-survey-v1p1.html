@@ -39,16 +39,14 @@
 </head>
 <body>
 <section id="abstract">
-  <h2>Abstract</h2>  This document extends Caliper 1.1 by defining a Survey Profile that describes survey-related events.
-  A survey profile is to provide a semantically consistent interoperability standard to exchange events associated with
-  students’ participation behaviors in online surveys to provide their perception on student learning experience,
-  student engagement, learning activities, learning progress, and learning performance. It is known that a student’s
-  time spent or other access behavior in online learning activities is not necessarily indicate that the student finds
-  the materials easy or hard, interested or boring, useful or not useful to their learning. In that sense, student
-  feedback data adds an additional dimension of students’ behavioral data to make learning analytics more robust.
-  A survey profile expands the pool of Caliper-instrumented learning data for learning analytics across the analytics
-  continuum – descriptive, diagnostic, predictive, and prescriptive. The rest of this spec describes the specific
-  components of the survey profile – survey-related events, actions and entities.
+  <h2>Abstract</h2>  This document extends Caliper 1.1 by providing a vocabulary for describing a survey respondent's
+  interactions with questionnaires and individual question items. A key use case involves instrumenting
+  platforms that provide online surveys that explore the student learning experience, student engagement,
+  learning activities, learning progress, and learning performance. It is known that time spent on online learning
+  activities does not necessarily indicate whether or not the learner finds the materials easy or hard, interesting
+  or boring, useful or not. Leaner feedback is a key source of data that can help glean insights into student learning
+  styles and interests, as well as areas to improve.  Collecting and analyzing learner feedback data is thus critical
+  to enhancing our understanding of learning patterns and behavior.
 </section>
 
 <section>
@@ -58,23 +56,23 @@
 
     <img height="100%" width="100%" src="./assets/caliper-profile_survey.png" alt="Survey Profile"/>
 
-    <p>The Caliper survey profile is to provide a semantically consistent interoperability standard to exchange
-      events associated with students’ participation behaviors in online surveys to provide their perception on
-      student learning experience, student engagement, learning activities, learning progress, learning
-      performance. It models a Person, typically a respondent or a rater, participating in a survey to provide
-      the feedback on their learning and academic experience. </p>
+    <p>The Caliper survey profile provides a vocabulary for describing events associated with a respondent's
+      participation in online surveys. A key use case involves instrumenting platforms that provide online surveys
+      that explore the student learning experience, student engagement, learning activities, learning progress,
+      and learning performance. The profile models a <code>Person</code>, typically a respondent or a rater,
+      participating in a survey in order to provide feedback on their learning and academic experiences. </p>
 
-    <p>Everybody learns differently with a mix of their own learning styles. It is also known that a student’s
-      time spent or other access behavior in online learning activities is not necessarily indicate that the
-      student finds the materials easy or hard, interested or boring, useful or not useful to their learning.
+    <p>Everyone learns differently with a mix of their own learning styles. It is also known that a student’s
+      time spent on online learning activities does not necessarily indicate that the
+      student finds the materials easy or hard, interesting or boring, useful or not to their learning.
       Student feedback is a key source of data that can help glean insights into students’ learning styles and
       interests, as well as areas to improve. In that sense, student feedback data adds an additional dimension
       of students’ behavioral data for learning analytics such as learning about student perceptions of how
       effectively learning activities helped student learning and what specific areas in teaching and learning
-      can be improved to enhance students’ learning experience and learning objectives. The Caliper survey
-      profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics
+      can be improved to enhance students’ learning experience and learning performance. The Caliper survey
+      Profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning analytics
       across the analytics continuum – descriptive, diagnostic, predictive, and prescriptive, by allowing to
-      incorporate student voices to make learning analytics more robust. </p>
+      incorporate student voices to make learning analytics more robust.</p>
   </section>
 
   <section class="informative" id="usecases">
@@ -135,18 +133,19 @@
 
     <ul>
       <li>
-        Closed-ended feedback questions: pre-defined responses are given so that respondents can
-        choose their responses from the pre-defined responses.
+        Closed-ended feedback questions: predefined responses are given so that respondents can
+        choose their responses from the predefined responses.
         <ul>
-          <li>Rating scale question in a rating scale (likert-type scales, Semantic differential scales),</li>
-          <li>Multiple choice questions asking to to choose between two or more answer options.</li>
-          <li>Rank order questions requiring the respondent to choose among a set of alternatives.</li>
+          <li>Rating scale question in a rating scale (e.g., Likert-type scales, semantic differential scales),</li>
+          <li>Multiple choice questions asking to choose between two or more response options.</li>
+          <li>Rank order questions requiring the respondent to rate a set of alternatives.</li>
           <li>Numeric questions</li>
           <li>Date questions</li>
         </ul>
       </li>
-      <li>Open-ended feedback questions: ask respondents to supply their own responses.
-        No pre-defined responses are given, so respondents are free to write what they have in mind.</li>
+      <li>Open-ended feedback questions: ask respondents to supply their own responses in the form of qualitative
+        feedback, otherwise known as natural language or unstructured data.
+        No predefined responses are given, so respondents are free to record their responses without length limits.</li>
     </ul>
 
     <p><strong>Survey Invitation</strong>: an invitation to participate in a survey that is sent out to
@@ -200,25 +199,26 @@
 
   <p>The Survey Profile includes the following <code>Event</code> types:
 
-  <section id="event-survey">
-    <h3>SurveyEvent</h3>
+  <section id="event-navigation">
+    <h3>NavigationEvent</h3>
 
-    <img height="100%" width="100%" src="./assets/caliper-survey_event_optedin-v1p1-extension.png" alt="SurveyEvent"/>
+    <img height="100%" width="100%" src="./assets/caliper-navigation_event_navigatedto-questionnaire-v1p1-extension.png" alt="NavigationEvent"/>
 
-    <p>A Caliper <code>SurveyEvent</code> models activities associated with calls to participate
-      in a <code>Survey</code>.
+    <p>A Caliper <code>NavigationEvent</code> models an <code>actor</code> traversing a network
+      of digital resources.  In this particular case the <code>object</code> of the navigable
+      interaction is limited to either <code>Questionnaire</code> or <code>QuestionnaireItem</code>.
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/NavigationEvent</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
       <dt>Properties</dt>
-      <dd><code>SurveyEvent</code> inherits all properties defined by its supertype
-        <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+      <dd><code>NavigationEvent</code> inherits all properties defined by its supertype <a href=
+                                                                                                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+      >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
         restrictions are described below:
       </dd>
@@ -238,7 +238,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to <em>SurveyEvent</em>.</td>
+        <td>The string value MUST be set to <em>NavigationEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -255,96 +255,33 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: <a href="#action-opted-in">OptedIn</a> or
-          <a href="#action-opted-out">OptedOut</a>.
-          </code>
-          .</td>
+          <code>object</code>. The value range is limited to the actions: <a href="#action-navigatedto">NavigatedTo</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-survey">Survey</a> |
-          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        <td><a href="#entity-questionnaire">Questionnaire</a> | <a
+                href="#entity-questionnaire-item">QuestionnaireItem</a> | <a
+                href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <code>Survey</code> to which the <code>actor</code> is opting into or out of.
-          The <code>object</code> value MUST be expressed either as an object or as
-          a string corresponding to the resource's IRI.</td>
-        <td>Required</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="event-survey-invitation">
-    <h3>SurveyInvitationEvent</h3>
-
-    <img height="100%" width="100%" src="./assets/caliper-survey_invitation_event_sent-v1p1-extension.png" alt="SurveyInvitationEvent"/>
-
-    <p>A Caliper <code>SurveyInvitationEvent</code> models activities associated with calls to participate
-      in a <code>Survey</code>.
-    </p>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyInvitationEvent</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-      >Event</a></dd>
-      <dt>Properties</dt>
-      <dd><code>SurveyInvitationEvent</code> inherits all properties defined by its supertype <a href=
-        "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
-        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
-        restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to <em>SurveyInvitationEvent</em>.</td>
+        <td>The <code>Questionnaire</code> or <code>QuestionnaireItem</code> to which the
+          <code>actor</code> navigated. The <code>object</code> value MUST be expressed either as
+          an object or as a string corresponding to the resource's IRI.</td>
         <td>Required</td>
       </tr>
       <tr>
-        <td>actor</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-        >Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
-          be expressed either as an object or as a string corresponding to the actor's IRI.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>action</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: <a href="#action-accepted">Accepted</a>,
-          <a href="#action-declined">Declined</a>, or <a href="#action-sent">Sent</a>.
-          </code>
-          .</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>object</td>
-        <td><a href="#entity-survey-invitation">SurveyInvitation</a> |
-          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>SurveyInvitation</code> to which the <code>actor</code> is sending out or responding to.
-          The <code>object</code> value MUST be expressed either as an object or as
-          a string corresponding to the resource's IRI.</td>
-        <td>Required</td>
+        <td>referrer</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalresource"
+        >DigitalResource</a> |
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareapplication"
+          >SoftwareApplication</a> |
+          <a
+                  href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The <code>DigitalResource</code> or <code>SoftwareApplication</code> that constitutes the
+          referring context. The <code>referrer</code> value MUST be expressed either as an object
+          or as a string corresponding to the referrer's IRI.</td>
+        <td>Optional</td>
       </tr>
       </tbody>
     </table>
@@ -483,7 +420,7 @@
           <code>object</code>. The value range is limited to the actions:
           <a href="#action-questionnaire-item-started">Started</a>,
           <a href="#action-questionnaire-item-skipped">Skipped</a>, or
-          <a href="#action-questionnaire-item-submitted">Submitted</a>.</td>
+          <a href="#action-questionnaire-item-completed">Completed</a>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -511,25 +448,99 @@
     </table>
   </section>
 
-  <section id="event-navigation">
-    <h3>NavigationEvent</h3>
+  <section id="event-survey">
+    <h3>SurveyEvent</h3>
 
-    <img height="100%" width="100%" src="./assets/caliper-navigation_event_navigatedto-questionnaire-v1p1-extension.png" alt="NavigationEvent"/>
+    <img height="100%" width="100%" src="./assets/caliper-survey_event_optedin-v1p1-extension.png" alt="SurveyEvent"/>
 
-    <p>A Caliper <code>NavigationEvent</code> models an <code>actor</code> traversing a network
-      of digital resources.  In this particular case the <code>object</code> of the navigable
-      interaction is limited to either <code>Questionnaire</code> or <code>QuestionnaireItem</code>.
+    <p>A Caliper <code>SurveyEvent</code> models activities associated with calls to participate
+      in a <code>Survey</code>.
     </p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/NavigationEvent</dd>
+      <dd>https://purl.imsglobal.org/caliper/SurveyEvent</dd>
       <dt>Supertype</dt>
       <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
       >Event</a></dd>
       <dt>Properties</dt>
-      <dd><code>NavigationEvent</code> inherits all properties defined by its supertype <a href=
-       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+      <dd><code>SurveyEvent</code> inherits all properties defined by its supertype
+        <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
+        >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to <em>SurveyEvent</em>.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>actor</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
+          be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>action</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the
+          <code>object</code>. The value range is limited to the actions: <a href="#action-opted-in">OptedIn</a> or
+          <a href="#action-opted-out">OptedOut</a>.
+          </code>
+          .</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>object</td>
+        <td><a href="#entity-survey">Survey</a> |
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The <code>Survey</code> to which the <code>actor</code> is opting into or out of.
+          The <code>object</code> value MUST be expressed either as an object or as
+          a string corresponding to the resource's IRI.</td>
+        <td>Required</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="event-survey-invitation">
+    <h3>SurveyInvitationEvent</h3>
+
+    <img height="100%" width="100%" src="./assets/caliper-survey_invitation_event_sent-v1p1-extension.png" alt="SurveyInvitationEvent"/>
+
+    <p>A Caliper <code>SurveyInvitationEvent</code> models activities associated with calls to participate
+      in a <code>Survey</code>.
+    </p>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/SurveyInvitationEvent</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
+      >Event</a></dd>
+      <dt>Properties</dt>
+      <dd><code>SurveyInvitationEvent</code> inherits all properties defined by its supertype <a href=
+                                                                                                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
       >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
         restrictions are described below:
@@ -550,7 +561,7 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to <em>NavigationEvent</em>.</td>
+        <td>The string value MUST be set to <em>SurveyInvitationEvent</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
@@ -567,33 +578,21 @@
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-          <code>object</code>. The value range is limited to the actions: <a href="#action-navigatedto">NavigatedTo</a>.</td>
+          <code>object</code>. The value range is limited to the actions: <a href="#action-accepted">Accepted</a>,
+          <a href="#action-declined">Declined</a>, or <a href="#action-sent">Sent</a>.
+          </code>
+          .</td>
         <td>Required</td>
       </tr>
       <tr>
         <td>object</td>
-        <td><a href="#entity-questionnaire">Questionnaire</a> | <a
-          href="#entity-questionnaire-item">QuestionnaireItem</a> | <a
-          href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>Questionnaire</code> or <code>QuestionnaireItem</code> to which the
-          <code>actor</code> navigated. The <code>object</code> value MUST be expressed either as
-          an object or as a string corresponding to the resource's IRI.</td>
+        <td><a href="#entity-survey-invitation">SurveyInvitation</a> |
+          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+        <td>The <code>SurveyInvitation</code> to which the <code>actor</code> is sending out or responding to.
+          The <code>object</code> value MUST be expressed either as an object or as
+          a string corresponding to the resource's IRI.</td>
         <td>Required</td>
-      </tr>
-      <tr>
-        <td>referrer</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalresource"
-          >DigitalResource</a> |
-          <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#softwareapplication"
-          >SoftwareApplication</a> |
-          <a
-          href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>DigitalResource</code> or <code>SoftwareApplication</code> that constitutes the
-          referring context. The <code>referrer</code> value MUST be expressed either as an object
-          or as a string corresponding to the referrer's IRI.</td>
-        <td>Optional</td>
       </tr>
       </tbody>
     </table>
@@ -681,48 +680,6 @@
   <p>The Caliper <code>Event</code> types included in the Survey Profile support the following
     actions:</p>
 
-  <section id="action-opted-in">
-    <h3>OptedIn</h3>
-    <p>Decide to do something or be involved in something. Inverse of <a href="#action-opted-out">OptedOut</a>.</p>
-
-    <p>TODO: no good wordnet. using https://www.macmillandictionary.com/dictionary/british/opt-in</p>
-
-    <dl>
-      <dt>Event(s)</dt>
-      <dd>SurveyEvent</dd>
-      <dt>Term</dt>
-      <dd>OptedIn</dd>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/actions/OptedIn</dd>
-      <dt>WordNet&reg; Gloss</dt>
-      <dd>Decide to do something or be involved in something.
-        Inverse of <a href="#action-opted-out">OptedOut</a>.
-      </dd>
-    </dl>
-  </section>
-
-  <section id="action-opted-out">
-    <h3>OptedOut</h3>
-    <p>Decide not to take part in something or to stop taking part in it. Inverse
-      of <a href="#action-opted-in">OptedIn</a>.</p>
-
-    <p>TODO: no good wordnet. using https://www.macmillandictionary.com/dictionary/british/opt-out_1</p>
-
-    <dl>
-      <dt>Event(s)</dt>
-      <dd>SurveyEvent</dd>
-      <dt>Term</dt>
-      <dd>OptedOut</dd>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/actions/OptedOut</dd>
-      <dt>WordNet&reg; Gloss</dt>
-      <dd>Decide not to take part in something or to stop taking part in it.
-        Inverse of <a href="#action-opted-in">OptedIn</a>.
-      </dd>
-    </dl>
-  </section>
-
-
   <section id="action-accepted">
     <h3>Accepted</h3>
     <p>Give an affirmative reply to. Inverse of <a href="#action-declined">Declined</a>.</p>
@@ -738,6 +695,22 @@
       <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200799359-v">Give an affirmative reply to</a>.
         Inverse of <a href="#action-declined">Declined</a>.
       </dd>
+    </dl>
+  </section>
+
+  <section id="action-completed">
+    <h3>Completed</h3>
+    <p>Set in motion, cause to start, commence.</p>
+
+    <dl>
+      <dt>Event(s)</dt>
+      <dd>QuestionnaireItemEvent</dd>
+      <dt>Term</dt>
+      <dd>Completed</dd>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/actions/Completed</dd>
+      <dt>WordNet&reg; Gloss</dt>
+      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a finish or an end</a>.</dd>
     </dl>
   </section>
 
@@ -759,9 +732,62 @@
     </dl>
   </section>
 
+  <section id="action-navigatedto">
+    <h3>NavigatedTo</h3>
+    <p>Direct the course; determine the direction of travelling.</p>
+
+    <dl>
+      <dt>Event(s)</dt>
+      <dd>NavigationEvent</dd>
+      <dt>Term</dt>
+      <dd>NavigatedTo</dd>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/actions/NavigatedTo</dd>
+      <dt>WordNet&reg; Gloss</dt>
+      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201935739-v">Direct the course; determine
+        the direction of travelling</a>.</dd>
+    </dl>
+  </section>
+
+  <section id="action-opted-in">
+    <h3>OptedIn</h3>
+    <p>Agree to participate in a survey. Inverse of <a href="#action-opted-out">OptedOut</a>.</p>
+
+    <dl>
+      <dt>Event(s)</dt>
+      <dd>SurveyEvent</dd>
+      <dt>Term</dt>
+      <dd>OptedIn</dd>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/actions/OptedIn</dd>
+      <dt>Wiktionary Gloss</dt>
+      <dd><a href="https://en.wiktionary.org/w/index.php?title=opt_in&oldid=50819928">To choose to participate in
+        something .</a> Inverse of <a href="#action-opted-out">OptedOut</a>.
+      </dd>
+    </dl>
+  </section>
+
+  <section id="action-opted-out">
+    <h3>OptedOut</h3>
+    <p>Decline to participate in a survey. Inverse of <a href="#action-opted-in">OptedIn</a>.</p>
+
+    <dl>
+      <dt>Event(s)</dt>
+      <dd>SurveyEvent</dd>
+      <dt>Term</dt>
+      <dd>OptedOut</dd>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/actions/OptedOut</dd>
+      <dt>Wiktionary Gloss</dt>
+      <dd><a href="https://en.wiktionary.org/w/index.php?title=opt_out&oldid=50769215">To choose not to participate
+        in something.</a> Inverse of <a href="#action-opted-in">OptedIn</a>.
+      </dd>
+    </dl>
+  </section>
+
   <section id="action-sent">
     <h3>Sent</h3>
-    <p>Transfer.</p>
+    <p>Transmit to a recipient.</p>
 
     <dl>
       <dt>Event(s)</dt>
@@ -772,22 +798,6 @@
       <dd>https://purl.imsglobal.org/caliper/actions/Sent</dd>
       <dt>WordNet&reg; Gloss</dt>
       <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201064577-v">Transfer</a>.</dd>
-    </dl>
-  </section>
-
-  <section id="action-started">
-    <h3>Started</h3>
-    <p>Set in motion, cause to start, commence.</p>
-
-    <dl>
-      <dt>Event(s)</dt>
-      <dd>QuestionnaireEvent, QuestionnaireItemEvent</dd>
-      <dt>Term</dt>
-      <dd>Started</dd>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/actions/Started</dd>
-      <dt>WordNet&reg; Gloss</dt>
-      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a>.</dd>
     </dl>
   </section>
 
@@ -807,19 +817,19 @@
     </dl>
   </section>
 
-  <section id="action-completed">
-    <h3>Completed</h3>
+  <section id="action-started">
+    <h3>Started</h3>
     <p>Set in motion, cause to start, commence.</p>
 
     <dl>
       <dt>Event(s)</dt>
-      <dd>QuestionnaireItemEvent</dd>
+      <dd>QuestionnaireEvent, QuestionnaireItemEvent</dd>
       <dt>Term</dt>
-      <dd>Completed</dd>
+      <dd>Started</dd>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/actions/Completed</dd>
+      <dd>https://purl.imsglobal.org/caliper/actions/Started</dd>
       <dt>WordNet&reg; Gloss</dt>
-      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200485097-v">Come or bring to a finish or an end</a>.</dd>
+      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200349400-v">Set in motion, cause to start</a>.</dd>
     </dl>
   </section>
 
@@ -836,23 +846,6 @@
       <dd>https://purl.imsglobal.org/caliper/actions/Submitted</dd>
       <dt>WordNet&reg; Gloss</dt>
       <dd><a href="http://wordnet-rdf.princeton.edu/wn31/202267560-v">Hand over formally</a>.</dd>
-    </dl>
-  </section>
-
-  <section id="action-navigatedto">
-    <h3>NavigatedTo</h3>
-    <p>Direct the course; determine the direction of travelling.</p>
-
-    <dl>
-      <dt>Event(s)</dt>
-      <dd>NavigationEvent</dd>
-      <dt>Term</dt>
-      <dd>NavigatedTo</dd>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/actions/NavigatedTo</dd>
-      <dt>WordNet&reg; Gloss</dt>
-      <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201935739-v">Direct the course; determine
-        the direction of travelling</a>.</dd>
     </dl>
   </section>
 
@@ -878,7 +871,8 @@
 
   <section id="entity-collection">
     <h3>Collection</h3>
-    <p>A Caliper <code>Collection</code> represents an unordered collection of entities.</p>
+    <p>A Caliper <code>Collection</code> is a generic type that represents an unordered collection of entities.
+      Utilize <code>Collection</code> only if no suitable subtype exists to represent the collection being described.</p>
 
     <dl>
       <dt>IRI</dt>
@@ -919,71 +913,73 @@
       </tr>
       </tbody>
     </table>
+
+    <section id="entity-survey">
+      <h3>Survey</h3>
+      <p>A Caliper <code>Survey</code> represents a research method for collecting data from a targeted group of
+        respondents. The <code>Survey</code> provides a standardized process for gathering data that utilizes one or more
+        <a href="#entity-questionnaire">Questionnaire</a> entities.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/Survey</dd>
+        <dt>Supertype</dt>
+        <dd><a href="#entity-collection"
+        >Collection</a></dd>
+        <dt>Properties</dt>
+        <dd><code>Survey</code> inherits all properties defined by its supertype <code>Collection</code>,
+          of which <code>id</code> and <code>type</code> are required. Profile-specific type restrictions are described
+          below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>Survey</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>items</td>
+          <td>array</td>
+          <td>An array of one or more <code>Questionnaire</code> entities that together comprise
+            the <code>Survey</code>. Each array item MUST be expressed either as an object
+            or as a string corresponding to the <code>Questionnaire</code> resource's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
   </section>
 
-  <section id="entity-survey">
-    <h3>Survey</h3>
-    <p>A Caliper <code>Survey</code> represents a research method for soliciting information from a targeted group of
-      respondents. The <code>Survey</code> provides a standardized process for gathering data that utilizes one or more
-      <a href="#entity-questionnaire">Questionnaire</a> entities.</p>
+  <section id="entity-digitalresource">
+    <h3>DigitalResource</h3>
+
+    <p>A Caliper <code>DigitalResource</code> is a generic type that represents digital content. Utilize
+      <code>DigitalResource</code> only if no suitable subtype exists to represent the resource being described.</p>
 
     <dl>
       <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/Survey</dd>
+      <dd>https://purl.imsglobal.org/caliper/DigitalResource</dd>
       <dt>Supertype</dt>
-      <dd><a href="#entity-collection"
-      >Collection</a></dd>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      >Entity</a></dd>
       <dt>Properties</dt>
-      <dd><code>Survey</code> inherits all properties defined by its supertype <code>Collection</code>,
-        of which <code>id</code> and <code>type</code> are required. Profile-specific type restrictions are described
-        below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>Survey</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>items</td>
-        <td>array</td>
-        <td>An array of one or more <code>Questionnaire</code> entities that together comprise
-          the <code>Survey</code>. Each array item MUST be expressed either as an object
-          or as a string corresponding to the <code>Questionnaire</code> resource's IRI.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-questionnaire">
-    <h3>Questionnaire</h3>
-    <p>A Caliper <code>Questionnaire</code> represents a collection of
-      <a href="#entity-questionnaire-item">QuestionItem</a> entities that is designed to elicit information from
-      one or more respondents.</p>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/Questionnaire</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResourceCollection"
-      >DigitalResourceCollection</a></dd>
-      <dt>Properties</dt>
-      <dd><code>Questionnaire</code> inherits all properties defined by its supertype <code>DigitalResourceCollection</code>,
-        of which <code>id</code> and <code>type</code> are required.
+      <dd><code>DigitalResource</code> inherits all properties defined by its supertype <code>Entity</code>, of which
+        <code>id</code> and <code>type</code> are required. <code>DigitalResource</code> is also provisioned with the
+        additional properties <code>creators</code>, <code>mediaType</code>, <code>keywords</code>,
+        <code>learningObjectives</code>, <code>isPartOf</code>, <code>datePublished</code>, and <code>version</code>.
         Profile-specific type restrictions are described below:
       </dd>
     </dl>
@@ -1002,588 +998,787 @@
         <td>type</td>
         <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
         >Term</a></td>
-        <td>The string value MUST be set to the Term <em>Questionnaire</em>.</td>
+        <td>The string value MUST be set to the Term <em>DigitalResource</em>.</td>
         <td>Required</td>
       </tr>
       <tr>
-        <td>items</td>
-        <td>array</td>
-        <td>An array of one or more <code>QuestionnaireItem</code> entities that together comprise
-          the <code>Questionnaire</code>. The <code>object</code> value MUST be expressed either as
-          an object or as a string corresponding to the resource's IRI.</td>
-        <td>Required</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-questionnaire-item">
-    <h3>QuestionnaireItem</h3>
-    <p>A Caliper <code>QuestionnaireItem</code> represents a <a href="#entity-question">Question</a> that is associated
-      with a <a href="#entity-questionnaire">Questionnaire</a>.</p>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/QuestionnaireItem</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-      >DigitalResource</a></dd>
-      <dt>Properties</dt>
-      <dd><code>QuestionnaireItem</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>QuestionnaireItem</code> is also provisioned with the additional property <code>question</code>,
-        <code>categories</code>, and <code>weight</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>QuestionnaireItem</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>question</td>
-        <td><a
-          href="#entity-question">Question</a> | <a
-          href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>Question</code> entity posed by the <code>QuestionnaireItem</code>. The
-          <code>Question</code> value MUST be expressed either as an object or as a string
-          corresponding to the question's IRI.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-      </tr>
-      <tr>
-        <td>categories</td>
-        <td>Array[string]</td>
-        <td>An array of category strings comprising the categories the questionnaire item encompasses.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>weight</td>
-        <td>decimal</td>
-        <td>A decimal value used to determine the importance of the questionnaire item.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-question">
-    <h3>Question</h3>
-    <p>A Caliper <code>Question</code> represents an interrogative expression designed to elicit information from a
-    respondent.</p>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/Question</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-      >DigitalResource</a></dd>
-      <dt>Properties</dt>
-      <dd><code>Question</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>Question</code> is also provisioned with the additional property <code>questionPosed</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>Question</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>questionPosed</td>
-        <td>string</td>
-        <td>A string value comprising the question posed.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-rating-scale-question">
-    <h3>RatingScaleQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/RatingScaleQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-question">Question</a></dd>
-      <dt>Properties</dt>
-      <dd><code>RatingScaleQuestion</code> inherits all properties defined by its supertypes
-        <code>Question</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>RatingScaleQuestion</code> is also provisioned with the additional property <code>scale</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>ScaleQuestion</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>scale</td>
-        <td><a
-          href="#entity-scale">Scale</a> | <a
-          href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-        >IRI</a></td>
-        <td>The <code>Scale</code> entity used in the <code>RatingScaleQuestion</code>. The
-          <code>scale</code> value MUST be expressed either as an object or as a string
-          corresponding to the scale's IRI.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-date-time-question">
-    <h3>DateTimeQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/DateTimeQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-question">Question</a></dd>
-      <dt>Properties</dt>
-      <dd><code>DateTimeQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>DateTimeQuestion</code> is also provisioned with the additional property <code>minDateTime</code>,
-        <code>minLabel</code>, <code>maxDateTime</code>, and <code>maxLabel</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>DateTimeQuestion</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>minDateTime</td>
-        <td>DateTime</td>
-        <td>A DateTime value used to determine the minimum value allowed.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>minLabel</td>
-        <td>string</td>
-        <td>The label for the minimum DateTime.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>maxDateTime</td>
-        <td>DateTime</td>
-        <td>A DateTime value used to determine the maximum value allowed.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>maxLabel</td>
-        <td>string</td>
-        <td>The label for the maximum value.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-multiselect-question">
-    <h3>MultiselectQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/MultiselectQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-question">Question</a></dd>
-      <dt>Properties</dt>
-      <dd><code>MultiselectQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>MultiselectQuestion</code> is also provisioned with the additional property <code>points</code>,
-        <code>itemLabels</code>, and <code>itemValues</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>MultiselectQuestion</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>points</td>
-        <td>integer</td>
-        <td>A integer value used to determine the amount of points on the <code>MultiselectQuestion</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemLabels</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The list of labels for each each selectable option in the question.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemValues</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The list of values for each selectable option in the question.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-open-ended-question">
-    <h3>OpenEndedQuestion</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/OpenEndedQuestion</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-question">Question</a></dd>
-      <dt>Properties</dt>
-      <dd><code>OpenEndedQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>OpenEndedQuestion</em>.</td>
-        <td>Required</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-rating-scale-response">
-    <h3>RatingScaleResponse</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/RatingScaleResponse</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-      >Response</a></dd>
-      <dt>Properties</dt>
-      <dd><code>RatingScaleResponse</code> inherits all properties defined by its supertype <code>Response</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>RatingScaleResponse</code> is also provisioned with the additional property <code>selections</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>RatingScaleResponse</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>selections</td>
+        <td>creators</td>
         <td>Array</td>
-        <td>An array of the values representing the rater's selected responses.</td>
+        <td>An ordered collection of <code>Agent</code> entities, typically of type <code>Person</code>, that are
+          responsible for bringing resource into being. Each array item MUST be expressed either as an object or as
+          a string corresponding to the item's IRI.</td>
         <td>Optional</td>
       </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-date-time-response">
-    <h3>DateTimeResponse</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/DateTimeResponse</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-      >Response</a></dd>
-      <dt>Properties</dt>
-      <dd><code>DateTimeResponse</code> inherits all properties defined by its supertype <code>Response</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>DateTimeResponse</code> is also provisioned with the additional property <code>dateTimeSelected</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
       <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>DateTimeResponse</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>dateTimeSelected</td>
-        <td>DateTime</td>
-        <td>The DateTime selected in response to the question.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-multiselect-response">
-    <h3>MultiselectResponse</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/MultiselectResponse</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-      >Response</a></dd>
-      <dt>Properties</dt>
-      <dd><code>MultiselectResponse</code> inherits all properties defined by its supertype <code>Response</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>MultiselectResponse</code> is also provisioned with the additional property <code>selections</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>MultiselectResponse</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>selections</td>
-        <td>Array</td>
-        <td>An array of the values representing the rater's selected responses.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="entity-open-ended-response">
-    <h3>OpenEndedResponse</h3>
-
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/OpenEndedResponse</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
-      >Response</a></dd>
-      <dt>Properties</dt>
-      <dd><code>OpenEndedResponse</code> inherits all properties defined by its supertype <code>Response</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>QuestionnaireItem</code> is also provisioned with the additional property <code>value</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
-
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>OpenEndedResponse</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>value</td>
+        <td>mediaType</td>
         <td>string</td>
-        <td>the textual value of the response.</td>
+        <td>A string value drawn from the list of <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">
+          IANA</a> approved media types and subtypes that identifies the file format of the resource.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>keywords</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more string values that represent tags or labels used to identify the
+          resource.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>learningObjectives</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more <code>LearningObjective</code> entities that describe what a learner
+          is expected to comprehend or accomplish after engaging with the resource. Each array item MUST be expressed
+          either as an object or as a string corresponding to the item's IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>isPartOf</td>
+        <td><a href="#entity-question">Entity</a> | <a
+            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A related <code>Entity</code> that includes or incorporates the resource as a part of its whole. The
+          <code>isPartOf</code> value MUST be expressed either as an object or as a string corresponding to the
+          associated entity's IRI.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>datePublished</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of
+          the resource. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no
+          offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>version</td>
+        <td>string</td>
+        <td>A string value that designates the current form or version of the resource.</td>
         <td>Optional</td>
       </tr>
       </tbody>
     </table>
-  </section>
 
-  <section id="entity-survey-invitation">
-    <h3>SurveyInvitation</h3>
+    <section id="entity-questionnaire">
+      <h3>Questionnaire</h3>
+      <p>A Caliper <code>Questionnaire</code> represents a collection of
+        <a href="#entity-questionnaire-item">QuestionItem</a> entities that is designed to elicit information from
+        one or more respondents.</p>
 
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/SurveyInvitation</dd>
-      <dt>Supertype</dt>
-      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-      >DigitalResource</a></dd>
-      <dt>Properties</dt>
-      <dd><code>SurveyInvitation</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>SurveyInvitation</code> is also provisioned with the additional property <code>rater</code>,
-        <code>survey</code>, <code>sentCount</code>, and <code>sentDate</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/Questionnaire</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResourceCollection"
+        >DigitalResourceCollection</a></dd>
+        <dt>Properties</dt>
+        <dd><code>Questionnaire</code> inherits all properties defined by its supertype <code>DigitalResourceCollection</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
 
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>SurveyInvitation</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>rater</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>Questionnaire</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>items</td>
+          <td>Array</td>
+          <td>An array of one or more <code>QuestionnaireItem</code> entities that together comprise
+            the <code>Questionnaire</code>. The <code>object</code> value MUST be expressed either as
+            an object or as a string corresponding to the resource's IRI.</td>
+          <td>Required</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-questionnaire-item">
+      <h3>QuestionnaireItem</h3>
+      <p>A Caliper <code>QuestionnaireItem</code> represents a <a href="#entity-question">Question</a> that is associated
+        with a <a href="#entity-questionnaire">Questionnaire</a>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/QuestionnaireItem</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+        >DigitalResource</a></dd>
+        <dt>Properties</dt>
+        <dd><code>QuestionnaireItem</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>QuestionnaireItem</code> is also provisioned with the additional properties <code>question</code>,
+          <code>categories</code>, and <code>weight</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>QuestionnaireItem</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>question</td>
+          <td><a
+            href="#entity-question">Question</a> | <a
+            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          >IRI</a></td>
+          <td>The <code>Question</code> entity posed by the <code>QuestionnaireItem</code>. The
+            <code>Question</code> value MUST be expressed either as an object or as a string
+            corresponding to the question's IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>categories</td>
+          <td>Array</td>
+          <td>An array of category items comprising the categories the questionnaire item encompasses. Each category item
+          MUST be cast as a string.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>weight</td>
+          <td>decimal</td>
+          <td>A decimal value used to determine the weight of the questionnaire item.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-question">
+      <h3>Question</h3>
+      <p>A Caliper <code>Question</code> is a generic type that represents an interrogative expression
+        designed to elicit information from a respondent, featuring either a closed-end format with a set of
+        predefined responses or an open-ended format. Utilize <code>Question</code> only if no suitable subtype
+        exists to represent the question being described.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/Question</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+        >DigitalResource</a></dd>
+        <dt>Properties</dt>
+        <dd><code>Question</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>Question</code> is also provisioned with the additional property <code>questionPosed</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>Question</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>questionPosed</td>
+          <td>string</td>
+          <td>A string value comprising the question posed.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <section id="entity-date-time-question">
+        <h3>DateTimeQuestion</h3>
+
+        <p>A Caliper <code>DateTimeQuestion</code> represents a closed-end question type with the response provided in a
+          date and time format. </p>
+
+        <dl>
+          <dt>IRI</dt>
+          <dd>https://purl.imsglobal.org/caliper/DateTimeQuestion</dd>
+          <dt>Supertype</dt>
+          <dd><a href="#entity-question">Question</a></dd>
+          <dt>Properties</dt>
+          <dd><code>DateTimeQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
+            of which <code>id</code> and <code>type</code> are required.
+            <code>DateTimeQuestion</code> is also provisioned with the additional property <code>minDateTime</code>,
+            <code>minLabel</code>, <code>maxDateTime</code>, and <code>maxLabel</code>.
+            Profile-specific type restrictions are described below:
+          </dd>
+        </dl>
+
+        <table class="data">
+          <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>type</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            >Term</a></td>
+            <td>The string value MUST be set to the Term <em>DateTimeQuestion</em>.</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>minDateTime</td>
+            <td>DateTime</td>
+            <td>A DateTime value used to determine the minimum value allowed.</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>minLabel</td>
+            <td>string</td>
+            <td>The label for the minimum DateTime.</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>maxDateTime</td>
+            <td>DateTime</td>
+            <td>A DateTime value used to determine the maximum value allowed.</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>maxLabel</td>
+            <td>string</td>
+            <td>The label for the maximum value.</td>
+            <td>Optional</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="entity-multiselect-question">
+        <h3>MultiselectQuestion</h3>
+
+        <p>A Caliper <code>MultiselectQuestion</code> represents a form of a closed-end question type with a
+          pre-defined set of responses where a respondent can choose multiple items in the set.</p>
+
+        <dl>
+          <dt>IRI</dt>
+          <dd>https://purl.imsglobal.org/caliper/MultiselectQuestion</dd>
+          <dt>Supertype</dt>
+          <dd><a href="#entity-question">Question</a></dd>
+          <dt>Properties</dt>
+          <dd><code>MultiselectQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
+            of which <code>id</code> and <code>type</code> are required.
+            <code>MultiselectQuestion</code> is also provisioned with the additional property <code>points</code>,
+            <code>itemLabels</code>, and <code>itemValues</code>.
+            Profile-specific type restrictions are described below:
+          </dd>
+        </dl>
+
+        <table class="data">
+          <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>type</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            >Term</a></td>
+            <td>The string value MUST be set to the Term <em>MultiselectQuestion</em>.</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>points</td>
+            <td>integer</td>
+            <td>A integer value used to determine the amount of points on the <code>MultiselectQuestion</code>.</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>itemLabels</td>
+            <td>Array</td>
+            <td>The list labels that describe the set of selectable question options. Each label MUST be cast as
+              a string.</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>itemValues</td>
+            <td>Array</td>
+            <td>The list of values associated with the set of selectable question options. Each value MUST be cast as a
+              string.</td>
+            <td>Optional</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="entity-open-ended-question">
+        <h3>OpenEndedQuestion</h3>
+
+        <p>A Caliper <code>OpenEndedQuestion</code> represents a question with no pre-defined response. Respondents can
+          record their response in the form of qualitative feedback with no length limit imposed.</p>
+
+        <dl>
+          <dt>IRI</dt>
+          <dd>https://purl.imsglobal.org/caliper/OpenEndedQuestion</dd>
+          <dt>Supertype</dt>
+          <dd><a href="#entity-question">Question</a></dd>
+          <dt>Properties</dt>
+          <dd><code>OpenEndedQuestion</code> inherits all properties defined by its supertype <code>Question</code>,
+            of which <code>id</code> and <code>type</code> are required.
+            Profile-specific type restrictions are described below:
+          </dd>
+        </dl>
+
+        <table class="data">
+          <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>type</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            >Term</a></td>
+            <td>The string value MUST be set to the Term <em>OpenEndedQuestion</em>.</td>
+            <td>Required</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="entity-rating-scale-question">
+        <h3>RatingScaleQuestion</h3>
+
+        <p>A Caliper <code>RatingScaleQuestion</code> represents a closed-end question type with a pre-defined set of
+          responses linked to a rating scale.</p>
+
+        <dl>
+          <dt>IRI</dt>
+          <dd>https://purl.imsglobal.org/caliper/RatingScaleQuestion</dd>
+          <dt>Supertype</dt>
+          <dd><a href="#entity-question">Question</a></dd>
+          <dt>Properties</dt>
+          <dd><code>RatingScaleQuestion</code> inherits all properties defined by its supertypes
+            <code>Question</code>,
+            of which <code>id</code> and <code>type</code> are required.
+            <code>RatingScaleQuestion</code> is also provisioned with the additional property <code>scale</code>.
+            Profile-specific type restrictions are described below:
+          </dd>
+        </dl>
+
+        <table class="data">
+          <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>type</td>
+            <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+            >Term</a></td>
+            <td>The string value MUST be set to the Term <em>ScaleQuestion</em>.</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>scale</td>
+            <td><a href="#entity-scale">Scale</a> | <a
+                    href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            >IRI</a></td>
+            <td>The <code>Scale</code> entity used in the <code>RatingScaleQuestion</code>. The
+              <code>scale</code> value MUST be expressed either as an object or as a string
+              corresponding to the scale's IRI.</td>
+            <td>Optional</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section id="entity-survey-invitation">
+      <h3>SurveyInvitation</h3>
+
+      <p>A Caliper <code>SurveyInvitation</code> represents a survey invitation sent to raters. </p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/SurveyInvitation</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
+        >DigitalResource</a></dd>
+        <dt>Properties</dt>
+        <dd><code>SurveyInvitation</code> inherits all properties defined by its supertype <code>DigitalResource</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>SurveyInvitation</code> is also provisioned with the additional property <code>rater</code>,
+          <code>survey</code>, <code>sentCount</code>, and <code>sentDate</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>SurveyInvitation</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>rater</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
           >Person</a> | <a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-        <td>The <code>Person</code> which will rate the <code>Survey</code>.
-          The rater value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
-          corresponding to the rater resource’s IRI.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>survey</td>
-        <td><a href="#entity-survey">Survey</a> | <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          <td>The <code>Person</code> which will rate the <code>Survey</code>.
+            The rater value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+            corresponding to the rater resource’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>survey</td>
+          <td><a href="#entity-survey">Survey</a> | <a href=
+                                                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
           >IRI</a></td>
-        <td>The <code>Survey</code> that the invitation is for.
-          The survey value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
-          corresponding to the rater resource’s IRI.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>sentCount</td>
-        <td>Integer</td>
-        <td>A integer value used to determine the amount of times the invitation was sent to the rater.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>sentDate</td>
-        <td>DateTime</td>
-        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+          <td>The <code>Survey</code> that the invitation is for.
+            The survey value <em class="rfc2119" title="MUST">MUST</em> be expressed either as an object or as a string
+            corresponding to the rater resource’s IRI.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>sentCount</td>
+          <td>Integer</td>
+          <td>A integer value used to determine the amount of times the invitation was sent to the rater.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>sentDate</td>
+          <td>DateTime</td>
+          <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
             <code>SurveyInvitation</code> was sent. The value <em class="rfc2119" title="MUST">MUST</em> be expressed
             using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
+
+  <section id="entity-response">
+    <h3>Response</h3>
+
+    <p>A Caliper <code>Response</code> is a generic type that represents a respondent's response to a
+      <code>Question</code>. Utilize <code>Response</code> only if no suitable subtype exists to represent the response
+      being described.</p>
+
+    <dl>
+      <dt>IRI</dt>
+      <dd>https://purl.imsglobal.org/caliper/Response</dd>
+      <dt>Supertype</dt>
+      <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entityDef"
+      >Entity</a></dd>
+      <dt>Properties</dt>
+      <dd><code>Response</code> inherits all properties defined by its supertype <code>Entity</code>, of which
+        <code>id</code> and <code>type</code> are required. <code>Response</code> is also provisioned with the
+        additional properties <code>attempt</code>, <code>startedAtTime</code>, <code>endedAtTime</code>, and
+        <code>duration</code>. Profile-specific type restrictions are described below:
+      </dd>
+    </dl>
+
+    <table class="data">
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>Response</em>.</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>attempt</td>
+        <td><a href="#entity-scale">Attempt</a> | <a
+            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The associated <code>Attempt</code>. The attempt value MUST be expressed either as an object or as a string
+          corresponding to the attempt's IRI. If an object representation is provided, the <code>Attempt</code> SHOULD
+          reference both the <code>Person</code> who initiated the <code>Response</code> and the relevant
+          <code>QuestionnaireItem</code>.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>startedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+          <code>Response</code> was commenced. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ
+          set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>endedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+          <code>Response</code> was completed or terminated. The value MUST be expressed using the format
+          YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>duration</td>
+        <td>Duration</td>
+        <td>A time interval that represents the time taken to complete the <code>Response</code>. If a duration is
+          specified the value MUST conform to the ISO 8601 duration format.</td>
         <td>Optional</td>
       </tr>
       </tbody>
     </table>
+
+    <section id="entity-date-time-response">
+      <h3>DateTimeResponse</h3>
+
+      <p>A Caliper <code>DateTimeResponse</code> represents a respondent's response to a <code>DateTimeQuestion</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/DateTimeResponse</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
+        >Response</a></dd>
+        <dt>Properties</dt>
+        <dd><code>DateTimeResponse</code> inherits all properties defined by its supertype <code>Response</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>DateTimeResponse</code> is also provisioned with the additional property <code>dateTimeSelected</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>DateTimeResponse</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>dateTimeSelected</td>
+          <td>DateTime</td>
+          <td>The DateTime selected in response to the question.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-multiselect-response">
+      <h3>MultiselectResponse</h3>
+
+      <p>A Caliper <code>MultiselectResponse</code> represents a respondent's response to a
+      <code>MultiselectQuestion</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/MultiselectResponse</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
+        >Response</a></dd>
+        <dt>Properties</dt>
+        <dd><code>MultiselectResponse</code> inherits all properties defined by its supertype <code>Response</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>MultiselectResponse</code> is also provisioned with the additional property <code>selections</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>MultiselectResponse</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>selections</td>
+          <td>Array</td>
+          <td>An array of the values representing the rater's selected responses.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-open-ended-response">
+      <h3>OpenEndedResponse</h3>
+
+      <p>A Caliper <code>OpenEndedResponse</code> represents a respondent's response to a
+        <code>OpenEndedQuestion</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/OpenEndedResponse</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
+        >Response</a></dd>
+        <dt>Properties</dt>
+        <dd><code>OpenEndedResponse</code> inherits all properties defined by its supertype <code>Response</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>QuestionnaireItem</code> is also provisioned with the additional property <code>value</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>OpenEndedResponse</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>string</td>
+          <td>the textual value of the response.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="entity-rating-scale-response">
+      <h3>RatingScaleResponse</h3>
+
+      <p>A Caliper <code>RatingScaleResponse</code> represents a respondent's response to a
+        <code>RatingScaleQuestion</code>.</p>
+
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/RatingScaleResponse</dd>
+        <dt>Supertype</dt>
+        <dd><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#response"
+        >Response</a></dd>
+        <dt>Properties</dt>
+        <dd><code>RatingScaleResponse</code> inherits all properties defined by its supertype <code>Response</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>RatingScaleResponse</code> is also provisioned with the additional property <code>selections</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
+
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>RatingScaleResponse</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>selections</td>
+          <td>Array</td>
+          <td>An array of the values representing the rater's selected responses.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
   </section>
 
   <section id="entity-scale">
     <h3>Scale</h3>
-    <p>A Caliper <code>Scale</code> models a scale employed in order to capture some rating.</p>
+    <p>A Caliper <code>Scale</code> is a generic type that represents a scale employed in order to capture some rating.
+      Utilize <code>Scale</code> only if no suitable subtype exists to represent the scale being described.</p>
+
     <dl>
       <dt>IRI</dt>
       <dd>https://purl.imsglobal.org/caliper/Scale</dd>
@@ -1618,132 +1813,132 @@
       </tr>
       </tbody>
     </table>
-  </section>
 
-  <section id="entity-likert-scale">
-    <h3>LikertScale</h3>
-    <p>A Caliper <code>LikertScale</code> models a likert scale employed in order to capture some likert rating.</p>
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-scale">Scale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>LikertScale</code> is also provisioned with the additional properties <code>points</code>,
-        <code>itemLabels</code>, and <code>itemValues</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
+    <section id="entity-likert-scale">
+      <h3>LikertScale</h3>
+      <p>A Caliper <code>LikertScale</code> models a likert scale employed in order to capture some likert rating.</p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/LikertScale</dd>
+        <dt>Supertype</dt>
+        <dd><a href="#entity-scale">Scale</a></dd>
+        <dt>Properties</dt>
+        <dd><code>LikertScale</code> inherits all properties defined by its supertype <code>Scale</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>LikertScale</code> is also provisioned with the additional properties <code>points</code>,
+          <code>itemLabels</code>, and <code>itemValues</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
 
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>LikertScale</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>points</td>
-        <td>integer</td>
-        <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemLabels</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The ordered list of labels for each point on the likert scale.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>itemValues</td>
-        <td>Array [{key:value}] | Array [value]</td>
-        <td>The ordered list of values for each point on the likert scale.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
-  </section>
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>LikertScale</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>points</td>
+          <td>integer</td>
+          <td>A integer value used to determine the amount of points on the <code>LikertScale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>itemLabels</td>
+          <td>Array [{key:value}] | Array [value]</td>
+          <td>The ordered list of labels for each point on the likert scale.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>itemValues</td>
+          <td>Array [{key:value}] | Array [value]</td>
+          <td>The ordered list of values for each point on the likert scale.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
 
-  <section id="entity-numeric-scale">
-    <h3>NumericScale</h3>
-    <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
-    <dl>
-      <dt>IRI</dt>
-      <dd>https://purl.imsglobal.org/caliper/NumericScale</dd>
-      <dt>Supertype</dt>
-      <dd><a href="#entity-scale">Scale</a></dd>
-      <dt>Properties</dt>
-      <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>,
-        of which <code>id</code> and <code>type</code> are required.
-        <code>NumericScale</code> is also provisioned with the additional properties <code>minValue</code>,
-        <code>minLabel</code>, <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>.
-        Profile-specific type restrictions are described below:
-      </dd>
-    </dl>
+    <section id="entity-numeric-scale">
+      <h3>NumericScale</h3>
+      <p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
+      <dl>
+        <dt>IRI</dt>
+        <dd>https://purl.imsglobal.org/caliper/NumericScale</dd>
+        <dt>Supertype</dt>
+        <dd><a href="#entity-scale">Scale</a></dd>
+        <dt>Properties</dt>
+        <dd><code>NumericScale</code> inherits all properties defined by its supertype <code>NumericScale</code>,
+          of which <code>id</code> and <code>type</code> are required.
+          <code>NumericScale</code> is also provisioned with the additional properties <code>minValue</code>,
+          <code>minLabel</code>, <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>.
+          Profile-specific type restrictions are described below:
+        </dd>
+      </dl>
 
-    <table class="data">
-      <thead>
-      <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Disposition</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>type</td>
-        <td><a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-        >Term</a></td>
-        <td>The string value MUST be set to the Term <em>NumericScale</em>.</td>
-        <td>Required</td>
-      </tr>
-      <tr>
-        <td>minValue</td>
-        <td>decimal</td>
-        <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>minLabel</td>
-        <td>string</td>
-        <td>The label for the minimum value.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>maxValue</td>
-        <td>decimal</td>
-        <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>maxLabel</td>
-        <td>string</td>
-        <td>The label for the maximum value.</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>step</td>
-        <td>decimal</td>
-        <td>Indicates the decimal step used for determining the options between the minimum and maximum values.</td>
-        <td>Optional</td>
-      </tr>
-      </tbody>
-    </table>
+      <table class="data">
+        <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Disposition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>type</td>
+          <td><a href=
+                         "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+          >Term</a></td>
+          <td>The string value MUST be set to the Term <em>NumericScale</em>.</td>
+          <td>Required</td>
+        </tr>
+        <tr>
+          <td>minValue</td>
+          <td>decimal</td>
+          <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>minLabel</td>
+          <td>string</td>
+          <td>The label for the minimum value.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>maxValue</td>
+          <td>decimal</td>
+          <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>maxLabel</td>
+          <td>string</td>
+          <td>The label for the maximum value.</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>step</td>
+          <td>decimal</td>
+          <td>Indicates the decimal step used for determining the options between the minimum and maximum values.</td>
+          <td>Optional</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
   </section>
 </section>
 
