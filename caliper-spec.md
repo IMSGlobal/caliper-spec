@@ -1268,7 +1268,7 @@ Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper
 
 ### <a name="endpointConfig"></a>6.2 Endpoint Configuration
 
-A Caliper [Endpoint](#endpoint) MUST be capable of reporting to a Caliper [Sensor](#sensor) on its supported configuration over HTTP using the standard GET request method on the same endpoint it uses to receive Caliper data, with the same restrictions on transport security and authentication used to receive Caliper data. The configuration MUST be transmitted in a Caliper Endpoint Configuration, purpose-built JSON data structure.
+A Caliper [Endpoint](#endpoint) MUST be capable of reporting to a Caliper [Sensor](#sensor) on its supported configuration over HTTP in response to the standard GET request method on the same endpoint it uses to receive Caliper data, with the same restrictions on transport security and authentication used to receive Caliper data. The configuration MUST be transmitted in a Caliper Endpoint Configuration, purpose-built JSON data structure.
 
 #### Properties
 
