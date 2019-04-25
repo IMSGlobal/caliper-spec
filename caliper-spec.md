@@ -52,7 +52,8 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 5.4 [HTTP Requests](#httpRequest)
 * 6.0 [Endpoint](#endpoint)
   * 6.1 [HTTP Responses](#httpResponse)
-  * 6.2 [String Lengths and Storage](#stringLengths)
+  * 6.2 [Endpoint Configuration](#endpointConfiguration)
+  * 6.3 [String Lengths and Storage](#stringLengths)
 * [Appendix A. Actions](#actions)
 * [Appendix B. Event Subtypes](#events)
   * B.1 [AnnotationEvent](#annotationEvent)
@@ -1265,7 +1266,37 @@ The [Endpoint](#endpoint) MAY respond to [Sensor](#sensor) messages with other s
 
 Caliper [Endpoint](#endpoint) implementers should bear in mind that some Caliper [Sensor](#sensor) implementations may lack sophisticated error handling.
 
-### <a name="stringLengths"></a>6.2 String Lengths and Storage
+### <a name="endpointConfig"></a>6.2 Endpoint Configuration
+
+A Caliper [Endpoint](#endpoint) MUST be capable of reporting to a Caliper [Sensor](#sensor) on its supported configuration over HTTP using the standard GET request method on the same endpoint it uses to receive Caliper data, with the same restrictions on transport security and authentication used to receive Caliper data. The configuration MUST be transmitted in a Caliper Endpoint Configuration, purpose-built JSON data structure.
+
+#### Properties
+
+Caliper [Endpoint Configuration](#endpointConfig) properties are listed below. The `caliper_supported_versions` property is required. Each property MUST be included only once. No custom properties are permitted.
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| caliper_maximum_payload_size | number | Number (in kilboytes) of the largest payload that the Endpoint can accept in a single POST request | Optional |
+| caliper_supported_extensions | map | Key-value map of additional extended service-specific attributes supported by the Endpoint | Optional |
+| caliper_supported_versions | list | List of IRIs identifying the versions of Caliper supported by the Caliper Endpoint. Sensors MUST ensure that the Caliper data they send to the Endpoint is based on one of the Caliper context document versions found in this list. By best practice, Tools should (if able) choose to use the most modern supported version in this list. | Required |
+
+
+#### Example: Caliper Endpoint Configuration
+```
+{
+  "caliper_maximum_payload_size": 512,
+  "caliper_supported_extensions": {
+    "endpoint_name": "Example Endpoint"
+  },
+  "caliper_supported_versions": [
+    "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension",
+    "http://purl.imsglobal.org/ctx/caliper/v1p2"
+  ]
+}
+```
+
+### <a name="stringLengths"></a>6.3 String Lengths and Storage
 
 Certain Caliper data properties are expressed as strings of variable length.  [JSON-LD](#jsonldDef) also defines a set of processing algorithms for transforming [JSON-LD](#jsonldDef) documents in ways that can change the length of keys and values that are expressed as [IRIs](#iridDef), compact [IRIs](#iridDef) or [Terms](#termDef).  Many implementers will choose to store each incoming [Event](#event) and [Entity](#entity) *[describe](#describeDef)* received as a [JSON-LD](#jsonldDef) document or as a graph data structure consisting of nodes, edges and properties.  Others may opt to normalize or "flatten" some or all of the nested JSON objects that comprise a Caliper [Event](#event) or [Entity](#entity).  If the chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to ensure that strings of character data can be stored without truncation.  See [Appendix G. Minimum Supported String Lengths](#minSupportedStringLengths) for a list of Caliper data properties and recommended *minimum* string lengths.
    
