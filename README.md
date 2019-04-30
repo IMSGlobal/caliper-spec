@@ -7,6 +7,22 @@ scale. Caliper also defines an application programming interface (the Sensor API
 and transmitting event data from instrumented applications to target endpoints for storage, 
 analysis and use.
 
+## Files in the repository
+
+| Name                              | Description                                                                                                                                                                                                                     |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `caliper-spec.md`                 | The main specification document.                                                                                                                                                                                                |
+| `/guides/implementation-guide.md` | The implementation guide document.                                                                                                                                                                                              |
+| `/guides/certification-guide.md`  | The Certification guide specifies the requirements and process for certification.                                                                                                                                               |
+| `/ontology/`                      | Directory for machine-readable documents that define the concepts, relationships and constraints that together comprise the Caliper information model. The ontology is available in three flavors: JSON-LD, RDF/XML and Turtle. |
+| `/profiles/`                      | Some Caliper Profiles are defined in their own documents instead of in the main specification document. Those are stored in this directory.                                                                                     |
+
+## Caliper Central repository
+
+[caliper-central](https://github.com/IMSGlobal/caliper-central)
+
+Caliper Central has a listing of all peripheral Caliper repositories and is used as the primary place to log issues in github for Caliper development. 
+
 ## Branches
 * __master__: stable, deployable branch that stores the official release history.  
 * __develop__: unstable development branch.  Current work that targets a future release is 
