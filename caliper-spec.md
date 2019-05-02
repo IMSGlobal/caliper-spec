@@ -5910,6 +5910,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Matt Ashbourne | McGraw-Hill Education |
 | Wes LaMarche | ACT |
 | Etienne Pelaprat | Unizin |
+| Kara Armstrong | Unizin |
 
 #### Editors and Reviewers
 
