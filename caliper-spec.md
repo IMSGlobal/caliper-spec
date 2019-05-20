@@ -41,6 +41,7 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * 3.8 [Session Profile](#sessionProfile)
   * 3.9 [Tool Use Profile](#toolUseProfile)
   * 3.10 [Basic Profile](#basicProfile)
+  * 3.11 [Competency-Aligned Learning Profile](#calProfile)
 * 4.0 [Serialization of the Model](#dataSerialization)
   * 4.1 [JSON-LD Context](#jsonldContext)
   * 4.2 [Identifiers](#jsonldIdentifiers)
@@ -59,17 +60,19 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * B.2 [AssessmentEvent](#assessmentEvent)
   * B.3 [AssessmentItemEvent](#assessmentItemEvent)
   * B.4 [AssignableEvent](#assignableEvent)
-  * B.5 [ForumEvent](#forumEvent)
-  * B.6 [GradeEvent](#gradeEvent)
-  * B.7 [MediaEvent](#mediaEvent)
-  * B.8 [MessageEvent](#messageEvent)
-  * B.9 [NavigationEvent](#navigationEvent)
-  * B.10 [~~OutcomeEvent~~](#outcomeEvent)
-  * B.11 [~~ReadingEvent~~](#readingEvent)
-  * B.12 [SessionEvent](#sessionEvent)
-  * B.13 [ThreadEvent](#threadEvent)
-  * B.14 [ToolUseEvent](#toolUseEvent)
-  * B.15 [ViewEvent](#viewEvent)
+  * B.5 [EvidenceEvent](#evidenceEvent)
+  * B.6 [ForumEvent](#forumEvent)
+  * B.7 [GradeEvent](#gradeEvent)
+  * B.8 [MasteryEvent](#masteryEvent)
+  * B.9 [MediaEvent](#mediaEvent)
+  * B.10 [MessageEvent](#messageEvent)
+  * B.11 [NavigationEvent](#navigationEvent)
+  * B.12 [~~OutcomeEvent~~](#outcomeEvent)
+  * B.13 [~~ReadingEvent~~](#readingEvent)
+  * B.14 [SessionEvent](#sessionEvent)
+  * B.15 [ThreadEvent](#threadEvent)
+  * B.16 [ToolUseEvent](#toolUseEvent)
+  * B.17 [ViewEvent](#viewEvent)
 * [Appendix C. Entity Subtypes](#entities)
   * C.1 [Agent](#agent)
   * C.2 [Annotation](#annotation)
@@ -80,45 +83,47 @@ THIS SPECIFICATION IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PART
   * C.7 [AudioObject](#audioObject)
   * C.8 [BookmarkAnnotation](#bookmarkAnnotation)
   * C.9 [Chapter](#chapter)
-  * C.10 [CourseOffering](#courseOffering)
-  * C.11 [CourseSection](#courseSection)
-  * C.12 [DigitalResource](#digitalResource)
-  * C.13 [DigitalResourceCollection](#digitalResourceCollection)
-  * C.14 [Document](#document)
-  * C.15 [~~EpubChapter~~](#epubChapter)
-  * C.16 [~~EpubPart~~](#epubPart)
-  * C.17 [~~EpubSubChapter~~](#epubSubChapter)
-  * C.18 [~~EpubVolume~~](#epubVolume)
-  * C.19 [FillinBlankResponse](#fillinBlankResponse)
-  * C.20 [Forum](#forum)
-  * C.21 [Frame](#frame)
-  * C.22 [Group](#group)
-  * C.23 [HighlightAnnotation](#highlightAnnotation)
-  * C.24 [ImageObject](#imageObject)
-  * C.25 [LearningObjective](#learningObjective)
-  * C.26 [LtiSession](#ltiSession) 
-  * C.27 [MediaLocation](#mediaLocation)
-  * C.28 [MediaObject](#mediaObject)
-  * C.29 [Membership](#membership)
-  * C.30 [Message](#message)
-  * C.31 [MultipleChoiceResponse](#multipleChoiceResponse)
-  * C.32 [MultipleResponseResponse](#multipleResponseResponse)
-  * C.33 [Organization](#organization)
-  * C.34 [Page](#page)
-  * C.35 [Person](#person)
-  * C.36 [~~Reading~~](#reading)
-  * C.37 [Response](#response)
-  * C.38 [Result](#result)
-  * C.39 [Score](#score)
-  * C.40 [SelectTextResponse](#selectTextResponse)
-  * C.41 [Session](#session)
-  * C.42 [SharedAnnotation](#sharedAnnotation)
-  * C.43 [SoftwareApplication](#softwareApplication)
-  * C.44 [TagAnnotation](#tagAnnotation)
-  * C.45 [Thread](#thread)
-  * C.46 [TrueFalseResponse](#trueFalseResponse)
-  * C.47 [VideoObject](#videoObject)
-  * C.48 [WebPage](#webPage)
+  * C.10 [Competency](#competency)
+  * C.11 [CourseOffering](#courseOffering)
+  * C.12 [CourseSection](#courseSection)
+  * C.13 [DigitalResource](#digitalResource)
+  * C.14 [DigitalResourceCollection](#digitalResourceCollection)
+  * C.15 [Document](#document)
+  * C.16 [~~EpubChapter~~](#epubChapter)
+  * C.17 [~~EpubPart~~](#epubPart)
+  * C.18 [~~EpubSubChapter~~](#epubSubChapter)
+  * C.19 [~~EpubVolume~~](#epubVolume)
+  * C.20 [Evidence](#evidence)
+  * C.21 [FillinBlankResponse](#fillinBlankResponse)
+  * C.22 [Forum](#forum)
+  * C.23 [Frame](#frame)
+  * C.24 [Group](#group)
+  * C.25 [HighlightAnnotation](#highlightAnnotation)
+  * C.26 [ImageObject](#imageObject)
+  * C.27 [LearningObjective](#learningObjective)
+  * C.28 [LtiSession](#ltiSession) 
+  * C.29 [MediaLocation](#mediaLocation)
+  * C.30 [MediaObject](#mediaObject)
+  * C.31 [Membership](#membership)
+  * C.32 [Message](#message)
+  * C.33 [MultipleChoiceResponse](#multipleChoiceResponse)
+  * C.34 [MultipleResponseResponse](#multipleResponseResponse)
+  * C.35 [Organization](#organization)
+  * C.36 [Page](#page)
+  * C.37 [Person](#person)
+  * C.38 [~~Reading~~](#reading)
+  * C.39 [Response](#response)
+  * C.40 [Result](#result)
+  * C.41 [Score](#score)
+  * C.42 [SelectTextResponse](#selectTextResponse)
+  * C.43 [Session](#session)
+  * C.44 [SharedAnnotation](#sharedAnnotation)
+  * C.45 [SoftwareApplication](#softwareApplication)
+  * C.46 [TagAnnotation](#tagAnnotation)
+  * C.47 [Thread](#thread)
+  * C.48 [TrueFalseResponse](#trueFalseResponse)
+  * C.49 [VideoObject](#videoObject)
+  * C.50 [WebPage](#webPage)
 * [Appendix D. Selectors](#selectors)
   * D.1 [TextPositionSelector](#textPositionSelector)
 * [Appendix E. Roles](#roles)
@@ -737,6 +742,32 @@ Any Caliper action MAY be used to describe the interaction.
 #### Other Requirements
 * Use of the Basic Profile is strictly limited to describing interactions not modeled in other profiles. Any events described MUST be expressed using only the [Event](#event) supertype.
 
+### <a name="calProfile"></a>3.11 Competency-Aligned Learning (CAL) Profile
+
+The Caliper Competency-Aligned Learning (CAL) Profile provides [Events](#event) for describing learning or supporting activities in the context of a competency-aligned learning framework, in which learners generate [Evidence](#evidence) and achieve [Mastery](#mastery) of [Competencies](#competency).
+
+#### Supported Events
+[EvidenceEvent](#evidenceEvent), [MasteryEvent](#masteryEvent)
+
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+
+##### EvidenceEvent 
+[Generated](#generated)
+
+##### MasteryEvent
+[Achieved](#achieved)
+
+#### Supported Objects
+
+##### EvidenceEvent
+[Evidence](#evidence)
+
+##### MasteryEvent
+[Competency](#competency)
+
 ## <a name="dataSerialization"></a>4.0 Serialization of the Model
 
 Over the last decade the advent of cloud-based, networked applications have led to changes in the way data is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing to other bundles of data now requires thinking in terms of graphs and [Linked Data](#linkedData).  Caliper [Event](#event) data presents us with similar structures.  A Caliper [Event](#event) can link to user data, digital content, courses and rosters, grades and credentials, institutional and organizational data, application and session data, and so on, the sources of which are likely diverse and the opportunities for discovering new relationships between the entities represented therein both numerous as well as enlightening.
@@ -1269,6 +1300,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | Term (IRI) | WordNet&reg; Gloss |
 | :--------- | :------------- |
 | <a name="abandoned"></a>Abandoned (http://purl.imsglobal.org/caliper/actions/Abandoned) | [Forsake, leave behind](http://wordnet-rdf.princeton.edu/wn31/202232813-v). |
+| <a name="achieved"></a>Achieved (http://purl.imsglobal.org/caliper/actions/Achieved) | To gain, with effort. |
 | <a name="activated"></a>Activated (http://purl.imsglobal.org/caliper/actions/Activated) | [Make active or more active](http://wordnet-rdf.princeton.edu/wn31/200191014-v).  Inverse of [Deactivated](#deactivated). |
 | <a name="added"></a>Added (http://purl.imsglobal.org/caliper/actions/Added) | [Make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of](http://wordnet-rdf.princeton.edu/wn31/200182551-v).  Inverse of [Removed](#removed). |
 | <a name="attached"></a>Attached (http://purl.imsglobal.org/caliper/actions/Attached) | [Cause to be attached](http://wordnet-rdf.princeton.edu/wn31/201299048-v). |
@@ -1292,6 +1324,7 @@ Caliper includes a vocabulary of actions for describing learning interactions. E
 | <a name="enteredFullscreen"></a>EnteredFullScreen (http://purl.imsglobal.org/caliper/actions/EnteredFullscreen) | [To come or go into](http://wordnet-rdf.princeton.edu/wn31/202020375-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [ExitedFullScreen](#exitedFullScreen). |
 | <a name="exitedFullscreen"></a>ExitedFullScreen (http://purl.imsglobal.org/caliper/actions/ExitedFullscreen) | [Move out of or depart from](http://wordnet-rdf.princeton.edu/wn31/202019450-v) a view mode that utilizes all the available display surface of a screen.  Inverse of [EnteredFullScreen](#enteredFullScreen). |
 | <a name="forwardedTo"></a>ForwardedTo (http://purl.imsglobal.org/caliper/actions/ForwardedTo) | [Send or ship onward](http://wordnet-rdf.princeton.edu/wn31/201959367-v). |
+| <a name="generated"></a>Generated (http://purl.imsglobal.org/caliper/actions/Generated) | To give or supply; to yield. |
 | <a name="graded"></a>Graded (http://purl.imsglobal.org/caliper/actions/Graded) | [Assign a grade or rank to, according to one's evaluation](http://wordnet-rdf.princeton.edu/wn31/200659399-v). |
 | <a name="hid"></a>Hid ([http://purl.imsglobal.org/caliper/actions/Hid](http://purl.imsglobal.org/caliper/actions/Hid) |[Prevent from being seen or discovered](http://wordnet-rdf.princeton.edu/wn31/202149298-v).  Inverse of [Showed](#showed). |
 | <a name="highlighted"></a>Highlighted (http://purl.imsglobal.org/caliper/actions/Highlighted) | [Move into the foreground to make more visible or prominent](http://wordnet-rdf.princeton.edu/wn31/200515150-v). |
@@ -1783,7 +1816,114 @@ The following actions are deprecated and targeted for removal from the [Assignab
 }
 ```
 
-### <a name="forumEvent"></a>B.5 ForumEvent
+### <a name="evidenceEvent"></a>B.5 EvidenceEvent
+
+A Caliper [EvidenceEvent](#evidenceEvent) represents evidence acquired towards the recognition of [Mastery](#mastery) of a [Competency](#competency) in the context of competency-aligned learning.
+
+#### IRI
+http://purl.imsglobal.org/caliper/EvidenceEvent
+
+#### Supertype
+[Event](#event)
+
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+[Generated](#generated)
+
+#### Supported Objects
+[Evidence](#evidence)
+
+#### Properties
+[EvidenceEvent](#evidenceEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *EvidenceEvent*. | Required |
+| actor | [Person](#person) &#124; [IRI](#iriDef) | The [Person](#person) who initiated the `action`.  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object`.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object| [Evidence](#evidence) &#124; [IRI](#iriDef) | The [Evidence](#evidence) that comprises the `object` of this interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
+| target | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents a particular segment or location within the `object`.  The `target` value MUST be expressed either as an object or as a string corresponding to the target entity's [IRI](#iriDef). | Optional |
+| generated | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) created or generated as a result of the interaction.  The `generated` value MUST be expressed either as an object or as a string corresponding to the generated entity's [IRI](#iriDef). | Optional |
+| edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| session | [Session](#session) &#124; [IRI](#iriDef) | The current user [Session](#session).  The `session` value MUST be expressed either as an object or as a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) &#124; [IRI](#iriDef) | If the [Event](#event) occurs within the context of an [LTI](#ltiDef) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or as a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [EvidenceEvent](#evidenceEvent). | Optional |
+
+#### Example:
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "EvidenceEvent",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Generated",
+  "object": {
+    "type": "Evidence",
+    "id": "https://example.edu/evidence/a8540f29-90a6-4b95-abb4-dc4b08a45f89",
+    "alignedCompetency": {
+      "id" : "https://example.edu/competencies/510a4257-7de7-4549-ae17-b8903ea0ca3a",
+      "type" : "Competency",
+      "name": "Can chiffonade leafy vegetables and herbs"
+    },
+    "result" : {
+      "id" : "https://example.edu/grades/21568219",
+      "type" : "http://purl.imsglobal.org/caliper/v1/lis/Result",
+      "extensions" : {
+        "maxScore" : 100.0
+      },
+      "totalScore" : 88.0,
+      "actor" : {
+        "id" : "https://test-util.localdomain.com",
+        "type" : "SoftwareApplication"
+      }
+    },
+    "evidenceSource" : {
+      "assetType" : "assessment",
+      "dateCreated" : "2018-07-18T16:04:30.727Z",
+      "dateModified" : "2018-07-18T16:04:30.727Z",
+      "datePublished" : null,
+      "dateToStartOn" : "2018-07-18T16:04:30.727Z",
+      "dateToActivate" : null,
+      "dateToShow" : null,
+      "dateToSubmit" : null,
+      "maxAttempts" : 3,
+      "maxSubmits" : 3,
+      "maxScore" : 100.0,
+      "@id" : "https://test-util.localdomain.com/caliper/AssignableDigitalResource/4372fd92-013a-4ceb-bc73-f97ca771d89a",
+      "@type" : "http://purl.imsglobal.org/caliper/v1/lis/AssignableDigitalResource"
+    },
+    "extensions" : {
+      "sourceType" : "assessment",
+      "score" : {
+        "points_awarded" : 88.0,
+        "points_possible" : 100.0,
+        "raw_score" : 0.88
+      }
+    }
+  },
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "edApp": {
+    "id": "https://example.edu",
+    "type": "SoftwareApplication",
+    "version": "v2"
+  },
+  "session": {
+    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
+    "type": "Session",
+    "startedAtTime": "2018-11-15T10:00:00.000Z"
+  }
+}
+```
+
+### <a name="forumEvent"></a>B.6 ForumEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="ForumEvent Subscribed image" src="assets/caliper-forum_event_subscribed-v2.png"></div>
 
@@ -1875,7 +2015,7 @@ http://purl.imsglobal.org/caliper/ForumEvent
 }
 ```
 
-### <a name="gradeEvent"></a>B.6 GradeEvent
+### <a name="gradeEvent"></a>B.7 GradeEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="GradeEvent Graded image" src="assets/caliper-grade_event_graded-v2.png"></div>
 
@@ -1970,7 +2110,95 @@ http://purl.imsglobal.org/caliper/GradeEvent
 }
 ```
 
-### <a name="mediaEvent"></a>B.7 MediaEvent
+### <a name="masteryEvent"></a>B.8 MasteryEvent
+
+A Caliper [MasteryEvent](#masteryEvent) models [Mastery](#mastery) of a [Competency](#competency) by a [Person](#person) in the context of competency-aligned learning.
+
+#### IRI
+http://purl.imsglobal.org/caliper/MasteryEvent
+
+#### Supertype
+[Event](#event)
+
+#### Supported Actors
+[Person](#person)
+
+#### Supported Actions
+[Achieved](#achieved)
+
+#### Supported Objects
+[Competency](#competency)
+
+#### Properties
+[MasteryEvent](#masteryEvent) inherits all properties defined by its supertype [Event](#event). Additional requirements are described below:
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [UUID](#uuidDef) | The emitting application MUST provision the [Event](#event) with a [UUID](#uuidDef).  A version 4 [UUID](#uuidDef) SHOULD be generated.  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *GradeEvent*. | Required |
+| actor | [Agent](#agent) &#124; [IRI](#iriDef) | An [Agent](#agent), typically [Person](#person) or [SoftwareApplication](#softwareApplication), MUST be specified as the `actor`.  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
+| action | [Term](#termDef) | The action or predicate that binds the `actor` or subject to the `object`.  The value range is limited to the action terms listed above.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
+| object | [Competency](#competency) &#124; [IRI](#iriDef) | The mastered [Competency](#competency).  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
+| eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
+| edApp | [SoftwareApplication](#softwareApplication) &#124; [IRI](#iriDef) | A [SoftwareApplication](#softwareApplication) that constitutes the application context.  The `edApp` value MUST be expressed either as an object or as a string corresponding to the edApp's [IRI](#iriDef). | Optional |
+| referrer | [Entity](#entity) &#124; [IRI](#iriDef) | An [Entity](#entity) that represents the referring context. A [SoftwareApplication](#softwareApplication) or [DigitalResource](#digitalResource) will typically constitute the referring context.  The `referrer` value MUST be expressed either as an object or as a string corresponding to the referrer's [IRI](#iriDef). | Optional |
+| group | [Organization](#organization) &#124; [IRI](#iriDef) | An [Organization](#organization) that represents the group context.  The `group` value MUST be expressed either as an object or as a string corresponding to the group's [IRI](#iriDef). | Optional |
+| membership | [Membership](#membership) &#124; [IRI](#iriDef) | The relationship between the `actor` and the `group` in terms of roles assigned and current status.  The `membership` value MUST be expressed either as an object or as a string corresponding to the membership entity's [IRI](#iriDef). | Optional |
+| session | [Session](#session) &#124; [IRI](#iriDef) | The current user [Session](#session).  The `session` value MUST be expressed either as an object or as a string corresponding to the session's [IRI](#iriDef). | Optional |
+| federatedSession | [LtiSession](#ltiSession) &#124; [IRI](#iriDef) | If the [Event](#event) occurs within the context of an [LTI](#ltiDef) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or as a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [GradeEvent](#gradeEvent). | Optional |
+
+#### Example: GradeEvent (graded)
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d",
+  "type": "GradeEvent",
+  "actor": {
+    "id": "https://example.edu/autograder",
+    "type": "SoftwareApplication",
+    "version": "v2"
+  },
+  "action": "Graded",
+  "object": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "type": "Attempt",
+    "assignee": {
+      "id": "https://example.edu/users/554433",
+      "type": "Person"
+    },
+    "assignable": {
+      "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1",
+      "type": "Assessment"
+    },
+    "count": 1,
+    "dateCreated": "2018-11-15T10:05:00.000Z",
+    "startedAtTime": "2018-11-15T10:05:00.000Z",
+    "endedAtTime": "2018-11-15T10:55:12.000Z",
+    "duration": "PT50M12S"
+  },
+  "eventTime": "2018-11-15T10:57:06.000Z",
+  "edApp": "https://example.edu",
+  "generated": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1",
+    "type": "Score",
+    "attempt": "https://example.edu/terms/201801/courses/7/sections/1/assess/1/users/554433/attempts/1",
+    "maxScore": 15.0,
+    "scoreGiven": 10.0,
+    "scoredBy": "https://example.edu/autograder",
+    "comment": "auto-graded exam",
+    "dateCreated": "2018-11-15T10:56:00.000Z"
+  },
+  "group": {
+    "id": "https://example.edu/terms/201801/courses/7/sections/1",
+    "type": "CourseSection",
+    "courseNumber": "CPS 435-01",
+    "academicSession": "Fall 2018"
+  }
+}
+```
+
+### <a name="mediaEvent"></a>B.9 MediaEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="MediaEvent Paused image" src="assets/caliper-media_event_paused-v2.png"></div>
 
@@ -2068,7 +2296,7 @@ The following actions are deprecated and targeted for removal from the [MediaEve
 }
 ```
 
-### <a name="messageEvent"></a>B.8 MessageEvent
+### <a name="messageEvent"></a>B.10 MessageEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="MessageEvent Posted image" src="assets/caliper-message_event_posted-v2.png"></div>
 
@@ -2235,7 +2463,7 @@ http://purl.imsglobal.org/caliper/MessageEvent
 }
 ```
 
-### <a name="navigationEvent"></a>B.9 NavigationEvent
+### <a name="navigationEvent"></a>B.11 NavigationEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="NavigationEvent NavigatedTo image" src="assets/caliper-navigation_event_navigatedto-v2.png"></div>
 
@@ -2334,7 +2562,7 @@ The following [NavigationEvent](#navigationEvent) properties have been DEPRECATE
 }
 ```
 
-### <a name="outcomeEvent"></a>B.10 OutcomeEvent DEPRECATED
+### <a name="outcomeEvent"></a>B.12 OutcomeEvent DEPRECATED
 
 A Caliper [OutcomeEvent](#outcomeEvent) models scoring or grading activities performed by an [Agent](#agent), typically a [Person](#person) or a [SoftwareApplication](#softwareApplication).  [OutcomeEvent](#outcomeEvent) is DEPRECATED and will be removed in a future version of the specification.  Use [GradeEvent](#gradeEvent) instead.
 
@@ -2378,7 +2606,7 @@ http://purl.imsglobal.org/caliper/OutcomeEvent
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [OutcomeEvent](#outcomeEvent). | Optional |
 
 
-### <a name="readingEvent"></a>B.11 ReadingEvent DEPRECATED
+### <a name="readingEvent"></a>B.13 ReadingEvent DEPRECATED
 
 A Caliper [ReadingEvent](#readingEvent) models an actor reading textural content.  [ReadingEvent](#readingEvent) is DEPRECATED and will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -2421,7 +2649,7 @@ http://purl.imsglobal.org/caliper/ReadingEvent
 | federatedSession | [LtiSession](#ltiSession) &#124; [IRI](#iriDef) | If the [Event](#event) occurs within the context of an [LTI](#ltiDef) tool launch, the actor's tool consumer [LtiSession](#ltiSession) MAY be referenced.  The `federatedSession` value MUST be expressed either as an object or as a string corresponding to the federatedSession's [IRI](#iriDef). | Optional |
 | extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [ReadingEvent](#readingEvent). | Optional |
 
-### <a name="sessionEvent"></a>B.12 SessionEvent
+### <a name="sessionEvent"></a>B.14 SessionEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="SessionEvent LoggedIn image" src="assets/caliper-session_event_loggedin-v2.png"></div>
 
@@ -2553,7 +2781,7 @@ http://purl.imsglobal.org/caliper/SessionEvent
 }
 ```
 
-### <a name="threadEvent"></a>B.13 ThreadEvent
+### <a name="threadEvent"></a>B.15 ThreadEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="ThreadEvent MarkedAsRead image" src="assets/caliper-thread_event_markedasread-v2.png"></div>
 
@@ -2647,7 +2875,7 @@ http://purl.imsglobal.org/caliper/ThreadEvent
 }
 ```
 
-### <a name="toolUseEvent"></a>B.14 ToolUseEvent
+### <a name="toolUseEvent"></a>B.16 ToolUseEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="ToolUseEvent Used image" src="assets/caliper-tool_use_event_used-v2.png"></div>
 
@@ -2729,7 +2957,7 @@ http://purl.imsglobal.org/caliper/ToolUseEvent
 }
 ```
 
-### <a name="viewEvent"></a>B.15 ViewEvent
+### <a name="viewEvent"></a>B.17 ViewEvent
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="ViewEvent Viewed image" src="assets/caliper-view_event_viewed-v2.png"></div>
 
@@ -3341,7 +3569,41 @@ The following [Chapter](#chapter) properties have been DEPRECATED and MUST NOT b
 }
 ```
 
-### <a name="courseOffering"></a>C.10 CourseOffering
+### <a name="competency"></a>C.10 Competency
+
+A Caliper [Competency](#competency) represents not simply a learning objective, but a skill which the learner should be able to perform if they have mastered it.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Competency
+
+#### Supertype
+[Entity](#entity)
+
+#### Properties
+
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Competency*. | Required |
+| name | string | A name for the competency, likely the skill it represents. | Optional |
+| description | string | A string value comprising a brief, written representation of the [Competency](#competency). | Optional |
+| parent | [Competency](#competency) &#124; [IRI](#iriDef) | If competencies roll up to representations of higher-order skills, the parent property can be used to "point" a competency to that skill. | Optional |
+| level | integer | In the case where competencies roll up to higher-order skills, it is perhaps useful to be able to refer to competencies by their tier, e.g. first-level competencies vs third-level competencies. | Optional |
+| dateModified | DateTime | An ISO 8601 date and time value expressed with millisecond precision that describes when the [Competency](#competency) was last changed or modified.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Competency](#competency). | Optional |
+
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "https://example.edu/competencies/510a4257-7de7-4549-ae17-b8903ea0ca3a",
+  "type": "Competency",
+  "name": "Can chiffonade leafy vegetables and herbs",
+  "level": 3
+}
+```
+
+### <a name="courseOffering"></a>C.11 CourseOffering
 
 A Caliper [CourseOffering](#courseOffering) represents the occurrence of a course or a type during a specified time period.  [CourseOffering](#courseOffering) is composed of a subset of properties specified in the IMS [LTI 2.1](#ltiDef) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -3385,7 +3647,7 @@ http://purl.imsglobal.org/caliper/CourseOffering
 }
 ```
 
-### <a name="courseSection"></a>C.11 CourseSection
+### <a name="courseSection"></a>C.12 CourseSection
 
 A Caliper [CourseSection](#courseSection) represents a specific instance of a [CourseOffering](#courseOffering) occurring during a specific semester, term or period.  [CourseSection](#courseSection) is composed of a subset of properties specified in the IMS [LTI 2.1](#ltiDef) specification, which in turn, draws inspiration from the IMS [LIS 1.0](#lis) specification.
 
@@ -3432,7 +3694,7 @@ http://purl.imsglobal.org/caliper/CourseSection
 }
 ```
 
-### <a name="digitalResource"></a>C.12 DigitalResource
+### <a name="digitalResource"></a>C.13 DigitalResource
 
 A Caliper [DigitalResource](#digitalResource) is a generic type that represents digital content.  
 
@@ -3505,7 +3767,7 @@ The following [DigitalResource](#digitalResource) properties have been DEPRECATE
 }
 ```
 
-### <a name="digitalResourceCollection"></a>C.13 DigitalResourceCollection
+### <a name="digitalResourceCollection"></a>C.14 DigitalResourceCollection
 
 A Caliper [DigitalResourceCollection](#digitalResourceCollection) represents an ordered collection of [DigitalResource](#digitalResource) entities.
 
@@ -3588,7 +3850,7 @@ The following [DigitalResourceCollection](#digitalResourceCollection) properties
 }
 ```
 
-### <a name="document"></a>C.14 Document
+### <a name="document"></a>C.15 Document
 
 A Caliper [Document](#document) represents textual content.
 
@@ -3650,7 +3912,7 @@ The following [Document](#document) properties have been DEPRECATED and MUST NOT
 }
 ```
 
-### <a name="epubChapter"></a>C.15 EpubChapter (DEPRECATED)
+### <a name="epubChapter"></a>C.16 EpubChapter (DEPRECATED)
 
 A Caliper [EpubChapter](#epubChapter) represents a major structural division of a piece of writing.  [EpubChapter](#epubChapter) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -3762,7 +4024,7 @@ The following [EpubChapter](#epubChapter) properties have been DEPRECATED and MU
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional | 
 
-### <a name="epubVolume"></a>C.18 EpubVolume (DEPRECATED)
+### <a name="epubVolume"></a>C.19 EpubVolume (DEPRECATED)
 
 A Caliper [EpubVolume](#epubVolume) represents a component of a collection.  EpubVolume inherits all the properties and requirements defined for [DigitalResource](#digitalResource), its supertype.  [EpubVolume](#epubVolume) is a DEPRECATED entity that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -3800,7 +4062,78 @@ The following [EpubVolume](#epubVolume) properties have been DEPRECATED and MUST
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |  
 
-### <a name="fillinBlankResponse"></a>C.19 FillinBlankResponse
+### <a name="evidence"></a>C.20 Evidence
+
+Caliper [Evidence](#evidence) represents a piece of evidence, which is used in the competency-aligned learning framework to demonstrate knowledge required in the context of a competency, which can be mastered.  [Evidence](#evidence) collected towards mastery of a competency is often a score for an assessment or an assignment, possibly even an individual assessment item.
+
+#### IRI
+http://purl.imsglobal.org/caliper/Evidence
+
+#### Supertype 
+[Entity](#entity)
+
+#### Properties
+[Evidence](#evidence) inherits all the properties and requirements defined for its supertype [Entity](#entity).  Additional properties and requirements are described below:
+ 
+| Property | Type | Description | Disposition |
+| :------- | :--- | ----------- | :---------: |
+| id | [IRI](#iriDef) | A valid [IRI](#iriDef) MUST be specified. The [IRI](#iriDef) MUST be unique and persistent. The [IRI](#iriDef) SHOULD also be dereferenceable, i.e., capable of returning a representation of the resource. A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be provided in cases where a [Linked Data](#linkedDataDef) friendly HTTP URI is either unavailable or inappropriate. | Required |
+| type | [Term](#termDef) | The string value MUST be set to the [Term](#termDef) *Evidence*. | Required |
+| alignedCompetency | [Competency](#competency) &#124; [IRI](#iriDef) | The [Competency](#competency) which the Evidence Event asserts the Actor has completed some measurable criteria towards the demonstration of Mastery. | Optional |
+| source | [AssignableDigitalResource](#assignableDigitalResource) &#124; [IRI](#iriDef) | The [AssignableDigitalResource](#assignableDigitalResource) whose completion resulted in [Evidence](#evidence) towards Mastery to have been generated. | Optional |
+| result | [Result](#result) | The [Result](#result) of the source, which SHOULD be provided. | Optional |
+| extensions | Object | A map of additional attributes not defined by the model MAY be specified for a more concise representation of the [Forum](#forum). | Optional |
+ 
+#### Example
+```
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "type": "Evidence",
+  "id": "https://example.edu/evidence/a8540f29-90a6-4b95-abb4-dc4b08a45f89",
+  "alignedCompetency": {
+    "id" : "https://example.edu/competencies/510a4257-7de7-4549-ae17-b8903ea0ca3a",
+    "type" : "Competency",
+    "name": "Can chiffonade leafy vegetables and herbs"
+  },
+  "result" : {
+    "@id" : "https://test-util.localdomain.com/caliper/Evidence/21568219",
+    "extensions" : {
+      "maxScore" : 100.0
+    },
+    "totalScore" : 88.0,
+    "actor" : {
+      "@id" : "https://test-util.localdomain.com",
+      "@type" : "SoftwareApplication"
+    },
+    "@type" : "http://purl.imsglobal.org/caliper/v1/lis/Result"
+  },
+  "evidenceSource" : {
+    "assetType" : "assessment",
+    "dateCreated" : "2018-07-18T16:04:30.727Z",
+    "dateModified" : "2018-07-18T16:04:30.727Z",
+    "datePublished" : null,
+    "dateToStartOn" : "2018-07-18T16:04:30.727Z",
+    "dateToActivate" : null,
+    "dateToShow" : null,
+    "dateToSubmit" : null,
+    "maxAttempts" : 3,
+    "maxSubmits" : 3,
+    "maxScore" : 100.0,
+    "@id" : "https://test-util.localdomain.com/caliper/AssignableDigitalResource/4372fd92-013a-4ceb-bc73-f97ca771d89a",
+    "@type" : "http://purl.imsglobal.org/caliper/v1/lis/AssignableDigitalResource"
+  },
+  "extensions" : {
+    "sourceType" : "assessment",
+    "score" : {
+      "points_awarded" : 88.0,
+      "points_possible" : 100.0,
+      "raw_score" : 0.88
+    }
+  }
+}
+```
+
+### <a name="fillinBlankResponse"></a>C.21 FillinBlankResponse
 
 A Caliper [FillinBlankResponse](#fillinBlankResponse) represents a type of [Response](#response) in which a respondent is asked to provide one or more words, expressions or short phrases that correctly completes a statement.
 
@@ -3868,7 +4201,7 @@ The following [FillinBlankResponse](#fillinBlankResponse) properties have been D
 }
 ```
 
-### <a name="forum"></a>C.20 Forum
+### <a name="forum"></a>C.22 Forum
 
 A Caliper [Forum](#forum) represents a channel or virtual space in which group discussions take place.  A [Forum](#forum) typically comprises one or more threaded conversations to which members can subscribe, post messages and reply to other messages.
 
@@ -3947,7 +4280,7 @@ The following [Forum](#forum) properties have been DEPRECATED and MUST NOT be ut
 }
 ```
 
-### <a name="frame"></a>C.21 Frame
+### <a name="frame"></a>C.23 Frame
 
 A Caliper [Frame](#frame) represents a part, portion or segment of a [DigitalResource](#digitalResource).
 
@@ -4003,7 +4336,7 @@ The following [Frame](#frame) properties have been DEPRECATED and MUST NOT be ut
 }
 ```
 
-### <a name="group"></a>C.22 Group
+### <a name="group"></a>C.24 Group
 
 A Caliper [Group](#group) represents an ad-hoc, informal or short-lived collection of people organized for some common educational or social purpose.  A [Group](#group) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
@@ -4069,7 +4402,7 @@ http://purl.imsglobal.org/caliper/Group
 }
 ```
 
-### <a name="highlightAnnotation"></a>C.23 HighlightAnnotation
+### <a name="highlightAnnotation"></a>C.25 HighlightAnnotation
 
 A Caliper [HighlightAnnotation](#highlightAnnotation) represents the act of marking a particular segment of a [DigitalResource](#digitalResource) between two known coordinates.
   
@@ -4120,7 +4453,7 @@ http://purl.imsglobal.org/caliper/HighlightAnnotation
 }
 ```
 
-### <a name="imageObject"></a>C.24 ImageObject
+### <a name="imageObject"></a>C.26 ImageObject
 
 A Caliper [ImageObject](#imageObject) represents an image file.
 
@@ -4171,7 +4504,7 @@ The following [ImageObject](#imageObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="learningObjective"></a>C.25 LearningObjective
+### <a name="learningObjective"></a>C.27 LearningObjective
 
 A Caliper [LearningObjective](#learningObjective) represents a brief statement of what a learner should know or be able to perform after completing a unit of instruction or a period of learning.
 
@@ -4222,7 +4555,7 @@ http://purl.imsglobal.org/caliper/LearningObjective
 }
 ```
 
-### <a name="ltiSession"></a>C.26 LtiSession
+### <a name="ltiSession"></a>C.28 LtiSession
 
 A Caliper [LtiSession](#ltiSession) represents an [LTI](#ltiDef) Tool Consumer user session.
 
@@ -4287,7 +4620,7 @@ The following [LtiSession](#ltiSession) properties have been DEPRECATED and MUST
   }
 ```
 
-### <a name="mediaLocation"></a>C.27 MediaLocation
+### <a name="mediaLocation"></a>C.29 MediaLocation
 
 A Caliper [MediaLocation](#mediaLocation) provides the current playback position in a [MediaObject](#mediaObject) such as an [AudioObject](#audioObject) or [VideoObject](#videoObject).
 
@@ -4337,7 +4670,7 @@ The following [MediaLocation](#mediaLocation) properties have been DEPRECATED an
 }
 ```
 
-### <a name="mediaObject"></a>C.28 MediaObject
+### <a name="mediaObject"></a>C.30 MediaObject
 
 A Caliper [MediaObject](#mediaObject) represents a generic piece of media content.
 
@@ -4393,7 +4726,7 @@ The following [MediaObject](#mediaObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="membership"></a>C.29 Membership
+### <a name="membership"></a>C.31 Membership
 
 A Caliper [Membership](#membership) describes the relationship between an [Organization](#organization) and an [Agent](#agent), typically a [Person](#person) (i.e., a [member](#member)) in terms of the roles assigned and current status.
   
@@ -4444,7 +4777,7 @@ http://purl.imsglobal.org/caliper/Membership
 }
 ```
 
-### <a name="message"><a/>C.30 Message
+### <a name="message"><a/>C.32 Message
 
 A Caliper [Message](#message) is a digital form of written communication sent to a recipient. A series of messages may constitute a [Thread](#thread) if they share a common subject and are connected by a reply or by date relationships.
 
@@ -4523,7 +4856,7 @@ The following [Message](#message) properties have been DEPRECATED and MUST NOT b
 }
  ```
 
-### <a name="multipleChoiceResponse"></a>C.31 MultipleChoiceResponse
+### <a name="multipleChoiceResponse"></a>C.32 MultipleChoiceResponse
 
 A Caliper [MultipleChoiceResponse](#multipleChoiceResponse) represents a type of [Response](#response) in which a respondent is asked to provide the best possible answer from a list of choices.
 
@@ -4591,7 +4924,7 @@ The following [MultipleChoiceResponse](#multipleChoiceResponse) properties have 
 }
 ```
 
-### <a name="multipleResponseResponse"></a>C.32 MultipleResponseResponse
+### <a name="multipleResponseResponse"></a>C.34 MultipleResponseResponse
 
 A Caliper [MultipleResponseResponse](#multipleResponseResponse) represents a form of response in which a respondent is asked to select more than one correct answer from a list of choices.
 
@@ -4659,7 +4992,7 @@ The following [MultipleResponseResponse](#multipleResponseResponse) properties h
 }
 ```
 
-### <a name="organization"></a>C.33 Organization
+### <a name="organization"></a>C.35 Organization
 
 A Caliper [Organization](#organization) represents a formal collection of people organized for some common educational, social or administrative purpose.  An [Organization](#organization) can act as an [Agent](#agent).  It can be linked both to a parent [Organization](#organization) and to its `members`.
 
@@ -4702,7 +5035,7 @@ Organization inherits all the properties and requirements defined for [Agent](#a
 }
 ```
 
-### <a name="page"></a>C.34 Page
+### <a name="page"></a>C.36 Page
 
 A Caliper [Page](#page) represents an item of paginated content.
 
@@ -4762,7 +5095,7 @@ The following [Page](#page) properties have been DEPRECATED and MUST NOT be util
 }
 ```
 
-### <a name="person"></a>C.35 Person
+### <a name="person"></a>C.37 Person
 
 A Caliper [Person](#person) represents a human being, alive or deceased, real or imaginary.
 
@@ -4796,7 +5129,7 @@ http://purl.imsglobal.org/caliper/Person
 }
 ```
 
-### <a name="reading"></a>C.36 Reading (DEPRECATED)
+### <a name="reading"></a>C.38 Reading (DEPRECATED)
 
 A Caliper [Reading](#reading) represents an item of paginated content.  [Reading](#reading) is a DEPRECATED entity superseded by [Document](#document) that will be removed in a future version of the specification.  It SHOULD NOT be referenced.
 
@@ -4834,7 +5167,7 @@ The following [Reading](#reading) properties have been DEPRECATED and MUST NOT b
 | ~~objectType~~ | string | A string value that designates the [DigitalResource](#digitalResource) type. | Optional |
 | ~~alignedLearningObjective~~ | Array | An ordered collection of one or more [LearningObjective](#learningobjective) entities that describe what a learner is expected to comprehend or accomplish after engaging with a [DigitalResource](#digitalResource).  `alignedLearningObjective` has been DEPRECATED and replaced by `learningObjectives`. | Optional |
 
-### <a name="response"></a>C.37 Response
+### <a name="response"></a>C.39 Response
 
 A Caliper [Response](#response) is a generic type that represents the selected option generated by a [Person](#person) interacting with an [DigitalResource](#digitalResource), typically an [AssessmentItem](#assessmentItem) or other [AssignableDigitalResource](#assignableDigitalResource).
 
@@ -4915,7 +5248,7 @@ The following [Response](#response) properties have been DEPRECATED and MUST NOT
 }
 ```
 
-### <a name="result"></a>C.38 Result
+### <a name="result"></a>C.40 Result
 
 A Caliper [Result](#result) represents the current score or grade as recorded in a gradebook.  The [Result](#result) score value may represent an adjusted or scaled value and is considered mutable. 
 
@@ -4992,7 +5325,7 @@ The following [Result](#result) properties have been DEPRECATED and MUST NOT be 
 }
 ```
 
-### <a name="score"></a>C.39 Score
+### <a name="score"></a>C.41 Score
 
 A Caliper [Score](#score) represents a "raw" or unadjusted numeric score or grade awarded for a given assignment submission.  A gradebook SHOULD treat the `scoreGiven` value as read-only and preserve it.
 
@@ -5049,7 +5382,7 @@ http://purl.imsglobal.org/caliper/Score
 }
 ```
 
-### <a name="selectTextResponse"></a>C.40 SelectTextResponse
+### <a name="selectTextResponse"></a>C.42 SelectTextResponse
 
 A Caliper [SelectTextResponse](#selectTextResponse) represents a type of [Response](#response) that identifies text or a mapping from a presented paragraph or list.
 
@@ -5117,7 +5450,7 @@ The following [SelectTextResponse](#selectTextResponse) properties have been DEP
 }
 ```
 
-### <a name="session"></a>C.41 Session
+### <a name="session"></a>C.43 Session
 
 A Caliper [Session](#session) represents a web application user session.
 
@@ -5168,7 +5501,7 @@ The following [Session](#session) properties have been DEPRECATED and MUST NOT b
 }
 ```
 
-### <a name="sharedAnnotation"></a>C.42 SharedAnnotation
+### <a name="sharedAnnotation"></a>C.44 SharedAnnotation
 
 A Caliper [SharedAnnotation](#sharedAnnotation) represents the act of sharing a reference to a [DigitalResource](#digitalResource) with other agents.
 
@@ -5222,7 +5555,7 @@ http://purl.imsglobal.org/caliper/SharedAnnotation
 }
 ```
 
-#### <a name="softwareApplication"></a>C.43 SoftwareApplication
+#### <a name="softwareApplication"></a>C.45 SoftwareApplication
 
 A Caliper [SoftwareApplication](#softwareApplication) represents a computer program, application, module, platform or system.
 
@@ -5258,7 +5591,7 @@ http://purl.imsglobal.org/caliper/SoftwareApplication
 }
 ```
 
-### <a name="tagAnnotation"></a>C.44 TagAnnotation
+### <a name="tagAnnotation"></a>C.46 TagAnnotation
 
 A Caliper [TagAnnotation](#tagAnnotation) represents the act of tagging a [DigitalResource](#digitalResource) with tags or labels.
 
@@ -5303,7 +5636,7 @@ http://purl.imsglobal.org/caliper/TagAnnotation
 }
 ```
 
-### <a name="thread"></a>C.45 Thread
+### <a name="thread"></a>C.47 Thread
 
 A Caliper [Thread](#thread) represents a series of one or more messages that share a common subject and are connected by a reply or by date relationships.
 
@@ -5389,7 +5722,7 @@ The following [Thread](#thread) properties have been DEPRECATED and MUST NOT be 
 }
 ```
 
-### <a name="trueFalseResponse"></a>C.46 TrueFalseResponse
+### <a name="trueFalseResponse"></a>C.48 TrueFalseResponse
 
 A Caliper [TrueFalseResponse](#trueFalseResponse) represents a type of [Response](#response) to an  [AssessmentItem](#assessmentItem) in which only two possible options are provided (e.g., true/false, yes/no).
 
@@ -5457,7 +5790,7 @@ The following [TrueFalseResponse](#trueFalseResponse) properties have been DEPRE
 }
 ```
 
-### <a name="videoObject"></a>C.47 VideoObject
+### <a name="videoObject"></a>C.49 VideoObject
 
 A Caliper [VideoObject](#videoObject) represents a visual recording stored in digital form.
 
@@ -5511,7 +5844,7 @@ The following [VideoObject](#videoObject) properties have been DEPRECATED and MU
 }
 ```
 
-### <a name="webPage"></a>C.48 WebPage
+### <a name="webPage"></a>C.50 WebPage
 
 A Caliper [WebPage](#webPage) represents a document containing markup that is suitable for display in a web browser.
 
