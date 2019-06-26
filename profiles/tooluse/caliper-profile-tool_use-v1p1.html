@@ -225,13 +225,15 @@
             </tr>
             <tr>
                 <td>generated</td>
-                <td><a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> | <a
-                        href="#iriDef">IRI</a>
+                <td><a href="#entity">Entity</a> | <a href="#iriDef">IRI</a>
                 </td>
-                <td>An <a href="#entity-aggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
-                    as a
-                    result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
+                <td>An <a href="#entity">Entity</a> created or generated as a result of the
+                    interaction. The <code>generated</code> value MUST be expressed either as an object or
                     as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
+                    </br>
+                    Note that if the sender of the event wants to send aggregate measure information
+                    as part of this event it should, by best practice, send a single
+                    <a href="entity-AggregateMeasureCollection">in this property</a>.
                 </td>
                 <td>Optional</td>
             </tr>
@@ -264,6 +266,13 @@
 
 <section id="entities">
     <h2>Entities</h2>
+    The extension described in this document to the Tool Use Profile defined with Caliper 1.1
+    defines a number of new entities that software application sensors can use to include support
+    for aggregate metric information carried in <a href="#toolUseEvent">ToolUseEvents</a>. By best
+    practice, sensors that need to send such information in <a href="toolUseEvent">ToolUseEvents</a>
+    should include an <a href="#entity-AggregateMeasureCollection">AggregateMeasureCollection</a> in
+    the event's <code>Generated</code> property as the single container for any reported aggregate
+    metric information.
     <section id="entity-aggregateMeasure">
         <h3>AggregateMeasure</h3>
         <p>A Caliper <code>AggregateMeasure</code> represents an aggregated measure of a learner's use of a learning
