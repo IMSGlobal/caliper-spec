@@ -1,4 +1,25 @@
 var t2 = `
+
+
+## Abstract
+
+IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in in order to drive effective decision making to improve learner success.  **TODO: improve section**
+
+Caliper can help to answer various questions about learner activity, a few examples questions that Caliper might help answer.
+
+* How often is a learner logging in to view their digital resources?
+* Are learners interacting with a forum post?
+* How often is a learner consuming course readings or videos?
+* What activities is a learner interacting with while taking an assessment?
+* Are learners annotating certain digital resources?
+* **TODO add better/more examples of how Caliper can be Used/link to Use Cases Section**
+
+With the answers to these questions in tow, decision makers can drive analysis that answers critical questions such as:
+
+* Is there a performance difference between learners who interact with a certain digital resource versus learners who do not?
+
+The sky is the limit with the ways to use Caliper data to measurably improve the learning ecosystem.
+
 ## Introduction
 
 ### What is this document?
@@ -9,32 +30,20 @@ As such, it may be revised without the specification version being incremented.
 Please refer to the [revision history](#revision-history) below for more information
 about revisions to this document.
 
-To review the use case collection that drove the development of this specification, please refer to the use cases section in [[EXAMPLE10]].
+As an informative resource it does not include any normative requirements. Occurrences in this document of terms such as MAY, MUST, MUST NOT, SHOULD or RECOMMENDED have no impact on the conformance criteria for implementors of this specification.
 
-### How to use this document?
+The primary goal of this document is to lead you to successful implementation of the Caliper Analytics&reg; v1.2 specification. More than that, this guide helps you along the way to achieving conformance certification.
 
-This document is intended as a launching point for implementation of the Caliper Analytics&reg; standard.
+### How to use this document
 
-* Developers can use this document to review the specific examples  of caliper events
-* Product managers can use this document and it's best practices while building out a product plan/roadmap
+This document is intended as a starting point for those looking to implement the Caliper Analytics&reg; standard in their educational software ecosystem.
+
+* Developers can use this document to review specific examples of caliper events and explanations of best practices aligned with the transmitting and collecting of Caliper Analytics&reg; events.
+* Product managers can use this document and it's best practices while building out a product plan/roadmap as well as determining the best Caliper Metric Profiles to be used to capture or transmit the information relevant to the questions they are attempting to answer.
 
 
 To review the use case collection that drove the development of this specification,
-please refer to [the use cases section](https://www.imsglobal.org/example/v1p1/#use-cases) **This is a dead link - JWM.**
-
-### What is Caliper Analytics&reg;?
-
-Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary grouped into *Metric Profiles* that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, and advisers in in order to drive effective decision making to improve learner success.  **TODO: improve section**
-
-Caliper can help to answer various questions about learner activity, a few examples questions that Caliper might help answer.
-
-* Are learners interacting with a forum post?
-* How often is a learner consuming course readings or videos?
-* Is there a performance difference between learners who interact with a certain digital resource versus learners who do not?
-* What activities is a learner interacting with while taking an assessment?
-* **TODO add better/more examples of how Caliper can be Used/link to Use Cases Section**
-
-The sky is the limit with the ways to use Caliper data to measurably improve the learning ecosystem.
+please refer to [the use cases section](https://www.imsglobal.org/example/v1p1/#use-cases) **This is a dead link - JWM.**.
 
 ## Terminology
 
@@ -50,7 +59,7 @@ Here are a few useful definitions for terms used throughout this document.  Full
   <dt>Event</dt><dd>A collection of an Actor, an Action, and an Object</dd>
   <dt>Envelope</dt><dd>A JSON payload that can contain one ore many Caliper events</dd>
   <dt>Object</dt><dd>Part of an Event that describes the *to whom*.</dd>
-  <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner</dd>
+  <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner.  Metric Profiles also serve as the unit of certification for the Caliper Analytics&reg; specification </dd>
   <dt>Sensor</dt><dd> Software deployed within a learning application that capture and transmit Caliper data to a target endpoint</dd>
   <dt></dt><dd></dd>
 </dl>
@@ -59,25 +68,25 @@ Here is a short explanation of how Caliper works using this vocabulary. If you c
 
 When a Caliper-observable interaction, as defined by a _Metric Profile_, is detected by a _Sensor_, an _Event_ is created which consists of an _Actor_, an _Object_, and an _Action_. (The Actor did the Action to the Object) To emit an _Event_ to another system via an API call, it is described as a JSON object which is wrapped in an _Envelope_ with a little metadata about the _Sensor_. The JSON is then sent via a secured HTTP call with an authentication token in an HTTP header.
 
-### Links to documents for your convenience
+### Links for your convenience
 
-- [Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum)
+- [Caliper Analytics&reg; Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum)
 - [Caliper Analytics&reg; version 1.1 full specification](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html)
 - [Metric Profile Summaries](https://www.imsglobal.org/caliper-analytics-v11-profiles-summaries)
 - [Caliper Analytics&reg; Conformance Information](https://www.imsglobal.org/caliper-analytics-conformance)
 - [Caliper Analytics&reg; Conformance Test Suite](https://caliper.imsglobal.org/sec/index.html)
 - [Caliper-central GitHub Repository](https://github.com/IMSGlobal/caliper-central)
-- [How to use with LTI document] Need to create a page?
+- [How to use with LTI](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md)
 
-## Conformance
+## Conformance Certification
 
 IMS offers a process for testing the conformance of products using the IMS certification test suite. Certification designates passing a set of tests that verify the standard has been implemented correctly and guarantees a product’s interoperability across hundreds of other certified products. The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]] provides details on about the testing process, requirements, and how to get started.
 
 Conformance certification offers more than claims of “compliance,". The only way IMS can guarantee interoperability is by obtaining certification for the latest version of the standard. Only products listed in the official IMS Certified Product Directory can claim conformance certification. IMS certification provides the assurance that a solution will integrate securely and seamlessly into an institution's digital learning ecosystem.
 
-Becoming certified for Caliper Analytics requires certifying against a minimum of one Metric Profile.
+Certification for Caliper Analytics involves certifying against one or more Metric Profiles.
 
- - Should it reference how extension conformance works or leave that to a different section?
+ **TODO**: Should it reference how extension conformance works or leave that to a different section?
 
 
 ## How to create a Caliper Event
@@ -228,6 +237,11 @@ While the base information required by most Events is represented in the above e
 [Link to full Metric Profile docs](#profiles)
 
 TODO: Profiles are so amazing! Here's why: TODO
+TODO: How to use profile documents
+
+TODO: Table with all profiles and links to their documentations and their certification requirements in the certification guide
+
+###
 
 A great way to think of a Metric Profile is by the questions it can help answer. For example the Reading Profile could help Instructors and researchers answer questions such as:
 
@@ -240,7 +254,7 @@ A great way to think of a Metric Profile is by the questions it can help answer.
 
 TODO: Talk about how `@context` changes for extensions and explain how it works? Then point to the Release Schedule section.
 
-TODO: Emphasise this is the level of certification. That's possibly also discussed in the Certification header above, and possibly in the release schedule stuff below. Maybe the repetition is good since this is an important point to understand.
+TODO: Emphasize this is the level of certification. That's possibly also discussed in the Certification header above, and possibly in the release schedule stuff below. Maybe the repetition is good since this is an important point to understand.
 
 
 ## Custom Extensions
@@ -359,8 +373,8 @@ TODO: Talk about credentials? Or just reference the LTI doc again?
 
 ## Release Schedule Expectations
 
-- Core specification to be released at most once a year,
- - new base context is updated
+- Core specification to be released at most once a year
+  - new base context is updated
 
 - Profiles can be extended during year
  - profile is described in core
@@ -379,26 +393,52 @@ TODO: Talk about credentials? Or just reference the LTI doc again?
 
 ## Use Cases
 
-TODO: Find some demonstrative use cases and explain how they'd be solved by talking through what questions they want answered, then what Metric Profiles and Events are needed to answer them.
+### Value Statement
+
+ As the online educational ecosystem grows, it becomes increasingly important to be able to measure the efficacy of tools and programs with the ultimate goal of improving learner successes.  To that end, the industry has embraced the need for "Big Data" analytics to drive insight.  Caliper Analytics&reg; structured, standards based approach provides a strong foundation for both providers and consumers of learning analytics data to make better decisions based off of a shared curated vocabulary. Caliper Analytics&reg; provides the necessary alignment and structure to what is and should be measured, along with a framework to support the capture and marshaling of data,
+
+### Understanding learner interactions across vendor tools
+
+An instructor, seeking to augment the classroom environment for her learners, utilizes a video platform to create and post video assignments. Class discussions and Q&A sessions are conducted online using another service and she administers her course using a learning management system. These three services are provided by three vendors, three potential sources of learning data. Analyzing the interaction behaviors of her students in relation to the questions they pose about her course content is vital to understanding student comprehension and performance. Caliper allows the collection of learning data and addresses important issues such as who owns the data, managing privacy requirements, and bringing together data from diverse systems to analyze.
+
+### Understanding licensed value
+
+Using the same Caliper data being collected at the course level in the prior scenario, but at the cohort or system level, can be leveraged to determine in aggregate how much usage a licensed tool is getting across a cohort or within a segment of students. This data could be used to determine when it is safe to perform upgrades when it is time to begin migration planning or other operational concerns with various learning tools
+
+### Profile Use Cases
+
+Caliper Metric profiles represent foundational usage cases.  Each Metric Profile has it's own subset of use cases listed in it's primary specification document as linked to in this document.
+
+- TODO: Find some demonstrative use cases and explain how they'd be solved by talking through what questions they want answered, then what Metric Profiles and Events are needed to answer them.
 
 Make sure to get a use case that decides why and how to add custom extensions.
 
 Need to add use cases for all action types for each profile ( request from issue #196)
 
-## Best Practices
+### Best Practices
 
 TODO: talk with current implementors and ask what best practices they'd suggest.
 
-## Miscellaneous
+### Tool Provider perspective LTI launch.
+- Tool Providers should use the federated session ID as the `id` of the federatedSession entity you include in events
+- Tool Providers should pick out the system identifiers from the LTI message that are relevant to you as a Tool, and put them in as `SystemIdentifiers` on the _entities_ in your events that are relevant. This helps
+  - Bind identifiers to the items they belong to, and not to the _session_
+  - Helps data consumers easily find those properties rather than having to dig through a big bag of `Event.federatedSession.messageProperties` keys.
+
+With some platforms the identifier might be the "user's login session"; in other platforms, it might be "just the individual launch".
+
+Receivers of events should/could expect that they'd get single def'ns of dimensional data to keep the event stream lean -- like an endpoint could get raw Entity "describes" in the event stream, or they might get a full object for a User at the "beginning" of a report of 100s of events of activity, and then only the Person's "id" IRI in the following events...
+
+### Sending full objects vs just the ID/IRI
+
+TODO: We should probably suggest in the implementation guide that receivers of events should|could expect that they'd get single def'ns of dimensional data to keep the event stream lean -- like an endpoint could get raw Entity "describes" in the event stream, or they might get a full object for a User at the "beginning" of a report of 100s of events of activity, and then only the Person's "id" IRI in the following events...
+
+TODO: This should be merged with the next item in list
 
 ### Deciding what and how much data to send in events
 
-How much "actual" information should be included in Caliper events? On the one hand, if all objects are persisted and accessible via dereferencable IRIs, why not streamline all Caliper payloads to reference ids and timestamps only?
-
-These guidelines might be useful to help application designers and researchers decide what data to send and collect.
-
-- Data generated by the app which would otherwise be lost (i.e. not persisted) would be a good candidate to convey in a Caliper event.
-- For data which is readily accessible via dereferenceble IRI's, it is OK to include just the IRI's.
+- Data generated by the app which would otherwise be lost (i.e. not persisted) is a good candidate to convey in a Caliper event.
+- Data that is readily accessible via dereferenceble IRI's, it is OK to include just the IRI's.
 - If there are cases where downstream processes would need quick access to the actual generated data, it is ok to include those data values as well.
 - It can be good to only emit what you generate: in other words, if your application has to do any extra work to retrieve related information, it's not recommended to include it in the event payload.
 
@@ -480,13 +520,6 @@ Here is an example of adding extra LTI information into the `LtiSession` object:
    "startedAtTime": "2018-11-15T10:15:00.000Z"
  }
 ```
-
-
-### Sending full objects vs just the ID/IRI
-
-TODO: We should probably suggest in the implementation guide that receivers of events should|could expect that they'd get single def'ns of dimensional data to keep the event stream lean -- like an endpoint could get raw Entity "describes" in the event stream, or they might get a full object for a User at the "beginning" of a report of 100s of events of activity, and then only the Person's "id" IRI in the following events...
-
-
 
 ### Robustness expectations
 
