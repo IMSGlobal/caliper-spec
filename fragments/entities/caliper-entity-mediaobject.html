@@ -1,0 +1,53 @@
+<h3>MediaObject</h3>
+
+<p>A Caliper <code>MediaObject</code> represents a generic piece of media content. Utilize
+    <code>MediaObject</code> only if no suitable subtype exists to represent the resource being described.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/MediaObject">https://purl.imsglobal.org/caliper/MediaObject</a></dd>
+    <dt>Term</dt>
+    <dd>MediaObject</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#DigitalResource">DigitalResource</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#AudioObject">AudioObject</a>,
+        <a href="#ImageObject">ImageObject</a>,
+        <a href="#VideoObject">VideoObject</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>MediaObject</code> inherits all properties defined by its supertype
+        <a href="#DigitalResource">DigitalResource</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>MediaObject</code> is also provisioned with the optional property <code>duration</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MediaObject</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>Duration</td>
+        <td>An optional time interval that represents the total time required to view and/or listen to the
+            <code>MediaObject</code> at normal speed. If a duration is specified the value MUST conform
+            to the ISO 8601 duration format.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

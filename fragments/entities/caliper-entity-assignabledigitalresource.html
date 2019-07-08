@@ -1,0 +1,105 @@
+<h3>AssignableDigitalResource</h3>
+
+<p>A Caliper <a href="#assignableDigitalResource">AssignableDigitalResource</a> is a generic type that represents
+    digital content associated with a graded or ungraded assignment. Utilize
+    <a href="#assignableDigitalResource">AssignableDigitalResource</a> only if no suitable subtype exists to
+    represent the resource being described.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/AssignableDigitalResource">
+        http://purl.imsglobal.org/caliper/AssignableDigitalResource</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>AssignableDigitalResource</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#DigitalResource">DigitalResource</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#Assessment">Assessment</a>,
+        <a href="#AssessmentItem">AssessmentItem</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>AssignableDigitalResource</code> inherits all properties defined by its supertype
+        <a href="#DigitalResource">DigitalResource</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>AssignableDigitalResource</code> is also provisioned with seven additional optional properties:
+        <code>dateToActivate</code>, <code>dateToShow</code>, <code>dateToStartOn</code>, <code>dateToSubmit</code>,
+        <code>maxAttempts</code>, <code>maxSubmits</code>, and <code>maxScore</code>. Additional type restrictions
+        are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AssignableDigitalResource</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>dateToActivate</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the resource was
+            activated. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset
+            specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>dateToShow</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the resource should
+            be shown or made available to learners. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>dateToStartOn</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the resource can be
+            started. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset
+            specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>dateToSubmit</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the resource is to
+            be submitted for evaluation. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to
+            UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxAttempts</td>
+        <td>integer</td>
+        <td>A non-negative integer that designates the number of permitted attempts.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxSubmits</td>
+        <td>integer</td>
+        <td>A non-negative integer that designates the number of permitted submissions.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxScore</td>
+        <td>decimal</td>
+        <td>A number with a fractional part denoted by a decimal separator that designates the maximum score
+            permitted.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

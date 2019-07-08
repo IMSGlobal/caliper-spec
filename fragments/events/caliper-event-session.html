@@ -1,0 +1,99 @@
+<h3>SessionEvent</h3>
+
+<img height="100%" width="100%" src="assets/caliper-session_event_loggedin-v2.png" alt="SessionEvent LoggedIn image">
+<img height="100%" width="100%" src="assets/caliper-session_event_loggedout-v2.png" alt="SessionEvent LoggedOut image">
+<img height="100%" width="100%" src="assets/caliper-session_event_timedout-v2.png" alt="SessionEvent TimedOut image">
+
+<p>A Caliper <code>SessionEvent</code> models the creation and subsequent termination of a user session established by a
+    <a href="#Person">Person</a> interacting with a <a href="#SoftwareApplication">SoftwareApplication</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SessionEvent">http://purl.imsglobal.org/caliper/SessionEvent</a></dd>
+    <dt>Term</dt>
+    <dd>SessionEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd>The <code>SessionEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>,
+        of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>SessionEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+            <a href="#iriDef">IRI</a>
+        </td>
+        <td>The <a href="#Agent">Agent</a> who initiated the <code>action</code>. For
+            <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions a
+            <a href="#Person">Person</a> MUST be specified as the <code>actor</code>. For a
+            <a href="#action-timedOut">TimedOut</a> action a <a href="#SoftwareApplication">SoftwareApplication</a>
+            MUST be specified as the <code>actor</code>. The <code>actor</code> value MUST be expressed either as an
+            object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
+            range is limited to the <a href="#action-loggedIn">LoggedIn</a>, <a href="#action-loggedOut">LoggedOut</a>,
+            and <a href="#action-timedOut">TimedOut</a> actions only.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#Session">Session</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+            <a href="#iriDef">IRI</a></td>
+        <td>For <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions a
+            <a href="#SoftwareApplication">SoftwareApplication</a> MUST be specified as the <code>object</code>. For a
+            <a href="#action-timedOut">TimedOut</a> action the <a href="#Session">Session</a> MUST be specified as the
+            object. The <code>object</code> value MUST be expressed either as an object or as a string corresponding to
+            the object's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td>When logging in to a <a href="#SoftwareApplication">SoftwareApplication</a>, if the actor is attempting to
+            access a particular <a href="#DigitalResource">DigitalResource</a> it MAY be designated as the
+            <code>target</code> of the interaction. The <code>target</code> value MUST be expressed either as an object
+            or as a string corresponding to the target entity's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>referrer</td>
+        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+            <a href="#iriDef">IRI</a>
+        </td>
+        <td>The <a href="#DigitalResource">DigitalResource</a> or <a href="#SoftwareApplication">SoftwareApplication</a>
+            that constitutes the referring context MAY be specified as the <code>referrer</code>. The
+            <code>referrer</code> value MUST be expressed either as an object or as a string corresponding to the
+            referrer's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

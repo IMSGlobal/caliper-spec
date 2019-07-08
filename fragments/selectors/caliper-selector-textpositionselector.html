@@ -1,0 +1,51 @@
+<h3>TextPositionSelector</h3>
+<p>A Caliper <code>TextPositionSelector</code> represents a fragment or selection of textual content, the starting
+    and ending positions of which are determined by the distance in characters from the initial character (position 0)
+    of the enclosing full text.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/TextPositionSelector">
+        http://purl.imsglobal.org/caliper/TextPositionSelector</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>TextPositionSelector</dd>
+    <dt>Properties</dt>
+    <dd><code>TextPositionSelector</code> includes three required properties: <code>type</code>, <code>start</code>,
+        and <code>end</code> Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<h4>Properties</h4>
+<table>
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>TextPositionSelector</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>start</td>
+        <td>integer</td>
+        <td>The starting position of the selected text MUST be specified. The first character in the full text is
+            character position 0.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>end</td>
+        <td>integer</td>
+        <td>The end position of the selected text MUST be specified.</td>
+        <td>Required</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,79 @@
+<h3>Score</h3>
+<p>A Caliper <code>Score</code> represents a &quot;raw&quot; or unadjusted numeric score or grade awarded for a
+    given assignment submission. A grade book SHOULD treat the <code>scoreGiven</code> value as read-only and preserve
+    it.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Score">http://purl.imsglobal.org/caliper/Score</a></dd>
+    <dt>Term</dt>
+    <dd>Score</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Score</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Score</code> is also provisioned with
+        five additional optional properties: <code>attempt</code>, <code>maxScore</code>,
+        <code>scoreGiven</code>, <code>scoredBy</code>, and <code>comment</code>. Additional type restrictions
+        are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Score</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>attempt</td>
+        <td><a href="#Attempt">Attempt</a> | <a href="#iriDef">IRI</a></td>
+        <td>The associated <a href="#Attempt">Attempt</a>. The <code>attempt</code> value MUST be expressed either as an
+            object or as a string corresponding to the attempt's <a href="#iriDef">IRI</a>. If an object representation
+            is provided, the <a href="#Attempt">Attempt</a> SHOULD reference both the <a href="#Person">Person</a> who
+            generated the <a href="#Attempt">Attempt</a> and the assigned <a href="#DigitalResource">DigitalResource</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxScore</td>
+        <td>decimal</td>
+        <td>A number with a fractional part denoted by a decimal separator that designates the maximum score
+            permitted.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>scoreGiven</td>
+        <td>decimal</td>
+        <td>A number with a fractional part denoted by a decimal separator that designates the actual score awarded.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>scoredBy</td>
+        <td><a href="#Agent">Agent</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Agent">Agent</a> who scored or graded the <a href="#Attempt">Attempt</a>. The
+            <code>scoredBy</code> value MUST be expressed either as an object or as a string corresponding to the
+            scorer's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>string</td>
+        <td>Plain text feedback provided by the scorer.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

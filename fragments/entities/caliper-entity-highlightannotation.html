@@ -1,0 +1,47 @@
+<h3>HighlightAnnotation</h3>
+<p>A Caliper <code>HighlightAnnotation</code> represents the act of marking a particular segment
+    of a <a href="#DigitalResource">DigitalResource</a> between two known coordinates.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/HighlightAnnotation">
+        http://purl.imsglobal.org/caliper/HighlightAnnotation</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>HighlightAnnotation</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Annotation">Annotation</a></dd>
+    <dt>Properties</dt>
+    <dd><code>HighlightAnnotation</code> inherits all the properties and requirements defined for its
+        supertype <a href="#Annotation">Annotation</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>HighlightAnnotation</code> is also provisioned with the optional property
+        <code>selectionText</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>HighlightAnnotation</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>selectionText</td>
+        <td>string</td>
+        <td>A string value representing a plain-text rendering of the highlighted segment of the annotated
+            <a href="#DigitalResource">DigitalResource</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

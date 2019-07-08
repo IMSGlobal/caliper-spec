@@ -1,0 +1,80 @@
+<h3>Session</h3>
+
+<p>A Caliper <a href="#Session">Session</a> represents a web application user session.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/Session">https://purl.imsglobal.org/caliper/Session</a></dd>
+    <dt>Term</dt>
+    <dd>Session</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#LtiSession">LitSession</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>Session</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Session</code> is also provisioned
+        with four additional optional properties: <code>user</code>, <code>startedAtTime</code>,
+        <code>endedAtTime</code>, and <code>duration</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Session</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>user</td>
+        <td><a href="#Person">Person</a></td>
+        <td>The <a href="#Person">Person</a> who initiated this <code>Session</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>client</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+        <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that is hosting this
+            <code>Session</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>startedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>Session</code> was commenced. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>endedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>Session</code> was completed or terminated. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>Duration</td>
+        <td>A time interval that represents the time taken to complete the <code>Session</code>. If a duration
+            is specified the value MUST conform to the ISO 8601 duration format.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

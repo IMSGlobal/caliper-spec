@@ -1,0 +1,163 @@
+<h3>Resource Management Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_resource_management.png"
+     alt="Resource Management Profile"/>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ResourceManagementProfile">
+        http://purl.imsglobal.org/caliper/ResourceManagementProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ResourceManagementProfile</dd>
+</dl>
+
+<p>The Caliper Resource Management Profile models a <a href="#Person">Person</a> managing a
+    <a href="#DigitalResource">DigitalResource</a>.</p>
+
+<p>The Resource Management Profile supports the following user stories:</p>
+
+<ul>
+    <li>As a content developer, I would like to measure the interval between resource availability and
+        learner engagement with learning resources in order to gain insights into both the administrative
+        impact on the learning process and the timing decisions of learners who are expected to ingest the
+        materials.</li>
+    <li>As an instructor, I would like to measure engagement between different revisions of learning
+        resources over time in order to help determine what content is most effective.</li>
+</ul>
+
+<p>The Resource Management Profile defines a <a href="#ResourceManagementEvent">ResourceManagementEvent</a> for
+    describing the creation, management, and disposition of <a href="DigitalResource">DigitalResource</a> entities.
+    Fourteen actions are described:
+</p>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-created">Created</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-copied">Copied</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-modified">Modified</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-deleted">Deleted</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-described">Described</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-downloaded">Downloaded</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-uploaded">Uploaded</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-retrieved">Retrieved</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-printed">Printed</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-published">Published</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-unpublished">Unpublished</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-archived">Archived</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-restored">Restored</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ResourceManagementEvent">ResourceManagementEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-saved">Saved</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#ResourceManagementEvent">ResourceManagementEvent</a> governed by the Resource Management
+Profile the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>For a <a href="#action-copied">Copied</a> action the <code>generated</code> copy of the
+        <a href="#DigitalResource">DigitalResource</a> SHOULD be referenced.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

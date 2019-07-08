@@ -1,0 +1,73 @@
+<h3>SoftwareApplication</h3>
+
+<p>A Caliper <code>SoftwareApplication</code> represents a computer program, application, module,
+    platform or system.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SoftwareApplication">
+        http://purl.imsglobal.org/caliper/SoftwareApplication</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SoftwareApplication</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Agent">Agent</a></dd>
+    <dt>Properties</dt>
+    <dd><code>SoftwareApplication</code> inherits all properties defined by its supertype <a href="#Agent">Agent</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>SoftwareApplication</code> is also
+        provisioned with the optional property <code>version</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>SoftwareApplication</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>host</td>
+        <td>string</td>
+        <td>String value that identifies the host of this <code>SoftwareApplication</code>. This property can be used
+            to indicate the back-end service or domain hosting a front-end web application.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>ipAddress</td>
+        <td>string</td>
+        <td>String value that, if present, can indicate the IPv4 or IPv6 address of this
+            <code>SoftwareApplication</code>. This property can be used to indicate the user agent (browser)
+            running a front-end web application.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>userAgent</td>
+        <td>string</td>
+        <td>String with a value that describes the properties of the user agent hosting this
+            <code>SoftwareApplication</code>. This field can be used to carry the user agent string reported by the
+            browser running a front-end web application.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>version</td>
+        <td>string</td>
+        <td>An optional string value that designates the current form or version of this
+            <code>SoftwareApplication</code>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

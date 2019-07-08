@@ -1,0 +1,48 @@
+<h3>DigitalResourceCollection</h3>
+<p>A Caliper <code>DigitalResourceCollection</code> represents an ordered collection of
+    <a href="#DigitalResource">DigitalResource</a> entities.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/DigitalResourceCollection">
+        https://purl.imsglobal.org/caliper/DigitalResourceCollection</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>DigitalResourceCollection</dd>
+    <dt>Supertypes</dt>
+    <dd><a href="#Collection">Collection</a>, <a href="#digitalResource">DigitalResource</a></dd>
+    <dt>Subtypes</dt>
+    <dd><a href="#Assessment">Assessment</a>, <a href="#Forum">Forum</a>, <a href="#Thread">Thread</a></dd>
+    <dt>Properties</dt>
+    <dd><code>DigitalResourceCollection</code> inherits all properties defined by its supertypes
+        <a href="#Collection">Collection</a> and <a href="#digitalResource">DigitalResource</a>, of which
+        <code>id</code>, and <code>type</code> are required. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>DigitaResourceCollection</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>items</td>
+        <td>Array</td>
+        <td>An ordered collection of <a href="#DigitalResource">DigitalResource</a> entities. Each array item MUST be
+            expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

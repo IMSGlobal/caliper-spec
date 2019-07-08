@@ -1,0 +1,44 @@
+<h3>AssessmentItem</h3>
+<p>A Caliper <code>AssessmentItem</code> represents a single test question.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/AssessmentItem">
+        http://purl.imsglobal.org/caliper/AssessmentItem</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>AssessmentItem</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#AssignableDigitalResource">AssignableDigitalResource</a></dd>
+    <dt>Properties</dt>
+    <dd><code>AssessmentItem</code> inherits all the properties and requirements defined for its
+        supertype <a href="#AssignableDigitalResource">AssignableDigitalResource</a>, of which <code>id</code>,
+        and <code>type</code> are required. <code>AssessmentItem</code> is also provisioned with the additional
+        property <code>isTimeDependent</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AssessmentItem</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>isTimeDependent</td>
+        <td>Boolean</td>
+        <td>A boolean value indicating whether or not interacting with the item is time dependent.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

@@ -676,6 +676,19 @@ The Caliper ontology provides a machine-readable document that defines the conce
     
 
 
+    <!-- http://purl.imsglobal.org/caliper/searchResults -->
+
+    <owl:ObjectProperty rdf:about="http://purl.imsglobal.org/caliper/searchResults">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.imsglobal.org/caliper/SearchResponse"/>
+        <rdfs:range rdf:resource="http://purl.imsglobal.org/caliper/Entity"/>
+        <rdfs:comment xml:lang="en">An ordered collection of entities, typically of type DigitalResource that constitute the results of the search.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.imsglobal.org/caliper</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">searchResults</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.imsglobal.org/caliper/searchTarget -->
 
     <owl:ObjectProperty rdf:about="http://purl.imsglobal.org/caliper/searchTarget">

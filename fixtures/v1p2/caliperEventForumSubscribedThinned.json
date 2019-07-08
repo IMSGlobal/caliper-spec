@@ -1,0 +1,14 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
+  "type": "ForumEvent",
+  "profile": "ForumProfile",
+  "actor": "https://example.edu/users/554433",
+  "action": "Subscribed",
+  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1",
+  "eventTime": "2018-11-15T10:16:00.000Z",
+  "edApp": "https://example.edu/forums",
+  "group": "https://example.edu/terms/201801/courses/7/sections/1",
+  "membership": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+  "session": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259"
+}

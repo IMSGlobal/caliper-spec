@@ -1,0 +1,46 @@
+<h3>MultipleResponseResponse</h3>
+<p>A Caliper <code>MultipleResponseResponse</code> represents a response to an
+    <a href="#AssessmentItem">AssessmentItem</a> in which a respondent is asked to select more than one correct
+    answer from a list of choices.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/MultipleResponseResponse">
+        http://purl.imsglobal.org/caliper/MultipleResponseResponse</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>MultipleResponseResponse</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Response">Response</a></dd>
+    <dt>Properties</dt>
+    <dd><code>MultipleResponseResponse</code> inherits all properties defined by its supertype
+        <a href="#Response">Response</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>MultipleResponseResponse</code> is also provisioned with the optional property <code>values</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MultipleResponseResponse</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>values</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more selected options MAY be specified</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

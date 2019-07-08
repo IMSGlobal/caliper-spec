@@ -1,0 +1,50 @@
+<h3>MediaLocation</h3>
+<p>A Caliper <code>MediaLocation</code> provides the current playback position in a
+    <a href="#MediaObject">MediaObject</a> such as an <a href="#AudioObject">AudioObject</a> or
+    <a href="#VideoObject">VideoObject</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/MediaLocation">
+        http://purl.imsglobal.org/caliper/MediaLocation</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>MediaLocation</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#DigitalResource">DigitalResource</a></dd>
+    <dt>Properties</dt>
+    <dd><code>MediaLocation</code> inherits all properties defined by its supertype
+        <a href="#DigitalResource">DigitalResource</a>, of which <code>id</code> and <code>type</code> are
+        required. <code>MediaLocation</code> is also provisioned with the optional property
+        <code>currentTime</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MediaLocation</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>currentTime</td>
+        <td>Duration</td>
+        <td>A time interval or duration that represents the current playback position measured from the beginning of an
+            <a href="#AudioObject">AudioObject</a> or <a href="#VideoObject">VideoObject</a>. If a
+            <code>currentTime</code> is specified the value MUST conform to the ISO 8601 duration format.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+<h3>General Profile</h3>
+
+<aside class="warning">Use of the General Profile is strictly limited to describing interactions not modeled by the
+    current set of Caliper Profiles. Only the generic <a href="#Event">Event</a> may be utilized to describe such
+    activities.
+</aside>
+
+<img height="100%" width="100%" src="assets/caliper-profile_general.png" alt="General Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/GeneralProfile">http://purl.imsglobal.org/caliper/GeneralProfile</a></dd>
+    <dt>Term</dt>
+    <dd>GeneralProfile</dd>
+</dl>
+
+<p>The Caliper General Profile provides a generic <a href="#Event">Event</a> for describing learning or supporting
+    activities that have yet to be modeled by Caliper. Any of the Caliper <a href="#actions">actions</a> described in
+    this specification can be used to describe the interaction between the <code>actor</code> and the
+    <code>object.</code></p>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#Event">Event</a></td>
+            <td><a href="#Agent">Agent</a></td>
+            <td>any Caliper <a href="#actions">action</a></td>
+            <td><a href="#Entity">Entity</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a generic <a href="#Event">Event</a> governed by the General Profile the following rules and
+recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>
+
+
+

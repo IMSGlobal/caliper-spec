@@ -1,0 +1,59 @@
+<h3>System Identifier</h3>
+
+<p>A Caliper <code>SystemIdentifier</code> represents a single, system-local identifier for a Caliper
+    <a href="#Entity">Entity</a>.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SystemIdentifier">
+        http://purl.imsglobal.org/caliper/SystemIdentifier</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SystemIdentifier</dd>
+    <dt>Properties</dt>
+    <dd><code>SystemIdentifier</code> includes two required properties: <code>identifier</code> and
+        <code>identiferType</code>, as well as two optional properties: <code>source</code> and
+        <code>extensions</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<h3>Properties</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>identifier</td>
+        <td>string</td>
+        <td>Opaque string representing the system identifier value.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>identifierType</td>
+        <td>string</td>
+        <td>The string value MUST be set to the <a href="#systemidentifiertype">System Identifier Type</a> constants
+            that describes the <code>identifier</code>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>source</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#SoftwareApplication">SoftwareApplication</a> identified as the source (e.g., the creator
+            or owner) of the system identifier.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>extensions</td>
+        <td>Object</td>
+        <td>A map of additional attributes not defined by the model MAY be specified for a more concise representation
+            of the <code>SystemIdentifier</code>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

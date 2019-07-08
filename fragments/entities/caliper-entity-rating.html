@@ -1,0 +1,87 @@
+<h3>Rating</h3>
+<p>A Caliper <code>Rating</code> models quantitative reactions to an <code>Entity</code>.</p>
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/Rating">https://purl.imsglobal.org/caliper/Rating</a></dd>
+    <dt>Term</dt>
+    <dd>Rating</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Rating</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
+        which <code>id</code> and <code>type</code> are required. <code>Rating</code> is also provisioned with
+        additional properties, <code>rater</code>, <code>rated</code>, <code>question</code>, <code>selections</code>,
+        and <code>comment</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>Rating</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>rater</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Person</code> who provided the <code>Rating</code>. The <code>rater</code> value MUST
+            be expressed either as an object or as a string corresponding to the rater’s IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>rated</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Entity</code> which received the rating. The <code>rated</code> value MUST be expressed either
+            as an object or as a string corresponding to the rated object's IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>question</td>
+        <td><a href="#entity-question">Question</a> | <a href=
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Question</code> used for the <code>Rating</code>. The <code>question</code>
+            value MUST be expressed either as an object or as a string corresponding to the question's IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>selections</td>
+        <td>Array</td>
+        <td>An array of the values representing the rater's selected response.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>ratingComment</td>
+        <td><a href="#entity-comment">Comment</a> | <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Comment</code> left with the <code>Rating</code>. The <code>ratingComment</code> value MUST be expressed either as an
+            object or as a string corresponding to the comment’s IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

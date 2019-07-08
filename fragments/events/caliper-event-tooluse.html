@@ -1,0 +1,85 @@
+<h3>ToolUseEvent</h3>
+<img height="100%" width="100%" src="assets/caliper-tool_use_event_used_progress-v1p2.png" alt="ToolUseEvent">
+
+<p>A Caliper <a href="#ToolUseEvent">ToolUseEvent</a> models a <a href="#Person">Person</a> using a learning
+    tool in a way that the tool's creators have
+    determined is an indication of a learning interaction. A <a href="#ToolUseEvent">ToolUseEvent</a> may
+    include information on the aggregate time
+    or progress the <a href="#Person">Person</a> has made in the learning tool.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/ToolUseEvent">https://purl.imsglobal.org/caliper/ToolUseEvent</a></dd>
+    <dt>Term</dt>
+    <dd>ToolUseEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd>The <code>ToolUseEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>, of
+        which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
+        described below:
+    </dd>
+</dl>
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ToolUseEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value
+            MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
+            value range is limited to the <a href="#actions">Used</a> action only.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that constitutes the <code>object</code>
+            of the interaction. The <code>object</code> value MUST be expressed either as an object or as a
+            string corresponding to the object’s <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td>A <a href="#SoftwareApplication">SoftwareApplication</a> that represents a particular capability or
+            feature provided by the <code>object</code>. The <code>target</code> value MUST be expressed either
+            as an object or as a string corresponding to the target entity’s <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>generated</td>
+        <td><a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a>
+        </td>
+        <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
+            as a result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
+            as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,107 @@
+<h4>Tool Launch Profile</h4>
+
+<img height="100%" width="100%" src="assets/caliper-profile_tool_launch.png" alt="Tool Launch Profile"/>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ToolLaunchProfile">
+        http://purl.imsglobal.org/caliper/ToolLaunchProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ToolLaunchProfile</dd>
+</dl>
+
+<p>The Caliper Tool Launch Profile is intended to capture the utilization of learning tools from a centralized location,
+    such as an LTI Tool Platform (often an LMS). As such, it is distinct from the Caliper
+    <a href="#profile-tooluse">Tool Use Profile</a>, also defined in this specification, which captures tool usage as
+    reported by the individual tools themselves (i.e. decentralized capture).</p>
+
+<p>The Tool Launch and Tool Use Profiles have their own unique set of advantages; the primary advantage of the Tool
+    Launch Profile is that it only requires a single sensor to be deployed (typically in an LMS), whereas the Tool Use
+    Profile requires all tools being measured to implement the Caliper sensor API.</p>
+
+<p>Data captured using the Tool Launch Profile can be used to determine which tools were launched within a given
+    timeframe, by whom and in what context. However, it can not, as opposed to the Tool Use Profile, provide
+    a measure of whether the user actually interacted with the tool in a manner that the application determines to be
+    its “intended use for learning”.</p>
+
+<p>In certain deployment contexts, using both the Tool Launch and the Tool Use Profiles may be advantageous, as, for
+    example, it allows the tracking of the number of tool launches that do <em>not</em> lead to interactions
+    corresponding to the "intended use for learning".</p>
+
+<p>The Tool Launch Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I would like to know which of the available tools are launched the most and the least.</li>
+    <li>As an administrator, I would like to know which of the available tools signal workflow completion with an
+        explicit return.</li>
+    <li>As an administrator, I would like to know which courses utilize certain tools the most and the least.</li>
+    <li>As a researcher, I would like to know if there are demographic variances in the utilization of the available
+        tools.</li>
+    <li>As a researcher, I would like to know if there are temporal variances in the utilization of the available
+        tools.</li>
+</ul>
+
+<p>The Tool Launch Profile defines a <a href="#ToolLaunchEvent">ToolLaunchEvent</a> for describing a
+    <a href="#Person">Person</a> launching a tool from a platform or returning to a platform after completing a
+    tool session. Two actions are described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+            <th>target</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#ToolLaunchEvent">ToolLaunchEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-launched">Launched</a></td>
+            <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#Link">Link</a> | <a href="#LtiLink">LtiLink</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ToolLaunchEvent">ToolLaunchEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-returned">Returned</a></td>
+            <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#Link">Link</a> | <a href="#LtiLink">LtiLink</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#ToolLaunchEvent">TooLaunchEvent</a> governed by the Tool Launch Profile the following
+rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>A <code>generated</code> <a href=#DigitalResource">DigitalResource</a> or, more likely,
+        one of its specific subtypes MAY be expressed if the workflow includes a resource intended for the receiver of
+        the workflow message associated with this event (for example, a file, or image, or LTI resource link for the
+        receiver to embed within its system).</li>
+    <li>For a <a href="#Launched">Launched</a> action a <code>target</code> MAY be specified to record the fully
+        qualified entry-point <a href="#urlDef">URL</a> on the external tool to which the platform launches.</li>
+    <li>For a <a href="#action-returned">Returned</a> action a <code>target</code> MAY be specified to record the fully
+        qualified entry-point <a href="#urlDef">URL</a> on the platform to which the tool is redirecting the
+        workflow after user activity from the original launch finishes (this could be the
+        <code>launch_presentation_return_url</code> in the case of a simple LTI Resource Link request; it could also
+        be the <code>deep_link_return_url</code> in the case of a Deep Linking Response message).</li>
+    <li>For a <a href="#Launched">Launched</a> action, the <code>federatedSession</code> MUST be referenced. Workflows
+        that include a specific "return message" component (e.g. LTI Deep Linking response messages)
+        SHOULD provide the <code>federatedSession</code> and SHOULD populate its <code>messageParameters</code>
+        property with the message parameters in the response message.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

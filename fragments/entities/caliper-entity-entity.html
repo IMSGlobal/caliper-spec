@@ -1,0 +1,193 @@
+<h3>Entity</h3>
+
+<img height="100%" width="100%" src="assets/caliper-entities-v2.png" alt="Caliper Entity"/>
+
+<p>A Caliper <a href="#Entity">Entity</a> is a generic type that represents objects that participate in learning-related
+    activities. A variety of <a href="#Entity">Entity</a> subtypes have been defined in order to better describe people,
+    groups, organizations, digital content, courses, software applications, and other objects that constitute the
+    "stuff" of a Caliper <a href="#Event">Event</a>. Each <a href="#Entity">Entity</a> is provisioned with a modest
+    set of properties or attributes that support description and discovery.</p>
+
+<p>Caliper permits <a href="#Entity">Entity</a> values to be expressed either as an object or as a string corresponding
+    to the resource's <a href="#iriDef">IRI</a>. If the <a href="#Entity">Entity</a> is expressed as an object, both the
+    <code>id</code> and <code>type</code> properties MUST be specified. The <code>type</code> value is a string that
+    MUST match the term specified for the <a href="#Entity">Entity</a> by the Caliper information model (e.g. "Person").
+    The <code>id</code> value is a string that MUST be expressed as an <a href="#iriDef">IRI</a>.  The 
+    <a href="#iriDef">IRI</a> MUST be valid and unique.  The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, 
+    i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.  
+    A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided although care should be
+    taken when employing a location-independent identifier since it precludes the possibility of utilizing it to
+    retrieve machine-readable data over HTTP.
+</p>
+
+<p>Other <a href="#Entity">Entity</a> properties are descriptive in nature, or link the <a href="#Entity">Entity</a>
+    to other related entities. Certain <a href="#Entity">Entity</a> subtypes like <a href="#Annotation">Annotation</a>,
+    <a href="#DigitalResource">DigitalResource</a>, <a href="#Message">Message</a> or
+    <a href="#Organization">Organization</a> are provisioned with additional properties that allow for a more
+    complete representation of the object.  An <code>extensions</code> property is also defined so that implementers
+    can add custom attributes not described by the model. Optional properties can be ignored when describing an
+    <a href="#Entity">Entity</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/Entity">https://purl.imsglobal.org/caliper/Entity</a></dd>
+    <dt>Term</dt>
+    <dd>Entity</dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#Agent">Agent</a>,
+        <a href="#AggregateMeasure">AggregateMeasure</a>,
+        <a href="#aggregateMeasureCollection">AggregateMeasureCollection</a>,
+        <a href="#Annotation">Annotation</a>,
+        <a href="#Assessment">Assessment</a>,
+        <a href="#AssessmentItem">AssessmentItem</a>,
+        <a href="#AssignableDigitalResource">AssignableDigitalResource</a>,
+        <a href="#Attempt">Attempt</a>,
+        <a href="#BookmarkAnnotation">BookmarkAnnotation</a>,
+        <a href="#Chapter">Chapter</a>,
+        <a href="#Collection">Collection</a>,
+        <a href="#Comment">Comment</a>,
+        <a href="#CourseOffering">CourseOffering</a>,
+        <a href="#CourseSection">CourseSection</a>,
+        <a href="#DateTimeQuestion">DateTimeQuestion</a>,
+        <a href="#DateTimeResponse">DateTimeResponse</a>,
+        <a href="#DigitalResource">DigitalResource</a>,
+        <a href="#DigitalResourceCollection">DigitalResourceCollection</a>,
+        <a href="#Document">Document</a>,
+        <a href="#FillinBlankResponse">FillinBlankResponse</a>,
+        <a href="#Frame">Frame</a>,
+        <a href="#Forum">Forum</a>,
+        <a href="#Group">Group</a>,
+        <a href="#HighlightAnnotation">HighlightAnnotation</a>,
+        <a href="#ImageObject">ImageObject</a>,
+        <a href="#LearningObjective">LearningObjective</a>,
+        <a href="#LikertScale">LikertScale</a>,
+        <a href="#link">Link</a>,
+        <a href="#LtiLink">LtiLink</a>,
+        <a href="#LtiSession">LtiSession</a>,
+        <a href="#MediaLocation">MediaLocation</a>,
+        <a href="#MediaObject">MediaObject</a>,
+        <a href="#Membership">Membership</a>,
+        <a href="#Message">Message</a>,
+        <a href="#MultipleChoiceResponse">MultipleChoiceResponse</a>,
+        <a href="#MultipleResponseResponse">MultipleResponseResponse</a>,
+        <a href="#MultiselectQuestion">MultiselectQuestion</a>,
+        <a href="#MultiselectResponse">MultiSelectResponse</a>,
+        <a href="#NumericScale">NumericScale</a>,
+        <a href="#OpenEndedQuestion">OpenEndedQuestion</a>,
+        <a href="#OpenEndedResponse">OpenEndedResponse</a>,
+        <a href="#Organization">Organization</a>,
+        <a href="#Page">Page</a>,
+        <a href="#Person">Person</a>,
+        <a href="#Query">Query</a>,
+        <a href="#Question">Question</a>,
+        <a href="#Questionnaire">Questionnaire</a>,
+        <a href="#QuestionnaireItem">QuestionnaireItem</a>,
+        <a href="#Rating">Rating</a>,
+        <a href="#RatingScaleQuestion">RatingScaleQuestion</a>,
+        <a href="#RatingScaleResponse">RatingScaleResponse</a>,
+        <a href="#Response">Response</a>,
+        <a href="#Result">Result</a>,
+        <a href="#Scale">Scale</a>,
+        <a href="#Score">Score</a>,
+        <a href="#SearchResponse">SearchResponse</a>,
+        <a href="#SelectTextResponse">SelectTextResponse</a>,
+        <a href="#Session">Session</a>,
+        <a href="#SharedAnnotation">SharedAnnotation</a>,
+        <a href="#SoftwareApplication">SoftwareApplication</a>
+        <a href="#Survey">Survey</a>,
+        <a href="#SurveyInvitation">SurveyInvitation</a>,
+        <a href="#TagAnnotation">TagAnnotation</a>,
+        <a href="#Thread">Thread</a>,
+        <a href="#TrueFalseResponse">TrueFalseResponse</a>,
+        <a href="#VideoObject">VideoObject</a>,
+        <a href="#WebPage">WebPage</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd>Like an <a href="#Event">Event</a>, an <a href="#Entity">Entity</a> is considered semi-structured data
+        consisting of an unordered set of key:value pairs.  The base set of <a href="#Entity">Entity</a> properties
+        is listed below. Each property MUST be referenced only once.  When representing an <a href="#Entity">Entity</a>
+        as an object the <code>id</code> and <code>type</code> properties are required; all other properties are
+        optional and need not be referenced when describing an <a href="#Entity">Entity</a>.  Custom attributes not
+        described by the model MAY be included but MUST be added to the <code>extensions</code> property as a map of
+        key:value pairs.  Properties with a value of *null* or empty SHOULD be excluded prior to serialization.
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td><a href="#iriDef">IRI</a></td>
+        <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and
+            persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a
+            representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme
+            MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either
+            unavailable or inappropriate.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the <a href="#Entity">Entity</a>
+            in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a> document.
+            For a generic <a href="#Entity">Entity</a> set the <code>type</code> value to the term <em>Entity</em>.  
+            If a subtype of <a href="#Entity">Entity</a> is created, set the type to the <a href="#termDef">Term</a> 
+            corresponding to the subtype utilized, e.g., <a href="#Person">Person</a>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string</td>
+        <td> A string value comprising a word or phrase by which the <a href="#Entity">Entity</a> is known.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>A string value comprising a brief, written representation of the <a href="#Entity">Entity</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>dateCreated</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <a href="#Entity">Entity</a> was created.  The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>dateModified</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <a href="#Entity">Entity</a> was last changed or updated.  The value MUST be expressed using the
+            format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>otherIdentifiers</td>
+        <td>Array</td>
+        <td>An ordered collection of <a href="#SystemIdentifier">SystemIdentifier</a> entities that represent
+            other identifiers for this <code>Entity</code> that are known to the <a href="#Sensor">Sensor</a>.
+            Each array item MUST be expressed either as an object or as a string corresponding to the
+            item's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>extensions</td>
+        <td>Object</td>
+        <td>A map of additional attributes not defined by the model MAY be
+            specified for a more concise representation of the <a href="#Entity">Entity</a>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

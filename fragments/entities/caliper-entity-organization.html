@@ -1,0 +1,62 @@
+<h3>Organization</h3>
+<p>A Caliper <code>Organization</code> represents a formal collection of people organized for some common
+    educational, social or administrative purpose. An <code>Organization</code> can act as an
+    <a href="#Agent">Agent</a>. It can be linked both to a parent <code>Organization</code> and to
+    its <code>members</code>.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Organization">http://purl.imsglobal.org/caliper/Organization</a></dd>
+    <dt>Term</dt>
+    <dd>Organization</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Agent">Agent</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#CourseOffering">CourseOffering</a>,
+        <a href="#CourseSection">CourseSection</a>,
+        <a href="#Group">Group</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>Organization</code> inherits all properties defined by its supertype <a href="#Agent">Agent</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Organization</code> is also provisioned
+        with two additional properties: <code>subOrganizationOf</code> and <code>members</code>. Additional type
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Organization</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>subOrganizationOf</td>
+        <td><a href="#Organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+        <td>The parent <code>Organization</code> of this <code>Organization</code>. The <code>subOrganizationOf</code>
+            value MUST be expressed either as an object or as a string corresponding to the parent organization's
+            <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>members</td>
+        <td>Array</td>
+        <td>An ordered collection of <a href="#Agent">Agent</a> entities. Each array item MUST be expressed either as an
+            object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

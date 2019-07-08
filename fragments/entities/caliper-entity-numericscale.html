@@ -1,0 +1,70 @@
+<h3>NumericScale</h3>
+<p>A Caliper <code>NumericScale</code> models a numeric scale used to capture some rating.</p>
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/NumericScale">
+        https://purl.imsglobal.org/caliper/NumericScale</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>NumericScale</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Scale">Scale</a></dd>
+    <dt>Properties</dt>
+    <dd><code>NumericScale</code> inherits all properties defined by its supertype <a href="#Scale">Scale</a>,
+        of which <code>id</code> and <code>type</code> are required.
+        <code>NumericScale</code> is also provisioned with the additional properties <code>minValue</code>,
+        <code>minLabel</code>, <code>maxValue</code>, <code>maxLabel</code>, and <code>valueStep</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>NumericScale</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>minValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the minimum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>minLabel</td>
+        <td>string</td>
+        <td>The label for the minimum value.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxValue</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the maximum value of the <code>NumericScale</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxLabel</td>
+        <td>string</td>
+        <td>The label for the maximum value.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>step</td>
+        <td>decimal</td>
+        <td>Indicates the decimal step used for determining the options between the minimum and maximum values.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

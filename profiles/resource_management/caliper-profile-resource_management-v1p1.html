@@ -10,7 +10,7 @@
             shortName: "caliper-resource-management",
             specStatus: "IMS Base Document",
             specDate: "30 June 2019",
-            specVersion: "1.1",
+            specVersion: "1.1-extension",
             specNature: "normative",
             specType: "spec",
             contributors: [
@@ -34,7 +34,7 @@
 <body>
 <section id="abstract">
     <h2>Abstract</h2> This document extends Caliper 1.1 by defining a Resource Management Profile that
-    describes actions related to managing entities.
+    describes actions related to managing digital resources.
 </section>
 
 <section>
@@ -45,36 +45,39 @@
         <img height="100%" width="100%" src="./assets/caliper-profile_resource_management.png"
              alt="Resource Management Profile"/>
 
-        <p>The Caliper Resource Management Profile models a <code>Person</code>
-            managing an <code>Entity</code>.
-            The profile provides a <a href="#event-resourceManagement">ResourceManagementEvent</a> with several actions
-            describing how the
-            resource is being managed: <a href="#action-archived">Archived</a>,
-            <a href="#action-copied">Copied</a>, <a href="#action-created">Created</a>,
-            <a href="#action-deleted">Deleted</a>, <a href="#action-described">Described</a>,
-            <a href="#action-modified">Modified</a>, <a href="#action-published">Published</a>,
-            <a href="#action-restored">Restored</a>, <a href="#action-retrieved">Retrieved</a>,
+        <p>The Caliper Resource Management Profile models a <a href="Person">Person</a>
+            managing a <a href="#DigitalResource">DigitalResource</a>. The profile provides a
+            <a href="#ResourceManagementEvent">ResourceManagementEvent</a> with several actions
+            describing how the resource is being managed:
+            <a href="#action-archived">Archived</a>,
+            <a href="#action-copied">Copied</a>,
+            <a href="#action-created">Created</a>,
+            <a href="#action-deleted">Deleted</a>,
+            <a href="#action-described">Described</a>,
+            <a href="#action-downloaded">Downloaded</a>,
+            <a href="#action-modified">Modified</a>,
+            <a href="#action-printed">Printed</a>,
+            <a href="#action-published">Published</a>,
+            <a href="#action-restored">Restored</a>,
+            <a href="#action-retrieved">Retrieved</a>,
+            <a href="#action-saved">Saved</a>,
+            <a href="#action-uploaded">Uploaded</a>,
             and <a href="#action-unpublished">Unpublished</a>.</p>
     </section>
 
-    <section class="informative" id="user-stories">
+    <section id="user-stories" class="informative">
         <h3>User Stories</h3>
+
         <p>The Resource Management Profile supports the following learner-centric user stories:</p>
-        <table>
-            <tr>
-                <td>As a content developer, I would like to measure the interval between resource availability and
-                    learner engagement with learning resources in order to gain insights into both the administrative
-                    impact on the learning process and the timing decisions of learners who are expected to ingest the
-                    materials.
-                </td>
-            </tr>
-            <tr>
-                <td>As an instructor, I would like to measure engagement between different revisions of learning
-                    resources
-                    over time in order to help determine what content is most effective.
-                </td>
-            </tr>
-        </table>
+
+        <ul>
+            <li>As a content developer, I would like to measure the interval between resource availability and
+                learner engagement with learning resources in order to gain insights into both the administrative
+                impact on the learning process and the timing decisions of learners who are expected to ingest the
+                materials.</li>
+            <li>As an instructor, I would like to measure engagement between different revisions of learning
+                resources over time in order to help determine what content is most effective.</li>
+        </ul>
     </section>
 
     <section id="terminology">
@@ -128,122 +131,9 @@
     <h2>Events</h2>
 
     <p>The Resource Management Profile is provisioned with a single a <code>ResourceManagementEvent</code> for
-        describing the management of entities.</p>
+        describing the management of digital resources.</p>
 
-    <section id="event-resourceManagement">
-        <h3>ResourceManagementEvent</h3>
-
-        <!-- TODO: add Resource Management event picture -->
-        <img height="100%" width="100%" src="./assets/caliper-resource_management_event_created-v1p2.png"
-             alt="ResourceManagementEvent"/>
-
-        <p>A Caliper <code>ResourceManagementEvent</code> models a <code>Person</code>
-            managing an <code>Entity</code>.
-        </p>
-
-        <dl>
-            <dt>Term</dt>
-            <dd>ResourceManagementEvent</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/ResourceManagementEvent</dd>
-            <dt>Supertype</dt>
-            <dd><a href=
-                           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#eventDef"
-            >Event</a></dd>
-            <dt>Properties</dt>
-            <dd>The <code>ResourceManagementEvent</code> inherits all properties defined by its supertype
-                <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#event"
-                >Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
-                <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
-                restrictions are described below:
-            </dd>
-        </dl>
-
-        <table class="data">
-            <thead>
-            <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Disposition</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>type</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The string value MUST be set to <em>ResourceManagementEvent</em>.</td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>actor</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
-                >Person</a> | <a href=
-                    "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                >IRI</a></td>
-                <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST
-                    be expressed either as an object or as a string corresponding to the actor's IRI.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>action</td>
-                <td><a href=
-                               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
-                >Term</a></td>
-                <td>The action or predicate that binds the <code>actor</code> or subject to the
-                    <code>object</code>. The value range is limited to the
-                    <a href="#action-archived">Archived</a>,
-                    <a href="#action-copied">Copied</a>,
-                    <a href="#action-created">Created</a>,
-                    <a href="#action-deleted">Deleted</a>,
-                    <a href="#action-described">Described</a>,
-                    <a href="#action-downloaded">Downloaded</a>,
-                    <a href="#action-modified">Modified</a>,
-                    <a href="#action-printed">Printed</a>,
-                    <a href="#action-published">Published</a>,
-                    <a href="#action-restored">Restored</a>,
-                    <a href="#action-retrieved">Retrieved</a>,
-                    <a href="#action-saved">Saved</a>,
-                    <a href="#action-unpublished">Unpublished</a>,
-                    and <a href="#action-uploaded">Uploaded</a> actions only.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>object</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-                >DigitalResource</a> | <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                >IRI</a></td>
-                <td>The <code>DigitalResource</code> that is being managed. The
-                    <code>object</code> value MUST be expressed either as an object or as a string
-                    corresponding to the resource's IRI.
-                </td>
-                <td>Required</td>
-            </tr>
-            <tr>
-                <td>generated</td>
-                <td><a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#digitalResource"
-                >DigitalResource</a> | <a href=
-                   "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
-                >IRI</a></td>
-                <td>The <code>DigitalResource</code> that was generated by the
-                    <a href="#action-copied">Copied</a> action. The <code>object</code> value
-                    MUST be expressed either as an object or as a string corresponding to the
-                    resource's IRI.
-                </td>
-                <td>Required (<a href="#action-copied">Copied</a> action only)</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
+    <section id="ResourceManagementEvent" data-include="../../fragments/events/caliper-event-resourcemanagement.html"></section>
 </section>
 
 <section id="actions">
@@ -251,242 +141,20 @@
 
     <p>The Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> supports the following actions:</p>
 
-    <section id="action-archived">
-        <h3>Archived</h3>
-        The <em>Archived</em> action signals that a resource has been put into long-term storage.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Archived</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Archived</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201387292-v" rel="nofollow">Put into
-              an archive</a>. Inverse of <a href="#action-restored">Restored</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-copied">
-        <h3>Copied</h3>
-        The <em>Copied</em> action signals that a resource has been duplicated.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Copied</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Copied</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201697776-v" rel="nofollow">Make a
-              replica of</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-created">
-        <h3>Created</h3>
-        The <em>Created</em> action signals that a resource has been brought into existence.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Created</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Created</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201620211-v" rel="nofollow">Make or
-              cause to be or to become</a>. Inverse of <a href="#action-deleted">Deleted</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-deleted">
-        <h3>Deleted</h3>
-        The <em>Deleted</em> action signals that a resource has been removed permanently from
-        a system.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Deleted</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Deleted</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/201001860-v" rel="nofollow">Wipe out
-              digitally</a>. Inverse of <a href="#action-created">Created</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-described">
-        <h3>Described</h3>
-        The <em>Described</em> action signals that a description of a resource has been provided.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Described</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Described</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200989103-v" rel="nofollow">Give a
-              description of</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-downloaded">
-        <h3>Downloaded</h3>
-        The <em>Downloaded</em> action signals that a copy of the resource has been transferred from
-        a central or primary system to a remote or secondary system.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Downloaded</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Downloaded</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/02233704-v" rel="nofollow">Transfer a
-              file or program from a central computer to a smaller computer or to a computer at a
-              remote location</a>. Inverse of <a href="#action-uploaded">Uploaded</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-modified">
-        <h3>Modified</h3>
-        The <em>Modified</em> action signals that a resource has been altered or changed.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Modified</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Modified</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/202149298-v" rel="nofollow">Cause
-              to change; make different; cause a transformation</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-printed">
-        <h3>Printed</h3>
-        The <em>Printed</em> action signals that a mechanical process has been invoked in order
-        to produce a printed representation of a resource.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Printed</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Printed</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/01747945-v" rel="nofollow">
-              Reproduce by printing</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-published">
-        <h3>Published</h3>
-        The <em>Published</em> action signals that a resource is now available for public
-      consumption.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Published</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Published</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">Prepare
-              and issue for public distribution or sale</a>. Inverse of
-              <a href="#action-unpublished">Unpublished</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-restored">
-        <h3>Restored</h3>
-        The <em>Restored</em> action signals that an archived resource has been retrieved from
-        long-term storage.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Restored</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Restored</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/202558146-v" rel="nofollow">Return
-              to its original or usable and functioning condition</a>.
-              Inverse of <a href="#action-archived">Archived</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-retrieved">
-        <h3>Retrieved</h3>
-        The <em>Retrieved</em> action signals that a resource has been accessed or obtained.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Retrieved</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Retrieved</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/202253616-v" rel="nofollow">Obtain
-              or retrieve from a storage device; as of information on a computer</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-saved">
-        <h3>Saved</h3>
-        The <em>Saved</em> action signals that the current state of a resource has been stored for
-        future use.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Saved</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Saved</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/00998886-v" rel="nofollow">Record
-              data on a computer</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-unpublished">
-        <h3>Unpublished</h3>
-        The <em>Unpublished</em> action signals that a published resource has been rendered
-      unavailable for public consumption.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Unpublished</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Unpublished</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/200969657-v" rel="nofollow">Remove
-              from public distribution or sale</a>. Inverse of
-              <a href="#action-published">Published</a>.
-            </dd>
-        </dl>
-    </section>
-
-    <section id="action-uploaded">
-        <h3>Uploaded</h3>
-      The <em>Uploaded</em> action signals that a copy of the resource has been transferred from
-      a remote or secondary system to a central or primary system.
-
-        <dl>
-            <dt>Term</dt>
-            <dd>Uploaded</dd>
-            <dt>IRI</dt>
-            <dd>https://purl.imsglobal.org/caliper/actions/Uploaded</dd>
-            <dt>WordNet&reg; Gloss</dt>
-            <dd><a href="http://wordnet-rdf.princeton.edu/wn31/02233898-v" rel="nofollow">Transfer
-              a file or program to a central computer from a smaller computer or a computer at a
-              remote location</a>. Inverse of <a href="#action-downloaded">Downloaded</a>.
-            </dd>
-        </dl>
-    </section>
+    <section id="action-archived" data-include="../../fragments/actions/caliper-action-archived.html"></section>
+    <section id="action-copied" data-include="../../fragments/actions/caliper-action-copied.html"></section>
+    <section id="action-created" data-include="../../fragments/actions/caliper-action-created.html"></section>
+    <section id="action-deleted" data-include="../../fragments/actions/caliper-action-deleted.html"></section>
+    <section id="action-described" data-include="../../fragments/actions/caliper-action-described.html"></section>
+    <section id="action-downloaded" data-include="../../fragments/actions/caliper-action-downloaded.html"></section>
+    <section id="action-modified" data-include="../../fragments/actions/caliper-action-modified.html"></section>
+    <section id="action-printed" data-include="../../fragments/actions/caliper-action-printed.html"></section>
+    <section id="action-published" data-include="../../fragments/actions/caliper-action-published.html"></section>
+    <section id="action-restored" data-include="../../fragments/actions/caliper-action-restored.html"></section>
+    <section id="action-retrieved" data-include="../../fragments/actions/caliper-action-retrieved.html"></section>
+    <section id="action-saved" data-include="../../fragments/actions/caliper-action-saved.html"></section>
+    <section id="action-unpublished" data-include="../../fragments/actions/caliper-action-unpublished.html"></section>
+    <section id="action-uploaded" data-include="../../fragments/actions/caliper-action-uploaded.html"></section>
 </section>
 
 <section id="entities">
@@ -522,68 +190,15 @@
         <section class="informative">
             <h3>ResourceManagementEvent</h3>
 
-        <section class="informative">
-            <h3>Created</h3>
+            <section class="informative">
+                <h3>Created</h3>
 
-            <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
-                records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
+                <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
+                    records a <code>Person</code> creating a <code>DigitalResource</code>.</p>
 
-            <figure class="example">
-                <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "ResourceManagementEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Created",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Instructor" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figure class="example">
+                    <figcaption><code>ResourceManagementEvent</code> Created JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventResourceManagementCreated.json"></code></pre>
                 </figure>
             </section>
 
@@ -593,84 +208,9 @@
                 <p>Below is an example of a Caliper <a href="#event-resourceManagement">ResourceManagementEvent</a> that
                     records a <code>Person</code> generating a new copy of a <code>DigitalResource</code>.
 
-                    <figure class="example">
-                        <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension",
-  "id": "urn:uuid:0c81f804-62ee-4953-81c5-62d9579c4369",
-  "type": "ResourceManagementEvent",
-  "actor": {
-    "id": "https://example.edu/users/554433",
-    "type": "Person"
-  },
-  "action": "Copied",
-  "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1/syllabus.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-08-02T11:32:00.000Z"
-  },
-  "generated": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/2/syllabus_copy.pdf",
-    "type": "DigitalResource",
-    "name": "Course Syllabus (copy)",
-    "mediaType": "application/pdf",
-    "creators": [
-      {
-        "id": "https://example.edu/users/554433",
-        "type": "Person"
-      }
-    ],
-    "isPartOf": {
-      "id": "https://example.edu/terms/201801/courses/7/sections/1/resources/1",
-      "type": "DigitalResourceCollection",
-      "name": "Course Assets",
-      "isPartOf": {
-        "id": "https://example.edu/terms/201801/courses/7/sections/1",
-        "type": "CourseSection"
-      }
-    },
-    "dateCreated": "2018-11-15T10:05:00.000Z"
-  },
-  "eventTime": "2018-11-15T10:05:00.000Z",
-  "edApp": "https://example.edu",
-  "group": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1",
-    "type": "CourseSection",
-    "courseNumber": "CPS 435-01",
-    "academicSession": "Fall 2018"
-  },
-  "membership": {
-    "id": "https://example.edu/terms/201601/courses/7/sections/1/rosters/1",
-    "type": "Membership",
-    "member": "https://example.edu/users/554433",
-    "organization": "https://example.edu/terms/201601/courses/7/sections/1",
-    "roles": [ "Instructor" ],
-    "status": "Active",
-    "dateCreated": "2018-08-01T06:00:00.000Z"
-  },
-  "session": {
-    "id": "https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259",
-    "type": "Session",
-    "startedAtTime": "2018-11-15T10:00:00.000Z"
-  }
-}</code></pre>
+                <figure class="example">
+                    <figcaption><code>ResourceManagementEvent</code> Copied JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p1/caliperEventResourceManagementCopied.json"></code></pre>
                 </figure>
             </section>
         </section>

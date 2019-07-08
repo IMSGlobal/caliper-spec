@@ -1,0 +1,87 @@
+<h3>SearchResponse</h3>
+<p>A Caliper <code>SearchResponse</code> models a search engine response to an <code>actor</code>
+    querying a searchable resource.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/SearchResponse">
+        https://purl.imsglobal.org/caliper/SearchResponse</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SearchResponse</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>SearchResponse</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
+        which <code>id</code> and <code>type</code> are required. <code>SearchResponse</code> is also provisioned with
+        five additional properties: <code>searchProvider</code>, <code>searchTarget</code>, <code>query</code>,
+        <code>searchResultsItemCount</code>, and <code>searchResults</code>. Additional type restrictions are
+        described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the term <em>SearchResponse</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>searchProvider</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >SoftwareApplication</a> | <a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>SoftwareApplication</code> that is the provider of this
+            <code>SearchResponse</code>. The <code>searchProvider</code> value MUST be expressed
+            either as an object or as a string corresponding to the resources's IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>searchTarget</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Entity</code>, typically a <code>DigitalResource</code> or
+            <code>SoftwareApplication</code>, that is the target of the search. The
+            <code>resourceSearched</code> value MUST be expressed either as an object or as a
+            string corresponding to the resources's IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>query</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#query"
+        >Query</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Query</code> submitted by the <code>actor</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>searchResultsItemCount</td>
+        <td><a href="#string">integer</a></td>
+        <td>A total count of <code>searchResults</code> returned. If the <code>Query</code>
+            submitted returned no results the count equal to zero (0).
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

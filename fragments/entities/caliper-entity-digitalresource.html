@@ -1,0 +1,116 @@
+<h3>DigitalResource</h3>
+
+<p>A Caliper <code>DigitalResource</code> is a generic type that represents digital content. Utilize
+    <code>DigitalResource</code> only if no suitable subtype exists to represent the resource being described.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/DigitalResource">https://purl.imsglobal.org/caliper/DigitalResource</a></dd>
+    <dt>Term</dt>
+    <dd>DigitalResource</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#AssignableDigitalResource">AssignableDigitalResource</a>,
+        <a href="#Chapter">Chapter</a>,
+        <a href="#DigitalResourceCollection">DigitalResourceCollection</a>,
+        <a href="#Document">Document</a>,
+        <a href="#Frame">Frame</a>,
+        <a href="#LtiLink">LtiLink</a>,
+        <a href="#MediaLocation">MediaLocation</a>,
+        <a href="#MediaObject">MediaObject</a>,
+        <a href="#Message">Message</a>,
+        <a href="#Page">Page</a>,
+        <a href="#SurveyInvitation">SurveyInvitation</a>,
+        <a href="#WebPage">WebPage</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>DigitalResource</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
+        which <code>id</code> and <code>type</code> are required. <code>DigitalResource</code> is also provisioned with
+        the additional properties <code>creators</code>, <code>mediaType</code>, <code>keywords</code>,
+        <code>learningObjectives</code>, <code>isPartOf</code>, <code>datePublished</code>, and <code>version</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>DigitalResource</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>storageName</td>
+        <td>string</td>
+        <td>The name of resource when stored in a file system.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>creators</td>
+        <td>Array</td>
+        <td>An ordered collection of <a href="#Agent">Agent</a> entities, typically of type <a href="#Person">Person</a>,
+            that are responsible for bringing resource into being. Each array item MUST be expressed either as an
+            object or as a string corresponding to the item's IRI.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>mediaType</td>
+        <td>string</td>
+        <td>A string value drawn from the list of <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">
+            IANA</a> approved media types and subtypes that identifies the file format of the resource.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more string values that represent tags or labels used to identify the
+            resource.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>learningObjectives</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more <a href="#LearningObjective">LearningObjective</a> entities that
+            describe what a learner is expected to comprehend or accomplish after engaging with the resource. Each
+            array item MUST be expressed either as an object or as a string corresponding to the item's IRI.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>isPartOf</td>
+        <td><a href="#Entity">Entity</a> | <a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>A related <a href="#Entity">Entity</a> that includes or incorporates the resource as a part of its whole.
+            The <code>isPartOf</code> value MUST be expressed either as an object or as a string corresponding to the
+            associated entity's IRI.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>datePublished</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that provides the publication date of
+            the resource. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no
+            offset specified.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>version</td>
+        <td>string</td>
+        <td>A string value that designates the current form or version of the resource.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

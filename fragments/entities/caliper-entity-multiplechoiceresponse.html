@@ -1,0 +1,46 @@
+<h3>MultipleChoiceResponse</h3>
+<p>A Caliper <code>MultipleChoiceResponse</code> represents a response to an
+    <a href="#AssessmentItem">AssessmentItem</a> in which a respondent is asked to provide the best possible
+    answer from a list of choices.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/MultipleChoiceResponse">
+        http://purl.imsglobal.org/caliper/MultipleChoiceResponse</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>MultipleChoiceResponse</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Response">Response</a></dd>
+    <dt>Properties</dt>
+    <dd><code>MultipleChoiceResponse</code> inherits all properties defined by its supertype
+        <a href="#Response">Response</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>MultipleChoiceResponse</code> is also provisioned with the optional property <code>value</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MultipleChoiceResponse</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>string</td>
+        <td>A string value that represents the selected option.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

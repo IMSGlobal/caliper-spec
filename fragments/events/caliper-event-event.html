@@ -1,0 +1,228 @@
+<h3>Event</h3>
+
+<img height="100%" width="100%" src="assets/caliper-event_model_no_title-v1p2.png" alt="Caliper Event">
+
+<p>A Caliper <code>Event</code> is a generic type that describes the relationship established between an
+    <code>action</code> and an <code>object</code>, formed as a result of a purposeful
+    <a href="#actions">action</a> undertaken by the <code>action</code> at a particular moment in time and within a
+    given learning context. The <code>Event</code> properties <code>action</code>, <code>action</code> and
+    <code>object</code> form a compact data structure that resembles an <a href="#rdf">RDF</a> triple linking a subject
+    to an object via a predicate. A learner starting an assessment, annotating a reading, pausing a video, or
+    posting a message to a forum, are examples of learning activities that Caliper models as events.</p>
+
+<p>Caliper defines a number of <code>Event</code> subtypes, each scoped to a particular activity domain and
+    distinguishable by a <code>type</code> attribute. The <code>type</code> value is a string that MUST match the
+    <a href="#termDef">Term</a> specified for the <code>Event</code> by the Caliper information model
+    (e.g. "MessageEvent"). Each <code>Event</code> instance is assigned a 128-bit long universally unique
+    identifier (UUID) formatted as a <a href="#urnDef">URN</a> per <a href="#rfc4122">RFC 4122</a>, which describes
+    a <a href="#urnDef">URN</a> namespace for <a href="#uuidDef">UUIDs</a>.</p>
+
+<p>The information model also seeks to describe the learning environment or context in which a learning
+    activity is situated. Group affiliation, membership roles and status, recent navigation history,
+    supporting technology and session information can all be optionally represented. An <a href="#Entity">Entity</a>
+    generated as a result of the interaction between an <code>action</code> and an <code>object</code> can also be described;
+    annotating a piece of digital content and producing an <a href="#Annotation">Annotation</a> is one such example.
+    An <code>extensions</code> property is also provided so that implementers can add custom attributes not described
+    by the model.</p>
+
+<p>Considered as a data structure an <code>Event</code> constitutes an unordered set of key:value pairs that is
+    semi-structured by design. Optional attributes can be ignored when describing an <code>Event</code>. An
+    <a href="#Entity">Entity</a> participating in an <code>Event</code> can be represented as an object or as a
+    string that corresponds to the <a href="#iriDef">IRI</a> defined for the <a href="#Entity">Entity</a>.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/Event">https://purl.imsglobal.org/caliper/Event</a></dd>
+    <dt>Term</dt>
+    <dd>Event</dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#AnnotationEvent">AnnotationEvent</a>,
+        <a href="#AssignableEvent">AssignableEvent</a>,
+        <a href="#AssessmentEvent">AssessmentEvent</a>,
+        <a href="#AssessmentItemEvent">AssessmentItemEvent</a>,
+        <a href="#FeedbackEvent">FeedbackEvent</a>,
+        <a href="#ForumEvent">ForumEvent</a>,
+        <a href="#GradeEvent">GradeEvent</a>,
+        <a href="#MediaEvent">MediaEvent</a>,
+        <a href="#MessageEvent">MessageEvent</a>,
+        <a href="#NavigationEvent">NavigationEvent</a>,
+        <a href="#QuestionnaireEvent">QuestionnaireEvent</a>,
+        <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a>,
+        <a href="#ResourceManagementEvent">ResourceManagementEvent</a>,
+        <a href="#SearchEvent">SearchEvent</a>,
+        <a href="#SessionEvent">SessionEvent</a>,
+        <a href="#SurveyEvent">SurveyEvent</a>,
+        <a href="#SurveyInvitationEvent">SurveyInvitationEvent</a>,
+        <a href="#ThreadEvent">ThreadEvent</a>,
+        <a href="#ToolLaunch">ToolLaunchEvent</a>,
+        <a href="#ToolUseEvent">ToolUseEvent</a>,
+        <a href="#ViewEvent">ViewEvent</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd>The base set of <code>Event</code> properties or attributes is listed below. Each property MUST be
+        referenced only once. The <code>id</code>, <code>type</code>, <code>action</code>, <code>action</code>,
+        <code>object</code> and <code>eventTime</code> properties are required; all other properties are optional.
+        Custom attributes not described by the model MAY be included but MUST be added to the <code>extensions</code>
+        property as a map of key:value pairs. Properties with a value of *null* or empty SHOULD be excluded prior
+        to serialization.
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td><a href="#uuidDef">UUID</a></td>
+        <td>The emitting application MUST provision the <code>Event</code> with a <a href="#uuidDef">UUID</a>.
+            A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated. The UUID MUST be expressed as a
+            <a href="#urnDef">URN</a> using the form "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt" per
+            <a href="#rfc4122">RFC 4122</a>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the <code>Event</code>
+            in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>document.
+            For a generic <code>Event</code> set the <code>type</code> to the string value <em>Event</em>.
+            If a subtype of <a href="#Entity">Entity</a> is created, set the <code>type</code> to the
+            <a href="#termDef">Term</a> corresponding to the subtype utilized, e.g., <em>NavigationEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>profile</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>A string value corresponding to the <a href="#termDef">Term</a> value defined for the
+            <a href="#profileDef">Profile</a> that governs the rules of interpretation for this <code>Event</code>.
+            The range of <a href="#profileDef">Profile</a> values is limited to the set of profiles described in this
+            specification and any profile extension specifications extending this specification. Only one
+            <code>profile</code> [Term](#termDef) value may be specified per <code>Event</code>. For a generic
+            <code>Event</code> set the <code>profile</code> property value to the string term
+            <em>GeneralProfile</em>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Agent">Agent</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Agent">Agent</a> who initiated the <code>Event</code>, typically though not always a
+            <a href="#Person">Person</a>. The <code>action</code> value MUST be expressed either as an object or as a
+            string corresponding to the actor's <a href="#iriDef">IRI</a>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The action or predicate that binds the actor or subject to the object. The <code>action</code> range is
+            limited to the set of <a href="#actions">actions</a> described in this specification or associated profiles
+            and may be further constrained by the chosen <code>Event</code> type. Only one <code>action</code>
+            <a href="#termDef">Term</a> may be specified per <code>Event</code>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Entity">Entity</a> that comprises the object of the interaction. The <code>object</code> value
+            MUST be expressed either as an object or as a string corresponding to the object's
+            <a href="#iriDef">IRI</a>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>eventTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that indicates when the
+            <code>Event</code> occurred. The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ
+            set to UTC with no offset specified.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>edApp</td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td>A <a href="#SoftwareApplication">SoftwareApplication</a> that constitutes the application context.
+            The <code>edApp</code> value MUST be expressed either as an object or as a string corresponding to the
+            edApp's <a href="#iriDef">IRI</a>. </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>generated</td>
+        <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+        <td>An <a href="#Entity">Entity</a> created or generated as a result of the interaction. The
+            <code>generated</code> value MUST be expressed either as an object or as a string corresponding to the
+            generated entity's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+        <td>An <a href="#Entity">Entity</a> that represents a particular segment or location within the
+            <code>object</code>. The <code>target</code> value MUST be expressed either as an object or as a string
+            corresponding to the target entity's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>referrer</td>
+        <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
+        <td>An <a href="#Entity">Entity</a> that represents the referring context. A
+            <a href="#SoftwareApplication">SoftwareApplication</a> or <a href="#DigitalResource">DigitalResource</a>
+            will typically constitute the referring context. The <code>referrer</code> value MUST be expressed
+            either as an object or as a string corresponding to the referrer's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>group</td>
+        <td><a href="#Organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+        <td>An <a href="#Organization">Organization</a> that represents the group context. The <code>group</code> value
+            MUST be expressed either as an object or as a string corresponding to the group's
+            <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>membership</td>
+        <td><a href="#Membership">Membership</a> | <a href="#iriDef">IRI</a></td>
+        <td>The relationship between the <code>action</code> and the <code>group</code> in terms of roles assigned and current status.
+            The <code>membership</code> value MUST be expressed either as an object or as a string corresponding to the
+            membership entity's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>session</td>
+        <td><a href="#Session">Session</a> | <a href="#iriDef">IRI</a></td>
+        <td>The current user <a href="#Session">Session</a>. The <code>session</code> value MUST be expressed either as an
+            object or as a string corresponding to the session's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>federatedSession</td>
+        <td><a href="#FederatedSession">federatedSession</a> | <a href="#iriDef">IRI</a></td>
+        <td>If the <code>Event</code> occurs within the context of an <a href="#ltiDef">LTI</a> platform launch,
+            the tool's <a href="#LtiSession">LtiSession</a> MAY be referenced. The <code>federatedSession</code>
+            value MUST be expressed either as an object or as a string corresponding to the federated session's
+            <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>extensions</td>
+        <td>Object</td>
+        <td>A map of additional attributes not defined by the model MAY be specified for a more concise
+            representation of the <code>Event</code>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="practice">
+    <p class="practicedesc">
+        <span class="practicelab">Reference the governing profile</span> Although <code>Event.profile</code> is
+        considered optional (in order to ensure backwards compatibility) <a href="#sensor">Sensors</a> SHOULD specify
+        for each <code>Event</code> the relevant <code>profile</code> string value in order to inform consumers
+        which profile governs the construction and interpretation of the <code>Event</code>.
+    </p>
+</div>

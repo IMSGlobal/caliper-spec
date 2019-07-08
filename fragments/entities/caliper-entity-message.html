@@ -1,0 +1,66 @@
+<h3>Message</h3>
+
+<p>A Caliper <code>Message</code> is a digital form of written communication sent to a recipient. A series of
+    messages may constitute a <a href="#Thread">Thread</a> if they share a common subject and are connected by a reply
+    or by date relationships.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Message">http://purl.imsglobal.org/caliper/Message</a></dd>
+    <dt>Term</dt>
+    <dd>Message</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#DigitalResource">DigitalResource</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Message</code> inherits all properties defined by its supertype
+        <a href="#DigitalResource">DigitalResource</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>Message</code> is also provisioned with
+        three additional optional properties: <code>replyTo</code>, <code>body</code>, and <code>attachments</code>.
+        Profile-specific type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Message</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>replyTo</td>
+        <td><a href="#message">Message</a> | <a href="#iriDef">IRI</a></td>
+        <td>A <code>Message</code> that represents the post to which this <code>Message</code> is
+            directed in reply. The <code>replyTo</code> value MUST be expressed either as an object or as a string
+            corresponding to the associated message's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>string</td>
+        <td>A string value comprising a plain-text rendering of the <code>body</code> content of the
+            <code>Message</code>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>attachments</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more <a href="#DigitalResource">DigitalResource</a> entities attached to
+            this <code>Message</code>. Each array item MUST be expressed either as an object or as a string
+            corresponding to the item's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

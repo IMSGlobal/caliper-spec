@@ -1,0 +1,84 @@
+<h3>Grading Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_grading.png" alt="Grading Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/GradingProfile">
+        http://purl.imsglobal.org/caliper/GradingProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>GradingProfile</dd>
+</dl>
+
+<p>The Caliper Grading Profile models grading activities performed by an <a href="#Agent">Agent</a>,
+    typically a <a href="#Person">Person</a> or a <a href="#SoftwareApplication">SoftwareApplication</a>.
+    Grading a learner's <a href="#Attempt">Attempt</a> of an
+    <a href="#AssignableDigitalResource">AssignableDigitalResource</a> and generating a
+    <a href="#Score">Score</a> is modeled as is viewing a <a href="#Result">Result</a>.</p>
+
+<p>The grading profile allows information to be captured about grade changes for a given assessment or
+    submission. This may be useful to understand the way in which students and teachers may be interacting
+    throughout the course.</p>
+
+<p>The Grading Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know what was distribution of scores for the most recent assignment.</li>
+    <li>As an administrator, I want to know how often grades are changed for a given assessment.</li>
+</ul>
+
+<p>The Grading Profile defines a <a href="#GradeEvent">GradeEvent</a> for describing the scoring of assignments
+    and a <a href="#ViewEvent">ViewEvent</a> for viewing results. Two actions are described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#GradeEvent">GradeEvent</a></td>
+            <td><a href="#Agent">Agent</a></td>
+            <td><a href="#action-graded">Graded</a></td>
+            <td><a href="#attempt">Attempt</a></td>
+            <td><a href="#Score">Score</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Result">Result</a><br /></td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#GradeEvent">GradeEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by the Grading
+Profile the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>For auto-graded scenarios the <a href="#SoftwareApplication">SoftwareApplication</a> MUST be
+        specified as the <code>actor</code>.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>When describing a <a href="#action-graded">Graded</a> action, the <code>generated</code>
+        <a href="#Score">Score</a> SHOULD be specified. If the <code>generated</code> <a href="#Score">Score</a> is
+        expressed as an object the <code>attempt</code>, <code>maxScore</code>, and <code>scoreGiven</code>
+        property values SHOULD be provided.</li>
+    <li>If a <a href="#Result">Result</a> is expressed as an object the <code>attempt</code>,
+        <code>maxResultScore</code>, and <code>resultScore</code> property values SHOULD be provided.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

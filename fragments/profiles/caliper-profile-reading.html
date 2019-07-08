@@ -1,0 +1,80 @@
+<h3>Reading Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_reading.png" alt="Reading Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ReadingProfile">
+        http://purl.imsglobal.org/caliper/ReadingProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ReadingProfile</dd>
+</dl>
+
+<p>The Caliper Reading Profile models activities associated with navigating to and viewing digital textual
+    content. Caliper provides a number of entities representing digital content including a generic
+    <a href="#DigitalResource">DigitalResource</a> and
+    <a href="#DigitalResourceCollection">DigitalResourceCollection</a> along with
+    <a href="#Document">Document</a>, <a href="#Chapter">Chapter</a>, <a href="#Page">Page</a>,
+    <a href="#WebPage">WebPage</a>, <a href="#Message">Message</a> and <a href="#Frame">Frame</a>.</p>
+
+<p>The Reading Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know when assigned course content is first accessed by my students.</li>
+    <li>As an instructor, I want to know what materials are being accessed.</li>
+    <li>As an instructor, I want to know how often is the content viewed.</li>
+    <li>As an instructor, I want to know what paths are taken to reach the content.</li>
+</ul>
+
+<p>When used in conjunction with the <a href="#profile-assessment">Assessment Profile</a> viewing patterns can be
+    correlated to performance measures.</p>
+
+<p>The Reading Profile defines a <a href="#NavigationEvent">NavigationEvent</a> for traversing resources and a
+    <a href="#ViewEvent">ViewEvent</a> for viewing content. Two actions are described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>target</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#NavigationEvent">NavigationEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by
+the Reading Profile the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>A <a href="#Frame">Frame</a> MAY be specified as the <code>target</code> in order to indicate an
+        indexed segment or location.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

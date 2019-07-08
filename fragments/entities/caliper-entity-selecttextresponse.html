@@ -1,0 +1,47 @@
+<h3>SelectTextResponse</h3>
+
+<p>A Caliper <code>SelectTextResponse</code> represents a response to an
+    <a href="#AssessmentItem">AssessmentItem</a> in which the respondent is asked to identify text
+    or a mapping from a presented paragraph or list.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SelectTextResponse">
+        http://purl.imsglobal.org/caliper/SelectTextResponse</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SelectTextResponse</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Response">Response</a></dd>
+    <dt>Properties</dt>
+    <dd><code>SelectTextResponse</code> inherits all properties defined by its supertype
+        <a href="#Response">Response</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>SelectTextResponse</code> is also provisioned with the optional property <code>values</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>SelectTextResponse</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>values</td>
+        <td>Array</td>
+        <td>An ordered collection of one or more selected options.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

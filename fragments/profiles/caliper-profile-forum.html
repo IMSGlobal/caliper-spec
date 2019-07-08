@@ -1,0 +1,129 @@
+<h3>Forum Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_forum.png" alt="Forum Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ForumProfile">
+        http://purl.imsglobal.org/caliper/ForumProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ForumProfile</dd>
+</dl>
+
+<p>The Caliper Forum Profile models learners and others participating in online discussion forums. Forums
+    typically encompass one or more threads or topics to which members can subscribe, post messages and
+    reply to other messages if a threaded discussion is permitted. Caliper provides
+    <a href="#forum">Forum</a>, <a href="#thread">Thread</a>, and <a href="#message">Message</a> entities
+    for representing the <code>object</code> of these activities.</p>
+
+<p>Using the Forum Profile to track discussion behaviors allows instructors to better understand how students
+    are engaged within discussion forums.</p>
+
+<p>The Forum Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know who is posting most often.</li>
+    <li>As an instructor, I want to know which posts generate the most replies.</li>
+    <li>As an instructor, I want to compare graded vs. non-graded discussions.</li>
+</ul>
+
+<p>The Forum Profile defines a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
+    <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, and
+    <a href="#ViewEvent">ViewEvent</a> for describing <a href="#Forum">Forum</a>,
+    <a href="#Thread">Thread</a>, and <a href="#Message">Message</a> interactions. Nine actions are described:
+</p>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#ForumEvent">ForumEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-subscribed">Subscribed</a></td>
+            <td><a href="#Forum">Forum</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ForumEvent">ForumEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-unsubscribed">Unsubscribed</a></td>
+            <td><a href="#Forum">Forum</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ThreadEvent">ThreadEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
+            <td><a href="#Thread">Thread</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ThreadEvent">ThreadEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#Thread">Thread</a></td>
+        </tr>
+        <tr>
+            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
+            <td><a href="#Message">Message</a></td>
+        </tr>
+        <tr>
+            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#Message">Message</a></td>
+        </tr>
+        <tr>
+            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-posted">Posted</a></td>
+            <td><a href="#Message">Message</a></td>
+        </tr>
+        <tr>
+            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Forum">Forum</a> |
+                <a href="#Message">Message</a> |
+                <a href="#Thread">Thread</a></td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Forum">Forum</a> |
+                <a href="#Message">Message</a> |
+                <a href="#Thread">Thread</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
+<a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, or
+<a href="#ViewEvent">ViewEvent</a> governed by the Forum Profile the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>If a <a href="#message">Message</a> is expressed as an object and is in the form of a reply, the
+        previous <a href="#message">Message</a> that prompted the reply SHOULD be referenced via
+        the <a href="#message">Message</a> <code>replyTo</code> property.</li>
+    <li>Parent-child relationships that exist between a <a href="#message">Message</a>,
+        <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of
+        the <code>isPartOf</code> property.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

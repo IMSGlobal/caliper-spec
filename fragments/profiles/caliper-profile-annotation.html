@@ -1,0 +1,103 @@
+<h3>Annotation Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_annotation.png" alt="Annotation Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/AnnotationProfile">
+        http://purl.imsglobal.org/caliper/AnnotationProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>AnnotationProfile</dd>
+</dl>
+
+<p>The Caliper Annotation Profile models activities related to the annotation of a
+    <a href="#DigitalResource">DigitalResource</a>. Creating a bookmark, highlighting selected text,
+    sharing a resource, tagging a document, and viewing an annotation are modeled. The generated
+    <a href="#Annotation">Annotation</a> is also described and is subtyped for greater type specificity.</p>
+
+<p>The Annotation Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I would like to know which students are generating annotations.</li>
+    <li>As an instructor, I would like to know what content is most often annotated.</li>
+    <li>As an instructor, I would like to know what types of annotations are being created.</li>
+    <li>As an instructor, I would like to know which segments of text are being highlighted.</li>
+    <li>As an instructor, I would like to know what tags are being used.</li>
+    <li>As an instructor, I would like to know what notes are being added.</li>
+</ul>
+
+<p>As an example, instructors can use the places where students are making notes in the course material
+    to determine whether they have the right idea about which material should be highlighted. In addition,
+    if there are students who are asking questions or making notes indicating confusion about a particular
+    piece of content, this can also inform the instructor about the suitability or quality of the material
+    which they have chosen to use.</p>
+
+<section id="profile-annotationevent" class="notoc">
+
+    <p>The Annotation Profile defines an <a href="#AnnotationEvent">AnnotationEvent</a> for describing the
+        annotation of resources. Four actions are described:
+
+    <table class="data">
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>actor</th>
+                <th>action</th>
+                <th>object</th>
+                <th>generated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
+                <td><a href="#Person">Person</a></td>
+                <td><a href="#action-bookmarked">Bookmarked</a></td>
+                <td><a href="#DigitalResource">DigitalResource</a></td>
+                <td><a href="#BookmarkAnnotation">BookmarkAnnotation</a></td>
+            </tr>
+            <tr>
+                <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
+                <td><a href="#Person">Person</a></td>
+                <td><a href="#action-highlighted">Highlighted</a></td>
+                <td><a href="#DigitalResource">DigitalResource</a></td>
+                <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
+            </tr>
+            <tr>
+                <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
+                <td><a href="#Person">Person</a></td>
+                <td><a href="#action-shared">Shared</a></td>
+                <td><a href="#DigitalResource">DigitalResource</a></td>
+                <td><a href="#SharedAnnotation">SharedAnnotation</a></td>
+            </tr>
+            <tr>
+                <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
+                <td><a href="#Person">Person</a></td>
+                <td><a href="#action-tagged">Tagged</a></td>
+                <td><a href="#DigitalResource">DigitalResource</a></td>
+                <td><a href="#TagAnnotation">TagAnnotation</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    When constructing an <a href="#AnnotationEvent">AnnotationEvent</a> governed by the Annotation Profile
+    the following rules and recommendations apply:
+    <ul>
+        <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+            <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+        <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+        <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+            <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+            and <code>session</code> SHOULD be referenced.</li>
+        <li>In particular, a <code>generated</code> <a href="#Annotation">Annotation</a> SHOULD be expressed.
+            Pair the <code>action</code> with the appropriate <a href="#Annotation">Annotation</a> subtype
+            (e.g., <a href="#action-bookmarked">Bookmarked</a> with
+            <a href="#BookmarkAnnotation">BookmarkAnnotation</a>). If the <code>generated</code>
+            <a href="#Annotation">Annotation</a> is expressed as an object both the
+            <code>annotator</code> and <code>annotated</code> entities SHOULD be referenced.</li>
+        <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+            referenced.</li>
+        <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+            limitations of transmitting data not described by the model.</li>
+    </ul>
+</section>

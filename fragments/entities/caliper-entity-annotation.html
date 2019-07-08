@@ -1,0 +1,63 @@
+<h3>Annotation</h3>
+<p>A Caliper <code>Annotation</code> is a generic type that represents a comment, explanation, highlight, mark, note,
+    question or tag linked to a <a href="#DigitalResource">DigitalResource</a>. The act of sharing a
+    <a href="#DigitalResource">DigitalResource</a> with others is also considered a form of annotation. Utilize
+    <code>Annotation</code> only if no suitable subtype exists to represent the annotation being
+    described.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Annotation">http://purl.imsglobal.org/caliper/Annotation</a></dd>
+    <dt>Term</dt>
+    <dd>Annotation</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#BookmarkAnnotation">BookmarkAnnotation</a>,
+        <a href="#HighlightAnnotation">HighlightAnnotation</a>,
+        <a href="#SharedAnnotation">SharedAnnotation</a>,
+        <a href="#TagAnnotation">TagAnnotation</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>Annotation</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Annotation</code> is also provisioned
+        with two additional properties: <code>annotator</code> and <code>annotated</code>. Profile-specific type
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Annotation</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>annotator</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> who created the <code>Annotation</code>.
+            The <code>annotator</code> value MUST be expressed either as an object or as a string corresponding
+            to the annotator's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>annotated</td>
+        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#DigitalResource">DigitalResource</a> that was annotated by the <code>annotator</code>.
+            The <code>annotated</code> value MUST be expressed either as an object or as a string corresponding to
+            the annotated resource's <a href="#iriDef">IRI</a>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

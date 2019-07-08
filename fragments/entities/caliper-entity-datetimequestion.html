@@ -1,0 +1,66 @@
+<h3>DateTimeQuestion</h3>
+
+<p>A Caliper <code>DateTimeQuestion</code> represents a closed-end question type with the response provided in a
+    date and time format. </p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/DateTimeQuestion">
+        https://purl.imsglobal.org/caliper/DateTimeQuestion</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>DateTimeQuestion</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Question">Question</a></dd>
+    <dt>Properties</dt>
+    <dd><code>DateTimeQuestion</code> inherits all properties defined by its supertype <a href="#Question">Question</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>DateTimeQuestion</code> is also provisioned
+        with four additional optional properties: <code>minDateTime</code>, <code>minLabel</code>, <code>maxDateTime</code>, and
+        <code>maxLabel</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>DateTimeQuestion</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>minDateTime</td>
+        <td>DateTime</td>
+        <td>A DateTime value used to determine the minimum value allowed.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>minLabel</td>
+        <td>string</td>
+        <td>The label for the minimum DateTime.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxDateTime</td>
+        <td>DateTime</td>
+        <td>A DateTime value used to determine the maximum value allowed.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxLabel</td>
+        <td>string</td>
+        <td>The label for the maximum value.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

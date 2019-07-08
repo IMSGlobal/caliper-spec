@@ -1,0 +1,76 @@
+<h3>MultiselectScale</h3>
+<p>A Caliper <code>MultiselectScale</code> models a scale used to capture one or more rating options.</p>
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/MultiselectScale">
+        https://purl.imsglobal.org/caliper/MultiselectScale</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>MultiselectScale</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Scale">Scale</a></dd>
+    <dt>Properties</dt>
+    <dd><code>MultiselectScale</code> inherits all properties defined by its supertype <a href="#Scale">Scale</a>,
+        of which<code>id</code>, and <code>type</code> are required. <code>MultiselectScale</code> is also
+        provisioned with six additional properties <code>scalePoints</code>, <code>itemLabels</code>,
+        <code>itemValues</code>, <code>isOrderedSelection</code>, <code>minSelections</code>, and
+        <code>maxSelections</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+                       "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>MultiselectScale</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>scalePoints</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>MultiselectScale</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>itemLabels</td>
+        <td>Array</td>
+        <td>The ordered list of labels for each point on the scale. The values MUST be cast as strings.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>itemValues</td>
+        <td>Array</td>
+        <td>The ordered list of values for each point on the scale. The values MUST be cast as strings.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>isOrderedSelection</td>
+        <td>boolean</td>
+        <td>Indicates whether the order of the selected items is important.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>minSelections</td>
+        <td>integer</td>
+        <td>Indicates the minimum number of selections that can be chosen.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>maxSelections</td>
+        <td>integer</td>
+        <td>Indicates the maximum number of selections that can be chosen.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

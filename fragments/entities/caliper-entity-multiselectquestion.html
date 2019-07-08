@@ -1,0 +1,62 @@
+<h3>MultiselectQuestion</h3>
+
+<p>A Caliper <code>MultiselectQuestion</code> represents a form of a closed-end question type with a
+    pre-defined set of responses where a respondent can choose multiple items in the set.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/MultiselectQuestion">
+        https://purl.imsglobal.org/caliper/MultiselectQuestion</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>MultiselectQuestion</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Question">Question</a></dd>
+    <dt>Properties</dt>
+    <dd><code>MultiselectQuestion</code> inherits all properties defined by its supertype <a href="#Question">Question</a>,
+        of which <code>id</code> and <code>type</code> are required.
+        <code>MultiselectQuestion</code> is also provisioned with the optional properties <code>points</code>,
+        <code>itemLabels</code>, and <code>itemValues</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>MultiselectQuestion</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>points</td>
+        <td>integer</td>
+        <td>A integer value used to determine the amount of points on the <code>MultiselectQuestion</code>.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>itemLabels</td>
+        <td>Array</td>
+        <td>The list of labels that describe the set of selectable question options. Each label MUST be cast as
+            a string.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>itemValues</td>
+        <td>Array</td>
+        <td>The list of values associated with the set of selectable question options. Each value MUST be cast as a
+            string.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

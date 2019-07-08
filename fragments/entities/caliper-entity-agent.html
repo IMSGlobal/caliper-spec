@@ -1,0 +1,44 @@
+<h3>Agent</h3>
+
+<p>A Caliper <code>Agent</code> is a generic type that represents an <a href="#Entity">Entity</a> that can
+    initiate or perform an <code>action</code>. Utilize <a href="#agent">Agent</a> only if no suitable subtype exists
+    to represent the <code>actor</code> being described.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Agent">http://purl.imsglobal.org/caliper/Agent</a></dd>
+    <dt>Term</dt>
+    <dd>Agent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Subtypes</dt>
+    <dd>
+        <a href="#Organization">Organization</a>,
+        <a href="#Person">Person</a>,
+        <a href="#Softwareapplication">SoftwareApplication</a>
+    </dd>
+    <dt>Properties</dt>
+    <dd><code>Agent</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. Additional type restrictions are described
+        below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Agent</em>.</td>
+        <td>Required</td>
+    </tr>
+    </tbody>
+</table>

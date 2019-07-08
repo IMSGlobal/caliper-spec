@@ -1,0 +1,95 @@
+<h3>Tool Use Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_tool_use.png" alt="Tool Use Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ToolUseProfile">
+        http://purl.imsglobal.org/caliper/ToolUseProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>ToolUseProfile</dd>
+</dl>
+
+<p>The Caliper Tool Use Profile models an intended interaction between a user and a tool. In other words,
+    when a <code>Person</code> utilizes a <code>SoftwareApplication</code> in a manner that the application
+    determines to be its intended use for learning, an application that implements the Tool Use Profile
+    can emit a <code>ToolUseEvent</code> indicating such usage.</p>
+
+<p>The Tool Use Profile enables the gathering of basic usage information. It provides an easy way to get
+    started with a base level of instrumentation by allowing the learning tool to make the determination
+    of its own use. Any learning app can be instrumented using this profile to detect when a learner
+    accesses the tool and uses it in the way it was intended.</p>
+
+<p>The Tool Use Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know what tools are being used, and how often.</li>
+    <li>As an instructor, I want to know who are the most active and least active users of tools.</li>
+    <li>As an instructor, I want to know whether or not tool usage helps or hinders student performance.</li>
+    <li>As an instructor, I want to know which tools have the greatest impact on student performance.</li>
+    <li>As an instructor, I want to know how much time learners are spending using a tool.</li>
+    <li>As an instructor, I want to know how much curricular progress learners have made in a tool.</li>
+    <li>As an instructor, I want to be able to view my students' "time on task" across multiple learning
+        tools using a dashboard powered by a Caliper event store.</li>
+    <li>As a data scientist, I want to be able to study the impact of a student's curricular progress in a
+        learning tool on his or her academic achievement.</li>
+    <li>As a student, I want to confirm that the progress and time metrics I see in a learning tool matches
+        the metrics I see in an aggregated dashboard.</li>
+</ul>
+
+<p>The Tool Use Profile defines a <a href="#ToolUseEvent">ToolUseEvent</a> for describing a
+    <a href="#Person">Person</a> using a learning tool in a way that the tool's creators have
+    determined is an indication of a learning interaction. A single action is described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#ToolUseEvent">ToolUseEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-used">Used</a></td>
+            <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#Entity">Entity</a> (<a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>)</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#ToolUseEvent">ToolUseEvent</a> governed by the Tool Use Profile the following rules and
+recommendations apply:
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>A <code>generated</code> <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
+        containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities providing
+        information on a learner's "progress" using the tool MAY be expressed. The following metrics MAY
+        be recorded:
+        <ul>
+            <li><a href="#metric-assessmentpassed">AssessmentPassed</a></li>
+            <li><a href="#metric-assessmentsubmitted">AssessmentSubmitted</a></li>
+            <li><a href="#metric-minutesontask">MinutesOnTask</a></li>
+            <li><a href="#metric-skillsmastered">SkillsMastered</a></li>
+            <li><a href="#metric-standardsmastered">StandardsMastered</a></li>
+            <li><a href="#metric-unitscompleted">UnitsCompleted</a></li>
+            <li><a href="#metric-unitspassed">UnitsPassed</a></li>
+            <li><a href="#metric-wordsread">WordsRead</a></li>
+        </ul>
+    </li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>
+

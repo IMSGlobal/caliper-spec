@@ -1,0 +1,75 @@
+<h3>Search Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_search.png" alt="Search Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SearchProfile">
+        http://purl.imsglobal.org/caliper/SearchProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SearchProfile</dd>
+</dl>
+
+<p>The Caliper Search Profile models an <code>actor</code>, typically a learner, querying a resource for information.
+    The profile provides a <a href="#SearchEvent">SearchEvent</a> and a <a href="#action-searched">Searched</a> action
+    for describing information retrieval activities. An optional <a href="#SearchResponse">SearchResponse</a>
+    entity can be employed to describe the <a href="#Query">Query</a> submitted by a user as well as any
+    <code>searchResults</code> returned as a result of the search.</p>
+
+<p>When the Search Profile is used in conjunction with the <a href="#profile-reading">Reading Profile</a>, a learner's
+    navigation, search, and viewing behavior can be combined to provide a richer picture of learner interactions with
+    digital resources.</p>
+
+<p>The Search Profile supports the following user stories:</p>
+
+<ul>
+    <li>As a librarian, I would like to know the frequency of searches conducted and the resources queried.</li>
+    <li>As an instructor, I would like to know how students designed and used structured queries.</li>
+    <li>As a student, I would like to have a record of the topics I searched and the query terms I employed.</li>
+</ul>
+
+<p>The Search Profile defines a <a href="#SearchEvent">SearchEvent</a> for querying resources. A single
+    action is described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#SearchEvent">SearchEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-searched">Searched</a></td>
+            <td><a href="#DigitalResource">DigitalResource</a> |
+                <a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#SearchResponse">SearchResponse</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#SearchEvent">SearchEvent</a> governed by the Search Profile the following rules and
+recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>In particular, a <code>generated</code> <a href="#entity-searchresponse">SearchResponse</a> SHOULD be
+        expressed. The <a href="#entity-searchresponse">SearchResponse</a> can be employed to describe the
+        <a href="#entity-query">Query</a> submitted by a user as well as any <code>searchResults</code> returned
+        as a result of the search.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

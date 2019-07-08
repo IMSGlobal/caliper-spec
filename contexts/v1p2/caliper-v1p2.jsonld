@@ -153,6 +153,7 @@
     "object": {"@id": "caliper:object", "@type": "@id"},
     "organization": {"@id": "caliper:organization", "@type": "@id"},
     "otherIdentifiers": {"@id": "caliper:otherIdentifiers", "@type": "@id", "@container": "@list"},
+    "profile": {"@id": "caliper:profile", "@type": "@vocab"},
     "query": {"@id": "caliper:query", "@type": "@id"},
     "question": {"@id": "caliper:question", "@type": "@id"},
     "rater": {"@id": "caliper:rater", "@type": "@id"},

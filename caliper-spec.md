@@ -6209,8 +6209,7 @@ IMS Global would appreciate receiving your comments and suggestions.
 
 Please contact IMS Global through our website at http://www.imsglobal.org.
 
-Please refer to Document Name: IMS Caliper Analytics&reg; 1.1
-Candidate Final Specification v1.1
+Please refer to Document Name: IMS Caliper Analytics&reg; Final Specification v1.1
 
 Date: 24 May 2018
 

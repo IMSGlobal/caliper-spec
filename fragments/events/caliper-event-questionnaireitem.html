@@ -1,0 +1,83 @@
+<h3>QuestionnaireItemEvent</h3>
+
+<img height="100%" width="100%" src="assets/caliper-questionnaireitem_event_submitted-v1p1-extension.png" alt="QuestionnaireItemEvent">
+
+<p>A Caliper <code>QuestionnaireItemEvent</code> models activities associated with
+    respondents or raters starting, completing, or skipping a <a href="#QuestionnaireItem">QuestionnaireItem</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/QuestionnaireItemEvent">https://purl.imsglobal.org/caliper/QuestionnaireItemEvent</a></dd>
+    <dt>Term</dt>
+    <dd>QuestionnaireItemEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd><code>QuestionnaireItemEvent</code> inherits all properties defined by its supertype
+        <a href="#Event">Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to <em>QuestionnaireItemEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
+            The value range is limited to the actions:
+            <a href="#action-started">Started</a>,
+            <a href="#action-skipped">Skipped</a>, or
+            <a href="#action-completed">Completed</a>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#QuestionnaireItem">QuestionnaireItem</a> | <a
+            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <a href="#QuestionnaireItem">QuestionnaireItem</a> started, attempted, or skipped by the
+            <code>actor</code>. The <code>object</code> value MUST be expressed either as an object or as a string
+            corresponding to the resource's IRI.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>generated</td>
+        <td><a href="#Response">Response</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>For a <a href="#action-completed">Completed</a> action a generated <a href="#Response">Response</a> MAY
+            be referenced. The <code>generated</code> value MUST be expressed either as an object or as a string
+            corresponding to the <a href="#Response">Response</a> resource's IRI.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

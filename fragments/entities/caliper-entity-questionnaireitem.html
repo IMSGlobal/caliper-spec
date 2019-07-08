@@ -1,0 +1,64 @@
+<h3>QuestionnaireItem</h3>
+<p>A Caliper <code>QuestionnaireItem</code> represents a <a href="#Question">Question</a> that is associated
+    with a <a href="#Questionnaire">Questionnaire</a>.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/QuestionnaireItem">
+        https://purl.imsglobal.org/caliper/QuestionnaireItem</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>QuestionnaireItem</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#DigitalResource">DigitalResource</a></dd>
+    <dt>Properties</dt>
+    <dd><code>QuestionnaireItem</code> inherits all properties defined by its supertype
+        <a href="#DigitalResource">DigitalResource</a>, of which <code>id</code> and <code>type</code> are required.
+        <code>QuestionnaireItem</code> is also provisioned with the additional properties <code>question</code>,
+        <code>categories</code>, and <code>weight</code>. Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>QuestionnaireItem</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>question</td>
+        <td><a href="#Question">Question</a> | <a href=
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Question</code> entity posed by the <code>QuestionnaireItem</code>. The
+            <code>Question</code> value MUST be expressed either as an object or as a string
+            corresponding to the question's IRI.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>categories</td>
+        <td>Array</td>
+        <td>An array of category items comprising the categories the <code>QuestionnaireItem</code> encompasses.
+            Each category item MUST be cast as a string.</td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>weight</td>
+        <td>decimal</td>
+        <td>A decimal value used to determine the weight of the <code>QuestionnaireItem</code>.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+<h3>MessageEvent</h3>
+
+<img height="100%" width="100%" src="assets/caliper-message_event_posted-v2.png" alt="MessageEvent Posted image">
+
+<p>A Caliper <code>MessageEvent</code> describes a <a href="#Person">Person</a> posting a
+    <a href="#Message">Message</a> or marking a post as either read or unread.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/MessageEvent">http://purl.imsglobal.org/caliper/MessageEvent</a></dd>
+    <dt>Term</dt>
+    <dd>MessageEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd>The <code>MessageEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>,
+        of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MessageEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST be
+            expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
+            range is limited to the <a href="#action-markedAsRead">MarkedAsRead</a>,
+            <a href="#action-markedAsUnRead">MarkedAsUnRead</a>, and <a href="#action-posted">Posted</a> actions only.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#Message">Message</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Message">Message</a> that constitutes the <code>object</code> of the interaction. If the
+            <code>object</code> represents a <a href="#Message">Message</a> posted in reply to a previous post, the
+            prior post prompting the <a href="#Message">Message</a> SHOULD be referenced using the
+            <a href="#Message">Message</a> <code>replyTo</code> property. The <code>object</code> value MUST be
+            expressed either as an object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    </tbody>
+</table>

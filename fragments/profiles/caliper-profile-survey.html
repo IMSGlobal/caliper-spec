@@ -1,0 +1,197 @@
+<h3>Survey Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_survey.png" alt="Survey Profile"/>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/SurveyProfile">
+        http://purl.imsglobal.org/caliper/SurveyProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>SurveyProfile</dd>
+</dl>
+
+<p>The Caliper Survey Profile provides a vocabulary for describing events associated with a respondent's
+    participation in online surveys. A key use case involves instrumenting platforms that provide online surveys
+    that explore the student learning experience, student engagement, learning activities, learning progress,
+    and learning performance. The profile models a <a href="#Person">Person</a>, typically a respondent or a rater,
+    participating in a survey in order to provide feedback on their learning and academic experiences.</p>
+
+<p>Everyone learns differently with a mix of their own learning styles. It is also known that a student’s
+    time spent on online learning activities does not necessarily indicate that the student finds the materials easy
+    or hard, interesting or boring, useful or not to their learning. Student feedback is a key source of data that can
+    help glean insights into students’ learning styles and interests, as well as areas to improve. In that sense,
+    student feedback data adds an additional dimension of students’ behavioral data for learning analytics, such as
+    learning about student perceptions of how effectively activities helped student learning and what specific
+    areas in teaching and learning can be improved to enhance students’ learning experience and performance.
+    The Caliper Survey Profile expands the pool of Caliper-instrumented learning data profiles to enhance the learning
+    analytics across the analytics continuum &mdash; descriptive, diagnostic, predictive, and prescriptive &mdash; by
+    allowing to incorporate student voices to make learning analytics more robust.</p>
+
+<p>The Survey Profile supports the following user stories: (...TO DO  Compare user stories to bulleted list from
+    standalone profile; each story was derived from one bullet in the list; order has been maintained.)</p>
+
+<ul>
+    <li>As an instructor, I would like to analyze survey response rates and responses to gauge the engagement level of
+        my students.</li>
+    <li>As a researcher, I would like to assess whether student feedback on learning experiences can help create
+        predictive models &mdash; in combination with behavioral data, demographics, and performance &mdash; for
+        student retention and success.
+    <li>As an instructor, I would like to use student feedback to determine the efficacy of personalized or
+        adaptive learning interventions and to help design new learning plans and strategies with these methods.
+    <li>As an instructor, I would like to analyze student feedback to find ways to measure the effectiveness of  my
+        teaching, assess student progress, and identify areas for corrective intervention.
+    <li>As an administrator, I would like to use responses to survey questions concerning workload in combination with
+        other behavioral data to determine whether workloads are set to optimize learning.
+    <li>As a researcher, I would like to monitor and analyze survey response rates and patterns to ensure the
+        reliability and validity of the data collected, as well as to inform future collection methods.</li>
+</ul>
+
+<p>The Survey Profile defines a <a href="#SurveyEvent">SurveyEvent</a>,
+    <a href="#SurveyInvitationEvent">SurveyInvitationEvent</a>, <a href="#QuestionnaireEvent">QuestionnaireEvent</a>,
+    <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a>, <a href="#NavigationEvent">NavigationEvent</a>, and
+    <a href="#ViewEvent">ViewEvent</a> for describing survey-related activities. Twelve actions are described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-sent">Sent</a></td>
+            <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-accepted">Accepted</a></td>
+            <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-declined">Declined</a></td>
+            <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#SurveyEvent">SurveyEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-optedIn">OptedIn</a></td>
+            <td><a href="#Survey">Survey</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#SurveyEvent">SurveyEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-optedOut">OptedOut</a></td>
+            <td><a href="#Survey">Survey</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#QuestionnaireEvent">QuestionnaireEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-started">Started</a></td>
+            <td><a href="#Questionnaire">Questionnaire</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#QuestionnaireEvent">QuestionnaireEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-submitted">Submitted</a></td>
+            <td><a href="#Questionnaire">Questionnaire</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-started">Started</a></td>
+            <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-skipped">Skipped</a></td>
+            <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-completed">Completed</a></td>
+            <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
+            <td><a href="#Response">Response</a></td>
+        </tr>
+        <tr>
+            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Questionnaire">Questionnaire</a> |
+                <a href="#QuestionnaireItem">QuestionnaireItem</a</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Questionnaire">Questionnaire</a> |
+                <a href="#QuestionnaireItem">QuestionnaireItem</a</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#SurveyEvent">SurveyEvent</a>, <a href="#SurveyInvitationEvent">SurveyInvitationEvent</a>,
+<a href="#QuestionnaireEvent">QuestionnaireEvent</a>, <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a>,
+<a href="#NavigationEvent">NavigationEvent</a>, or  <a href="#ViewEvent">ViewEvent</a> governed by the Survey Profile
+the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>For <a href="#QuestionnaireEvent">QuestionnaireEvent</a> actions, the <code>generated</code>
+        <a href="#attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
+        object the <a href="#Attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the
+        <code>assignable</code>, and the <code>count</code>. For <a href="#action-started">Started</a> actions set
+        the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li><
+    <li>For each <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a> described, referencing a
+        <code>generated</code> <a href="#Attempt">Attempt</a> or <a href="#Response">Response</a> depends
+        on the <code>action</code> value specified.  Set the <a href="#Attempt">Attempt</a>
+        <code>count</code> values as follows (per action):
+        <ul>
+            <li><a href="#action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+                increment by 1 for each subsequent attempt.</li>
+            <li><a href="#action-skipped">Skipped</a>: do not increment the <a href="#Attempt">Attempt</a>
+                <code>count</code> by 1. The current <code>count</code> value MUST remain unchanged.</li>
+            <li><a href="#action-completed">Completed</a>: if desired, specify the respondent's
+                <a href="#Response">Response</a> and reference the associated <a href="#Attempt">Attempt</a>
+                via the <code>attempt</code> property.  The current <code>count</code> value MUST remain
+                unchanged.</li>
+        </ul>
+    </li>
+    <li>Parent-child relationships that exist between <a href="#QuestionnaireItem">QuestionnaireItem</a> and
+        <a href="#Questionnaire">Questionnaire</a> attempts MAY be represented by use of the
+        <a href="#Attempt">Attempt</a> <code>isPartOf</code> property.</li>
+    <li>As a respondent navigates from one <a href="#QuestionnaireItem">QuestionnaireItem</a> to another
+        <a href="#QuestionnaireItem">QuestionnaireItem</a>, the previous <a href="#QuestionnaireItem">QuestionnaireItem</a>
+        MAY be specified as the <code>referrer</code>.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

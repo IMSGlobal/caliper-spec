@@ -1,0 +1,70 @@
+<h3>Comment</h3>
+
+<p>A Caliper <code>Comment</code> models a person's qualitative reactions to a <code>Entity</code>.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/Comment">https://purl.imsglobal.org/caliper/Comment</a></dd>
+    <dt>Term</dt>
+    <dd>Comment</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Comment</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of which
+        <code>id</code>, and <code>type</code> are required. <code>Comment</code> is also provisioned with
+        additional properties, <code>commenter</code>, <code>commentedOn</code>, and <code>value</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to the Term <em>Comment</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>commenter</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
+        >Person</a> | <a href=
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Person</code> who provided the comment. The <code>commenter</code> value MUST be
+            expressed either as an object or as a string corresponding to the commenter’s IRI.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>commentedOn</td>
+        <td><a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
+        >Entity</a> | <a href=
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+        >IRI</a></td>
+        <td>The <code>Entity</code> which received the comment. The <code>commentedOn</code> value MUST
+            be expressed either as an object or as a string corresponding to the IRI of the resource that was
+            commented on.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>string</td>
+        <td>A string value representing the comment's textual value.</td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

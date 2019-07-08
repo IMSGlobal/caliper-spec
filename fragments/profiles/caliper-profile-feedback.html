@@ -1,0 +1,78 @@
+<h3>Feedback Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_feedback.png" alt="Feedback Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/FeedbackProfile">
+        http://purl.imsglobal.org/caliper/FeedbackProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>FeedbackProfile</dd>
+</dl>
+
+<p>The Caliper Feedback Profile models a <a href="#Person">Person</a> providing informal feedback on a
+    <a href="#Entity">Entity</a>, typically a piece of student work. The profile provides a
+    <a href="#FeedbackEvent">FeedbackEvent</a> along with <a href="#action-commented">Commented</a> and
+    <a href="#action-ranked">Ranked</a></dd> actions for describing feedback activities. The
+    <a href="#Rating">Rating</a> entity is used to capture quantitative feedback while the
+    <a href="#Comment">Comment</a> entity is used to capture qualitative feedback.</p>
+
+<p>The Feedback Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I would like an overview of the quality of peer feedback my students gave to each
+        other so I can make informed enhancements to my instructions.</li>
+    <li>As a student, I would like to see the common shortcomings and merits in my work over a term or year,
+        based on peer and instructor comments, in order to gain insight on what areas I need to improve upon.</li>
+</ul>
+
+<p>The Feedback Profile defines a <a href="#FeedbackEvent">FeedbackEvent</a> for ranking resources and recording
+    comments. Two actions are described:
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-commented">Commented</a></td>
+            <td><a href="#Entity">Entity</a></td>
+            <td><a href="#Comment">Comment</a></td>
+        </tr>
+        <tr>
+            <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-ranked">Ranked</a></td>
+            <td><a href="#Entity">Entity</a></td>
+            <td><a href="#Rating">Rating</a></td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing a <a href="#FeedbackEvent">FeedbackEvent</a> governed by the Feedback Profile the following rules
+and recommendations apply:
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>For a <a href="#action-commented">Commented</a> action a <code>generated</code> <a href="#Comment">Comment</a>
+        SHOULD be provided.</li>
+    <li>For a <a href="#action-ranked">Ranked</a> action a <code>generated</code> <a href="#Rating">Rating</a>
+        SHOULD be provided.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>

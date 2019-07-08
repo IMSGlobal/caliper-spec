@@ -1,0 +1,37 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "caliper": "http://purl.imsglobal.org/caliper/",
+    "verb": "http://purl.imsglobal.org/caliper/actions/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ForumProfile": "caliper:profiles/ForumProfile",
+    "MessageEvent": "caliper:MessageEvent",
+    "Message": "caliper:Message",
+    "Person": "caliper:Person",
+    "actor": {"@id": "caliper:actor", "@type": "@id"},
+    "action": {"@id": "caliper:action", "@type": "@vocab"},
+    "edApp": {"@id": "caliper:edApp", "@type": "@id"},
+    "object": {"@id": "caliper:object", "@type": "@id"},
+    "profile": {"@id": "caliper:profile", "@type": "@vocab"},
+    "body": {"@id": "caliper:body", "@type": "xsd:string"},
+    "dateCreated": {"@id": "caliper:dateCreated", "@type": "xsd:dateTime"},
+    "eventTime": {"@id": "caliper:eventTime", "@type": "xsd:dateTime"},
+    "Posted": "verb:Posted"},
+  "id": "urn:uuid:0d015a85-abf5-49ee-abb1-46dbd57fe64e",
+  "type": "MessageEvent",
+  "profile": "ForumProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Posted",
+  "object": {
+    "id": "https://example.edu/sections/1/forums/2/topics/1/messages/2",
+    "type": "Message",
+    "body": "What does Caliper Event JSON-LD look like?",
+    "dateCreated": "2018-12-15T10:15:00.000Z"
+  },
+  "eventTime": "2018-12-15T10:15:00.000Z",
+  "edApp": "https://example.edu"
+}

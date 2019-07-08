@@ -1,0 +1,69 @@
+<h3>SurveyEvent</h3>
+
+<img height="100%" width="100%" src="assets/caliper-survey_event_optedin-v1p1-extension.png" alt="SurveyEvent">
+
+<p>A Caliper <code>SurveyEvent</code> models activities associated with calls to participate in a
+    <a href="#Survey">Survey</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="https://purl.imsglobal.org/caliper/SurveyEvent">https://purl.imsglobal.org/caliper/SurveyEvent</a></dd>
+    <dt>Term</dt>
+    <dd>SurveyEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd><code>SurveyEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>, of
+        which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef"
+        >Term</a></td>
+        <td>The string value MUST be set to <em>SurveyEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef"
+        >IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's IRI.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef"
+        >Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the
+            <code>object</code>. The value range is limited to the actions: <a href="#action-optedIn">OptedIn</a> or
+            <a href="#action-optedOut">OptedOut</a>.
+            </code>
+            .</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#Survey">Survey</a> | <a href="#iriDef"
+            >IRI</a></td>
+        <td>The <code>Survey</code> to which the <code>actor</code> is opting into or out of. The <code>object</code>
+            value MUST be expressed either as an object or as a string corresponding to the resource's IRI.</td>
+        <td>Required</td>
+    </tr>
+    </tbody>
+</table>

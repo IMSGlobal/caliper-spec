@@ -1,0 +1,68 @@
+<h3>ThreadEvent</h3>
+
+<img height="100%" width="100%" src="assets/caliper-thread_event_markedasread-v2.png"
+     alt="ThreadEvent MarkedAsRead image">
+
+<p>A Caliper <code>ThreadEvent</code> models an actor interacting with a <a href="#Forum">Forum</a> thread or
+    topic.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/ThreadEvent">http://purl.imsglobal.org/caliper/ThreadEvent</a></dd>
+    <dt>Term</dt>
+    <dd>ThreadEvent</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Event">Event</a></dd>
+    <dt>Properties</dt>
+    <dd>The <code>ThreadEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>,
+        of which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required. Additional profile-specific type and value
+        restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the term <em>ThreadEvent</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST
+            be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
+            range is limited to the <a href="#action-markedAsRead">MarkedAsRead</a> and
+            <a href="#action-markedAsUnRead">MarkedAsUnRead</a> actions only.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td><a href="#Thread">Thread</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Thread">Thread</a> that constitutes the <code>object</code> of the interaction. The
+            <code>object</code> value MUST be expressed either as an object or as a string corresponding to the
+            object's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Required</td>
+    </tr>
+    </tbody>
+</table>

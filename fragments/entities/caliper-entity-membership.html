@@ -1,0 +1,75 @@
+<h3>Membership</h3>
+
+<p>A Caliper <code>Membership</code> describes the relationship between an <a href="#Organization">Organization</a>
+    and an <a href="#Agent">Agent</a>, typically a <a href="#Person">Person</a> (i.e., a <code>member</code>)
+    in terms of the roles assigned and current status.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Membership">http://purl.imsglobal.org/caliper/Membership</a></dd>
+    <dt>Term</dt>
+    <dd>Membership</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Membership</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Membership</code> is also provisioned with
+        four additional optional properties: <code>organization</code>, <code>member</code>, <code>roles</code>, and
+        <code>status</code>. Profile-specific type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Membership</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>organization</td>
+        <td><a href="#Organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Organization">Organization</a> associated with the <code>Membership</code>. The
+            <code>Organization</code> value MUST be expressed either as an object or as a string corresponding to the
+            organization's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>member</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> associated with this <code>Membership</code>. The <code>member</code>
+            value MUST be expressed either as an object or as a string corresponding to the member's
+            <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>roles</td>
+        <td>Array</td>
+        <td>An ordered collection of organizational roles assigned to the <code>member</code>. Role values are limited
+            to the list of Caliper defined <a href="#lis-roles">role</a> terms. Whenever a subrole is specified, the core
+            context role SHOULD also be included; for example, a role of <em>Instructor#TeachingAssistant</em>
+            should always be accompanied by the <em>Instructor</em> role.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td><a href="#term">Term</a></td>
+        <td>A string value that indicates the current standing of the <code>member</code>. If a status is specified, the
+            value be chosen from the list of Caliper defined <a href="#lis-statuses">statuses</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

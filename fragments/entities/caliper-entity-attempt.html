@@ -1,0 +1,94 @@
+<h3>Attempt</h3>
+
+<p>A Caliper <code>Attempt</code> provides a count of the number of times an actor has interacted with a
+    <a href="#DigitalResource">DigitalResource</a> along with start time, end time and duration information.
+    An <code>Attempt</code> is generated as the result of an action such as starting an
+    <a href="#Assessment">Assessment</a> or <a href="#Questionnaire">Questionnaire</a>.
+</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/Attempt">http://purl.imsglobal.org/caliper/Attempt</a></dd>
+    <dt>Term</dt>
+    <dd>Attempt</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>Attempt</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>,
+        of which <code>id</code> and <code>type</code> are required. <code>Attempt</code> is also provisioned with
+        six additional optional properties: <code>assignee</code>, <code>assignable</code>, <code>count</code>,
+        <code>startedAtTime</code>, <code>endedAtTime</code>, and <code>duration</code>. Additional type restrictions
+        are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Attempt</em>.</td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>assignee</td>
+        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#Person">Person</a> who initiated the <code>Attempt</code>. The <code>assignee</code>
+            value MUST be expressed either as an object or as a string corresponding to the assignee's
+            <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>assignable</td>
+        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#DigitalResource">DigitalResource</a> that constitutes the object of the assignment.
+            The <code>assignable</code> value MUST be expressed either as an object or as a string corresponding
+            to the assigned resource's <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>integer</td>
+        <td>The total number of attempts inclusive of the current attempt that have been registered against the assigned
+            <a href="#DigitalResource">DigitalResource</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>startedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>Attempt</code> was commenced. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>endedAtTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value expressed with millisecond precision that describes when the
+            <code>Attempt</code> was completed or terminated. The value MUST be expressed using the format
+            YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>Duration</td>
+        <td>A time interval that represents the time taken to complete the <code>Attempt</code>. If a duration
+            is specified the value MUST conform to the ISO 8601 duration format.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

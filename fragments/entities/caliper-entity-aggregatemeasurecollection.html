@@ -1,0 +1,48 @@
+<h3>AggregateMeasureCollection</h3>
+<p>A Caliper <code>AggregateMeasureCollection</code> represents an unordered
+    collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/AggregateMeasureCollection">
+        http://purl.imsglobal.org/caliper/AggregateMeasureCollection</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>AggregateMeasureCollection</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Collection">Collection</a></dd>
+    <dt>Properties</dt>
+    <dd><code>AggregateMeasureCollection</code> inherits all the properties and requirements defined for its
+        supertype <a href="#Collection">Collection</a>, of which <code>id</code> and <code>type</code> are required.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table class="data">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Disposition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td><a href="#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AggregateMeasureCollection</em>.
+        </td>
+        <td>Required</td>
+    </tr>
+    <tr>
+        <td>items</td>
+        <td>Array</td>
+        <td>An ordered collection of <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities. Each
+            array item
+            MUST be expressed either as an object or as a string corresponding to the item’s <a href="#iriDef">IRI</a>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,135 @@
+<h3>Assignable Profile</h3>
+
+<img height="100%" width="100%" src="assets/caliper-profile_assignable.png" alt="Assignable Profile">
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/AssignableProfile">
+        http://purl.imsglobal.org/caliper/AssignableProfile</a>
+    </dd>
+    <dt>Term</dt>
+    <dd>AssignableProfile</dd>
+</dl>
+
+<p>The Assignable Profile models activities associated with the assignment of digital content to a learner
+    for completion according to specific criteria.  Caliper provides a generic
+    <a href="#assignableDigitalResource">AssignableDigitalResource</a> for describing the
+    <code>object</code> of these activities as well as a learner's <a href="#attempt">Attempt</a> for
+    recording a count of the number of times an assigned resource has been attempted.</p>
+
+<p>The Assignable Profile supports the following user stories:</p>
+
+<ul>
+    <li>As an instructor, I want to know who is assigned what material.</li>
+    <li>As an instructor, I want to know how long does it take to complete something that has been
+        assigned.</li>
+    <li>As an instructor, I want to know what piece of assigned material presents the biggest challenge
+        (i.e. needs most retake attempts).</li>
+</ul>
+
+<p>The Assignable Profile defines an <a href="#AssignableEvent">AssignableEvent</a>,
+    <a href="#NavigationEvent">NavigationEvent</a>, and <a href="#ViewEvent">ViewEvent</a> for
+    describing learner interactions with assignments. Eight actions are described:</p>
+
+<table class="data">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>actor</th>
+            <th>action</th>
+            <th>object</th>
+            <th>generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-activated">Activated</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-deactivated">Deactivated</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-started">Started</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-completed">Completed</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-submitted">Submitted</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#AssignableEvent">AssignableEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-reviewed">Reviewed</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#Attempt">Attempt</a></td>
+        </tr>
+        <tr>
+            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#Person">Person</a></td>
+            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+When constructing an <a href="#AssignableEvent">AssignableEvent</a>, <a href="#NavigationEvent">NavigationEvent</a>,
+and <a href="#ViewEvent">ViewEvent</a> the following rules and recommendations apply:
+
+<ul>
+    <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
+        <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
+    <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
+    <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
+        <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
+        and <code>session</code> SHOULD be referenced.</li>
+    <li>For each <a href="#AssignableEvent">AssignableEvent</a> described, the <code>generated</code>
+        <a href="#Attempt">Attempt</a> SHOULD be specified for the following
+        <a href="#AssignableEvent">AssignableEvent</a> actions:
+        <ul>
+            <li><a href="#action-started">Started</a></li>
+            <li><a href="#action-completed">Completed</a></li>
+            <li><a href="#action-submitted">Submitted</a></li>
+            <li><a href="#action-reviewed">Reviewed</a></li>
+        </ul>
+    </li>
+    <li>If the <a href="#Attempt">Attempt</a> is expressed as an object the <a href="#Attempt">Attempt</a>
+        SHOULD reference, at a minimum, the <code>assignee</code>, the <code>assignable</code>, and the
+        <code>count</code>. Set the <code>count</code> value to 1 for a first attempt and increment by 1 for each
+        subsequent attempt.</li>
+    <li>Parent-child relationships that exist between
+        <a href="#assignableDigitalResource">AssignableDigitalResource</a> attempts MAY be represented by
+        use of the <a href="#Attempt">Attempt</a> <code>isPartOf</code> property.</li>
+    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        referenced.</li>
+    <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
+        limitations of transmitting data not described by the model.</li>
+</ul>
