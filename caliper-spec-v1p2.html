@@ -114,144 +114,215 @@
         <section id="terminology">
             <h3>Terminology</h3>
 
-            <p><a name="actorDef"></a><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a> capable
-                of initiating or performing an <code>action</code> on a thing or as part of a process. A Caliper
-                <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
-                <a href="#agent">Agent</a>.</p>
+            <section id="actorDef" class='notoc'>
+                <p><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a>
+                    capable of initiating or performing an <code>action</code> on a thing or as
+                    part of a process. A Caliper <a href="#event">Event</a> includes an
+                    <code>actor</code> attribute for representing the <a href="#agent">Agent</a>.</p>
+            </section>
 
-            <p><a name="anonymousDef"></a><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
-                properties of an <a href="#Entity">Entity</a> to obscure its identity such that the process cannot be
-                reversed nor can the <a href="#Entity">Entity</a> be afterwards distinguished from other
-                such-treated entities.</p>
+            <section id="anonymousDef" class='notoc'>
+                 <p><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
+                     properties of an <a href="#Entity">Entity</a> to obscure its identity such
+                     that the process cannot be reversed nor can the <a href="#Entity">Entity</a>
+                     be afterwards distinguished from other such-treated entities.</p>
+            </section>
 
-            <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
-                used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
-                An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
-                meaning outside the scope of the <a href="#jsonldDef">JSON-LD</a> document within which it resides.</p>
+            <section id="blankNodeDef" class='notoc'>
+                <p><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
+                    used to identify an <a href="#entity">Entity</a> for which an
+                    <a href="#iriDef">IRI</a> is not provided. An <a href="#entity">Entity</a>
+                    provisioned with a blank node identifier is neither dereferenceable nor has
+                    meaning outside the scope of the <a href="#jsonldDef">JSON-LD</a> document
+                    within which it resides.</p>
+            </section>
 
-           <p><a name="actionDef"></a><strong>Action</strong>: something performed or done to accomplish a purpose. Caliper
-               <a href="#event">Event</a> subtypes define a controlled vocabulary of one or more
-               <a href="#actions">actions</a> relevant to the activity domain. A Caliper <a href="#event">Event</a>
-               includes an <code>action</code> attribute for expressing the associated <code>action</code>.</p>
+            <section id="actionDef" class='notoc'>
+                <p><strong>Action</strong>: something performed or done to accomplish a purpose.
+                    Caliper <a href="#event">Event</a> subtypes define a controlled vocabulary of
+                    one or more <a href="#actions">actions</a> relevant to the activity domain. A
+                    Caliper <a href="#event">Event</a> includes an <code>action</code> attribute
+                    for expressing the associated <code>action</code>.</p>
+            </section>
 
-            <p><a name="contextDef"></a><strong>Context</strong>: a special
-                <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps the terms employed in a
-                JSON document to <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or more published
-                vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
-                an economical way of communicating document semantics to services interested in consuming Caliper event
-                data.</p>
+            <section id="contextDef" class='notoc'>
+                <p><strong>Context</strong>: a special
+                <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps
+                    the terms employed in a JSON document to
+                    <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or
+                    more published vocabularies. Inclusion of a
+                    <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
+                    an economical way of communicating document semantics to services interested in
+                    consuming Caliper event data.</p>
+            </section>
 
-            <p><a name="depersonalizedDef"></a><strong>Depersonalize, Depersonalized</strong>: applying a process to
-                transform the properties of an <a href="#Entity">Entity</a> in order to obscure its identity such that
-                the process might be reversed thus preserving the ability to afterwards distinguish from other
-                such-treated entities.</p>
+            <section id="depersonalizedDef" class='notoc'>
+                <p><strong>Depersonalize, Depersonalized</strong>: applying a process to
+                transform the properties of an <a href="#Entity">Entity</a> in order to obscure
+                its identity such that the process might be reversed thus preserving the ability
+                to afterwards distinguish from other such-treated entities.</p>
+            </section>
 
-            <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
-                that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using
-                <em>Describe</em> messages in order to reduce verbosity (e.g. sending a <a href="#person">Person</a> entity
-                as a <em>Describe</em> avoids having to repeat the <a href="#person">Person</a> object in each
-                <a href="#event">Event</a> that includes it).</p>
+            <section id="describeDef" class='notoc'>
+                <p><strong>Describe</strong>: a Caliper message containing an
+                    <a href="#entity">Entity</a> that is not directly associated with an
+                    <a href="#event">Event</a>. Entities can be sent asynchronously using
+                    <em>Describe</em> messages in order to reduce verbosity
+                    (e.g. sending a <a href="#person">Person</a> entity as a <em>Describe</em>
+                    avoids having to repeat the <a href="#person">Person</a> object in each
+                    <a href="#event">Event</a> that includes it).</p>
+            </section>
 
-            <p><a name="endpointDef"></a><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
+            <section id="endpointDef" class='notoc'>
+                <p><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
                 to a specific network protocol.</p>
+            </section>
 
-            <p><a name="entityDef"></a><strong>Entity</strong>: an object or a thing that participates in learning-related
-                activity. Caliper <a href="#entity">Entity</a> types provide coarsed-grained representations of applications,
-                people, groups and resources that constitute the "stuff" of a Caliper <a href="#event">Event</a>.
-                Each <a href="#entity">Entity</a> corresponds to a node in a directed graph.</p>
+            <section id="entityDef" class='notoc'>
+                <p><strong>Entity</strong>: an object or a thing that participates in
+                    learning-related activity. Caliper <a href="#entity">Entity</a> types provide
+                    coarsed-grained representations of applications, people, groups and resources
+                    that constitute the "stuff" of a Caliper <a href="#event">Event</a>. Each
+                    <a href="#entity">Entity</a> corresponds to a node in a directed graph.</p>
+            </section>
 
-            <p><a name="envelopeDef"></a><strong>Envelope</strong>: a data structure that serves as a transport container
-                of Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data.  The envelope also includes
-                metadata about the emitting <a href="#sensor">Sensor</a> and the data payload.</p>
+            <section id="envelopeDef" class='notoc'>
+                <p><strong>Envelope</strong>: a data structure that serves as a transport container
+                    of Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data.  The
+                    envelope also includes metadata about the emitting <a href="#sensor">Sensor</a>
+                    and the data payload.</p>
+            </section>
 
-            <p><a name="eventDef"></a><strong>Event</strong>: describes a relationship established between an
-                <a href="#agent">Agent</a> (the <code>actor</code>) and an <a href="#entity">Entity</a> (the
-                <code>object</code>) formed as a result of a purposeful <code>action</code> undertaken by the
-                <code>actor</code> in connection to the <code>object</code> at a particular moment in time.</p>
+            <section id="eventDef" class='notoc'>
+                <p><strong>Event</strong>: describes a relationship established between an
+                    <a href="#agent">Agent</a> (the <code>actor</code>) and an
+                    <a href="#entity">Entity</a> (the <code>object</code>) formed as a result of a
+                    purposeful <code>action</code> undertaken by the <code>actor</code> in
+                    connection to the <code>object</code> at a particular moment in time.</p>
+            </section>
 
-            <p><a name="jsonldDef"></a><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
-                and messaging format, processing algorithms and API for working with <a href="#linkedData">Linked Data</a>.
-                The messages described in this specification are intended to be used in programming environments that
-                support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
+            <section id="jsonldDef" class='notoc'>
+                <p><strong>JSON-LD</strong>: a specification providing a JSON-based data
+                    serialization and messaging format, processing algorithms and API for working
+                    with <a href="#linkedData">Linked Data</a>. The messages described in this
+                    specification are intended to be used in programming environments that
+                    support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
+            </section>
 
-            <p><a name="iriDef"></a><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
+            <section id="iriDef" class='notoc'>
+                <p><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
                 Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal
                 character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>.
                 <a href="#linkedData">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
+            </section>
 
-            <p><a name="iso8601Def"></a><strong>ISO 8601</strong>: Caliper data and time values are formatted per
+            <section id="iso8601Def" class='notoc'>
+                <p><strong>ISO 8601</strong>: Caliper data and time values are formatted per
                 ISO 8601 with the addition of millisecond precision. The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T'
                 separates the date from the time while 'Z' indicates that the time is set to UTC.</p>
+            </section>
 
-            <p><a name="linkedDataDef"></a><strong>Linked Data</strong>: A set of design principles first articulated
-                by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web. The principles
-                can be summarized as follows: use <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> as names for things;
-                use HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> so that information about things (e.g., people,
-                objects, concepts) can be retrieved using a standard format; link out to other relevant things by way of
-                their <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> in order to promote discovery of new relationships
-                between things.</p>
+            <section id="linkedDataDef" class='notoc'>
+                <p><strong>Linked Data</strong>: A set of design principles first articulated by
+                    Tim Berners-Lee for discovering, connecting, and sharing structured data over
+                    the Web. The principles can be summarized as follows: use
+                    <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> as names for things;
+                    use HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> so that
+                    information about things (e.g., people, objects, concepts) can be retrieved
+                    using a standard format; link out to other relevant things by way of
+                    their <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> in order to
+                    promote discovery of new relationships between things.</p>
+            </section>
 
-            <p><a name="lisDef"></a><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
+            <section id="lisDef" class='notoc'>
+                <p><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
                 IMS standard that defines how systems manage the exchange of information that describes people, groups,
                 memberships, courses and outcomes.</p>
+            </section>
 
-            <p><a name="ltiDef"></a><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;) [[!LTI-13]] is an
-                IMS standard for integration of rich learning applications within educational environments.</p>
+            <section id="ltiDef" class='notoc'>
+               <p><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;)
+                   [[!LTI-13]] is an IMS standard for integration of rich learning applications
+                   within educational environments.</p>
+            </section>
 
-            <p><a name="profileDef"></a><strong>Profile</strong>: models a learning activity or a supporting
-                activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts
-                that application designers and developers can draw upon to describe common user interactions in a consistent
-                manner using a shared vocabulary.</p>
+            <section id="objectDef" class='notoc'>
+                <p><strong>Object</strong>: an <a href="#entity">Entity</a> that an
+                    <a href="#agent">Agent</a> interacts with that becomes the focus, target or
+                    object of an interaction. A Caliper <a href="#event">Event</a> includes an
+                    <code>object</code> attribute for representing the resource.</p>
+            </section>
 
-            <p><a name="objectDef"></a><strong>Object</strong>: an <a href="#entity">Entity</a> that an
-                <a href="#agent">Agent</a> interacts with that becomes the focus, target or object of an interaction.
-                A Caliper <a href="#event">Event</a> includes an <code>object</code> attribute for representing the
-                resource.</p>
+            <section id="profileDef" class='notoc'>
+                <p><strong>Profile</strong>: a segment of the information model that describes
+                    a learning activity or a supporting activity that helps facilitate learning.
+                    Each profile provides a domain-specific set of terms and concepts that
+                    application designers and developers can draw upon to describe common user
+                    interactions in a consistent manner using a shared vocabulary. A Caliper
+                    profile also serves as a unit of certification.</p>
+            </section>
 
-            <p><a name="profileDef"></a><strong>Profile</strong>: a segment of the information model that describes
-                a learning activity or a supporting activity that helps facilitate learning. A Caliper profile comprises
-                related Caliper events, entities and actions that together describe the activity. A Caliper profile also
-                serves as a unit of certification.</p>
+            <section id="sensorDef" class='notoc'>
+                <p><strong>Sensor</strong>: Software assets deployed within a learning application
+                    that implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for
+                    marshalling and transmitting Caliper data to a target endpoint.</p>
+            </section>
 
-            <p><a name="sensorDef"></a><strong>Sensor</strong>: Software assets deployed within a learning application that
-                implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
-                a target endpoint.</p>
+            <section id="sensorAPIDef" class='notoc'>
+                <p><strong>Sensor API&trade;</strong>: The standard set of methods and supported
+                    parameters that a <a href="#sensorDef">Sensor</a> implements according to this
+                    specification in order to transmit Caliper data in an interoperable way.</p>
+            </section>
 
-            <p><a name="sensorAPIDef"></a><strong>Sensor API&trade;</strong>: The standard set of methods and supported
-                parameters that a <a href="#sensorDef">Sensor</a> implements according to this specification in order
-                to transmit Caliper data in an interoperable way.</p>
+            <section id="termDef" class='notoc'>
+                <p><strong>Term</strong>: a word or short expression that expands to an
+                    <a href="#iriDef">IRI</a> when mapped to a JSON-LD <a href="#contextDef">context</a>
+                    document. Terms are employed by Caliper as <code>type</code> property string
+                    values in order to distinguish between various JSON representations of entities
+                    and events defined by the Caliper information model.</p>
+            </section>
 
-            <p><a name="termDef"></a><strong>Term</strong>: a word or short expression that expands to an
-                <a href="#iriDef">IRI</a> when mapped to a JSON-LD <a href="#contextDef">context</a> document. Terms are
-                employed by Caliper as <code>type</code> property string values in order to distinguish between various
-                JSON representations of entities and events defined by the Caliper information model.</p>
-
-            <p><a name="typeCoercionDef"></a><strong>Type Coercion</strong>: the process of coercing values to a particular
+            <section id="typeCoercionDef" class='notoc'>
+                <p><strong>Type Coercion</strong>: the process of coercing values to a particular
                 data type.</p>
+            </section>
 
-            <p><a name="uriDef"></a><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
-                utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a
-                <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform
-                Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
-                are considered subspaces of the more general <a href="#uriDef">URI</a> space.
+            <section id="uriDef" class='notoc'>
+                <p><strong>URI</strong>: the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
+                    utilizes the US-ASCII character set to identify a resource. Per
+                    <a href="#rfc2396">RFC 2396</a> a <a href="#uriDef">URI</a> "can be further
+                    classified as a locator, a name or both."  Both the Uniform Resource Locator
+                    (<a href="#urlDef">URL</a>) and the Uniform Resource Name
+                    (<a href="#urnDef">URN</a>) are considered subspaces of the more general
+                    <a href="#uriDef">URI</a> space.</p>
+            </section>
 
-            <p><a name="urlDef"></a><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
-                type of <a href="#uriDef">URI</a> that provides a reference to resource that specifies both its location
-                and a means of retrieving a representation of it.  An HTTP <a href="#uriDef">URI</a> is a
-                <a href="#urlDef">URL</a> and using HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> to identify
-                things is fundamental to <a href="#linkedData">Linked Data</a>.</p>
+            <section id="urlDef" class='notoc'>
+                <p><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
+                    type of <a href="#uriDef">URI</a> that provides a reference to resource that
+                    specifies both its location and a means of retrieving a representation of it.
+                    An HTTP <a href="#uriDef">URI</a> is a <a href="#urlDef">URL</a> and using HTTP
+                    <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> to identify things is
+                    fundamental to <a href="#linkedData">Linked Data</a>.</p>
+            </section>
 
-            <p><a name="urnDef"></a><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a type
-                of <a href="#uriDef">URI</a> that provides a persistent identifier for a resource that is bound to a
-                defined namespace.  Unlike a <a href="#urlDef">URL</a> a <a href="#urnDef">URN</a> is location-independent
-                and provides no means of accessing a representation of the named resource.</p>
+            <section id="urnDef" class='notoc'>
+                <p><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a
+                    type of <a href="#uriDef">URI</a> that provides a persistent identifier for a
+                    resource that is bound to a defined namespace.  Unlike a
+                    <a href="#urlDef">URL</a> a <a href="#urnDef">URN</a> is location-independent
+                    and provides no means of accessing a representation of the named resource.</p>
+            </section>
 
-            <p><a name="uuidDef"></a><strong>UUID</strong>: a 128-bit identifier that does not require a registration
-                authority to assure uniqueness. However, absolute uniqueness is not guaranteed although the collision
-                probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
-                generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
-                expressed as a <a href="#urnDef">URN</a> using the form "urn:uuid:&ltUUID&gt"
-                as described in <a href="#rfc4122">RFC 4122</a>.</p>
+            <section id="uuidDef" class='notoc'>
+                <p><strong>UUID</strong>: a 128-bit identifier that does not require a registration
+                    authority to assure uniqueness. However, absolute uniqueness is not guaranteed
+                    although the collision probability is considered extremely low. Caliper
+                    recommends use of randomly or pseudo-randomly generated version 4 UUIDs. Each
+                    Caliper <a href="#event">Event</a> MUST be assigned a UUID that is expressed as
+                    a <a href="#urnDef">URN</a> using the form "urn:uuid:&ltUUID&gt" as described
+                    in <a href="#rfc4122">RFC 4122</a>.</p>
+            </section>
         </section>
 
         <section id="conformance">
