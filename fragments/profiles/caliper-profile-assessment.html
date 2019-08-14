@@ -149,7 +149,7 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
     <li>For <a href="#AssessmentEvent">AssessmentEvent</a> actions, the <code>generated</code>
-        <a href="#attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
+        <a href="#Attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
         object the <a href="#Attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>,
         the <code>assignable</code>, and the <code>count</code>. Set the <a href="#Attempt">Attempt</a>
         <code>count</code> values as follows (per action):
@@ -157,7 +157,7 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
         <ul>
             <li><a href="#action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
                 increment by 1 for each subsequent attempt.</li>
-            <li><a href="#action-paused">Paused</a>, <a href="#resumed">Resumed</a>, <a href="#reset">Reset</a>: do
+            <li><a href="#action-paused">Paused</a>, <a href="#action-resumed">Resumed</a>, <a href="#action-reset">Reset</a>: do
                 not change the current <code>count</code> value.</li>
             <li><a href="#action-restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
         </ul>
