@@ -40,18 +40,14 @@
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href=
-          "#IriDef"
-        >IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
             be expressed either as an object or as a string corresponding to the actor's IRI.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href=
-           "#TermDef"
-        >Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
             <code>object</code>. The value range is limited to the actions: <a href="#Action-accepted">Accepted</a>,
             <a href="#Action-declined">Declined</a>, or <a href="#Action-sent">Sent</a>.</td>
@@ -60,9 +56,7 @@
     <tr>
         <td>object</td>
         <td><a href="#SurveyInvitation">SurveyInvitation</a> |
-            <a href=
-               "#IriDef"
-            >IRI</a></td>
+            <a href="#IriDef">IRI</a></td>
         <td>The <a href="#SurveyInvitation">SurveyInvitation</a> to which the <code>actor</code> is sending out or
             responding to. The <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the resource's IRI.</td>

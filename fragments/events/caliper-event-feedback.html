@@ -35,19 +35,13 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href=
-           "#TermDef"
-        >Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>FeedbackEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href=
-           "#person"
-        >Person</a> | <a href=
-             "#IriDef"
-        >IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST be expressed either as
             an object or as a string corresponding to the actor's IRI.
         </td>
@@ -55,9 +49,7 @@
     </tr>
     <tr>
         <td>action</td>
-        <td><a href=
-           "#TermDef"
-        >Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
             <code>object</code>. The value range is limited to the <a href="#Action-commented">Commented</a>
             and <a href="#Action-ranked">Ranked</a> actions only.
@@ -66,11 +58,7 @@
     </tr>
     <tr>
         <td>object</td>
-        <td><a href=
-           "#entity"
-        >Entity</a> | <a href=
-             "#IriDef"
-        >IRI</a></td>
+        <td><a href="#Entity">Entity</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Entity">Entity</a> that is the target of the feedback. The <code>object</code> value MUST
             be expressed either as an object or as a string corresponding to the resource's IRI.
         </td>
@@ -78,9 +66,7 @@
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#Frame">Frame</a> | <a href=
-            "#IriDef"
-        >IRI</a></td>
+        <td><a href="#Frame">Frame</a> | <a href="#IriDef">IRI</a></td>
         <td>If the <code>object</code> of the feedback is a particular segment of a
             <code>DigitalResource</code> use a <code>Frame</code> to mark its location. The <code>target</code>
             value MUST be expressed either as an object or as a string corresponding to the target entity’s IRI.
@@ -89,9 +75,7 @@
     </tr>
     <tr>
         <td>generated</td>
-        <td><a href="#Rating">Rating</a> | <a href="#Comment">Comment</a> | <a href=
-             "#IriDef"
-        >IRI</a></td>
+        <td><a href="#Rating">Rating</a> | <a href="#Comment">Comment</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Rating">Rating</a> or <a href="#Comment">Comment</a> entity that
             describes the feedback provided. If the action is <a href="#Action-ranked">Ranked</a> then the
             <code>generated</code> value MUST be expressed as a <a href="#Rating">Rating</a>.
