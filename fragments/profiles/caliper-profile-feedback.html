@@ -13,8 +13,8 @@
 
 <p>The Caliper Feedback Profile models a <a href="#Person">Person</a> providing informal feedback on a
     <a href="#Entity">Entity</a>, typically a piece of student work. The profile provides a
-    <a href="#FeedbackEvent">FeedbackEvent</a> along with <a href="#action-commented">Commented</a> and
-    <a href="#action-ranked">Ranked</a></dd> actions for describing feedback activities. The
+    <a href="#FeedbackEvent">FeedbackEvent</a> along with <a href="#Action-commented">Commented</a> and
+    <a href="#Action-ranked">Ranked</a></dd> actions for describing feedback activities. The
     <a href="#Rating">Rating</a> entity is used to capture quantitative feedback while the
     <a href="#Comment">Comment</a> entity is used to capture qualitative feedback.</p>
 
@@ -61,14 +61,14 @@
         <tr>
             <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-commented">Commented</a></td>
+            <td><a href="#Action-commented">Commented</a></td>
             <td><a href="#Entity">Entity</a></td>
             <td><a href="#Comment">Comment</a></td>
         </tr>
         <tr>
             <td><a href="#FeedbackEvent">FeedbackEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-ranked">Ranked</a></td>
+            <td><a href="#Action-ranked">Ranked</a></td>
             <td><a href="#Entity">Entity</a></td>
             <td><a href="#Rating">Rating</a></td>
         </tr>
@@ -84,11 +84,11 @@ and recommendations apply:
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>For a <a href="#action-commented">Commented</a> action a <code>generated</code> <a href="#Comment">Comment</a>
+    <li>For a <a href="#Action-commented">Commented</a> action a <code>generated</code> <a href="#Comment">Comment</a>
         SHOULD be provided.</li>
-    <li>For a <a href="#action-ranked">Ranked</a> action a <code>generated</code> <a href="#Rating">Rating</a>
+    <li>For a <a href="#Action-ranked">Ranked</a> action a <code>generated</code> <a href="#Rating">Rating</a>
         SHOULD be provided.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

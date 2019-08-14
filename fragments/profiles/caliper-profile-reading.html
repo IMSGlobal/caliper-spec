@@ -44,7 +44,7 @@
     </li>
 </ul>
 
-<p>When used in conjunction with the <a href="#profile-assessment">Assessment Profile</a> viewing patterns can be
+<p>When used in conjunction with the <a href="#AssessmentProfile">Assessment Profile</a> viewing patterns can be
     correlated to performance measures.</p>
 
 <p>The Reading Profile defines a <a href="#NavigationEvent">NavigationEvent</a> for traversing resources and a
@@ -64,14 +64,14 @@
         <tr>
             <td><a href="#NavigationEvent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Action-navigatedTo">NavigatedTo</a></td>
             <td><a href="#DigitalResource">DigitalResource</a></td>
             <td><a href="#DigitalResource">DigitalResource</a></td>
         </tr>
         <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Action-viewed">Viewed</a></td>
             <td><a href="#DigitalResource">DigitalResource</a></td>
             <td><a href="#DigitalResource">DigitalResource</a></td>
         </tr>
@@ -90,7 +90,7 @@ the Reading Profile the following rules and recommendations apply:
         and <code>session</code> SHOULD be referenced.</li>
     <li>A <a href="#Frame">Frame</a> MAY be specified as the <code>target</code> in order to indicate an
         indexed segment or location.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

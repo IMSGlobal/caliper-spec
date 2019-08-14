@@ -31,25 +31,25 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Membership</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>Membership</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>organization</td>
-        <td><a href="#Organization">Organization</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Organization">Organization</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Organization">Organization</a> associated with the <code>Membership</code>. The
             <code>Organization</code> value MUST be expressed either as an object or as a string corresponding to the
-            organization's <a href="#iriDef">IRI</a>.
+            organization's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>
     <tr>
         <td>member</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> associated with this <code>Membership</code>. The <code>member</code>
             value MUST be expressed either as an object or as a string corresponding to the member's
-            <a href="#iriDef">IRI</a>.
+            <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>
@@ -57,7 +57,7 @@
         <td>roles</td>
         <td>Array</td>
         <td>An ordered collection of organizational roles assigned to the <code>member</code>. Role values are limited
-            to the list of Caliper defined <a href="#lis-roles">role</a> terms. Whenever a subrole is specified, the core
+            to the list of Caliper defined <a href="#Lis-roles">role</a> terms. Whenever a subrole is specified, the core
             context role SHOULD also be included; for example, a role of <em>Instructor#TeachingAssistant</em>
             should always be accompanied by the <em>Instructor</em> role.
         </td>
@@ -65,9 +65,9 @@
     </tr>
     <tr>
         <td>status</td>
-        <td><a href="#term">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>A string value that indicates the current standing of the <code>member</code>. If a status is specified, the
-            value be chosen from the list of Caliper defined <a href="#lis-statuses">statuses</a>.
+            value be chosen from the list of Caliper defined <a href="#Lis-statuses">statuses</a>.
         </td>
         <td>Optional</td>
     </tr>

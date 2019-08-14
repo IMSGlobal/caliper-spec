@@ -33,14 +33,14 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef"
+        <td><a href="#TermDef"
         >Term</a></td>
         <td>The string value MUST be set to <em>SurveyEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef"
+        <td><a href="#Person">Person</a> | <a href="#IriDef"
         >IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
             be expressed either as an object or as a string corresponding to the actor's IRI.</td>
@@ -48,18 +48,18 @@
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef"
+        <td><a href="#TermDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the actions: <a href="#action-optedIn">OptedIn</a> or
-            <a href="#action-optedOut">OptedOut</a>.
+            <code>object</code>. The value range is limited to the actions: <a href="#Action-optedIn">OptedIn</a> or
+            <a href="#Action-optedOut">OptedOut</a>.
             </code>
             .</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Survey">Survey</a> | <a href="#iriDef"
+        <td><a href="#Survey">Survey</a> | <a href="#IriDef"
             >IRI</a></td>
         <td>The <code>Survey</code> to which the <code>actor</code> is opting into or out of. The <code>object</code>
             value MUST be expressed either as an object or as a string corresponding to the resource's IRI.</td>

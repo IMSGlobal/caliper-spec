@@ -32,16 +32,16 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Message</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>Message</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>replyTo</td>
-        <td><a href="#message">Message</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Message">Message</a> | <a href="#IriDef">IRI</a></td>
         <td>A <code>Message</code> that represents the post to which this <code>Message</code> is
             directed in reply. The <code>replyTo</code> value MUST be expressed either as an object or as a string
-            corresponding to the associated message's <a href="#iriDef">IRI</a>.
+            corresponding to the associated message's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>
@@ -58,7 +58,7 @@
         <td>Array</td>
         <td>An ordered collection of one or more <a href="#DigitalResource">DigitalResource</a> entities attached to
             this <code>Message</code>. Each array item MUST be expressed either as an object or as a string
-            corresponding to the item's <a href="#iriDef">IRI</a>.
+            corresponding to the item's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>

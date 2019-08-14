@@ -14,7 +14,7 @@
 <p>The Caliper Forum Profile models learners and others participating in online discussion forums. Forums
     typically encompass one or more threads or topics to which members can subscribe, post messages and
     reply to other messages if a threaded discussion is permitted. Caliper provides
-    <a href="#forum">Forum</a>, <a href="#thread">Thread</a>, and <a href="#message">Message</a> entities
+    <a href="#Forum">Forum</a>, <a href="#Thread">Thread</a>, and <a href="#Message">Message</a> entities
     for representing the <code>object</code> of these activities.</p>
 
 <p>Using the Forum Profile to track discussion behaviors allows instructors to better understand how students
@@ -62,49 +62,49 @@
         <tr>
             <td><a href="#ForumEvent">ForumEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-subscribed">Subscribed</a></td>
+            <td><a href="#Action-subscribed">Subscribed</a></td>
             <td><a href="#Forum">Forum</a></td>
         </tr>
         <tr>
             <td><a href="#ForumEvent">ForumEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-unsubscribed">Unsubscribed</a></td>
+            <td><a href="#Action-unsubscribed">Unsubscribed</a></td>
             <td><a href="#Forum">Forum</a></td>
         </tr>
         <tr>
             <td><a href="#ThreadEvent">ThreadEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
+            <td><a href="#Action-markedAsRead">MarkedAsRead</a></td>
             <td><a href="#Thread">Thread</a></td>
         </tr>
         <tr>
             <td><a href="#ThreadEvent">ThreadEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#Action-markedAsUnRead">MarkedAsUnRead</a></td>
             <td><a href="#Thread">Thread</a></td>
         </tr>
         <tr>
             <td><a href="#MessageEvent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
+            <td><a href="#Action-markedAsRead">MarkedAsRead</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
             <td><a href="#MessageEvent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#Action-markedAsUnRead">MarkedAsUnRead</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
             <td><a href="#MessageEvent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-posted">Posted</a></td>
+            <td><a href="#Action-posted">Posted</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
             <td><a href="#NavigationEvent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Action-navigatedTo">NavigatedTo</a></td>
             <td><a href="#Forum">Forum</a> |
                 <a href="#Message">Message</a> |
                 <a href="#Thread">Thread</a></td>
@@ -112,7 +112,7 @@
         <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Action-viewed">Viewed</a></td>
             <td><a href="#Forum">Forum</a> |
                 <a href="#Message">Message</a> |
                 <a href="#Thread">Thread</a></td>
@@ -137,7 +137,7 @@ When constructing a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent
     <li>Parent-child relationships that exist between a <a href="#message">Message</a>,
         <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of
         the <code>isPartOf</code> property.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

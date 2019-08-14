@@ -10,7 +10,7 @@
     <dt>Term</dt>
     <dd>DigitalResourceCollection</dd>
     <dt>Supertypes</dt>
-    <dd><a href="#Collection">Collection</a>, <a href="#digitalResource">DigitalResource</a></dd>
+    <dd><a href="#Collection">Collection</a>, <a href="#DigitalResource">DigitalResource</a></dd>
     <dt>Subtypes</dt>
     <dd>
         <a href="#Assessment">Assessment</a>,
@@ -20,7 +20,7 @@
     </dd>
     <dt>Properties</dt>
     <dd><code>DigitalResourceCollection</code> inherits all properties defined by its supertypes
-        <a href="#Collection">Collection</a> and <a href="#digitalResource">DigitalResource</a>, of which
+        <a href="#Collection">Collection</a> and <a href="#DigitalResource">DigitalResource</a>, of which
         <code>id</code>, and <code>type</code> are required. Additional type restrictions are described below:
     </dd>
 </dl>
@@ -37,15 +37,15 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>DigitaResourceCollection</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>DigitaResourceCollection</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>items</td>
         <td>Array</td>
         <td>An ordered collection of <a href="#DigitalResource">DigitalResource</a> entities. Each array item MUST be
-            expressed either as an object or as a string corresponding to the item's <a href="#iriDef">IRI</a>.
+            expressed either as an object or as a string corresponding to the item's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>

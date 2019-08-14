@@ -8,7 +8,7 @@
 <p>The <code>ToolLaunchEvent</code> models an interaction between a Person and external Tool
     (SoftwareApplication), at a given time and in a given context. It also provides the ability to
     model a "return response", which in the context of LTI [[LTI-13]] typically consists of
-    a <a href="https://www.imsglobal.org/spec/lti/v1p3/#lis-message-variables">redirect URL</a> or a
+    a <a href="https://www.imsglobal.org/spec/lti/v1p3/#Lis-message-variables">redirect URL</a> or a
     specific response message, as defined in for example LTI Deep Linking [[LTI-DL-20]].
 </p>
 
@@ -40,7 +40,7 @@
     <tr>
         <td>type</td>
         <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
         <td>The string value MUST be set to <em>ToolLaunchEvent</em>.</td>
         <td>Required</td>
@@ -48,7 +48,7 @@
     <tr>
         <td>actor</td>
         <td><a href="#Person">Person</a> | <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST be expressed
             either as an object or as a string corresponding to the actor's IRI.
@@ -58,18 +58,18 @@
     <tr>
         <td id="action">action</td>
         <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
-            The value range is limited to either the <a href="#action-launched">Launched</a> or
-            <a href="#action-returned">Returned</a> actions.
+            The value range is limited to either the <a href="#Action-launched">Launched</a> or
+            <a href="#Action-returned">Returned</a> actions.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
         <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that is the target of the <code>actor</code>'s launch
             activity. The <code>object</code> value MUST be expressed either as an object or as a string
@@ -90,7 +90,7 @@
         <td><a href="#Link">Link</a> | <a href="#LtiLink">LtiLink</a></td>
         <td>The fully qualified URL to which the workflow was redirected. In the case of the
             <a href="#Launched">Launched</a> action, this would be the fully qualified entry-point on the external
-            tool to which the platform launches. In the case of the <a href="#action-returned">Returned</a> action,
+            tool to which the platform launches. In the case of the <a href="#Action-returned">Returned</a> action,
             this would be the fully qualified entry-point on the platform to which the tool is redirecting the
             workflow after user activity from the original launch finishes (this could be the
             <code>launch_presentation_return_url</code> in the case of a simple LTI Resource
@@ -103,12 +103,12 @@
         <td>
             <a href="#LtiSession">LtiSession</a> |
             <a href=
-               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+               "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
             >IRI</a></td>
         <td>The Platform's session, constituting part of the tool launch context. The <code>federatedSession</code>
             value MUST be expressed either as an object or as a string corresponding to the federatedSession’s IRI.
         </td>
-        <td>Required when the <code>action</code> value is <a href="#actions">Launched</a>, otherwise optional.
+        <td>Required when the <code>action</code> value is <a href="#Actions">Launched</a>, otherwise optional.
             Workflows that include a specific "return message" component (e.g. LTI Deep Linking response messages)
             SHOULD provide the <code>federatedSession</code> property and SHOULD populate its
             <code>messageParameters</code> property with the message parameters in the response message.

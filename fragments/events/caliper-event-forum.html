@@ -33,33 +33,33 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ForumEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>ForumEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST be
-            expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+            expressed either as an object or as a string corresponding to the actor's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-subscribed">Subscribed</a> and
-            <a href="#action-unsubscribed">Unsubscribed</a> actions only.
+            range is limited to the <a href="#Action-subscribed">Subscribed</a> and
+            <a href="#Action-unsubscribed">Unsubscribed</a> actions only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Forum">Forum</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Forum">Forum</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Forum">Forum</a> that comprises the <code>object</code> of this interaction. The
             <code>object</code> value MUST be expressed either as an object or as a string corresponding to the
-            object's <a href="#iriDef">IRI</a>.
+            object's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>

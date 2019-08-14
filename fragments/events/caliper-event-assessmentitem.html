@@ -33,46 +33,46 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>AssessmentItemEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>AssessmentItemEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST
-            be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.</td>
+            be expressed either as an object or as a string corresponding to the actor's <a href="#IriDef">IRI</a>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-started">Started</a>, <a href="#action-skipped">Skipped</a>, and
-            <a href="#action-completed">Completed</a> actions only.</td>
+            range is limited to the <a href="#Action-started">Started</a>, <a href="#Action-skipped">Skipped</a>, and
+            <a href="#Action-completed">Completed</a> actions only.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#AssessmentItem">AssessmentItem</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#AssessmentItem">AssessmentItem</a> | <a href="#IriDef">IRI</a></td>
         <td>The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the
-            object's <a href="#iriDef">IRI</a>.</td>
+            object's <a href="#IriDef">IRI</a>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>generated</td>
-        <td><a href="#Response">Response</a> | <a href="#iriDef">IRI</a></td>
-        <td>For a <a href="#action-completed">completed</a> action a <code>generated</code> <a href="#Response">Response</a>
+        <td><a href="#Response">Response</a> | <a href="#IriDef">IRI</a></td>
+        <td>For a <a href="#Action-completed">completed</a> action a <code>generated</code> <a href="#Response">Response</a>
             or a subtype. The <code>generated</code> value MUST be expressed either as an object or as a string
-            corresponding to the generated entity's <a href="#iriDef">IRI</a>.</td>
+            corresponding to the generated entity's <a href="#IriDef">IRI</a>.</td>
         <td>Optional</td>
     </tr>
     <tr>
         <td>referrer</td>
-        <td><a href="#AssessmentItem">AssessmentItem</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#AssessmentItem">AssessmentItem</a> | <a href="#IriDef">IRI</a></td>
         <td>The previous <a href="#AssessmentItem">AssessmentItem</a> attempted MAY be specified as the
             <code>referrer</code>. The <code>referrer</code> value MUST be expressed either as an object or as a string
-            corresponding to the referrer's <a href="#iriDef">IRI</a>.</td>
+            corresponding to the referrer's <a href="#IriDef">IRI</a>.</td>
         <td>Optional</td>
     </tr>
     </tbody>

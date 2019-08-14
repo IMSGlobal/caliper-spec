@@ -31,14 +31,14 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The string value MUST be set to <em>NavigationEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
         <td><a href="#Person">Person</a> | <a href=
-          "#iriDef"
+          "#IriDef"
         >IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
             be expressed either as an object or as a string corresponding to the actor's IRI.</td>
@@ -46,17 +46,17 @@
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef"
+        <td><a href="#TermDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the actions: <a href="#action-navigatedTo">NavigatedTo</a>.</td>
+            <code>object</code>. The value range is limited to the actions: <a href="#Action-navigatedTo">NavigatedTo</a>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
         <td><a href="#DigitalResource">DigitalResource</a> |
             <a href="#SoftwareApplication">SoftwareApplication</a> |
-            <a href="#iriDef">IRI</a></td>
+            <a href="#IriDef">IRI</a></td>
         <td>The <a href="#DigitalResource">DigitalResource</a> or <a href="#SoftwareApplication">SoftwareApplication</a>
             to which the <code>actor</code> navigated. The <code>object</code> value MUST be expressed either as
             an object or as a string corresponding to the resource's IRI.</td>
@@ -64,7 +64,7 @@
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#IriDef">IRI</a></td>
         <td>The <code>DigitalResource</code> that represents the particular part or location of
             the <code>object</code> being navigated to. The <code>target</code> value MUST be expressed either
             as an object or as a string corresponding to the referrer's IRI.</td>
@@ -74,7 +74,7 @@
         <td>referrer</td>
         <td><a href="#DigitalResource">DigitalResource</a> |
             <a href="#SoftwareApplication">SoftwareApplication</a> |
-            <a href="#iriDef"
+            <a href="#IriDef"
             >IRI</a></td>
         <td>The <code>DigitalResource</code> or <code>SoftwareApplication</code> that constitutes the
             referring context. The <code>referrer</code> value MUST be expressed either as an object

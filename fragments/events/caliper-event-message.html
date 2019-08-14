@@ -33,35 +33,35 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MessageEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>MessageEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST be
-            expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+            expressed either as an object or as a string corresponding to the actor's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-markedAsRead">MarkedAsRead</a>,
-            <a href="#action-markedAsUnRead">MarkedAsUnRead</a>, and <a href="#action-posted">Posted</a> actions only.
+            range is limited to the <a href="#Action-markedAsRead">MarkedAsRead</a>,
+            <a href="#Action-markedAsUnRead">MarkedAsUnRead</a>, and <a href="#Action-posted">Posted</a> actions only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Message">Message</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Message">Message</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Message">Message</a> that constitutes the <code>object</code> of the interaction. If the
             <code>object</code> represents a <a href="#Message">Message</a> posted in reply to a previous post, the
             prior post prompting the <a href="#Message">Message</a> SHOULD be referenced using the
             <a href="#Message">Message</a> <code>replyTo</code> property. The <code>object</code> value MUST be
-            expressed either as an object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.
+            expressed either as an object or as a string corresponding to the object's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>

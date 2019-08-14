@@ -34,41 +34,41 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>GradeEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>GradeEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Agent">Agent</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Agent">Agent</a> | <a href="#IriDef">IRI</a></td>
         <td>An <a href="#Agent">Agent</a>, typically <a href="#Person">Person</a> or
             <a href="#SoftwareApplication">SoftwareApplication</a>, MUST be specified as the <code>actor</code>. The
             <code>actor</code> value MUST be expressed either as an object or as a string corresponding to the actor's
-            <a href="#iriDef">IRI</a>.</td>
+            <a href="#IriDef">IRI</a>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-graded">Graded</a> action only.
+            range is limited to the <a href="#Action-graded">Graded</a> action only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Attempt">Attempt</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Attempt">Attempt</a> | <a href="#IriDef">IRI</a></td>
         <td>The completed <a href="#Attempt">Attempt</a>. The <code>object</code> value MUST be expressed either as an
-            object or as a string corresponding to the object's <a href="#iriDef">IRI</a>.
+            object or as a string corresponding to the object's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>generated</td>
-        <td><a href="#Score">Score</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Score">Score</a> | <a href="#IriDef">IRI</a></td>
         <td>The generated <a href="#Score">Score</a> SHOULD be provided. The <code>generated</code> value MUST be
             expressed either as an object or as a string corresponding to the generated entity's
-            <a href="#iriDef">IRI</a>.
+            <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>

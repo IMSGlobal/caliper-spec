@@ -12,7 +12,7 @@
 </dl>
 
 <p>The Caliper Search Profile models an <code>actor</code>, typically a learner, querying a resource for information.
-    The profile provides a <a href="#SearchEvent">SearchEvent</a> and a <a href="#action-searched">Searched</a> action
+    The profile provides a <a href="#SearchEvent">SearchEvent</a> and a <a href="#Action-searched">Searched</a> action
     for describing information retrieval activities. An optional <a href="#SearchResponse">SearchResponse</a>
     entity can be employed to describe the <a href="#Query">Query</a> submitted by a user as well as any
     <code>searchResults</code> returned as a result of the search.</p>
@@ -39,7 +39,7 @@
     </li>
 </ul>
 
-<p class="note" title='Combining search data with navigation and viewing data'>When the Search Profile is used in conjunction with the <a href="#profile-reading">Reading Profile</a>, a learner's
+<p class="note" title='Combining search data with navigation and viewing data'>When the Search Profile is used in conjunction with the <a href="#ReadingProfile">Reading Profile</a>, a learner's
     navigation, search, and viewing behavior can be combined to provide a richer picture of learner interactions with
     digital resources.</p>
 
@@ -60,7 +60,7 @@
         <tr>
             <td><a href="#SearchEvent">SearchEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-searched">Searched</a></td>
+            <td><a href="#Action-searched">Searched</a></td>
             <td><a href="#DigitalResource">DigitalResource</a> |
                 <a href="#SoftwareApplication">SoftwareApplication</a></td>
             <td><a href="#SearchResponse">SearchResponse</a></td>
@@ -78,11 +78,11 @@ recommendations apply:
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>In particular, a <code>generated</code> <a href="#entity-searchresponse">SearchResponse</a> SHOULD be
-        expressed. The <a href="#entity-searchresponse">SearchResponse</a> can be employed to describe the
-        <a href="#entity-query">Query</a> submitted by a user as well as any <code>searchResults</code> returned
+    <li>In particular, a <code>generated</code> <a href="#SearchResponse">SearchResponse</a> SHOULD be
+        expressed. The <a href="#SearchResponse">SearchResponse</a> can be employed to describe the
+        <a href="#Query">Query</a> submitted by a user as well as any <code>searchResults</code> returned
         as a result of the search.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

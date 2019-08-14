@@ -33,7 +33,7 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+        <td><a href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
         <td>The string value MUST be set to <em>QuestionnaireItemEvent</em>.</td>
         <td>Required</td>
@@ -41,7 +41,7 @@
     <tr>
         <td>actor</td>
         <td><a href="#Person">Person</a> | <a href=
-          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+          "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the action. The <code>actor</code> value MUST
             be expressed either as an object or as a string corresponding to the actor's IRI.</td>
@@ -50,19 +50,19 @@
     <tr>
         <td>action</td>
         <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>.
             The value range is limited to the actions:
-            <a href="#action-started">Started</a>,
-            <a href="#action-skipped">Skipped</a>, or
-            <a href="#action-completed">Completed</a>.</td>
+            <a href="#Action-started">Started</a>,
+            <a href="#Action-skipped">Skipped</a>, or
+            <a href="#Action-completed">Completed</a>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
         <td><a href="#QuestionnaireItem">QuestionnaireItem</a> | <a
-            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            href="https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#QuestionnaireItem">QuestionnaireItem</a> started, attempted, or skipped by the
             <code>actor</code>. The <code>object</code> value MUST be expressed either as an object or as a string
@@ -72,9 +72,9 @@
     <tr>
         <td>generated</td>
         <td><a href="#Response">Response</a> | <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
-        <td>For a <a href="#action-completed">Completed</a> action a generated <a href="#Response">Response</a> MAY
+        <td>For a <a href="#Action-completed">Completed</a> action a generated <a href="#Response">Response</a> MAY
             be referenced. The <code>generated</code> value MUST be expressed either as an object or as a string
             corresponding to the <a href="#Response">Response</a> resource's IRI.</td>
         <td>Optional</td>

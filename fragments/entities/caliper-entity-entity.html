@@ -9,13 +9,13 @@
     set of properties or attributes that support description and discovery.</p>
 
 <p>Caliper permits <a href="#Entity">Entity</a> values to be expressed either as an object or as a string corresponding
-    to the resource's <a href="#iriDef">IRI</a>. If the <a href="#Entity">Entity</a> is expressed as an object, both the
+    to the resource's <a href="#IriDef">IRI</a>. If the <a href="#Entity">Entity</a> is expressed as an object, both the
     <code>id</code> and <code>type</code> properties MUST be specified. The <code>type</code> value is a string that
     MUST match the term specified for the <a href="#Entity">Entity</a> by the Caliper information model (e.g. "Person").
-    The <code>id</code> value is a string that MUST be expressed as an <a href="#iriDef">IRI</a>.  The 
-    <a href="#iriDef">IRI</a> MUST be valid and unique.  The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, 
-    i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.  
-    A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided although care should be
+    The <code>id</code> value is a string that MUST be expressed as an <a href="#IriDef">IRI</a>.  The
+    <a href="#IriDef">IRI</a> MUST be valid and unique.  The <a href="#IriDef">IRI</a> SHOULD also be dereferenceable,
+    i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.
+    A <a href="#UriDef">URI</a> employing the <a href="#UrnDef">URN</a> scheme MAY be provided although care should be
     taken when employing a location-independent identifier since it precludes the possibility of utilizing it to
     retrieve machine-readable data over HTTP.
 </p>
@@ -129,21 +129,21 @@
     <tbody>
     <tr>
         <td>id</td>
-        <td><a href="#iriDef">IRI</a></td>
-        <td>A valid <a href="#iriDef">IRI</a> MUST be specified. The <a href="#iriDef">IRI</a> MUST be unique and
-            persistent. The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a
-            representation of the resource. A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme
-            MAY be provided in cases where a <a href="#linkedDataDef">Linked Data</a> friendly HTTP URI is either
+        <td><a href="#IriDef">IRI</a></td>
+        <td>A valid <a href="#IriDef">IRI</a> MUST be specified. The <a href="#IriDef">IRI</a> MUST be unique and
+            persistent. The <a href="#IriDef">IRI</a> SHOULD also be dereferenceable, i.e., capable of returning a
+            representation of the resource. A <a href="#UriDef">URI</a> employing the <a href="#UrnDef">URN</a> scheme
+            MAY be provided in cases where a <a href="#LinkedDataDef">Linked Data</a> friendly HTTP URI is either
             unavailable or inappropriate.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the <a href="#Entity">Entity</a>
+        <td><a href="#TermDef">Term</a></td>
+        <td>A string value corresponding to the <a href="#TermDef">Term</a> defined for the <a href="#Entity">Entity</a>
             in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a> document.
-            For a generic <a href="#Entity">Entity</a> set the <code>type</code> value to the term <em>Entity</em>.  
-            If a subtype of <a href="#Entity">Entity</a> is created, set the type to the <a href="#termDef">Term</a> 
+            For a generic <a href="#Entity">Entity</a> set the <code>type</code> value to the term <em>Entity</em>.
+            If a subtype of <a href="#Entity">Entity</a> is created, set the type to the <a href="#TermDef">Term</a>
             corresponding to the subtype utilized, e.g., <a href="#Person">Person</a>.</td>
         <td>Required</td>
     </tr>
@@ -181,7 +181,7 @@
         <td>An ordered collection of <a href="#SystemIdentifier">SystemIdentifier</a> entities that represent
             other identifiers for this <a href="#Entity">Entity</a> that are known to the <a href="#Sensor">Sensor</a>.
             Each array item MUST be expressed either as an object or as a string corresponding to the
-            item's <a href="#iriDef">IRI</a>.</td>
+            item's <a href="#IriDef">IRI</a>.</td>
         <td>Optional</td>
     </tr>
     <tr>

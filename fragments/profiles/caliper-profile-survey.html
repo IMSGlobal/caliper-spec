@@ -101,77 +101,77 @@
         <tr>
             <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-sent">Sent</a></td>
+            <td><a href="#Action-sent">Sent</a></td>
             <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-accepted">Accepted</a></td>
+            <td><a href="#Action-accepted">Accepted</a></td>
             <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#SurveyInvitationEvent">SurveyInvitationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-declined">Declined</a></td>
+            <td><a href="#Action-declined">Declined</a></td>
             <td><a href="#SurveyInvitation">SurveyInvitation</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#SurveyEvent">SurveyEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-optedIn">OptedIn</a></td>
+            <td><a href="#Action-optedIn">OptedIn</a></td>
             <td><a href="#Survey">Survey</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#SurveyEvent">SurveyEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-optedOut">OptedOut</a></td>
+            <td><a href="#Action-optedOut">OptedOut</a></td>
             <td><a href="#Survey">Survey</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#QuestionnaireEvent">QuestionnaireEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-started">Started</a></td>
+            <td><a href="#Action-started">Started</a></td>
             <td><a href="#Questionnaire">Questionnaire</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#QuestionnaireEvent">QuestionnaireEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-submitted">Submitted</a></td>
+            <td><a href="#Action-submitted">Submitted</a></td>
             <td><a href="#Questionnaire">Questionnaire</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-started">Started</a></td>
+            <td><a href="#Action-started">Started</a></td>
             <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-skipped">Skipped</a></td>
+            <td><a href="#Action-skipped">Skipped</a></td>
             <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-completed">Completed</a></td>
+            <td><a href="#Action-completed">Completed</a></td>
             <td><a href="#QuestionnaireItem">QuestionnaireItem</a></td>
             <td><a href="#Response">Response</a></td>
         </tr>
         <tr>
             <td><a href="#NavigationEvent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Action-navigatedTo">NavigatedTo</a></td>
             <td><a href="#Questionnaire">Questionnaire</a> |
                 <a href="#QuestionnaireItem">QuestionnaireItem</a</td>
             <td>&nbsp;</td>
@@ -179,7 +179,7 @@
         <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Action-viewed">Viewed</a></td>
             <td><a href="#Questionnaire">Questionnaire</a> |
                 <a href="#QuestionnaireItem">QuestionnaireItem</a</td>
             <td>&nbsp;</td>
@@ -200,20 +200,20 @@ the following rules and recommendations apply:
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
     <li>For <a href="#QuestionnaireEvent">QuestionnaireEvent</a> actions, the <code>generated</code>
-        <a href="#attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
+        <a href="#Attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
         object the <a href="#Attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the
-        <code>assignable</code>, and the <code>count</code>. For <a href="#action-started">Started</a> actions set
+        <code>assignable</code>, and the <code>count</code>. For <a href="#Action-started">Started</a> actions set
         the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li><
     <li>For each <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a> described, referencing a
         <code>generated</code> <a href="#Attempt">Attempt</a> or <a href="#Response">Response</a> depends
         on the <code>action</code> value specified.  Set the <a href="#Attempt">Attempt</a>
         <code>count</code> values as follows (per action):
         <ul>
-            <li><a href="#action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+            <li><a href="#Action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
                 increment by 1 for each subsequent attempt.</li>
-            <li><a href="#action-skipped">Skipped</a>: do not increment the <a href="#Attempt">Attempt</a>
+            <li><a href="#Action-skipped">Skipped</a>: do not increment the <a href="#Attempt">Attempt</a>
                 <code>count</code> by 1. The current <code>count</code> value MUST remain unchanged.</li>
-            <li><a href="#action-completed">Completed</a>: if desired, specify the respondent's
+            <li><a href="#Action-completed">Completed</a>: if desired, specify the respondent's
                 <a href="#Response">Response</a> and reference the associated <a href="#Attempt">Attempt</a>
                 via the <code>attempt</code> property.  The current <code>count</code> value MUST remain
                 unchanged.</li>
@@ -225,7 +225,7 @@ the following rules and recommendations apply:
     <li>As a respondent navigates from one <a href="#QuestionnaireItem">QuestionnaireItem</a> to another
         <a href="#QuestionnaireItem">QuestionnaireItem</a>, the previous <a href="#QuestionnaireItem">QuestionnaireItem</a>
         MAY be specified as the <code>referrer</code>.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

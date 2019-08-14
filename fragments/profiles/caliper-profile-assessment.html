@@ -67,70 +67,70 @@
         <tr>
             <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-started">Started</a></td>
+            <td><a href="#Action-started">Started</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-paused">Paused</a></td>
+            <td><a href="#Action-paused">Paused</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-resumed">Resumed</a></td>
+            <td><a href="#Action-resumed">Resumed</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-restarted">Restarted</a></td>
+            <td><a href="#Action-restarted">Restarted</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-submitted">Submitted</a></td>
+            <td><a href="#Action-submitted">Submitted</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-started">Started</a></td>
+            <td><a href="#Action-started">Started</a></td>
             <td><a href="#AssessmentItem">AssessmentItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-skipped">Skipped</a></td>
+            <td><a href="#Action-skipped">Skipped</a></td>
             <td><a href="#AssessmentItem">AssessmentItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-completed">Completed</a></td>
+            <td><a href="#Action-completed">Completed</a></td>
             <td><a href="#AssessmentItem">AssessmentItem</a></td>
             <td><a href="#Response">Response</a></td>
         </tr>
         <tr>
             <td><a href="#NavigationEvent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-navigatedTo">NavigatedTo</a></td>
+            <td><a href="#Action-navigatedTo">NavigatedTo</a></td>
             <td><a href="#Assessment">Assessment</a> | <a href="#AssessmentItem">AssessmentItem</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Action-viewed">Viewed</a></td>
             <td><a href="#Assessment">Assessment</a> | <a href="#AssessmentItem">AssessmentItem</a></td>
             <td>&nbsp;</td>
         </tr>
@@ -155,11 +155,11 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
         <code>count</code> values as follows (per action):
 
         <ul>
-            <li><a href="#action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+            <li><a href="#Action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
                 increment by 1 for each subsequent attempt.</li>
-            <li><a href="#action-paused">Paused</a>, <a href="#action-resumed">Resumed</a>, <a href="#action-reset">Reset</a>: do
+            <li><a href="#Action-paused">Paused</a>, <a href="#Action-resumed">Resumed</a>, <a href="#Action-reset">Reset</a>: do
                 not change the current <code>count</code> value.</li>
-            <li><a href="#action-restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
+            <li><a href="#Action-restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
         </ul>
     </li>
     <li>For each <a href="#AssessmentItemEvent">AssessmentItemEvent</a> described, referencing a
@@ -167,11 +167,11 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
         on the <code>action</code> value specified.  Set the <a href="#Attempt">Attempt</a>
         <code>count</code> values as follows (per action):
         <ul>
-            <li><a href="#action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
+            <li><a href="#Action-started">Started</a>: set the <code>count</code> value to 1 for a first attempt and
                 increment by 1 for each subsequent attempt.</li>
-            <li><a href="#action-skipped">Skipped</a>: do not increment the <a href="#Attempt">Attempt</a>
+            <li><a href="#Action-skipped">Skipped</a>: do not increment the <a href="#Attempt">Attempt</a>
                 <code>count</code> by 1. The current <code>count</code> value MUST remain unchanged.</li>
-            <li><a href="#action-completed">Completed</a>: if desired, specify the learner's
+            <li><a href="#Action-completed">Completed</a>: if desired, specify the learner's
                 <a href="#Response">Response</a> and reference the associated <a href="#Attempt">Attempt</a>
                 via the <code>attempt</code> property.  The current <code>count</code> value MUST remain
                 unchanged.</li>
@@ -183,7 +183,7 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
     <li>As a learner navigates from one <a href="#AssessmentItem">AssessmentItem</a> to another
         <a href="#AssessmentItem">AssessmentItem</a>, the previous <a href="#AssessmentItem">AssessmentItem</a>
         MAY be specified as the <code>referrer</code>.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

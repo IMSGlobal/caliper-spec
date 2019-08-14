@@ -31,15 +31,15 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Score</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>Score</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>attempt</td>
-        <td><a href="#Attempt">Attempt</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Attempt">Attempt</a> | <a href="#IriDef">IRI</a></td>
         <td>The associated <a href="#Attempt">Attempt</a>. The <code>attempt</code> value MUST be expressed either as an
-            object or as a string corresponding to the attempt's <a href="#iriDef">IRI</a>. If an object representation
+            object or as a string corresponding to the attempt's <a href="#IriDef">IRI</a>. If an object representation
             is provided, the <a href="#Attempt">Attempt</a> SHOULD reference both the <a href="#Person">Person</a> who
             generated the <a href="#Attempt">Attempt</a> and the assigned <a href="#DigitalResource">DigitalResource</a>.
         </td>
@@ -62,10 +62,10 @@
     </tr>
     <tr>
         <td>scoredBy</td>
-        <td><a href="#Agent">Agent</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Agent">Agent</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Agent">Agent</a> who scored or graded the <a href="#Attempt">Attempt</a>. The
             <code>scoredBy</code> value MUST be expressed either as an object or as a string corresponding to the
-            scorer's <a href="#iriDef">IRI</a>.
+            scorer's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>

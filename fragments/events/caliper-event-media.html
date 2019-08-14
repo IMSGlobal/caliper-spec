@@ -33,57 +33,57 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>MediaEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>MediaEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST
-            be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+            be expressed either as an object or as a string corresponding to the actor's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-started">Started</a>, <a href="#action-ended">Ended</a>,
-            <a href="#action-paused">Paused</a>, <a href="#action-resumed">Resumed</a>,
-            <a href="#action-restarted">Restarted</a>, <a href="#action-forwardedTo">ForwardedTo</a>,
-            <a href="#action-jumpedTo">JumpedTo</a>, <a href="#action-changedResolution">ChangedResolution</a>,
-            <a href="#action-changedSize">ChangedSize</a>, <a href="#action-changedSpeed">ChangedSpeed</a>,
-            <a href="#action-changedVolume">ChangedVolume</a>,
-            <a href="#action-enabledClosedCaptioning">EnabledClosedCaptioning</a>,
-            <a href="#action-disabledClosedCaptioning">DisabledClosedCaptioning</a>,
-            <a href="#action-enteredFullScreen">EnteredFullScreen</a>,
-            <a href="#action-exitedFullScreen">ExitedFullScreen</a>,
-            <a href="#action-muted">Muted</a>, <a href="#action-unmuted">Unmuted</a>,
-            <a href="#action-openedPopout">OpenedPopout</a>, and <a href="#action-closedPopout">ClosedPopout</a>
+            range is limited to the <a href="#Action-started">Started</a>, <a href="#Action-ended">Ended</a>,
+            <a href="#Action-paused">Paused</a>, <a href="#Action-resumed">Resumed</a>,
+            <a href="#Action-restarted">Restarted</a>, <a href="#Action-forwardedTo">ForwardedTo</a>,
+            <a href="#Action-jumpedTo">JumpedTo</a>, <a href="#Action-changedResolution">ChangedResolution</a>,
+            <a href="#Action-changedSize">ChangedSize</a>, <a href="#Action-changedSpeed">ChangedSpeed</a>,
+            <a href="#Action-changedVolume">ChangedVolume</a>,
+            <a href="#Action-enabledClosedCaptioning">EnabledClosedCaptioning</a>,
+            <a href="#Action-disabledClosedCaptioning">DisabledClosedCaptioning</a>,
+            <a href="#Action-enteredFullScreen">EnteredFullScreen</a>,
+            <a href="#Action-exitedFullScreen">ExitedFullScreen</a>,
+            <a href="#Action-muted">Muted</a>, <a href="#Action-unmuted">Unmuted</a>,
+            <a href="#Action-openedPopout">OpenedPopout</a>, and <a href="#Action-closedPopout">ClosedPopout</a>
             actions only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#MediaObject">MediaObject</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#MediaObject">MediaObject</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#MediaObject">MediaObject</a> or a subtype that constitutes the <code>object</code> of the
             interaction. The <code>object</code> value MUST be expressed either as an object or as a string
-            corresponding to the object's <a href="#iriDef">IRI</a>.
+            corresponding to the object's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#MediaLocation">MediaLocation</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#MediaLocation">MediaLocation</a> | <a href="#IriDef">IRI</a></td>
         <td>If the <code>MediaEvent</code> <code>object</code> is an
             <a href="#AudioObject">AudioObject</a> or <a href="#VideoObject">VideoObject</a>,
             a <a href="#MediaLocation">MediaLocation</a> SHOULD be specified in order to provide the
             <code>currentTime</code> in the audio or video stream that marks the action. If the
             <code>currentTime</code> is specified, the value MUST be an ISO 8601 formatted duration, e.g.,
             &quot;PT30M54S&quot;. The <code>target</code> value MUST be expressed either as an object or as a
-            string corresponding to the target entity's <a href="#iriDef">IRI</a>.
+            string corresponding to the target entity's <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>

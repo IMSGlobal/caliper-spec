@@ -36,9 +36,9 @@
     <tr>
         <td>type</td>
         <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>FeedbackEvent</em>.</td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>FeedbackEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
@@ -46,7 +46,7 @@
         <td><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#person"
         >Person</a> | <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <code>Person</code> who initiated the action. The <code>actor</code> value MUST be expressed either as
             an object or as a string corresponding to the actor's IRI.
@@ -56,11 +56,11 @@
     <tr>
         <td>action</td>
         <td><a href=
-           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#termDef"
+           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#TermDef"
         >Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the <a href="#action-commented">Commented</a>
-            and <a href="#action-ranked">Ranked</a> actions only.
+            <code>object</code>. The value range is limited to the <a href="#Action-commented">Commented</a>
+            and <a href="#Action-ranked">Ranked</a> actions only.
         </td>
         <td>Required</td>
     </tr>
@@ -69,7 +69,7 @@
         <td><a href=
            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#entity"
         >Entity</a> | <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#Entity">Entity</a> that is the target of the feedback. The <code>object</code> value MUST
             be expressed either as an object or as a string corresponding to the resource's IRI.
@@ -79,7 +79,7 @@
     <tr>
         <td>target</td>
         <td><a href="#Frame">Frame</a> | <a href=
-            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+            "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>If the <code>object</code> of the feedback is a particular segment of a
             <code>DigitalResource</code> use a <code>Frame</code> to mark its location. The <code>target</code>
@@ -90,12 +90,12 @@
     <tr>
         <td>generated</td>
         <td><a href="#Rating">Rating</a> | <a href="#Comment">Comment</a> | <a href=
-             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
+             "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#IriDef"
         >IRI</a></td>
         <td>The <a href="#Rating">Rating</a> or <a href="#Comment">Comment</a> entity that
-            describes the feedback provided. If the action is <a href="#action-ranked">Ranked</a> then the
+            describes the feedback provided. If the action is <a href="#Action-ranked">Ranked</a> then the
             <code>generated</code> value MUST be expressed as a <a href="#Rating">Rating</a>.
-            If the action is <a href="#action-commented">Commented</a> then the <code>generated</code> value
+            If the action is <a href="#Action-commented">Commented</a> then the <code>generated</code> value
             MUST be expressed as a <a href="#Comment">Comment</a>. The <code>generated</code> value MUST
             be expressed either as an object or as a string corresponding to the entity's IRI.
         </td>

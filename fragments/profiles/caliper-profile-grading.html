@@ -63,14 +63,14 @@
         <tr>
             <td><a href="#GradeEvent">GradeEvent</a></td>
             <td><a href="#Agent">Agent</a></td>
-            <td><a href="#action-graded">Graded</a></td>
+            <td><a href="#Action-graded">Graded</a></td>
             <td><a href="#attempt">Attempt</a></td>
             <td><a href="#Score">Score</a></td>
         </tr>
         <tr>
             <td><a href="#ViewEvent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-viewed">Viewed</a></td>
+            <td><a href="#Action-viewed">Viewed</a></td>
             <td><a href="#Result">Result</a><br /></td>
             <td>&nbsp;</td>
         </tr>
@@ -89,13 +89,13 @@ Profile the following rules and recommendations apply:
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>When describing a <a href="#action-graded">Graded</a> action, the <code>generated</code>
+    <li>When describing a <a href="#Action-graded">Graded</a> action, the <code>generated</code>
         <a href="#Score">Score</a> SHOULD be specified. If the <code>generated</code> <a href="#Score">Score</a> is
         expressed as an object the <code>attempt</code>, <code>maxScore</code>, and <code>scoreGiven</code>
         property values SHOULD be provided.</li>
     <li>If a <a href="#Result">Result</a> is expressed as an object the <code>attempt</code>,
         <code>maxResultScore</code>, and <code>resultScore</code> property values SHOULD be provided.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

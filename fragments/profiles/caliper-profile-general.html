@@ -15,7 +15,7 @@
 </dl>
 
 <p>The Caliper General Profile provides a generic <a href="#Event">Event</a> for describing learning or supporting
-    activities that have yet to be modeled by Caliper. Any of the Caliper <a href="#actions">actions</a> described in
+    activities that have yet to be modeled by Caliper. Any of the Caliper <a href="#Actions">actions</a> described in
     this specification can be used to describe the interaction between the <code>actor</code> and the
     <code>object.</code></p>
 
@@ -32,7 +32,7 @@
         <tr>
             <td><a href="#Event">Event</a></td>
             <td><a href="#Agent">Agent</a></td>
-            <td>any Caliper <a href="#actions">action</a></td>
+            <td>any Caliper <a href="#Actions">action</a></td>
             <td><a href="#Entity">Entity</a></td>
         </tr>
     </tbody>
@@ -48,7 +48,7 @@ recommendations apply:
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+    <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
     <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
         limitations of transmitting data not described by the model.</li>

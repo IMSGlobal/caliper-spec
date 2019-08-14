@@ -34,33 +34,33 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The string value MUST be set to the term <em>ThreadEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value MUST
-            be expressed either as an object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
+            be expressed either as an object or as a string corresponding to the actor's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
-            range is limited to the <a href="#action-markedAsRead">MarkedAsRead</a> and
-            <a href="#action-markedAsUnRead">MarkedAsUnRead</a> actions only.
+            range is limited to the <a href="#Action-markedAsRead">MarkedAsRead</a> and
+            <a href="#Action-markedAsUnRead">MarkedAsUnRead</a> actions only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Thread">Thread</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Thread">Thread</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Thread">Thread</a> that constitutes the <code>object</code> of the interaction. The
             <code>object</code> value MUST be expressed either as an object or as a string corresponding to the
-            object's <a href="#iriDef">IRI</a>.
+            object's <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>

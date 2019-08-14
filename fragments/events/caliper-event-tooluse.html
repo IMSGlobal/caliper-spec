@@ -33,51 +33,51 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>ToolUseEvent</em>.</td>
+        <td><a href="#TermDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>ToolUseEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value
-            MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#iriDef">IRI</a>.
+            MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#termDef">Term</a></td>
+        <td><a href="#TermDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
-            value range is limited to the <a href="#actions">Used</a> action only.
+            value range is limited to the <a href="#Actions">Used</a> action only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#IriDef">IRI</a></td>
         <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that constitutes the <code>object</code>
             of the interaction. The <code>object</code> value MUST be expressed either as an object or as a
-            string corresponding to the object’s <a href="#iriDef">IRI</a>.
+            string corresponding to the object’s <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#IriDef">IRI</a></td>
         <td>A <a href="#SoftwareApplication">SoftwareApplication</a> that represents a particular capability or
             feature provided by the <code>object</code>. The <code>target</code> value MUST be expressed either
-            as an object or as a string corresponding to the target entity’s <a href="#iriDef">IRI</a>.
+            as an object or as a string corresponding to the target entity’s <a href="#IriDef">IRI</a>.
         </td>
         <td>Optional</td>
     </tr>
     <tr>
         <td>generated</td>
-        <td><a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#iriDef">IRI</a>
+        <td><a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> | <a href="#IriDef">IRI</a>
         </td>
         <td>An <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a> created or generated
             as a result of the interaction. The <code>generated</code> value MUST be expressed either as an object or
-            as a string corresponding to the generated entity’s <a href="#iriDef">IRI</a>.
+            as a string corresponding to the generated entity’s <a href="#IriDef">IRI</a>.
             </br>
             Note that if the sender of the event wants to send aggregate measure information
             as part of this <a href="#ToolUseEvent">ToolUseEvent</a> it should, by best practice, send a single

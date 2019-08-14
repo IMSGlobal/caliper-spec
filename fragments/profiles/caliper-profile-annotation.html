@@ -71,28 +71,28 @@
             <tr>
                 <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
                 <td><a href="#Person">Person</a></td>
-                <td><a href="#action-bookmarked">Bookmarked</a></td>
+                <td><a href="#Action-bookmarked">Bookmarked</a></td>
                 <td><a href="#DigitalResource">DigitalResource</a></td>
                 <td><a href="#BookmarkAnnotation">BookmarkAnnotation</a></td>
             </tr>
             <tr>
                 <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
                 <td><a href="#Person">Person</a></td>
-                <td><a href="#action-highlighted">Highlighted</a></td>
+                <td><a href="#Action-highlighted">Highlighted</a></td>
                 <td><a href="#DigitalResource">DigitalResource</a></td>
                 <td><a href="#HighlightAnnotation">HighlightAnnotation</a></td>
             </tr>
             <tr>
                 <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
                 <td><a href="#Person">Person</a></td>
-                <td><a href="#action-shared">Shared</a></td>
+                <td><a href="#Action-shared">Shared</a></td>
                 <td><a href="#DigitalResource">DigitalResource</a></td>
                 <td><a href="#SharedAnnotation">SharedAnnotation</a></td>
             </tr>
             <tr>
                 <td><a href="#AnnotationEvent">AnnotationEvent</a></td>
                 <td><a href="#Person">Person</a></td>
-                <td><a href="#action-tagged">Tagged</a></td>
+                <td><a href="#Action-tagged">Tagged</a></td>
                 <td><a href="#DigitalResource">DigitalResource</a></td>
                 <td><a href="#TagAnnotation">TagAnnotation</a></td>
             </tr>
@@ -110,11 +110,11 @@
             and <code>session</code> SHOULD be referenced.</li>
         <li>In particular, a <code>generated</code> <a href="#Annotation">Annotation</a> SHOULD be expressed.
             Pair the <code>action</code> with the appropriate <a href="#Annotation">Annotation</a> subtype
-            (e.g., <a href="#action-bookmarked">Bookmarked</a> with
+            (e.g., <a href="#Action-bookmarked">Bookmarked</a> with
             <a href="#BookmarkAnnotation">BookmarkAnnotation</a>). If the <code>generated</code>
             <a href="#Annotation">Annotation</a> is expressed as an object both the
             <code>annotator</code> and <code>annotated</code> entities SHOULD be referenced.</li>
-        <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
+        <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
             referenced.</li>
         <li>A map of additional <code>extensions</code> MAY be included but beware the inherent interoperability
             limitations of transmitting data not described by the model.</li>
