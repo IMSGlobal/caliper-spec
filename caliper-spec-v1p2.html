@@ -204,7 +204,7 @@
             <section id="JsonldDef" class='notoc'>
                 <p><strong>JSON-LD</strong>: a specification providing a JSON-based data
                     serialization and messaging format, processing algorithms and an API for working
-                    with <a href="#linkedData">Linked Data</a>. The messages described in this
+                    with <a href="#LinkedDataDef">Linked Data</a>. The messages described in this
                     specification are intended to be used in programming environments that
                     support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
             </section>
@@ -213,7 +213,7 @@
                 <p><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
                 Uniform Resource Identifier (<a href="#UriDef">URI</a>) scheme by using characters drawn from the Universal
                 character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>.
-                <a href="#linkedData">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
+                <a href="#LinkedDataDef">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
             </section>
 
             <section id="Iso8601Def" class='notoc'>
@@ -303,7 +303,7 @@
                     specifies both its location and a means of retrieving a representation of it.
                     An HTTP <a href="#UriDef">URI</a> is a <a href="#UrlDef">URL</a> and using HTTP
                     <a href="#IriDef">IRIs</a> /<a href="#UriDef">URIs</a> to identify things is
-                    fundamental to <a href="#linkedData">Linked Data</a>.</p>
+                    fundamental to <a href="#LinkedDataDef">Linked Data</a>.</p>
             </section>
 
             <section id="UrnDef" class='notoc'>
@@ -367,7 +367,7 @@
         <p>The Caliper information model defines a set of concepts, rules, and relationships for describing learning
             activities.  Each activity domain modeled is described in a Caliper <a href="#ProfileDef">Profile</a>.
             Each profile is composed of one or more <a href="#Event">Event</a> types. Each <a href="#Event">Event</a>
-            defines a controlled vocabulary of <a href="actions">actions</a> undertaken by learners, instructors, and others,
+            defines a controlled vocabulary of <a href="Actions">actions</a> undertaken by learners, instructors, and others,
             that are scoped to the event. Various <a href="#Entity">Entity</a> types representing people, groups, and resources
             are provided in order to better describe both the relationships established between participating entities
             and the contextual elements relevant to the interaction.
@@ -480,7 +480,7 @@
         <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
             is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
             roster, or a transcript now frequently link out to other kinds of data.  Modeling bundles of data pointing
-            to other bundles of data now requires thinking in terms of graphs and <a href="#linkedData">Linked Data</a>.
+            to other bundles of data now requires thinking in terms of graphs and <a href="#LinkedDataDef">Linked Data</a>.
             Caliper <a href="#Event">Event</a> data presents us with similar structures. A Caliper
             <a href="#Event">Event</a> can link to user data, digital content, courses and rosters, grades and
             credentials, institutional and organizational data, application and session data, and so on, the sources of
@@ -495,7 +495,7 @@
             network.</p>
 
         <p><a href="#JsonldDef">JSON-LD</a> defines an economical syntax for representing learning activity data
-            as <a href="#linkedData">Linked Data</a> using <a href="#jsonDef">JSON</a> as the underlying
+            as <a href="#LinkedDataDef">Linked Data</a> using JSON as the underlying
             data-interchange format. <a href="#JsonldDef">JSON-LD</a> also provides an API and set of processing
             algorithms for working with <a href="#JsonldDef">JSON-LD</a> documents that are based on different contexts.
             Algorithms have also been developed to serialize <a href="#rdf">RDF</a> as <a href="#JsonldDef">JSON-LD</a>
@@ -578,7 +578,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <section id="serialization-identifiers">
             <h3>Identifiers</h3>
 
-            <p><a href="#linkedData">Linked Data</a> relies on <a href="#IriDef">IRIs</a>/<a href="#UriDefs">URIs</a>
+            <p><a href="#LinkedDataDef">Linked Data</a> relies on <a href="#IriDef">IRIs</a>/<a href="#UriDefs">URIs</a>
                 for the identification and retrieval of resources.  Likewise, <a href="#JsonldDef">JSON-LD</a> specifies
                 the use of <a href="#IriDef">IRIs</a>/<a href="#UriDefs">URIs</a> for identifying most nodes
                 (i.e., JSON objects) and their attributes.  Caliper too specifies the use of <a href="#IriDef">IRIs</a>
@@ -701,7 +701,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <a href="#AnonymousDef">anonymous</a> <a href="#Entity">Entity</a>. By best practice, a
                 <a href="#Sensor">Sensor</a> should always send <a href="#AnonymousDef">anonymous</a> entities fully
                 composed in-line within an <a href="#Event">Event</a> and not separately described. Also by best
-                practice, a Caliper <a href="endpoint">Endpoint</a> should treat this
+                practice, a Caliper <a href="#Endpoint">Endpoint</a> should treat this
                 <a href="#AnonymousDef">anonymous</a> use in a distinct way to preserve any additional properties that
                 might also be carried with the <a href="#AnonymousDef">anonymous</a> <a href="#Entity">Entity</a>
                 within the <a href="#Event">Event</a>.</p>
@@ -740,7 +740,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <img height="100%" width="100%" src="assets/caliper-sensor-v2.png" alt="Caliper Sensor">
 
         <p>Caliper defines an application programming interface (the Sensor API™) for marshalling and transmitting data
-            to a target endpoints.  Adopting one or more <a href="#profiles">profiles</a> ensures adherence
+            to a target endpoints.  Adopting one or more <a href="#Profiles">profiles</a> ensures adherence
             to the information model; implementing the <code>Sensor</code> provides instrumented platforms,
             applications and services with a transport interface for communicating with data consumers.</p>
 
@@ -753,8 +753,8 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <li>create in-memory object representations of Caliper <a href="#Event">Event</a> and
                     <a href="#Entity">Entity</a> types as described in Section <a href="#infoModel">2.0</a>. The particular
                     <a href="#Event">Event</a> and <a href="#Entity">Entity</a> types that a <code>Sensor</code>
-                    must be capable of expressing are determined by the <a href="#profiles">profiles</a>
-                    implemented as described in Section <a href="#profiles">3.0</a>.</li>
+                    must be capable of expressing are determined by the <a href="#Profiles">profiles</a>
+                    implemented as described in Section <a href="#Profiles">3.0</a>.</li>
                 <li>express <a href="#Entity">Entity</a> values as either an object or a string corresponding to the
                     resource's <a href="#IriDef">IRI</a> as described in Section <a href="#Entity">2.2</a>.</li>
                 <li>serialize in-memory <a href="#Event">Event</a> and <a href="#Entity">Entity</a> objects as
@@ -842,7 +842,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p>Each <a href="#Event">Event</a> and <a href="#Entity">Entity</a> <em><a href="#DescribeDef">describe</a></em>
                 transmitted inside an <a href="#Envelope">Envelope</a> MUST be serialized as a
-                <a href="#jsonld">JSON-LD</a> document.</p>
+                <a href="#JsonldDef">JSON-LD</a> document.</p>
 
             <figure class="example">
                 <figcaption> - Envelope: single event payload</figcaption>
@@ -1054,8 +1054,8 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>Certain Caliper data properties are expressed as strings of variable length.
                 <a href="#JsonldDef">JSON-LD</a> also defines a set of processing algorithms for transforming
                 <a href="#JsonldDef">JSON-LD</a> documents in ways that can change the length of keys and values
-                that are expressed as <a href="#iridDef">IRIs</a>, compact <a href="#iridDef">IRIs</a> or
-                <a href="#TermDef">Terms</a>.  Many implementers will choose to store each incoming
+                that are expressed as <a href="#IridDef">IRIs</a>, compact <a href="#IridDef">IRIs</a> or
+                <a href="#TermDef">Terms</a>. Many implementers will choose to store each incoming
                 <a href="#Event">Event</a> and <a href="#Entity">Entity</a> <em><a href="#DescribeDef">describe</a></em>
                 received as a <a href="#JsonldDef">JSON-LD</a> document or as a graph data structure consisting of
                 nodes, edges and properties.  Others may opt to normalize or &quot;flatten&quot; some or all of the nested

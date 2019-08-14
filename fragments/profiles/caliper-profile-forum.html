@@ -131,11 +131,11 @@ When constructing a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>If a <a href="#message">Message</a> is expressed as an object and is in the form of a reply, the
-        previous <a href="#message">Message</a> that prompted the reply SHOULD be referenced via
-        the <a href="#message">Message</a> <code>replyTo</code> property.</li>
-    <li>Parent-child relationships that exist between a <a href="#message">Message</a>,
-        <a href="#thread">Thread</a> and a <a href="#forum">Forum</a> MAY be represented by use of
+    <li>If a <a href="#Message">Message</a> is expressed as an object and is in the form of a reply, the
+        previous <a href="#Message">Message</a> that prompted the reply SHOULD be referenced via
+        the <a href="#Message">Message</a> <code>replyTo</code> property.</li>
+    <li>Parent-child relationships that exist between a <a href="#Message">Message</a>,
+        <a href="#Thread">Thread</a> and a <a href="#Forum">Forum</a> MAY be represented by use of
         the <code>isPartOf</code> property.</li>
     <li>If an <a href="#LtiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>
