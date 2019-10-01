@@ -59,7 +59,7 @@
     "@list" : [ {
       "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
     }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/MultiselectQuestion"
     } ]
@@ -275,7 +275,7 @@
     "@list" : [ {
       "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
     }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/MultiselectQuestion"
     } ]
@@ -1296,7 +1296,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2002/07/owl#unionOf" : [ {
     "@list" : [ {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectResponse"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectResponse"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/Rating"
     }, {
@@ -2717,7 +2717,7 @@
     "@list" : [ {
       "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
     }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
     } ]
   } ]
 }, {
@@ -3516,7 +3516,7 @@
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/FillinBlankResponse"
     }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectResponse"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectResponse"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/MultipleChoiceResponse"
     }, {
@@ -3548,7 +3548,7 @@
     "@list" : [ {
       "@id" : "http://purl.imsglobal.org/caliper/LikertScale"
     }, {
-      "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+      "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
     }, {
       "@id" : "http://purl.imsglobal.org/caliper/NumericScale"
     } ]
@@ -4650,17 +4650,26 @@
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/LtiMessageType",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The LTI specification defines a number of message types that are exchanged between platforms and tools.  Each LTI message type describes or asserts a set of required and optional sender claims that are communicated to a receiver at particular moments in the workflow."
+    "@value" : "The LTI specification defines a number of message types that are exchanged between platforms and tools.  Each LTI message type describes or asserts a set of required and optional sender claims that are communicated to a receiver at particular moments in the workflow. The value of this should be the same value passed in the LTI Launch's message_type."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.imsglobal.org/caliper/LtiLink"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@value" : "http://purl.imsglobal.org/caliper"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "LtiMessageType"
+    "@value" : "messageType"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/LtiSession",
@@ -4827,7 +4836,7 @@
     "@value" : "Metric"
   } ]
 }, {
-  "@id" : "http://purl.imsglobal.org/caliper/MultiSelectResponse",
+  "@id" : "http://purl.imsglobal.org/caliper/MultiselectResponse",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
@@ -4838,13 +4847,13 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "MultiSelectResponse"
+    "@value" : "MultiselectResponse"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Response"
   } ]
 }, {
-  "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale",
+  "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
@@ -4855,7 +4864,7 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "MultiSelectScale"
+    "@value" : "MultiselectScale"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/Scale"
@@ -7194,6 +7203,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/alignedLearningObjective",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://purl.org/dc/terms/isReplacedBy" : [ {
     "@id" : "http://purl.imsglobal.org/caliper/learningObjectives"
   } ],
@@ -7301,6 +7313,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/attachments",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more DigitalResource entities attached to a Message."
@@ -7381,6 +7396,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/categories",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An array of category items."
@@ -7394,6 +7412,9 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "categories"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/category",
@@ -7555,6 +7576,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/creators",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of Agent entities, typically of type Person, that are responsible for bringing resource into being"
@@ -8222,6 +8246,9 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#string"
   } ]
 }, {
+  "@id" : "http://purl.imsglobal.org/caliper/ims:array",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty", "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
   "@id" : "http://purl.imsglobal.org/caliper/index",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -8304,6 +8331,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/itemLabels",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : "string"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "The ordered list of labels for each point on the Likert scale."
@@ -8321,6 +8351,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/itemValues",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : "string"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "The ordered list of values for each point on the Likert scale."
@@ -8338,6 +8371,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/items",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of resources that comprise the collection."
@@ -8358,6 +8394,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/keywords",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more string values that represent tags or labels used to identify the resource."
@@ -8378,6 +8417,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/learningObjectives",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more LearningObjective entities that describe what a learner is expected to comprehend or accomplish after engaging with the resource."
@@ -8557,7 +8599,7 @@
     "@value" : "Indicates the maximum number of selections that can be chosen."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+    "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@value" : "https://purl.imsglobal.org/caliper"
@@ -8658,6 +8700,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/members",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of entities of type Agent that belong to a particular group."
@@ -8711,15 +8756,6 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "messageParameters"
-  } ]
-}, {
-  "@id" : "http://purl.imsglobal.org/caliper/messageType",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/LtiLink"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/LtiMessageType"
   } ]
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/metric",
@@ -8921,7 +8957,7 @@
     "@value" : "Indicates the minimum number of selections that can be chosen."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+    "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@value" : "https://purl.imsglobal.org/caliper"
@@ -9093,7 +9129,7 @@
     "@value" : "Indicates whether the order of the selected items is important."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/MultiSelectScale"
+    "@id" : "http://purl.imsglobal.org/caliper/MultiselectScale"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@value" : "https://purl.imsglobal.org/caliper"
@@ -9372,6 +9408,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/roles",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of organizational roles assigned to a member."
@@ -9592,6 +9631,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/selections",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : "string"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An array of the values representing the rater's selected response."
@@ -9829,6 +9871,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/tags",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more string values that represent labels or tags associated with the annotated DigitalResource."
@@ -9973,6 +10018,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/values",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more selected options."
@@ -10096,6 +10144,9 @@
 }, {
   "@id" : "http://purl.imsglobal.org/caliper/withAgents",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.imsglobal.org/caliper/ims:array" : [ {
+    "@value" : ""
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
     "@value" : "An ordered collection of one or more Agent entities, typically of type Person, with whom the annotated DigitalResource has been shared."
