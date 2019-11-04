@@ -1589,7 +1589,7 @@
     "@id" : "http://purl.imsglobal.org/caliper/target"
   } ],
   "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
-    "@id" : "http://purl.imsglobal.org/caliper/Frame"
+    "@id" : "http://purl.imsglobal.org/caliper/DigitalResource"
   } ]
 }, {
   "@id" : "_:genid392",
