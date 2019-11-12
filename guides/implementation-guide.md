@@ -3,7 +3,7 @@ var t2 = `
 
 ## Abstract
 
-IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in in order to drive effective decision making to improve learner success.  **TODO: improve section**
+IMS Caliper Analytics&reg; is a technical specification that describes a structured set of vocabulary that assists institutions in collecting learning and usage data from digital resources and learning tools. This data can be used to present information to students, instructors, advisers, and administrators in in order to drive effective decision making to improve learner success.
 
 Caliper can help to answer various questions about learner activity, a few examples questions that Caliper might help answer.
 
@@ -12,7 +12,6 @@ Caliper can help to answer various questions about learner activity, a few examp
 * How often is a learner consuming course readings or videos?
 * What activities is a learner interacting with while taking an assessment?
 * Are learners annotating certain digital resources?
-* **TODO add better/more examples of how Caliper can be Used/link to Use Cases Section**
 
 With the answers to these questions in tow, decision makers can drive analysis that answers critical questions such as:
 
@@ -36,14 +35,14 @@ The primary goal of this document is to lead you to successful implementation of
 
 ### How to use this document
 
-This document is intended as a starting point for those looking to implement the Caliper Analytics&reg; standard in their educational software ecosystem.
+This document is intended as a starting point for those looking to implement the Caliper Analytics® standard in their educational software ecosystem.    
 
-* Developers can use this document to review specific examples of caliper events and explanations of best practices aligned with the transmitting and collecting of Caliper Analytics&reg; events.
-* Product managers can use this document and it's best practices while building out a product plan/roadmap as well as determining the best Caliper Metric Profiles to be used to capture or transmit the information relevant to the questions they are attempting to answer.
+This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, read descriptions of each profile, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.  
+
 
 
 To review the use case collection that drove the development of this specification,
-please refer to [the use cases section](https://www.imsglobal.org/example/v1p1/#use-cases) **This is a dead link - JWM.**.
+please refer to the [use cases section](https://www.imsglobal.org/example/v1p1/#use-cases) of the Caliper Analytics® website.
 
 ## Terminology
 
@@ -57,7 +56,7 @@ Here are a few useful definitions for terms used throughout this document.  Full
   <dt>Entity</dt><dd>Part of an Event that describes the *to whom*.</dd>
   <dt>Agent</dt><dd>Part of an Event that represents a generic form of an *Entity* and describes the *to whom* when a more specific *Entity* is not available.</dd>
   <dt>Event</dt><dd>A collection of an Actor, an Action, and an Object</dd>
-  <dt>Envelope</dt><dd>A JSON payload that can contain one ore many Caliper events</dd>
+  <dt>Envelope</dt><dd>A JSON payload that can contain one or many Caliper events</dd>
   <dt>Object</dt><dd>Part of an Event that describes the *to whom*.</dd>
   <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner.  Metric Profiles also serve as the unit of certification for the Caliper Analytics&reg; specification </dd>
   <dt>Sensor</dt><dd> Software deployed within a learning application that capture and transmit Caliper data to a target endpoint</dd>
@@ -79,15 +78,13 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 - [How to use with LTI](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md)
 
 ## Conformance Certification
+### What is Conformance Certification?
+IMS offers a process for testing the conformance of products using the IMS certification test suite. Certification designates passing a set of tests that verify the standard has been implemented correctly and guarantees a product’s interoperability across hundreds of other certified products. The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]] provides details about the testing process, requirements, and how to get started.
 
-IMS offers a process for testing the conformance of products using the IMS certification test suite. Certification designates passing a set of tests that verify the standard has been implemented correctly and guarantees a product’s interoperability across hundreds of other certified products. The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]] provides details on about the testing process, requirements, and how to get started.
-
+### What are the benefits of Conformance Certification?
 Conformance certification offers more than claims of “compliance,". The only way IMS can guarantee interoperability is by obtaining certification for the latest version of the standard. Only products listed in the official IMS Certified Product Directory can claim conformance certification. IMS certification provides the assurance that a solution will integrate securely and seamlessly into an institution's digital learning ecosystem.
-
-Certification for Caliper Analytics involves certifying against one or more Metric Profiles.
-
- **TODO**: Should it reference how extension conformance works or leave that to a different section?
-
+### How does my product get certified?
+Certification for Caliper Analytics involves certifying against one or more Metric Profiles.  This means  passing the appropriate tests for the profile or profiles that you are implementing using  the IMS Global suite of Caliper Analytics certification tools.  For more information on the conformance and certification process, please refer to the The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]]
 
 ## How to create a Caliper Event
 
@@ -102,26 +99,28 @@ It's important to have a clear understanding of Caliper Events since they descri
 
 #### Event Types
 
-TODO: EventType....
+Caliper Events each specify which type of event they are.  Events of the same type have several things in common, like required and optional properties.  Some event types include:
 
 [AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [GradeEvent](#gradeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+
+A full list of event types is available in the Caliper Spec (See "Subtype" subsection of [Event.](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#Event))
 
 #### Event Required Properties
 
 [Link to full Event Properties docs section](#event Properties)
-
-TODO?? Simplify these descriptions since the full technical version is in the docs.
 
 
 | Property | Type | Description | Disposition |
 | :------- | :--- | ----------- | :---------: |
 | id | [UUID](#uuidDef) | A version 4 [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form `urn:uuid:<UUID>` per [RFC 4122](#rfc4122). | Required |
 | type | [Term](#termDef) | A string value for the Event Sub Type, or for a generic [Event](#event) set the `type` to the string value `Event`. | Required |
-| actor | [Agent](#agent) &#124; [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event), typically though not always a [Person](#person).  The `actor` value MUST be expressed either as an object or as a string corresponding to the actor's [IRI](#iriDef). | Required |
+| actor | [Agent](#agent) or [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event).  This must be either:  <ul><li>An [Entity](#entity) of the type Agent or one of its subtypes (e.g., Person, SoftwareApplication, etc.).</li><li>A unique [IRI](#iriDef) that represents an [Entity](#entity) as described above.  Ideally this should refer to an [Entity](#entity) previously defined in the payload containing the [Event](#event) or in an eventstore that contains the [Event](#event).| Required |
 | action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object.  The `action` range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one `action` [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Entity](#entity) &#124; [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
+| object | [Entity](#entity) or [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The `object` value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 
+#### Entity or IRI
+Properties with the type "[Entity](#entity) or [IRI](#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier)string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
 #### Other Event Properties
 
 TODO: talk about profiles defining more properties both required and optional.
@@ -144,7 +143,10 @@ TODO: talk about profiles defining more properties both required and optional.
 
 [Link to full Actor docs](#actors)
 
-TODO: Explain Actors and their basic properties then link to main spec document where appropriate for more details.
+In a Caliper Event, the Actor performs the action related to a learning activity. The value of an Event's actor attribute must be an Agent or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication. Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a QuestionnaireEvent must be a Person, while the actor for a GradeEvent could be either a Person or a SoftwareApplication (such as an autograder).
+
+For more information, see the [The Information Model](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#infoModel) section of the specification, the description of the [Agent entity](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#agent), or the full list of [Event subtypes](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#events).
+
 
 #### Actor JSON
 
@@ -159,7 +161,9 @@ TODO: Explain Actors and their basic properties then link to main spec document 
 
 [Link to full Action docs](#actions)
 
-TODO: Explain Actions and their basic properties then link to main spec document where appropriate for more details.
+An Action connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include Bookmarked, Launched, OptedIn, and Skipped. Each subtype of Event specifies some number of allowed Actions, while the Event supertype allows any Action declared in the specification. The provided Actions generally take the form of an English verb in past tense and have been connected to one or more word glosses from Princeton University's WordNet or Wiktionary to aid comprehension.
+
+For more information, see the [The Information Model](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#infoModel) section of the specification, or the full list of [supported Actions](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#actions) in the specification document.
 
 #### Action JSON
 
@@ -185,7 +189,7 @@ TODO: Explain Objects and their basic properties then link to main spec document
 
 ### Complete Event Example JSON
 
-To bring it all together, and Event would look something like this:
+To bring it all together, an Event would look something like this:
 
 TODO: Explain how to find sample JSON for their specific event/action/profile by pointing to docs and fixtures, etc. Since we can't put every example in this document, teach how to find examples they need. (This might be worthy of it's own top-level section just for discoverability. Coming to this doc to find example JSON will be one of the primary activities for developers)
 
@@ -234,14 +238,13 @@ While the base information required by most Events is represented in the above e
 
 ## Metric Profiles
 
-[Link to full Metric Profile docs](#profiles)
+The Caliper information model defines a number of profiles, each of which models a learning activity or a supporting activity that helps facilitate learning. A profile's raison d'etre is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data. Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary. Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's profiles attempt to describe.
 
-TODO: Profiles are so amazing! Here's why: TODO
-TODO: How to use profile documents
+Think of each profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of interrelated activities.
 
 TODO: Table with all profiles and links to their documentations and their certification requirements in the certification guide
 
-###
+### How do I use profiles to deliver insight?
 
 A great way to think of a Metric Profile is by the questions it can help answer. For example the Reading Profile could help Instructors and researchers answer questions such as:
 
@@ -251,11 +254,9 @@ A great way to think of a Metric Profile is by the questions it can help answer.
  - How often is the content viewed?
  - What paths are taken to reach the content?
 
+Profiles also serve as the unit of certification for the Caliper Analytics&reg; standard allowing implementers to build to the events and actions that they require to answer the digital learning ecosystem questions that are relevant to their organization.  Caliper Analytics&reg; does provide a mechanism for updates and additions as  profile extensions can be published between major releases of the specification.  For more details see the [Release expectations](#release-expectations) section.
 
 TODO: Talk about how `@context` changes for extensions and explain how it works? Then point to the Release Schedule section.
-
-TODO: Emphasize this is the level of certification. That's possibly also discussed in the Certification header above, and possibly in the release schedule stuff below. Maybe the repetition is good since this is an important point to understand.
-
 
 ## Custom Extensions
 
@@ -266,9 +267,10 @@ TODO: how to do this. Don't know where best to put this section. Might be mostly
 
 ### Envelopes
 
-TODO: Talk about Envelopes and give example. (are Envelopes best discussed in a different section?)
+Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
 
-An Envelope must have the properties
+A Caliper envelope must contain the <code>sensor</code>,
+<code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties.  Each property MUST be referenced only once.  No custom properties are permitted.
 
 #### Base Envelope JSON
 
@@ -280,8 +282,6 @@ An Envelope must have the properties
   "data": [ {event1}, {event2}, {eventN}]
 }
 ```
-
-TODO: Talk about what can be in data: just an event, multiple events, or even mixed payloads of objects and events.
 
 #### Envelope with an Event JSON
 
@@ -357,10 +357,10 @@ In this example, the Person and SoftwareApplication are part of the data array a
 
 ### Sending to a secured HTTP endpoint
 
+
 TODO: Short description of how it's done then link to the LTI service definition: https://github.com/IMSGlobal/LTI-spec-Caliper/blob/develop/lti-spec-caliper.md#23-communicating-the-availability-of-the-service
 
 TODO: Also explain how 2 vendors can work out keys and endpoints independent of LTI.
-
 
 ## Receiving Caliper Events
 
@@ -369,6 +369,24 @@ TODO: Talk about LRS/LRW? Talk about validating events and doing something with 
 TODO: Talk about auth header check
 
 TODO: Talk about credentials? Or just reference the LTI doc again?
+
+
+### What implementation considerations exist for Caliper Consumers?
+Several implementation considerations exist for Caliper Consumers.  Typically, these consumers play a role during the initial ingestion portion of an overall data “pipeline”.  In such a pipeline, raw source data is emitted or generated, then ingested into a Data “Lake”.  A Data Lake is a storage repository than can store large amounts of structured, semi-structured or unstructured data.  Ultimately, the benefit of a data lake approach is to enable flexibility, providing a place for data to be gathered from multiple sources in a variety of formats.
+
+The following best practices are typically recommended for data pipeline components that process Caliper data:
+
+- **Use Cheap Storage to Preserve Raw Event Messages.** Many Caliper consumers use cheap storage buckets in AWS S3 or Google Cloud Storage to preserve raw event messages.  Storage components such as AWS S3 can support annotation with metadata for cataloging purposes, and integrates with other AWS services such as AWS Glue, Lambda and Kinesis that will serve as components of the data lake.  
+- **Take Advantage of Stream Processing Components.**  Cloud infrastructure components such as AWS Kinesis Firehose are useful for bundling groups of Caliper messages arriving at the same time into JSON files, which are then kept in folders organized by year/month/day/hour.  In addition, components such as AWS Kinesis Analytics can be used to keep running totals or to detect anomalies in event streams.
+- **Set Up Ingest Processes With Known Mapping and Transform Rules.**  Examples of tasks which may need to be performed with inbound Caliper data are as follows:
+  - Identify and locate common identifiers across the incoming data records.
+  - Identify mappings between similar but differently named data fields and define logic for any transformations (parsing out specific identifiers from string fields, for example).
+  - Determine how to handle display fields that contain strings that might be too long or have unsupported characters  
+  - Some data records may not contain an identifier that can be used to commonly join them across sources.  In those cases, you will need to maintain a set of mapping tables with locally-sourced identifiers and their mappings to global identifiers.  
+  - This may mean that you need to manufacture a global set of identifiers to unify the data across systems.
+  - Coordinate and communicate with any departments/groups who own or can help locate the “source of truth” for identifiers.
+- **Don’t Forget About Reference Data.** Set up processes to bring in reference data (users, departments, calendar events, work project names).
+
 
 
 ## Release Schedule Expectations
@@ -384,12 +402,18 @@ TODO: Talk about credentials? Or just reference the LTI doc again?
 - Talk about how upgrades happen for both sides. Should receiver of events try to understand all previous versions of a profile? Explain everything needed to understand the scope of implementing upgraded core versions and profiles.
 
 
-## Code Libraries, Examples, and Test Servers
+## Code Libraries
 
-- talk about the sensor libraries and their maintenance
-- examples of usage for emitting and consuming
-- if there is one, point to testing endpoint for development
+Caliper makes available reference implementations in the following programming languages.  Links are provided to the GitHub repositories for each
 
+- [Caliper-JS](https://github.com/IMSGlobal/caliper-js)
+- [Caliper-Java](https://github.com/IMSGlobal/caliper-java)
+- [Caliper-Python](https://github.com/IMSGlobal/caliper-python)
+- [Caliper-php](https://github.com/IMSGlobal/caliper-php)
+- [Caliper-Ruby](https://github.com/IMSGlobal/caliper-ruby)
+- [Caliper-.net](https://github.com/IMSGlobal/caliper-net)
+
+These libraries are written and maintained by IMS Global Learning Consortium members.  We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
 
 ## Use Cases
 
@@ -417,7 +441,7 @@ Need to add use cases for all action types for each profile ( request from issue
 
 ### Best Practices
 
-TODO: talk with current implementors and ask what best practices they'd suggest.
+Below are some of the collected best practices from members who have successfully implemented the Caliper Analytics&reg; standard.
 
 ### Tool Provider perspective LTI launch.
 - Tool Providers should use the federated session ID as the `id` of the federatedSession entity you include in events
@@ -523,9 +547,8 @@ Here is an example of adding extra LTI information into the `LtiSession` object:
 
 ### Robustness expectations
 
-As an _analytics_ specification, Caliper is not generally well suited to other uses that require more robust guarantees around timeliness and completeness.
+As an _analytics_ specification, Caliper is not generally well suited to other uses that require more robust guarantees around timeliness and completeness.  A few items of consideration are listed below.
 
-TODO: Notes of what to cover:
 - Caliper is _not_ specified as a messaging or transaction service
 - There are no guarantees around delivery timing
 - Events in Caliper are _not_ ordered and may come much later, or in batches, etc.
@@ -558,7 +581,7 @@ As an analytics standard, Caliper is relevant to almost every other IMS specific
 
 Researchers and analytics who collect data aligned to learning objectives can use it to correlate between learning activities and academic standards.
 
-Wherever CASE-aligned learning objectives are associated to [DigitalResources] you may want to include them in the `learningObjectives` array on your resource. 
+Wherever CASE-aligned learning objectives are associated to [DigitalResources] you may want to include them in the `learningObjectives` array on your resource.
 
 If the Caliper endpoint is able to retrieve this information from another source then it may be better to not include the `LearningObjective` to help keep the Caliper Event's JSON smaller.
 
@@ -622,7 +645,7 @@ The [Tool Use](#) and [Tool Launch](#) profiles are meant to help understand how
 ### OneRoster & LIS
 
 Something about IDs for users/contexts?
-IDs could be in LIS vocabulary, and you can read about that in the [LIS Documentation]. 
+IDs could be in LIS vocabulary, and you can read about that in the [LIS Documentation].
 
 TODO: How would a system commonly fetch correlated information from a OneRoster, LIS, SIS system?
 
@@ -653,6 +676,10 @@ The following individuals contributed to the development of this document:
 | Viktor Haag | D2L |
 | Linda Feng | Unicon |
 | Oxana Jurosevic | Instructure |
+| Eric Preston | Blackboard |
+| Lance Sloan | University of Michigan |
+| Samuel Sciolla | University of Michigan |
+| Yeona Jang | Explorance |
 | Bracken Mosbacker | IMS Global |
 | Joshua McGhee | IMS Global |
 
