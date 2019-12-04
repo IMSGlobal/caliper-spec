@@ -4,16 +4,14 @@ var t2 = `
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-sensor-v2.png"></div>
 
-[Calreftest](#CALIPER-12)
-
-The *Caliper Analytics&reg; Specification*, [version 1.2](#caliperSpec), provides a structured approach to describing, collecting and exchanging learning activity data at scale.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
+The *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), provides a structured approach to describing, collecting and exchanging learning activity data at scale.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
 
 Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-This document is the certification guide for Caliper [Sensors](#sensorDef). In this release of the Caliper specification, certification services are not provided for Caliper [endpoints](#endpointDef). Endpoint implementors should take note that it is the intent of the Caliper Working Group to add endpoint certification in forthcoming releases of the specification. Implementors should also note that behavioral requirements for Caliper Endpoints are provided in the *Caliper Analytics&reg; Specification*, version 1.1, [Section 6.0](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).
+This document is the certification guide for Caliper [Sensors](https://www.imsglobal.org/spec/caliper/v1p2#sensor). In this release of the Caliper specification, certification services are not provided for Caliper [endpoints](https://www.imsglobal.org/spec/caliper/v1p2#endpoint). Endpoint implementors should take note that it is the intent of the Caliper Working Group to add endpoint certification in forthcoming releases of the specification. Implementors should also note that behavioral requirements for Caliper Endpoints are provided in the *Caliper Analytics&reg; Specification*, version 1.2, [Section 6.0](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).
 
 ### Status of this Document
-This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Sensor Certification Guide, version 1.1, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
+This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Sensor Certification Guide, version 1.2, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
 
 IMS Global strongly encourages its members and the greater public to provide feedback that focuses on improving the Caliper specification. To join the IMS developer and conformance certification community focused on Caliper please visit https://www.imsglobal.org/activity/caliper.
 
@@ -31,18 +29,35 @@ Certain prerequisites MUST be met before you can certify your platform, applicat
 * You MUST submit your report via the Caliper Certification Service.
 
 ## <a name="profileConformance"></a>3.0 Metric Profile Certification
-As described more fully in the *Caliper Analytics&reg; Specification*, [version 1.1](https://www.imsglobal.org/spec/caliper/v1p2), the Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms for describing common user interactions.
+As described more fully in the *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), the Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms for describing common user interactions.
 
-Each Caliper profile is also a unit of certification for Caliper [Sensor](#sensorDef) implementations. Any given Sensor may apply for certification for one or more of the Caliper Metric Profiles. In the subsections below, the Minimum Conformance and Restrictions sections specified for each Profile defines the corresponding conformance criteria in detail.
+Each Caliper profile is also a unit of certification for Caliper [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) implementations. Any given Sensor may apply for certification for one or more of the Caliper Metric Profiles. In the subsections below, the Minimum Conformance and Restrictions sections specified for each Profile defines the corresponding conformance criteria in detail.
 
 #### General Requirements
 * Certain [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) properties are required and MUST be specified.  Required properties include: <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>, <code>object</code> and <code>eventTime</code>.
 * All other [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) properties are considered optional and need not be referenced.  Adherence to the rules associated with each required and/or optional property specified is mandatory.
 * Each [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) participating in the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) MUST be expressed either as an object or as a string corresponding to the resource's [IRI](#iriDef).
-* The actions vocabulary is limited to the supported actions described in the *Caliper Analytics&reg; Specification*, version 1.1, [Appendix A](https://www.imsglobal.org/spec/caliper/v1p2#actions), and no other.
+* The actions vocabulary is limited to the supported actions described in the *Caliper Analytics&reg; Specification*, version 1.2, [Appendix A](https://www.imsglobal.org/spec/caliper/v1p2#actions), and no other.
 * Serialized Events and Entities MUST conform to the syntactical requirements defined in [Section 4.0](#dataFormat) below.  This includes referencing one or more JSON-LD [contexts](#contextDef) by including the JSON-LD <code>@context</code> keyword and value as required.
 
-### <a name="annotationProfile"></a>3.1 Annotation Profile
+### <a name="generalProfile"></a>3.1 General Profile
+
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="General Profile" src="../assets/caliper-profile_basic.png"></div>
+
+The Caliper General Profile provides a generic [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
+
+#### Profile Description
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.10](https://www.imsglobal.org/spec/caliper/v1p2#profile-general).
+
+#### Event Conformance Table
+
+| Event                                                                   | Action                                                          | Actor                                                                   | Object                                                                    | Recommended Generated Entity | Required or Optional |
+| ------                                                                  | ------                                                          | ------                                                                  | ------                                                                    | ------                       | ------               |
+| [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) |                                                                 |                                                                         |                                                                           |                              |                      |
+|                                                                         | * | [Agent](https://www.imsglobal.org/spec/caliper/v1p2#agent) | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) |                              | **Required**         |
+
+
+### <a name="annotationProfile"></a>3.2 Annotation Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Annotation Profile" src="../assets/caliper-profile_annotation.png"></div>
 
@@ -61,14 +76,14 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.1](https://w
 |                                                                                             | [Shared](https://www.imsglobal.org/spec/caliper/v1p2#shared)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | [SharedAnnotation](https://www.imsglobal.org/spec/caliper/v1p2#SharedAnnotation)       | Optional             |
 |                                                                                             | [Tagged](https://www.imsglobal.org/spec/caliper/v1p2#tagged)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | [TagAnnotation](https://www.imsglobal.org/spec/caliper/v1p2#TagAnnotation)             | Optional             |
 
-### <a name="assessmentProfile"></a>3.2 Assessment Profile
+### <a name="assessmentProfile"></a>3.3 Assessment Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assessment Profile" src="../assets/caliper-profile_assessment.png"></div>
 
 The Caliper Assessment Profile models assessment-related activities including interactions with individual assessment items.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.2](https://www.imsglobal.org/spec/caliper/v1p2#profile-assessment).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.2](https://www.imsglobal.org/spec/caliper/v1p2#profile-assessment).
 
 #### Event Conformance Table
 
@@ -86,18 +101,18 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.2](https://w
 |                                                                                                     | [Skipped](https://www.imsglobal.org/spec/caliper/v1p2#skipped)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [AssessmentItem](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentItem)   |                                                                               | Optional             |
 |                                                                                                     | [Started](https://www.imsglobal.org/spec/caliper/v1p2#started)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [AssessmentItem](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentItem)   | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt)   | Optional             |
 | [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent)         |                                                                                     |                                                                           |                                                                                             |                                                                               |                      |
-|                                                                                                     | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                               | Optional             |
+|                                                                                                     | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                               | Optional             |
 | [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)                     |                                                                                     |                                                                           |                                                                                             |                                                                               |                      |
 |                                                                                                     | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                               | Optional             |
 
-### <a name="assignableProfile"></a>3.3 Assignable Profile
+### <a name="assignableProfile"></a>3.4 Assignable Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Assignable Profile" src="../assets/caliper-profile_assignable.png"></div>
 
 The Assignable Profile models activities associated with the assignment of digital content to a learner for completion according to specific criteria.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.3](https://www.imsglobal.org/spec/caliper/v1p2#profile-assignable).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.3](https://www.imsglobal.org/spec/caliper/v1p2#profile-assignable).
 
 #### Event Conformance Table
 
@@ -111,19 +126,38 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.3](https://w
 |                                                                                             | [Started](https://www.imsglobal.org/spec/caliper/v1p2#started)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [AssignableDigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#AssignableDigitalResource) | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt) | **Required**         |
 |                                                                                             | [Submitted](https://www.imsglobal.org/spec/caliper/v1p2#submitted)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [AssignableDigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#AssignableDigitalResource) | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt) | **Required**         |
 | [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent) |                                                                                     |                                                                           |                                                                                                                 |                                                                             |                      |
-|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)                     |                                                                             | Optional             |
+|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)                     |                                                                             | Optional             |
 | [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)             |                                                                                     |                                                                           |                                                                                                                 |                                                                             |                      |
 |                                                                                             | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)                     |                                                                             | Optional             |
 
 
-### <a name="forumProfile"></a>3.4 Forum Profile
+### <a name="feedbackProfile"></a>3.5 Feedback Profile
+
+
+The Caliper Feedback Profile models providing feedback and comments on Entities.
+
+#### Profile Description
+
+
+#### Event Conformance Table
+
+The Feedback Profile only has two actions for the FeedbackEvent and they can each solve different use-cases. To achieve conformance for this profile at least one of the actions must be used.
+
+| Event                                                                                   | Action                                                                          | Actor                                                                     | Object                                                                    | Recommended Generated Entity | Required or Optional |
+| ------                                                                                  | ------                                                                          | ------                                                                    | ------                                                                    | ------                       | ------               |
+| [FeedbackEvent](https://www.imsglobal.org/spec/caliper/v1p2#FeedbackEvent) |                                                                                 |                                                                           |                                                                           |                              |                      |
+|                                                                                         | [Commented](https://www.imsglobal.org/spec/caliper/v1p2#commented) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) |                              | **At least 1 Required** |
+|                                                                                         | [Ranked](https://www.imsglobal.org/spec/caliper/v1p2#ranked)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) |                              | **At least 1 Required** |
+
+
+### <a name="forumProfile"></a>3.6 Forum Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Forum Profile" src="../assets/caliper-profile_forum.png"></div>
 
 The Caliper Forum Profile models learners and others participating in online forum communities.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.4](https://www.imsglobal.org/spec/caliper/v1p2#profile-forum).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.4](https://www.imsglobal.org/spec/caliper/v1p2#profile-forum).
 
 #### Event Conformance Table
 
@@ -140,19 +174,19 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.4](https://w
 |                                                                                             | [MarkedAsRead](https://www.imsglobal.org/spec/caliper/v1p2#markedAsRead)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Thread](https://www.imsglobal.org/spec/caliper/v1p2#thread)                   |                              | Optional             |
 |                                                                                             | [MarkedAsUnRead](https://www.imsglobal.org/spec/caliper/v1p2#markedAsUnRead) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Thread](https://www.imsglobal.org/spec/caliper/v1p2#thread)                   |                              | Optional             |
 | [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent) |                                                                                           |                                                                           |                                                                                             |                              |                      |
-|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#navigatedTo)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
+|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
 | [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)             |                                                                                           |                                                                           |                                                                                             |                              |                      |
 |                                                                                             | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)                 | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
 
 
-### <a name="gradingProfile"></a>3.5 Grading Profile
+### <a name="gradingProfile"></a>3.7 Grading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Grading Profile" src="../assets/caliper-profile_grading.png"></div>
 
 The Caliper Grading Profile models grading activities performed by an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#agent), typically a [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) or a [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication).
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.5](https://www.imsglobal.org/spec/caliper/v1p2#profile-grading).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.5](https://www.imsglobal.org/spec/caliper/v1p2#profile-grading).
 
 #### Event Conformance Table
 
@@ -166,14 +200,14 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.5](https://w
 #### Other Requirements
 For auto-graded scenarios the [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication) MUST be specified as the <code>actor</code>.  Otherwise, a [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) MUST be specified as the <code>actor</code> of the interaction.
 
-### <a name="mediaProfile"></a>3.6 Media Profile
+### <a name="mediaProfile"></a>3.8 Media Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Media Profile" src="../assets/caliper-profile_media.png"></div>
 
 The Caliper Media Profile models interactions between learners and rich content such as audio, images and video.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.6](https://www.imsglobal.org/spec/caliper/v1p2#profile-media).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.6](https://www.imsglobal.org/spec/caliper/v1p2#profile-media).
 
 #### Event Conformance Table
 
@@ -200,38 +234,76 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.6](https://w
 |                                                                                             | [Started](https://www.imsglobal.org/spec/caliper/v1p2#started)                                   | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [MediaObject](https://www.imsglobal.org/spec/caliper/v1p2#MediaObject)         |                              | **Required**         |
 |                                                                                             | [Unmuted](https://www.imsglobal.org/spec/caliper/v1p2#unmuted)                                   | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [MediaObject](https://www.imsglobal.org/spec/caliper/v1p2#MediaObject)         |                              | Optional             |
 | [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent) |                                                                                                               |                                                                           |                                                                                             |                              |                      |
-|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#navigatedTo)                           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
+|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo)                           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
 | [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)             |                                                                                                               |                                                                           |                                                                                             |                              |                      |
 |                                                                                             | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)                                     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | Optional             |
 
 
-### <a name="readingProfile"></a>3.7 Reading Profile
+### <a name="readingProfile"></a>3.9 Reading Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Reading Profile" src="../assets/caliper-profile_reading.png"></div>
 
 The Caliper Reading Profile models activities associated with navigating to and viewing digital textual content.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.7](https://www.imsglobal.org/spec/caliper/v1p2#profile-reading).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.7](https://www.imsglobal.org/spec/caliper/v1p2#profile-reading).
 
 #### Event Conformance Table
 
 | Event                                                                                       | Action                                                                              | Actor                                                                     | Object                                                                                      | Recommended Generated Entity | Required or Optional |
 | ------                                                                                      | ------                                                                              | ------                                                                    | ------                                                                                      | ------                       | ------               |
 | [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent) |                                                                                     |                                                                           |                                                                                             |                              |                      |
-|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | **Required**         |
+|                                                                                             | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | **Required**         |
 | [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)             |                                                                                     |                                                                           |                                                                                             |                              |                      |
 |                                                                                             | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | **Required**         |
 
+### <a name="resourceManagementProfile"></a>3.10 Resource Management Profile
 
-### <a name="sessionProfile"></a>3.8 Session Profile
+#### Profile Description
+
+#### Event Conformance Table
+
+| Event                                                                                                       | Action                                                                              | Actor                                                                     | Object                                                                                      | Recommended Generated Entity                                                                | Required or Optional |
+| ------                                                                                                      | ------                                                                              | ------                                                                    | ------                                                                                      | ------                                                                                      | ------               |
+| [ResourceManagementEvent](https://www.imsglobal.org/spec/caliper/v1p2#ResourceManagementEvent) |                                                                                     |                                                                           |                                                                                             |                                                                                             |                      |
+|                                                                                                             | [Archived](https://www.imsglobal.org/spec/caliper/v1p2#archived)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Copied](https://www.imsglobal.org/spec/caliper/v1p2#copied)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | Optional             |
+|                                                                                                             | [Created](https://www.imsglobal.org/spec/caliper/v1p2#created)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) | **Required**         |
+|                                                                                                             | [Deleted](https://www.imsglobal.org/spec/caliper/v1p2#deleted)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Described](https://www.imsglobal.org/spec/caliper/v1p2#described)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Downloaded](https://www.imsglobal.org/spec/caliper/v1p2#downloaded)   | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Modified](https://www.imsglobal.org/spec/caliper/v1p2#modified)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Printed](https://www.imsglobal.org/spec/caliper/v1p2#printed)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Published](https://www.imsglobal.org/spec/caliper/v1p2#published)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Restored](https://www.imsglobal.org/spec/caliper/v1p2#restored)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Retrieved](https://www.imsglobal.org/spec/caliper/v1p2#retrieved)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Saved](https://www.imsglobal.org/spec/caliper/v1p2#saved)             | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Unpublished](https://www.imsglobal.org/spec/caliper/v1p2#unpublished) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+|                                                                                                             | [Uploaded](https://www.imsglobal.org/spec/caliper/v1p2#uploaded)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                                                                                             | Optional             |
+
+
+
+### <a name="searchProfile"></a>3.11 Search Profile
+
+#### Profile Description
+
+#### Event Conformance Table
+
+| Event                                                                               | Action                                                                        | Actor                                                                     | Object                                                                                      | Recommended Generated Entity | Required or Optional |
+| ------                                                                              | ------                                                                        | ------                                                                    | ------                                                                                      | ------                       | ------               |
+| [SearchEvent](https://www.imsglobal.org/spec/caliper/v1p2#SearchEvent) |                                                                               |                                                                           |                                                                                             |                              |                      |
+|                                                                                     | [Searched](https://www.imsglobal.org/spec/caliper/v1p2#searched) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource) |                              | **Required**         |
+
+
+
+### <a name="sessionProfile"></a>3.12 Session Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-profile_session.png"></div>
 
 The Caliper Session Profile models the creation and subsequent termination of a user session established by a [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) interacting with a [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication).
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.8](https://www.imsglobal.org/spec/caliper/v1p2#profile-session).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.8](https://www.imsglobal.org/spec/caliper/v1p2#profile-session).
 
 #### Event Conformance Table
 
@@ -243,14 +315,55 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.8](https://w
 |                                                                                       | [TimedOut](https://www.imsglobal.org/spec/caliper/v1p2#timedOut)   | [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication) | [Session](https://www.imsglobal.org/spec/caliper/v1p2#session)                         |                              | Optional             |
 
 
-### <a name="toolUseProfile"></a>3.9 Tool Use Profile
+### <a name="surveyProfile"></a>3.13 Survey Profile
+
+#### Profile Description
+
+#### Event Conformance Table
+
+| Event                                                                                                     | Action                                                                              | Actor                                                                     | Object                                                                                          | Recommended Generated Entity                                                  | Required or Optional |
+| ------                                                                                                    | ------                                                                              | ------                                                                    | ------                                                                                          | ------                                                                        | ------               |
+| [SurveyInvitationEvent](https://www.imsglobal.org/spec/caliper/v1p2#SurveyInvitationEvent)   |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [Accepted](https://www.imsglobal.org/spec/caliper/v1p2#accepted)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SurveyInvitation](https://www.imsglobal.org/spec/caliper/v1p2#SurveyInvitation)   |                                                                               | Optional             |
+|                                                                                                           | [Declined](https://www.imsglobal.org/spec/caliper/v1p2#declined)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SurveyInvitation](https://www.imsglobal.org/spec/caliper/v1p2#SurveyInvitation)   |                                                                               | Optional             |
+|                                                                                                           | [Sent](https://www.imsglobal.org/spec/caliper/v1p2#sent)               | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SurveyInvitation](https://www.imsglobal.org/spec/caliper/v1p2#SurveyInvitation)   |                                                                               | Optional             |
+| [SurveyEvent](https://www.imsglobal.org/spec/caliper/v1p2#SurveyEvent)                       |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [OptedIn](https://www.imsglobal.org/spec/caliper/v1p2#optedIn)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Survey](https://www.imsglobal.org/spec/caliper/v1p2#survey)                       |                                                                               | Optional             |
+|                                                                                                           | [OptedOut](https://www.imsglobal.org/spec/caliper/v1p2#optedOut)       | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Survey](https://www.imsglobal.org/spec/caliper/v1p2#survey)                       |                                                                               | Optional             |
+| [QuestionnaireEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireEvent)         |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [Started](https://www.imsglobal.org/spec/caliper/v1p2#started)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Questionnaire](https://www.imsglobal.org/spec/caliper/v1p2#questionnaire)         | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt)   | Optional             |
+|                                                                                                           | [Submitted](https://www.imsglobal.org/spec/caliper/v1p2#submitted)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Questionnaire](https://www.imsglobal.org/spec/caliper/v1p2#questionnaire)         | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt)   | **Required**         |
+| [QuestionnaireItemEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireItemEvent) |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [Completed](https://www.imsglobal.org/spec/caliper/v1p2#completed)     | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [QuestionnaireItem](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireItem) | [Response](https://www.imsglobal.org/spec/caliper/v1p2#response) | Optional             |
+|                                                                                                           | [Skipped](https://www.imsglobal.org/spec/caliper/v1p2#skipped)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [QuestionnaireItem](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireItem) | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt)   | Optional             |
+|                                                                                                           | [Started](https://www.imsglobal.org/spec/caliper/v1p2#started)         | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [QuestionnaireItem](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireItem) | [Attempt](https://www.imsglobal.org/spec/caliper/v1p2#attempt)   | Optional             |
+| [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent)               |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [NavigatedTo](https://www.imsglobal.org/spec/caliper/v1p2#action-navigatedTo) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Questionnaire](https://www.imsglobal.org/spec/caliper/v1p2#questionnaire)         |                                                                               | Optional             |
+| [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)                           |                                                                                     |                                                                           |                                                                                                 |                                                                               |                      |
+|                                                                                                           | [Viewed](https://www.imsglobal.org/spec/caliper/v1p2#viewed)           | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [Questionnaire](https://www.imsglobal.org/spec/caliper/v1p2#questionnaire)         |                                                                               | Optional             |
+
+
+### <a name="toolLaunchProfile"></a>3.14 Tool launch Profile
+
+#### Profile Description
+
+#### Event Conformance Table
+
+| Event                                                                                       | Action                                                                        | Actor                                                                     | Object                                                                                              | Recommended Generated Entity | Required or Optional |
+| ------                                                                                      | ------                                                                        | ------                                                                    | ------                                                                                              | ------                       | ------               |
+| [ToolLaunchEvent](https://www.imsglobal.org/spec/caliper/v1p2#ToolLaunchEvent) |                                                                               |                                                                           |                                                                                                     |                              |                      |
+|                                                                                             | [Launched](https://www.imsglobal.org/spec/caliper/v1p2#launched) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication) |                              | **Required**         |
+|                                                                                             | [Returned](https://www.imsglobal.org/spec/caliper/v1p2#returned) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication) |                              | Optional             |
+
+
+### <a name="toolUseProfile"></a>3.15 Tool Use Profile
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Use Profile" src="../assets/caliper-profile_tool_use.png"></div>
 
 The Caliper Tool Use Profile models an intended interaction between a user and a tool.
 
 #### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.9](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse).
+See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.9](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse).
 
 #### Event Conformance Table
 
@@ -260,50 +373,33 @@ See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.9](https://w
 |                                                                                       | [Used](https://www.imsglobal.org/spec/caliper/v1p2#used) | [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) | [SoftwareApplication](https://www.imsglobal.org/spec/caliper/v1p2#SoftwareApplication) |                              | **Required**         |
 
 
-### <a name="generalProfile"></a>3.10 General Profile
-
-<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="General Profile" src="../assets/caliper-profile_basic.png"></div>
-
-The Caliper General Profile provides a generic [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) for describing learning or supporting activities that have yet to be modeled by Caliper.
-
-#### Profile Description
-See *Caliper Analytics&reg; Specification*, version 1.1, [Section 3.10](https://www.imsglobal.org/spec/caliper/v1p2#profile-general).
-
-#### Event Conformance Table
-
-| Event                                                                   | Action                                                          | Actor                                                                   | Object                                                                    | Recommended Generated Entity | Required or Optional |
-| ------                                                                  | ------                                                          | ------                                                                  | ------                                                                    | ------                       | ------               |
-| [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) |                                                                 |                                                                         |                                                                           |                              |                      |
-|                                                                         | [*](https://www.imsglobal.org/spec/caliper/v1p2#*) | [Agent](https://www.imsglobal.org/spec/caliper/v1p2#agent) | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) |                              | **Required**         |
-
-
 ## <a name="dataFormat"></a>4.0 Data Interchange Format
 Caliper events and entities are serialized as [JSON-LD](#jsonldDef), a JSON-based data interchange format that encourages use of shared vocabularies and discoverable key:value identifiers when constructing JSON documents.
 
 ### <a name="jsonldContext"></a>4.1 The JSON-LD Context
 [JSON-LD](#jsonldDef) documents require inclusion of a *context*, denoted by the <code>@context</code> keyword, a property employed to map document [Terms](#termDef) to [IRIs](#iriDef).  [JSON-LD](#jsonldDef) contexts can be embedded inline or referenced externally in a document.  Inclusion of a [JSON-LD](#jsonldDef) context provides an economical way for Caliper to communicate document semantics to services interested in consuming Caliper event data.
 
-IMS Global provides a remote Caliper 1.1 [JSON-LD](#jsonldDef) context document (http://purl.imsglobal.org/ctx/caliper/v1p1) for mapping Caliper [Terms](#termDef) to [IRIs](#iriDef).  Implementers are encouraged to familiarize themselves with the term definitions described therein.
+IMS Global provides a remote Caliper 1.2 [JSON-LD](#jsonldDef) context document (http://purl.imsglobal.org/ctx/caliper/v1p2) for mapping Caliper [Terms](#termDef) to [IRIs](#iriDef).  Implementers are encouraged to familiarize themselves with the term definitions described therein.
 
 #### Requirements
-* Each Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) *[describe](#describeDef)* document generated by a [Sensor](#sensorDef) MUST be provisioned with a [JSON-LD](#jsonldDef) <code>@context</code> defined as a property of the top-level object.
+* Each Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) *[describe](#describeDef)* document generated by a [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) MUST be provisioned with a [JSON-LD](#jsonldDef) <code>@context</code> defined as a property of the top-level object.
 * The top-level <code>@context</code> property type MUST be defined as a string or an array.
-* If the top-level <code>@context</code> value is defined as a string it MUST be set to the Caliper remote context URL "http://purl.imsglobal.org/ctx/caliper/v1p1".
+* If the top-level <code>@context</code> value is defined as a string it MUST be set to the Caliper remote context URL "http://purl.imsglobal.org/ctx/caliper/v1p2".
 * If the top-level <code>@context</code> value is defined as an array of multiple contexts, the remote Caliper [JSON-LD](#jsonldDef) context MUST be listed last in order to ensure that Caliper terms retain their primacy given that [JSON-LD](#jsonldDef) parsers rely on a "most-recently-defined-wins" approach when evaluating duplicate terms.
 * Referencing the remote Caliper [JSON-LD](#jsonldDef) context document in the top-level <code>@context</code> is mandatory.  The terms it defines MUST NOT be defined inline as an object.
 * Additional remote or inline _local_ contexts may be referenced any time a JSON object is defined in order to ascribe meaning to terms not described by the model.  These contexts are additive in nature and can be defined as a string, object or array.  Duplicate context references SHOULD be omitted when serializing the object.  Moreover, nested _local_ contexts that are added to the _active_ context at processing time MUST NOT override Caliper terms defined by the top-level context.
 
-For example [JSON-LD](#jsonldDef) context usage see *Caliper Analytics&reg; Specification*, version 1.1, [Section 4.1](https://www.imsglobal.org/spec/caliper/v1p2#jsonldContext).
+For example [JSON-LD](#jsonldDef) context usage see *Caliper Analytics&reg; Specification*, version 1.2, [Section 4.1](https://www.imsglobal.org/spec/caliper/v1p2#jsonldContext).
 
 ### <a name="jsonldNodeIdentifiers"></a>4.2 Node Identifiers
 Caliper specifies the use of [IRIs](#iriDef) for identifying nodes (i.e., the things being described) and their attributes.  [IRI](#iriDef) values MUST be absolute containing a scheme, path and optional query and fragment segments.  A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY be used as an identifier although care should be taken when employing a location-independent identifier since it precludes the possibility of utilizing it in future to retrieve machine-readable data over HTTP.  If an [IRI](#iriDef) is deemed inappropriate for the resource a [blank node](#blankNodeDef) identifier may be assigned.
 
-For additional information regarding identifiers see *Caliper Analytics&reg; Specification*, version 1.1, [Section 4.2](https://www.imsglobal.org/spec/caliper/v1p2#jsonldIdentifiers).
+For additional information regarding identifiers see *Caliper Analytics&reg; Specification*, version 1.2, [Section 4.2](https://www.imsglobal.org/spec/caliper/v1p2#jsonldIdentifiers).
 
 ### <a name="jsonldTypeCoercion"></a>4.3 Type Coercion
 Caliper permits [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) values to be expressed either as a JSON object or as a string corresponding to its [IRI](#iriDef).  [JSON-LD](#jsonldDef) also supports the _coercion_ of data values to specified types based on value type mappings defined in a [JSON-LD](#jsonldDef) context.  For a given <code>@type</code> the keywords <code>@id</code> or <code>@vocab</code> may be assigned as a value in order to signal to a [JSON-LD](#jsonldDef) parser that if a term's instance value is set to a string it is to be interpreted as an [IRI](#iriDef).  Type coercion of this sort provides representational flexibility that implementers are encouraged to leverage.
 
-For examples of coerced Caliper values see *Caliper Analytics&reg; Specification*, version 1.1, [Section 4.3](https://www.imsglobal.org/spec/caliper/v1p2#jsonldTypes).
+For examples of coerced Caliper values see *Caliper Analytics&reg; Specification*, version 1.2, [Section 4.3](https://www.imsglobal.org/spec/caliper/v1p2#jsonldTypes).
 
 ### <a name="jsonldEvents"></a>4.4 Expressing Events as JSON-LD
 A Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) is a generic type that describes the relationship established between an <code>actor</code> and an <code>object</code>, formed as a result of a purposeful [action](https://www.imsglobal.org/spec/caliper/v1p2#actions) undertaken by the <code>actor</code> at a particular moment in time and within a given learning context.  Caliper defines a number of [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) subtypes, each scoped to a particular activity domain and distinguishable by a <code>type</code> attribute.  Considered as a JSON data structure an [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) constitutes an unordered set of key:value pairs that is semi-structured by design.
@@ -320,7 +416,7 @@ The [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) <code>@context</c
 | object | Set the value to the relevant [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) (e.g., [Assessment](https://www.imsglobal.org/spec/caliper/v1p2#assessment)) specified by the governing Metric Profile. The <code>object</code> value MUST be expressed as a JSON object or as a string corresponding to the object's IRI. |
 | eventTime | Set the date and time value expressed with millisecond precision using the ISO 8601 format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. |
 
-For example [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.1, [Appendix B](https://www.imsglobal.org/spec/caliper/v1p2#events).
+For example [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.2, [Appendix B](https://www.imsglobal.org/spec/caliper/v1p2#events).
 
 ### <a name="jsonldEntities"></a>4.5 Expressing Entities as JSON-LD
 A Caliper [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) is a generic type that represents objects that participate in learning-related activities.  A variety of [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) subtypes have been defined in order to better describe people, groups, organizations, digital content, courses, software applications, and other objects that constitute the "stuff" of a Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event).  Like an [Event](https://www.imsglobal.org/spec/caliper/v1p2#event), an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) is considered semi-structured data consisting of an unordered set of key:value pairs.
@@ -337,25 +433,25 @@ All other properties are optional and MAY be omitted when describing an [Entity]
 | id | Set the string value to a valid [IRI](#iriDef) or a blank node identifier. The [IRI](#iriDef) MUST be unique and persistent.  The [IRI](#iriDef) SHOULD be dereferenceable; i.e., capable of returning a representation of the [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity).  A [URI](#uriDef) employing the [URN](#urnDef) scheme MAY also be utilized. |
 | type | Set the string value to the relevant Caliper term (e.g., "DigitalResource"). |
 
-For example [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.1, [Appendix C](https://www.imsglobal.org/spec/caliper/v1p2#entities).
+For example [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.2, [Appendix C](https://www.imsglobal.org/spec/caliper/v1p2#entities).
 
 ## <a name="transportConformance"></a>5.0 Transport Conformance
 
-A Caliper [Sensor](#sensorDef) MUST demonstrate that it is capable of transmitting Caliper data successfully to the certification service [Endpoint](#endpointDef).  Certification is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).  Messages MUST be sent using the POST request method.  For certification purposes, the [Sensor](#sensorDef) MUST also support message authentication using the <code>Authorization</code> request header, setting the value to the provided bearer token.
+A Caliper [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) MUST demonstrate that it is capable of transmitting Caliper data successfully to the certification service [Endpoint](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).  Certification is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).  Messages MUST be sent using the POST request method.  For certification purposes, the [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) MUST also support message authentication using the <code>Authorization</code> request header, setting the value to the provided bearer token.
 
 #### <a name="envelope"></a>5.1 The Envelope
-Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) data are transmitted inside an [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a JSON data structure that includes metadata about the emitting [Sensor](#sensorDef) and the data payload.  Each [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) _[describe](#desribeDef)_ included in an envelope's <code>data</code> array MUST be expressed as a [JSON-LD](#jsonld) document.
+Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) data are transmitted inside an [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a JSON data structure that includes metadata about the emitting [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) and the data payload.  Each [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) _[describe](#desribeDef)_ included in an envelope's <code>data</code> array MUST be expressed as a [JSON-LD](#jsonld) document.
 
 The [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope) <code>sensor</code>, <code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties MUST be specified.  No custom properties are permitted.
 
 | Required Property | Disposition |
 | :---------------- | :----------- |
-| sensor | Set the string value to a unique identifier assigned either to the [Sensor](#sensorDef) or to the instrumented platform, application or service utilizing the [Sensor](#sensorDef).  The identifier SHOULD be in the form of an [IRI](#iriDef). |
-| eventTime | Set the date and time value expressed with millisecond precision using the ISO 8601 format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified that indicates the time at which the [Sensor](#sensorDef) issued the message. |
-| dataVersion | Set the string value to the Caliper [JSON-LD](#jsonldDef) remote context URL "http://purl.imsglobal.org/ctx/caliper/v1p1".  This indicates that the *Caliper Analytics&reg; Specification*, [version 1.1](https://www.imsglobal.org/spec/caliper/v1p2), governs the form of the Caliper entities and events contained in the <code>data</code> payload. |
+| sensor | Set the string value to a unique identifier assigned either to the [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) or to the instrumented platform, application or service utilizing the [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor).  The identifier SHOULD be in the form of an [IRI](#iriDef). |
+| eventTime | Set the date and time value expressed with millisecond precision using the ISO 8601 format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified that indicates the time at which the [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) issued the message. |
+| dataVersion | Set the string value to the Caliper [JSON-LD](#jsonldDef) remote context URL "http://purl.imsglobal.org/ctx/caliper/v1p2".  This indicates that the *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), governs the form of the Caliper entities and events contained in the <code>data</code> payload. |
 | data | An ordered collection of one or more Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and/or [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) *[describe](#describeDef)* objects.  The Sensor MAY mix [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) *[describe](#describeDef)* data in the same [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope). |
 
-For example [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.1, [Section 5.3](https://www.imsglobal.org/spec/caliper/v1p2#jsonldPayload).
+For example [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope) JSON-LD see *Caliper Analytics&reg; Specification*, version 1.2, [Section 5.3](https://www.imsglobal.org/spec/caliper/v1p2#jsonldPayload).
 
 #### <a name="httpRequest"></a>5.2 HTTP Message Requests
 Each HTTP request message sent to the certification service MUST consist of a single serialized JSON representation of a Caliper [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope).  Messages MUST be sent using the POST request method.
@@ -370,7 +466,7 @@ The following standard HTTP request headers MUST be set for each message sent to
 
 #### <a name="httpResponse"></a>5.3 HTTP Message Responses
 
-Following receipt of a [Sensor](#sensorDef) request message the certification service will reply with a response message.  The response will include a three-digit status code indicating whether or not the certification service was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
+Following receipt of a [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) request message the certification service will reply with a response message.  The response will include a three-digit status code indicating whether or not the certification service was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
 
 * To signal a Caliper sensor that it has successfully received a message the certification service endpoint will reply with a <code>2xx</code> class status code.  The body of a successful response will be empty.
 * If a Caliper sensor sends a message containing events and or entities without an enclosing [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), the certification service will reply with a <code>400 Bad Request</code> response.
@@ -379,10 +475,10 @@ Following receipt of a [Sensor](#sensorDef) request message the certification se
 * If a Caliper sensor sends a message with a <code>Content-Type</code> other than "application/json", the certification service will reply with a <code>415 Unsupported Media Type</code> response.
 * If a Caliper sensor sends a message with an [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope) that contains a <code>dataVersion</code> value that the endpoint cannot support the certification service will reply with a <code>422 Unprocessable Entity</code> response.
 
-The certification service MAY respond to [Sensor](#sensorDef) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The certification service MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
+The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The certification service MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
 
 #### <a name="otherTransports"></a>5.4 Other Transport Protocols
-*Caliper Analytics&reg; Specification*, [version 1.1](https://www.imsglobal.org/spec/caliper/v1p2) defines the use of a single transport protocol (HTTP/HTTPS).  However, IMS Global is interested in specifying the use of other transport protocols that can support the exchange of Caliper data.  Organizations wishing to work with IMS Global to add other transport protocols to the Caliper specification should contact the Caliper Working Group directly or indicate interest via the [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
+*Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2) defines the use of a single transport protocol (HTTP/HTTPS).  However, IMS Global is interested in specifying the use of other transport protocols that can support the exchange of Caliper data.  Organizations wishing to work with IMS Global to add other transport protocols to the Caliper specification should contact the Caliper Working Group directly or indicate interest via the [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
 
 ## <a name="usingCertService"></a> 6.0 Using the Certification Service
 Visit the Caliper Certification service at [https://www.imsglobal.org/sso/launch.php/caliper](https://www.imsglobal.org/sso/launch.php/caliper).  You MUST be logged in to the IMS Global website to access the Caliper certification service.  If you do not have an account, please register at [https://www.imsglobal.org/user/register](https://www.imsglobal.org/user/register).
@@ -435,7 +531,7 @@ The following Caliper Working Group participants contributed to the writing of t
 | Lisa Mattson | IMS Global |
 
 ## <a name="references"></a>References
-<a name="caliperSpec"></a>__Caliper Spec__.  IMS Global.  Anthony Whyte, Viktor Haag, Linda Feng, Markus Gylling, Matt Ashbourne, Wes LaMarche and Etienne Pelaprat.  Caliper Analytics® Specification, version 1.1.  12 January 2018.  URL: http://www.imsglobal.org/caliper-spec-v1p1
+<a name="caliperSpec"></a>__Caliper Spec__.  IMS Global.  Anthony Whyte, Viktor Haag, Linda Feng, Markus Gylling, Matt Ashbourne, Wes LaMarche and Etienne Pelaprat.  Caliper Analytics® Specification, version 1.2.  12 January 2018.  URL: http://www.imsglobal.org/caliper-spec-v1p2
 
 <a name="jsonldSyntax"></a>__JSON-LD Syntax__.  W3C.  M. Sporny, D. Longley, G. Kellog, M. Lanthaler and N. Lindström.  JSON-LD 1.1.  A JSON-based Serialization for Linked Data. 15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld/
 
@@ -472,7 +568,7 @@ IMS Global would appreciate receiving your comments and suggestions.
 
 Please contact IMS Global through our website at [http://www.imsglobal.org](http://www.imsglobal.org).
 
-Please refer to Document Name: IMS Caliper Analytics&reg; Certification Guide, version 1.1
+Please refer to Document Name: IMS Caliper Analytics&reg; Certification Guide, version 1.2
 
 Date: 12 January 2018
 
