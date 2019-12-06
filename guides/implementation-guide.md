@@ -37,13 +37,13 @@ The primary goal of this document is to lead you to successful implementation of
 
 This document is intended as a starting point for those looking to implement the Caliper Analytics&reg; standard in their educational software ecosystem.
 
-This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, read descriptions of each profile, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.  
+This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, read descriptions of each profile, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.
 
 ## Terminology
 
 Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.  Caliper Analytics describes events using triples, a combination of an *action* being undertaken by an *actor* to an *object*.  A good way to think of it as *someone* (*actor*) did *something* (*action*) to *someone/something* (*object*)
 
-Here are a few useful definitions for terms used throughout this document.  Full Caliper terminology list is available in the [Terminology section of the Caliper Spec](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#terminology).
+Here are a few useful definitions for terms used throughout this document.  Full Caliper terminology list is available in the [Terminology section of the Caliper Spec](https://www.imsglobal.org/spec/caliper/v1p2#terminology).
 
 <dl>
   <dt>Action</dt><dd>Part of an Event that describes the *what* .</dd>
@@ -65,12 +65,12 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 ### Links for your convenience
 
 - [Caliper Analytics&reg; Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum)
-- [Caliper Analytics&reg; version 1.1 full specification](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html)
+- [Caliper Analytics&reg; version 1.2 full specification](https://www.imsglobal.org/spec/caliper/v1p2)
 - [Metric Profile Summaries](https://www.imsglobal.org/caliper-analytics-v11-profiles-summaries)
 - [Caliper Analytics&reg; Conformance Information](https://www.imsglobal.org/caliper-analytics-conformance)
 - [Caliper Analytics&reg; Conformance Test Suite](https://caliper.imsglobal.org/sec/index.html)
 - [Caliper-central GitHub Repository](https://github.com/IMSGlobal/caliper-central)
-- [How to use with LTI](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md)
+- [How to use with LTI](#lti-learning-tools-interoperability-0)
 
 ## Conformance Certification
 
@@ -79,19 +79,19 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 </section>
 
 ### What is Conformance Certification?
-IMS offers a process for testing the conformance of products using the IMS certification test suite. Certification designates passing a set of tests that verify the standard has been implemented correctly and guarantees a product’s interoperability across hundreds of other certified products. The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]] provides details about the testing process, requirements, and how to get started.
+IMS offers a process for testing the conformance of products using the IMS certification test suite. Certification designates passing a set of tests that verify the standard has been implemented correctly and guarantees a product’s interoperability across hundreds of other certified products. The Caliper Analytics [Conformance Certification Guide](https://www.imsglobal.org/spec/caliper/v1p2/cert) provides details about the testing process, requirements, and how to get started.
 
 ### What are the benefits of Conformance Certification?
 Conformance certification offers more than claims of “compliance,". The only way IMS can guarantee interoperability is by obtaining certification for the latest version of the standard. Only products listed in the official IMS Certified Product Directory can claim conformance certification. IMS certification provides the assurance that a solution will integrate securely and seamlessly into an institution's digital learning ecosystem.
 
 ### How does my product get certified?
-Certification for Caliper Analytics involves certifying against one or more Metric Profiles.  This means  passing the appropriate tests for the profile or profiles that you are implementing using  the IMS Global suite of Caliper Analytics certification tools.  For more information on the conformance and certification process, please refer to the The Caliper Analytics Conformance Certification Guide [[CERTGUIDE URL]]
+Certification for Caliper Analytics involves certifying against one or more Metric Profiles.  This means  passing the appropriate tests for the profile or profiles that you are implementing using  the IMS Global suite of Caliper Analytics certification tools.  For more information on the conformance and certification process, please refer to the The Caliper Analytics [Conformance Certification Guide](https://www.imsglobal.org/spec/caliper/v1p2/cert).
 
 ## How to create a Caliper Event
 
 ### Events
 
-[Link to full Event docs](#events)
+[Link to full Event docs](https://www.imsglobal.org/spec/caliper/v1p2#Event)
 
 An Event is the combination of an *Actor*, an *Action*, and an *Object*. In a sentence, an Event describes what an Actor _did_ (Action) to an Object. Each of those will be described in the following sections.
 
@@ -102,9 +102,9 @@ It's important to have a clear understanding of Caliper Events since they descri
 
 Caliper Events each specify which type of event they are.  Events of the same type have several things in common, like required and optional properties.  Some event types include:
 
-[AnnotationEvent](#annotationEvent), [AssignableEvent](#assignableEvent), [AssessmentEvent](#assessmentEvent), [AssessmentItemEvent](#assessmentItemEvent), [ForumEvent](#forumEvent), [MediaEvent](#mediaEvent), [MessageEvent](#messageEvent), [NavigationEvent](#navigationEvent), [GradeEvent](#gradeEvent), [SessionEvent](#sessionEvent), [ToolUseEvent](#toolUseEvent), [ThreadEvent](#threadEvent), [ViewEvent](#viewEvent)
+[AnnotationEvent](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent), [AssignableEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssignableEvent), [AssessmentEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentEvent), [AssessmentItemEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentItemEvent), [ForumEvent](https://www.imsglobal.org/spec/caliper/v1p2#ForumEvent), [MediaEvent](https://www.imsglobal.org/spec/caliper/v1p2#MediaEvent), [MessageEvent](https://www.imsglobal.org/spec/caliper/v1p2#MessageEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent), [SessionEvent](https://www.imsglobal.org/spec/caliper/v1p2#SessionEvent), [ToolUseEvent](https://www.imsglobal.org/spec/caliper/v1p2#ToolUseEvent), [ThreadEvent](https://www.imsglobal.org/spec/caliper/v1p2#ThreadEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)
 
-A full list of event types is available in the Caliper Spec (See "Subtype" subsection of [Event.](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#Event))
+A full list of event types is available in the Caliper Spec (See "Subtype" subsection of [Event.](https://www.imsglobal.org/spec/caliper/v1p2#Event))
 
 #### Event Required Properties
 
@@ -113,15 +113,15 @@ A full list of event types is available in the Caliper Spec (See "Subtype" subse
 
 | Property | Type | Description | Disposition |
 | :------- | :--- | ----------- | :---------: |
-| id | [UUID](#uuidDef) | A version 4 [UUID](#uuidDef).  The UUID MUST be expressed as a [URN](#urnDef) using the form <code>urn:uuid:<UUID></code> per [RFC 4122](#rfc4122). | Required |
-| type | [Term](#termDef) | A string value for the Event Sub Type, or for a generic [Event](#event) set the <code>type</code> to the string value <code>Event</code>. | Required |
-| actor | [Agent](#agent) or [IRI](#iriDef) | The [Agent](#agent) who initiated the [Event](#event).  This must be either:  <ul><li>An [Entity](#entity) of the type Agent or one of its subtypes (e.g., Person, SoftwareApplication, etc.).</li><li>A unique [IRI](#iriDef) that represents an [Entity](#entity) as described above.  Ideally this should refer to an [Entity](#entity) previously defined in the payload containing the [Event](#event) or in an eventstore that contains the [Event](#event).| Required |
-| action | [Term](#termDef) | The action or predicate that binds the actor or subject to the object.  The <code>action</code> range is limited to the set of [actions](#actions) described in this specification and may be further constrained by the chosen [Event](#event) type.  Only one <code>action</code> [Term](#termDef) may be specified per [Event](#event). | Required |
-| object | [Entity](#entity) or [IRI](#iriDef) | The [Entity](#entity) that comprises the object of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's [IRI](#iriDef). | Required |
-| eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
+| id | [UUID](https://www.imsglobal.org/spec/caliper/v1p2#uuidDef) | A version 4 [UUID](https://www.imsglobal.org/spec/caliper/v1p2#uuidDef).  The UUID MUST be expressed as a [URN](https://www.imsglobal.org/spec/caliper/v1p2#urnDef) using the form <code>urn:uuid:<UUID></code> per [RFC 4122](#rfc4122). | Required |
+| type | [Term](https://www.imsglobal.org/spec/caliper/v1p2#termDef) | A string value for the Event Sub Type, or for a generic [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) set the <code>type</code> to the string value <code>Event</code>. | Required |
+| actor | [Agent](https://www.imsglobal.org/spec/caliper/v1p2#agent) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef) | The [Agent](https://www.imsglobal.org/spec/caliper/v1p2#agent) who initiated the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event).  This must be either:  <ul><li>An [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) of the type Agent or one of its subtypes (e.g., Person, SoftwareApplication, etc.).</li><li>A unique [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef) that represents an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) as described above.  Ideally this should refer to an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) previously defined in the payload containing the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) or in an eventstore that contains the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event).| Required |
+| action | [Term](https://www.imsglobal.org/spec/caliper/v1p2#termDef) | The action or predicate that binds the actor or subject to the object.  The <code>action</code> range is limited to the set of [actions](https://www.imsglobal.org/spec/caliper/v1p2#actions) described in this specification and may be further constrained by the chosen [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) type.  Only one <code>action</code> [Term](https://www.imsglobal.org/spec/caliper/v1p2#termDef) may be specified per [Event](https://www.imsglobal.org/spec/caliper/v1p2#event). | Required |
+| object | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef) | The [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) that comprises the object of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef). | Required |
+| eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 
 #### Entity or IRI
-Properties with the type "[Entity](#entity) or [IRI](#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier)string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
+Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier) string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
 
 #### Other Event Properties
 
@@ -143,11 +143,9 @@ TODO: talk about profiles defining more properties both required and optional.
 
 ### Actors
 
-[Link to full Actor docs](#actors)
+In a Caliper Event, the Actor performs the action related to a learning activity. The value of an Event's actor attribute must be an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#Agent) or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication. Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a QuestionnaireEvent must be a Person, while the actor for a GradeEvent could be either a Person or a SoftwareApplication (such as an autograder).
 
-In a Caliper Event, the Actor performs the action related to a learning activity. The value of an Event's actor attribute must be an Agent or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication. Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a QuestionnaireEvent must be a Person, while the actor for a GradeEvent could be either a Person or a SoftwareApplication (such as an autograder).
-
-For more information, see the [The Information Model](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#infoModel) section of the specification, the description of the [Agent entity](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#agent), or the full list of [Event subtypes](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#events).
+For more information, see the [The Information Model](https://www.imsglobal.org/spec/caliper/v1p2#information_model) section of the specification, the description of the [Agent entity](https://www.imsglobal.org/spec/caliper/v1p2#agent), or the full list of [Event subtypes](https://www.imsglobal.org/spec/caliper/v1p2#events).
 
 
 #### Actor JSON
@@ -161,11 +159,11 @@ For more information, see the [The Information Model](https://www.imsglobal.org/
 
 ### Action
 
-[Link to full Action docs](#actions)
+[Link to full Action docs](https://www.imsglobal.org/spec/caliper/v1p2#actions)
 
 An Action connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include Bookmarked, Launched, OptedIn, and Skipped. Each subtype of Event specifies some number of allowed Actions, while the Event supertype allows any Action declared in the specification. The provided Actions generally take the form of an English verb in past tense and have been connected to one or more word glosses from Princeton University's WordNet or Wiktionary to aid comprehension.
 
-For more information, see the [The Information Model](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#infoModel) section of the specification, or the full list of [supported Actions](https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html#actions) in the specification document.
+For more information, see the [The Information Model](https://www.imsglobal.org/spec/caliper/v1p2#information_model) section of the specification, or the full list of [supported Actions](https://www.imsglobal.org/spec/caliper/v1p2#actions) in the specification document.
 
 #### Action JSON
 
@@ -269,7 +267,7 @@ TODO: how to do this. Don't know where best to put this section. Might be mostly
 
 ### Envelopes
 
-Caliper [Event](#event) and [Entity](#entity) data MUST be transmitted inside a Caliper [Envelope](#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](#sensor) and the data payload.
+Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) data MUST be transmitted inside a Caliper [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) and the data payload.
 
 A Caliper envelope must contain the <code>sensor</code>,
 <code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties.  Each property MUST be referenced only once.  No custom properties are permitted.
@@ -378,13 +376,13 @@ Several implementation considerations exist for Caliper Consumers.  Typically, t
 
 The following best practices are typically recommended for data pipeline components that process Caliper data:
 
-- **Use Cheap Storage to Preserve Raw Event Messages.** Many Caliper consumers use cheap storage buckets in AWS S3 or Google Cloud Storage to preserve raw event messages.  Storage components such as AWS S3 can support annotation with metadata for cataloging purposes, and integrates with other AWS services such as AWS Glue, Lambda and Kinesis that will serve as components of the data lake.  
+- **Use Cheap Storage to Preserve Raw Event Messages.** Many Caliper consumers use cheap storage buckets in AWS S3 or Google Cloud Storage to preserve raw event messages.  Storage components such as AWS S3 can support annotation with metadata for cataloging purposes, and integrates with other AWS services such as AWS Glue, Lambda and Kinesis that will serve as components of the data lake.
 - **Take Advantage of Stream Processing Components.**  Cloud infrastructure components such as AWS Kinesis Firehose are useful for bundling groups of Caliper messages arriving at the same time into JSON files, which are then kept in folders organized by year/month/day/hour.  In addition, components such as AWS Kinesis Analytics can be used to keep running totals or to detect anomalies in event streams.
 - **Set Up Ingest Processes With Known Mapping and Transform Rules.**  Examples of tasks which may need to be performed with inbound Caliper data are as follows:
   - Identify and locate common identifiers across the incoming data records.
   - Identify mappings between similar but differently named data fields and define logic for any transformations (parsing out specific identifiers from string fields, for example).
-  - Determine how to handle display fields that contain strings that might be too long or have unsupported characters  
-  - Some data records may not contain an identifier that can be used to commonly join them across sources.  In those cases, you will need to maintain a set of mapping tables with locally-sourced identifiers and their mappings to global identifiers.  
+  - Determine how to handle display fields that contain strings that might be too long or have unsupported characters
+  - Some data records may not contain an identifier that can be used to commonly join them across sources.  In those cases, you will need to maintain a set of mapping tables with locally-sourced identifiers and their mappings to global identifiers.
   - This may mean that you need to manufacture a global set of identifiers to unify the data across systems.
   - Coordinate and communicate with any departments/groups who own or can help locate the “source of truth” for identifiers.
 - **Don’t Forget About Reference Data.** Set up processes to bring in reference data (users, departments, calendar events, work project names).
@@ -579,11 +577,11 @@ As an analytics standard, Caliper is relevant to almost every other IMS specific
 
 ### CASE - Competencies and Academic Standards Exchange
 
-[CASE](https://www.imsglobal.org/activity/case) is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper <code>Entity</code> is aligned with via a [LearningObjective](https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#learningObjective) <code>Entity</code> included with the <code>Object</code> in a Caliper <code>Event</code>.
+[CASE](https://www.imsglobal.org/activity/case) is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper <code>Entity</code> is aligned with via a [LearningObjective](https://www.imsglobal.org/spec/caliper/v1p2#learningObjective) <code>Entity</code> included with the <code>Object</code> in a Caliper <code>Event</code>.
 
 Researchers and analytics who collect data aligned to learning objectives can use it to correlate between learning activities and academic standards.
 
-Wherever CASE-aligned learning objectives are associated to [DigitalResources] you may want to include them in the <code>learningObjectives</code> array on your resource. 
+Wherever CASE-aligned learning objectives are associated to [DigitalResources] you may want to include them in the <code>learningObjectives</code> array on your resource.
 
 If the Caliper endpoint is able to retrieve this information from another source then it may be better to not include the <code>LearningObjective</code> to help keep the Caliper Event's JSON smaller.
 
@@ -647,7 +645,7 @@ The [Tool Use](#) and [Tool Launch](#) profiles are meant to help understand how
 ### OneRoster & LIS
 
 Something about IDs for users/contexts?
-IDs could be in LIS vocabulary, and you can read about that in the [LIS Documentation]. 
+IDs could be in LIS vocabulary, and you can read about that in the [LIS Documentation].
 
 TODO: How would a system commonly fetch correlated information from a OneRoster, LIS, SIS system?
 
@@ -659,7 +657,7 @@ The Media Profile should be used by platforms implementing [OpenVideo](https://w
 
 ### QTI - Question and Test Interoperability
 
-For a learner's interactions within a [QTI](https://www.imsglobal.org/question/index.html) assessment the [Assessment Profile](#) should be used. This profile is useful for all assessments whether driven by QTI or not allowing researchers and tool creators to send events about assessment generically.  
+For a learner's interactions within a [QTI](https://www.imsglobal.org/question/index.html) assessment the [Assessment Profile](#) should be used. This profile is useful for all assessments whether driven by QTI or not allowing researchers and tool creators to send events about assessment generically.
 
 For more research on detailed assessment interactions as supported by QTI the [QTI Profile](#) can be used.
 
