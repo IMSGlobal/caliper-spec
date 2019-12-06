@@ -4,11 +4,12 @@ var t2 = `
 
 <div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Session Profile" src="../assets/caliper-sensor-v2.png"></div>
 
-The *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), provides a structured approach to describing, collecting and exchanging learning activity data at scale.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing and data-informed decision making are also important goals.
+The *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), provides a structured approach to describing, collecting, and exchanging learning activity data at scale.  Establishing a common vocabulary for describing learning interactions is a central objective.  Promoting data interoperability, data sharing, and data-informed decision making are also important goals.
 
-Caliper also defines an application programming interface (the Sensor API&trade;) for marshalling and transmitting event data from instrumented applications to target endpoints for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
+Caliper also defines an application programming interface (the Sensor API&trade;), commonly referred to as [Sensors](https://www.imsglobal.org/spec/caliper/v1p2#sensor), for marshalling and transmitting event data from instrumented applications to target [endpoints](https://www.imsglobal.org/spec/caliper/v1p2#endpoint) for storage, analysis and use.  Industry-wide adoption of Caliper offers the tantalizing prospect of a more unified learning data environment in which to build new and innovative services designed to measure, infer, predict, report and visualize.
 
-This document is the certification guide for Caliper [Sensors](https://www.imsglobal.org/spec/caliper/v1p2#sensor). In this release of the Caliper specification, certification services are not provided for Caliper [endpoints](https://www.imsglobal.org/spec/caliper/v1p2#endpoint). Endpoint implementors should take note that it is the intent of the Caliper Working Group to add endpoint certification in forthcoming releases of the specification. Implementors should also note that behavioral requirements for Caliper Endpoints are provided in the *Caliper Analytics&reg; Specification*, version 1.2, [Section 6.0](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).
+
+This document is the certification guide for Caliper Sensors. In this release of the Caliper specification, certification services are not provided for Caliper endpoints. Endpoint implementors should take note that it is the intent of the Caliper Working Group to add endpoint certification in forthcoming releases of the specification. Implementors should also note that behavioral requirements for Caliper Endpoints are provided in the *Caliper Analytics&reg; Specification*, version 1.2, [Section 6.0](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).
 
 ### Status of this Document
 This document is considered the _Final Release_.  This means that the Caliper Analytics&reg; Sensor Certification Guide, version 1.2, is now made available as a public document following acceptance by IMS Global member organizations, a number of whom have successfully achieved conformance certification at the time of the release of this document.
@@ -20,16 +21,57 @@ Public comments and questions can be posted at the Caliper Analytics&reg; [publi
 ### Conventions
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
 
-## <a name="certPreReqs"></a>Certification Prerequisites
-Certain prerequisites MUST be met before you can certify your platform, application or service as Caliper compliant.
+## The Conformance Process
+
+### <a name="certPreReqs"></a>Certification Prerequisites
+The following prerequisites MUST be met before your organization can begin the process of getting your product Caliper Analytics&reg; certified.
 
 * Your organization MUST be an IMS Contributing or Affiliate Member.
-* You MUST pass the tests using this Certification service.
+* You MUST pass the tests using the Caliper Certification Service.
 * The tests MUST be completed by a designated representative of the member organization and you MUST agree that there is no misrepresentation or manipulation of the results in the submitted report.
 * You MUST submit your report via the Caliper Certification Service.
 
+### <a name="confTestProc"></a> Conformance Testing Process
+Visit the Caliper Certification service at [https://www.imsglobal.org/sso/launch.php/caliper](https://www.imsglobal.org/sso/launch.php/caliper).  You MUST be logged in to the IMS Global website to access the Caliper certification service.  If you do not have an account, please register at [https://www.imsglobal.org/user/register](https://www.imsglobal.org/user/register).
+
+The certification service provides a playground for testing your Caliper messages.  Click the "Start Testing" link under __Test Your Product__ to access the playground.
+
+Once you are ready to commence certification testing, click the "Certify Your Product" link under __Certify Your Product__ to commence testing.  The following steps will guide you through the process.  A [screencast](https://youtu.be/iLCsB2CI7aw) of the certification workflow is available for review.
+
+1. Complete the online form by providing the following information:
+
+   * Product name
+   * Product version
+   * Product URL
+   * Product description
+   * Caliper specification version
+   * Member name
+   * Member email address
+   * Member organization
+
+2. Click the green "Start Certification" button.  To terminate testing click the white "Cancel" button.
+
+3. An "Instructions" page provides both a test endpoint URL and a bearer token.  Configure your software to send Caliper messages to the test endpoint URL.  For each request, set the HTTP <code>Authorization</code> header field value to the provided bearer token and the HTTP <code>Host</code> header field value to the provided endpoint URL.
+
+4. Initiate the product test, sending messages to the certification service endpoint.
+
+5. When the first message is received by the Certification service the "Instructions" page will be replaced with a view displaying conformance progress.  A list of available Caliper metric profiles is displayed on the left side of the page.  A log of submitted messages or "items" is displayed on the right side of the page.  As messages are processed metric profile certifications that have been attained will be indicated by check marks.  Clicking a profile's plus (+) link will display a list of profile events and actions processed successfully.  Clicking the log "items" link provides additional information regarding events processed, errors encountered and individual message JSON-LD documents received.
+
+6. Once testing is complete click the "Complete Certification" button.
+
+7. Read the confirmation statement and then click the "Submit Certification Results" button.
+
+8. Repeat the test as necessary in order to certify against additional metric profiles or address previous failed tests.
+
+#### <a name="certMark"></a>Certification Mark
+After submitting your successful conformance information and receiving confirmation and a registration number from IMS Global you may then apply the appropriate conformance mark. The IMS Global conformance chart will list your conformance details. If you have any questions, please feel free to contact us at any point.  Products without an IMS conformance registration number are not considered compliant by IMS Global.
+
+#### <a name="certRenewal"></a>Certification Expiration and Renewal
+Caliper certification covers individual metric profiles only and is scoped to the specific version of the Caliper specification tested.  Major or minor releases of the Caliper specification and/or associated metric profiles will require recertification of your upgraded platform, application or service. All IMS Certifications require that you renew and retest your certification after one year.
+
+
 ## <a name="profileConformance"></a>Metric Profile Certification
-As described more fully in the *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2), the Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms for describing common user interactions.
+As described more fully in the *Caliper Analytics&reg; Specification*, [version 1.2 section 3](https://www.imsglobal.org/spec/caliper/v1p2#profiles), the Caliper information model defines a number of metric profiles, each of which models a learning activity or a supporting activity that helps facilitate learning.  Each profile provides a domain-specific set of terms for describing common user interactions.
 
 Each Caliper profile is also a unit of certification for Caliper [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) implementations. Any given Sensor may apply for certification for one or more of the Caliper Metric Profiles. In the subsections below, the Minimum Conformance and Restrictions sections specified for each Profile defines the corresponding conformance criteria in detail.
 
@@ -417,44 +459,6 @@ The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec
 
 #### <a name="otherTransports"></a>Other Transport Protocols
 *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2) defines the use of a single transport protocol (HTTP/HTTPS).  However, IMS Global is interested in specifying the use of other transport protocols that can support the exchange of Caliper data.  Organizations wishing to work with IMS Global to add other transport protocols to the Caliper specification should contact the Caliper Working Group directly or indicate interest via the [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
-
-## <a name="usingCertService"></a> Using the Certification Service
-Visit the Caliper Certification service at [https://www.imsglobal.org/sso/launch.php/caliper](https://www.imsglobal.org/sso/launch.php/caliper).  You MUST be logged in to the IMS Global website to access the Caliper certification service.  If you do not have an account, please register at [https://www.imsglobal.org/user/register](https://www.imsglobal.org/user/register).
-
-The certification service provides a playground for testing your Caliper messages.  Click the "Start Testing" link under __Test Your Product__ to access the playground.
-
-Once you are ready to commence certification testing, click the "Certify Your Product" link under __Certify Your Product__ to commence testing.  The following steps will guide you through the process.  A [screencast](https://youtu.be/iLCsB2CI7aw) of the certification workflow is available for review.
-
-1. Complete the online form by providing the following information:
-
-   * Product name
-   * Product version
-   * Product URL
-   * Product description
-   * Caliper specification version
-   * Member name
-   * Member email address
-   * Member organization
-
-2. Click the green "Start Certification" button.  To terminate testing click the white "Cancel" button.
-
-3. An "Instructions" page provides both a test endpoint URL and a bearer token.  Configure your software to send Caliper messages to the test endpoint URL.  For each request, set the HTTP <code>Authorization</code> header field value to the provided bearer token and the HTTP <code>Host</code> header field value to the provided endpoint URL.
-
-4. Initiate the product test, sending messages to the certification service endpoint.
-
-5. When the first message is received by the Certification service the "Instructions" page will be replaced with a view displaying conformance progress.  A list of available Caliper metric profiles is displayed on the left side of the page.  A log of submitted messages or "items" is displayed on the right side of the page.  As messages are processed metric profile certifications that have been attained will be indicated by check marks.  Clicking a profile's plus (+) link will display a list of profile events and actions processed successfully.  Clicking the log "items" link provides additional information regarding events processed, errors encountered and individual message JSON-LD documents received.
-
-6. Once testing is complete click the "Complete Certification" button.
-
-7. Read the confirmation statement and then click the "Submit Certification Results" button.
-
-8. Repeat the test as necessary in order to certify against additional metric profiles or address previous failed tests.
-
-## <a name="certMark"></a>Certification Mark
-After submitting your successful conformance information and receiving confirmation and a registration number from IMS Global you may then apply the appropriate conformance mark. The IMS Global conformance chart will list your conformance details. If you have any questions, please feel free to contact us at any point.  Products without an IMS conformance registration number are not considered compliant by IMS Global.
-
-## <a name="certRenewal"></a>Certification Expiration and Renewal
-Caliper certification covers individual metric profiles only and is scoped to the specific version of the Caliper specification tested.  Major or minor releases of the Caliper specification and/or associated metric profiles will require recertification of your upgraded platform, application or service. All IMS Certifications require that you renew and retest your certification after one year.
 
 ## <a name="contributors"></a>Contributors
 The following Caliper Working Group participants contributed to the writing of this guide:
