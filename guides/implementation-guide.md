@@ -37,25 +37,26 @@ The primary goal of this document is to lead you to successful implementation of
 
 This document is intended as a starting point for those looking to implement the Caliper Analytics&reg; standard in their educational software ecosystem.
 
-This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, read descriptions of each profile, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.
+This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.
+
+This document is also meant to assist the reader in learning how to use the main Caliper specification to look up specific items during implementation.
 
 ## Terminology
 
-Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.  Caliper Analytics describes events using triples, a combination of an *action* being undertaken by an *actor* to an *object*.  A good way to think of it as *someone* (*actor*) did *something* (*action*) to *someone/something* (*object*)
+Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.  Caliper Analytics describes events using _triples_, a combination of an **action** being undertaken by an **actor** to an **object**.  A good way to think of it as _someone_ (**actor**) did _something_ (**action**) to _someone/something_ (**object**)
 
 Here are a few useful definitions for terms used throughout this document.  Full Caliper terminology list is available in the [Terminology section of the Caliper Spec](https://www.imsglobal.org/spec/caliper/v1p2#terminology).
 
 <dl>
-  <dt>Action</dt><dd>Part of an Event that describes the *what* .</dd>
-  <dt>Actor</dt><dd>Part of an Event that describes the *who*.</dd>
-  <dt>Entity</dt><dd>Part of an Event that describes the *to whom*.</dd>
-  <dt>Agent</dt><dd>Part of an Event that represents a generic form of an *Entity* and describes the *to whom* when a more specific *Entity* is not available.</dd>
+  <dt>Action</dt><dd>Part of an Event that describes the <em>what</em> .</dd>
+  <dt>Actor</dt><dd>Part of an Event that describes the <em>who</em>.</dd>
+  <dt>Entity</dt><dd>Part of an Event that describes the <em>to whom</em>.</dd>
+  <dt>Agent</dt><dd>Part of an Event that represents a generic form of an <em>Entity</em> and describes the <em>to whom</em> when a more specific <em>Entity</em> is not available.</dd>
   <dt>Event</dt><dd>A collection of an Actor, an Action, and an Object</dd>
   <dt>Envelope</dt><dd>A JSON payload that can contain one or many Caliper events</dd>
-  <dt>Object</dt><dd>Part of an Event that describes the *to whom*.</dd>
+  <dt>Object</dt><dd>Part of an Event that describes the <em>to whom</em> or <em>to what</em>.</dd>
   <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner.  Metric Profiles also serve as the unit of certification for the Caliper Analytics&reg; specification </dd>
   <dt>Sensor</dt><dd> Software deployed within a learning application that capture and transmit Caliper data to a target endpoint</dd>
-  <dt></dt><dd></dd>
 </dl>
 
 Here is a short explanation of how Caliper works using this vocabulary. If you can understand this you're well on your way to understanding Caliper!
@@ -91,20 +92,26 @@ Certification for Caliper Analytics involves certifying against one or more Metr
 
 ### Events
 
-[Link to full Event docs](https://www.imsglobal.org/spec/caliper/v1p2#Event)
+[Link to full Event documentation](https://www.imsglobal.org/spec/caliper/v1p2#Event)
 
-An Event is the combination of an *Actor*, an *Action*, and an *Object*. In a sentence, an Event describes what an Actor _did_ (Action) to an Object. Each of those will be described in the following sections.
+An Event is the combination of an **Actor**, an **Action**, and an **Object**. In a sentence, an Event describes what an Actor _did_ (Action) to an Object. Each of those will be described in the following sections.
 
 It's important to have a clear understanding of Caliper Events since they describe the semantics of what's happening in the system.
 
 
 #### Event Types
 
-Caliper Events each specify which type of event they are.  Events of the same type have several things in common, like required and optional properties.  Some event types include:
+Caliper Events each specify which type of event they are.  Events of the same type have several things in common, like required and optional properties. Some event types include:
 
 [AnnotationEvent](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent), [AssignableEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssignableEvent), [AssessmentEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentEvent), [AssessmentItemEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentItemEvent), [ForumEvent](https://www.imsglobal.org/spec/caliper/v1p2#ForumEvent), [MediaEvent](https://www.imsglobal.org/spec/caliper/v1p2#MediaEvent), [MessageEvent](https://www.imsglobal.org/spec/caliper/v1p2#MessageEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent), [SessionEvent](https://www.imsglobal.org/spec/caliper/v1p2#SessionEvent), [ToolUseEvent](https://www.imsglobal.org/spec/caliper/v1p2#ToolUseEvent), [ThreadEvent](https://www.imsglobal.org/spec/caliper/v1p2#ThreadEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)
 
-A full list of event types is available in the Caliper Spec (See "Subtype" subsection of [Event.](https://www.imsglobal.org/spec/caliper/v1p2#Event))
+A full list of event types is available in the Caliper Spec (See "Subtype" subsection of [Event](https://www.imsglobal.org/spec/caliper/v1p2#Event)).
+
+#### Choosing the appropriate Event
+
+To choose the best Event for your situation you can scan the list of event types and see which one seems to match best, or you can also start by looking at a Metric Profile and see what events are described there that might meet your needs already.
+
+If there is no existing Event that meets your needs you can use a "generic" event from the [Generic Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-general). These events allow any actor, action, and object you need and aren't constrained like the specific events from other profiles. This should provide you with the flexibility you need when your use case isn't already met by existing profiles.
 
 #### Event Required Properties
 
@@ -122,17 +129,23 @@ All property tables will look like the following table. This table shows the bas
 | object | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef) | The [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) that comprises the object of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
 
+#### Additional properties on Events
+
+While the base information required by most Events is represented in the above example, each Event type could require more properties, and allow for more properties and context as desired by the implementors. To understand what information is required and possible you should consult each [Event Type's](http://localhost:8000/guides/implementation-guide.html#event-types-0) documentation for the activities you're trying to implement.
+
 #### Entity or IRI
 Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier) string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
 
 #### Event JSON stub
+
+This is an example of what an Event's JSON looks like without the actor/action/object. A full example will be given below.
 
 <pre><code class="json">
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
   "type": "ViewEvent",
-  "eventTime": "2018-11-15T10:15:00.000Z",
+  "eventTime": "2020-01-15T10:15:00.000Z",
   "actor": {},
   "action": "",
   "object": {}
@@ -141,9 +154,11 @@ Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#e
 
 ### Actors
 
-In a Caliper Event, the Actor performs the <code>action</code> related to a learning activity. The value of an Event's actor attribute must be an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#Agent) or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication.
+In a Caliper Event, the Actor performs the <code>action</code> related to a learning activity. The value of an Event's actor attribute must be an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#Agent) or one of its subtypes. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication.
 
-Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a [QuestionnaireEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireEvent) must be a Person, while the actor for a [GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent) could be either a Person or a SoftwareApplication (such as an autograder).
+Each Event type further limits what Agents can be used as the value of the actor property; for example, the actor for a [QuestionnaireEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireEvent) must be a Person, while the actor for a [GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent) could be either a Person or a SoftwareApplication (such as an autograder).
+
+The generic Event allows any Agent declared in the specification.
 
 #### Actor JSON
 
@@ -156,11 +171,13 @@ Different subtypes of Event further limit what types can be used as the value of
 
 ### Action
 
-[Link to full Action docs](https://www.imsglobal.org/spec/caliper/v1p2#actions)
+[Link to full Action documentation](https://www.imsglobal.org/spec/caliper/v1p2#actions)
 
-An <code>Action</code> connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include Bookmarked, Launched, OptedIn, and Skipped. Each subtype of Event specifies some number of allowed Actions, while the Event supertype allows any Action declared in the specification. The provided Actions generally take the form of an English verb in past tense and have been connected to one or more word glosses from Princeton University's WordNet or Wiktionary to aid comprehension.
+An <code>Action</code> connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include <code>Bookmarked</code>, <code>Launched</code>, <code>OptedIn</code>, and <code>Skipped</code>.
 
 A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) specifies what actions are valid for that type. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table to see that the Action must be one of: <code>Bookmarked</code>, <code>Highlighted</code>, <code>Shared</code>, or <code>Tagged</code>.
+
+The generic Event allows any Action declared in the specification.
 
 #### Action JSON
 
@@ -170,66 +187,74 @@ A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#e
 
 ### Object
 
-The <code>Object</code> of an Event must be an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entities). A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) specifies what types of Entities are valid for that type. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table to see that the Object must be a [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)
+The <code>Object</code> of an Event must be an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entities) or one of its subtypes.
+
+A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) specifies what types of Entities are valid for that type. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table to see that the Object must be a [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource).
+
+The generic Event allows any Entity declared in the specification.
 
 #### Object JSON
 
 <pre><code class="json">
 {
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/readings/1",
+  "id": "https://example.edu/terms/202001/courses/7/sections/1/readings/1",
   "type": "DigitalResource",
   "name": "Chapter 1 reading"
 }
 </code></pre>
 
-### Complete Event Example JSON
+### Caliper Event JSON Examples
 
-To bring it all together, an Event would look something like this:
+There are many examples of events to help you learn how to construct them. Below is an example combining the above documentation.
 
-TODO: Explain how to find sample JSON for their specific event/action/profile by pointing to docs and fixtures, etc. Since we can't put every example in this document, teach how to find examples they need. (This might be worthy of it's own top-level section just for discoverability. Coming to this doc to find example JSON will be one of the primary activities for developers)
+Other sources for example Event JSON:
+
+* The main Caliper spec document has many examples for each Event Type. For example see the [AnnotationEvent](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) and scroll past the requirements table to the examples below.
+* The public Github repository has many examples for testing purposes: [Caliper 1.2 JSON Examples](https://github.com/IMSGlobal/caliper-spec/tree/develop/fixtures/v1p2)
+* If you're an IMS member and have access to the [Caliper certification tool](https://caliper.imsglobal.org/sec/index.html), you can access those same examples in the Caliper Playground's "Manual Testing" area.
 
 #### Complete JSON
+
+To bring the above examples together, an Event would look something like this:
 
 <pre><code class="json">
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ViewEvent",
-  "eventTime": "2018-11-15T10:16:00.000Z",
+  "eventTime": "2020-01-15T10:16:00.000Z",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
   "action": "Viewed",
   "object": {
-    "id": "https://example.edu/terms/201801/courses/7/sections/1/readings/1",
+    "id": "https://example.edu/terms/202001/courses/7/sections/1/readings/1",
     "type": "DigitalResource",
     "name": "Chapter 1 reading"
   }
 }
 </code></pre>
 
-This Event is read as something like: "This Person Viewed this DigitalResource at this eventTime"
+This Event can be read as "This Person Viewed this DigitalResource at this eventTime".
 
 #### Smaller, ID-Only JSON
 
-TODO: Short explanation about using ID only (or "Type Coercion") instead of full object and then _link_ to more in-depth explanations around proper use. Maybe make a best practice section about when you should generally use object vs just ID and how it needs to be agreed upon between the parties so that they remain interoperable?
+As explained in the [Entity or IRI](#entity-or-iri) section above, Caliper allows the use just the ID string instead of the whole JSON object if the size of your events needs to be smaller.
+
+This ID-only example is equivalent to the full example above:
 
 <pre><code class="json">
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ForumEvent",
-  "eventTime": "2018-11-15T10:16:00.000Z",
+  "eventTime": "2020-01-15T10:16:00.000Z",
   "actor": "https://example.edu/users/554433",
   "action": "Subscribed",
-  "object": "https://example.edu/terms/201801/courses/7/sections/1/forums/1"
+  "object": "https://example.edu/terms/202001/courses/7/sections/1/forums/1"
 }
 </code></pre>
-
-### Additional properties on Events
-
-While the base information required by most Events is represented in the above example, each Event type could require more properties, and allow for more properties and context as desired by the implementors. To understand what information is required and possible you should consult the Metric Profiles for the activities you're trying to implement.
 
 ## Metric Profiles
 
@@ -272,7 +297,7 @@ A Caliper envelope must contain the <code>sensor</code>,
 <pre><code class="json">
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2018-11-15T11:05:01.000Z",
+  "sendTime": "2020-01-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [ {event1}, {event2}, {eventN}]
 }
@@ -283,13 +308,13 @@ A Caliper envelope must contain the <code>sensor</code>,
 <pre><code class="json">
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2018-11-15T11:05:01.000Z",
+  "sendTime": "2020-01-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [{
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
-    "eventTime": "2018-11-15T10:15:00.000Z",
+    "eventTime": "2020-01-15T10:15:00.000Z",
     "actor": {
       "id": "https://example.edu/users/554433",
       "type": "Person"
@@ -310,7 +335,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
 <pre><code class="json">
 {
   "sensor": "https://example.edu/sensors/1",
-  "sendTime": "2018-11-15T11:05:01.000Z",
+  "sendTime": "2020-01-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "data": [
    {
@@ -330,7 +355,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
-    "eventTime": "2018-11-15T10:15:00.000Z",
+    "eventTime": "2020-01-15T10:15:00.000Z",
     "actor": "https://example.edu/users/554433",
     "action": "Used",
     "object": "https://example.edu"
@@ -339,7 +364,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
-    "eventTime": "2018-11-15T11:15:00.000Z",
+    "eventTime": "2020-01-15T11:15:00.000Z",
     "actor": "https://example.edu/users/554433",
     "action": "Used",
     "object": "https://example.edu"
@@ -486,7 +511,7 @@ You add it to an event using the <code>federatedSession</code> key:
    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
    "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
    "type": "ToolUseEvent",
-   "eventTime": "2018-11-15T11:15:00.000Z",
+   "eventTime": "2020-01-15T11:15:00.000Z",
    "actor": "https://example.edu/users/554433",
    "action": "Used",
    "object": "https://example.edu",
@@ -529,14 +554,14 @@ Here is an example of adding extra LTI information into the <code>LtiSession</co
        "tool_consumer_instance_url": "https://example.edu"
      },
      "ext": {
-       "edu_example_course_section": "https://example.edu/terms/201801/courses/7/sections/1",
-       "edu_example_course_section_roster": "https://example.edu/terms/201801/courses/7/sections/1/rosters/1",
+       "edu_example_course_section": "https://example.edu/terms/202001/courses/7/sections/1",
+       "edu_example_course_section_roster": "https://example.edu/terms/202001/courses/7/sections/1/rosters/1",
        "edu_example_course_section_learner": "https://example.edu/users/554433",
        "edu_example_course_section_instructor": "https://example.edu/faculty/1234"
      }
    },
-   "dateCreated": "2018-11-15T10:15:00.000Z",
-   "startedAtTime": "2018-11-15T10:15:00.000Z"
+   "dateCreated": "2020-01-15T10:15:00.000Z",
+   "startedAtTime": "2020-01-15T10:15:00.000Z"
  }
 </code></pre>
 
@@ -585,7 +610,7 @@ Here is an example of a CASE <code>LearningObjective</code> with a full object (
 <pre><code class="json">
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/202001/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Reading Assignment: Research techniques",
   "learningObjectives": [
@@ -604,7 +629,7 @@ For brevity, it also valid to just include the <code>id</code> in the <code>lear
 <pre><code class="json">
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
-  "id": "https://example.edu/terms/201801/courses/7/sections/1/assign/2",
+  "id": "https://example.edu/terms/202001/courses/7/sections/1/assign/2",
   "type": "AssignableDigitalResource",
   "name": "Reading Assignment: Research techniques",
   "learningObjectives": [
