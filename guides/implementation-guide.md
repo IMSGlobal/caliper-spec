@@ -108,7 +108,9 @@ A full list of event types is available in the Caliper Spec (See "Subtype" subse
 
 #### Event Required Properties
 
-[Link to full Event Properties docs section](#event Properties)
+Each [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) can have different required properties. To review what's required, find the specific event you're creating in the Caliper spec document and review the table there. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table.
+
+All property tables will look like the following table. This table shows the base Event property requirements that all events share.
 
 
 | Property | Type | Description | Disposition |
@@ -122,10 +124,6 @@ A full list of event types is available in the Caliper Spec (See "Subtype" subse
 
 #### Entity or IRI
 Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier) string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
-
-#### Other Event Properties
-
-TODO: talk about profiles defining more properties both required and optional.
 
 #### Event JSON stub
 
@@ -143,10 +141,9 @@ TODO: talk about profiles defining more properties both required and optional.
 
 ### Actors
 
-In a Caliper Event, the Actor performs the action related to a learning activity. The value of an Event's actor attribute must be an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#Agent) or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication. Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a QuestionnaireEvent must be a Person, while the actor for a GradeEvent could be either a Person or a SoftwareApplication (such as an autograder).
+In a Caliper Event, the Actor performs the <code>action</code> related to a learning activity. The value of an Event's actor attribute must be an [Agent](https://www.imsglobal.org/spec/caliper/v1p2#Agent) or one of its subtypes — entities which are defined as part of the specification. While often the Actor is a Person, it could also be another Entity type, such as an Organization or SoftwareApplication.
 
-For more information, see the [The Information Model](https://www.imsglobal.org/spec/caliper/v1p2#information_model) section of the specification, the description of the [Agent entity](https://www.imsglobal.org/spec/caliper/v1p2#agent), or the full list of [Event subtypes](https://www.imsglobal.org/spec/caliper/v1p2#events).
-
+Different subtypes of Event further limit what types can be used as the value of the actor property; for example, the actor for a [QuestionnaireEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireEvent) must be a Person, while the actor for a [GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent) could be either a Person or a SoftwareApplication (such as an autograder).
 
 #### Actor JSON
 
@@ -161,9 +158,9 @@ For more information, see the [The Information Model](https://www.imsglobal.org/
 
 [Link to full Action docs](https://www.imsglobal.org/spec/caliper/v1p2#actions)
 
-An Action connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include Bookmarked, Launched, OptedIn, and Skipped. Each subtype of Event specifies some number of allowed Actions, while the Event supertype allows any Action declared in the specification. The provided Actions generally take the form of an English verb in past tense and have been connected to one or more word glosses from Princeton University's WordNet or Wiktionary to aid comprehension.
+An <code>Action</code> connects an Actor with an Object, helping to describe what learning activity has taken place. Examples include Bookmarked, Launched, OptedIn, and Skipped. Each subtype of Event specifies some number of allowed Actions, while the Event supertype allows any Action declared in the specification. The provided Actions generally take the form of an English verb in past tense and have been connected to one or more word glosses from Princeton University's WordNet or Wiktionary to aid comprehension.
 
-For more information, see the [The Information Model](https://www.imsglobal.org/spec/caliper/v1p2#information_model) section of the specification, or the full list of [supported Actions](https://www.imsglobal.org/spec/caliper/v1p2#actions) in the specification document.
+A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) specifies what actions are valid for that type. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table to see that the Action must be one of: <code>Bookmarked</code>, <code>Highlighted</code>, <code>Shared</code>, or <code>Tagged</code>.
 
 #### Action JSON
 
@@ -173,9 +170,7 @@ For more information, see the [The Information Model](https://www.imsglobal.org/
 
 ### Object
 
-[Link to full Object docs](#objects)
-
-TODO: Explain Objects and their basic properties then link to main spec document where appropriate for more details.
+The <code>Object</code> of an Event must be an [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entities). A specific [Event Type](http://localhost:8000/guides/implementation-guide.html#event-types-0) specifies what types of Entities are valid for that type. For example, you can look at the [Annotation Event's](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent) properties table to see that the Object must be a [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)
 
 #### Object JSON
 
