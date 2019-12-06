@@ -258,15 +258,9 @@ This ID-only example is equivalent to the full example above:
 
 ## Metric Profiles
 
-The Caliper information model defines a number of profiles, each of which models a learning activity or a supporting activity that helps facilitate learning. A profile's raison d'etre is to encourage vocabulary standardization and re-use among application providers delivering complementary, albeit competing capabilities that collect learning activity data. Each profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner using a shared vocabulary. Annotating a reading, playing a video, taking a test, or grading an assignment submission represent a few examples of the many activities or events that Caliper's profiles attempt to describe.
+Each [Caliper Metric Profile](https://www.imsglobal.org/spec/caliper/v1p2#profiles) is a domain-specific set of terms and concepts to describe common education learning activities. Their purpose is to help ensure users of Caliper have _consistent syntax and semantics_ when describing these events. Some examples of events profiles attempt to describe are Annotating a reading, playing a video, taking a test, or grading an assignment submission.
 
-Think of each profile as a stand-alone, logical container, or collection of one or more Caliper events that together help describe a set of interrelated activities.
-
-TODO: Table with all profiles and links to their documentations and their certification requirements in the certification guide
-
-### How do I use profiles to deliver insight?
-
-A great way to think of a Metric Profile is by the questions it can help answer. For example the Reading Profile could help Instructors and researchers answer questions such as:
+A great way to think of a Metric Profile is **what questions it can help answer**. For example the [Reading Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-reading) could help Instructors and researchers answer questions such as:
 
  - Who is consuming the content?
  - What materials are being accessed?
@@ -274,14 +268,52 @@ A great way to think of a Metric Profile is by the questions it can help answer.
  - How often is the content viewed?
  - What paths are taken to reach the content?
 
-Profiles also serve as the unit of certification for the Caliper Analytics&reg; standard allowing implementers to build to the events and actions that they require to answer the digital learning ecosystem questions that are relevant to their organization.  Caliper Analytics&reg; does provide a mechanism for updates and additions as  profile extensions can be published between major releases of the specification.  For more details see the [Release expectations](#release-expectations) section.
+ These examples are given in each profile section in the Caliper specification document.
 
-TODO: Talk about how <code>@context</code> changes for extensions and explain how it works? Then point to the Release Schedule section.
+### Profile Requirements
 
-## Custom Extensions
+ Each profile is a collection of one or more Caliper events that together help describe a set of related activities. Each Event type included in a profile place constraints on the entities and actions that can be used. Vocabulary restrictions are outlined in each profile description under the following headings:
 
-TODO: how to do this. Don't know where best to put this section. Might be mostly pointing to other JSON-LD resources.
+* supported events
+* supported actors
+* supported actions
+* supported objects
+* supported target entities
+* supported generated entities
+* other requirements
 
+For example, the [Forum Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-forum) models a set of activities associated with online discussions involving instructors and learners. The profile currently includes a <code>ForumEvent</code>, <code>MessageEvent</code>, <code>NavigationEvent</code>, <code>ThreadEvent</code> and <code>ViewEvent</code>. You can see those events clearly defined in the table in the Forum Profile documentation.
+
+The sequence of events from a Forum Profile implementation might involve a learner navigating to a forum, subscribing to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as read.
+
+### List of Profiles
+
+|Profile|Description|Events Quick-Reference|
+|------|------|------|
+|[General Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-general)|provides a generic [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) for describing learning or supporting activities that have yet to be modeled by Caliper.|[Event](https://www.imsglobal.org/spec/caliper/v1p2#Event)|
+|[Annotation Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-annotation)|models activities related to the annotation of a DigitalResource|[AnnotationEvent](https://www.imsglobal.org/spec/caliper/v1p2#AnnotationEvent)|
+|[Assessment Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-assessment)|models assessment-related activities including interactions with individual assessment items.|[AssessmentEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentEvent), [AssessmentItemEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssessmentItemEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Assignable Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-assignable)|models activities associated with the assignment of digital content to a learner for completion according to specific criteria.|[AssignableEvent](https://www.imsglobal.org/spec/caliper/v1p2#AssignableEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Feedback Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-feedback)|models providing feedback and comments on Entities.|[FeedbackEvent](https://www.imsglobal.org/spec/caliper/v1p2#FeedbackEvent)|
+|[Forum Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-forum)|models learners and others participating in online forum communities.|[ForumEvent](https://www.imsglobal.org/spec/caliper/v1p2#ForumEvent), [MessageEvent](https://www.imsglobal.org/spec/caliper/v1p2#MessageEvent), [ThreadEvent](https://www.imsglobal.org/spec/caliper/v1p2#ThreadEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Grading Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-grading)|models grading activities performed by an Agent or a SoftwareApplication|[GradeEvent](https://www.imsglobal.org/spec/caliper/v1p2#GradeEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Media Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-media)|models interactions between learners and rich content such as audio, images and video.|[MediaEvent](https://www.imsglobal.org/spec/caliper/v1p2#MediaEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Reading Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-reading)|models activities associated with navigating to and viewing digital textual content.|[NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Resource Management Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-resourcemanagement)||[ResourceManagementEvent](https://www.imsglobal.org/spec/caliper/v1p2#ResourceManagementEvent)|
+|[Search Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-search)||[SearchEvent](https://www.imsglobal.org/spec/caliper/v1p2#SearchEvent)|
+|[Session Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-session)|models the creation and subsequent termination of a user session|[SessionEvent](https://www.imsglobal.org/spec/caliper/v1p2#SessionEvent)|
+|[Survey Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-survey)||[SurveyInvitationEvent](https://www.imsglobal.org/spec/caliper/v1p2#SurveyInvitationEvent), [SurveyEvent](https://www.imsglobal.org/spec/caliper/v1p2#SurveyEvent), [QuestionnaireEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireEvent), [QuestionnaireItemEvent](https://www.imsglobal.org/spec/caliper/v1p2#QuestionnaireItemEvent), [NavigationEvent](https://www.imsglobal.org/spec/caliper/v1p2#NavigationEvent), [ViewEvent](https://www.imsglobal.org/spec/caliper/v1p2#ViewEvent)|
+|[Tool launch Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-toollaunch)||[ToolLaunchEvent](https://www.imsglobal.org/spec/caliper/v1p2#ToolLaunchEvent)|
+|[Tool Use Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse)|models an intended interaction between a user and a tool.|[ToolUseEvent](https://www.imsglobal.org/spec/caliper/v1p2#ToolUseEvent)|
+
+
+### Profiles are used for certification
+
+Profiles also serve as the unit of certification for Caliper. The [Caliper Conformance and Certification Guide](https://www.imsglobal.org/spec/caliper/v1p2/cert) describes the certification process and requirements. Each profile has a section that, in addition to clearly displaying what the certification requirements are, gives an excellent overview of each Event Type and the supported Actions.
+
+### Creating new profiles
+
+The official Caliper specification will never be able to describe every Event or activity needed for all institutions, districts, and vendors. The Caliper workgroup and Product Steering committee are charged with working with all parties to help create new profiles as needed to help the community continue to move forward. Caliper has a profile extension mechanism for adding new profiles without having to release a whole new version of Caliper. Please use the [Caliper Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum) to discuss any needs with the group.
 
 ## Sending an Event to an endpoint
 
@@ -473,23 +505,12 @@ With some platforms the identifier might be the "user's login session"; in other
 
 Receivers of events should/could expect that they'd get single def'ns of dimensional data to keep the event stream lean -- like an endpoint could get raw Entity "describes" in the event stream, or they might get a full object for a User at the "beginning" of a report of 100s of events of activity, and then only the Person's "id" IRI in the following events...
 
-### Sending full objects vs just the ID/IRI
-
-TODO: We should probably suggest in the implementation guide that receivers of events should|could expect that they'd get single def'ns of dimensional data to keep the event stream lean -- like an endpoint could get raw Entity "describes" in the event stream, or they might get a full object for a User at the "beginning" of a report of 100s of events of activity, and then only the Person's "id" IRI in the following events...
-
-TODO: This should be merged with the next item in list
-
 ### Deciding what and how much data to send in events
 
 - Data generated by the app which would otherwise be lost (i.e. not persisted) is a good candidate to convey in a Caliper event.
 - Data that is readily accessible via dereferenceble IRI's, it is OK to include just the IRI's.
 - If there are cases where downstream processes would need quick access to the actual generated data, it is ok to include those data values as well.
 - It can be good to only emit what you generate: in other words, if your application has to do any extra work to retrieve related information, it's not recommended to include it in the event payload.
-
-
-### LTI Sessions and Identifiers
-
-TODO: Link to the "Learning Tools Interoperability® (LTI) Caliper Analytics® Endpoint Service Specification, version 1.0" spec when it's published somewhere.
 
 #### Federated session ID
 
