@@ -315,14 +315,17 @@ Profiles also serve as the unit of certification for Caliper. The [Caliper Confo
 
 The official Caliper specification will never be able to describe every Event or activity needed for all institutions, districts, and vendors. The Caliper workgroup and Product Steering committee are charged with working with all parties to help create new profiles as needed to help the community continue to move forward. Caliper has a profile extension mechanism for adding new profiles without having to release a whole new version of Caliper. Please use the [Caliper Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum) to discuss any needs with the group.
 
-## Sending an Event to an endpoint
 
-### Envelopes
+## Sending Events to an endpoint
 
-Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) data MUST be transmitted inside a Caliper [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) and the data payload.
+### Envelopes are required
 
-A Caliper envelope must contain the <code>sensor</code>,
-<code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties.  Each property MUST be referenced only once.  No custom properties are permitted.
+Caliper Event and Entity data MUST be transmitted inside a Caliper [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a purpose-built JSON data structure that includes metadata about the emitting [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) and the data payload.
+
+A Caliper envelope MUST contain the <code>sensor</code>,
+<code>sendTime</code>, <code>dataVersion</code> and <code>data</code> properties.  Each property MUST be referenced only once. No custom properties are permitted.
+
+The <code>data</code> element can contain multiple Events and Entities. It is good practice to batch related Events if your Sensor is structured to do so.
 
 #### Base Envelope JSON
 
@@ -335,7 +338,7 @@ A Caliper envelope must contain the <code>sensor</code>,
 }
 </code></pre>
 
-#### Envelope with an Event JSON
+#### Example Envelope with an Event JSON
 
 <pre><code class="json">
 {
@@ -406,12 +409,19 @@ In this example, the Person and SoftwareApplication are part of the data array a
 </code></pre>
 
 
-
 ### Sending to a secured HTTP endpoint
 
-TODO: Short description of how it's done then link to the LTI service definition: https://github.com/IMSGlobal/LTI-spec-Caliper/blob/develop/lti-spec-caliper.md#23-communicating-the-availability-of-the-service
+The current standard way of sending Caliper events is via a secured HTTP endpoint using an <code>Authorization</code> header with a <code>Bearer</code> token. This is described in the Caliper spec [HTTP Request](https://www.imsglobal.org/spec/caliper/v1p2#httpRequest) section.
 
-TODO: Also explain how 2 vendors can work out keys and endpoints independent of LTI.
+This is currently the only method supported for [Caliper Conformance](https://www.imsglobal.org/spec/caliper/v1p2/cert).
+
+An application that wants to send these events must either work with a Caliper Consumer directly to get an endpoint URL and authorization token, or use the connection passed via an [LTI service connection](http://localhost:8000/guides/implementation-guide.html#lti-learning-tools-interoperability).
+
+### Other ways to send Events
+
+Although HTTP messages with an authorization header is the only method currently supported for certification, there are many other ways a Caliper Sensor could send events to a Caliper Consumer. Each integration should use the mechanisms that work best for them and allow the desired scaling possibilities.
+
+For example, a common method is putting Caliper Events into a queue like Amazon's SQS service and providing the Caliper Consumer the ability to connect to the queue for consumption.
 
 
 ## Receiving Caliper Events
