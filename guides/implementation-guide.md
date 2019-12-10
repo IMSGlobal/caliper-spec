@@ -37,13 +37,13 @@ The primary goal of this document is to lead you to successful implementation of
 
 This document is intended as a starting point for those looking to implement the Caliper Analytics&reg; standard in their educational software ecosystem.
 
-This guide can be used to get a fundamental understanding of the caliper messaging structure, review specific code examples of caliper events, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.
+This guide can be used to get a fundamental understanding of the Caliper messaging structure, review specific code examples of Caliper events, and as a central hub containing links to conformance requirements and other important resources. The document can also be used as a reference for collated best practices on how to use Caliper in their digital ecosystem and guidance on using Caliper in collaboration with other IMS specifications.
 
 This document is also meant to assist the reader in learning how to use the main Caliper specification to look up specific items during implementation.
 
 ## Terminology
 
-Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.  Caliper Analytics describes events using _triples_, a combination of an **action** being undertaken by an **actor** to an **object**.  A good way to think of it as _someone_ (**actor**) did _something_ (**action**) to _someone/something_ (**object**)
+Learning this vocabulary in the context of the Caliper specification will be very helpful when using this document.  Caliper Analytics describes events using [_triples_](https://en.wikipedia.org/wiki/Semantic_triple), a semantic structure that consists of the combination of an **action** being undertaken by an **actor** to an **object**.  A good way to think of it as _someone_ (**actor**) did _something_ (**action**) to _someone/something_ (**object**)
 
 Here are a few useful definitions for terms used throughout this document.  Full Caliper terminology list is available in the [Terminology section of the Caliper Spec](https://www.imsglobal.org/spec/caliper/v1p2#terminology).
 
@@ -65,13 +65,16 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 
 ### Links for your convenience
 
+Below is a useful set of resources related to the Caliper Analytics&reg; specification
+
+- [Caliper Analytics&reg; version 1.2 specification](https://www.imsglobal.org/spec/caliper/v1p2)
+- [Caliper Analytics&reg; Metric Profile Summaries](https://www.imsglobal.org/caliper-analytics-v11-profiles-summaries)
 - [Caliper Analytics&reg; Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum)
-- [Caliper Analytics&reg; version 1.2 full specification](https://www.imsglobal.org/spec/caliper/v1p2)
-- [Metric Profile Summaries](https://www.imsglobal.org/caliper-analytics-v11-profiles-summaries)
 - [Caliper Analytics&reg; Conformance Information](https://www.imsglobal.org/caliper-analytics-conformance)
 - [Caliper Analytics&reg; Conformance Test Suite](https://caliper.imsglobal.org/sec/index.html)
+- [Caliper Analytics&reg; On the Web](https://www.imsglobal.org/activity/caliper)
 - [Caliper-central GitHub Repository](https://github.com/IMSGlobal/caliper-central)
-- [How to use with LTI](#lti-learning-tools-interoperability-0)
+- [How to use Caliper Analytics&reg; with LTI](#lti-learning-tools-interoperability-0)
 
 ## Conformance Certification
 
@@ -454,15 +457,13 @@ The following best practices are typically recommended for data pipeline compone
 ## Release Schedule Expectations
 
 - Core specification to be released at most once a year
-  - new base context is updated
-
-- Profiles can be extended during year
+  - A core release consists of a new revision of the base context file
+- Caliper Analytics&reg; is designed such that it can be extended between release cycles through the creating or modification of the metric profiles
  - profile is described in core
  - and might be extensions
  - manifested in JSON as a different @context string by adding <code>-extension</code>
 
 - Talk about how upgrades happen for both sides. Should receiver of events try to understand all previous versions of a profile? Explain everything needed to understand the scope of implementing upgraded core versions and profiles.
-
 
 ## Code Libraries
 
@@ -478,10 +479,12 @@ Caliper makes available reference implementations in the following programming l
 These libraries are written and maintained by IMS Global Learning Consortium members.  We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
 
 ## Use Cases
+This section describes a handful common scenarios for the Caliper Specification.  This section is in no way comprehensive but is intended to give the reader an idea of the type of education ecosystem questions that Caliper Analytics&reg; can help to answer for.
+### Student Facing Analytics
 
-### Value Statement
+As students interact with content within an LMS course site, Caliper events are triggered and transported to an event store. The Caliper events are represented in the controlled vocabulary of the Caliper metric profiles. The events are then parsed to extract commonly sought values into columns in a relational database. For example, information such as the event type, the event action, event time, actor, and course is extracted. The event record can also be enriched using related information based on global identifiers such as the course and actor which facilitates joining data from multiple sources.
 
- As the online educational ecosystem grows, it becomes increasingly important to be able to measure the efficacy of tools and programs with the ultimate goal of improving learner successes.  To that end, the industry has embraced the need for "Big Data" analytics to drive insight.  Caliper Analytics&reg; structured, standards based approach provides a strong foundation for both providers and consumers of learning analytics data to make better decisions based off of a shared curated vocabulary. Caliper Analytics&reg; provides the necessary alignment and structure to what is and should be measured, along with a framework to support the capture and marshaling of data,
+Downstream analytics applications can then query the event store for events that represent select interactions the students within a course have had with learning content such as a student previewing a file, starting a video, or reviewing a lecture recording. Those events are then visualized so that a student can see what percentage of the class has viewed those resources, when I as the student last viewed that file, and how many times I’ve viewed it. Students can use this information to gauge their performance against their peers and take corrective actions where there may be an issue.
 
 ### Understanding learner interactions across vendor tools
 
@@ -493,9 +496,7 @@ Using the same Caliper data being collected at the course level in the prior sce
 
 ### Profile Use Cases
 
-Caliper Metric profiles represent foundational usage cases.  Each Metric Profile has it's own subset of use cases listed in it's primary specification document as linked to in this document.
-
-- TODO: Find some demonstrative use cases and explain how they'd be solved by talking through what questions they want answered, then what Metric Profiles and Events are needed to answer them.
+Caliper Metric profiles represent foundational usage cases.  Each Metric Profile has it's own subset of use cases and user stories listed in it's primary specification document as linked to in this document.
 
 Make sure to get a use case that decides why and how to add custom extensions.
 
