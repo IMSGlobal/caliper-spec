@@ -694,6 +694,57 @@ The [Tool Use](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse) and 
 The [LTI Insights](https://www.imsglobal.org/lti-insights) is a great example of monitering LTI usage at an institution.
 
 
+### LTI Resource Search
+
+[LTI Resource Search](https://www.imsglobal.org/activity/lti-resource-search) is a standard that defines how to search digital repositories for a set of resources. It addresses searching learning object repositories (LORs), and other catalogs of learning resources, from learning tools using various attributes of resources and returning full metadata about the resources to the learning tools. Results can be launched either as URLs or LTI links.
+
+If you wish to collect Caliper analytics events for users interacting with a Resource Search application, you can use the [SearchEvent](https://www.imsglobal.org/spec/caliper/v1p2#SearchEvent) that is within the [Search Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-search).
+
+In Caliper terms, a search "generates" a <code>SearchResponse</code> object to be included in the event. You can read the details in the [SearchResponse documentation](https://www.imsglobal.org/spec/caliper/v1p2#SearchResponse).
+
+The <code>searchProvider</code> is the SoftwareApplication providing the search interface and returning the results. The <code>searchTarget</code> is what is being searched such as a text book or LOR application. Both these fields are optional but may be useful depending on your use case. Generally the <code>object</code> of the Search Event should be the same as the <code>searchTarget</code>.
+
+Since the <code>SearchResponse</code> will usually be a desired object to include, this event will usually be sent <em>after</em> the search results have been generated, not before.
+
+The <code>id</code> of the <code>Query</code> should be the URL used for the search. The <code>id</code> of the <code>SearchResponse</code> can be any IRI, but depending on your usage, it may useful to also make that ID contain the search URL.
+
+This is an example of what a Resource Search event might look like:
+
+<pre><code class="json">
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "urn:uuid:cb3878ed-8240-4c6d-9fee-77221810f5e4",
+  "type": "SearchEvent",
+  "profile": "SearchProfile",
+  "eventTime": "2020-01-15T10:05:00.000Z",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Searched",
+  "object": {
+    "id": "https://example.edu/catalog",
+    "type": "SoftwareApplication"
+  },
+  "generated": {
+    "id": "https://example.edu/ims/rs/v1p0/resources?fields=url,name,description&filter=search~'cats'&limit=25",
+    "type": "SearchResponse",
+    "searchProvider": "https://example.edu",
+    "searchTarget": "https://example.edu/catalog",
+    "searchResultsItemCount": 3
+    "query": {
+      "id": "https://example.edu/ims/rs/v1p0/resources?fields=url,name,description&filter=search~'cats'&limit=25",
+      "type": "Query",
+      "creator": "https://example.edu/users/554433",
+      "searchTarget": "https://example.edu/catalog",
+      "searchTerms": "cats",
+      "dateCreated": "2020-01-15T10:05:00.000Z"
+    }
+  }
+}
+</code></pre>
+
+
 ### OneRoster & LIS
 
 Caliper Entities can contain a lot of contextual information beyond the interaction described in an Event. However, it isn't always good practice to include all that information because that can make your Events very large and repetitive. In many cases it's preferred to include as little contextual information as possible in an included Entity or Agent to keep the amount of data being sent to a minimum. In this case, since that contextual information is still likely needed for analysis, services like OneRoster and LIS can be used to fetch that information from SIS systems allowing you to get everything needed about a user, course, or section.
