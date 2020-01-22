@@ -1,0 +1,151 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2020-01-22T10:05:00.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "root",
+          "identifierType": "AccountUserName"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "jane@example.edu",
+          "identifierType": "EmailAddress"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "example.edu:SI182-F16",
+          "identifierType": "LisSourcedId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "example.edu:CI182-S16",
+          "identifierType": "LtiContextId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "deployment_id_1",
+          "identifierType": "LtiDeploymentId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "platform_id_1",
+          "identifierType": "LtiPlatformId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "tool_id_1",
+          "identifierType": "LtiToolId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "user_id_1",
+          "identifierType": "LtiUserId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "one_roster_id_1",
+          "identifierType": "OneRosterSourcedId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "other_1",
+          "identifierType": "Other"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "sis_sourcedid_1",
+          "identifierType": "SisSourcedId"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
+          "identifier": "system_id_1",
+          "identifierType": "SystemId"
+        }
+      ]
+    }
+  ]
+}

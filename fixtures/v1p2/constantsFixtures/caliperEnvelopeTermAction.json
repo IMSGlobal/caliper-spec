@@ -1,0 +1,727 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2020-01-22T10:05:00.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0001",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Abandoned",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0002",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Accepted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0003",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Activated",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0004",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Added",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0005",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Archived",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0006",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Attached",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0007",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Bookmarked",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0008",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ChangedResolution",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0009",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ChangedSize",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0010",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ChangedSpeed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0011",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ChangedVolume",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0012",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Classified",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0013",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ClosedPopout",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0014",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Commented",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0015",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Completed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0016",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Copied",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0017",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Created",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0018",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Deactivated",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0019",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Declined",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0020",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Deleted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0021",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Described",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0022",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "DisabledClosedCaptioning",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0023",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Disliked",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0024",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Downloaded",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0025",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "EnabledClosedCaptioning",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0026",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Ended",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0027",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "EnteredFullScreen",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0028",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ExitedFullScreen",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0029",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "ForwardedTo",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0030",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Graded",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0031",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Hid",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0032",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Highlighted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0033",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Identified",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0034",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "JumpedTo",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0035",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Launched",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0036",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Liked",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0037",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Linked",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0038",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "LoggedIn",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0039",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "LoggedOut",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0040",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "MarkedAsRead",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0041",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "MarkedAsUnread",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0042",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Modified",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0043",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Muted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0044",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "NavigatedTo",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0045",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "OpenedPopout",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0046",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "OptedIn",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0047",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "OptedOut",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0048",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Paused",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0049",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Posted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0050",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Printed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0051",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Published",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0052",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Questioned",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0053",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Ranked",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0054",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Recommended",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0055",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Removed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0056",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Reset",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0057",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Restarted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0058",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Restored",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0059",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Resumed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0060",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Retrieved",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0061",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Returned",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0062",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Reviewed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0063",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Rewound",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0064",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Saved",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0065",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Searched",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0066",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Sent",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0067",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Shared",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0068",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Showed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0069",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Skipped",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0070",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Started",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0071",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Submitted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0072",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Subscribed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0073",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Tagged",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0074",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "TimedOut",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0075",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Unmuted",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0076",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Unpublished",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0077",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Unsubscribed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0078",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Uploaded",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0079",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Used",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "urn:uuid:7d757c17-2f2f-4e39-9d50-fd83494f0080",
+      "type": "Event",
+      "actor": "http://purl.imsglobal.org/caliper/Person",
+      "action": "Viewed",
+      "object": "http://purl.imsglobal.org/caliper/Entity",
+      "eventTime": "2020-01-22T10:05:00.000Z"
+    }
+  ]
+}

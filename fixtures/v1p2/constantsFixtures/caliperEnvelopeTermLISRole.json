@@ -1,0 +1,343 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2020-01-22T10:05:00.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#Administrator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#Developer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#ExternalDeveloper" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#ExternalSupport" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#ExternalSystemAdministrator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#Support" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Administrator", "Administrator#SystemAdministrator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "ContentDeveloper" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "ContentDeveloper", "ContentDeveloper#ContentDeveloper" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "ContentDeveloper", "ContentDeveloper#ContentExpert" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "ContentDeveloper", "ContentDeveloper#ExternalContentExpert" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "ContentDeveloper", "ContentDeveloper#Librarian" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#ExternalInstructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#Grader" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#GuestInstructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#Instructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#Lecturer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#PrimaryInstructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#SecondaryInstructor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#TeachingAssistant" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#TeachingAssistantGroup" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#TeachingAssistantOffering" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#TeachingAssistantSection" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Instructor", "Instructor#TeachingAssistantTemplate" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Learner" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Learner", "Learner#ExternalLearner" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Learner", "Learner#GuestLearner" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Learner", "Learner#Learner" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Learner", "Learner#NonCreditLearner" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager", "Manager#AreaManager" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager", "Manager#CourseCoordinator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager", "Manager#ExternalObserver" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager", "Manager#Manager" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Manager", "Manager#Observer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Member" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Member", "Member#Member" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#Advisor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalAdvisor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalAuditor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalLearningFacilitator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalMentor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalReviewer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#ExternalTutor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#LearningFacilitator" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#Mentor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#Reviewer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Mentor", "Mentor#Tutor" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Officer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Officer", "Officer#Chair" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Officer", "Officer#Secretary" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Officer", "Officer#Treasurer" ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Membership",
+      "type": "Membership",
+      "roles": [ "Officer", "Officer#Vice-Chair" ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "sensor": "https://example.edu/sensors/1",
+  "sendTime": "2020-01-22T10:05:00.000Z",
+  "dataVersion":  "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "data": [
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "AssessmentsPassed"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "AssessmentsSubmitted"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "MinutesOnTask"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "SkillsMastered"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "StandardsMastered"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "UnitsCompleted"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "UnitsPassed"
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/AggregateMeasure",
+      "type": "AggregateMeasure",
+      "metric": "WordsRead"
+    }
+  ]
+}
