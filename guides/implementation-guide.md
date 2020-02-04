@@ -48,15 +48,15 @@ Learning this vocabulary in the context of the Caliper specification will be ver
 Here are a few useful definitions for terms used throughout this document.  Full Caliper terminology list is available in the [Terminology section of the Caliper Spec](https://www.imsglobal.org/spec/caliper/v1p2#terminology).
 
 <dl>
-  <dt>Action</dt><dd>Part of an Event that describes the <em>what</em> .</dd>
+  <dt>Action</dt><dd>Part of an Event that describes the <em>what</em>.</dd>
   <dt>Actor</dt><dd>Part of an Event that describes the <em>who</em>.</dd>
   <dt>Entity</dt><dd>Part of an Event that describes the <em>to whom</em>.</dd>
   <dt>Agent</dt><dd>Part of an Event that represents a generic form of an <em>Entity</em> and describes the <em>to whom</em> when a more specific <em>Entity</em> is not available.</dd>
-  <dt>Event</dt><dd>A collection of an Actor, an Action, and an Object</dd>
-  <dt>Envelope</dt><dd>A JSON payload that can contain one or many Caliper events</dd>
+  <dt>Event</dt><dd>A collection of an Actor, an Action, and an Object.</dd>
+  <dt>Envelope</dt><dd>A JSON payload that can contain one or many Caliper events.</dd>
   <dt>Object</dt><dd>Part of an Event that describes the <em>to whom</em> or <em>to what</em>.</dd>
-  <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner.  Metric Profiles also serve as the unit of certification for the Caliper Analytics&reg; specification </dd>
-  <dt>Sensor</dt><dd> Software deployed within a learning application that capture and transmit Caliper data to a target endpoint</dd>
+  <dt>Metric Profile</dt><dd>Groupings of Caliper vocabulary that model a learning activity or a supporting activity. Each Metric Profile provides a domain-specific set of terms and concepts that application designers and developers can draw upon to describe common user interactions in a consistent manner.  Metric Profiles also serve as the unit of certification for the Caliper Analytics&reg; specification.</dd>
+  <dt>Sensor</dt><dd> Software deployed within a learning application that capture and transmit Caliper data to a target endpoint.</dd>
 </dl>
 
 Here is a short explanation of how Caliper works using this vocabulary. If you can understand this you're well on your way to understanding Caliper!
@@ -149,7 +149,7 @@ All property tables will look like the following table. This table shows the bas
 While the base information required by most Events is represented in the above example, each Event type could require more properties, and allow for more properties and context as desired by the implementors. To understand what information is required and possible you should consult each [Event Type's](https://www.imsglobal.org/spec/caliper/v1p2#Event) documentation for the activities you're trying to implement.
 
 #### Entity or IRI
-Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef)" may be represented as a Caliper entity or an IRI [Internationalized Resource Identifier](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier) string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
+Properties with the type "[Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef)" may be represented as a Caliper entity or an IRI string.  An IRI may be used to refer to an entity that has been defined earlier, either in the same event, in another event in the same payload, or even in another event in the same eventstore.  The IRI may be a URL, but it's not required.  It could be a URN instead, using the "urn" scheme rather than the "http" or "https" schemes commonly used with URLs.  Often, using a blank node scheme (represented by a single underscore character, "\_") offers flexibility to specify an IRI without the burden of requiring it to resolve to a resource like a URL or to follow specific syntax, like a URN.
 
 #### Event JSON stub
 
@@ -348,7 +348,7 @@ The <code>data</code> element can contain multiple Events and Entities. It is go
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2020-01-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "data": [ {event1}, {event2}, {eventN}]
+  "data": [ {event1}, {event2}, {eventN} ]
 }
 </code></pre>
 
@@ -359,21 +359,23 @@ The <code>data</code> element can contain multiple Events and Entities. It is go
   "sensor": "https://example.edu/sensors/1",
   "sendTime": "2020-01-15T11:05:01.000Z",
   "dataVersion": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-  "data": [{
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
-    "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
-    "type": "ToolUseEvent",
-    "eventTime": "2020-01-15T10:15:00.000Z",
-    "actor": {
-      "id": "https://example.edu/users/554433",
-      "type": "Person"
-    },
-    "action": "Used",
-    "object": {
-      "id": "https://example.edu",
-      "type": "SoftwareApplication"
-    }
-  }]
+  "data": [
+      {
+        "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+        "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
+        "type": "ToolUseEvent",
+        "eventTime": "2020-01-15T10:15:00.000Z",
+        "actor": {
+          "id": "https://example.edu/users/554433",
+          "type": "Person"
+        },
+        "action": "Used",
+        "object": {
+          "id": "https://example.edu",
+          "type": "SoftwareApplication"
+        }
+      }
+  ]
 }
 </code></pre>
 
@@ -507,14 +509,14 @@ Below are some of the collected best practices from members who have successfull
 
 ### How often is Caliper updated?
 
-Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
+Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
 
 ### How much data should be sent in an Event?
 
 Deciding what data to send depends heavily on the context and use-case. The consumer and producers of the Caliper Events should work together to figure what what is needed. Here are some considerations for this conversation:
 
 - Data generated by the emitter which would otherwise be lost (i.e. not persisted) is a good candidate to convey in a Caliper event.
-- Data that is readily accessible via dereferenceble IRI's, it is OK to include just the IRI's.
+- If an object is readily accessible via dereferenceble IRI's then use those instead of including all the object details.
 - If there are cases where downstream processes would need quick access to the actual generated data, it is ok to include those data values as well.
 - It can be good to only emit what you generate: in other words, if your application has to do any extra work to retrieve related information, it's not recommended to include it in the event payload.
 
@@ -685,21 +687,19 @@ For brevity, it also valid to just include the <code>id</code> in the <code>lear
 </code></pre>
 
 
-### LTI - Learning Tools Interoperability
+### v - Learning Tools Interoperability
 
 
 #### How does an LTI Tool know where to send Caliper events?
 
-An LTI Tool can use the [LTI Caliper Connector](https://github.com/IMSGlobal/LTI-spec-Caliper/blob/master/docs/lti-spec-caliper.md) service to retrieve a Caliper endpoint to send events to and get an authorization token from.
+An LTI Platform can use the [LTI Caliper Connector](https://www.imsglobal.org/spec/lti-cac/v1p0) service details to indicate to an LTI Tool where it should send Caliper events and entities. The LTI Tool will use the standard LTI workflow for authentication in order to use this service.
 
 This service also specifies that the <code>Caliper.sessionId</code> value should be sent on an LTI launch. This is what Caliper calls the "Federated Session ID" as described in the [How are sessions tracked across multiple LTI tools?](#how-are-sessions-tracked-across-multiple-lti-tools) section.
 
 
-#### How can I track how much LTI tools are used and privacy issues around them?
+#### Tracking LTI tool usage and privacy issues with Tool Launch Profile & LTI Insights
 
 For the institutions that heavily use LTI tools they often want to know how much a tool is used, and what information about the student and class is being sent to 3rd party vendors. There are 2 Caliper Profiles that help make this information available to faculty and administrators.
-
-#### Tool Launch Profile & LTI Insights
 
 The [Tool Use](https://www.imsglobal.org/spec/caliper/v1p2#profile-tooluse) and [Tool Launch](https://www.imsglobal.org/spec/caliper/v1p2#profile-toollaunch) profiles are meant to help understand how LTI tools are used at an institution. Their use is highly recommended for all LTI tools.
 
