@@ -340,6 +340,7 @@
     "WordsRead": "caliper:metrics/WordsRead",
 
     "AccountUserName": "caliper:systemIdentifiers/AccountUserName",
+    "CaseItemUri": "caliper:systemIdentifiers/CaseItemUri",
     "EmailAddress": "caliper:systemIdentifiers/EmailAddress",
     "LisSourcedId": "caliper:systemIdentifiers/LisSourcedId",
     "LtiContextId": "caliper:systemIdentifiers/LtiContextId",
