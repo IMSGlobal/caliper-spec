@@ -22,6 +22,18 @@
       "otherIdentifiers": [
         {
           "type": "SystemIdentifier",
+          "identifier": "https://salt-demo.edplancms.com/ims/case/v1p0/CFItems/04bc8e7e-36d3-4078-bed5-e33e9de98d5c",
+          "identifierType": "CaseItemUri"
+        }
+      ]
+    },
+    {
+      "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+      "id": "http://purl.imsglobal.org/caliper/Entity",
+      "type": "Entity",
+      "otherIdentifiers": [
+        {
+          "type": "SystemIdentifier",
           "identifier": "jane@example.edu",
           "identifierType": "EmailAddress"
         }
