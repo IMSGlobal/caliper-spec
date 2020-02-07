@@ -654,7 +654,7 @@ Wherever CASE-aligned learning objectives are associated to [DigitalResources](h
 
 If the Caliper endpoint is able to retrieve this information from another source then it may be better to not include the <code>LearningObjective</code> to help keep the Caliper Event's JSON smaller.
 
-Here is an example of a CASE <code>LearningObjective</code> with a full object (<code>name</code> and <code>description</code> are _optional_)
+Here is an example of a CASE <code>LearningObjective</code> with a full object (<code>name</code>, <code>description</code>, and <code>otherIdentifiers</code> are _optional_)
 
 <pre><code class="json">
 {
@@ -664,16 +664,24 @@ Here is an example of a CASE <code>LearningObjective</code> with a full object (
   "name": "Reading Assignment: Research techniques",
   "learningObjectives": [
     {
-      "id": "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5e8130-46fa-11e7-b197-cd3432e719f9",
+      "id": "urn:uuid:2f5e8130-46fa-11e7-b197-cd3432e719f9",
       "type": "LearningObjective",
       "name": "Research techniques",
-      "description": "ELAGSE1RL1 Ask and answer questions about key details in a text."
+      "description": "ELAGSE1RL1 Ask and answer questions about key details in a text.",
+      "otherIdentifiers": [
+          {
+              "type": "SystemIdentifier",
+              "identifier": "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5e8130-46fa-11e7-b197-cd3432e719f9",
+              "identifierType": "CaseItemUri"
+
+          }
+      ]
     }
   ]
 }
 </code></pre>
 
-For brevity, it also valid to just include the <code>id</code> in the <code>learningObjectives</code> array like this:
+For brevity, it is also valid to just include the <code>id</code> in the <code>learningObjectives</code> array like this:
 
 <pre><code class="json">
 {
@@ -682,8 +690,8 @@ For brevity, it also valid to just include the <code>id</code> in the <code>lear
   "type": "AssignableDigitalResource",
   "name": "Reading Assignment: Research techniques",
   "learningObjectives": [
-    "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5e8130-46fa-11e7-b197-cd3432e719f9",
-    "https://case.georgiastandards.org/ims/case/v1p0/CFItems/2f5eda0e-46fa-11e7-b90a-62096a00843f"
+    "urn:uuid:2f5e8130-46fa-11e7-b197-cd3432e719f9",
+    "urn:uuid:2f5eda0e-46fa-11e7-b90a-62096a00843f"
   ]
 }
 </code></pre>
