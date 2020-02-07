@@ -5871,6 +5871,7 @@ Caliper provides a controlled vocabulary for enumerating the various categories 
 | Term | IRI |
 | :--- | :-- |
 | AccountUserName | http://purl.imsglobal.org/vocab/systemIdentifiers/AccountUserName |
+| CaseItemUri | http://purl.imsglobal.org/vocab/systemIdentifiers/CaseItemUri |
 | EmailAddress | http://purl.imsglobal.org/vocab/systemIdentifiers/EmailAddress |
 | LisSourcedId | http://purl.imsglobal.org/vocab/systemIdentifiers/LisSourcedId |
 | LtiContextId | http://purl.imsglobal.org/vocab/systemIdentifiers/LtiContextId |
