@@ -480,7 +480,7 @@ Caliper makes available reference implementations for Sensors in the following p
 - [Caliper-Ruby](https://github.com/IMSGlobal/caliper-ruby)
 - [Caliper-.net](https://github.com/IMSGlobal/caliper-net)
 
-These libraries are written and maintained by IMS Global Learning Consortium members. They should be considered as reference implementations and any production use should be vetted by your development team. We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
+These libraries are written and maintained by IMS Global Learning Consortium members. They should be considered as reference implementations only and as such are offered without any warranty. Use of these code libraries in a  production environment should be thoroughly vetted by your development team. We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
 
 ## Use Cases
 This section describes a handful common scenarios for the Caliper Specification.  This section is in no way comprehensive but is intended to give the reader an idea of the type of education ecosystem questions that Caliper Analytics&reg; can help to answer for.
