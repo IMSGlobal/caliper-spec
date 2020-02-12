@@ -437,7 +437,7 @@ An application that wants to send these events must either work with a Caliper C
 
 Although HTTP messages with an authorization header is the only method currently supported for certification, there are many other ways a Caliper Sensor could send events to a Caliper Consumer. Each integration should use the mechanisms that work best for them and allow the desired scaling possibilities.
 
-For example, a common method is putting Caliper Events into a queue like Amazon's SQS service and providing the Caliper Consumer the ability to connect to the queue for consumption.
+For example, a common method is putting Caliper Events into a queue provided by a IaaS provider's queueing service and providing the Caliper Consumer the ability to connect to the queue for consumption.
 
 
 ## Consuming Caliper Events
@@ -457,8 +457,8 @@ Several implementation considerations exist for Caliper Consumers. Typically, th
 
 The following best practices are typically recommended for data pipeline components that process Caliper data:
 
-- **Use Cheap Storage to Preserve Raw Event Messages.** Many Caliper consumers use cheap storage buckets in AWS S3 or Google Cloud Storage to preserve raw event messages.  Storage components such as AWS S3 can support annotation with metadata for cataloging purposes, and integrates with other AWS services such as AWS Glue, Lambda and Kinesis that will serve as components of the data lake.
-- **Take Advantage of Stream Processing Components.** Cloud infrastructure components such as AWS Kinesis Firehose are useful for bundling groups of Caliper messages arriving at the same time into JSON files, which are then kept in folders organized by year/month/day/hour. In addition, components such as AWS Kinesis Analytics can be used to keep running totals or to detect anomalies in event streams.
+- **Use Cheap Storage to Preserve Raw Event Messages.** When storing event data, it's important not to lose the resolution of information available in the original, raw event data. Because of the volume, and size, of event data en masse, many Caliper consumers might use inexpensive, cloud-hosted persistent storage solutions to preserve raw event messages. Some available solutions can support annotation with metadata for cataloguing and lifecycle purposes, and integrate with other cloud-hosted services that can act as different functional components of a data lake.
+- **Take Advantage of Stream Processing Components.** Many existing cloud infrastructure components are useful for bundling groups of Caliper messages arriving at the same time into JSON files, which are then kept in folders organized by year/month/day/hour. In addition, these existing components from IaaS providers can be used to keep running totals or to detect anomalies in event streams.
 - **Set Up Ingest Processes With Known Mapping and Transform Rules.** Examples of tasks which may need to be performed with inbound Caliper data are as follows:
    - Identify and locate common identifiers across the incoming data records.
    - Identify mappings between similar but differently named data fields and define logic for any transformations (parsing out specific identifiers from string fields, for example).
@@ -480,7 +480,7 @@ Caliper makes available reference implementations for Sensors in the following p
 - [Caliper-Ruby](https://github.com/IMSGlobal/caliper-ruby)
 - [Caliper-.net](https://github.com/IMSGlobal/caliper-net)
 
-These libraries are written and maintained by IMS Global Learning Consortium members. They should be considered as reference implementations only and as such are offered without any warranty. Use of these code libraries in a  production environment should be thoroughly vetted by your development team. We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
+These libraries are written and maintained by IMS Global Learning Consortium members. They should be considered as reference implementations only and as such are offered without any warranty. Use of these code libraries in a production environment should be thoroughly vetted by your development team. We welcome the posting of issues by non IMS Global Learning Consortium members (e.g., feature requests, bug reports, questions, etc.) but we do not accept contributions in the form of pull requests from non-members. For more information, please refer to the readme in the associated repo.
 
 ## Use Cases
 This section describes a handful common scenarios for the Caliper Specification.  This section is in no way comprehensive but is intended to give the reader an idea of the type of education ecosystem questions that Caliper Analytics&reg; can help to answer for.
@@ -505,15 +505,15 @@ For example, the [Assessment Profile](https://www.imsglobal.org/spec/caliper/v1p
  and <code>AssessmentItem</code> entities for describing the object of these activities, as well as a learner's Attempt for recording a count of the number of times
  an assigned resource has been attempted.
 
-## Best Practices and FAQ
+## Best Practices
 
 Below are some of the collected best practices from members who have successfully implemented the Caliper Analytics&reg; standard.
 
-### How often is Caliper updated?
+### Extending Caliper
 
 Major Caliper releases of the base specification will not be released more frequently than every 18 months. This is to help the market have confidence in upgrading to the latest version each time. However, there are extension mechanisms in place to provide sufficient flexibility for all current uses. New Metric Profiles can also be created and published without a new release of Caliper.
 
-### How much data should be sent in an Event?
+### Deciding how much data to send in an Event
 
 Deciding what data to send depends heavily on the context and use-case. The consumer and producers of the Caliper Events should work together to figure what is needed. Here are some considerations for this conversation:
 
@@ -522,7 +522,7 @@ Deciding what data to send depends heavily on the context and use-case. The cons
 - If there are cases where downstream processes would need quick access to the actual generated data, it is ok to include those data values as well.
 - It can be good to only emit what you generate: in other words, if your application has to do any extra work to retrieve related information, it's not recommended to include it in the event payload.
 
-### How are sessions tracked across multiple LTI tools?
+### Tracking sessions across multiple LTI tools
 
 When receiving an LTI Launch via the [LTI service connection](#lti-learning-tools-interoperability) use the <code>caliper_federated_session_id</code> as the <code>id</code> of the <code>LtiSession</code> you include in events:
 
@@ -562,7 +562,7 @@ There is a lot of other information that can be passed along with an LTI Launch.
 
 #### Other LTI Launch Information
 
-You might want to capture the <code>messageParameters</code> from an LTI launch message and include those in the federated session property, but the message bodies are quite large, and you should prefer to rely in the federated session ID to retrieve any needed information unless you have a specific purpose for including all that information.
+You might want to capture the <code>messageParameters</code> from an LTI launch message and include those in the federated session property, but the message bodies can be quite large. This launch information is primarily needed for the LTI tool to operate and not usually used for conveying learning activity so an emiter of this event should generally only include the information actually needed for their purposes. For example, if you're tracking what privacy-related information is being sent to all your tool vendors, it's useful to send all the parameters to evaluate, but if you're just interested in usage then most of the launch parameters may be superfluous.
 
 Here is an example of adding extra LTI information into the <code>LtiSession</code> object:
 
@@ -636,7 +636,11 @@ As an _analytics_ specification, Caliper is not generally well suited to other u
 
 ### JSON-LD
 
-[JSON-LD](https://www.w3.org/2018/jsonld-cg-reports/json-ld/) is a specification providing a JSON-based data serialization and messaging format, processing algorithms and API for working with Linked Data. The messages described in this specification are intended to be used in programming environments that support JSON-LD
+[JSON-LD](https://www.w3.org/2018/jsonld-cg-reports/json-ld/) is a specification providing a JSON-based data serialization and messaging format, processing algorithms, and API for working with Linked Data. Implementations of Caliper do not need to utilize JSON-LD itself to emit or consume Caliper events as they can be treated as regular JSON objects. If your implementation utilizes some of the benefits of JSON-LD that is excellent, but it is important to realize most implementations will not.
+
+
+## Frequently Asked Questions
+
 
 
 ## Caliper in the IMS ecosystem
