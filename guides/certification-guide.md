@@ -428,6 +428,8 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.14](https://
 
 A Caliper [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) MUST demonstrate that it is capable of transmitting Caliper data successfully to the certification service [Endpoint](https://www.imsglobal.org/spec/caliper/v1p2#endpoint).  Certification is limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted with Transport Layer Security (TLS).  Messages MUST be sent using the POST request method.  For certification purposes, the [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) MUST also support message authentication using the <code>Authorization</code> request header, setting the value to the provided bearer token.
 
+See the [IMS Security Framework documentation](https://www.imsglobal.org/ims-security-framework) for more information on security best practices.
+
 #### <a name="envelope"></a>The Envelope
 Caliper [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) data are transmitted inside an [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), a JSON data structure that includes metadata about the emitting [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) and the data payload.  Each [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) and [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) _[describe](https://www.imsglobal.org/spec/caliper/v1p2#describeDef)_ included in an envelope's <code>data</code> array MUST be expressed as a [JSON-LD](https://www.imsglobal.org/spec/caliper/v1p2#serialization) document.
 
@@ -440,8 +442,8 @@ The following standard HTTP request headers MUST be set for each message sent to
 
 | Request Header | Disposition |
 | :------------- | :----------- |
-| Authorization | Set the string value to the bearer token provided by the certification service and associated with the test endpoint (e.g., Authorization: Bearer \<token value\>). |
-| Content-Type | Set the string value to the IANA media type "application/json". |
+| Authorization | Set the <code>Bearer</code> token provided by the certification service and associated with the test endpoint. For example: <code>Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA</code> |
+| Content-Type | Set the string value to the IANA media type <code>application/json</code>. |
 | Host | Set the string value to the test endpoint URL provided by the certification service. |
 
 #### <a name="httpResponse"></a>HTTP Message Responses
