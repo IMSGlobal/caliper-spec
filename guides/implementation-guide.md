@@ -63,7 +63,7 @@ Here is a short explanation of how Caliper works using this vocabulary. If you c
 
 When a Caliper-observable interaction, as defined by a _Metric Profile_, is detected by a _Sensor_, an _Event_ is created which consists of an _Actor_, an _Object_, and an _Action_. (The Actor did the Action to the Object) To emit an _Event_ to another system via an API call, it is described as a JSON object which is wrapped in an _Envelope_ with a little metadata about the _Sensor_. The JSON is then sent via a secured HTTP call with an authentication token in an HTTP header.
 
-### Links for your convenience
+### Links to documentation and related resources
 
 Below is a useful set of resources related to the Caliper Analytics&reg; specification
 
@@ -74,7 +74,7 @@ Below is a useful set of resources related to the Caliper Analytics&reg; specifi
 - [Caliper Analytics&reg; Conformance Test Suite](https://caliper.imsglobal.org/sec/index.html)
 - [Caliper Analytics&reg; On the Web](https://www.imsglobal.org/activity/caliper)
 - [Caliper-central GitHub Repository](https://github.com/IMSGlobal/caliper-central)
-- [How to use Caliper Analytics&reg; with LTI](#lti-learning-tools-interoperability-0)
+- [How to use Caliper Analytics&reg; with LTI](#learning-tools-interoperability)
 
 ## Conformance Certification
 
@@ -431,7 +431,7 @@ The current standard way of sending Caliper events is via a secured HTTP endpoin
 
 This is currently the only method supported for [Caliper Conformance](https://www.imsglobal.org/spec/caliper/v1p2/cert).
 
-An application that wants to send these events must either work with a Caliper Consumer directly to get an endpoint URL and authorization token, or use the connection passed via an [LTI service connection](#lti-learning-tools-interoperability).
+An application that wants to send these events must either work with a Caliper Consumer directly to get an endpoint URL and authorization token, or use the connection passed via an [LTI service connection](#learning-tools-interoperability).
 
 ### Other ways to send Events
 
@@ -448,7 +448,7 @@ There are many considerations for consuming Caliper Events. This document will d
 
 As discussed above in [Sending to a secured HTTP endpoint](#sending-to-a-secured-http-endpoint), the current standard for authenticating Caliper Events from a sender is via an <code>Authorization</code> header with a <code>Bearer</code> token. This is described in the Caliper spec [HTTP Request](https://www.imsglobal.org/spec/caliper/v1p2#httpRequest) section. Each learning tool a Caliper Consumer wishes to receive events from will require an exchange of an HTTPS endpoint to send the events to and an authorization token. Another method is using the LTI Caliper Connector service.
 
-If a consumer of Caliper data is utilizing the [LTI service connection](#lti-learning-tools-interoperability) in conjunction with an LMS implementing that LTI service, they will have to work together to establish the needed connection and authorization infrastructure.
+If a consumer of Caliper data is utilizing the [LTI service connection](#learning-tools-interoperability) in conjunction with an LMS implementing that LTI service, they will have to work together to establish the needed connection and authorization infrastructure.
 
 There are many other methods of sending and receiving events such as utilizing a queueing system. These are excellent options but they're not covered in this document.
 
@@ -524,7 +524,7 @@ Deciding what data to send depends heavily on the context and use-case. The cons
 
 ### Tracking sessions across multiple LTI tools
 
-When receiving an LTI Launch via the [LTI service connection](#lti-learning-tools-interoperability) use the <code>caliper_federated_session_id</code> as the <code>id</code> of the <code>LtiSession</code> you include in events:
+When receiving an LTI Launch via the [LTI service connection](#learning-tools-interoperability) use the <code>caliper_federated_session_id</code> as the <code>id</code> of the <code>LtiSession</code> you include in events:
 
 <pre><code class="json">
  {
@@ -704,7 +704,7 @@ For brevity, it is also valid to just include the <code>id</code> in the <code>l
 
 An LTI Platform can use the [LTI Caliper Connector](https://www.imsglobal.org/spec/lti-cac/v1p0) service details to indicate to an LTI Tool where it should send Caliper events and entities. The LTI Tool will use the standard LTI workflow for authentication in order to use this service.
 
-This service also specifies that the <code>Caliper.sessionId</code> value should be sent on an LTI launch. This is what Caliper calls the "Federated Session ID" as described in the [How are sessions tracked across multiple LTI tools?](#how-are-sessions-tracked-across-multiple-lti-tools) section.
+This service also specifies that the <code>Caliper.sessionId</code> value should be sent on an LTI launch. This is what Caliper calls the "Federated Session ID" as described in the [How are sessions tracked across multiple LTI tools?](#tracking-sessions-across-multiple-lti-tools) section.
 
 
 #### Tracking LTI tool usage and privacy issues with Tool Launch Profile & LTI Insights

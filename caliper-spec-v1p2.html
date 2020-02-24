@@ -819,11 +819,17 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>A Caliper <a href="#sensor">Sensor</a> MUST be capable of transmitting Caliper data successfully to a
                 Caliper <a href="#endpoint">Endpoint</a>.  Communication with an <a href="#endpoint">Endpoint</a> is
                 limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted
-                with Transport Layer Security (TLS).</p>
+                with Transport Layer Security (TLS). See the
+                <a href="https://www.imsglobal.org/spec/security/v1p0/#transport-security">IMS Security Framework</a>
+                for more information on complete security practices.
+            </p>
 
             <p>Each message request MUST consist of a single JSON representation of a Caliper
                 <a href="#envelope">Envelope</a>.  Messages MUST be sent using the POST request method.
                 The HTTP <code>Host</code> and <code>Content-Type</code> request header fields MUST be set.</p>
+
+            <p>The Caliper endpoint also provides configuration information if a GET request is sent.
+            This is explained in the <a href="#configuration-information">Configuration Information</a> section.</p>
 
             <p class="note" title="Authorization header">A <a href="#sensor">Sensor</a> SHOULD
                 also set the <code>Authorization</code> request header field using
