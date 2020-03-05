@@ -45,8 +45,8 @@ Once you are ready to commence certification testing, click the "Certify Your Pr
    * Product URL
    * Product description
    * Caliper specification version
-   * Member name
-   * Member email address
+   * Representative name
+   * Representative email address
    * Member organization
 
 2. Click the green "Start Certification" button.  To terminate testing click the white "Cancel" button.
