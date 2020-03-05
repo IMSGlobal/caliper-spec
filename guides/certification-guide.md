@@ -462,7 +462,7 @@ The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec
 #### <a name="otherTransports"></a>Other Transport Protocols
 *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2) defines the use of a single transport protocol (HTTP/HTTPS).  However, IMS Global is interested in specifying the use of other transport protocols that can support the exchange of Caliper data.  Organizations wishing to work with IMS Global to add other transport protocols to the Caliper specification should contact the Caliper Working Group directly or indicate interest via the [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
 
-
+<section class="appendix informative" id="references">
 ## <a name="references"></a>References
 <a name="caliperSpec"></a>__Caliper Spec__.  IMS Global.  Anthony Whyte, Viktor Haag, Linda Feng, Markus Gylling, Matt Ashbourne, Wes LaMarche and Etienne Pelaprat.  Caliper Analytics® Specification, version 1.2.  12 January 2018.  URL: http://www.imsglobal.org/caliper-spec-v1p2
 
@@ -486,6 +486,9 @@ The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec
 
 <a name="rfc7807"></a>__RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
+</section>
+
+<section class="appendix informative" id="aboutthisdocument">
 ## <a name="aboutThisDoc"></a>About this Document
 IMS Global Learning Consortium, Inc. ("IMS Global") is publishing the information contained in this document ("Guide") for purposes of scientific, experimental, and scholarly collaboration only.
 
@@ -506,5 +509,17 @@ Please refer to Document Name: IMS Caliper Analytics&reg; Certification Guide, v
 Date: 5 December 2019
 
 This document contains trademarks of the IMS Global Learning Consortium including the IMS Logos, Learning Tools Interoperability&reg; (LTI&reg;), Accessible Portable Item Protocol&reg; (APIP&reg;), Question and Test Interoperability&reg; (QTI&reg;), Common Cartridge&reg; (CC&reg;), AccessForAll&trade;, OneRoster&reg;, Caliper Analytics&reg; and SensorAPI&trade;. For more information on the IMS trademark usage policy see trademark policy page - https://www.imsglobal.org/trademarks
+
+</section>
+
+
+<section class="appendix informative" id="revisionhistory">
+## Revision History
+
+| Release Date  | Comments                |
+|---------------|-------------------------|
+| x March, 2020 | Candidate Final Release |
+
+</section>
 
 `;

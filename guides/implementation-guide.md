@@ -814,11 +814,12 @@ The [Media Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-media) c
 For a learner's interactions within a [QTI](https://www.imsglobal.org/question/index.html) assessment the [Assessment Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-assessment) should be used. This profile is useful for all assessments whether driven by QTI or not allowing researchers and tool creators to send events about assessment generically.
 
 
+<section class="appendix informative" id="revisionhistory">
 ## Revision History
 
-Release Date | Comments
------------- | -------------
-Never 12th, 2019 | The original release of the implementation guide
-29 May, 2019 | Added desriptive text in intro, and profiles section
+| Release Date  | Comments                |
+|---------------|-------------------------|
+| x March, 2020 | Candidate Final Release |
 
+</section>
 `;
