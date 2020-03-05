@@ -814,22 +814,6 @@ The [Media Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-media) c
 For a learner's interactions within a [QTI](https://www.imsglobal.org/question/index.html) assessment the [Assessment Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-assessment) should be used. This profile is useful for all assessments whether driven by QTI or not allowing researchers and tool creators to send events about assessment generically.
 
 
-## List of Contributors
-The following individuals contributed to the development of this document:
-
-| Contributor | Affiliation |
-| :---------- | :---------- |
-| Anthony Whyte | University of Michigan |
-| Viktor Haag | D2L |
-| Linda Feng | Unicon |
-| Oxana Jurosevic | Instructure |
-| Eric Preston | Blackboard |
-| Lance Sloan | University of Michigan |
-| Samuel Sciolla | University of Michigan |
-| Yeona Jang | Explorance |
-| Bracken Mosbacker | IMS Global |
-| Joshua McGhee | IMS Global |
-
 ## Revision History
 
 Release Date | Comments
