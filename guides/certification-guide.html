@@ -1,58 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
-    <!-- default online location of the IMS respec js lib: -->
     <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
-    <!-- local alternative: -->
-    <!-- <script src='./_cache/respec-ims-default.js' async class='remove'></script> -->
-    <script src='../local-biblio.js' class='remove'></script>
-<!--    <script src='./shared/contributors.js' class='remove'></script>-->
+    <script src='../respec_shared/local-biblio.js' class='remove'></script>
+    <script src='../respec_shared/contributors.js' class='remove'></script>
     <script class='remove'>
-      var respecConfig = {
-        // title of this document
-        specTitle: "Caliper Conformance and Certification Guide",
-
-        // the shortName is provided by IMS staff:
-        shortName: "caliper",
-
-        // specStatus: IMS Base Document, IMS Candidate Final (Public) or IMS Final Release
-        specStatus: "IMS Base Document",
-
-        // date of publication
-        specDate: "December 4th, 2019",
-
-        // spec version
-        specVersion: "1.2",
-
-        // spec nature is "normative" or "informative"
-        specNature: "normative",
-
-        // spec type is "main", "cert", "impl", "errata" or other agreed upon string
-        specType: "cert",
-
-        //if markdown is included in the body, set the format flag
-        format: "markdown",
-
-        // localBiblio is used to store bib entries not yet in the online imsBiblio or on specref.org
-        localBiblio: _localBiblio,
-
-        // below properties used by aux docs that need to refer back to the main spec
-
-        // nice name of main spec, excluding the string "specification" but including version
-        mainSpecTitle: "Caliper 1.2",
-
-        // the key used to refer to the main spec biblioentry in this document:
-        mainSpecBiblioKey: "EXAMPLE10",
-
-      };
+        var respecConfig = {
+            specTitle: "Caliper Conformance and Certification Guide",
+            shortName: "caliper",
+            specStatus: "IMS Base Document",
+            specDate: "December 4th, 2019",
+            specVersion: "1.2",
+            specNature: "normative",
+            specType: "cert",
+            format: "markdown",
+            localBiblio: _localBiblio,
+            mainSpecTitle: "Caliper 1.2",
+            mainSpecBiblioKey: "EXAMPLE10",
+            contributors: _contributors
+        };
     </script>
-  </head>
-  <body>
+</head>
+<body>
 
 <!--    <script class="transclude remove" src="shared/abstract.js" data-id="t1"></script>-->
 
-    <script class="transclude remove" src="./certification-guide.md" data-id="t2"></script>
+<script class="transclude remove" src="./certification-guide.md" data-id="t2"></script>
 
-  </body>
+</body>
 </html>

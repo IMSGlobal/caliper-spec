@@ -3,6 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+    <script src='./respec_shared/contributors.js' class='remove'></script>
     <script class='remove'>
         var respecConfig = {
             specTitle: "Caliper Analytics® Specification",
@@ -12,88 +13,7 @@
             specVersion: "1.2",
             specNature: "normative",
             specType: "spec",
-            contributors: [
-                {
-                    name: "Anthony Whyte",
-                    company: "University of Michigan",
-                    companyURL: "https://umich.edu",
-                },
-                {
-                    name: "Viktor Haag",
-                    company: "D2L",
-                    companyURL: "https://www.d2l.com",
-                },
-                {
-                    name: "Andrew Gardener",
-                    company: "University of British Columbia",
-                    companyURL: "https://www.ubc.ca/",
-                },
-                {
-                    name: "Yeona Jang",
-                    company: "Explorance",
-                    companyURL: "https://explorance.com/",
-                },
-                {
-                    name: "Dan Carroll",
-                    company: "Clever",
-                    companyURL: "https://www.clever.com/",
-                },
-                {
-                    name: "Daniel Green",
-                    company: "VitalSource",
-                    companyURL: "https://www.vitalsource.com/",
-                },
-                {
-                    name: "Sam Sciolla",
-                    company: "University of Michigan",
-                    companyURL: "https://umich.edu",
-                },
-                {
-                    name: "Lance E Sloan",
-                    company: "University of Michigan",
-                    companyURL: "https://umich.edu",
-                },
-                {
-                    name: "Kara Armstrong",
-                    company: "Unizin",
-                    companyURL: "https://unizin.org/",
-                },
-                {
-                    name: "Markus Gylling",
-                    company: "IMS Global",
-                    companyURL: "https://www.imsglobal.org",
-                },
-                {
-                    name: "Linda Feng",
-                    company: "Unicon",
-                    companyURL: "https://www.unicon.net/",
-                },
-                {
-                    name: "André N'guettia",
-                    company: "Pennsylvania State University",
-                    companyURL: "https://www.psu.edu/",
-                },
-                {
-                    name: "Eric Preston",
-                    company: "Blackboard, Inc.",
-                    companyURL: "https://www.blackboard.com/",
-                },
-                {
-                    name: "Oxana Jurosevic",
-                    company: "Instructure",
-                    companyURL: "https://www.instructure.com/",
-                },
-                {
-                    name: "Bracken Mosbacker",
-                    company: "IMS Global",
-                    companyURL: "https://www.imsglobal.org",
-                },
-                {
-                    name: "Joshua McGhee",
-                    company: "IMS Global",
-                    companyURL: "https://www.imsglobal.org",
-                }
-            ]
+            contributors:_contributors
         };
     </script>
 </head>
@@ -1025,9 +945,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 nodes, edges and properties.  Others may opt to normalize or &quot;flatten&quot; some or all of the nested
                 JSON objects that comprise a Caliper <a href="#event">Event</a> or <a href="#entity">Entity</a>. If the
                 chosen persistence strategy involves normalizing Caliper semi-structured data, care should be taken to
-                ensure that strings of character data can be stored without truncation. See
-                <a href="#minSupportedStringLengths">Appendix G. Minimum Supported String Lengths</a> for a list of
-                Caliper data properties and recommended <em>minimum</em> string lengths.</p>
+                ensure that strings of character data can be stored without truncation.</p>
         </section>
     </section>
 
@@ -1623,16 +1541,21 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         </figure>
     </section>
 
-    <section id="selectors" class="appendix">
-        <h2>Selectors</h2>
+    <section id="noidprops" class="appendix">
+
+        <h2>Entities with no id properties</h2>
+
+        <p>The Selectors and System Identifiers in this section are intended to be
+            directly addressable Entity nodes, and thus should be sent without
+            an id property</p>
+
+        <h3>Selectors</h3>
 
         <p>A Caliper <code>Selector</code> represents a fragment, selection, or part of an <a href="#Entity">Entity</a>.</p>
 
         <section id="TextPositionSelector" data-include="fragments/selectors/caliper-selector-textpositionselector.html"></section>
-    </section>
 
-    <section id="systemidentifiers" class="appendix">
-        <h2>System Identifiers</h2>
+        <h3>System Identifiers</h3>
 
         A Caliper <code>SystemIdentifier</code> represents a single, system-local identifier for a Caliper
         <a href="#Entity">Entity</a>.
@@ -1896,12 +1819,13 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <tbody>
                 <tr>
                     <td>IMS Base Document 1.2</td>
-                    <td>31 August 2019</td>
+                    <td>x March 2020</td>
                     <td>The first Base Document release.</td>
                 </tr>
                 </tbody>
             </table>
         </section>
     </section>
+
     </body>
 </html>
