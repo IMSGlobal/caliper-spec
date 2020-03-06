@@ -302,6 +302,10 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.8](https://w
 
 ### <a name="resourceManagementProfile"></a>3.10 Resource Management Profile
 
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Results Management Profile" src="../assets/caliper-profile_resource_management.png"></div>
+
+The Caliper Resource Management Profile models a [Person](https://www.imsglobal.org/spec/caliper/v1p2#person) managing a [DigitalResource](https://www.imsglobal.org/spec/caliper/v1p2#DigitalResource)
+
 #### Profile Description
 
 See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.9](https://www.imsglobal.org/spec/caliper/v1p2#profile-resourcemanagement).
@@ -330,6 +334,9 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.9](https://w
 
 ### <a name="searchProfile"></a>3.11 Search Profile
 
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Search  Profile" src="../assets/caliper-profile_search.png"></div>
+
+The Caliper Search Profile models an <code>actor</code>, typically a learner, querying a resource for information. The profile provides a [SearchEvent](https://www.imsglobal.org/spec/caliper/v1p2#SearchEvent) and a [Searched](https://www.imsglobal.org/spec/caliper/v1p2#searched) action for describing information retrieval activities. An optional [SearchResponse](https://www.imsglobal.org/spec/caliper/v1p2#SearchResponse) entity can be employed to describe the [Query](https://www.imsglobal.org/spec/caliper/v1p2#Query) submitted by a user as well as any <code>searchResults</code> returned as a result of the search.
 #### Profile Description
 
 See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.10](https://www.imsglobal.org/spec/caliper/v1p2#profile-search).
@@ -364,6 +371,10 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.11](https://
 
 ### <a name="surveyProfile"></a>3.13 Survey Profile
 
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Survey Profile" src="../assets/caliper-profile_survey.png"></div>
+
+The Caliper Survey Profile provides a vocabulary for describing events associated with a respondent's participation in online surveys. A key use case involves instrumenting platforms that provide online surveys that explore the student learning experience, student engagement, learning activities, learning progress, and learning performance. The profile models a [Person](https://www.imsglobal.org/spec/caliper/v1p2#Person), typically a respondent or a rater, participating in a survey in order to provide feedback on their learning and academic experiences.
+
 #### Profile Description
 
 See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.12](https://www.imsglobal.org/spec/caliper/v1p2#profile-survey).
@@ -393,6 +404,10 @@ See *Caliper Analytics&reg; Specification*, version 1.2, [Section 3.12](https://
 
 
 ### <a name="toolLaunchProfile"></a>3.14 Tool launch Profile
+
+<div style="design: block;margin: 0 auto"><img class="img-responsive" alt="Tool Launch Profile" src="../assets/caliper-profile_tool_launch.png"></div>
+
+The Caliper Tool Launch Profile is intended to capture the utilization of learning tools from a centralized location, such as an LTI Tool Platform (often an LMS). As such, it is distinct from the Caliper [Tool Use Profile](https://www.imsglobal.org/spec/caliper/v1p2#profile-toollaunch), also defined in this specification, which captures tool usage as reported by the individual tools themselves (i.e. decentralized capture).
 
 #### Profile Description
 
