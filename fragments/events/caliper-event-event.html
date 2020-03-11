@@ -77,7 +77,8 @@
     to ensure backwards compatibility) <a href="#sensor">Sensors</a> SHOULD specify for each
     <a href="#Event">Event</a> created the relevant <code>profile</code> string value in
     order to inform consumers which profile governs the construction and interpretation of
-    the <a href="#Event">Event</a>.</p>
+    the <a href="#Event">Event</a>. The profile terms are listed in the
+    <a href="#profile-terms">Profile Terms</a> section.</p>
 
 <table>
     <thead>
@@ -110,12 +111,12 @@
     </tr>
     <tr>
         <td>profile</td>
-        <td><a href="#termDef">Term</a></td>
-        <td>A string value corresponding to the <a href="#termDef">Term</a> value defined for the
+        <td><a href="#profile-terms">Profile Term</a></td>
+        <td>A string value corresponding to the <a href="#profile-terms">Profile Term</a> value defined for the
             <a href="#profileDef">Profile</a> that governs the rules of interpretation for this <a href="#Event">Event</a>.
             The range of <a href="#profileDef">Profile</a> values is limited to the set of profiles described in this
             specification and any profile extension specifications extending this specification. Only one
-            <code>profile</code> <a href="#termDef">Term</a> value may be specified per <a href="#Event">Event</a>. For a generic
+            <a href="#profile-terms">Profile Term</a> value may be specified per <a href="#Event">Event</a>. For a generic
             <a href="#Event">Event</a> set the <code>profile</code> property value to the string term
             <em>GeneralProfile</em>.</td>
         <td>Optional</td>

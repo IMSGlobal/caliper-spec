@@ -143,6 +143,7 @@ All property tables will look like the following table. This table shows the bas
 | action | [Term](https://www.imsglobal.org/spec/caliper/v1p2#termDef) | The action or predicate that binds the actor or subject to the object.  The <code>action</code> range is limited to the set of [actions](https://www.imsglobal.org/spec/caliper/v1p2#actions) described in this specification and may be further constrained by the chosen [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) type.  Only one <code>action</code> [Term](https://www.imsglobal.org/spec/caliper/v1p2#termDef) may be specified per [Event](https://www.imsglobal.org/spec/caliper/v1p2#event). | Required |
 | object | [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) or [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef) | The [Entity](https://www.imsglobal.org/spec/caliper/v1p2#entity) that comprises the object of the interaction.  The <code>object</code> value MUST be expressed either as an object or as a string corresponding to the object's [IRI](https://www.imsglobal.org/spec/caliper/v1p2#iriDef). | Required |
 | eventTime | DateTime | An ISO 8601 date and time value expressed with millisecond precision that indicates when the [Event](https://www.imsglobal.org/spec/caliper/v1p2#event) occurred.  The value MUST be expressed using the format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified. | Required |
+| profile | [Profile Term](https://www.imsglobal.org/spec/caliper/v1p2#profile-terms) | A string value corresponding to the [Profile Term](https://www.imsglobal.org/spec/caliper/v1p2#profile-terms) value defined for the Profile that governs the rules of interpretation for this [Event](https://www.imsglobal.org/spec/caliper/v1p2#event). For a generic Event set the <code>profile</code> property value to the string term <code>GeneralProfile</code>. | Optional |
 
 #### Additional properties on Events
 
@@ -160,6 +161,7 @@ This is an example of what an Event's JSON looks like without the actor/action/o
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c",
   "type": "ViewEvent",
+  "profile": "ReadingProfile",
   "eventTime": "2020-01-15T10:15:00.000Z",
   "actor": {},
   "action": "",
@@ -237,6 +239,7 @@ To bring the above examples together, an Event would look something like this:
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ViewEvent",
+  "profile": "ReadingProfile",
   "eventTime": "2020-01-15T10:16:00.000Z",
   "actor": {
     "id": "https://example.edu/users/554433",
@@ -264,6 +267,7 @@ This ID-only example is equivalent to the full example above:
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
   "id": "urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e",
   "type": "ForumEvent",
+  "profile": "ForumProfile",
   "eventTime": "2020-01-15T10:16:00.000Z",
   "actor": "https://example.edu/users/554433",
   "action": "Subscribed",
@@ -364,6 +368,7 @@ The <code>data</code> element can contain multiple Events and Entities. It is go
         "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
         "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
         "type": "ToolUseEvent",
+        "profile": "ToolUseProfile",
         "eventTime": "2020-01-15T10:15:00.000Z",
         "actor": {
           "id": "https://example.edu/users/554433",
@@ -406,6 +411,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
+    "profile": "ToolUseProfile",
     "eventTime": "2020-01-15T10:15:00.000Z",
     "actor": "https://example.edu/users/554433",
     "action": "Used",
@@ -415,6 +421,7 @@ In this example, the Person and SoftwareApplication are part of the data array a
     "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
     "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
     "type": "ToolUseEvent",
+    "profile": "ToolUseProfile",
     "eventTime": "2020-01-15T11:15:00.000Z",
     "actor": "https://example.edu/users/554433",
     "action": "Used",
@@ -569,6 +576,7 @@ You add it to an event using the <code>federatedSession</code> key:
    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
    "id": "urn:uuid:9r34jdfj-a0d8-4430-95bd-783ffae4d916",
    "type": "ToolUseEvent",
+   "profile": "ToolUseProfile",
    "eventTime": "2020-01-15T11:15:00.000Z",
    "actor": "https://example.edu/users/554433",
    "action": "Used",
