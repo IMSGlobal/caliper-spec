@@ -130,7 +130,7 @@
 
             <p id="iriDef"><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
                 Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal
-                character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>.
+                character set rather than US-ASCII per [[RFC3987]].
                 <a href="#linkedDataDef">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
 
             <p id="iso8601Def"><strong>ISO 8601</strong>: Caliper data and time values are formatted per
@@ -184,7 +184,7 @@
                 data type.</p>
 
             <p id="uriDef"><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
-                utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a
+                utilizes the US-ASCII character set to identify a resource. Per [[RFC2396]] a
                 <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform
                 Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
                 are considered subspaces of the more general <a href="#uriDef">URI</a> space.
@@ -205,7 +205,7 @@
                 probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
                 generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
                 expressed as a <a href="#urnDef">URN</a> using the form "urn:uuid:&ltUUID&gt"
-                as described in <a href="#rfc4122">RFC 4122</a>.</p>
+                as described in [[RFC4122]].</p>
         </section>
 
         <section id="conformance">
@@ -382,8 +382,9 @@
             as <a href="#linkedDataDef">Linked Data</a> using JSON as the underlying
             data-interchange format. <a href="#jsonldDef">JSON-LD</a> also provides an API and set of processing
             algorithms for working with <a href="#jsonldDef">JSON-LD</a> documents that are based on different contexts.
-            Algorithms have also been developed to serialize <a href="#rdf">RDF</a> as <a href="#jsonldDef">JSON-LD</a>
-            and deserialize a <a href="#jsonldDef">JSON-LD</a> document to an <a href="#rdf">RDF</a> data set.</p>
+            Algorithms have also been developed to serialize <a data-cite="rdf-concepts#">RDF</a>  as
+            <a href="#jsonldDef">JSON-LD</a> and deserialize a <a href="#jsonldDef">JSON-LD</a> document
+            to an <a data-cite="rdf-concepts#">RDF</a> data set.</p>
 
         <section id="serialization-jsonld-context">
             <h3>JSON-LD Context</h3>
@@ -494,7 +495,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p class="note" title="Event identifiers">Unlike Entities, each
                 <a href="#event">Event</a> MUST be assigned a 128-bit long universally unique
                 identifier (<a href="#uuidDef">UUID</a>) formatted as a <a href="#urnDef">URN</a> per
-                <a href="#rfc4122">RFC 4122</a>, which describes a <a href="#urnDef">URN</a>
+                [[RFC4122]], which describes a <a href="#urnDef">URN</a>
                 namespace for <a href="#uuidDef">UUIDs</a>.</p>
 
             <figure class="example">
@@ -755,7 +756,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p class="note" title="Authorization header">A <a href="#the-sensor-api">Sensor</a> SHOULD
                 also set the <code>Authorization</code> request header field using
-                the "Bearer" authentication scheme described in <a href="#rfc6750">RFC 6750</a>,
+                the "Bearer" authentication scheme described in [[RFC6750]],
                 <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>.
                 The <code>b64token</code> authorization credential sent by a
                 <a href="#the-sensor-api">Sensor</a> MUST be one the
@@ -774,7 +775,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <tr>
                     <td>Authorization</td>
                     <td>Set the string value to a bearer token using the "Bearer" authentication scheme described in
-                        <a href="#rfc6750">RFC 6750</a>, <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>
+                        [[RFC6750]], <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>
                         (e.g., Authorization: Bearer &lt;token value&gt;).</td>
                     <td>Recommended</td>
                 </tr>
@@ -801,7 +802,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The
             <a href="#endpoint">Endpoint</a> MUST be capable of accessing standard HTTP request headers and support
             message authentication that utilizes the HTTP <code>Authorization</code> request header &quot;Bearer&quot;
-            authentication scheme as described in <a href="#rfc6750">RFC 6750</a>,
+            authentication scheme as described in [[RFC6750]],
             <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>.</p>
 
 
@@ -811,7 +812,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>Following receipt of a <a href="#the-sensor-api">Sensor</a> HTTP request message, the
                 <a href="#endpoint">Endpoint</a> MUST reply with an HTTP response message. The response will include
                 a three-digit status code indicating whether or not the <a href="#endpoint">Endpoint</a> was able to
-                understand and satisfy the request, as defined by <a href="#rfc7231">RFC 7231</a>.</p>
+                understand and satisfy the request, as defined by [[RFC7231]].</p>
 
             <p>When signalling to a <a href="#the-sensor-api">Sensor</a> that the endpoint has successfully received the
                 request message, the <a href="#endpoint">Endpoint</a> MUST reply with a <code>2xx</code> class status
@@ -846,7 +847,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 standard HTTP status codes to indicate result dispositions that vary from the cases described above.
                 The <a href="#endpoint">Endpoint</a> MAY also communicate more detailed information about problem
                 states, using the standard method for reporting problem details described in
-                <a href="#rfc7807">RFC 7807</a>.</p>
+                [[RFC7807]].</p>
 
             <p class="note" title="Beware simple Sensor implementations">Caliper
                 <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper

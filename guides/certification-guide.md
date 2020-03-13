@@ -19,9 +19,13 @@ IMS Global strongly encourages its members and the greater public to provide fee
 Public comments and questions can be posted at the Caliper Analytics&reg; [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
 
 ### Conventions
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](#rfc2119).  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [[RFC2119]].  A Sensor implementation that fails to implement a MUST/REQUIRED/SHALL requirement or fails to abide by a MUST NOT/SHALL NOT prohibition is considered nonconformant.  SHOULD/SHOULD NOT/RECOMMENDED statements constitute a best practice.  Ignoring a best practice does not violate conformance but a decision to disregard such guidance should be carefully considered by implementers.  MAY/OPTIONAL statements indicate that implementers are entirely free to choose whether or not to implement the option.
 
 ## The Conformance Process
+
+<section id="conformance">
+  <h3>Conformance Statements</h3>
+</section>
 
 ### <a name="certPreReqs"></a>Certification Prerequisites
 The following prerequisites MUST be met before your organization can begin the process of getting your product Caliper Analytics&reg; certified.
@@ -463,7 +467,7 @@ The following standard HTTP request headers MUST be set for each message sent to
 
 #### <a name="httpResponse"></a>HTTP Message Responses
 
-Following receipt of a [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) request message the certification service will reply with a response message.  The response will include a three-digit status code indicating whether or not the certification service was able to understand and satisfy the request as defined by [RFC 7231](#rfc7231).
+Following receipt of a [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) request message the certification service will reply with a response message.  The response will include a three-digit status code indicating whether or not the certification service was able to understand and satisfy the request as defined by [[RFC7231]].
 
 * To signal a Caliper sensor that it has successfully received a message the certification service endpoint will reply with a <code>2xx</code> class status code.  The body of a successful response will be empty.
 * If a Caliper sensor sends a message containing events and or entities without an enclosing [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope), the certification service will reply with a <code>400 Bad Request</code> response.
@@ -472,7 +476,7 @@ Following receipt of a [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sens
 * If a Caliper sensor sends a message with a <code>Content-Type</code> other than "application/json", the certification service will reply with a <code>415 Unsupported Media Type</code> response.
 * If a Caliper sensor sends a message with an [Envelope](https://www.imsglobal.org/spec/caliper/v1p2#envelope) that contains a <code>dataVersion</code> value that the endpoint cannot support the certification service will reply with a <code>422 Unprocessable Entity</code> response.
 
-The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The certification service MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [RFC 7807](#rfc7807).
+The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec/caliper/v1p2#sensor) messages with other standard HTTP status codes to indicate result dispositions that vary from the cases described above.  The certification service MAY also communicate more detailed information about problem states, using the standard method for reporting problem details described in [[RFC7807]].
 
 #### <a name="otherTransports"></a>Other Transport Protocols
 *Caliper Analytics&reg; Specification*, [version 1.2](https://www.imsglobal.org/spec/caliper/v1p2) defines the use of a single transport protocol (HTTP/HTTPS).  However, IMS Global is interested in specifying the use of other transport protocols that can support the exchange of Caliper data.  Organizations wishing to work with IMS Global to add other transport protocols to the Caliper specification should contact the Caliper Working Group directly or indicate interest via the [public forum](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum).
@@ -486,20 +490,6 @@ The certification service MAY respond to [Sensor](https://www.imsglobal.org/spec
 <a name="jsonldProcessing"></a>__JSON-LD Processing__.  D. Longley, G. Kellog, M. Lanthaler, M. Sporny.  JSON-LD 1.1 Processing Algorithms and API.  15 February 2017.  URL: http://json-ld.org/spec/latest/json-ld-api/
 
 <a name="linkedData"></a>__Linked Data__.  Tim Berners-Lee.  "Linked Data."  W3C internal document.  July 2006, rev. June 2009.  URL: https://www.w3.org/DesignIssues/LinkedData.html
-
-<a name="rfc2119"></a>__RFC 2119__.  IETF.  S. Bradner.  "Key words for use in RFCs to Indicate Requirement Levels."  March 1997.  URL: https://tools.ietf.org/html/rfc2119
-
-<a name="rfc2396"></a>__RFC 2396__.  IETF.  T. Berners-Lee, R. Fielding, L. Masinter.  "Uniform Resource Identifiers (URI): Generic Syntax."  August 1998.  URL: https://www.ietf.org/rfc/rfc2396.txt
-
-<a name="rfc3987"></a>__RFC 3987__.  IETF. M. Duerst and M. Suignard.  "Internationalized Resource Identifiers (IRIs).  January 2005.  URL: https://www.ietf.org/rfc/rfc3987.txt
-
-<a name="rfc4122"></a>__RFC 4122__.  IETF. P. Leach, M. Mealling and R. Salz.  "A Universally Unique Identifier (UUID) URN Namespace."  July 2005.  URL: https://tools.ietf.org/html/rfc4122
-
-<a name="rfc6750"></a>__RFC 6750__.  IETF.  M. Jones and D. Hardt.  "The OAuth 2.0 Authorization Framework: Bearer Token Usage."  October 2012.  URL: https://tools.ietf.org/html/rfc6750
-
-<a name="rfc7231"></a>__RFC 7231__.  IETF.  R. Fielding and J. Reschke, eds.  Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content.  June 2014.  URL: https://tools.ietf.org/html/rfc7231.
-
-<a name="rfc7807"></a>__RFC 7807__.  IETF.  M. Nottingham, E. Wilde.  "Problem Details for HTTP APIs."  March 2017.  URL: https://tools.ietf.org/html/rfc7807
 
 </section>
 

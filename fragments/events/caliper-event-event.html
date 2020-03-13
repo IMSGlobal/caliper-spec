@@ -8,7 +8,8 @@
     <code>actor</code> and an <code>object</code>, formed as a result of a purposeful
     <a href="#actions">action</a> undertaken by the <code>actor</code> at a particular moment in time and within a
     given learning context. The <a href="#Event">Event</a> properties <code>actor</code>, <code>action</code> and
-    <code>object</code> form a compact data structure that resembles an <a href="#rdf">RDF</a> triple linking a subject
+    <code>object</code> form a compact data structure that resembles an <a data-cite="rdf-concepts#section-triples">RDF Triple</a>
+    linking a subject
     to an object via a predicate. A learner starting an assessment, annotating a reading, pausing a video, or
     posting a message to a forum, are examples of learning activities that Caliper models as events.</p>
 
@@ -16,7 +17,7 @@
     distinguishable by a <code>type</code> attribute. The <code>type</code> value is a string that MUST match the
     <a href="#termDef">Term</a> specified for the <a href="#Event">Event</a> by the Caliper information model
     (e.g. "MessageEvent"). Each <a href="#Event">Event</a> instance is assigned a 128-bit long universally unique
-    identifier (UUID) formatted as a <a href="#urnDef">URN</a> per <a href="#rfc4122">RFC 4122</a>, which describes
+    identifier (UUID) formatted as a <a href="#urnDef">URN</a> per [[RFC4122]], which describes
     a <a href="#urnDef">URN</a> namespace for <a href="#uuidDef">UUIDs</a>.</p>
 
 <p>The information model also seeks to describe the learning environment or context in which a learning
@@ -96,7 +97,7 @@
         <td>The emitting application MUST provision the <a href="#Event">Event</a> with a <a href="#uuidDef">UUID</a>.
             A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated. The UUID MUST be expressed as a
             <a href="#urnDef">URN</a> using the form "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt" per
-            <a href="#rfc4122">RFC 4122</a>.</td>
+            [[RFC4122]].</td>
         <td>Required</td>
     </tr>
     <tr>

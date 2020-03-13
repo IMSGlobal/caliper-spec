@@ -67,7 +67,7 @@ When a Caliper-observable interaction, as defined by a _Metric Profile_, is dete
 
 Below is a useful set of resources related to the Caliper Analytics&reg; specification
 
-- [Caliper Analytics&reg; version 1.2 specification](https://www.imsglobal.org/spec/caliper/v1p2)
+- [[[CALIPER-12]]]
 - [Caliper Analytics&reg; Metric Profile Summaries](https://www.imsglobal.org/caliper-analytics-v11-profiles-summaries)
 - [Caliper Analytics&reg; Public Forums](https://www.imsglobal.org/forums/ims-glc-public-forums-and-resources/caliper-analytics-public-forum)
 - [Caliper Analytics&reg; Conformance Information](https://www.imsglobal.org/caliper-analytics-conformance)
@@ -683,7 +683,7 @@ As an analytics standard, Caliper is relevant to almost every other IMS specific
 
 ### CASE - Competencies and Academic Standards Exchange
 
-[CASE](https://www.imsglobal.org/activity/case) is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper <code>Entity</code> is aligned with via a [LearningObjective](https://www.imsglobal.org/spec/caliper/v1p2#LearningObjective) <code>Entity</code> included with the <code>Object</code> in a Caliper <code>Event</code>.
+[[[CASE-10]]] is used to align learning content and activities with academic standards. It might be useful to pass the CASE standard a Caliper <code>Entity</code> is aligned with via a [LearningObjective](https://www.imsglobal.org/spec/caliper/v1p2#LearningObjective) <code>Entity</code> included with the <code>Object</code> in a Caliper <code>Event</code>.
 
 Researchers and analytics who collect data aligned to learning objectives can use it to correlate between learning activities and academic standards.
 
