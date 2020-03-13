@@ -13,7 +13,7 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
     <code>id</code> and <code>type</code> properties MUST be specified. The <code>type</code> value is a string that
     MUST match the term specified for the <a href="#Entity">Entity</a> by the Caliper information model (e.g. "Person").
     The <code>id</code> value is a string that MUST be expressed as an <a href="#iriDef">IRI</a>.  The
-    <a href="#iriDef">IRI</a> MUST be valid and unique.  The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable, 
+    <a href="#iriDef">IRI</a> MUST be valid and unique.  The <a href="#iriDef">IRI</a> SHOULD also be dereferenceable,
     i.e., capable of returning a representation of the resource assuming authorization to access the resource is granted.
     A <a href="#uriDef">URI</a> employing the <a href="#urnDef">URN</a> scheme MAY be provided although care should be
     taken when employing a location-independent identifier since it precludes the possibility of utilizing it to
@@ -22,7 +22,7 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
 
 <p>Other <a href="#Entity">Entity</a> properties are descriptive in nature, or link the <a href="#Entity">Entity</a>
     to other related entities. Certain <a href="#Entity">Entity</a> subtypes like <a href="#Annotation">Annotation</a>,
-    <a href="#DigitalResource">DigitalResource</a>, <a href="#Message">Message</a> or
+    <a href="#digitalresource">DigitalResource</a>, <a href="#Message">Message</a> or
     <a href="#Organization">Organization</a> are provisioned with additional properties that allow for a more
     complete representation of the object.  An <code>extensions</code> property is also defined so that implementers
     can add custom attributes not described by the model. Optional properties can be ignored when describing an
@@ -41,10 +41,10 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
         <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>,
         <a href="#Annotation">Annotation</a>,
         <a href="#Assessment">Assessment</a>,
-        <a href="#AssessmentItem">AssessmentItem</a>,
-        <a href="#AssignableDigitalResource">AssignableDigitalResource</a>,
+        <a href="#assessmentitem">AssessmentItem</a>,
+        <a href="#assignabledigitalresource">AssignableDigitalResource</a>,
         <a href="#Attempt">Attempt</a>,
-        <a href="#AudioObject">AudioObject</a>,
+        <a href="#audioobject">AudioObject</a>,
         <a href="#BookmarkAnnotation">BookmarkAnnotation</a>,
         <a href="#Chapter">Chapter</a>,
         <a href="#Collection">Collection</a>,
@@ -53,7 +53,7 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
         <a href="#CourseSection">CourseSection</a>,
         <a href="#DateTimeQuestion">DateTimeQuestion</a>,
         <a href="#DateTimeResponse">DateTimeResponse</a>,
-        <a href="#DigitalResource">DigitalResource</a>,
+        <a href="#digitalresource">DigitalResource</a>,
         <a href="#DigitalResourceCollection">DigitalResourceCollection</a>,
         <a href="#Document">Document</a>,
         <a href="#FillinBlankResponse">FillinBlankResponse</a>,
@@ -67,8 +67,8 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
         <a href="#Link">Link</a>,
         <a href="#LtiLink">LtiLink</a>,
         <a href="#LtiSession">LtiSession</a>,
-        <a href="#MediaLocation">MediaLocation</a>,
-        <a href="#MediaObject">MediaObject</a>,
+        <a href="#medialocation">MediaLocation</a>,
+        <a href="#mediaobject">MediaObject</a>,
         <a href="#Membership">Membership</a>,
         <a href="#Message">Message</a>,
         <a href="#MultipleChoiceResponse">MultipleChoiceResponse</a>,
@@ -97,13 +97,13 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
         <a href="#SelectTextResponse">SelectTextResponse</a>,
         <a href="#Session">Session</a>,
         <a href="#SharedAnnotation">SharedAnnotation</a>,
-        <a href="#SoftwareApplication">SoftwareApplication</a>
+        <a href="#softwareapplication">SoftwareApplication</a>
         <a href="#Survey">Survey</a>,
         <a href="#SurveyInvitation">SurveyInvitation</a>,
         <a href="#TagAnnotation">TagAnnotation</a>,
         <a href="#Thread">Thread</a>,
         <a href="#TrueFalseResponse">TrueFalseResponse</a>,
-        <a href="#VideoObject">VideoObject</a>,
+        <a href="#videoobject">VideoObject</a>,
         <a href="#WebPage">WebPage</a>
     </dd>
     <dt>Properties</dt>
@@ -179,7 +179,7 @@ For a complete list of Events, see <a href="#entities">Appendix B</a>
         <td>otherIdentifiers</td>
         <td>Array</td>
         <td>An ordered collection of <a href="#SystemIdentifier">SystemIdentifier</a> entities that represent
-            other identifiers for this <a href="#Entity">Entity</a> that are known to the <a href="#Sensor">Sensor</a>.
+            other identifiers for this <a href="#Entity">Entity</a> that are known to the <a href="#the-sensor-api">Sensor</a>.
             Each array item MUST be expressed either as an object or as a string corresponding to the
             item's <a href="#iriDef">IRI</a>.</td>
         <td>Optional</td>

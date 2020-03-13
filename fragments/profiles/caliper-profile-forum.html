@@ -43,9 +43,9 @@
     </li>
 </ul>
 
-<p>The Forum Profile defines a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
-    <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, and
-    <a href="#ViewEvent">ViewEvent</a> for describing <a href="#Forum">Forum</a>,
+<p>The Forum Profile defines a <a href="#forumevent">ForumEvent</a>, <a href="#messageevent">MessageEvent</a>,
+    <a href="#navigationevent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, and
+    <a href="#viewevent">ViewEvent</a> for describing <a href="#Forum">Forum</a>,
     <a href="#Thread">Thread</a>, and <a href="#Message">Message</a> interactions. Nine actions are described:
 </p>
 
@@ -60,13 +60,13 @@
     </thead>
     <tbody>
         <tr>
-            <td><a href="#ForumEvent">ForumEvent</a></td>
+            <td><a href="#forumevent">ForumEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-subscribed">Subscribed</a></td>
             <td><a href="#Forum">Forum</a></td>
         </tr>
         <tr>
-            <td><a href="#ForumEvent">ForumEvent</a></td>
+            <td><a href="#forumevent">ForumEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-unsubscribed">Unsubscribed</a></td>
             <td><a href="#Forum">Forum</a></td>
@@ -80,29 +80,29 @@
         <tr>
             <td><a href="#ThreadEvent">ThreadEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#markedasunread">MarkedAsUnRead</a></td>
             <td><a href="#Thread">Thread</a></td>
         </tr>
         <tr>
-            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#messageevent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-markedAsRead">MarkedAsRead</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
-            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#messageevent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
-            <td><a href="#action-markedAsUnRead">MarkedAsUnRead</a></td>
+            <td><a href="#markedasunread">MarkedAsUnRead</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
-            <td><a href="#MessageEvent">MessageEvent</a></td>
+            <td><a href="#messageevent">MessageEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-posted">Posted</a></td>
             <td><a href="#Message">Message</a></td>
         </tr>
         <tr>
-            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#navigationevent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-navigatedTo">NavigatedTo</a></td>
             <td><a href="#Forum">Forum</a> |
@@ -110,7 +110,7 @@
                 <a href="#Thread">Thread</a></td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
             <td><a href="#Forum">Forum</a> |
@@ -120,9 +120,9 @@
     </tbody>
 </table>
 
-When constructing a <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
-<a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, or
-<a href="#ViewEvent">ViewEvent</a> governed by the Forum Profile the following rules and recommendations apply:
+When constructing a <a href="#forumevent">ForumEvent</a>, <a href="#messageevent">MessageEvent</a>,
+<a href="#navigationevent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a>, or
+<a href="#viewevent">ViewEvent</a> governed by the Forum Profile the following rules and recommendations apply:
 
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,

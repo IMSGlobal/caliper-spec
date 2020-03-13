@@ -5,7 +5,7 @@
 <img height="100%" width="100%" src="assets/caliper-session_event_timedout-v2.png" alt="SessionEvent TimedOut image">
 
 <p>A Caliper <code>SessionEvent</code> models the creation and subsequent termination of a user session established by a
-    <a href="#Person">Person</a> interacting with a <a href="#SoftwareApplication">SoftwareApplication</a>.
+    <a href="#Person">Person</a> interacting with a <a href="#softwareapplication">SoftwareApplication</a>.
 </p>
 
 <dl>
@@ -41,13 +41,13 @@
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+        <td><a href="#Person">Person</a> | <a href="#softwareapplication">SoftwareApplication</a> |
             <a href="#iriDef">IRI</a>
         </td>
         <td>The <a href="#Agent">Agent</a> who initiated the <code>action</code>. For
             <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions a
             <a href="#Person">Person</a> MUST be specified as the <code>actor</code>. For a
-            <a href="#action-timedOut">TimedOut</a> action a <a href="#SoftwareApplication">SoftwareApplication</a>
+            <a href="#timedout">TimedOut</a> action a <a href="#softwareapplication">SoftwareApplication</a>
             MUST be specified as the <code>actor</code>. The <code>actor</code> value MUST be expressed either as an
             object or as a string corresponding to the actor's <a href="#iriDef">IRI</a>.
         </td>
@@ -58,17 +58,17 @@
         <td><a href="#termDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The value
             range is limited to the <a href="#action-loggedIn">LoggedIn</a>, <a href="#action-loggedOut">LoggedOut</a>,
-            and <a href="#action-timedOut">TimedOut</a> actions only.
+            and <a href="#timedout">TimedOut</a> actions only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Session">Session</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+        <td><a href="#Session">Session</a> | <a href="#softwareapplication">SoftwareApplication</a> |
             <a href="#iriDef">IRI</a></td>
         <td>For <a href="#action-loggedIn">LoggedIn</a> and <a href="#action-loggedOut">LoggedOut</a> actions a
-            <a href="#SoftwareApplication">SoftwareApplication</a> MUST be specified as the <code>object</code>. For a
-            <a href="#action-timedOut">TimedOut</a> action the <a href="#Session">Session</a> MUST be specified as the
+            <a href="#softwareapplication">SoftwareApplication</a> MUST be specified as the <code>object</code>. For a
+            <a href="#timedout">TimedOut</a> action the <a href="#Session">Session</a> MUST be specified as the
             object. The <code>object</code> value MUST be expressed either as an object or as a string corresponding to
             the object's <a href="#iriDef">IRI</a>.
         </td>
@@ -76,9 +76,9 @@
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
-        <td>When logging in to a <a href="#SoftwareApplication">SoftwareApplication</a>, if the actor is attempting to
-            access a particular <a href="#DigitalResource">DigitalResource</a> it MAY be designated as the
+        <td><a href="#digitalresource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td>When logging in to a <a href="#softwareapplication">SoftwareApplication</a>, if the actor is attempting to
+            access a particular <a href="#digitalresource">DigitalResource</a> it MAY be designated as the
             <code>target</code> of the interaction. The <code>target</code> value MUST be expressed either as an object
             or as a string corresponding to the target entity's <a href="#iriDef">IRI</a>.
         </td>
@@ -86,10 +86,10 @@
     </tr>
     <tr>
         <td>referrer</td>
-        <td><a href="#DigitalResource">DigitalResource</a> | <a href="#SoftwareApplication">SoftwareApplication</a> |
+        <td><a href="#digitalresource">DigitalResource</a> | <a href="#softwareapplication">SoftwareApplication</a> |
             <a href="#iriDef">IRI</a>
         </td>
-        <td>The <a href="#DigitalResource">DigitalResource</a> or <a href="#SoftwareApplication">SoftwareApplication</a>
+        <td>The <a href="#digitalresource">DigitalResource</a> or <a href="#softwareapplication">SoftwareApplication</a>
             that constitutes the referring context MAY be specified as the <code>referrer</code>. The
             <code>referrer</code> value MUST be expressed either as an object or as a string corresponding to the
             referrer's <a href="#iriDef">IRI</a>.</td>

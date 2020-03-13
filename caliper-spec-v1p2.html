@@ -4,6 +4,7 @@
     <meta charset='utf-8'>
     <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
     <script src='./respec_shared/contributors.js' class='remove'></script>
+    <script src='./respec_shared/local-biblio.js' class='remove'></script>
     <script class='remove'>
         var respecConfig = {
             specTitle: "Caliper Analytics® Specification",
@@ -13,6 +14,7 @@
             specVersion: "1.2",
             specNature: "normative",
             specType: "spec",
+            localBiblio: _localBiblio,
             contributors:_contributors
         };
     </script>
@@ -66,76 +68,76 @@
         <section id="terminology">
             <h3>Terminology</h3>
 
-            <p><a name="actorDef"></a><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a> capable
+            <p id="actorDef"><strong>Actor</strong>: An <code>actor</code> is an <a href="#agent">Agent</a> capable
                 of initiating or performing an <code>action</code> on a thing or as part of a process. A Caliper
                 <a href="#event">Event</a> includes an <code>actor</code> attribute for representing the
                 <a href="#agent">Agent</a>.</p>
 
-            <p><a name="anonymousDef"></a><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
+            <p id="anonymousDef"><strong>Anonymous, Anonymization</strong>: Applying a process to transform the
                 properties of an <a href="#Entity">Entity</a> to obscure its identity such that the process cannot be
                 reversed nor can the <a href="#Entity">Entity</a> be afterwards distinguished from other
                 such-treated entities.</p>
 
-            <p><a name="blankNodeDef"></a><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
+            <p id="blankNodeDef"><strong>Blank Node Identifier</strong>: a string that begins with "_:" that is
                 used to identify an <a href="#entity">Entity</a> for which an <a href="#iriDef">IRI</a> is not provided.
                 An <a href="#entity">Entity</a> provisioned with a blank node identifier is neither dereferenceable nor has
                 meaning outside the scope of the <a href="#jsonldDef">JSON-LD</a> document within which it resides.</p>
 
-           <p><a name="actionDef"></a><strong>Action</strong>: something performed or done to accomplish a purpose. Caliper
+           <p id="actionDef"><strong>Action</strong>: something performed or done to accomplish a purpose. Caliper
                <a href="#event">Event</a> subtypes define a controlled vocabulary of one or more
                <a href="#actions">actions</a> relevant to the activity domain. A Caliper <a href="#event">Event</a>
                includes an <code>action</code> attribute for expressing the associated <code>action</code>.</p>
 
-            <p><a name="contextDef"></a><strong>Context</strong>: a special
+            <p id="contextDef"><strong>Context</strong>: a special
                 <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps the terms employed in a
                 JSON document to <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or more published
                 vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
                 an economical way of communicating document semantics to services interested in consuming Caliper event
                 data.</p>
 
-            <p><a name="depersonalizedDef"></a><strong>Depersonalize, Depersonalized</strong>: applying a process to
+            <p id="depersonalizedDef"><strong>Depersonalize, Depersonalized</strong>: applying a process to
                 transform the properties of an <a href="#Entity">Entity</a> in order to obscure its identity such that
                 the process might be reversed thus preserving the ability to afterwards distinguish from other
                 such-treated entities.</p>
 
-            <p><a name="describeDef"></a><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
+            <p id="describeDef"><strong>Describe</strong>: a Caliper message containing an <a href="#entity">Entity</a>
                 that is not directly associated with an <a href="#event">Event</a>. Entities can be sent asynchronously using
                 <em>Describe</em> messages in order to reduce verbosity (e.g. sending a <a href="#person">Person</a> entity
                 as a <em>Describe</em> avoids having to repeat the <a href="#person">Person</a> object in each
                 <a href="#event">Event</a> that includes it).</p>
 
-            <p><a name="endpointDef"></a><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
+            <p id="endpointDef"><strong>Endpoint</strong>: a receiver or consumer of Caliper data that is bound
                 to a specific network protocol.</p>
 
-            <p><a name="entityDef"></a><strong>Entity</strong>: an object or a thing that participates in learning-related
+            <p id="entityDef"><strong>Entity</strong>: an object or a thing that participates in learning-related
                 activity. Caliper <a href="#entity">Entity</a> types provide coarsed-grained representations of applications,
                 people, groups and resources that constitute the "stuff" of a Caliper <a href="#event">Event</a>.
                 Each <a href="#entity">Entity</a> corresponds to a node in a directed graph.</p>
 
-            <p><a name="envelopeDef"></a><strong>Envelope</strong>: a data structure that serves as a transport container
+            <p id="envelopeDef"><strong>Envelope</strong>: a data structure that serves as a transport container
                 of Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data.  The envelope also includes
-                metadata about the emitting <a href="#sensor">Sensor</a> and the data payload.</p>
+                metadata about the emitting <a href="#the-sensor-api">Sensor</a> and the data payload.</p>
 
-            <p><a name="eventDef"></a><strong>Event</strong>: describes a relationship established between an
+            <p id="eventDef"><strong>Event</strong>: describes a relationship established between an
                 <a href="#agent">Agent</a> (the <code>actor</code>) and an <a href="#entity">Entity</a> (the
                 <code>object</code>) formed as a result of a purposeful <code>action</code> undertaken by the
                 <code>actor</code> in connection to the <code>object</code> at a particular moment in time.</p>
 
-            <p><a name="jsonldDef"></a><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
-                and messaging format, processing algorithms and API for working with <a href="#linkedData">Linked Data</a>.
+            <p id="jsonldDef"><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
+                and messaging format, processing algorithms and API for working with <a href="#linkedDataDef">Linked Data</a>.
                 The messages described in this specification are intended to be used in programming environments that
                 support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
 
-            <p><a name="iriDef"></a><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
+            <p id="iriDef"><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
                 Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal
                 character set rather than US-ASCII per <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>.
-                <a href="#linkedData">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
+                <a href="#linkedDataDef">Linked Data</a> rely on IRIs to refer to most nodes and properties.</p>
 
-            <p><a name="iso8601Def"></a><strong>ISO 8601</strong>: Caliper data and time values are formatted per
+            <p id="iso8601Def"><strong>ISO 8601</strong>: Caliper data and time values are formatted per
                 ISO 8601 with the addition of millisecond precision. The format is yyyy-MM-ddTHH:mm:ss.SSSZ where 'T'
                 separates the date from the time while 'Z' indicates that the time is set to UTC.</p>
 
-            <p><a name="linkedDataDef"></a><strong>Linked Data</strong>: A set of design principles first articulated
+            <p id="linkedDataDef"><strong>Linked Data</strong>: A set of design principles first articulated
                 by Tim Berners-Lee for discovering, connecting, and sharing structured data over the Web. The principles
                 can be summarized as follows: use <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> as names for things;
                 use HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> so that information about things (e.g., people,
@@ -143,62 +145,62 @@
                 their <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> in order to promote discovery of new relationships
                 between things.</p>
 
-            <p><a name="lisDef"></a><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
+            <p id="lisDef"><strong>LIS</strong>: Learning Information Services&reg; (LIS&reg;) [[!LIS-20]] is an
                 IMS standard that defines how systems manage the exchange of information that describes people, groups,
                 memberships, courses and outcomes.</p>
 
-            <p><a name="ltiDef"></a><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;) [[!LTI-13]] is an
+            <p id="ltiDef"><strong>LTI</strong>: Learning Tools Interoperability&reg; (LTI&reg;) [[!LTI-13]] is an
                 IMS standard for integration of rich learning applications within educational environments.</p>
 
-            <p><a name="profileDef"></a><strong>Profile</strong>: models a learning activity or a supporting
+            <p id="profileDef"><strong>Profile</strong>: models a learning activity or a supporting
                 activity that helps facilitate learning.  Each profile provides a domain-specific set of terms and concepts
                 that application designers and developers can draw upon to describe common user interactions in a consistent
                 manner using a shared vocabulary.</p>
 
-            <p><a name="objectDef"></a><strong>Object</strong>: an <a href="#entity">Entity</a> that an
+            <p id="objectDef"><strong>Object</strong>: an <a href="#entity">Entity</a> that an
                 <a href="#agent">Agent</a> interacts with that becomes the focus, target or object of an interaction.
                 A Caliper <a href="#event">Event</a> includes an <code>object</code> attribute for representing the
                 resource.</p>
 
-            <p><a name="profileDef"></a><strong>Profile</strong>: a segment of the information model that describes
+            <p id="profileDef"><strong>Profile</strong>: a segment of the information model that describes
                 a learning activity or a supporting activity that helps facilitate learning. A Caliper profile comprises
                 related Caliper events, entities and actions that together describe the activity. A Caliper profile also
                 serves as a unit of certification.</p>
 
-            <p><a name="sensorDef"></a><strong>Sensor</strong>: Software assets deployed within a learning application that
-                implement the <a href="#sensorAPIDef">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
+            <p id="sensorDef"><strong>Sensor</strong>: Software assets deployed within a learning application that
+                implement the <a href="#the-sensor-api">Sensor API&trade;</a> for marshalling and transmitting Caliper data to
                 a target endpoint.</p>
 
-            <p><a name="sensorAPIDef"></a><strong>Sensor API&trade;</strong>: The standard set of methods and supported
-                parameters that a <a href="#sensorDef">Sensor</a> implements according to this specification in order
+            <p id="sensorAPIDef"><strong>Sensor API&trade;</strong>: The standard set of methods and supported
+                parameters that a <a href="#the-sensor-api">Sensor</a> implements according to this specification in order
                 to transmit Caliper data in an interoperable way.</p>
 
-            <p><a name="termDef"></a><strong>Term</strong>: a word or short expression that expands to an
+            <p id="termDef"><strong>Term</strong>: a word or short expression that expands to an
                 <a href="#iriDef">IRI</a> when mapped to a JSON-LD <a href="#contextDef">context</a> document. Terms are
                 employed by Caliper as <code>type</code> property string values in order to distinguish between various
                 JSON representations of entities and events defined by the Caliper information model.</p>
 
-            <p><a name="typeCoercionDef"></a><strong>Type Coercion</strong>: the process of coercing values to a particular
+            <p id="typeCoercionDef"><strong>Type Coercion</strong>: the process of coercing values to a particular
                 data type.</p>
 
-            <p><a name="uriDef"></a><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
+            <p id="uriDef"><strong>URI</strong>:  the Uniform Resource Identifier (<a href="#uriDef">URI</a>)
                 utilizes the US-ASCII character set to identify a resource. Per <a href="#rfc2396">RFC 2396</a> a
                 <a href="#uriDef">URI</a> "can be further classified as a locator, a name or both."  Both the Uniform
                 Resource Locator (<a href="#urlDef">URL</a>) and the Uniform Resource Name (<a href="#urnDef">URN</a>)
                 are considered subspaces of the more general <a href="#uriDef">URI</a> space.
 
-            <p><a name="urlDef"></a><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
+            <p id="urlDef"><strong>URL</strong>: A Uniform Resource Locator (<a href="#urlDef">URL</a>) is a
                 type of <a href="#uriDef">URI</a> that provides a reference to resource that specifies both its location
                 and a means of retrieving a representation of it.  An HTTP <a href="#uriDef">URI</a> is a
                 <a href="#urlDef">URL</a> and using HTTP <a href="#iriDef">IRIs</a> /<a href="#uriDef">URIs</a> to identify
-                things is fundamental to <a href="#linkedData">Linked Data</a>.</p>
+                things is fundamental to <a href="#linkedDataDef">Linked Data</a>.</p>
 
-            <p><a name="urnDef"></a><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a type
+            <p id="urnDef"><strong>URN</strong>: A Uniform Resource Name (<a href="#urnDef">URN</a>) is a type
                 of <a href="#uriDef">URI</a> that provides a persistent identifier for a resource that is bound to a
                 defined namespace.  Unlike a <a href="#urlDef">URL</a> a <a href="#urnDef">URN</a> is location-independent
                 and provides no means of accessing a representation of the named resource.</p>
 
-            <p><a name="uuidDef"></a><strong>UUID</strong>: a 128-bit identifier that does not require a registration
+            <p id="uuidDef"><strong>UUID</strong>: a 128-bit identifier that does not require a registration
                 authority to assure uniqueness. However, absolute uniqueness is not guaranteed although the collision
                 probability is considered extremely low. Caliper recommends use of randomly or pseudo-randomly
                 generated version 4 UUIDs. Each Caliper <a href="#event">Event</a> MUST be assigned a UUID that is
@@ -225,7 +227,7 @@
                     </dd>
                     <dt>Conformance and Certification guide</dt>
                     <dd>The conformance and certification guide that accompanies the Caliper 1.2 specification
-                        defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-11]].
+                        defines the conformance requirements for Caliper Sensors [[!CALIPER-12-CERT]].
                     </dd>
                 </dl>
             </section>
@@ -290,22 +292,22 @@
         </ul>
 
 
-        <p>For example, the <a href="#ForumProfile">Forum Profile</a> models a set of activities associated
+        <p>For example, the <a href="#profile-forum">Forum Profile</a> models a set of activities associated
             with online discussions involving instructors and learners. The profile currently includes a
-            <a href="#ForumEvent">ForumEvent</a>, <a href="#MessageEvent">MessageEvent</a>,
-            <a href="#NavigationEvent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a> and
-            <a href="#ViewEvent">ViewEvent</a>. An action sequence mediated by the
-            <a href="#ForumProfile">Forum Profile</a> might involve a learner navigating to a forum, subscribing
+            <a href="#forumevent">ForumEvent</a>, <a href="#messageevent">MessageEvent</a>,
+            <a href="#navigationevent">NavigationEvent</a>, <a href="#ThreadEvent">ThreadEvent</a> and
+            <a href="#viewevent">ViewEvent</a>. An action sequence mediated by the
+            <a href="#profile-forum">Forum Profile</a> might involve a learner navigating to a forum, subscribing
             to it, viewing a thread, posting a message in reply to an earlier post and then marking the message as
             read.</p>
 
         <p>Extending Caliper's information model involves designing a new profile or enhancing an existing one.
             Implementers are free to implement only those Caliper profiles as are necessary to model a learning
             domain. A video platform provider may decide that only the
-            <a href="#AssignableProfile">Assignable Profile</a>, <a href="#MediaProfile">Media Profile</a> and
-            <a href="#SessionProfile">Session Profile</a> are relevant to its needs, while developers instrumenting
-            an assessment engine would most likely implement the <a href="#AssessmentProfile">Assessment Profile</a>,
-            <a href="#GradingProfile">Grading Profile</a> and <a href="#SessionProfile">Session Profile</a>.</p>
+            <a href="#profile-assignable">Assignable Profile</a>, <a href="#profile-media">Media Profile</a> and
+            <a href="#profile-session">Session Profile</a> are relevant to its needs, while developers instrumenting
+            an assessment engine would most likely implement the <a href="#profile-assessment">Assessment Profile</a>,
+            <a href="#profile-grading">Grading Profile</a> and <a href="#profile-session">Session Profile</a>.</p>
 
         <p>Caliper 1.2 includes the following profiles which are summarized individually below:</p>
 
@@ -362,7 +364,7 @@
         <p>Over the last decade the advent of cloud-based, networked applications have led to changes in the way data
             is structured and represented.  Data once considered strictly hierarchical, like a curriculum, a course
             roster, or a transcript can now frequently link out to other kinds of data.  Modeling bundles of data pointing
-            to other bundles of data now requires thinking in terms of graphs and <a href="#linkedData">Linked Data</a>.
+            to other bundles of data now requires thinking in terms of graphs and <a href="#linkedDataDef">Linked Data</a>.
             Caliper <a href="#event">Event</a> data presents us with similar structures. A Caliper
             <a href="#event">Event</a> can link to user data, digital content, courses and rosters, grades and
             credentials, institutional and organizational data, application and session data, and so on, the sources of
@@ -377,7 +379,7 @@
             network.</p>
 
         <p><a href="#jsonldDef">JSON-LD</a> defines an economical syntax for representing learning activity data
-            as <a href="#linkedData">Linked Data</a> using <a href="#jsonDef">JSON</a> as the underlying
+            as <a href="#linkedDataDef">Linked Data</a> using JSON as the underlying
             data-interchange format. <a href="#jsonldDef">JSON-LD</a> also provides an API and set of processing
             algorithms for working with <a href="#jsonldDef">JSON-LD</a> documents that are based on different contexts.
             Algorithms have also been developed to serialize <a href="#rdf">RDF</a> as <a href="#jsonldDef">JSON-LD</a>
@@ -403,7 +405,7 @@
             <h4>Requirements</h4>
             <ul>
                 <li>Each Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a>
-                    <em><a href="#describeDef">describe</a></em> document generated by a <a href="#sensor">Sensor</a>
+                    <em><a href="#describeDef">describe</a></em> document generated by a <a href="#the-sensor-api">Sensor</a>
                     MUST be provisioned with a <a href="#jsonldDef">JSON-LD</a> <code>@context</code> defined as a
                     property of the top-level object.</li>
                 <li>The top-level <code>@context</code> property type MUST be defined as a string or an array.</li>
@@ -460,9 +462,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <section id="serialization-identifiers">
             <h3>Identifiers</h3>
 
-            <p><a href="#linkedData">Linked Data</a> relies on <a href="#iriDef">IRIs</a>/<a href="#uriDefs">URIs</a>
+            <p><a href="#linkedDataDef">Linked Data</a> relies on <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a>
                 for the identification and retrieval of resources.  Likewise, <a href="#jsonldDef">JSON-LD</a> specifies
-                the use of <a href="#iriDef">IRIs</a>/<a href="#uriDefs">URIs</a> for identifying most nodes
+                the use of <a href="#iriDef">IRIs</a>/<a href="#uriDef">URIs</a> for identifying most nodes
                 (i.e., JSON objects) and their attributes.  Caliper too specifies the use of <a href="#iriDef">IRIs</a>
                 for identifying nodes (i.e., the things or entities being described) and their attributes.</p>
 
@@ -521,9 +523,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 interpreted as an <a href="#iriDef">IRI</a>.  Type coercion of this sort provides representational
                 flexibility that implementers are encouraged to leverage.</p>
 
-            <p>The following <a href="#messageEvent">MessageEvent</a> example utilizes an inline context to illustrate
+            <p>The following <a href="#messageevent">MessageEvent</a> example utilizes an inline context to illustrate
                 how <a href="#jsonldDef">JSON-LD</a> types can be specified in a context. The
-                <a href="#messageEvent">MessageEvent</a>, <a href="#person">Person</a> and
+                <a href="#messageevent">MessageEvent</a>, <a href="#person">Person</a> and
                 <a href="#message">Message</a> terms are all considered node types. Other terms illustrate the
                 coercion of values to specified data types.  In the example below, the values of the <code>actor</code>,
                 <code>object</code> and <code>edApp</code> terms are coerced to the <code>@id</code> keyword. Use of
@@ -540,7 +542,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <pre><code data-include="fixtures/v1p2/caliperEventMessagePostedInlineContext.json"></code></pre>
             </figure>
 
-            <p>As the abbreviated <a href="#forumEvent">ForumEvent</a> example below demonstrates, in cases where
+            <p>As the abbreviated <a href="#forumevent">ForumEvent</a> example below demonstrates, in cases where
                 an <a href="#event">Event</a> references the same <a href="#entity">Entity</a> more than once
                 (e.g., <code>actor</code>, <code>member</code>, <code>user</code>; <code>group</code>,
                 <code>organization</code>), or a property is associated with a specific type (e.g.,
@@ -553,7 +555,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <pre><code data-include="fixtures/v1p2/caliperEventForumSubscribed.json"></code></pre>
             </figure>
 
-            <p>Indeed, the example <a href="#forumEvent">ForumEvent</a> could be thinned still further if each
+            <p>Indeed, the example <a href="#forumevent">ForumEvent</a> could be thinned still further if each
                 referenced <a href="#entity">Entity</a> is provisioned with a dereferenceable <a href="#iriDef">IRI</a>
                 that permits consumers to retrieve a more robust representation of the object if required.</p>
 
@@ -567,7 +569,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>Anonymous Entities</h3>
 
             <p>Caliper has a formal convention for serializing <a href="#anonymousDef">anonymous</a> entities. When
-                a <a href="#sensor">Sensor</a> application wants to explicitly indicate that an
+                a <a href="#the-sensor-api">Sensor</a> application wants to explicitly indicate that an
                 <a href="#Entity">Entity</a> it is sending in an <a href="#Event">Event</a> is
                 <a href="#anonymousDef">anonymous</a>, it should transmit an <a href="#anonymousDef">anonymous</a>
                 form of that <a href="#Entity">Entity</a> in its normal place within the <a href="#Event">Event</a>.
@@ -577,26 +579,26 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p>Note that because a Caliper <a href="#endpoint">Endpoint</a> might choose to store received Caliper
                 entities as individual nodes in a data graph, it may not be appropriate for a
-                <a href="#sensor">Sensor</a> to send more properties in an <a href="#anonymousDef">anonymous</a>
+                <a href="#the-sensor-api">Sensor</a> to send more properties in an <a href="#anonymousDef">anonymous</a>
                 <a href="#Entity">Entity</a> than its <code>id</code> and <code>type</code>, as these properties may
                 not get recorded or may get overwritten by subsequent uses of the same type of
                 <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>. By best practice, a
-                <a href="#sensor">Sensor</a> should always send <a href="#anonymousDef">anonymous</a> entities fully
+                <a href="#the-sensor-api">Sensor</a> should always send <a href="#anonymousDef">anonymous</a> entities fully
                 composed in-line within an <a href="#Event">Event</a> and not separately described. Also by best
                 practice, a Caliper <a href="endpoint">Endpoint</a> should treat this
                 <a href="#anonymousDef">anonymous</a> use in a distinct way to preserve any additional properties that
                 might also be carried with the <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>
                 within the <a href="#Event">Event</a>.</p>
 
-            <p class="note" title="Entity depersonalization"><a href="#sensor">Sensor</a>
+            <p class="note" title="Entity depersonalization"><a href="#the-sensor-api">Sensor</a>
                 applications SHOULD NOT use this method to convey
                 <a href="#depersonalizedDef">depersonalized</a> entities. The methods by which
-                <a href="#sensor">Sensor</a> applications might
+                <a href="#the-sensor-api">Sensor</a> applications might
                 <a href="#depersonalizedDef">depersonalize</a> entities
                 to obscure or safeguard their identity are not within the scope of this document.</p>
 
             <p>The following example illustrates how an <a href="#anonymousDef">anonymous</a>
-                <a href="#Person">Person</a> might be transmitted by a <a href="#sensor">Sensor</a>:</p>
+                <a href="#Person">Person</a> might be transmitted by a <a href="#the-sensor-api">Sensor</a>:</p>
 
             <figure class="example">
                 <figcaption> - Anonymous Person Entity - JSON-LD</figcaption>
@@ -606,7 +608,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>A Caliper <a href="#Event">Event</a> can include multiple <a href="#anonymousDef">anonymous</a> entities,
                 as in the case of the following <a href="#ToolUseEvent">ToolUseEvent</a> where the <code>edApp</code>
                 has been configured to report only the times and context of its use, but not to identify the
-                <code>actor</code> or the <code>group</code> using the <a href="#SoftwareApplication">SoftwareApplication</a>.
+                <code>actor</code> or the <code>group</code> using the <a href="#softwareapplication">SoftwareApplication</a>.
             </p>
 
             <figure class="example">
@@ -633,7 +635,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <ul>
                 <li>create JSON object representations of Caliper <a href="#event">Event</a> and
-                    <a href="#entity">Entity</a> types as described in Section <a href="#infoModel">2.0</a>. The particular
+                    <a href="#entity">Entity</a> types as described in the <a href="#serialization-0">Serialization</a> Section. The particular
                     <a href="#event">Event</a> and <a href="#entity">Entity</a> types that a <code>Sensor</code>
                     must be capable of expressing are determined by the <a href="#profiles">profiles</a>
                     implemented as described in Section <a href="#profiles">3.0</a>.</li>
@@ -659,7 +661,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p>Caliper <a href="#event">Event</a> and <a href="#entity">Entity</a> data MUST be transmitted inside a Caliper
                 <a href="#envelope">Envelope</a>, a purpose-built JSON data structure that includes metadata about the
-                emitting <a href="#sensor">Sensor</a> and the data payload.</p>
+                emitting <a href="#the-sensor-api">Sensor</a> and the data payload.</p>
 
             <h4>Properties</h4>
             <p>Caliper <a href="#envelope">Envelope</a> properties are listed below. The <code>sensor</code>,
@@ -678,8 +680,8 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <tr>
                     <td>sensor</td>
                     <td>string</td>
-                    <td>A unique identifier assigned either to the <a href="#sensor">Sensor</a> or to the instrumented
-                        platform, application or service utilizing the <a href="#sensor">Sensor</a>. The identifier SHOULD
+                    <td>A unique identifier assigned either to the <a href="#the-sensor-api">Sensor</a> or to the instrumented
+                        platform, application or service utilizing the <a href="#the-sensor-api">Sensor</a>. The identifier SHOULD
                         be in the form of an <a href="#iriDef">IRI</a>.</td>
                     <td>Required</td>
                 </tr>
@@ -687,7 +689,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                     <td>sendTime</td>
                     <td>DateTime</td>
                     <td>A date and time string value expressed with millisecond precision that indicates the time at
-                        which the <a href="#sensor">Sensor</a> issued the message.  The value MUST be expressed using the
+                        which the <a href="#the-sensor-api">Sensor</a> issued the message.  The value MUST be expressed using the
                         format YYYY-MM-DDTHH:mm:ss.SSSZ set to UTC with no offset specified.</td>
                     <td>Required</td>
                 </tr>
@@ -720,7 +722,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p>Each <a href="#event">Event</a> and <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
                 transmitted inside an <a href="#envelope">Envelope</a> MUST be serialized as a
-                <a href="#jsonld">JSON-LD</a> document.</p>
+                <a href="#jsonldDef">JSON-LD</a> document.</p>
 
             <figure class="example">
                 <figcaption> - Envelope: single event payload</figcaption>
@@ -736,7 +738,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <section id="httpRequest">
             <h3>HTTP Requests</h3>
 
-            <p>A Caliper <a href="#sensor">Sensor</a> MUST be capable of transmitting Caliper data successfully to a
+            <p>A Caliper <a href="#the-sensor-api">Sensor</a> MUST be capable of transmitting Caliper data successfully to a
                 Caliper <a href="#endpoint">Endpoint</a>.  Communication with an <a href="#endpoint">Endpoint</a> is
                 limited to message exchanges using the Hypertext Transport Protocol (HTTP) with the connection encrypted
                 with Transport Layer Security (TLS). See the
@@ -751,14 +753,14 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>The Caliper endpoint also provides configuration information if a GET request is sent.
             This is explained in the <a href="#configuration-information">Configuration Information</a> section.</p>
 
-            <p class="note" title="Authorization header">A <a href="#sensor">Sensor</a> SHOULD
+            <p class="note" title="Authorization header">A <a href="#the-sensor-api">Sensor</a> SHOULD
                 also set the <code>Authorization</code> request header field using
                 the "Bearer" authentication scheme described in <a href="#rfc6750">RFC 6750</a>,
                 <a href="https://tools.ietf.org/html/rfc6750#section-2">Section 2.1</a>.
                 The <code>b64token</code> authorization credential sent by a
-                <a href="#sensor">Sensor</a> MUST be one the
+                <a href="#the-sensor-api">Sensor</a> MUST be one the
                 <a href="#endpoint">Endpoint</a> can validate although the credential MAY be
-                opaque to the emitting <a href="#sensor">Sensor</a> itself.</p>
+                opaque to the emitting <a href="#the-sensor-api">Sensor</a> itself.</p>
 
             <table>
                 <thead>
@@ -795,7 +797,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <h2>Endpoint</h2>
 
         <p>A Caliper <a href="#endpoint">Endpoint</a> MUST be capable of receiving Caliper data sent over HTTP by a
-            Caliper <a href="#sensor">Sensor</a> using the standard POST request method. The connection MUST be
+            Caliper <a href="#the-sensor-api">Sensor</a> using the standard POST request method. The connection MUST be
             secured with Transport Layer Security (TLS) and a valid TLS certificate provided. The
             <a href="#endpoint">Endpoint</a> MUST be capable of accessing standard HTTP request headers and support
             message authentication that utilizes the HTTP <code>Authorization</code> request header &quot;Bearer&quot;
@@ -806,12 +808,12 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
         <section id="httpResponse">
             <h3>HTTP Responses</h3>
 
-            <p>Following receipt of a <a href="#sensor">Sensor</a> HTTP request message, the
+            <p>Following receipt of a <a href="#the-sensor-api">Sensor</a> HTTP request message, the
                 <a href="#endpoint">Endpoint</a> MUST reply with an HTTP response message. The response will include
                 a three-digit status code indicating whether or not the <a href="#endpoint">Endpoint</a> was able to
                 understand and satisfy the request, as defined by <a href="#rfc7231">RFC 7231</a>.</p>
 
-            <p>When signalling to a <a href="#sensor">Sensor</a> that the endpoint has successfully received the
+            <p>When signalling to a <a href="#the-sensor-api">Sensor</a> that the endpoint has successfully received the
                 request message, the <a href="#endpoint">Endpoint</a> MUST reply with a <code>2xx</code> class status
                 code. By best practice, the <a href="#endpoint">Endpoint</a> SHOULD use the <code>200 OK</code> response
                 but might instead choose to send a <code>201 Created</code> (to indicate successful receipt of the
@@ -829,9 +831,9 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <li>If the request message's Caliper <a href="#envelope">Envelope</a> is malformed (for example,
                         missing fields required by the Envelop's version), reply with a <code>400 Bad Request</code>
                         status code.</li>
-                <li>If the <a href="#sensor">Sensor</a> sends an unauthorized request, or the
+                <li>If the <a href="#the-sensor-api">Sensor</a> sends an unauthorized request, or the
                         <a href="#endpoint">Endpoint</a> is unable to validate the authorization, or the
-                        <a href="#endpoint">Endpoint</a> cannot determine that the <a href="#sensor">Sensor</a>
+                        <a href="#endpoint">Endpoint</a> cannot determine that the <a href="#the-sensor-api">Sensor</a>
                         has sufficient privilege to send such a message, reply with a <code>401 Unauthorized</code>.</li>
                 <li>If the request message has a content-type other than <code>application/json</code>, reply with
                         a <code>415 Unsupported Media Type</code>.</li>
@@ -840,7 +842,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                         a <code>422 Unprocessable Entity</code> status code.</li>
             </ul>
 
-            <p>The <a href="#endpoint">Endpoint</a> MAY respond to <a href="#sensor">Sensor</a> messages with other
+            <p>The <a href="#endpoint">Endpoint</a> MAY respond to <a href="#the-sensor-api">Sensor</a> messages with other
                 standard HTTP status codes to indicate result dispositions that vary from the cases described above.
                 The <a href="#endpoint">Endpoint</a> MAY also communicate more detailed information about problem
                 states, using the standard method for reporting problem details described in
@@ -848,14 +850,14 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
 
             <p class="note" title="Beware simple Sensor implementations">Caliper
                 <a href="#endpoint">Endpoint</a> implementers should bear in mind that some Caliper
-                <a href="#sensor">Sensor</a> implementations may lack sophisticated error
+                <a href="#the-sensor-api">Sensor</a> implementations may lack sophisticated error
                 handling.</p>
         </section>
 
         <section id="endpoint_config">
             <h3>Configuration Information</h3>
 
-            <p>Before sending Caliper data, a <a href="#sensor">Sensor</a> MAY choose to check the current status of an
+            <p>Before sending Caliper data, a <a href="#the-sensor-api">Sensor</a> MAY choose to check the current status of an
                 <a href="#endpoint">Endpoint</a> using the standard GET request method, with the same restrictions on
                 transport security and authorization as enforced when sending Caliper data.</p>
 
@@ -864,14 +866,14 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                     it MUST respond with a `200 OK` status code. The body of a successful response MUST contain its
                     configuration parameters in a JSON data structure.
                 </li>
-                <li>If the <a href="#sensor">Sensor</a> sends a message without an `Authorization` request header of
+                <li>If the <a href="#the-sensor-api">Sensor</a> sends a message without an `Authorization` request header of
                     the RECOMMENDED form or sends a token credential that the <a href="#endpoint">Endpoint</a> is
                     unable to either validate or determine has sufficient privileges to submit Caliper data, the
                     <a href="#endpoint">Endpoint</a> SHOULD reply with a `401 Unauthorized` response.
                 </li>
             </ul>
 
-            <p>A <a href="#sensor">Sensor</a> sending a ping request SHOULD interpret any status code besides `200 OK`
+            <p>A <a href="#the-sensor-api">Sensor</a> sending a ping request SHOULD interpret any status code besides `200 OK`
                 or `401 Unauthorized` as the <a href="#endpoint">Endpoint</a> indicating that its service is currently
                 unavailable.</p>
 
@@ -899,7 +901,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                     <td>caliperSupportedVersions </td>
                     <td>array</td>
                     <td>List of IRIs identifying the Caliper version(s) the <a href="#endpoint">Endpoint</a>
-                        supports. A <a href="#sensor">Sensor</a> MUST ensure that the Caliper data they send to
+                        supports. A <a href="#the-sensor-api">Sensor</a> MUST ensure that the Caliper data they send to
                         the <a href="#endpoint">Endpoint</a> is based on one of the Caliper
                         <a href="#jsonldDef">JSON-LD</a> context document versions found in this list. By best
                         practice, tools should (if able) choose to use the most modern supported version in this
@@ -938,7 +940,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <p>Certain Caliper data properties are expressed as strings of variable length.
                 <a href="#jsonldDef">JSON-LD</a> also defines a set of processing algorithms for transforming
                 <a href="#jsonldDef">JSON-LD</a> documents in ways that can change the length of keys and values
-                that are expressed as <a href="#iridDef">IRIs</a>, compact <a href="#iridDef">IRIs</a> or
+                that are expressed as <a href="#iriDef">IRIs</a>, compact <a href="#iriDef">IRIs</a> or
                 <a href="#termDef">Terms</a>.  Many implementers will choose to store each incoming
                 <a href="#event">Event</a> and <a href="#entity">Entity</a> <em><a href="#describeDef">describe</a></em>
                 received as a <a href="#jsonldDef">JSON-LD</a> document or as a graph data structure consisting of
@@ -1679,7 +1681,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>GeneralProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>GeneralProfile</em> if the
-               Event is meant to be interpreted within the <a href="#general-profile">General Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-general">General Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1694,7 +1696,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>AnnotationProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>AnnotationProfile</em> if the
-               Event is meant to be interpreted within the <a href="#annotation-profile">Annotation Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-annotation">Annotation Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1709,7 +1711,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>AssessmentProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>AssessmentProfile</em> if the
-               Event is meant to be interpreted within the <a href="#assessment-profile">Assessment Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-assessment">Assessment Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1724,7 +1726,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>AssignableProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>AssignableProfile</em> if the
-               Event is meant to be interpreted within the <a href="#assignable-profile">Assignable Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-assignable">Assignable Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1739,7 +1741,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>FeedbackProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>FeedbackProfile</em> if the
-               Event is meant to be interpreted within the <a href="#feedback-profile">Feedback Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-feedback">Feedback Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1754,7 +1756,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>ForumProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>ForumProfile</em> if the
-               Event is meant to be interpreted within the <a href="#forum-profile">Forum Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-forum">Forum Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1769,7 +1771,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>GradingProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>GradingProfile</em> if the
-               Event is meant to be interpreted within the <a href="#grading-profile">Grading Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-grading">Grading Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1784,7 +1786,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>MediaProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>MediaProfile</em> if the
-               Event is meant to be interpreted within the <a href="#media-profile">Media Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-media">Media Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1799,7 +1801,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>ReadingProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>ReadingProfile</em> if the
-               Event is meant to be interpreted within the <a href="#reading-profile">Reading Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-reading">Reading Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1829,7 +1831,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>SearchProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>SearchProfile</em> if the
-               Event is meant to be interpreted within the <a href="#search-profile">Search Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-search">Search Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>
@@ -1844,7 +1846,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
             <h3>SessionProfile</h3>
 
             <p>Set the <code>Event.profile</code> value to <em>SessionProfile</em> if the
-               Event is meant to be interpreted within the <a href="#session-profile">Session Profile</a>.</p>
+               Event is meant to be interpreted within the <a href="#profile-session">Session Profile</a>.</p>
 
             <dl>
                 <dt>IRI</dt>

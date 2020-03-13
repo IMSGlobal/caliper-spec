@@ -12,9 +12,9 @@
 </dl>
 
 <p>The Caliper Grading Profile models grading activities performed by an <a href="#Agent">Agent</a>,
-    typically a <a href="#Person">Person</a> or a <a href="#SoftwareApplication">SoftwareApplication</a>.
+    typically a <a href="#Person">Person</a> or a <a href="#softwareapplication">SoftwareApplication</a>.
     Grading a learner's <a href="#Attempt">Attempt</a> of an
-    <a href="#AssignableDigitalResource">AssignableDigitalResource</a> and generating a
+    <a href="#assignabledigitalresource">AssignableDigitalResource</a> and generating a
     <a href="#Score">Score</a> is modeled as is viewing a <a href="#Result">Result</a>.</p>
 
 <p>The grading profile allows information to be captured about grade changes for a given assessment or
@@ -47,7 +47,7 @@
 </ul>
 
 <p>The Grading Profile defines a <a href="#GradeEvent">GradeEvent</a> for describing the scoring of assignments
-    and a <a href="#ViewEvent">ViewEvent</a> for viewing results. Two actions are described:
+    and a <a href="#viewevent">ViewEvent</a> for viewing results. Two actions are described:
 
 <table>
     <thead>
@@ -68,7 +68,7 @@
             <td><a href="#Score">Score</a></td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
             <td><a href="#Result">Result</a><br /></td>
@@ -77,13 +77,13 @@
     </tbody>
 </table>
 
-When constructing a <a href="#GradeEvent">GradeEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by the Grading
+When constructing a <a href="#GradeEvent">GradeEvent</a> or <a href="#viewevent">ViewEvent</a> governed by the Grading
 Profile the following rules and recommendations apply:
 
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
-    <li>For auto-graded scenarios the <a href="#SoftwareApplication">SoftwareApplication</a> MUST be
+    <li>For auto-graded scenarios the <a href="#softwareapplication">SoftwareApplication</a> MUST be
         specified as the <code>actor</code>.</li>
     <li>Although optional, the governing <code>profile</code> SHOULD also be specified.</li>
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,

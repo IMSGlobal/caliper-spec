@@ -68,28 +68,28 @@
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href=
+        <td><a href="#softwareapplication">SoftwareApplication</a> | <a href=
           "https://www.imsglobal.org/sites/default/files/caliper/v1p1/caliper-spec-v1p1/caliper-spec-v1p1.html#iriDef"
         >IRI</a></td>
-        <td>The <a href="#SoftwareApplication">SoftwareApplication</a> that is the target of the <code>actor</code>'s launch
+        <td>The <a href="#softwareapplication">SoftwareApplication</a> that is the target of the <code>actor</code>'s launch
             activity. The <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the software application's IRI.
         </td>
         <td>Required</td>
     <tr>
         <td>generated</td>
-        <td><a href=#DigitalResource">DigitalResource</a></td>
+        <td><a href="#digitalresource">DigitalResource</a></td>
         <td>In the case that the workflow comes with a resource intended for the receiver of the workflow
             message associated with this event (for example, a file, or image, or LTI resource link for
             the receiver to embed within its system), this property can carry its representation as a Caliper
-            <a href=#DigitalResource">DigitalResource</a> or, more likely, one of its specific subtypes.
+            <a href="#digitalresource">DigitalResource</a> or, more likely, one of its specific subtypes.
         <td>Optional</td>
     </tr>
     <tr>
         <td>target</td>
         <td><a href="#Link">Link</a> | <a href="#LtiLink">LtiLink</a></td>
         <td>The fully qualified URL to which the workflow was redirected. In the case of the
-            <a href="#Launched">Launched</a> action, this would be the fully qualified entry-point on the external
+            <a href="#launched">Launched</a> action, this would be the fully qualified entry-point on the external
             tool to which the platform launches. In the case of the <a href="#action-returned">Returned</a> action,
             this would be the fully qualified entry-point on the platform to which the tool is redirecting the
             workflow after user activity from the original launch finishes (this could be the

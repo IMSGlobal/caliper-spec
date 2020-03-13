@@ -13,7 +13,7 @@
 
 <p>The Caliper Reading Profile models activities associated with navigating to and viewing digital textual
     content. Caliper provides a number of entities representing digital content including a generic
-    <a href="#DigitalResource">DigitalResource</a> and
+    <a href="#digitalresource">DigitalResource</a> and
     <a href="#DigitalResourceCollection">DigitalResourceCollection</a> along with
     <a href="#Document">Document</a>, <a href="#Chapter">Chapter</a>, <a href="#Page">Page</a>,
     <a href="#WebPage">WebPage</a>, <a href="#Message">Message</a> and <a href="#Frame">Frame</a>.</p>
@@ -47,8 +47,8 @@
 <p>When used in conjunction with the <a href="#profile-assessment">Assessment Profile</a> viewing patterns can be
     correlated to performance measures.</p>
 
-<p>The Reading Profile defines a <a href="#NavigationEvent">NavigationEvent</a> for traversing resources and a
-    <a href="#ViewEvent">ViewEvent</a> for viewing content. Two actions are described:
+<p>The Reading Profile defines a <a href="#navigationevent">NavigationEvent</a> for traversing resources and a
+    <a href="#viewevent">ViewEvent</a> for viewing content. Two actions are described:
 
 <table>
     <thead>
@@ -62,23 +62,23 @@
     </thead>
     <tbody>
         <tr>
-            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#navigationevent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-navigatedTo">NavigatedTo</a></td>
-            <td><a href="#DigitalResource">DigitalResource</a></td>
-            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#digitalresource">DigitalResource</a></td>
+            <td><a href="#digitalresource">DigitalResource</a></td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
-            <td><a href="#DigitalResource">DigitalResource</a></td>
-            <td><a href="#DigitalResource">DigitalResource</a></td>
+            <td><a href="#digitalresource">DigitalResource</a></td>
+            <td><a href="#digitalresource">DigitalResource</a></td>
         </tr>
     </tbody>
 </table>
 
-When constructing a <a href="#NavigationEvent">NavigationEvent</a> or <a href="#ViewEvent">ViewEvent</a> governed by
+When constructing a <a href="#navigationevent">NavigationEvent</a> or <a href="#viewevent">ViewEvent</a> governed by
 the Reading Profile the following rules and recommendations apply:
 
 <ul>

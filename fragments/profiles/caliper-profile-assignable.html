@@ -13,7 +13,7 @@
 
 <p>The Assignable Profile models activities associated with the assignment of digital content to a learner
     for completion according to specific criteria.  Caliper provides a generic
-    <a href="#assignableDigitalResource">AssignableDigitalResource</a> for describing the
+    <a href="#assignabledigitalresource">AssignableDigitalResource</a> for describing the
     <code>object</code> of these activities as well as a learner's <a href="#attempt">Attempt</a> for
     recording a count of the number of times an assigned resource has been attempted.</p>
 
@@ -43,7 +43,7 @@
 </ul>
 
 <p>The Assignable Profile defines an <a href="#AssignableEvent">AssignableEvent</a>,
-    <a href="#NavigationEvent">NavigationEvent</a>, and <a href="#ViewEvent">ViewEvent</a> for
+    <a href="#navigationevent">NavigationEvent</a>, and <a href="#viewevent">ViewEvent</a> for
     describing learner interactions with assignments. Eight actions are described:</p>
 
 <table>
@@ -61,63 +61,63 @@
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-activated">Activated</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-deactivated">Deactivated</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-started">Started</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-completed">Completed</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-submitted">Submitted</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
             <td><a href="#AssignableEvent">AssignableEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-reviewed">Reviewed</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#navigationevent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-navigatedTo">NavigatedTo</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
-            <td><a href="#AssignableDigitalResource">AssignableDigitalResource</a></td>
+            <td><a href="#assignabledigitalresource">AssignableDigitalResource</a></td>
             <td>&nbsp;</td>
         </tr>
     </tbody>
 </table>
 
-When constructing an <a href="#AssignableEvent">AssignableEvent</a>, <a href="#NavigationEvent">NavigationEvent</a>,
-and <a href="#ViewEvent">ViewEvent</a> the following rules and recommendations apply:
+When constructing an <a href="#AssignableEvent">AssignableEvent</a>, <a href="#navigationevent">NavigationEvent</a>,
+and <a href="#viewevent">ViewEvent</a> the following rules and recommendations apply:
 
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
@@ -141,7 +141,7 @@ and <a href="#ViewEvent">ViewEvent</a> the following rules and recommendations a
         <code>count</code>. Set the <code>count</code> value to 1 for a first attempt and increment by 1 for each
         subsequent attempt.</li>
     <li>Parent-child relationships that exist between
-        <a href="#assignableDigitalResource">AssignableDigitalResource</a> attempts MAY be represented by
+        <a href="#assignabledigitalresource">AssignableDigitalResource</a> attempts MAY be represented by
         use of the <a href="#Attempt">Attempt</a> <code>isPartOf</code> property.</li>
     <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>

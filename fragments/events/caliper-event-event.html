@@ -36,14 +36,14 @@
     <dd>
         <a href="#AnnotationEvent">AnnotationEvent</a>,
         <a href="#AssignableEvent">AssignableEvent</a>,
-        <a href="#AssessmentEvent">AssessmentEvent</a>,
-        <a href="#AssessmentItemEvent">AssessmentItemEvent</a>,
+        <a href="#assessmentevent">AssessmentEvent</a>,
+        <a href="#assessmentitemevent">AssessmentItemEvent</a>,
         <a href="#FeedbackEvent">FeedbackEvent</a>,
-        <a href="#ForumEvent">ForumEvent</a>,
+        <a href="#forumevent">ForumEvent</a>,
         <a href="#GradeEvent">GradeEvent</a>,
-        <a href="#MediaEvent">MediaEvent</a>,
-        <a href="#MessageEvent">MessageEvent</a>,
-        <a href="#NavigationEvent">NavigationEvent</a>,
+        <a href="#mediaevent">MediaEvent</a>,
+        <a href="#messageevent">MessageEvent</a>,
+        <a href="#navigationevent">NavigationEvent</a>,
         <a href="#QuestionnaireEvent">QuestionnaireEvent</a>,
         <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a>,
         <a href="#ResourceManagementEvent">ResourceManagementEvent</a>,
@@ -52,9 +52,9 @@
         <a href="#SurveyEvent">SurveyEvent</a>,
         <a href="#SurveyInvitationEvent">SurveyInvitationEvent</a>,
         <a href="#ThreadEvent">ThreadEvent</a>,
-        <a href="#ToolLaunch">ToolLaunchEvent</a>,
+        <a href="#ToolLaunchEvent">ToolLaunchEvent</a>,
         <a href="#ToolUseEvent">ToolUseEvent</a>,
-        <a href="#ViewEvent">ViewEvent</a>
+        <a href="#viewevent">ViewEvent</a>
     </dd>
     <dt>Properties</dt>
     <dd>The base set of <a href="#Event">Event</a> properties or attributes is listed below.
@@ -74,7 +74,7 @@
 
 <p class="note" title="Referencing an Event's governing profile">Although each
     <a href="#Event">Event's</a> <code>profile</code> property is considered optional (in order
-    to ensure backwards compatibility) <a href="#sensor">Sensors</a> SHOULD specify for each
+    to ensure backwards compatibility) <a href="#the-sensor-api">Sensors</a> SHOULD specify for each
     <a href="#Event">Event</a> created the relevant <code>profile</code> string value in
     order to inform consumers which profile governs the construction and interpretation of
     the <a href="#Event">Event</a>. The profile terms are listed in the
@@ -156,8 +156,8 @@
     </tr>
     <tr>
         <td>edApp</td>
-        <td><a href="#SoftwareApplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
-        <td>A <a href="#SoftwareApplication">SoftwareApplication</a> that constitutes the application context.
+        <td><a href="#softwareapplication">SoftwareApplication</a> | <a href="#iriDef">IRI</a></td>
+        <td>A <a href="#softwareapplication">SoftwareApplication</a> that constitutes the application context.
             The <code>edApp</code> value MUST be expressed either as an object or as a string corresponding to the
             edApp's <a href="#iriDef">IRI</a>. </td>
         <td>Optional</td>
@@ -182,7 +182,7 @@
         <td>referrer</td>
         <td><a href="#Entity">Entity</a> | <a href="#iriDef">IRI</a></td>
         <td>An <a href="#Entity">Entity</a> that represents the referring context. A
-            <a href="#SoftwareApplication">SoftwareApplication</a> or <a href="#DigitalResource">DigitalResource</a>
+            <a href="#softwareapplication">SoftwareApplication</a> or <a href="#digitalresource">DigitalResource</a>
             will typically constitute the referring context. The <code>referrer</code> value MUST be expressed
             either as an object or as a string corresponding to the referrer's <a href="#iriDef">IRI</a>.</td>
         <td>Optional</td>
@@ -212,7 +212,7 @@
     </tr>
     <tr>
         <td>federatedSession</td>
-        <td><a href="#FederatedSession">federatedSession</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#LtiSession">LtiSession</a> | <a href="#iriDef">IRI</a></td>
         <td>If the <a href="#Event">Event</a> occurs within the context of an <a href="#ltiDef">LTI</a> platform launch,
             the tool's <a href="#LtiSession">LtiSession</a> MAY be referenced. The <code>federatedSession</code>
             value MUST be expressed either as an object or as a string corresponding to the federated session's

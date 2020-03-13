@@ -13,7 +13,7 @@
 
 <p>The Caliper Assessment Profile models assessment-related activities including interactions with
     individual assessment items. Caliper provides <a href="#Assessment">Assessment</a> and
-    <a href="#AssessmentItem">AssessmentItem</a> entities for describing the <code>object</code> of
+    <a href="#assessmentitem">AssessmentItem</a> entities for describing the <code>object</code> of
     these activities, as well as a learner's <a href="#Attempt">Attempt</a> for recording a count of the
     number of times an assigned resource has been attempted. Five <a href="#Response">Response</a> types
     are also provided for capturing individual item responses.</p>
@@ -48,9 +48,9 @@
     </li>
 </ul>
 
-<p>The Assessment Profile defines an <a href="#AssessmentEvent">AssessmentEvent</a>,
-    <a href="#AssessmentItemEvent">AssessmentItemEvent</a>,
-    <a href="#NavigationEvent">NavigationEvent</a>, and <a href="#ViewEvent">ViewEvent</a> for
+<p>The Assessment Profile defines an <a href="#assessmentevent">AssessmentEvent</a>,
+    <a href="#assessmentitemevent">AssessmentItemEvent</a>,
+    <a href="#navigationevent">NavigationEvent</a>, and <a href="#viewevent">ViewEvent</a> for
     describing learner interactions with tests and questions. Ten actions are described:</p>
 
 <table>
@@ -65,81 +65,81 @@
     </thead>
     <tbody>
         <tr>
-            <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
+            <td><a href="#assessmentevent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-started">Started</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
+            <td><a href="#assessmentevent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-paused">Paused</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
+            <td><a href="#assessmentevent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-resumed">Resumed</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
+            <td><a href="#assessmentevent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-restarted">Restarted</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentEvent">AssessmentEvent</a></td>
+            <td><a href="#assessmentevent">AssessmentEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-submitted">Submitted</a></td>
             <td><a href="#Assessment">Assessment</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
+            <td><a href="#assessmentitemevent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-started">Started</a></td>
-            <td><a href="#AssessmentItem">AssessmentItem</a></td>
+            <td><a href="#assessmentitem">AssessmentItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
+            <td><a href="#assessmentitemevent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-skipped">Skipped</a></td>
-            <td><a href="#AssessmentItem">AssessmentItem</a></td>
+            <td><a href="#assessmentitem">AssessmentItem</a></td>
             <td><a href="#Attempt">Attempt</a></td>
         </tr>
         <tr>
-            <td><a href="#AssessmentItemEvent">AssessmentItemEvent</a></td>
+            <td><a href="#assessmentitemevent">AssessmentItemEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-completed">Completed</a></td>
-            <td><a href="#AssessmentItem">AssessmentItem</a></td>
+            <td><a href="#assessmentitem">AssessmentItem</a></td>
             <td><a href="#Response">Response</a></td>
         </tr>
         <tr>
-            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#navigationevent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-navigatedTo">NavigatedTo</a></td>
-            <td><a href="#Assessment">Assessment</a> | <a href="#AssessmentItem">AssessmentItem</a></td>
+            <td><a href="#Assessment">Assessment</a> | <a href="#assessmentitem">AssessmentItem</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
-            <td><a href="#Assessment">Assessment</a> | <a href="#AssessmentItem">AssessmentItem</a></td>
+            <td><a href="#Assessment">Assessment</a> | <a href="#assessmentitem">AssessmentItem</a></td>
             <td>&nbsp;</td>
         </tr>
     </tbody>
 </table>
 
-When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
-<a href="#AssessmentItemEvent">AssessmentItemEvent</a>, <a href="#NavigationEvent">NavigationEvent</a>, and
-<a href="#ViewEvent">ViewEvent</a> governed by the Assessment Profile the following rules and recommendations apply:
+When constructing an <a href="#assessmentevent">AssessmentEvent</a>,
+<a href="#assessmentitemevent">AssessmentItemEvent</a>, <a href="#navigationevent">NavigationEvent</a>, and
+<a href="#viewevent">ViewEvent</a> governed by the Assessment Profile the following rules and recommendations apply:
 
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
@@ -148,7 +148,7 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>For <a href="#AssessmentEvent">AssessmentEvent</a> actions, the <code>generated</code>
+    <li>For <a href="#assessmentevent">AssessmentEvent</a> actions, the <code>generated</code>
         <a href="#attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
         object the <a href="#Attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>,
         the <code>assignable</code>, and the <code>count</code>. Set the <a href="#Attempt">Attempt</a>
@@ -162,7 +162,7 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
             <li><a href="#action-restarted">Restarted</a>: increment the <code>count</code> value by 1.</li>
         </ul>
     </li>
-    <li>For each <a href="#AssessmentItemEvent">AssessmentItemEvent</a> described, referencing a
+    <li>For each <a href="#assessmentitemevent">AssessmentItemEvent</a> described, referencing a
         <code>generated</code> <a href="#Attempt">Attempt</a> or <a href="#Response">Response</a> depends
         on the <code>action</code> value specified.  Set the <a href="#Attempt">Attempt</a>
         <code>count</code> values as follows (per action):
@@ -177,11 +177,11 @@ When constructing an <a href="#AssessmentEvent">AssessmentEvent</a>,
                 unchanged.</li>
         </ul>
     </li>
-    <li>Parent-child relationships that exist between <a href="#AssessmentItem">AssessmentItem</a> and
+    <li>Parent-child relationships that exist between <a href="#assessmentitem">AssessmentItem</a> and
         <a href="#Assessment">Assessment</a> attempts MAY be represented by use of the
         <a href="#Attempt">Attempt</a> <code>isPartOf</code> property.</li>
-    <li>As a learner navigates from one <a href="#AssessmentItem">AssessmentItem</a> to another
-        <a href="#AssessmentItem">AssessmentItem</a>, the previous <a href="#AssessmentItem">AssessmentItem</a>
+    <li>As a learner navigates from one <a href="#assessmentitem">AssessmentItem</a> to another
+        <a href="#assessmentitem">AssessmentItem</a>, the previous <a href="#assessmentitem">AssessmentItem</a>
         MAY be specified as the <code>referrer</code>.</li>
     <li>If an <a href="#ltiDef">LTI</a> Tool mints the event, the <code>federatedSession</code> SHOULD be
         referenced.</li>

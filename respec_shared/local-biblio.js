@@ -1,7 +1,7 @@
 var _localBiblio = {
     "CALIPER-12": {
         "title": "Caliper® Analytics Specification 1.2",
-        "href": "https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-spec-v1p2/caliper-spec-v1p2.html",
+        "href": "https://www.imsglobal.org/spec/caliper/v1p2",
         "publisher": "IMS Global Learning Consortium",
         "authors": [
             "Whyte, Anthony",
@@ -16,7 +16,7 @@ var _localBiblio = {
 
     "CALIPER-12-CERT": {
         "title": "Caliper Analytics® Sensor Certification Guide 1.2",
-        "href": "https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-sensor-cert-guide-v1p2/caliper-sensor-cert-guide-v1p2.html",
+        "href": "https://www.imsglobal.org/spec/caliper/v1p2/cert",
         "publisher": "IMS Global Learning Consortium",
         "authors": [
             "Mosbacker, Bracken",
@@ -26,7 +26,7 @@ var _localBiblio = {
 
     "CALIPER-12-CONTEXT": {
         "title": "Caliper Analytics® JSON-LD Context 1.2",
-        "href": "https://purl.imsglobal.org/spec/v1p2/context/",
+        "href": "http://purl.imsglobal.org/ctx/caliper/v1p2/",
         "publisher": "IMS Global Learning Consortium",
         "authors": [
             "Whyte, Anthony"
@@ -41,7 +41,7 @@ var _localBiblio = {
 
     "CALIPER-12-IMPL": {
         "title": "Caliper Analytics® Sensor Implementation Guide 1.2",
-        "href": "https://www.imsglobal.org/sites/default/files/caliper/v1p2/caliper-sensor-impl-guide-v1p2/caliper-sensor-impl-guide-v1p2.html",
+        "href": "https://www.imsglobal.org/spec/caliper/v1p2/impl",
         "publisher": "IMS Global Learning Consortium",
         "authors": [
             "Mosbacker, Bracken",

@@ -67,8 +67,8 @@
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#MediaObject">MediaObject</a> | <a href="#iriDef">IRI</a></td>
-        <td>The <a href="#MediaObject">MediaObject</a> or a subtype that constitutes the <code>object</code> of the
+        <td><a href="#mediaobject">MediaObject</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#mediaobject">MediaObject</a> or a subtype that constitutes the <code>object</code> of the
             interaction. The <code>object</code> value MUST be expressed either as an object or as a string
             corresponding to the object's <a href="#iriDef">IRI</a>.
         </td>
@@ -76,10 +76,10 @@
     </tr>
     <tr>
         <td>target</td>
-        <td><a href="#MediaLocation">MediaLocation</a> | <a href="#iriDef">IRI</a></td>
+        <td><a href="#medialocation">MediaLocation</a> | <a href="#iriDef">IRI</a></td>
         <td>If the <code>MediaEvent</code> <code>object</code> is an
-            <a href="#AudioObject">AudioObject</a> or <a href="#VideoObject">VideoObject</a>,
-            a <a href="#MediaLocation">MediaLocation</a> SHOULD be specified in order to provide the
+            <a href="#audioobject">AudioObject</a> or <a href="#videoobject">VideoObject</a>,
+            a <a href="#medialocation">MediaLocation</a> SHOULD be specified in order to provide the
             <code>currentTime</code> in the audio or video stream that marks the action. If the
             <code>currentTime</code> is specified, the value MUST be an ISO 8601 formatted duration, e.g.,
             &quot;PT30M54S&quot;. The <code>target</code> value MUST be expressed either as an object or as a

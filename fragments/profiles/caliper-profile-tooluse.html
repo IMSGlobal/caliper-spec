@@ -57,9 +57,9 @@
 <aside class="example" title="Expressing learner progress using aggregate measures">
     <p>A <a href="#ToolUseEvent">ToolUseEvent</a> MAY also be used to communicate learner
     progress by referencing a collection of one or more
-    <a href="#AggregateMeasure">AggregateMeasure</a> entities. A <a href="#sensor">Sensor</a>
+    <a href="#AggregateMeasure">AggregateMeasure</a> entities. A <a href="#the-sensor-api">Sensor</a>
     that needs to report such information should assign an
-    <a href="#entity-AggregateMeasureCollection">AggregateMeasureCollection</a>
+    <a href="#aggregatemeasurecollection">AggregateMeasureCollection</a>
     as the <code>generated</code> value for any reported aggregate measures.</p>
 </aside>
 
@@ -78,7 +78,7 @@
             <td><a href="#ToolUseEvent">ToolUseEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-used">Used</a></td>
-            <td><a href="#SoftwareApplication">SoftwareApplication</a></td>
+            <td><a href="#softwareapplication">SoftwareApplication</a></td>
             <td><a href="#Entity">Entity</a> (<a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>)</td>
         </tr>
     </tbody>
@@ -94,7 +94,7 @@ recommendations apply:
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
     <li>A <code>generated</code> <a href="#AggregateMeasureCollection">AggregateMeasureCollection</a>
-        containing one or more <a href="#entity-aggregateMeasure">AggregateMeasure</a> entities providing
+        containing one or more <a href="#aggregatemeasure">AggregateMeasure</a> entities providing
         information on a learner's "progress" using the tool MAY be expressed. The following metrics MAY
         be recorded:
         <ul>

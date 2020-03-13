@@ -13,9 +13,9 @@
 
 <p>The Caliper Media Profile models interactions between learners and rich content such as audio, images
     and video.  Implementers can leverage a number of media-related entities including
-    <a href="#audioObject">AudioObject</a>, <a href="#audioObject">ImageObject</a>, and
-    <a href="#videoObject">VideoObject</a>, each subtyped from a generic
-    <a href="#mediaObject">MediaObject</a>. A <a href="#mediaLocation">MediaLocation</a> entity is also
+    <a href="#audioobject">AudioObject</a>, <a href="#audioobject">ImageObject</a>, and
+    <a href="#videoobject">VideoObject</a>, each subtyped from a generic
+    <a href="#mediaobject">MediaObject</a>. A <a href="#medialocation">MediaLocation</a> entity is also
     provided in order to represent the current location in an audio or video stream.</p>
 
 <p>The Media Profile supports the following user stories:</p>
@@ -41,10 +41,10 @@
         relevant information in the LMS, such as assignment and quiz results.</p>
 </aside>
 
-<p>The Media Profile defines a <a href="#MediaEvent">MediaEvent</a>, <a href="#navigationEvent">NavigationEvent</a>,
-    and <a href="#viewEvent">ViewEvent</a> for describing interactions with media such as an
-    <a href="#AudioObject">AudioObject</a>, <a href="#ImageObject">ImageObject</a>, or
-    <a href="#VideoObject">VideoObject</a>. Twenty-one actions are described:
+<p>The Media Profile defines a <a href="#mediaevent">MediaEvent</a>, <a href="#navigationevent">NavigationEvent</a>,
+    and <a href="#viewevent">ViewEvent</a> for describing interactions with media such as an
+    <a href="#audioobject">AudioObject</a>, <a href="#ImageObject">ImageObject</a>, or
+    <a href="#videoobject">VideoObject</a>. Twenty-one actions are described:
 
 <table>
     <thead>
@@ -58,157 +58,157 @@
     </thead>
     <tbody>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-started">Started</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-ended">Ended</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-paused">Paused</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-resumed">Resumed</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-restarted">Restarted</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-forwardedTo">ForwardedTo</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-jumpedTo">JumpedTo</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-changedResolution">ChangedResolution</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-changedSize">ChangedSize</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-changedSpeed">ChangedSpeed</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-changedVolume">ChangedVolume</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-enabledClosedCaptioning">EnabledClosedCaptioning</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-disabledClosedCaptioning">DisabledClosedCaptioning</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-enteredFullScreen">EnteredFullScreen</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-exitedFullScreen">ExitedFullScreen</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-muted">Muted</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-unmuted">Unmuted</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-openedPopout">OpenedPopout</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#MediaEvent">MediaEvent</a></td>
+            <td><a href="#mediaevent">MediaEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-closedPopout">ClosedPopout</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#NavigationEvent">NavigationEvent</a></td>
+            <td><a href="#navigationevent">NavigationEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-navigatedTo">NavigatedTo</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
         <tr>
-            <td><a href="#ViewEvent">ViewEvent</a></td>
+            <td><a href="#viewevent">ViewEvent</a></td>
             <td><a href="#Person">Person</a></td>
             <td><a href="#action-viewed">Viewed</a></td>
-            <td><a href="#MediaObject">MediaObject</a></td>
-            <td><a href="#MediaLocation">MediaLocation</a></td>
+            <td><a href="#mediaobject">MediaObject</a></td>
+            <td><a href="#medialocation">MediaLocation</a></td>
         </tr>
     </tbody>
 </table>
 
-When constructing a <a href="#MediaEvent">MediaEvent</a>, <a href="#NavigationEvent">NavigationEvent</a>, or
-<a href="#ViewEvent">ViewEvent</a> governed by the Media Profile the following rules and recommendations apply:
+When constructing a <a href="#mediaevent">MediaEvent</a>, <a href="#navigationevent">NavigationEvent</a>, or
+<a href="#viewevent">ViewEvent</a> governed by the Media Profile the following rules and recommendations apply:
 <ul>
     <li>The properties <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required and MUST be referenced.</li>
@@ -216,9 +216,9 @@ When constructing a <a href="#MediaEvent">MediaEvent</a>, <a href="#NavigationEv
     <li>Likewise, if activity context data is available and relevant the optional properties <code>generated</code>,
         <code>edApp</code>, <code>group</code>, <code>membership</code>, <code>target</code>, <code>referrer</code>,
         and <code>session</code> SHOULD be referenced.</li>
-    <li>A <a href="#MediaLocation">MediaLocation</a> MAY be specified as the <code>target</code> in order to
+    <li>A <a href="#medialocation">MediaLocation</a> MAY be specified as the <code>target</code> in order to
         indicate the current playback position in an audio or video stream.</li>
-    <li>If the <a href="#mediaLocation">MediaLocation</a> is expressed as an object, set the
+    <li>If the <a href="#medialocation">MediaLocation</a> is expressed as an object, set the
         <code>currentTime</code> value per <code>action</code> as follows:
         <ul>
             <li><a href="#started">Started</a>, <a href="#restarted">Restarted</a>: set the
@@ -230,8 +230,8 @@ When constructing a <a href="#MediaEvent">MediaEvent</a>, <a href="#NavigationEv
                 location in the audio or video stream where the previous pause occurred.</li>
             <li><a href="#ended">Ended</a>: set the <code>currentTime</code> value to the ending
                 or closing location in the audio or video stream.</li>
-            <li>For other <a href="#mediaEvent">MediaEvent</a> supported actions the
-                <a href="#mediaLocation">MediaLocation</a> <code>currentTime</code> value MUST be
+            <li>For other <a href="#mediaevent">MediaEvent</a> supported actions the
+                <a href="#medialocation">MediaLocation</a> <code>currentTime</code> value MUST be
                 set to the location in the audio or video stream where the action occurred.</li>
         </ul>
     </li>
