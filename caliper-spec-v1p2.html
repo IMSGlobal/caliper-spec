@@ -89,14 +89,14 @@
                includes an <code>action</code> attribute for expressing the associated <code>action</code>.</p>
 
             <p id="contextDef"><strong>Context</strong>: a special
-                <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> keyword that maps the terms employed in a
-                JSON document to <a href="https://www.ietf.org/rfc/rfc3987.txt">IRIs</a> that link to one or more published
-                vocabularies. Inclusion of a <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a> context provides
+                <a href="#jsonldDef">JSON-LD</a> keyword that maps the terms employed in a
+                JSON document to <a href="#iriDef">IRIs</a> that link to one or more published
+                vocabularies. Inclusion of a <a href="#jsonldDef">JSON-LD</a> context provides
                 an economical way of communicating document semantics to services interested in consuming Caliper event
                 data.</p>
 
             <p id="depersonalizedDef"><strong>Depersonalize, Depersonalized</strong>: applying a process to
-                transform the properties of an <a href="#Entity">Entity</a> in order to obscure its identity such that
+                transform the properties of an <a href="#entity">Entity</a> in order to obscure its identity such that
                 the process might be reversed thus preserving the ability to afterwards distinguish from other
                 such-treated entities.</p>
 
@@ -126,7 +126,7 @@
             <p id="jsonldDef"><strong>JSON-LD</strong>: a specification providing a JSON-based data serialization
                 and messaging format, processing algorithms and API for working with <a href="#linkedDataDef">Linked Data</a>.
                 The messages described in this specification are intended to be used in programming environments that
-                support <a href="http://json-ld.org/spec/latest/json-ld/">JSON-LD</a>.</p>
+                support <a href="#jsonldDef">JSON-LD</a>.</p>
 
             <p id="iriDef"><strong>IRI</strong>: The Internationalized Resource Identifier (IRI) extends the
                 Uniform Resource Identifier (<a href="#uriDef">URI</a>) scheme by using characters drawn from the Universal
@@ -250,7 +250,7 @@
         <p>The Caliper information model defines a set of concepts, rules, and relationships for describing learning
             activities.  Each activity domain modeled is described in a Caliper <a href="#profileDef">Profile</a>.
             Each profile is composed of one or more <a href="#Event">Event</a> types. Each <a href="#Event">Event</a>
-            defines a controlled vocabulary of <a href="actions">actions</a> undertaken by learners, instructors, and others,
+            defines a controlled vocabulary of <a href="#actions">actions</a> undertaken by learners, instructors, and others,
             that are scoped to the event. Various <a href="#Entity">Entity</a> types representing people, groups, and resources
             are provided in order to better describe both the relationships established between participating entities
             and the contextual elements relevant to the interaction.
@@ -586,7 +586,7 @@ TODO: DEFINE NEW EXAMPLE. v1p1 example superseded by new SearchEvent.
                 <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>. By best practice, a
                 <a href="#the-sensor-api">Sensor</a> should always send <a href="#anonymousDef">anonymous</a> entities fully
                 composed in-line within an <a href="#Event">Event</a> and not separately described. Also by best
-                practice, a Caliper <a href="endpoint">Endpoint</a> should treat this
+                practice, a Caliper <a href="#endpoint">Endpoint</a> should treat this
                 <a href="#anonymousDef">anonymous</a> use in a distinct way to preserve any additional properties that
                 might also be carried with the <a href="#anonymousDef">anonymous</a> <a href="#Entity">Entity</a>
                 within the <a href="#Event">Event</a>.</p>

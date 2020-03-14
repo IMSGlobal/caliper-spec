@@ -201,9 +201,9 @@ the following rules and recommendations apply:
         and <code>session</code> SHOULD be referenced.</li>
     <li>For <a href="#QuestionnaireEvent">QuestionnaireEvent</a> actions, the <code>generated</code>
         <a href="#attempt">Attempt</a> SHOULD be specified. If an <a href="#Attempt">Attempt</a> is expressed as an
-        object the <a href="#Attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the
+        object the <a href="#attempt">Attempt</a> SHOULD define, at a minimum, the <code>assignee</code>, the
         <code>assignable</code>, and the <code>count</code>. For <a href="#action-started">Started</a> actions set
-        the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li><
+        the <code>count</code> value to 1 for a first attempt and increment by 1 for each subsequent attempt.</li>
     <li>For each <a href="#QuestionnaireItemEvent">QuestionnaireItemEvent</a> described, referencing a
         <code>generated</code> <a href="#Attempt">Attempt</a> or <a href="#Response">Response</a> depends
         on the <code>action</code> value specified.  Set the <a href="#Attempt">Attempt</a>

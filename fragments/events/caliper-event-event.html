@@ -94,9 +94,9 @@
     <tr>
         <td>id</td>
         <td><a href="#uuidDef">UUID</a></td>
-        <td>The emitting application MUST provision the <a href="#Event">Event</a> with a <a href="#uuidDef">UUID</a>.
+        <td>The emitting application MUST provision the <a href="#event">Event</a> with a <a href="#uuidDef">UUID</a>.
             A version 4 <a href="#uuidDef">UUID</a> SHOULD be generated. The UUID MUST be expressed as a
-            <a href="#urnDef">URN</a> using the form "urn:uuid:&lt<a href="uuidRef">UUID</a>&gt" per
+            <a href="#urnDef">URN</a> using the form "urn:uuid:&lt;UUID&gt;" per
             [[RFC4122]].</td>
         <td>Required</td>
     </tr>
@@ -104,7 +104,7 @@
         <td>type</td>
         <td><a href="#termDef">Term</a></td>
         <td>A string value corresponding to the <a href="#termDef">Term</a> defined for the <a href="#Event">Event</a>
-            in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a>document.
+            in the external IMS Caliper JSON-LD <a href="http://purl.imsglobal.org/ctx/caliper/v1p2">context</a> document.
             For a generic <a href="#Event">Event</a> set the <code>type</code> to the string value <em>Event</em>.
             If a subtype of <a href="#Entity">Entity</a> is created, set the <code>type</code> to the
             <a href="#termDef">Term</a> corresponding to the subtype utilized, e.g., <em>NavigationEvent</em>.</td>
