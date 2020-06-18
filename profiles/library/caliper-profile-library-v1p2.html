@@ -155,9 +155,14 @@
 
             <p>The Library Profile is provisioned with a
                 <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
-                facilities and a
-                <a href="#ResourceUseEvent">ResourceUseEvent</a>for describing
-                the loaning of library-owned or licensed assets to library patrons.</p>
+                facilities, a <a href="#ResourceUseEvent">ResourceUseEvent</a>for describing
+                the loaning of library-owned or licensed assets to library patrons, and a
+                <a href="#ParticipationEvent"> for tracking actor participation in Library-hosted
+                meetings and activities.</p>
+
+            <section id="LibraryUseEvent"
+                 data-include="../../fragments/events/caliper-event-libraryuse.html">
+            </section>
 
             <section id="ResourceUseEvent"
                  data-include="../../fragments/events/caliper-event-resourceuse.html">
@@ -171,6 +176,17 @@
 
         <section id="actions">
             <h2>Actions</h2>
+
+            <section id="actions-libraryuse">
+                <h3>libraryUseEvent</h3>
+
+                <p>The Caliper <a href="#LibraryUseEvent">LibraryUseEvent</a> supports
+                    the following actions:</p>
+
+                <section id="action-used"
+                     data-include="../../fragments/actions/caliper-action-used.html">
+                </section>
+            </section>
 
             <section id="actions-resourceuse">
                 <h3>ResourceUseEvent</h3>
@@ -264,6 +280,18 @@
             </figure>
 
             <section class="informative">
+                <h3>LibraryUseEvent</h3>
+
+                <p>Below is an example of a <a href="#LibraryUseEvent">LibraryUseEvent</a> that
+                    describes use of <a href="#Library">Library</a> facilities.</p>
+
+                <figure class="example">
+                    <figcaption>ParticipationEvent JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEventLibraryUseUsedLibrary.json"></code></pre>
+                </figure>
+            </section>
+
+            <section class="informative">
                 <h3>ResourceUseEvent</h3>
 
                 <p>Below is an example of a
@@ -281,16 +309,16 @@
                     anonymizes both the <code>actor</code> and the <code>object</code>.</p>
 
                 <figure class="example">
-                    <figcaption>LibraryCirculationvent (Anonymous) JSON-LD</figcaption>
-                    <pre><code data-include="../../fixtures/v1p2/caliperEventLibraryCirculationBorrowedBookAnonymous.json"></code></pre>
+                    <figcaption>ResourceUseEvent (Anonymous) JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEventResourceUseBorrowedBookAnonymous.json"></code></pre>
                 </figure>
             </section>
 
             <section class="informative">
                 <h3>ParticipationEvent</h3>
 
-                <p>Below is an example of a <a href="#ParticipationEvent">ParticipationEvent</a> that
-                    describes use of <a href="#ParticipationEvent">ParticipationEvent</a> facilities.</p>
+                <p>Below is an example of a <a href="#ParticipationEvent">ParticipationEvent</a> that can be
+                    used to track attendance at <a href="#Library">Library-hosted</a> meetings and activities.</p>
 
                 <figure class="example">
                     <figcaption>ParticipationEvent JSON-LD</figcaption>
