@@ -1,0 +1,6 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library",
+  "type": "Library",
+  "name": "University Library"
+}

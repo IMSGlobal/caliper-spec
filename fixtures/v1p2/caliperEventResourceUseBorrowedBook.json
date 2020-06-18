@@ -1,0 +1,28 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:0652c71d-e477-4692-9b4e-89c4079e00e0",
+  "type": "ResourceUseEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Borrowed",
+  "object": {
+    "id": "https://example.edu/catalog/record/013115849",
+    "type": "Book",
+    "name": "The Caliper Cookbook",
+    "otherIdentifiers": [{
+      "type": "SystemIdentifier",
+      "identifierType": "ISBN",
+      "identifier": "000-0-00-000000-0"
+    }],
+    "isPartOf": {
+      "id": "https://example.edu/library",
+      "type": "Library",
+      "name": "University Library"
+    }
+  },
+  "eventTime": "2018-11-15T10:15:00.000Z",
+  "edApp": "https://example.edu/library/circulation"
+}
