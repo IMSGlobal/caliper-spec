@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8'>
+        <script src='https://purl.imsglobal.org/spec/respec-ims-default.js' async class='remove'></script>
+        <script src='local-biblio.js' class='remove'></script>
+        <script class='remove'>
+            var respecConfig = {
+                specTitle: "Caliper Analytics® Library Use Profile",
+                shortName: "caliper-libraryuse",
+                specStatus: "IMS Base Document",
+                specDate: "1 October 2019",
+                specVersion: "1.2-extension",
+                specNature: "normative",
+                specType: "spec",
+                contributors: [
+                    {
+                        name: "Anthony Whyte",
+                        company: "University of Michigan (USA)",
+                        companyURL: "https://umich.edu/",
+                        role: "Author"
+                    },
+                    {
+                        name: "Noah Botimer",
+                        company: "University of Michigan (USA)",
+                        companyURL: "https://umich.edu/",
+                        role: "Author"
+                    },
+                    {
+                        name: "Sebastian Korner",
+                        company: "University of Michigan (USA)",
+                        companyURL: "https://umich.edu/",
+                        role: "Author"
+                    },
+                    {
+                        name: "Etienne Pelaprat",
+                        company: "Unizin (USA)",
+                        companyURL: "https://unizin.org/",
+                        role: "Author"
+                    },
+                    {
+                        name: "Ken Varnum",
+                        company: "University of Michigan (USA)",
+                        companyURL: "https://umich.edu/",
+                        role: "Author"
+                    },
+                    {
+                        name: "Maurice York",
+                        company: "University of Michigan (USA)",
+                        companyURL: "https://umich.edu/",
+                        role: "Author"
+                    }
+                ],
+                localBiblio: _localBiblio
+            };
+        </script>
+    </head>
+    <body>
+        <section id="abstract">
+            <h2>Abstract</h2> This document extends Caliper 1.2 by defining a Library Profile
+            that describes usage of library facilities and circulation services.
+        </section>
+
+        <section>
+            <h2>Overview</h2>
+            <section class="informative">
+                <h3>Design Goals and Rationale</h3>
+
+                <img height="100%" width="100%" src="../../assets/caliper-profile_library.png" alt="Library Use Profile"/>
+
+                <p>The Caliper Library Profile models a <code>Person</code>, typically a learner,
+                    making use of library facilities and circulation services. The profile provides
+                    a <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
+                    facilities and a <a href="#ResourceUseEvent">ResourceUseEvent</a>
+                    for describing the loaning of library-owned or licensed assets to library patrons.
+                </p>
+            </section>
+
+            <section class="informative" id="user-stories">
+                <h3>User Stories</h3>
+                <p>The Library Profile supports the following user stories:</p>
+                <ul>
+                    <li>As a librarian,
+                        <ul>
+                            <li>I would like to ....</li>
+                            <li>I would like to ....</li>
+                            <li>I would like to ....</li>
+                        </ul>
+                    </li>
+                    <li>As a learner,
+                        <ul>
+                            <li>I would like to ....</li>
+                            <li>I would like to ....</li>
+                        </ul>
+                    </li>
+                    <li>As a researcher,
+                        <ul>
+                            <li>I would like to ....</li>
+                            <li>I would like to ....</li>
+                            <li>I would like to ....</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="terminology">
+                <h3>Terminology</h3>
+                <p>All terminology used in this specification is concordant with the term
+                    definitions in the Caliper 1.2 Specification [[!CALIPER-12]].</p>
+            </section>
+
+            <section id="conformance">
+                <h3>Conformance Statements</h3>
+            </section>
+
+            <section id="documentset">
+                <h3>Document Set</h3>
+                <section>
+                    <h4>Normative Documents</h4>
+                    <dl>
+                        <dt>Caliper 1.2</dt>
+                        <dd>This profile is an extension to the Caliper 1.2 specification [[!CALIPER-12]].
+                            All requirements in the Caliper 1.2 specification also apply to implementations of this
+                            specification.
+                        </dd>
+                        <dt>JSON-LD Context</dt>
+                        <dd>The JSON-LD Context for this profile defines all relevant term-IRI mappings
+                            [[!CALIPER-LIBRARY-12-CONTEXT]].
+                        </dd>
+                        <dt>Errata</dt>
+                        <dd>The errata [[!CALIPER-LIBRARY-12-ERRATA]] details any errata registered for this version
+                            of this specification since its publication.
+                        </dd>
+                        <dt>Conformance and Certification guide</dt>
+                        <dd>The conformance and certification guide that accompanies the Caliper 1.2 specification
+                            defines the conformance requirements for Caliper Sensors [[!CALIPER-CERT-12]].
+                        </dd>
+                    </dl>
+                </section>
+
+                <section class="informative">
+                    <h4>Informative Documents</h4>
+                    <dl>
+                        <dt>Caliper 1.2 Implementation Guide</dt>
+                        <dd>The implementation guide that accompanies the Caliper 1.2 specification provides
+                            advice and guidance for implementors [[CALIPER-IMPL-12]].
+                        </dd>
+                    </dl>
+                </section>
+            </section>
+        </section>
+
+        <section id="events">
+            <h2>Events</h2>
+
+            <p>The Library Profile is provisioned with a
+                <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
+                facilities and a
+                <a href="#ResourceUseEvent">ResourceUseEvent</a>for describing
+                the loaning of library-owned or licensed assets to library patrons.</p>
+
+            <section id="ResourceUseEvent"
+                 data-include="../../fragments/events/caliper-event-resourceuse.html">
+            </section>
+
+            <section id="ParticipationEvent"
+                 data-include="../../fragments/events/caliper-event-participation.html">
+            </section>
+
+        </section>
+
+        <section id="actions">
+            <h2>Actions</h2>
+
+            <section id="actions-resourceuse">
+                <h3>ResourceUseEvent</h3>
+
+                <p>The Caliper <a href="#ResourceUseEvent">ResourceUseEvent</a> supports
+                    the following actions:</p>
+
+                <section id="action-accessed"
+                     data-include="../../fragments/actions/caliper-action-accessed.html">
+                </section>
+
+                <section id="action-borrowed"
+                     data-include="../../fragments/actions/caliper-action-borrowed.html">
+                </section>
+
+                <section id="action-returned"
+                     data-include="../../fragments/actions/caliper-action-returned.html">
+                </section>
+            </section>
+
+            <section id="actions-participation">
+                <h3>ParticipationEvent</h3>
+
+                <p>The Caliper <a href="#ParticipationEvent">ParticipationEvent</a> supports
+                    the following actions:</p>
+
+                <section id="action-attended"
+                     data-include="../../fragments/actions/caliper-action-attended.html">
+                </section>
+            </section>
+
+            </section>
+        </section>
+
+        <section id="entities">
+            <h2>Entities</h2>
+
+            <section id="Activity"
+                 data-include="../../fragments/entities/caliper-entity-activity.html">
+            </section>
+
+            <section id="Library"
+                 data-include="../../fragments/entities/caliper-entity-library.html">
+            </section>
+
+            <section id="PhysicalResource"
+                 data-include="../../fragments/entities/caliper-entity-physicalresource.html">
+            </section>
+        </section>
+
+        <section id="systemidentifiertype" class="appendix">
+            <h2>System Identifier Types</h2>
+
+            <p>Caliper provides a controlled vocabulary for enumerating various categories of
+                <a href="#SystemIdentifier">SystemIdentifier</a> types associated with a Caliper
+                <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers
+                between systems (especially with respect to other IMS Global standards).
+            </p>
+
+            <section id="systemidentifier-doi"
+                 data-include="../../fragments/identifiers/caliper-identifier-doi.html">
+            </section>
+
+            <section id="systemidentifier-isbn"
+                 data-include="../../fragments/identifiers/caliper-identifier-isbn.html">
+            </section>
+        </section>
+
+        <section id="jsonld">
+            <h2>Serializing the Model</h2>
+            <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
+                provides a remote Library Profile JSON-LD <a href=
+                  "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryUseProfile-extension">context</a>
+                for mapping <a href="#LibraryUseEvent">LibraryUseEvent</a> and
+                <a href="#ResourceUseEvent">ResourceUseEvent</a> terms to IRIs.
+                Caliper message producers MUST reference the LibraryUse Profile 1.2-extension
+                context in every <a href="#Event">Event</a> subtype described in this profile. Likewise,
+                Caliper message producers MUST reference the LibraryUse Profile 1.2-extension
+                context whenever an <a href="#Entity">Entity</a>> subtype described in this profile is
+                emitted on its own as a <em>describe</em>.</p>
+
+            <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
+                context handling.</p>
+
+            <figure class="example">
+                <figcaption>LibraryUseProfile-extension JSON-LD Context</figcaption>
+<pre><code>{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/LibraryUseProfile-extension",
+  . . .
+}</code></pre>
+            </figure>
+
+            <section class="informative">
+                <h3>ResourceUseEvent</h3>
+
+                <p>Below is an example of a
+                    <a href="#ResourceUseEvent">ResourceUseEvent</a> that describes use
+                    of library circulation services by a library patron borrowing a
+                    <a href="#Book">Book</a>.</p>
+
+                <figure class="example">
+                    <figcaption>ResourceUseEvent JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEventResourceUseBorrowedBook.json"></code></pre>
+                </figure>
+
+                <p>Below is an example of a
+                    <a href="#ResourceUseEvent">ResourceUseEvent</a> that
+                    anonymizes both the <code>actor</code> and the <code>object</code>.</p>
+
+                <figure class="example">
+                    <figcaption>LibraryCirculationvent (Anonymous) JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEventLibraryCirculationBorrowedBookAnonymous.json"></code></pre>
+                </figure>
+            </section>
+
+            <section class="informative">
+                <h3>ParticipationEvent</h3>
+
+                <p>Below is an example of a <a href="#ParticipationEvent">ParticipationEvent</a> that
+                    describes use of <a href="#ParticipationEvent">ParticipationEvent</a> facilities.</p>
+
+                <figure class="example">
+                    <figcaption>ParticipationEvent JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEventParticipationActivity.json"></code></pre>
+                </figure>
+            </section>
+
+            <section class="informative">
+                <h3>Library</h3>
+
+                <p>Below is an example of a <a href="#Library">Library</a> entity describe that can
+                    be sent to an endpoint.</p>
+
+                <figure class="example">
+                    <figcaption>Library describe JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEntityLibrary.json"></code></pre>
+                </figure>
+            </section>
+
+            <section class="informative">
+                <h3>Activity</h3>
+
+                <p>Below is an example of a <a href="#Activity">Activity</a> entity
+                    describe that can be sent to an endpoint.</p>
+
+                <figure class="example">
+                    <figcaption>Activity JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEntityActivity.json"></code></pre>
+                </figure>
+            </section>
+
+            <section class="informative">
+                <h3>PhysicalResource</h3>
+
+                <p>Below is an example of a <a href="#PhysicalResource">PhysicalResource</a> entity describe that can
+                    be sent to an endpoint.</p>
+
+                <figure class="example">
+                    <figcaption>PhysicalResource describe JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEntityPhysicalResource.json"></code></pre>
+                </figure>
+            </section>
+
+        </section>
+
+        <section class="appendix informative" id="revisionhistory">
+            <h2>Revision History</h2>
+
+            <section>
+                <h3>Version History</h3>
+                <table title="Revision History" summary="Publication history and revision details for this specification.">
+                    <thead>
+                    <tr>
+                        <th>Version No.</th>
+                        <th>Release Date</th>
+                        <th>Comments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>IMS Base Document 1.2</td>
+                        <td>1 October 2019</td>
+                        <td>The first internal draft release.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3>Changes from previous version</h3>
+                <p>As this is the first version of this document, no previous version change log exists.</p>
+            </section>
+        </section>
+    </body>
+</html>
