@@ -13,11 +13,10 @@
   },
   "members": [
     {
-      "id": "https://example.edu/autograder",
-      "type": "SoftwareApplication",
-      "name": "Auto Grader",
-      "description": "Automates assignment scoring.",
-      "version": "2.5.2"
+      "id": "https://example.edu/etexts/201",
+      "type": "Document",
+      "name": "IMS Caliper Implementation Guide",
+      "version": "1.1"
     },
     {
       "id": "https://example.edu/users/778899",

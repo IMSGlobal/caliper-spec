@@ -23,7 +23,7 @@
     "maxScore": 25.0,
     "version": "1.0"
   },
-  "generated": {
+  "target": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },

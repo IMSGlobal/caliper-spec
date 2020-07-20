@@ -11,6 +11,6 @@
   "dateToStartOn": "2016-11-10T11:59:59.000Z",
   "dateToSubmit": "2016-11-14T11:59:59.000Z",
   "maxAttempts": 2,
-  "maxSubmits": "Two",
-  "maxScore": 50.0
+  "maxSubmits": 2,
+  "maxScore": 50
 }

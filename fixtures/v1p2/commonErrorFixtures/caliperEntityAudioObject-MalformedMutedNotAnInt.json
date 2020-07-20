@@ -1,0 +1,10 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2",
+  "id": "https://example.edu/audio/765",
+  "type": "AudioObject",
+  "name": "Audio Recording: IMS Caliper Sensor API Q&A.",
+  "mediaType": "audio/ogg",
+  "datePublished": "2016-12-01T06:00:00.000Z",
+  "duration": "PT55M13S",
+  "muted": 1
+}
