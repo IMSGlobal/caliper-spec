@@ -1,8 +1,7 @@
 <h3>Library</h3>
-<p>A Caliper <code>Library</code> represents a . . . TODO.</p>
-
-<p class="note" title="TODO">See <a href="https://libguides.ala.org/library-definition">ALA</a> for
-    definition.</p>
+<p>A Caliper <code>Library</code> can represent any Library organization needed for analytics purposes.
+For example, the primary library organization at a school can have a record, as well as each collection
+or sub-library entity. TODO - better words</p>
 
     <p>As a subtype of <code>Organization</code> a
     <code>Library</code> can act as an <a href="#Agent">Agent</a>. It can be linked both to a
@@ -10,7 +9,7 @@
 
 <dl>
     <dt>IRI</dt>
-    <dd><a href="http://purl.imsglobal.org/caliper/Organization">http://purl.imsglobal.org/caliper/Library</a></dd>
+    <dd><a href="http://purl.imsglobal.org/caliper/Library">http://purl.imsglobal.org/caliper/Library</a></dd>
     <dt>Term</dt>
     <dd>Library</dd>
     <dt>Supertype</dt>
@@ -18,7 +17,9 @@
     <dt>Properties</dt>
     <dd><code>Library</code> inherits all properties defined by its supertype
         <a href="#Organization">Organization</a>, of which <code>id</code> and <code>type</code>
-        are required. Additional type restrictions are described below:
+        are required. <code>LibrarySpace</code> is also provisioned with the additional properties
+        <code>BuildingName</code>, <code>BuildingNumber</code>.
+        Additional type restrictions are described below:
     </dd>
 </dl>
 
@@ -37,6 +38,18 @@
             <td><a href="#termDef">Term</a></td>
             <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>Library</em>.</td>
             <td>Required</td>
+        </tr>
+            <tr>
+            <td>BuildingNumber</td>
+            <td>string</td>
+            <td>The building number for this Library.</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>BuildingName</td>
+            <td>string</td>
+            <td>The building name for this Library</td>
+            <td>Optional</td>
         </tr>
     </tbody>
 </table>

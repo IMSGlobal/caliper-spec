@@ -52,12 +52,29 @@ making use of library facilities</p>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Library">Library</a> | <a href="#IriDef">IRI</a></td>
-        <td>The <a href="#Library">Library</a> that constitutes the <code>object</code>
+        <td><a href="#Library">Library</a> | <a href="#LibrarySpace">LibrarySpace</a> | <a href="#IriDef">IRI</a></td>
+        <td>The Library or LibrarySpace that constitutes the <code>object</code>
             of the interaction. The <code>object</code> value MUST be expressed either as an object or as a
             string corresponding to the object’s <a href="#IriDef">IRI</a>.
         </td>
         <td>Required</td>
+    </tr>
+    <tr>
+        <td>presenceDerivedFromSource</td>
+        <td>string</td>
+        <td>A non-standardized description of the source used to indicate presence in a Library. For example:
+            <code>wifi</code>, <code>reservation</code>, <code>swipe card</code>, <code>sign in</code>
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>presenceDerivedFromID</td>
+        <td>string</td>
+        <td>An identifier that correlates to the presenceDerivedFromSource to indicate which specific
+            source was used if needed. For example, the mac address of the wifi router, or the id of the
+            card swipe machine
+        </td>
+        <td>Optional</td>
     </tr>
     </tbody>
 </table>

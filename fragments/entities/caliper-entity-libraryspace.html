@@ -1,0 +1,78 @@
+<h3>LibrarySpace</h3>
+<p>A Caliper <code>LibrarySpace</code> represents any space used for Library services either permanently or temporarily.</p>
+
+<dl>
+    <dt>IRI</dt>
+    <dd><a href="http://purl.imsglobal.org/caliper/LibrarySpace">http://purl.imsglobal.org/caliper/LibrarySpace</a></dd>
+    <dt>Term</dt>
+    <dd>LibrarySpace</dd>
+    <dt>Supertype</dt>
+    <dd><a href="#Entity">Entity</a></dd>
+    <dt>Properties</dt>
+    <dd><code>LibrarySpace</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
+        which <code>id</code> and <code>type</code> are required. <code>LibrarySpace</code> is also provisioned with
+        the additional properties <code>BuildingName</code>, <code>BuildingNumber</code>, <code>RoomNumber</code>,
+        <code>floor</code>, <code>servicePoint</code>, <code>isPartOf</code>.
+        Additional type restrictions are described below:
+    </dd>
+</dl>
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Disposition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td><a href="#termDef">Term</a></td>
+            <td>The string value MUST be set to the <a href="#termDef">Term</a> <em>LibrarySpace</em>.</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>RoomNumber</td>
+            <td>string</td>
+            <td>The room number for this space if there is one.</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>BuildingNumber</td>
+            <td>string</td>
+            <td>The building number for this space if it's in a building.</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>BuildingName</td>
+            <td>string</td>
+            <td>The building name for this space if it's in a building.</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>floor</td>
+            <td>string</td>
+            <td>The floor for this LibrarySpace. Generally used to indicate loose areas within a Library.</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>servicePoint</td>
+            <td>string</td>
+            <td>The name of location where the interaction happened. For example <code>circulation desk</code>,
+                <code>reference desk</code>, <code>wandering ipad</code>"</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>isPartOf</td>
+            <td><a href="#Library">Library</a> | <a href=
+              "#iriDef"
+            >IRI</a></td>
+            <td>A related <a href="#Library">Library</a> that this LibrarySpace belongs to.
+                The <code>isPartOf</code> value MUST be expressed either as an object or as a string corresponding to the
+                associated entity's IRI.</td>
+            <td>Optional</td>
+        </tr>
+    </tbody>
+</table>
