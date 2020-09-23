@@ -2,7 +2,8 @@
 <img height="100%" width="100%" src="assets/caliper-participation-attended-v1p2.png" alt="ParticipationEvent">
 
 <p>A Caliper <a href="#ParticipationEvent">ParticipationEvent</a> models a
-    <a href="#Person">Person</a> attending a meeting, lecture, workshop . . . .</p>
+    <a href="#Person">Person</a> attending a meeting, lecture, workshop, or any other Library function,
+whether ad-hoc or scheduled.</p>
 
 <dl>
     <dt>IRI</dt>
@@ -63,6 +64,28 @@
             <a href="#iriDef">IRI</a>.
         </td>
         <td>Required</td>
+    </tr>
+    <tr>
+        <td>participationMode</td>
+        <td>string</td>
+        <td>The mode the Person participated in for example <code>virtual</code>,
+            <code>in-person</code>.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>forCourse</td>
+        <td><a href="#CourseOffering">CourseOffering</a> | <a href="#CourseSection">CourseSection</a> | <a href="#iriDef">IRI</a></td>
+        <td>If attending for a specific CourseOffering or CourseSection it can be referenced here.
+        </td>
+        <td>Optional</td>
+    </tr>
+    <tr>
+        <td>arrivalTime</td>
+        <td>DateTime</td>
+        <td>An ISO 8601 date and time value. The value MUST be set to UTC with no offset specified.
+        </td>
+        <td>Optional</td>
     </tr>
     </tbody>
 </table>
