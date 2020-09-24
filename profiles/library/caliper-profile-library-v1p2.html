@@ -235,8 +235,8 @@
                  data-include="../../fragments/entities/caliper-entity-libraryspace.html">
             </section>
 
-            <section id="PhysicalResource"
-                 data-include="../../fragments/entities/caliper-entity-physicalresource.html">
+            <section id="LibraryResource"
+                 data-include="../../fragments/entities/caliper-entity-libraryresource.html">
             </section>
         </section>
 
@@ -244,18 +244,153 @@
             <h2>System Identifier Types</h2>
 
             <p>Caliper provides a controlled vocabulary for enumerating various categories of
-                <a href="#SystemIdentifier">SystemIdentifier</a> types associated with a Caliper
-                <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers
+                <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                types associated with a Caliper <a href="#Entity">Entity</a> that may prove meaningful when exchanging identifiers
                 between systems (especially with respect to other IMS Global standards).
             </p>
 
-            <section id="systemidentifier-doi"
-                 data-include="../../fragments/identifiers/caliper-identifier-doi.html">
-            </section>
+            <h3>Digital Object Identifier (DOI)</h3>
 
-            <section id="systemidentifier-isbn"
-                 data-include="../../fragments/identifiers/caliper-identifier-isbn.html">
-            </section>
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>DigitalObjectIdentifier</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a Digital Object Identifier (DOI).</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/DigitalObjectIdentifier</dd>
+                <dt>Term</dt>
+                <dd>DigitalObjectIdentifier</dd>
+            </dl>
+
+            <h3>International Standard Book Number (ISBN)</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>InternationalStandardBookNumber</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is an International Standard Book Number (ISBN).</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/InternationalStandardBookNumber</dd>
+                <dt>Term</dt>
+                <dd>InternationalStandardBookNumber</dd>
+            </dl>
+
+            <h3>International Standard Serial Number (ISSN)</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>InternationalStandardSerialNumber</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is an International Standard Serial Number.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/InternationalStandardSerialNumber</dd>
+                <dt>Term</dt>
+                <dd>InternationalStandardSerialNumber</dd>
+            </dl>
+
+            <h3>OCLC Number</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>OCLC</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is an OCLC number.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/OCLC</dd>
+                <dt>Term</dt>
+                <dd>OCLC</dd>
+            </dl>
+
+            <h3>Library of Congress Call Number (LC call number)</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>LibraryCongressCallNumber</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a Library of Congress Call Number.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LibraryCongressCallNumber</dd>
+                <dt>Term</dt>
+                <dd>LibraryCongressCallNumber</dd>
+            </dl>
+
+            <h3>Dewey Decimal call number</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>DeweyDecimalCallNumber</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a Dewey Decimal call number.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/DeweyDecimalCallNumber</dd>
+                <dt>Term</dt>
+                <dd>DeweyDecimalCallNumber</dd>
+            </dl>
+
+            <h3>Superintendent of Documents Classification</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>SuperintendentDocumentsClassification</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a Superintendent of Documents Classification.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/SuperintendentDocumentsClassification</dd>
+                <dt>Term</dt>
+                <dd>SuperintendentDocumentsClassification</dd>
+            </dl>
+
+            <h3>Barcode</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>Barcode</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a Barcode.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/Barcode</dd>
+                <dt>Term</dt>
+                <dd>Barcode</dd>
+            </dl>
+
+            <h3>PubMed ID (PMID)</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>PubMedID</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a PubMed ID.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/PubMedID</dd>
+                <dt>Term</dt>
+                <dd>PubMedID</dd>
+            </dl>
+
+            <h3>LibGuide identifier</h3>
+
+            <p>Set the <code>SystemIdentifier.identifierType</code> string value to
+                <code>LibGuideID</code>
+                if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
+                is a LibGuide identifier.</p>
+
+            <dl>
+                <dt>IRI</dt>
+                <dd>http://purl.imsglobal.org/vocab/systemIdentifiers/LibGuideID</dd>
+                <dt>Term</dt>
+                <dd>LibGuideID</dd>
+            </dl>
+
+
+
         </section>
 
         <section id="jsonld">
@@ -352,14 +487,14 @@
             </section>
 
             <section class="informative">
-                <h3>PhysicalResource</h3>
+                <h3>LibraryResource</h3>
 
-                <p>Below is an example of a <a href="#PhysicalResource">PhysicalResource</a> entity describe that can
+                <p>Below is an example of a <a href="#LibraryResource">LibraryResource</a> entity describe that can
                     be sent to an endpoint.</p>
 
                 <figure class="example">
-                    <figcaption>PhysicalResource describe JSON-LD</figcaption>
-                    <pre><code data-include="../../fixtures/v1p2/caliperEntityPhysicalResource.json"></code></pre>
+                    <figcaption>LibraryResource describe JSON-LD</figcaption>
+                    <pre><code data-include="../../fixtures/v1p2/caliperEntityLibraryResource.json"></code></pre>
                 </figure>
             </section>
 

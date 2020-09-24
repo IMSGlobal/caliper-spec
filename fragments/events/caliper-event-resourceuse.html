@@ -50,21 +50,27 @@
         <td>action</td>
         <td><a href="#termDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the
-            <code>object</code>. The value range is limited to the
-            <a href="#action-accessed">Accessed</a>, <a href="#action-borrowed">Borrowed</a> and
-            <a href="#action-returned">Returned</a> only.
+            <code>object</code>. The value range is limited to
+            <a href="#action-accessed">Accessed</a> only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#PhysicalResource">PhysicalResource</a> | <a href="#iriDef">IRI</a></td>
-        <td>The <a href="#PhysicalResource">PhysicalResource</a> that constitutes
-            the <code>object</code> of the interaction. The <code>object</code> value MUST be
-            expressed either as an object or as a string corresponding to the object’s
-            <a href="#iriDef">IRI</a>.
+        <td><a href="#LibraryResource">LibraryResource</a> | <a href="#DigitalResource">DigitalResource</a> | <a href="#iriDef">IRI</a></td>
+        <td>The resource that constitutes the <code>object</code> of the interaction.
+            The <code>object</code> value MUST be expressed either as an object or as a string corresponding
+            to the object’s <a href="#iriDef">IRI</a>.
         </td>
         <td>Required</td>
+    </tr>
+    <tr>
+        <td>accessLocation</td>
+        <td>string</td>
+        <td>The location where the resource was accessed. For example <code>on-campus</code>,
+            <code>off-campus</code>
+        </td>
+        <td>Optional</td>
     </tr>
     </tbody>
 </table>

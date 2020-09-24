@@ -1,7 +1,7 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
   "id": "https://example.edu/equipment/0395487302",
-  "type": "PhysicalResource",
+  "type": "LibraryResource",
   "name": "Camera",
   "isPartOf": {
     "id": "https://example.edu/library",
