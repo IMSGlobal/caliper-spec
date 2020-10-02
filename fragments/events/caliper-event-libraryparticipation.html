@@ -1,19 +1,19 @@
-<h3>ParticipationEvent</h3>
-<img height="100%" width="100%" src="assets/caliper-participation-attended-v1p2.png" alt="ParticipationEvent">
+<h3>LibraryParticipationEvent</h3>
+<img height="100%" width="100%" src="assets/caliper-participation-attended-v1p2.png" alt="LibraryParticipationEvent">
 
-<p>A Caliper <a href="#ParticipationEvent">ParticipationEvent</a> models a
+<p>A Caliper <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> models a
     <a href="#Person">Person</a> attending a meeting, lecture, workshop, or any other Library function,
 whether ad-hoc or scheduled.</p>
 
 <dl>
     <dt>IRI</dt>
-    <dd><a href="https://purl.imsglobal.org/caliper/ParticipationEvent">https://purl.imsglobal.org/caliper/ParticipationEvent</a></dd>
+    <dd><a href="https://purl.imsglobal.org/caliper/LibraryParticipationEvent">https://purl.imsglobal.org/caliper/LibraryParticipationEvent</a></dd>
     <dt>Term</dt>
-    <dd>ParticipationEvent</dd>
+    <dd>LibraryParticipationEvent</dd>
     <dt>Supertype</dt>
     <dd><a href="#Event">Event</a></dd>
     <dt>Properties</dt>
-    <dd>The <code>ParticipationEvent</code> inherits all properties defined by its supertype
+    <dd>The <code>LibraryParticipationEvent</code> inherits all properties defined by its supertype
         <a href="#Event">Event</a>, of which <code>id</code>, <code>type</code>, <code>actor</code>,
         <code>action</code>, <code>object</code>, and <code>eventTime</code> are required.
         Profile-specific type restrictions are described below:
@@ -34,7 +34,7 @@ whether ad-hoc or scheduled.</p>
         <td>type</td>
         <td><a href="#termDef">Term</a></td>
         <td>The string value MUST be set to the <a href="#termDef">Term</a>
-            <em>ParticipationEvent</em>.</td>
+            <em>LibraryParticipationEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
@@ -57,8 +57,8 @@ whether ad-hoc or scheduled.</p>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Activity">Activity</a> | <a href="#iriDef">IRI</a></td>
-        <td>The <a href="#Activity">Activity</a> that constitutes
+        <td><a href="#LibraryActivity">LibraryActivity</a> | <a href="#iriDef">IRI</a></td>
+        <td>The <a href="#LibraryActivity">LibraryActivity</a> that constitutes
             the <code>object</code> of the interaction. The <code>object</code> value MUST be
             expressed either as an object or as a string corresponding to the object’s
             <a href="#iriDef">IRI</a>.

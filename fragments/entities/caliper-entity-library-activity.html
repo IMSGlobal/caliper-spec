@@ -1,20 +1,16 @@
-<h3>Activity</h3>
+<h3>LibraryActivity</h3>
 
-<p class="note" title="Meeting vs Activity">Recommendation: "Meeting" as a generic term for a
-    gathering may be more appropriate than "Activity" since other Caliper events describe activities
-    (e.g., taking an assessment, annotating a document)--arwhyte</p>
-
-<p>A Caliper <code>Activity</code> represents a  meeting TODO . . . What about just LibraryActivity?</p>
+<p>A Caliper <code>LibraryActivity</code> represents an activity organized or led by library staff or in a LibrarySpace.</p>
 
 <dl>
     <dt>IRI</dt>
-    <dd><a href="https://purl.imsglobal.org/caliper/Activity">https://purl.imsglobal.org/caliper/Activity</a></dd>
+    <dd><a href="https://purl.imsglobal.org/caliper/LibraryActivity">https://purl.imsglobal.org/caliper/LibraryActivity</a></dd>
     <dt>Term</dt>
-    <dd>Activity</dd>
+    <dd>LibraryActivity</dd>
     <dt>Supertype</dt>
     <dd><a href="#Entity">Entity</a></dd>
     <dt>Properties</dt>
-    <dd><code>Activity</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
+    <dd><code>LibraryActivity</code> inherits all properties defined by its supertype <a href="#Entity">Entity</a>, of
         which <code>id</code> and <code>type</code> are required. Additional type restrictions are described below:
     </dd>
 </dl>
@@ -32,7 +28,7 @@
     <tr>
         <td>type</td>
         <td><a href="#TermDef">Term</a></td>
-        <td>The string value MUST be set to the Term <em>Activity</em>.</td>
+        <td>The string value MUST be set to the Term <em>LibraryActivity</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
@@ -60,7 +56,7 @@
     <tr>
         <td>location</td>
          <td><a href="#Library">Library</a> | <a href="#LibrarySpace">LibrarySpace</a> | <a href="#IriDef">IRI</a></td>
-        <td>The Library or LibrarySpace the Activity occurred in.</td>
+        <td>The Library or LibrarySpace the LibraryActivity occurred in.</td>
         <td>Optional</td>
     </tr>
     <tr>
@@ -80,20 +76,20 @@
     <tr>
         <td>duration</td>
         <td>Duration</td>
-        <td>The duration of the Activity. If a duration is specified the value MUST conform to the ISO 8601 duration format.</td>
+        <td>The duration of the LibraryActivity. If a duration is specified the value MUST conform to the ISO 8601 duration format.</td>
         <td>Optional</td>
     </tr>
     <tr>
         <td>forCourse</td>
         <td><a href="#CourseOffering">CourseOffering</a> | <a href="#CourseSection">CourseSection</a> | <a href="#iriDef">IRI</a></td>
-        <td>If the Activity is intended for a specific CourseOffering or CourseSection it can be referenced here.
+        <td>If the LibraryActivity is intended for a specific CourseOffering or CourseSection it can be referenced here.
         </td>
         <td>Optional</td>
     </tr>
     <tr>
         <td>academicSession</td>
         <td>string</td>
-        <td>A string value that constitutes a human-readable identifier of the designated period in which this Activity occurs. For example <code>Fall 2016</code>.
+        <td>A string value that constitutes a human-readable identifier of the designated period in which this LibraryActivity occurs. For example <code>Fall 2016</code>.
         </td>
         <td>Optional</td>
     </tr>
