@@ -104,8 +104,9 @@
     </head>
     <body>
         <section id="abstract">
-            <h2>Abstract</h2> This document extends Caliper 1.2 by defining a Library Profile
-            that describes usage of library facilities and circulation services.
+            <h2>Abstract</h2> This document extends Caliper 1.2 by defining a Library
+            Profile that describes usage of library facilities, the library's physical and
+            electronic resources, and interactions with library staff.
         </section>
 
         <section>
@@ -115,13 +116,9 @@
 
                 <img height="100%" width="100%" src="../../assets/caliper-profile_library.png" alt="Library Use Profile"/>
 
-                <p>The Caliper Library Profile models a <code>Person</code>, typically a learner,
-                    making use of library facilities and circulation services. The profile provides
-                    a <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
-                    facilities, a <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> for describing
-                    the loaning of library-owned or licensed assets to library patrons, and a
-                    <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> for tracking attendance at
-                    library-hosted meetings and activities.
+                <p>This document extends Caliper 1.2 by defining a Library
+            Profile that describes usage of library facilities, the library's physical and
+            electronic resources, and interactions with library staff.
                 </p>
             </section>
 
@@ -131,8 +128,8 @@
                 <ul>
                     <li>As a librarian,
                         <ul>
-                            <li>As a librarian, I would like to understand the extent to which library spaces are used for course-assigned activities.</li>
-                            <li>As a librarian, I would like to control the level of specificity of the identity or interaction the library enters into the learner record store.</li>
+                            <li>I would like to understand the extent to which library spaces are used for course-assigned activities.</li>
+                            <li>I would like to control the level of specificity of the identity or interaction the library enters into the learner record store.</li>
                         </ul>
                     </li>
                     <li>As a student,
@@ -209,9 +206,9 @@
             <p>The Library Profile is provisioned with a
                 <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
                 facilities, a <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> for describing
-                the loaning of library-owned or licensed assets to library patrons, and a
+                the use of library-owned or licensed assets by library patrons, and a
                 <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> for tracking attendance at
-                library-hosted meetings and activities.</p>
+                library-mediated meetings and activities.</p>
 
             <section id="LibraryUseEvent"
                  data-include="../../fragments/events/caliper-event-libraryuse.html">
@@ -341,7 +338,7 @@
             <h3>OCLC Number (OCN)</h3>
 
             <p>Set the <code>SystemIdentifier.identifierType</code> string value to
-                <code>OCLC</code>
+                <code>OCLCNumber</code>
                 if the <a href="https://www.imsglobal.org/spec/caliper/v1p2#system-identifiers">SystemIdentifier</a>
                 is an OCLC number.</p>
 

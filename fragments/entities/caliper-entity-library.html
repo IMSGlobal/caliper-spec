@@ -3,7 +3,7 @@
 
     <p>As a subtype of <code>Organization</code> a
     <code>Library</code> can act as an <a href="#Agent">Agent</a>. It can be linked both to a
-    parent <code>Organization</code> and to its <code>members</code>.</p>
+    parent <code>Organization</code> and to its members.</p>
 
 <dl>
     <dt>IRI</dt>
@@ -16,7 +16,7 @@
     <dd><code>Library</code> inherits all properties defined by its supertype
         <a href="#Organization">Organization</a>, of which <code>id</code> and <code>type</code>
         are required. <code>LibrarySpace</code> is also provisioned with the additional properties
-        <code>BuildingName</code>, <code>BuildingNumber</code>.
+        <code>buildingName</code>, <code>buildingNumber</code>.
         Additional type restrictions are described below:
     </dd>
 </dl>
@@ -38,13 +38,13 @@
             <td>Required</td>
         </tr>
         <tr>
-            <td>BuildingName</td>
+            <td>buildingName</td>
             <td>string</td>
             <td>The building name for this Library.</td>
             <td>Optional</td>
         </tr>
         <tr>
-            <td>BuildingNumber</td>
+            <td>buildingNumber</td>
             <td>string</td>
             <td>The building number for this Library.</td>
             <td>Optional</td>
