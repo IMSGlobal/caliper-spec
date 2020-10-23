@@ -1004,7 +1004,7 @@ For a learner's interactions within a [QTI](https://www.imsglobal.org/question/i
 
 | Release Date  | Comments                |
 |---------------|-------------------------|
-| 13 March, 2020 | Base Document Release |
+| 21 October, 2020 | Base Document Release |
 | 27 March, 2020 | Candidate Final Release |
 </section>
 `;
