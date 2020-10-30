@@ -204,11 +204,11 @@
             <h2>Events</h2>
 
             <p>The Library Profile is provisioned with a
-                <a href="#LibraryUseEvent">LibraryUseEvent</a> for recording use of library
+                <a href="#LibraryUseEvent">LibraryUseEvent</a> for logging use of library
                 facilities, a <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> for describing
-                the use of library-owned or licensed assets by library patrons, and a
-                <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> for tracking attendance at
-                library-mediated meetings and activities.</p>
+                the use of library-owned or licensed assets by library users, and a
+                <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> for recording attendance at
+                library-related activities.</p>
 
             <section id="LibraryUseEvent"
                  data-include="../../fragments/events/caliper-event-libraryuse.html">
@@ -231,7 +231,7 @@
                 <h3>LibraryUseEvent</h3>
 
                 <p>The Caliper <a href="#LibraryUseEvent">LibraryUseEvent</a> supports
-                    the following actions:</p>
+                    the following action:</p>
 
                 <section id="action-used"
                      data-include="../../fragments/actions/caliper-action-used.html">
@@ -242,7 +242,7 @@
                 <h3>LibraryResourceUseEvent</h3>
 
                 <p>The Caliper <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> supports
-                    the following actions:</p>
+                    the following action:</p>
 
                 <section id="action-accessed"
                      data-include="../../fragments/actions/caliper-action-accessed.html">
@@ -254,7 +254,7 @@
                 <h3>LibraryParticipationEvent</h3>
 
                 <p>The Caliper <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> supports
-                    the following actions:</p>
+                    the following action:</p>
 
                 <section id="action-attended"
                      data-include="../../fragments/actions/caliper-action-attended.html">
@@ -486,7 +486,7 @@
 
                 <p>Below is an example of a
                     <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> that
-                    anonymizes both the <code>actor</code> and the <code>object</code>.</p>
+                    does not include identifying information about either the <code>actor</code> or the <code>object</code>.</p>
 
                 <figure class="example">
                     <figcaption>LibraryResourceUseEvent (Anonymous) JSON-LD</figcaption>
@@ -498,7 +498,7 @@
                 <h3>LibraryParticipationEvent</h3>
 
                 <p>Below is an example of a <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> that can be
-                    used to track attendance at <a href="#Library">Library-hosted</a> meetings and activities.</p>
+                    used to record attendance at <a href="#Library">Library-hosted</a> meetings and activities.</p>
 
                 <figure class="example">
                     <figcaption>LibraryParticipationEvent JSON-LD</figcaption>
