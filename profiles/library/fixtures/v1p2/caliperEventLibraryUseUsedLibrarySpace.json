@@ -1,0 +1,19 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:fd245e24-d9fa-4384-8b0a-7d08d632e63f",
+  "type": "LibraryUseEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Used",
+  "object": {
+    "id": "https://example.edu/library",
+    "type": "Library",
+    "name": "University Library"
+  },
+  "eventTime": "2021-11-15T10:15:00.000Z",
+  "presenceDerivedFromSource": "swipe card",
+  "presenceDerivedFromID": "951357456852"
+}

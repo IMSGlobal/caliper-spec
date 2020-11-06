@@ -1,0 +1,23 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:fd245e24-d9fa-4384-8b0a-7d08d632e63f",
+  "type": "LibraryParticipationEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "https://example.edu/users/554433",
+    "type": "Person"
+  },
+  "action": "Attended",
+  "object": {
+    "id": "https://example.edu/library/events/3",
+    "type": "LibraryActivity"
+  },
+  "eventTime": "2021-11-06T17:55:01.000Z",
+  "arrivalTime": "2021-11-06T17:55:00.000Z",
+  "participationMode": "online",
+  "forCourse": {
+    "id": "https://example.edu/terms/202103/courses/101",
+    "type": "CourseOffering",
+    "courseNumber": "Eng 101"
+  }
+}

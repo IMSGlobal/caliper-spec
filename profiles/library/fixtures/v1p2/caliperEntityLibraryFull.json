@@ -1,0 +1,13 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library",
+  "type": "Library",
+  "name": "University Library",
+  "description": "The primary library building on campus.",
+  "buildingName": "Main Library Building",
+  "buildingNumber": "100",
+  "subOrganizationOf": {
+    "id": "https://example.edu/coolschool",
+    "type": "Organization"
+  }
+}

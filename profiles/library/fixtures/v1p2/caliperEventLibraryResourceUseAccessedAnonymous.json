@@ -1,0 +1,23 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:ee80637e-0d57-4384-812b-f1f54810b195",
+  "type": "LibraryResourceUseEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "http://purl.imsglobal.org/caliper/Person",
+    "type": "Person"
+  },
+  "action": "Accessed",
+  "object": {
+    "id": "https://example.edu/journals/231302",
+    "type": "LibraryResource",
+    "name": "Journal of Library Assessment"
+  },
+  "accessLocation": "off-campus",
+  "eventTime": "2021-11-15T10:15:00.000Z",
+  "forCourse": {
+    "id": "https://example.edu/terms/202103/courses/7",
+    "type": "CourseOffering",
+    "courseNumber": "INFO 567"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/equipment/0395487302",
+  "type": "LibraryResource",
+  "physicalOrDigital": "physical",
+  "resourceType": "book",
+  "name": "Duh, A History",
+  "otherIdentifiers": [
+    {
+      "type": "SystemIdentifier",
+      "identifier": "1234567890123",
+      "identifierType": " InternationalStandardBookNumber"
+    }
+  ]
+}

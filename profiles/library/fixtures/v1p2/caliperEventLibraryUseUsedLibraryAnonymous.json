@@ -4,15 +4,14 @@
   "type": "LibraryUseEvent",
   "profile": "LibraryProfile",
   "actor": {
-    "id": "https://example.edu/users/554433",
+    "id": "http://purl.imsglobal.org/caliper/Person",
     "type": "Person"
   },
   "action": "Used",
   "object": {
-    "id": "https://example.edu/library",
-    "type": "Library",
-    "name": "University Library"
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+    "id": "https://example.edu/library/alcove2",
+    "type": "LibrarySpace"
   },
-  "eventTime": "2018-11-15T10:15:00.000Z",
-  "edApp": "https://example.edu/library/cardreader"
+  "eventTime": "2021-11-15T10:15:00.000Z"
 }

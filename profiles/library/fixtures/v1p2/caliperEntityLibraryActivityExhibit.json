@@ -1,0 +1,16 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library/events/56",
+  "type": "LibraryActivity",
+  "name": "A History of Dust",
+  "activityType": "exhibit",
+  "interactionMode": "in-person",
+  "synchronicity": "asynchronous",
+  "location": {
+    "id": "https://example.edu/library/special_collections/22",
+    "type": "LibrarySpace",
+    "name": "Special Collections Reading Room"
+  },
+  "scheduledTime": "2021-11-06T18:00:00.000Z",
+  "exhibitMode": "physical"
+}

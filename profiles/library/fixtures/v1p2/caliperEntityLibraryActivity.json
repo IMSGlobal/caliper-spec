@@ -1,0 +1,16 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library/events/3",
+  "type": "LibraryActivity",
+  "name": "Privacy Workshop",
+  "activityType": "instruction",
+  "interactionMode": "in-person",
+  "synchronicity": "synchronous",
+  "location": {
+    "id": "https://example.edu/library/auditoriums/2",
+    "type": "LibrarySpace"
+  },
+  "scheduledTime": "2021-11-06T18:00:00.000Z",
+  "duration": "1h",
+  "academicSession": "Fall 2021"
+}

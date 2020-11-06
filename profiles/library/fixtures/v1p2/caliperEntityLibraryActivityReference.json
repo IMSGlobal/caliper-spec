@@ -1,0 +1,12 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library/events/3",
+  "type": "LibraryActivity",
+  "activityType": "reference",
+  "interactionMode": "consultation",
+  "location": {
+    "id": "https://example.edu/library/service_point/2",
+    "type": "LibrarySpace"
+  },
+  "reportingCategory": "reference"
+}

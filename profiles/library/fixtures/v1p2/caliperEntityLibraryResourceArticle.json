@@ -1,0 +1,15 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/articles/56445",
+  "type": "LibraryResource",
+  "physicalOrDigital": "digital",
+  "resourceType": "article",
+  "name": "Enriching College Students' Leadership Efficacy",
+  "otherIdentifiers": [
+    {
+      "type": "SystemIdentifier",
+      "identifier": "10.12806/V19/I4/R7",
+      "identifierType": "DigitalObjectIdentifier"
+    }
+  ]
+}

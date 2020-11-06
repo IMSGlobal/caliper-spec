@@ -1,0 +1,9 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/humanities/auditoriums/1024",
+  "type": "LibrarySpace",
+  "name": "Humanities Auditorium",
+  "buildingName": "Humanities Center of Excellence",
+  "buildingNumber": "444",
+  "roomNumber":  "1024"
+}

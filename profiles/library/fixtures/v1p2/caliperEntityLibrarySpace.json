@@ -1,0 +1,12 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library/alcoves/42",
+  "type": "LibrarySpace",
+  "name": "Alcove 4-2",
+  "floor": "4",
+  "servicePoint": "reference desk",
+  "isPartOf": {
+    "id": "https://example.edu/library",
+    "type": "Library"
+  }
+}

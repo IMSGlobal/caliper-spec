@@ -1,0 +1,17 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "https://example.edu/library/events/3",
+  "type": "LibraryActivity",
+  "name": "Using Databases for Thesis Research",
+  "activityType": "instruction",
+  "interactionMode": "online conference",
+  "synchronicity": "synchronous",
+  "forCourse": {
+    "id": "https://example.edu/terms/202103/courses/7",
+    "type": "CourseOffering",
+    "courseNumber": "EDU 601"
+  },
+  "scheduledTime": "2021-11-06T18:00:00.000Z",
+  "duration": "18m",
+  "academicSession": "Fall 2021"
+}

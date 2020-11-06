@@ -1,0 +1,17 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:fd245e24-d9fa-4384-8b0a-7d08d632e666",
+  "type": "LibraryParticipationEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "http://purl.imsglobal.org/caliper/Person",
+    "type": "Person"
+  },
+  "action": "Attended",
+  "object": {
+    "id": "https://example.edu/library/events/3",
+    "type": "LibraryActivity"
+  },
+  "eventTime": "2021-11-06T19:30:00.000Z",
+  "participationMode": "in-person"
+}

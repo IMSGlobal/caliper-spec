@@ -1,28 +1,28 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
   "id": "urn:uuid:0652c71d-e477-4692-9b4e-89c4079e00e0",
-  "type": "ResourceUseEvent",
+  "type": "LibraryResourceUseEvent",
   "profile": "LibraryProfile",
   "actor": {
     "id": "https://example.edu/users/554433",
     "type": "Person"
   },
-  "action": "Borrowed",
+  "action": "Accessed",
   "object": {
     "id": "https://example.edu/catalog/record/013115849",
-    "type": "Book",
+    "type": "LibraryResource",
     "name": "The Caliper Cookbook",
     "otherIdentifiers": [{
       "type": "SystemIdentifier",
       "identifierType": "ISBN",
       "identifier": "000-0-00-000000-0"
-    }],
-    "isPartOf": {
-      "id": "https://example.edu/library",
-      "type": "Library",
-      "name": "University Library"
-    }
+    }]
   },
-  "eventTime": "2018-11-15T10:15:00.000Z",
-  "edApp": "https://example.edu/library/circulation"
+  "accessLocation": "on-campus",
+  "eventTime": "2021-11-15T10:15:00.000Z",
+  "forCourse": {
+    "id": "https://example.edu/terms/202103/courses/7",
+    "type": "CourseOffering",
+    "courseNumber": "INFO 115"
+  }
 }

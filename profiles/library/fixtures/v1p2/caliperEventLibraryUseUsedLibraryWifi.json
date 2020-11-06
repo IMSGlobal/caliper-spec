@@ -1,0 +1,19 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+  "id": "urn:uuid:fd245e24-d9fa-4384-8b0a-7d08d632e63f",
+  "type": "LibraryUseEvent",
+  "profile": "LibraryProfile",
+  "actor": {
+    "id": "http://purl.imsglobal.org/caliper/Person",
+    "type": "Person"
+  },
+  "action": "Used",
+  "object": {
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
+    "id": "https://example.edu/library/alcove2",
+    "type": "LibrarySpace"
+  },
+  "eventTime": "2021-11-15T10:15:00.000Z",
+  "presenceDerivedFromSource": "wifi",
+  "presenceDerivedFromID": "00:A0:C9:14:C8:29"
+}

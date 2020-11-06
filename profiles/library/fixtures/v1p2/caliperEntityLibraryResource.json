@@ -1,11 +1,21 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
-  "id": "https://example.edu/equipment/0395487302",
+  "id": "https://example.edu/journals/231302",
   "type": "LibraryResource",
-  "name": "Camera",
-  "isPartOf": {
-    "id": "https://example.edu/library",
-    "type": "Library",
-    "name": "University Library"
-  }
+  "physicalOrDigital": "digital",
+  "resourceType": "journal",
+  "name": "Journal of Library Assessment",
+  "learningObjectives": [
+    {
+      "id": "http://library.edu/services/library-instruction-services/library-learning-outcomes/1",
+      "type": "LearningObjective"
+    }
+  ],
+  "otherIdentifiers": [
+    {
+      "type": "SystemIdentifier",
+      "identifier": "1564-4587",
+      "identifierType": "InternationalStandardSerialNumber"
+    }
+  ]
 }
