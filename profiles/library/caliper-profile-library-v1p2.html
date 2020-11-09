@@ -101,6 +101,12 @@
                 localBiblio: _localBiblio
             };
         </script>
+
+        <style>
+            .example figcaption{
+                font-style: normal;
+            }
+        </style>
     </head>
     <body>
         <section id="abstract">
@@ -210,77 +216,183 @@
                 <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> for recording attendance at
                 library-related activities.</p>
 
-            <section id="LibraryUseEvent"
-                 data-include="./fragments/events/caliper-event-libraryuse.html">
+            <section id="LibraryUseEvent">
+                <h3>LibraryUseEvent</h3>
+                <div data-include="./fragments/events/caliper-event-libraryuse.html"></div>
+
+                <section id="LibraryUseEventExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibraryUseEvent">LibraryUseEvents</a> that
+                        describes the use of <a href="#Library">Library</a> and <a href="#LibrarySpace">LibrarySpace</a> entities.</p>
+
+                    <figure class="example">
+                        <figcaption>- Some Person <em>Used</em> some LibrarySpace. This example does not include identifying information about either the actor or the object.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibraryAnonymous.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- Some Person <em>Used</em> a specific LibrarySpace identified by a WiFi router's MAC address. This example does not include identifying information about the actor.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibraryWifi.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A Person <em>Used</em> the Library as identified by a card swipe.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibrarySpace.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
-            <section id="LibraryResourceUseEvent"
-                 data-include="./fragments/events/caliper-event-libraryresourceuse.html">
+            <section id="LibraryResourceUseEvent">
+                <h3>LibraryResourceUseEvent</h3>
+                <div data-include="./fragments/events/caliper-event-libraryresourceuse.html"></div>
+
+                <section id="LibraryResourceUseEventExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> that
+                        describes the use of a <a href="#Library">LibraryResource</a> entity.</p>
+
+                    <figure class="example">
+                        <figcaption>- Some Person <em>Accessed</em> a LibraryResource for a CourseOffering. This example does not include identifying information about the actor.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryResourceUseAccessedAnonymous.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A Person <em>Accessed</em> a LibraryResource for a CourseOffering.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryResourceUseAccessed.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
-            <section id="LibraryParticipationEvent"
-                 data-include="./fragments/events/caliper-event-libraryparticipation.html">
+            <section id="LibraryParticipationEvent">
+                <h3>LibraryParticipationEvent</h3>
+                <div data-include="./fragments/events/caliper-event-libraryparticipation.html"></div>
+
+                <section id="LibraryParticipationEventExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> that
+                        describes participation in a <a href="#LibraryActivity">LibraryActivity</a> entity.</p>
+
+                    <figure class="example">
+                        <figcaption>- Some Person <em>Accessed</em> a LibraryResource for a CourseOffering. This example does not include identifying information about the actor.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryParticipationAttendedAnonymous.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A Person <em>Accessed</em> a LibraryResource for a CourseOffering.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEventLibraryParticipationAttended.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
         </section>
 
         <section id="actions">
             <h2>Actions</h2>
-
-            <section id="actions-libraryuse">
-                <h3>LibraryUseEvent</h3>
-
-                <p>The Caliper <a href="#LibraryUseEvent">LibraryUseEvent</a> supports
-                    the following action:</p>
-
-                <section id="action-used"
-                     data-include="../../fragments/actions/caliper-action-used.html">
-                </section>
-            </section>
-
-            <section id="actions-resourceuse">
-                <h3>LibraryResourceUseEvent</h3>
-
-                <p>The Caliper <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> supports
-                    the following action:</p>
-
-                <section id="action-accessed"
+            <section id="action-accessed"
                      data-include="./fragments/actions/caliper-action-accessed.html">
-                </section>
-
             </section>
-
-            <section id="actions-participation">
-                <h3>LibraryParticipationEvent</h3>
-
-                <p>The Caliper <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> supports
-                    the following action:</p>
-
-                <section id="action-attended"
+            <section id="action-attended"
                      data-include="./fragments/actions/caliper-action-attended.html">
-                </section>
+            </section>
+            <section id="action-used"
+                     data-include="./fragments/actions/caliper-action-used.html">
             </section>
 
-            </section>
+        </section>
         </section>
 
         <section id="entities">
             <h2>Entities</h2>
 
-            <section id="LibraryActivity"
-                 data-include="./fragments/entities/caliper-entity-library-activity.html">
+            <section id="Library">
+                <h3>Library</h3>
+                <div data-include="./fragments/entities/caliper-entity-library.html"></div>
+
+                <section id="LibraryEntityExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#Library">Library</a> entities.</p>
+
+                    <figure class="example">
+                        <figcaption>- A simple Library entity.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibrary.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A Library with building information and specifying a parent Organization.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryFull.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
-            <section id="Library"
-                 data-include="./fragments/entities/caliper-entity-library.html">
+            <section id="LibraryActivity">
+                <h3>LibraryActivity</h3>
+                <div data-include="./fragments/entities/caliper-entity-library-activity.html"></div>
+
+                <section id="LibraryActivityEntityExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibraryActivity">LibraryActivity</a> entities.</p>
+
+                    <figure class="example">
+                        <figcaption>- A synchronous online instructional activity for a CourseOffering.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryActivityCourseInstruction.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- An asynchronous in-person exhibit in a LibrarySpace.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryActivityExhibit.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A synchronous in-person workshop in a LibrarySpace.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryActivity.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A reference consultation at a LibrarySpace.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryActivityReference.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
-            <section id="LibrarySpace"
-                 data-include="./fragments/entities/caliper-entity-libraryspace.html">
+            <section id="LibraryResource">
+                <h3>LibraryResource</h3>
+                <div data-include="./fragments/entities/caliper-entity-libraryresource.html"></div>
+
+                <section id="LibraryResourceEntityExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibraryResource">LibraryResource</a> entities.</p>
+
+                    <figure class="example">
+                        <figcaption>- A digital article with a DOI.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResourceArticle.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A physical book with an ISBN.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResourceBook.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- A digital journal with a learning objective an ISSN.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResource.json"></code></pre>
+                    </figure>
+                </section>
             </section>
 
-            <section id="LibraryResource"
-                 data-include="./fragments/entities/caliper-entity-libraryresource.html">
+            <section id="LibrarySpace">
+                <h3>LibrarySpace</h3>
+                <div data-include="./fragments/entities/caliper-entity-libraryspace.html"></div>
+
+                <section id="LibrarySpaceEntityExamples">
+                    <h4>JSON Examples</h4>
+
+                    <p>Below are examples of <a href="#LibrarySpace">LibrarySpace</a> entities.</p>
+
+                    <figure class="example">
+                        <figcaption>- A reference desk in the 4th floor alcove.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibrarySpace.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- An auditorium in another building used for a LibraryActivity.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibrarySpaceOtherBuilding.json"></code></pre>
+                    </figure>
+                </section>
             </section>
         </section>
 
@@ -434,113 +546,6 @@
             </dl>
 
 
-
-        </section>
-
-        <section id="jsonld">
-            <h2>Serializing the Model</h2>
-            <p>Individual Caliper events and entity describes are serialized as JSON-LD. IMS Global
-                provides a remote Library Profile JSON-LD <a href=
-                  "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryUseProfile-extension">context</a>
-                for mapping <a href="#LibraryUseEvent">LibraryUseEvent</a> and
-                <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> terms to IRIs.
-                Caliper message producers MUST reference the LibraryUse Profile 1.2-extension
-                context in every <a href="#Event">Event</a> subtype described in this profile. Likewise,
-                Caliper message producers MUST reference the LibraryUse Profile 1.2-extension
-                context whenever an <a href="#Entity">Entity</a>> subtype described in this profile is
-                emitted on its own as a <em>describe</em>.</p>
-
-            <p>See the Caliper 1.2 specification [[!CALIPER-12]] for a discussion of JSON-LD and JSON-LD
-                context handling.</p>
-
-            <figure class="example">
-                <figcaption>LibraryUseProfile-extension JSON-LD Context</figcaption>
-<pre><code>{
-  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1/LibraryUseProfile-extension",
-  . . .
-}</code></pre>
-            </figure>
-
-            <section class="informative">
-                <h3>LibraryUseEvent</h3>
-
-                <p>Below is an example of a <a href="#LibraryUseEvent">LibraryUseEvent</a> that
-                    describes use of <a href="#Library">Library</a> facilities.</p>
-
-                <figure class="example">
-                    <figcaption>LibraryParticipationEvent JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibrary.json"></code></pre>
-                </figure>
-            </section>
-
-            <section class="informative">
-                <h3>LibraryResourceUseEvent</h3>
-
-                <p>Below is an example of a
-                    <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> TODO - update description based on new example</p>
-
-                <figure class="example">
-                    <figcaption>LibraryResourceUseEvent JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEventResourceUseBorrowedBook.json"></code></pre>
-                </figure>
-
-                <p>Below is an example of a
-                    <a href="#LibraryResourceUseEvent">LibraryResourceUseEvent</a> that
-                    does not include identifying information about either the <code>actor</code> or the <code>object</code>.</p>
-
-                <figure class="example">
-                    <figcaption>LibraryResourceUseEvent (Anonymous) JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEventResourceUseBorrowedBookAnonymous.json"></code></pre>
-                </figure>
-            </section>
-
-            <section class="informative">
-                <h3>LibraryParticipationEvent</h3>
-
-                <p>Below is an example of a <a href="#LibraryParticipationEvent">LibraryParticipationEvent</a> that can be
-                    used to record attendance at <a href="#Library">Library-hosted</a> meetings and activities.</p>
-
-                <figure class="example">
-                    <figcaption>LibraryParticipationEvent JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEventParticipationActivity.json"></code></pre>
-                </figure>
-            </section>
-
-            <section class="informative">
-                <h3>Library</h3>
-
-                <p>Below is an example of a <a href="#Library">Library</a> entity describe that can
-                    be sent to an endpoint.</p>
-
-                <figure class="example">
-                    <figcaption>Library describe JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEntityLibrary.json"></code></pre>
-                </figure>
-            </section>
-
-            <section class="informative">
-                <h3>LibraryActivity</h3>
-
-                <p>Below is an example of a <a href="#LibraryActivity">LibraryActivity</a> entity
-                    describe that can be sent to an endpoint.</p>
-
-                <figure class="example">
-                    <figcaption>LibraryActivity JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryActivity.json"></code></pre>
-                </figure>
-            </section>
-
-            <section class="informative">
-                <h3>LibraryResource</h3>
-
-                <p>Below is an example of a <a href="#LibraryResource">LibraryResource</a> entity describe that can
-                    be sent to an endpoint.</p>
-
-                <figure class="example">
-                    <figcaption>LibraryResource describe JSON-LD</figcaption>
-                    <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResource.json"></code></pre>
-                </figure>
-            </section>
 
         </section>
 

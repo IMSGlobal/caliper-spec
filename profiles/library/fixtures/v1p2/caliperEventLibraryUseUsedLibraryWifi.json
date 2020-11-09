@@ -9,7 +9,6 @@
   },
   "action": "Used",
   "object": {
-    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
     "id": "https://example.edu/library/alcove2",
     "type": "LibrarySpace"
   },
