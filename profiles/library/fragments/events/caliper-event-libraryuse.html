@@ -9,9 +9,9 @@
     <dt>Term</dt>
     <dd>LibraryUseEvent</dd>
     <dt>Supertype</dt>
-    <dd><a href="#Event">Event</a></dd>
+    <dd><a href="https://www.imsglobal.org/spec/caliper/v1p2#event">Event</a></dd>
     <dt>Properties</dt>
-    <dd>The <code>LibraryUseEvent</code> inherits all properties defined by its supertype <a href="#Event">Event</a>, of
+    <dd>The <code>LibraryUseEvent</code> inherits all properties defined by its supertype <a href="https://www.imsglobal.org/spec/caliper/v1p2#event">Event</a>, of
         which <code>id</code>, <code>type</code>, <code>actor</code>, <code>action</code>,
         <code>object</code>, and <code>eventTime</code> are required. Profile-specific type restrictions are
         described below:
@@ -29,32 +29,32 @@
     <tbody>
     <tr>
         <td>type</td>
-        <td><a href="#TermDef">Term</a></td>
-        <td>The string value MUST be set to the <a href="#TermDef">Term</a> <em>LibraryUseEvent</em>.</td>
+        <td><a href="https://www.imsglobal.org/spec/caliper/v1p2#termDef">Term</a></td>
+        <td>The string value MUST be set to the <a href="https://www.imsglobal.org/spec/caliper/v1p2#termDef">Term</a> <em>LibraryUseEvent</em>.</td>
         <td>Required</td>
     </tr>
     <tr>
         <td>actor</td>
-        <td><a href="#Person">Person</a> | <a href="#IriDef">IRI</a></td>
-        <td>The <a href="#Person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value
-            MUST be expressed either as an object or as a string corresponding to the actor’s <a href="#IriDef">IRI</a>.
+        <td><a href="https://www.imsglobal.org/spec/caliper/v1p2#person">Person</a> | <a href="https://www.imsglobal.org/spec/caliper/v1p2#iriDef">IRI</a></td>
+        <td>The <a href="https://www.imsglobal.org/spec/caliper/v1p2#person">Person</a> who initiated the <code>action</code>. The <code>actor</code> value
+            MUST be expressed either as an object or as a string corresponding to the actor’s <a href="https://www.imsglobal.org/spec/caliper/v1p2#iriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>action</td>
-        <td><a href="#TermDef">Term</a></td>
+        <td><a href="https://www.imsglobal.org/spec/caliper/v1p2#termDef">Term</a></td>
         <td>The action or predicate that binds the <code>actor</code> or subject to the <code>object</code>. The
-            value range is limited to the <a href="#Action-used">Used</a> action only.
+            value range is limited to the <a href="#used">Used</a> action only.
         </td>
         <td>Required</td>
     </tr>
     <tr>
         <td>object</td>
-        <td><a href="#Library">Library</a> | <a href="#LibrarySpace">LibrarySpace</a> | <a href="#IriDef">IRI</a></td>
+        <td><a href="#Library">Library</a> | <a href="#LibrarySpace">LibrarySpace</a> | <a href="https://www.imsglobal.org/spec/caliper/v1p2#iriDef">IRI</a></td>
         <td>The Library or LibrarySpace that constitutes the <code>object</code>
             of the interaction. The <code>object</code> value MUST be expressed either as an object or as a
-            string corresponding to the object’s <a href="#IriDef">IRI</a>.
+            string corresponding to the object’s <a href="https://www.imsglobal.org/spec/caliper/v1p2#iriDef">IRI</a>.
         </td>
         <td>Required</td>
     </tr>
