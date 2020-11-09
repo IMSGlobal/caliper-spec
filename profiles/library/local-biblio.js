@@ -1,4 +1,4 @@
-var _localBiblio = {
+var _localBiblioLibrary = {
   "CALIPER-LIBRARYUSE-12": {
     "title": "Caliper Analytics® Library Profile 1.2-extension",
     "href": "https://www.imsglobal.org/spec/caliper-libraryuse/v1p2-extension/",
