@@ -1,15 +1,13 @@
 {
   "@context": "http://purl.imsglobal.org/ctx/caliper/v1p2/LibraryProfile-extension",
-  "id": "https://example.edu/equipment/0395487302",
+  "id": "https://purl.imsglobal.org/caliper/LibraryResource",
   "type": "LibraryResource",
-  "physicalOrDigital": "physical",
   "resourceType": "book",
-  "name": "Dust, A History",
   "otherIdentifiers": [
     {
       "type": "SystemIdentifier",
-      "identifier": "1234567890123",
-      "identifierType": "InternationalStandardBookNumber"
+      "identifier": "JK",
+      "identifierType": "LibraryCongressCallNumber"
     }
   ]
 }

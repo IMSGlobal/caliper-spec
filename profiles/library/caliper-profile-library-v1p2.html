@@ -145,15 +145,33 @@
                         describes the use of <a href="#Library">Library</a> and <a href="#LibrarySpace">LibrarySpace</a> entities.</p>
 
                     <figure class="example">
-                        <figcaption>- Some Person <em>Used</em> some LibrarySpace. This example does not include identifying information about either the actor or the object.</figcaption>
+                        <figcaption>- A Person <em>Used</em> a LibrarySpace.
+                            In this example:
+                            <ul>
+                                <li>The actor is not identified.</li>
+                                <li>The object is not identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibraryAnonymous.json"></code></pre>
                     </figure>
                     <figure class="example">
-                        <figcaption>- Some Person <em>Used</em> a specific LibrarySpace identified by a WiFi router's MAC address. This example does not include identifying information about the actor.</figcaption>
+                        <figcaption>- A Person <em>Used</em> a LibrarySpace.
+                            In this example:
+                            <ul>
+                                <li>The actor is not identified.</li>
+                                <li>The object is identified by the MAC address of the a WiFi router in that space.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibraryWifi.json"></code></pre>
                     </figure>
                     <figure class="example">
-                        <figcaption>- A Person <em>Used</em> the Library as identified by a card swipe.</figcaption>
+                        <figcaption>- A Person <em>Used</em> the Library.
+                            In this example:
+                            <ul>
+                                <li>The actor is identified by a card swipe identifier.</li>
+                                <li>The object is identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryUseUsedLibrarySpace.json"></code></pre>
                     </figure>
                 </section>
@@ -170,11 +188,23 @@
                         describes the use of a <a href="#Library">LibraryResource</a> entity.</p>
 
                     <figure class="example">
-                        <figcaption>- Some Person <em>Accessed</em> a LibraryResource for a CourseOffering. This example does not include identifying information about the actor.</figcaption>
+                        <figcaption>- A Person <em>Accessed</em> a LibraryResource for a CourseOffering.
+                            In this example:
+                            <ul>
+                                <li>The actor is not identified.</li>
+                                <li>The object is identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryResourceUseAccessedAnonymous.json"></code></pre>
                     </figure>
                     <figure class="example">
-                        <figcaption>- A Person <em>Accessed</em> a LibraryResource for a CourseOffering.</figcaption>
+                        <figcaption>- A Person <em>Accessed</em> a LibraryResource for a CourseOffering.
+                            In this example:
+                            <ul>
+                                <li>The actor is identified.</li>
+                                <li>The object is identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryResourceUseAccessed.json"></code></pre>
                     </figure>
                 </section>
@@ -191,11 +221,23 @@
                         describes participation in a <a href="#LibraryActivity">LibraryActivity</a> entity.</p>
 
                     <figure class="example">
-                        <figcaption>- Some Person <em>Attended</em> a LibraryResource for a CourseOffering. This example does not include identifying information about the actor.</figcaption>
+                        <figcaption>- A Person <em>Attended</em> a LibraryActivity for a CourseOffering.
+                            In this example:
+                            <ul>
+                                <li>The actor is not identified.</li>
+                                <li>The object is identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryParticipationAttendedAnonymous.json"></code></pre>
                     </figure>
                     <figure class="example">
-                        <figcaption>- A Person <em>Attended</em> a LibraryResource for a CourseOffering.</figcaption>
+                        <figcaption>- A Person <em>Attended</em> a LibraryActivity for a CourseOffering.
+                            In this example:
+                            <ul>
+                                <li>The actor is identified.</li>
+                                <li>The object is identified.</li>
+                            </ul>
+                        </figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEventLibraryParticipationAttended.json"></code></pre>
                     </figure>
                 </section>
@@ -287,8 +329,12 @@
                         <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResourceBook.json"></code></pre>
                     </figure>
                     <figure class="example">
-                        <figcaption>- A digital journal with a learning objective an ISSN.</figcaption>
+                        <figcaption>- A digital journal with a learning objective and an ISSN.</figcaption>
                         <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResource.json"></code></pre>
+                    </figure>
+                    <figure class="example">
+                        <figcaption>- An unidentified book with an LCCN class.</figcaption>
+                        <pre><code data-include="./fixtures/v1p2/caliperEntityLibraryResourceLCCN.json"></code></pre>
                     </figure>
                 </section>
             </section>
